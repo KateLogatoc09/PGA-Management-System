@@ -30,7 +30,8 @@
                         <a href="javascript:;" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#enrollmentModal">Enrollment Forms</a>
 
                       </div>
-                      <!--include modal here-->
+                      <?= $this->include('admin/addteachers') ?>
+                      <?= $this->include('admin/enrollmentforms') ?>
                     </div>
                     <div class="col-sm-5 text-center text-sm-left">
                       <div class="card-body pb-0 px-0 px-md-4">
@@ -41,6 +42,59 @@
                 </div>
               </div>
                 
+              <div class="col-lg-18 mb-4 order-0">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Teacher List</h3>
+                            <div class="card-tools">
+                                <div class="input-group input-group-sm" style="width: 150px;">
+                                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                                    <div class="input-group-append">
+                                        <button type="submit" class="btn btn-default">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body table-responsive p-0">
+                         <table class="table table-hover text-nowrap">
+                    
+                            <thead>
+                                    <tr>
+                                        <th>ID Number</th>
+                                        <th>Firt Name</th>
+                                        <th>Middle Name</th>
+                                        <th>Last Name</th>
+                                        <th>Date of Birth</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <?php foreach ($teacher as $teach): ?>
+                                    <tr>
+                              
+                                            <td><?= $teach['idnum'] ?></td>
+                                            <td><?= $teach['fname'] ?></td>
+                                            <td><?= $teach['mname'] ?></td>
+                                            <td><?= $teach['lname'] ?></td>
+                                            <td><?= $teach['dob'] ?></td>
+                                            <td> <a href="/deleteteacher/<?= $teach['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
+                                            <a href="/editteacher/<?= $teach['id'] ?>" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addTeacherModal">Edit</a></td>
+                                           
+                                           
+                                          
+                                     </tr>
+                                <?php endforeach ?>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    </div>
+                    <!-- /.card -->
+                </div> <!-- /.dito -->
 
 
             </div>
@@ -56,3 +110,8 @@
     </div>
   </div>
   <!-- / Layout wrapper -->
+
+  <script src="assets/js/book.js"></script>
+</body>
+
+</html>
