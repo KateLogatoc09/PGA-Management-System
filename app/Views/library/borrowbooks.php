@@ -15,25 +15,19 @@
                     <div class="form-group">
                         <label for="bookTitle">Book Title</label>
                         <input type="text" class="form-control" id="bookTitle" name="bookTitle" placeholder="Enter Book Title" required>
-                        
+
                         <label for="bookNumber">Book Number</label>
                         <input type="text" class="form-control" id="bookNumber" name="bookNumber" placeholder="Enter Book Number" required>
 
                         <label for="studIDnum">Student ID Number</label>
                         <input type="text" class="form-control" id="studIDnum" name="studIDnum" placeholder="Enter Student ID Number" required>
 
-                        <label for="studSec">Student Section</label>
-                        <input type="text" class="form-control" id="studSec" name="studSec" placeholder="Enter Student Section" required> 
-
                         <label for="studYearLevel">Student Year Level</label>
                         <select class="form-control" id="studYearLevel" name="studYearLevel" required>
-                            <option value="" disabled selected>Select Year Level</option>
-                            <option value="7">Grade 7</option>
-                            <option value="8">Grade 8</option>
-                            <option value="9">Grade 9</option>
-                            <option value="10">Grade 10</option>
-                            <option value="11">Grade 11</option>
-                            <option value="12">Grade 12</option>
+                        </select>
+
+                        <label for="studSec">Student Section</label>
+                        <select name="studSec" id="studSec" class="form-control" required>
                         </select>
 
                         <label for="dateBorrowed">Date Borrowed</label>
@@ -112,4 +106,30 @@
             $('#errorModal').modal('show');
         }
     });
+
+
+    $.get("/api/gradelevel", function(val) {
+        $('#studYearLevel').empty().append(`
+        <option value="" disabled selected>Select Year Level</option>
+        `)
+
+        $.each(val, function(_, v) {
+            $('#studYearLevel').append(`
+            <option value="` + v.id + `">` + v.name + ` ` + v.level + `</option>
+            `)
+        })
+    })
+
+    $('#studYearLevel').on('change', function() {
+        $('#studSec').empty().append(`<option value="" disabled selected>Select Section</option>`)
+        $.get("/api/section", function(val) {
+            $.each(val, function(_, v) {
+                if (v.grade_level_id == $('#studYearLevel').val()) {
+                    $('#studSec').append(`
+                    <option value="` + v.id + `">` + v.name + `</option>
+                    `)
+                }
+            })
+        })
+    })
 </script>

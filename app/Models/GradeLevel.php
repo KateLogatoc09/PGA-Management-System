@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class GradeLevel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'gradelevels';
+    protected $table            = 'grade_level';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';

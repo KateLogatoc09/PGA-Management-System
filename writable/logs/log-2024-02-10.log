@@ -60,3 +60,315 @@ in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
  6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
  8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-02-10 10:04:32 --> Invalid file: "home/about.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('home/about.php')
+ 2 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('home/about', [], true)
+ 3 APPPATH\Controllers\Home.php(23): view('home/about')
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\Home->ab()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\Yuan Gabriel\\Desktop\\CODE\\PGA-Management-System\\public\\index.php')
+ERROR - 2024-02-10 10:28:07 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'pga' in C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('localhost', 'root', '', 'pga', 3306, '', 0)
+#1 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseConnection.php(1409): CodeIgniter\Database\BaseConnection->query('SHOW TABLES FRO...')
+#4 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseConnection.php(1428): CodeIgniter\Database\BaseConnection->listTables()
+#5 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\MigrationRunner.php(768): CodeIgniter\Database\BaseConnection->tableExists('migrations')
+#6 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\MigrationRunner.php(168): CodeIgniter\Database\MigrationRunner->ensureTable()
+#7 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Commands\Database\Migrate.php(84): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\CLI\Commands.php(65): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\CLI\Console.php(37): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\spark(102): CodeIgniter\CLI\Console->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'pga' in C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseConnection.php(1409): CodeIgniter\Database\BaseConnection->query('SHOW TABLES FRO...')
+#3 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseConnection.php(1428): CodeIgniter\Database\BaseConnection->listTables()
+#4 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\MigrationRunner.php(768): CodeIgniter\Database\BaseConnection->tableExists('migrations')
+#5 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\MigrationRunner.php(168): CodeIgniter\Database\MigrationRunner->ensureTable()
+#6 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Commands\Database\Migrate.php(84): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#7 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\CLI\Commands.php(65): CodeIgniter\Commands\Database\Migrate->run(Array)
+#8 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\CLI\Console.php(37): CodeIgniter\CLI\Commands->run('migrate', Array)
+#9 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\spark(102): CodeIgniter\CLI\Console->run()
+#10 {main}
+ERROR - 2024-02-10 10:31:05 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'pga' in C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('localhost', 'root', '', 'pga', 3306, '', 0)
+#1 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseConnection.php(1409): CodeIgniter\Database\BaseConnection->query('SHOW TABLES FRO...')
+#4 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseConnection.php(1428): CodeIgniter\Database\BaseConnection->listTables()
+#5 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\MigrationRunner.php(768): CodeIgniter\Database\BaseConnection->tableExists('migrations')
+#6 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\MigrationRunner.php(168): CodeIgniter\Database\MigrationRunner->ensureTable()
+#7 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Commands\Database\Migrate.php(84): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\CLI\Commands.php(65): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\CLI\Console.php(37): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\spark(102): CodeIgniter\CLI\Console->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'pga' in C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseConnection.php(1409): CodeIgniter\Database\BaseConnection->query('SHOW TABLES FRO...')
+#3 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseConnection.php(1428): CodeIgniter\Database\BaseConnection->listTables()
+#4 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\MigrationRunner.php(768): CodeIgniter\Database\BaseConnection->tableExists('migrations')
+#5 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\MigrationRunner.php(168): CodeIgniter\Database\MigrationRunner->ensureTable()
+#6 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Commands\Database\Migrate.php(84): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#7 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\CLI\Commands.php(65): CodeIgniter\Commands\Database\Migrate->run(Array)
+#8 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\CLI\Console.php(37): CodeIgniter\CLI\Commands->run('migrate', Array)
+#9 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\spark(102): CodeIgniter\CLI\Console->run()
+#10 {main}
+ERROR - 2024-02-10 11:34:03 --> mysqli_sql_exception: Table 'pga.section' doesn't exist in C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `se...', 0)
+#1 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `se...')
+#2 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `se...')
+#3 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseBuilder.php(1800): CodeIgniter\Database\BaseConnection->query('INSERT INTO `se...', NULL, false)
+#4 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseBuilder.php(2191): CodeIgniter\Database\BaseBuilder->batchExecute('_insertBatch', 100)
+#5 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\app\Database\Seeds\Section.php(103): CodeIgniter\Database\BaseBuilder->insertBatch(Array)
+#6 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\Seeder.php(146): App\Database\Seeds\Section->run()
+#7 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Commands\Database\Seed.php(77): CodeIgniter\Database\Seeder->call('App\\Database\\Se...')
+#8 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\CLI\Commands.php(65): CodeIgniter\Commands\Database\Seed->run(Array)
+#9 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\CLI\Console.php(37): CodeIgniter\CLI\Commands->run('db:seed', Array)
+#10 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\spark(102): CodeIgniter\CLI\Console->run()
+#11 {main}
+ERROR - 2024-02-10 11:34:17 --> mysqli_sql_exception: Table 'pga.section' doesn't exist in C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `se...', 0)
+#1 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `se...')
+#2 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `se...')
+#3 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseBuilder.php(1800): CodeIgniter\Database\BaseConnection->query('INSERT INTO `se...', NULL, false)
+#4 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseBuilder.php(2191): CodeIgniter\Database\BaseBuilder->batchExecute('_insertBatch', 100)
+#5 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\app\Database\Seeds\Section.php(103): CodeIgniter\Database\BaseBuilder->insertBatch(Array)
+#6 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\Seeder.php(146): App\Database\Seeds\Section->run()
+#7 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Commands\Database\Seed.php(77): CodeIgniter\Database\Seeder->call('App\\Database\\Se...')
+#8 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\CLI\Commands.php(65): CodeIgniter\Commands\Database\Seed->run(Array)
+#9 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\CLI\Console.php(37): CodeIgniter\CLI\Commands->run('db:seed', Array)
+#10 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\spark(102): CodeIgniter\CLI\Console->run()
+#11 {main}
+ERROR - 2024-02-10 11:35:14 --> mysqli_sql_exception: Table 'pga.section' doesn't exist in C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `se...', 0)
+#1 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `se...')
+#2 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `se...')
+#3 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseBuilder.php(1800): CodeIgniter\Database\BaseConnection->query('INSERT INTO `se...', NULL, false)
+#4 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseBuilder.php(2191): CodeIgniter\Database\BaseBuilder->batchExecute('_insertBatch', 100)
+#5 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\app\Database\Seeds\Section.php(103): CodeIgniter\Database\BaseBuilder->insertBatch(Array)
+#6 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\Seeder.php(146): App\Database\Seeds\Section->run()
+#7 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Commands\Database\Seed.php(77): CodeIgniter\Database\Seeder->call('App\\Database\\Se...')
+#8 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\CLI\Commands.php(65): CodeIgniter\Commands\Database\Seed->run(Array)
+#9 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\CLI\Console.php(37): CodeIgniter\CLI\Commands->run('db:seed', Array)
+#10 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\spark(102): CodeIgniter\CLI\Console->run()
+#11 {main}
+ERROR - 2024-02-10 11:37:07 --> mysqli_sql_exception: Table 'pga.section' doesn't exist in C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `se...', 0)
+#1 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `se...')
+#2 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `se...')
+#3 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseBuilder.php(1800): CodeIgniter\Database\BaseConnection->query('INSERT INTO `se...', NULL, false)
+#4 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseBuilder.php(2191): CodeIgniter\Database\BaseBuilder->batchExecute('_insertBatch', 100)
+#5 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\app\Database\Seeds\Section.php(103): CodeIgniter\Database\BaseBuilder->insertBatch(Array)
+#6 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\Seeder.php(146): App\Database\Seeds\Section->run()
+#7 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Commands\Database\Seed.php(77): CodeIgniter\Database\Seeder->call('App\\Database\\Se...')
+#8 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\CLI\Commands.php(65): CodeIgniter\Commands\Database\Seed->run(Array)
+#9 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\CLI\Console.php(37): CodeIgniter\CLI\Commands->run('db:seed', Array)
+#10 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\spark(102): CodeIgniter\CLI\Console->run()
+#11 {main}
+ERROR - 2024-02-10 11:38:42 --> mysqli_sql_exception: Table 'pga.section' doesn't exist in C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `se...', 0)
+#1 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `se...')
+#2 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `se...')
+#3 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseBuilder.php(1800): CodeIgniter\Database\BaseConnection->query('INSERT INTO `se...', NULL, false)
+#4 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseBuilder.php(2191): CodeIgniter\Database\BaseBuilder->batchExecute('_insertBatch', 100)
+#5 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\app\Database\Seeds\Section.php(103): CodeIgniter\Database\BaseBuilder->insertBatch(Array)
+#6 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\Seeder.php(146): App\Database\Seeds\Section->run()
+#7 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Commands\Database\Seed.php(77): CodeIgniter\Database\Seeder->call('App\\Database\\Se...')
+#8 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\CLI\Commands.php(65): CodeIgniter\Commands\Database\Seed->run(Array)
+#9 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\CLI\Console.php(37): CodeIgniter\CLI\Commands->run('db:seed', Array)
+#10 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\spark(102): CodeIgniter\CLI\Console->run()
+#11 {main}
+ERROR - 2024-02-10 11:40:19 --> mysqli_sql_exception: Table 'pga.sections' doesn't exist in C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `se...', 0)
+#1 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `se...')
+#2 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `se...')
+#3 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseBuilder.php(1800): CodeIgniter\Database\BaseConnection->query('INSERT INTO `se...', NULL, false)
+#4 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseBuilder.php(2191): CodeIgniter\Database\BaseBuilder->batchExecute('_insertBatch', 100)
+#5 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\app\Database\Seeds\Section.php(103): CodeIgniter\Database\BaseBuilder->insertBatch(Array)
+#6 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\Seeder.php(146): App\Database\Seeds\Section->run()
+#7 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Commands\Database\Seed.php(77): CodeIgniter\Database\Seeder->call('App\\Database\\Se...')
+#8 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\CLI\Commands.php(65): CodeIgniter\Commands\Database\Seed->run(Array)
+#9 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\CLI\Console.php(37): CodeIgniter\CLI\Commands->run('db:seed', Array)
+#10 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\spark(102): CodeIgniter\CLI\Console->run()
+#11 {main}
+ERROR - 2024-02-10 12:13:01 --> mysqli_sql_exception: Table 'pga.gradelevels' doesn't exist in C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\app\Controllers\GradeLevelController.php(16): CodeIgniter\BaseModel->findAll()
+#7 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\CodeIgniter.php(919): App\Controllers\GradeLevelController->index()
+#8 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\GradeLevelController))
+#9 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Commands\Server\rewrite.php(47): require_once('C:\\Users\\Yuan G...')
+#12 {main}
+CRITICAL - 2024-02-10 12:13:01 --> Table 'pga.gradelevels' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `gradelevels`', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\GradeLevelController.php(16): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\GradeLevelController->index()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\GradeLevelController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\Yuan Gabriel\\Desktop\\CODE\\PGA-Management-System\\public\\index.php')
+ERROR - 2024-02-10 12:14:15 --> mysqli_sql_exception: Table 'pga.gradelevels' doesn't exist in C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\app\Controllers\GradeLevelController.php(16): CodeIgniter\BaseModel->findAll()
+#7 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\CodeIgniter.php(919): App\Controllers\GradeLevelController->index()
+#8 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\GradeLevelController))
+#9 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Commands\Server\rewrite.php(47): require_once('C:\\Users\\Yuan G...')
+#12 {main}
+CRITICAL - 2024-02-10 12:14:15 --> Table 'pga.gradelevels' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `gradelevels`', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\GradeLevelController.php(16): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\GradeLevelController->index()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\GradeLevelController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\Yuan Gabriel\\Desktop\\CODE\\PGA-Management-System\\public\\index.php')
+ERROR - 2024-02-10 12:15:26 --> mysqli_sql_exception: Table 'pga.gradelevels' doesn't exist in C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\app\Controllers\GradeLevelController.php(16): CodeIgniter\BaseModel->findAll()
+#7 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\CodeIgniter.php(919): App\Controllers\GradeLevelController->index()
+#8 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\GradeLevelController))
+#9 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Commands\Server\rewrite.php(47): require_once('C:\\Users\\Yuan G...')
+#12 {main}
+CRITICAL - 2024-02-10 12:15:26 --> Table 'pga.gradelevels' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `gradelevels`', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\GradeLevelController.php(16): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\GradeLevelController->index()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\GradeLevelController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\Yuan Gabriel\\Desktop\\CODE\\PGA-Management-System\\public\\index.php')
+ERROR - 2024-02-10 12:16:18 --> mysqli_sql_exception: Table 'pga.gradelevel' doesn't exist in C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\app\Controllers\GradeLevelController.php(16): CodeIgniter\BaseModel->findAll()
+#7 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\CodeIgniter.php(919): App\Controllers\GradeLevelController->index()
+#8 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\GradeLevelController))
+#9 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Commands\Server\rewrite.php(47): require_once('C:\\Users\\Yuan G...')
+#12 {main}
+CRITICAL - 2024-02-10 12:16:18 --> Table 'pga.gradelevel' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `gradelevel`', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\GradeLevelController.php(16): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\GradeLevelController->index()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\GradeLevelController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\Yuan Gabriel\\Desktop\\CODE\\PGA-Management-System\\public\\index.php')
+ERROR - 2024-02-10 12:16:19 --> mysqli_sql_exception: Table 'pga.gradelevel' doesn't exist in C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\app\Controllers\GradeLevelController.php(16): CodeIgniter\BaseModel->findAll()
+#7 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\CodeIgniter.php(919): App\Controllers\GradeLevelController->index()
+#8 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\GradeLevelController))
+#9 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Commands\Server\rewrite.php(47): require_once('C:\\Users\\Yuan G...')
+#12 {main}
+CRITICAL - 2024-02-10 12:16:19 --> Table 'pga.gradelevel' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `gradelevel`', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\GradeLevelController.php(16): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\GradeLevelController->index()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\GradeLevelController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\Yuan Gabriel\\Desktop\\CODE\\PGA-Management-System\\public\\index.php')
+ERROR - 2024-02-10 12:16:21 --> mysqli_sql_exception: Table 'pga.gradelevel' doesn't exist in C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\app\Controllers\GradeLevelController.php(16): CodeIgniter\BaseModel->findAll()
+#7 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\CodeIgniter.php(919): App\Controllers\GradeLevelController->index()
+#8 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\GradeLevelController))
+#9 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\Users\Yuan Gabriel\Desktop\CODE\PGA-Management-System\system\Commands\Server\rewrite.php(47): require_once('C:\\Users\\Yuan G...')
+#12 {main}
+CRITICAL - 2024-02-10 12:16:21 --> Table 'pga.gradelevel' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `gradelevel`', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\GradeLevelController.php(16): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\GradeLevelController->index()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\GradeLevelController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\Users\\Yuan Gabriel\\Desktop\\CODE\\PGA-Management-System\\public\\index.php')
