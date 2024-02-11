@@ -99,7 +99,7 @@
                   <div class="d-flex align-items-end row">
                     <div class="col-sm-7">
                       <div class="card-body">
-                        <h5 class="card-title text-primary">Update Alumni</h5>
+                        <h5 class="card-title text-primary">Edit Alumni</h5>
                       </div>
                 <form action="/saveAlumni" method="post">
                     <!-- Add your form fields and content here -->

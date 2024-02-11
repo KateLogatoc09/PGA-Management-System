@@ -403,3 +403,13 @@ in SYSTEMPATH\Database\BaseConnection.php on line 646.
  9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
 10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
 11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-02-11 12:42:55 --> Invalid file: "admins.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admins.php')
+ 2 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admins', [], true)
+ 3 APPPATH\Controllers\AdminController.php(252): view('admins', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->saveAccount()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')

@@ -18,6 +18,9 @@ $routes->get('/forget', 'Home::forget');
 $routes->get('/admins', 'AdminController::index');
 $routes->get('/alumni', 'AdminController::alumni');
 $routes->post('/saveAlumni', 'AdminController::saveAlumni');
+$routes->post('/saveAccount', 'AdminController::saveAccount');
+$routes->get('/deleteAccount/(:any)', 'AdminController::deleteAccount/$1');
+$routes->get('/editAccount/(:any)', 'AdminController::editAccount/$1');
 $routes->get('/deleteAlumni/(:any)', 'AdminController::deleteAlumni/$1');
 $routes->get('/editAlumni/(:any)', 'AdminController::editAlumni/$1');
 
