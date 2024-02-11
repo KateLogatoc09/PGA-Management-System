@@ -91,7 +91,7 @@
                   <div class="d-flex align-items-end row">
                     <div class="col-sm-7">
                       <div class="card-body">
-                        <h5 class="card-title text-primary">Edit Account</h5>
+                        <h5 class="card-title text-primary">Create/Edit Account</h5>
                       </div>
                 <form action="/saveAccount" method="post">
                     <!-- Add your form fields and content here -->
@@ -105,6 +105,9 @@
                         <label for="email">Email:</label>
                         <input type="email" class="form-control" name="email" placeholder="Enter Email"
                         value="<?php if (isset($acc['email'])) {echo $acc['email'];}?>" required>
+
+                        <label for="password">Password:</label>
+                        <input type="password" class="form-control" name="password" placeholder="Enter Password" required>
 
                         <label for="role">Role:</label>
                                         <select class="form-control" name="role" id="role" value= "

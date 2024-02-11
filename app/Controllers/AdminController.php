@@ -227,6 +227,7 @@ class AdminController extends BaseController
         $data = [
             'username' => $this->request->getVar('username'),
             'email' => $this->request->getVar('email'),
+            'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
             'role' => $this->request->getVar('role'),
         ];
 
