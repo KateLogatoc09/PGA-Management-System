@@ -64,6 +64,9 @@ class Home extends BaseController
                     else if($_SESSION['role'] == 'teacher'){
                         return redirect()->to('/teacher');
                     }
+                    else if($_SESSION['role'] == 'librarian'){
+                        return redirect()->to('/librarian');
+                    }
                     else{
                         return redirect()->to('/admins');
                     }

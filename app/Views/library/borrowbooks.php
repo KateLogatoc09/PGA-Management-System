@@ -10,31 +10,17 @@
             </div>
             <div class="modal-body">
                 <!-- Your form content goes here -->
-                <form action="<?= base_url('library/saveData') ?>" method="post">
+                <form action="/borrowBook" method="post">
                     <!-- Add your form fields and content here -->
                     <div class="form-group">
-                        <label for="bookTitle">Book Title</label>
-                        <input type="text" class="form-control" id="bookTitle" name="bookTitle" placeholder="Enter Book Title" required>
-                        
-                        <label for="bookNumber">Book Number</label>
-                        <input type="text" class="form-control" id="bookNumber" name="bookNumber" placeholder="Enter Book Number" required>
+                    <input type="hidden" class="form-control" name="id"
+                        value="<?php if (isset($borrowedBook['id'])) {echo $borrowedBook['id'];}?>">
+
+                        <label for="book_id">Book Id</label>
+                        <input type="text" class="form-control" id="book_id" name="book_id" placeholder="Enter Book Id" required> 
 
                         <label for="studIDnum">Student ID Number</label>
                         <input type="text" class="form-control" id="studIDnum" name="studIDnum" placeholder="Enter Student ID Number" required>
-
-                        <label for="studSec">Student Section</label>
-                        <input type="text" class="form-control" id="studSec" name="studSec" placeholder="Enter Student Section" required> 
-
-                        <label for="studYearLevel">Student Year Level</label>
-                        <select class="form-control" id="studYearLevel" name="studYearLevel" required>
-                            <option value="" disabled selected>Select Year Level</option>
-                            <option value="7">Grade 7</option>
-                            <option value="8">Grade 8</option>
-                            <option value="9">Grade 9</option>
-                            <option value="10">Grade 10</option>
-                            <option value="11">Grade 11</option>
-                            <option value="12">Grade 12</option>
-                        </select>
 
                         <label for="dateBorrowed">Date Borrowed</label>
                         <input type="datetime-local" class="form-control" id="dateBorrowed" name="dateBorrowed" placeholder="Select Date Borrowed">

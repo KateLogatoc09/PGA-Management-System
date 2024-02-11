@@ -23,15 +23,8 @@
                     <div class="col-sm-7">
                       <div class="card-body">
                         <h5 class="card-title text-primary">Welcome Admin! 🎉</h5>
-                        <p class="mb-4">
-                          Study Hard and Get a Diploma.
-                        </p>
-                        <a href="javascript:;" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#addTeacherModal">Add Teacher</a>
-                        <a href="javascript:;" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#enrollmentModal">Enrollment Forms</a>
-
                       </div>
-                      <?= $this->include('admin/addteachers') ?>
-                      <?= $this->include('admin/enrollmentforms') ?>
+
                     </div>
                     <div class="col-sm-5 text-center text-sm-left">
                       <div class="card-body pb-0 px-0 px-md-4">
@@ -63,6 +56,7 @@
                     
                             <thead>
                                     <tr>
+                                        <th>Id</th>
                                         <th>ID Number</th>
                                         <th>Firt Name</th>
                                         <th>Middle Name</th>
@@ -74,14 +68,14 @@
                                 <tbody>
                                 <?php foreach ($teacher as $teach): ?>
                                     <tr>
-                              
+                                            <td><?= $teach['id'] ?></td>
                                             <td><?= $teach['idnum'] ?></td>
                                             <td><?= $teach['fname'] ?></td>
                                             <td><?= $teach['mname'] ?></td>
                                             <td><?= $teach['lname'] ?></td>
                                             <td><?= $teach['dob'] ?></td>
                                             <td> <a href="/deleteteacher/<?= $teach['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
-                                            <a href="/editteacher/<?= $teach['id'] ?>" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addTeacherModal">Edit</a></td>
+                                            <a href="/editteacher/<?= $teach['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
                                            
                                            
                                           
@@ -96,6 +90,53 @@
                     <!-- /.card -->
                 </div> <!-- /.dito -->
 
+                <div class="col-lg-18 mb-4 order-0">
+                <div class="card">
+                  <div class="d-flex align-items-end row">
+                    <div class="col-sm-7">
+                      <div class="card-body">
+                        <h5 class="card-title text-primary">Update Teacher</h5>
+                      </div>
+                <form action="/saveteacher" method="post">
+                    <!-- Add your form fields and content here -->
+
+                    <div class="form-group margin-left">
+                    <input type="hidden" name="id" value="<?php if (isset($prof['id'])) {echo $prof['id'];}?>">
+                        <label for="idnum">ID number:</label>
+                        <input type="text" class="form-control" name="idnum" placeholder="Enter ID number" 
+                        value="<?php if (isset($prof['idnum'])) {echo $prof['idnum'];}?>" required>
+                                 
+                        <label for="fname">First Name:</label>
+                        <input type="text" class="form-control" name="fname" placeholder="Enter First Name"
+                        value="<?php if (isset($prof['fname'])) {echo $prof['fname'];}?>" required>
+
+                        <label for="mname">Middle Name:</label>
+                        <input type="text" class="form-control" name="mname" placeholder="Enter Middle Name" 
+                        value="<?php if (isset($prof['mname'])) {echo $prof['mname'];}?>" required>
+
+                        <label for="lname">Last Name:</label>
+                        <input type="text" class="form-control" name="lname" placeholder="Enter Last Name" 
+                        value="<?php if (isset($prof['lname'])) {echo $prof['lname'];}?>" required>
+                                 
+                        <label for="dob">Date of Birth:</label>
+                        <input type="date" class="form-control" name="dob" placeholder="Enter Date of Birth" 
+                        value="<?php if (isset($prof['dob'])) {echo $prof['dob'];}?>" required>
+                        </div>
+
+<!-- Move the "Save changes" button inside the form -->
+<div class="modal-footer">
+    <button type="submit" class="btn btn-primary">Save changes</button>
+</div>
+</form>
+</div>
+<div class="col-sm-5 text-center text-sm-left">
+  <div class="card-body pb-0 px-0 px-md-4">
+    <img src="../assets/img/illustrations/man-with-laptop-light.png" height="140" alt="View Badge User" data-app-dark-img="illustrations/man-with-laptop-dark.png" data-app-light-img="illustrations/man-with-laptop-light.png" />
+  </div>
+</div>
+</div>
+</div>
+</div>
 
             </div>
             <!-- / Content -->

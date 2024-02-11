@@ -11,9 +11,12 @@
             </div>
             <div class="modal-body">
                 <!-- Update the form action and method -->
-                <form action="<?= base_url('add-books/saveData') ?>" method="post">
+                <form action="/saveBook" method="post">
                     <!-- Add your form fields and content here -->
                     <div class="form-group">
+                        <input type="hidden" class="form-control" name="id"
+                        value="<?php if (isset($book['id'])) {echo $book['id'];}?>">
+                        
                         <label for="bookTitle">Book Title</label>
                         <input type="text" class="form-control" id="bookTitle" name="bookTitle" placeholder="Enter Book Title" required>
 
@@ -24,7 +27,7 @@
                         <input type="text" class="form-control" id="bookAuthor" name="bookAuthor" placeholder="Enter Book Author" required>
 
                         <label for="datePublish">Date Publish</label>
-                        <input type="datetime-local" class="form-control" id="datePublish" name="datePublish" placeholder="Enter Date Publish" required>
+                        <input type="date" class="form-control" id="datePublish" name="datePublish" placeholder="Enter Date Publish" required>
                     </div>
 
                     <!-- Add other form fields as needed -->

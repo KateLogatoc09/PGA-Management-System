@@ -48,12 +48,11 @@ $routes->post('/LoginAuth', 'Home::LoginAuth');
 
 
 $routes->get('/li', 'LibraryController::index');
-$routes->get('/addbooks', 'LibraryController::addBooks');
-$routes->post('library/saveData', 'LibraryController::saveData');
-
-
-$routes->group('add-books', ['namespace' => 'App\Controllers'], function ($routes) {
-    $routes->get('index', 'AddBooksController::index');
-    $routes->get('add-books', 'AddBooksController::addBooks');
-    $routes->post('saveData', 'AddBooksController::saveData');
-});
+$routes->post('/saveBook', 'LibraryController::saveBook');
+$routes->post('/saveBorrowedBook', 'LibraryController::saveBorrowedBook');
+$routes->post('/borrowBook', 'LibraryController::borrowBook');
+$routes->get('/librarian', 'LibraryController::librarian');
+$routes->get('/deleteBorrow/(:any)', 'LibraryController::deleteBorrow/$1');
+$routes->get('/editBorrow/(:any)', 'LibraryController::editBorrow/$1');
+$routes->get('/deleteBook/(:any)', 'LibraryController::deleteBook/$1');
+$routes->get('/editBook/(:any)', 'LibraryController::editBook/$1');

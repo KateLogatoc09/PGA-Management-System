@@ -17,20 +17,18 @@
 
           <div class="container-xxl flex-grow-1 container-p-y">
             <div class="row">
-              <div class="col-lg-8 mb-4 order-0">
+              <div class="col-lg-18 mb-4 order-0">
                 <div class="card">
                   <div class="d-flex align-items-end row">
                     <div class="col-sm-7">
                       <div class="card-body">
-                        <h5 class="card-title text-primary">Welcome Dominic! 🎉</h5>
+                        <h5 class="card-title text-primary">Welcome To Library! 🎉</h5>
                         <p class="mb-4">
-                          Study Hard and Get a Diploma.
+                          Borrow a Book?
                         </p>
-                        <a href="javascript:;" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#addBooksModal">Add Books</a>
                         <a href="javascript:;" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#borrowBooksModal">Borrow Books</a>
 
                       </div>
-                      <?= $this->include('library/addbooks') ?>
                       <?= $this->include('library/borrowbooks') ?>
                     </div>
                     <div class="col-sm-5 text-center text-sm-left">
@@ -42,6 +40,53 @@
                 </div>
               </div>
                 
+              
+              <div class="col-lg-18 mb-4 order-0">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Books Available</h3>
+                            <div class="card-tools">
+                                <div class="input-group input-group-sm" style="width: 150px;">
+                                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                                    <div class="input-group-append">
+                                        <button type="submit" class="btn btn-default">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body table-responsive p-0">
+                         <table class="table table-hover text-nowrap">
+                    
+                            <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Book Title</th>
+                                        <th>Book Number</th>
+                                        <th>Book Author</th>
+                                        <th>Date Published</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <?php foreach ($booky as $book): ?>
+                                    <tr>
+                                            <td><?= $book['id'] ?></td>
+                                            <td><?= $book['book_title'] ?></td>
+                                            <td><?= $book['book_number'] ?></td>
+                                            <td><?= $book['book_author'] ?></td>
+                                            <td><?= $book['datepublish'] ?></td>
+                                     </tr>
+                                <?php endforeach ?>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    </div>
+                    <!-- /.card -->
+                </div> <!-- /.dito -->
              
 
             </div>

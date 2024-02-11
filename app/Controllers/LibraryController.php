@@ -3,39 +3,239 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Models\BorrowedBooksModel; // Update the use statement for BorrowedBooksModel
+use App\Models\BorrowedBooksModel;
+use App\Models\AddBooksModel;
 
 class LibraryController extends BaseController
 {
-    public function index()
+    public function __construct()
     {
-        return view('library');
+        $this->borrowedBook = new BorrowedBooksModel();
+        $this->book = new AddBooksModel();
     }
 
- 
-    public function saveData()
+    public function index()
     {
-        // Update the use statement for BorrowedBooksModel
-        $borrowedBooksModel = new BorrowedBooksModel();
+        if(!session()->get('isLoggedIn')){
+            return redirect()->to('login');
+        }
+        else{
+            $session = session();
+            session_start();
+            $data = [
+            'currentuser' => $_SESSION['username'],
+            'booky' => $this->book->findAll(),
+            ];
+        return view('library', $data);
+        }
+    }
 
+    public function saveBorrowedBook()  {
+        $id = $_POST['id'];
+        $data = [
+            'student_id' => $this->request->getVar('studIDnum'),
+            'date_borrowed' => $this->request->getVar('dateBorrowed'),
+            'date_return' => $this->request->getVar('dateReturn'),
+            'status' => $this->request->getVar('status'),
+            'book_id' => $this->request->getVar('book_id'),
+        ];
+
+        if ($id != null) {
+            $this->borrowedBook->set($data)->where('id', $id)->update();
+        } else {
+            $this->borrowedBook->save($data);
+        }
+        if(!session()->get('isLoggedIn'))
+        {
+            return redirect()->to('login');
+        }
+        else
+            {
+                $session = session();
+                session_start();
+                $data = [
+                    'currentuser' => $_SESSION['username'],
+                    'borrowedBook' => $this->borrowedBook->findAll(),
+                    'booky' => $this->book->findAll(),
+                    'borrow' => $this->book->select('*')->join('borrowedbooks','borrowedbooks.book_id = addbooks.id','inner')->orderBy('book_title')->FindAll(),
+                    'borrowed' => $this->borrowedBook->where('id', $id)->first(),
+                ];
+                
+                return view('librarian', $data);
+            }
+    }
+
+    public function borrowBook()  {
+        $id = $_POST['id'];
+        $data = [
+            'student_id' => $this->request->getVar('studIDnum'),
+            'date_borrowed' => $this->request->getVar('dateBorrowed'),
+            'date_return' => $this->request->getVar('dateReturn'),
+            'status' => 'Pending',
+            'book_id' => $this->request->getVar('book_id'),
+        ];
+
+        if ($id != null) {
+            $this->borrowedBook->set($data)->where('id', $id)->update();
+        } else {
+            $this->borrowedBook->save($data);
+        }
+        if(!session()->get('isLoggedIn'))
+        {
+            return redirect()->to('login');
+        }
+        else
+            {
+                $session = session();
+                session_start();
+                $data = [
+                    'currentuser' => $_SESSION['username'],
+                    'booky' => $this->book->findAll(),
+                ];
+                
+                return view('library', $data);
+            }
+    }
+
+    public function saveBook()  {
+        $id = $_POST['id'];
         $data = [
             'book_title' => $this->request->getPost('bookTitle'),
             'book_number' => $this->request->getPost('bookNumber'),
-            'student_id' => $this->request->getPost('studIDnum'),
-            'student_section' => $this->request->getPost('studSec'),
-            'student_year_level' => $this->request->getPost('studYearLevel'),
-            'date_borrowed' => $this->request->getPost('dateBorrowed'),
-            'date_return' => $this->request->getPost('dateReturn'),
+            'book_author' => $this->request->getPost('bookAuthor'),
+            'datepublish' => $this->request->getPost('datePublish'),
         ];
 
-                // Insert data and handle errors
-            if ($borrowedBooksModel->insert($data)) {
-                // Redirect with a success query parameter
-                return redirect()->to('/li?status=success');
-            } else {
-                // Redirect with an error query parameter
-                return redirect()->to('/li?status=error');
+        if ($id != null) {
+            $this->book->set($data)->where('id', $id)->update();
+        } else {
+            $this->book->save($data);
+        }
+        if(!session()->get('isLoggedIn'))
+        {
+            return redirect()->to('login');
+        }
+        else
+            {
+                $session = session();
+                session_start();
+                $data = [
+                    'currentuser' => $_SESSION['username'],
+                    'booky' => $this->book->findAll(),
+                    'borrowedBook' => $this->borrowedBook->findAll(),
+                    'borrow' => $this->book->select('*')->join('borrowedbooks','borrowedbooks.book_id = addbooks.id','inner')->orderBy('book_title')->FindAll(),
+                    'booke' => $this->book->where('id', $id)->first(),
+                ];
+                
+                return view('librarian', $data);
             }
+    }
 
+    public function librarian()
+    {
+        if(!session()->get('isLoggedIn')){
+            return redirect()->to('login');
+        }
+        else{
+            $session = session();
+            session_start();
+            $data = [
+                'currentuser' => $_SESSION['username'],
+                'booky' => $this->book->findAll(),
+                'borrow' => $this->book->select('*')->join('borrowedbooks','borrowedbooks.book_id = addbooks.id','inner')->orderBy('book_title')->FindAll(),
+                'borrowedBook' => $this->borrowedBook->findAll(),
+            ];
+        return view('librarian', $data);
+        }
+    }
+
+    public function deleteBorrow($id)
+    {
+        $this->borrowedBook->delete($id);
+        if(!session()->get('isLoggedIn'))
+        {
+            return redirect()->to('login');
+        }
+        else
+            {
+                $session = session();
+                session_start();
+                $data = [
+                    'currentuser' => $_SESSION['username'],
+                    'borrowedBook' => $this->borrowedBook->findAll(),
+                    'booky' => $this->book->findAll(),
+                    'borrow' => $this->book->select('*')->join('borrowedbooks','borrowedbooks.book_id = addbooks.id','inner')->orderBy('book_title')->FindAll(),
+                    'borrowed' => $this->borrowedBook->where('id', $id)->first(),
+                ];
+
+                return view('librarian', $data);
+    }
+    }
+
+    public function editBorrow($id)
+    {
+        if(!session()->get('isLoggedIn'))
+        {
+            return redirect()->to('login');
+        }
+        else
+        {
+            $session = session();
+            session_start();
+        $data = [
+            'currentuser' => $_SESSION['username'],
+            'borrowedBook' => $this->borrowedBook->findAll(),
+            'booky' => $this->book->findAll(),
+            'borrow' => $this->book->select('*')->join('borrowedbooks','borrowedbooks.book_id = addbooks.id','inner')->orderBy('book_title')->FindAll(),
+            'borrowed' => $this->borrowedBook->where('id', $id)->first(),
+        ];
+
+        return view('librarian', $data);
+        }
+    }
+
+    public function deleteBook($id)
+    {
+        $this->book->delete($id);
+        if(!session()->get('isLoggedIn'))
+        {
+            return redirect()->to('login');
+        }
+        else
+            {
+                $session = session();
+                session_start();
+                $data = [
+                    'currentuser' => $_SESSION['username'],
+                    'booky' => $this->book->findAll(),
+                    'borrowedBook' => $this->borrowedBook->findAll(),
+                    'borrow' => $this->book->select('*')->join('borrowedbooks','borrowedbooks.book_id = addbooks.id','inner')->orderBy('book_title')->FindAll(),
+                    'booke' => $this->book->where('id', $id)->first(),
+                ];
+
+                return view('librarian', $data);
+    }
+    }
+
+    public function editBook($id)
+    {
+        if(!session()->get('isLoggedIn'))
+        {
+            return redirect()->to('login');
+        }
+        else
+        {
+            $session = session();
+            session_start();
+        $data = [
+            'currentuser' => $_SESSION['username'],
+            'booky' => $this->book->findAll(),
+            'borrowedBook' => $this->borrowedBook->findAll(),
+            'borrow' => $this->book->select('*')->join('borrowedbooks','borrowedbooks.book_id = addbooks.id','inner')->orderBy('book_title')->FindAll(),
+            'booke' => $this->book->where('id', $id)->first(),
+        ];
+
+        return view('librarian', $data);
+        }
     }
 }
