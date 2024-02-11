@@ -76,6 +76,12 @@
                     <div data-i18n="Analytics">Home</div>
                   </a>
                 </li>
+
+                <li class="menu-item">
+                  <a href="/alumni" class="menu-link">
+                    <div data-i18n="Analytics">Alumni</div>
+                  </a>
+                </li>
                 
          
               </ul>

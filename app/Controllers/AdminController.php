@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\TeacherModel;
+use App\Models\AlumniModel;
 
 class AdminController extends BaseController
 {
@@ -12,6 +13,7 @@ class AdminController extends BaseController
     public function __construct()
     {
         $this->teacher = new TeacherModel();
+        $this->alumni = new AlumniModel();
     }
 
     public function index()
@@ -31,6 +33,25 @@ class AdminController extends BaseController
             return view ('admin', $data);
             }
     }
+
+    public function alumni()
+    {
+        if(!session()->get('isLoggedIn'))
+        {
+            return redirect()->to('login');
+        }
+        else
+        {
+            $session = session();
+            session_start();
+            $data = [
+                'currentuser' => $_SESSION['username'],
+                'alumni' => $this->alumni->findAll(),
+                ];
+            return view ('alumni', $data);
+            }
+    }
+
     public function addTeacher()
     {
         if(!session()->get('isLoggedIn'))
@@ -120,6 +141,82 @@ class AdminController extends BaseController
         ];
 
         return view('admin', $data);
+        }
+    }
+
+    public function saveAlumni()  {
+        $id = $_POST['id'];
+        $data = [
+            'fullname' => $this->request->getVar('fullname'),
+            'gender' => $this->request->getVar('gender'),
+            'email' => $this->request->getVar('email'),
+            'phone' => $this->request->getVar('phone'),
+            'address' => $this->request->getVar('address'),
+            'occupation' => $this->request->getVar('occupation'),
+            'yr_graduated' => $this->request->getVar('yr_graduated'),
+        ];
+
+        if ($id != null) {
+            $this->alumni->set($data)->where('id', $id)->update();
+        } else {
+            $this->alumni->save($data);
+        }
+        if(!session()->get('isLoggedIn'))
+        {
+            return redirect()->to('login');
+        }
+        else
+            {
+                $session = session();
+                session_start();
+                $data = [
+                    'currentuser' => $_SESSION['username'],
+                    'alumni' => $this->alumni->findAll(),
+                    'alum' => $this->teacher->where('id', $id)->first(),
+                ];
+                
+                return view('alumni', $data);
+            }
+    }
+
+    public function deleteAlumni($id)
+    {
+        $this->alumni->delete($id);
+        if(!session()->get('isLoggedIn'))
+        {
+            return redirect()->to('login');
+        }
+        else
+            {
+                $session = session();
+                session_start();
+                $data = [
+                    'currentuser' => $_SESSION['username'],
+                    'alumni' => $this->alumni->findAll(),
+                    'alum' => $this->alumni->where('id', $id)->first(),
+                ];
+
+                return view('alumni', $data);
+    }
+    }
+
+    public function editAlumni($id)
+    {
+        if(!session()->get('isLoggedIn'))
+        {
+            return redirect()->to('login');
+        }
+        else
+        {
+            $session = session();
+            session_start();
+        $data = [
+            'currentuser' => $_SESSION['username'],
+            'alumni' => $this->alumni->findAll(),
+            'alum' => $this->alumni->where('id', $id)->first(),
+        ];
+
+        return view('alumni', $data);
         }
     }
 }

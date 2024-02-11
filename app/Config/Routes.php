@@ -16,7 +16,10 @@ $routes->get('/verify', 'Home::verify');
 $routes->get('/forget', 'Home::forget');
 
 $routes->get('/admins', 'AdminController::index');
-$routes->get('/cal', 'AdminController::cal');
+$routes->get('/alumni', 'AdminController::alumni');
+$routes->post('/saveAlumni', 'AdminController::saveAlumni');
+$routes->get('/deleteAlumni/(:any)', 'AdminController::deleteAlumni/$1');
+$routes->get('/editAlumni/(:any)', 'AdminController::editAlumni/$1');
 
 $routes->get('/addTeacher', 'AdminController::addTeacher');
 $routes->get('/teach/(:any)', 'AdminController::teach/$1');
