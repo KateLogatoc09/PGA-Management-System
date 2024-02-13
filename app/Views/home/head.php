@@ -24,6 +24,11 @@
     <!-- Customized Bootstrap Stylesheet -->
     <link href="<?= base_url() ?>css/style.css" rel="stylesheet">
 
+    <!-- AlertJs -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+
 
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
