@@ -1,51 +1,114 @@
-<body>
-        <!-- Sign up form -->
-            <div class="container">
-                <div class="signup-content">
-                    <div class="signup-form">
-                        <h2 class="form-title">Sign up</h2>
-                        <section class="signup">
-                        <form method='post' class="register-form" id="register-form" action="/Registering">
-                            <div class="form-group">
-                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" placeholder="Enter Username" name="username" value="<?= set_value('username') ?>" required/>
-                            </div>
-                            <div class="form-group">
-                                <label for="email"><i class="zmdi zmdi-email"></i></label>
-                                <input type="email" placeholder="Enter Email" name="email" value="<?= set_value('email') ?>" required/>
-                            </div>
-                            <div class="form-group">
-                                <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="password" placeholder="Enter Password" name="password" value="<?= set_value('password') ?>" required/>
-                            </div>
-                            <div class="form-group">
-                                <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
-                                <input type="password" placeholder="Confirm Password" name="confirmpassword" value="<?= set_value('confirmpassword') ?>" required/>
-                            </div>
-                            <div class="form-group">
-                                <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
-                                <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
-                            </div>
-                            <div class="form-group form-button">
-                                <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="signup-image">
-                    <?php if(isset($validation)):?>
-                    <div class="alert alert-warning">
-                    <?= $validation->listErrors()?>
-                    </div>
-                    <?php endif;?>
-                    <?php if(session()->getFlashdata('msg')):?>
-                    <div class="alert alert-success">
-                    <?= session()->getFlashdata('msg')?>
-                    </div>
-                    <?php endif;?>
-                        <figure><img src="<?= base_url() ?>img/pga.ico" alt="sing up image"></figure>
-                        <a href="/login" class="signup-image-link">I am already member</a>
-                    </div>
-                </div>
+<body style="background-image:url('<?= base_url() ?>img/pga_bg.jpg');background-repeat:no-repeat;background-attachment:fixed;background-size:cover">
+    <!-- Content -->
+
+    <div class="container-xxl">
+      <div class="authentication-wrapper authentication-basic container-p-y">
+        <div class="authentication-inner">
+          <!-- Register -->
+          <div class="card">
+            <div class="card-body row">
+                <!-- Logo -->
+            <div class="col-md-6 m-auto">
+            <div class="app-brand justify-content-center">
+                <a href="/" class="app-brand-link gap-2">
+                  <span class="app-brand-logo demo">
+                    <img
+                      src="<?= base_url() ?>img/pga.ico"
+                      height="180px"
+                    >
+                  </span>
+                </a>
+              </div>
+              <h4 class="mb-4 text-center">Welcome to <b class="text-mn">Puerto Galera Academy!</b></h4>
             </div>
-        </section>
-</body>
+              <!-- /Logo -->
+            <div class="col-md-6 m-auto p-md-4">
+
+              <form id="formAuthentication" class="mb-3" action="/Authenticate" method="POST">
+                <div class="mb-3">
+                  <label for="username" class="form-label">Username</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="username"
+                    name="username"
+                    placeholder="Enter your username"
+                    autofocus
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    required
+                  />
+                </div>
+                <div class="mb-3 form-password-toggle">
+                  <div class="d-flex justify-content-between">
+                    <label class="form-label" for="password">Password</label>
+                  </div>
+                  <div class="input-group input-group-merge">
+                    <input
+                      type="password"
+                      id="password"
+                      class="form-control"
+                      name="password"
+                      placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                      aria-describedby="password"
+                      required
+                    />
+                    <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <div class="d-flex justify-content-between">
+                    <label class="form-label" for="cpassword">Confirm Password</label>
+                  </div>
+                  <div class="input-group input-group-merge">
+                    <input
+                      type="cpassword"
+                      id="cpassword"
+                      class="form-control"
+                      name="cpassword"
+                      placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                      aria-describedby="password"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="role" class="form-label">Are you a/an?</label>
+                  <select class="form-select" id="role" aria-label="Select your Role" required>
+                    <option selected disabled>Select your Role</option>
+                    <option value="Student">Student</option>
+                    <option value="Instructor">Instructor</option>
+                    <option value="Personnel">Personnel</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <button class="btn btn-primary d-grid w-100" type="submit">Sign up</button>
+                </div>
+              </form>
+
+              <p class="text-center">
+                <span>Already a member?</span>
+                <a href="/login">
+                  <span>Sign-in</span>
+                </a>
+              </p>
+            </div>
+          </div>
+          </div>
+          <!-- /Register -->
+        </div>
+      </div>
+    </div>
+
+    <!-- / Content -->
+
+  </body>

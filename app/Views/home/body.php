@@ -8,7 +8,7 @@
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active" style="min-height: 300px;">
-                    <img class="position-relative w-100" src="<?= base_url() ?>img/pg.jpg" style="min-height: 300px; object-fit: cover;">
+                    <img class="position-relative w-100" src="<?= base_url() ?>img/pg.jpg" style="height: 700px; object-fit: fill;">
                     <div class="carousel-caption d-flex align-items-left justify-content-left">
                         <div class="p-5" style="width: 100%; max-width: 900px;">
                             <h5 class="text-white text-uppercase mb-md-3">WELCOME TO</h5>
@@ -18,7 +18,7 @@
                     </div>
                 </div>
                 <div class="carousel-item" style="min-height: 300px;">
-                    <img class="position-relative w-100" src="<?= base_url() ?>img/front.jpg" style="min-height: 300px; object-fit: cover;">
+                    <img class="position-relative w-100" src="<?= base_url() ?>img/front.jpg" style="height: 700px; object-fit: fill;">
                     <div class="carousel-caption d-flex align-items-bottom justify-content-bottom">
                         <div class="p-5" style="width: 100%; max-width: 900px;">
                         </div>
@@ -35,7 +35,7 @@
         <div class="container py-5">
             <div class="row align-items-center">
                 <div class="col-lg-5">
-                    <img class="img-fluid rounded mb-4 mb-lg-0" src="<?= base_url() ?>img/about.jpg" alt="">
+                    <img class="img-fluid rounded mb-4 mb-lg-0 w-100" src="<?= base_url() ?>img/about.jpg" alt="">
                 </div>
                 <div class="col-lg-7">
                     <div class="text-left mb-4">
