@@ -31,56 +31,6 @@ class Home extends BaseController
         return view('forget');
     }
 
-    public function Logout() {
-        $session = session();
-        session_destroy();
-        return redirect()->to('login');
-    }
-
-    public function LoginAuth() {
-
-        $session = session();
-        $account = new AccountModel();
-        $username = $this->request->getVar('username');
-        $password = $this->request->getVar('password');
-
-        $data = $account->where('username', $username)->first();
-        if($data){
-            $pass = $data['password'];
-            $authenticatePassword = password_verify($password, $pass);
-                
-            if($authenticatePassword){
-                    $ses_data = [
-                        'id' => $data['id'],
-                        'username' => $data['username'],
-                        'role' => $data['role'],
-                        'isLoggedIn' => TRUE,
-                    ];
-                    $session->set($ses_data);
-
-                    if($_SESSION['role'] == 'student'){
-                        return redirect()->to('/student');
-                    }
-                    else if($_SESSION['role'] == 'teacher'){
-                        return redirect()->to('/teacher');
-                    }
-                    else if($_SESSION['role'] == 'librarian'){
-                        return redirect()->to('/librarian');
-                    }
-                    else{
-                        return redirect()->to('/admins');
-                    }
-                }
-                else{
-                $session->setFlashdata('msg','Password is incorrect.');
-                return redirect()->to('login');
-                }
-            }
-            else
-            {
-                $session->setFlashdata('msg','Email does not exist.');
-                return redirect()->to('login');
-            };
-    }
+    
 
 }
