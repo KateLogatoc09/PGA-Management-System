@@ -1,4 +1,5 @@
 <body>
+<?php $session = session()?>
     <!-- Carousel Start -->
     <div class="container-fluid p-0 pb-5 mb-5 topp">
         <div id="header-carousel" class="carousel slide carousel-fade" data-ride="carousel">

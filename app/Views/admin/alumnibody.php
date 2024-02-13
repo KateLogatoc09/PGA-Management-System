@@ -1,4 +1,5 @@
 <body>
+<?php $session = session()?>
   <!-- Layout wrapper -->
   <div class="layout-wrapper layout-content-navbar d-flex align-items-center justify-content-center">
   <div class="layout-container">

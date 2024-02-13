@@ -98,5 +98,9 @@ $(document).ready(function(){
             <?php if (isset($_SESSION['msg'])): ?>
                 alertify.alert('Note: <?= $_SESSION['msg'] ?>');
             <?php endif; ?>
+
+            <?php if (isset($_SESSION['validator'])): ?>
+                alertify.alert('Note: <?= implode($_SESSION['validator']) ?>');
+            <?php endif; ?>
         });
         </script>

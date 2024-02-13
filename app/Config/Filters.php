@@ -2,6 +2,11 @@
 
 namespace Config;
 
+use App\Filters\LoggedIn;
+use App\Filters\Admin;
+use App\Filters\Student;
+use App\Filters\Teacher;
+use App\Filters\Librarian;
 use CodeIgniter\Config\BaseConfig;
 use CodeIgniter\Filters\CSRF;
 use CodeIgniter\Filters\DebugToolbar;
@@ -24,6 +29,11 @@ class Filters extends BaseConfig
         'honeypot'      => Honeypot::class,
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
+        'loggedin'      => LoggedIn::class,
+        'admin'         => Admin::class,
+        'student'       => Student::class,
+        'teacher'       => Teacher::class,
+        'librarian'     => Librarian::class,
     ];
 
     /**

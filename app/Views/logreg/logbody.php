@@ -1,6 +1,6 @@
 <body style="background-image:url('<?= base_url() ?>img/pga_bg.jpg');background-repeat:no-repeat;background-attachment:fixed;background-size:cover">
     <!-- Content -->
-
+    <?php $session = session()?>
     <div class="container-xxl">
       <div class="authentication-wrapper authentication-basic container-p-y">
         <div class="authentication-inner">
@@ -23,8 +23,8 @@
             </div>
               <!-- /Logo -->
             <div class="col-md-7 m-auto p-md-4">
-
-            <form id="formAuthentication" class="mb-3" action="/Authenticate" method="POST">
+  	        <h4><b class="text-mn">Sign-in</b> <a href='/'><i class="menu-icon tf-icons bx bx-home float-end"></i></a></h4>
+            <form id="formAuthentication" class="mb-3" action="/authenticate" method="POST">
                 <div class="mb-3">
                   <label for="email" class="form-label">Email or Username</label>
                   <input
@@ -39,7 +39,7 @@
                 <div class="mb-3 form-password-toggle">
                   <div class="d-flex justify-content-between">
                     <label class="form-label" for="password">Password</label>
-                    <a href="auth-forgot-password-basic.html">
+                    <a href="forgot">
                       <small>Forgot Password?</small>
                     </a>
                   </div>

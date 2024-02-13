@@ -20,11 +20,15 @@ class Home extends BaseController
     }
     public function ab()
     {
-        return view('home/about');
+        return view('about');
     }
     public function verify()
     {
         return view('verify');
+    }
+    public function verifying()
+    {
+        return view('verifying');
     }
     public function forget()
     {

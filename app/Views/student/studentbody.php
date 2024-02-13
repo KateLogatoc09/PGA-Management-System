@@ -1,4 +1,5 @@
 <body>
+<?php $session = session()?>
   <!-- Layout wrapper -->
   <div class="layout-wrapper layout-content-navbar d-flex align-items-center justify-content-center">
   <div class="layout-container">
@@ -16,7 +17,7 @@
           <!-- Content -->
 
           <div class="container-xxl flex-grow-1 container-p-y">
-          <h5 class="card-title text-primary">Welcome <?= $currentuser ?>! 🎉</h5>
+          <h5 class="card-title text-primary">Welcome <?= $_SESSION['username']; ?>! 🎉</h5>
                         <p class="mb-4">
                           Study Hard and Get a Diploma.
                         </p>

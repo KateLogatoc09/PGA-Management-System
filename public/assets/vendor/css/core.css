@@ -18005,10 +18005,9 @@ html:not(.layout-footer-fixed) .content-wrapper {
 .text-mn {
   color: midnightblue;
 }
-.center form {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.btn-form{
+  color: gray;
+}
+.btn-form:hover {
+  color: #d95700;
 }
