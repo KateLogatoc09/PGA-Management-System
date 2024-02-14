@@ -89,6 +89,7 @@
                     <option selected disabled>Select your Role</option>
                     <option value="STUDENT">Student</option>
                     <option value="TEACHER">Teacher</option>
+                    <option value="PARENT">Parent</option>
                     <option value="PERSONNEL">Personnel</option>
                   </select>
                 </div>

@@ -124,6 +124,51 @@
                     <!-- /.card -->
                 </div> <!-- /.dito -->
 
+                              
+              <div class="col-lg-18 mb-4 order-0">
+                <div class="card">
+                  <div class="d-flex align-items-end row">
+                    <div class="col-sm-7">
+                      <div class="card-body">
+                        <h5 class="card-title text-primary">Add/Update Book List</h5>
+                      </div>
+                      <form action="/saveBook" method="post">
+                    <!-- Add your form fields and content here -->
+                    <div class="form-group margin-left">
+                    <input type="hidden" name="id" value="<?php if (isset($booke['id'])) {echo $booke['id'];}?>">
+
+                        <label for="bookTitle">Book Title</label>
+                        <input type="text" class="form-control" id="bookTitle" name="bookTitle" placeholder="Enter Book Title" 
+                        value="<?php if (isset($booke['book_title'])) {echo $booke['book_title'];}?>" required>
+
+                        <label for="bookNumber">Book Number</label>
+                        <input type="text" class="form-control" id="bookNumber" name="bookNumber" placeholder="Enter Book Number" 
+                        value="<?php if (isset($booke['book_number'])) {echo $booke['book_number'];}?>" required>
+
+                        <label for="bookAuthor">Book Author</label>
+                        <input type="text" class="form-control" id="bookAuthor" name="bookAuthor" placeholder="Enter Book Author" 
+                        value="<?php if (isset($booke['book_author'])) {echo $booke['book_author'];}?>" required>
+
+                        <label for="datePublish">Date Publish</label>
+                        <input type="date" class="form-control" id="datePublish" name="datePublish" placeholder="Enter Date Publish" 
+                        value="<?php if (isset($booke['datepublish'])) {echo $booke['datepublish'];}?>" required>
+                    </div>
+                    
+                    <!-- Move the "Save changes" button inside the form -->
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+                    </div>
+                    <div class="col-sm-5 text-center text-sm-left">
+                      <div class="card-body pb-0 px-0 px-md-4">
+                        <img src="../assets/img/illustrations/man-with-laptop-light.png" height="140" alt="View Badge User" data-app-dark-img="illustrations/man-with-laptop-dark.png" data-app-light-img="illustrations/man-with-laptop-light.png" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
                 
                 <div class="col-lg-18 mb-4 order-0">
                     <div class="card">
@@ -232,50 +277,6 @@
                 </div>
               </div>
 
-              
-              <div class="col-lg-18 mb-4 order-0">
-                <div class="card">
-                  <div class="d-flex align-items-end row">
-                    <div class="col-sm-7">
-                      <div class="card-body">
-                        <h5 class="card-title text-primary">Update Book List</h5>
-                      </div>
-                      <form action="/saveBook" method="post">
-                    <!-- Add your form fields and content here -->
-                    <div class="form-group margin-left">
-                    <input type="hidden" name="id" value="<?php if (isset($booke['id'])) {echo $booke['id'];}?>">
-
-                        <label for="bookTitle">Book Title</label>
-                        <input type="text" class="form-control" id="bookTitle" name="bookTitle" placeholder="Enter Book Title" 
-                        value="<?php if (isset($booke['book_title'])) {echo $booke['book_title'];}?>" required>
-
-                        <label for="bookNumber">Book Number</label>
-                        <input type="text" class="form-control" id="bookNumber" name="bookNumber" placeholder="Enter Book Number" 
-                        value="<?php if (isset($booke['book_number'])) {echo $booke['book_number'];}?>" required>
-
-                        <label for="bookAuthor">Book Author</label>
-                        <input type="text" class="form-control" id="bookAuthor" name="bookAuthor" placeholder="Enter Book Author" 
-                        value="<?php if (isset($booke['book_author'])) {echo $booke['book_author'];}?>" required>
-
-                        <label for="datePublish">Date Publish</label>
-                        <input type="date" class="form-control" id="datePublish" name="datePublish" placeholder="Enter Date Publish" 
-                        value="<?php if (isset($booke['datepublish'])) {echo $booke['datepublish'];}?>" required>
-                    </div>
-                    
-                    <!-- Move the "Save changes" button inside the form -->
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Save changes</button>
-                    </div>
-                </form>
-                    </div>
-                    <div class="col-sm-5 text-center text-sm-left">
-                      <div class="card-body pb-0 px-0 px-md-4">
-                        <img src="../assets/img/illustrations/man-with-laptop-light.png" height="140" alt="View Badge User" data-app-dark-img="illustrations/man-with-laptop-dark.png" data-app-light-img="illustrations/man-with-laptop-light.png" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
 
             </div>
             <!-- / Content -->

@@ -27,7 +27,7 @@ class Teacher implements FilterInterface
     {
         if(!session()->has('isLoggedin')) {
             return redirect()->to('login')->with('fail', "You need to login");
-        } else if(session()->get('role') != 'Teacher') {
+        } else if(session()->get('role') != 'TEACHER') {
             return redirect()->back();
         }
     }

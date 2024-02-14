@@ -79,6 +79,9 @@ class Authentication extends BaseController
                         }
                         else if($_SESSION['role'] == 'LIBRARIAN'){
                             return redirect()->to('/librarian');
+                        } 
+                        else if($_SESSION['role'] == 'PARENT'){
+                            return redirect()->to('/parent');
                         }
                         else{
                             return redirect()->to('/admins');
@@ -108,6 +111,9 @@ class Authentication extends BaseController
                         }
                         else if($_SESSION['role'] == 'LIBRARIAN'){
                             return redirect()->to('/librarian');
+                        }
+                        else if($_SESSION['role'] == 'PARENT'){
+                            return redirect()->to('/parent');
                         }
                         else{
                             return redirect()->to('/admins');
@@ -160,8 +166,11 @@ class Authentication extends BaseController
                         else if($_SESSION['role'] == 'TEACHER'){
                             return redirect()->to('/teacher');
                         }
-                        else if($_SESSION['role'] == 'LIBRIRIAN'){
+                        else if($_SESSION['role'] == 'LIBRARIAN'){
                             return redirect()->to('/librarian');
+                        }
+                        else if($_SESSION['role'] == 'PARENT'){
+                            return redirect()->to('/parent');
                         }
                         else{
                             return redirect()->to('/admins');
@@ -189,8 +198,11 @@ class Authentication extends BaseController
                         else if($_SESSION['role'] == 'TEACHER'){
                             return redirect()->to('/teacher');
                         }
-                        else if($_SESSION['role'] == 'LIBRIRIAN'){
+                        else if($_SESSION['role'] == 'LIBRARIAN'){
                             return redirect()->to('/librarian');
+                        }
+                        else if($_SESSION['role'] == 'PARENT'){
+                            return redirect()->to('/parent');
                         }
                         else{
                             return redirect()->to('/admins');
@@ -411,7 +423,7 @@ class Authentication extends BaseController
         if(sha1($code) == $_SESSION['code']) {
             if(isset($_SESSION['verifier'])) {
                 $role = $this->acc->select('role')->where('email', $_SESSION['verifier'])->first();
-                if($role == 'INSTRUCTOR' || $role == 'PERSONNEL') {
+                if($role == 'TEACHER' || $role == 'PERSONNEL' || $role == 'PARENT') {
                     $res = $this->acc->set('status', 'PENDING')->where('email', $_SESSION['verifier'])->update();
                     if($res) {
                         $session->remove(['verifier', 'code']);

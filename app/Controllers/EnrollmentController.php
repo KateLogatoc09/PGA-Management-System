@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\LearnerModel;
+use App\Models\AccountModel;
 use App\Models\AddressModel;
 use App\Models\AdmissionsModel;
 use App\Models\SiblingModel;
@@ -13,7 +14,7 @@ use App\Models\SchoolAttendedModel;
 
 class EnrollmentController extends BaseController
 {
-    private $enrollment;
+    private $enrollment, $learner, $family, $address, $admissions, $sibling, $school, $acc;
     public function __construct()
     {
         $this->learner = new LearnerModel();
@@ -22,35 +23,19 @@ class EnrollmentController extends BaseController
         $this->admissions = new AdmissionsModel();
         $this->sibling = new SiblingModel();
         $this->school = new SchoolAttendedModel();
+        $this->acc = new AccountModel();
   
     }
+
     public function addenroll()
     {
-        if(!session()->get('isLoggedIn')){
-            return redirect()->to('login');
-        }
-        else{
-            $session = session();
-            session_start();
-            $data = [
-            'currentuser' => $_SESSION['username'],
-            ];
-        return view('enrollment', $data);
-        }
+        return view('enrollment');
     }
-    public function enroll($learner)
-    {
-        echo $learner;
-    }
+
     public function save()  {
-        $idnum = $_POST['id'];
-        if(!session()->get('isLoggedIn')){
-            return redirect()->to('login');
-        }
-        else{
-            $session = session();
-            session_start();
-            $data = [
+        $session = session();
+        $id = $_POST['id'];
+        $data = [
             'currentuser' => $_SESSION['username'],
             'id' => $this->request->getVar('id'),
             'first_name' => $this->request->getVar('first_name'),
@@ -65,111 +50,132 @@ class EnrollmentController extends BaseController
             'mobile_num' => $this->request->getVar('mobile_num'),
             'nationality' => $this->request->getVar('nationality'),
             'religion' => $this->request->getVar('religion'),
-            'account_id' => $_SESSION['id'],
+            'account_id' => $this->acc->select('id')->where('username', $_SESSION['username'])->first(),
         ];
 
-        if ($idnum != null) {
-            $this->learner->set($data)->where('id', $id)->update();
+        if ($id != null) {
+            $res = $this->learner->set($data)->where('id', $id)->update();
+            if($res) {
+                $session->setFlashdata('msg','Updated Successfully.');
+                return redirect()->to('addenroll');
+            } else {
+                $session->setFlashdata('msg','Something went wrong. Please try again later.');
+                return redirect()->to('addenroll');
+            }
         } else {
-            $this->learner->save($data);
-        }
-
-        return view('enrollment', $data);
+            $res = $this->learner->save($data);
+            if($res) {
+                $session->setFlashdata('msg','Saved Successfully.');
+                return redirect()->to('addenroll');
+            } else {
+                $session->setFlashdata('msg','Something went wrong. Please try again later.');
+                return redirect()->to('addenroll');
+            }
+        }  
     }
-    }
 
+    
     public function saveaddress()  {
-        $idnum = $_POST['id'];
-        if(!session()->get('isLoggedIn')){
-            return redirect()->to('login');
-        }
-        else{
-            $session = session();
-            session_start();
-            $data = [
-            'currentuser' => $_SESSION['username'],
+        $session = session();
+        $id = $_POST['id'];
+        $data = [
             'id' => $this->request->getVar('id'),
             'type' => $this->request->getVar('type'),
             'address' => $this->request->getVar('address'),
             'postal_code' => $this->request->getVar('postal_code'),
             'tel_num' => $this->request->getVar('tel_num'),
-            'account_id' => $_SESSION['id'],
+            'account_id' => $this->acc->select('id')->where('username', $_SESSION['username'])->first(),
         ];
 
-        if ($idnum != null) {
-            $this->address->set($data)->where('id', $id)->update();
+        if ($id != null) {
+            $res = $this->address->set($data)->where('id', $id)->update();
+            if($res) {
+                $session->setFlashdata('msg','Updated Successfully.');
+                return redirect()->to('addenroll');
+            } else {
+                $session->setFlashdata('msg','Something went wrong. Please try again later.');
+                return redirect()->to('addenroll');
+            }
         } else {
-            $this->address->save($data);
-        }
-
-        return view('enrollment', $data);
-    }
+            $res = $this->address->save($data);
+            if($res) {
+                $session->setFlashdata('msg','Saved Successfully.');
+                return redirect()->to('addenroll');
+            } else {
+                $session->setFlashdata('msg','Something went wrong. Please try again later.');
+                return redirect()->to('addenroll');
+            }
+        }  
     }
 
     public function saveadmissions()  {
-        $idnum = $_POST['id'];
-        if(!session()->get('isLoggedIn')){
-            return redirect()->to('login');
-        }
-        else{
-            $session = session();
-            session_start();
-            $data = [
-            'currentuser' => $_SESSION['username'],
+        $session = session();
+        $id = $_POST['id'];
+        $data = [
             'id' => $this->request->getVar('id'),
             'category' => $this->request->getVar('category'),
             'yr_lvl' => $this->request->getVar('yr_lvl'),
             'program' => $this->request->getVar('program'),
-            'account_id' => $_SESSION['id'],
+            'account_id' => $this->acc->select('id')->where('username', $_SESSION['username'])->first(),
         ];
 
-        if ($idnum != null) {
-            $this->admissions->set($data)->where('id', $id)->update();
+        if ($id != null) {
+            $res = $this->admissions->set($data)->where('id', $id)->update();
+            if($res) {
+                $session->setFlashdata('msg','Updated Successfully.');
+                return redirect()->to('addenroll');
+            } else {
+                $session->setFlashdata('msg','Something went wrong. Please try again later.');
+                return redirect()->to('addenroll');
+            }
         } else {
-            $this->admissions->save($data);
-        }
-
-        return view('enrollment', $data);
-    }
+            $res = $this->admissions->save($data);
+            if($res) {
+                $session->setFlashdata('msg','Saved Successfully.');
+                return redirect()->to('addenroll');
+            } else {
+                $session->setFlashdata('msg','Something went wrong. Please try again later.');
+                return redirect()->to('addenroll');
+            }
+        }  
     }
 
     public function savesibling()  {
-        $idnum = $_POST['id'];
-        if(!session()->get('isLoggedIn')){
-            return redirect()->to('login');
-        }
-        else{
-            $session = session();
-            session_start();
-            $data = [
-            'currentuser' => $_SESSION['username'],
+        $session = session();
+        $id = $_POST['id'];
+        $data = [
             'id' => $this->request->getVar('id'),
             'fullname' => $this->request->getVar('fullname'),
             'yr_lvl' => $this->request->getVar('yr_lvl'),
             'affiliation' => $this->request->getVar('affiliation'),
-            'account_id' => $_SESSION['id'],
+            'account_id' => $this->acc->select('id')->where('username', $_SESSION['username'])->first(),
         ];
 
-        if ($idnum != null) {
-            $this->sibling->set($data)->where('id', $id)->update();
+        if ($id != null) {
+            $res = $this->sibling->set($data)->where('id', $id)->update();
+            if($res) {
+                $session->setFlashdata('msg','Updated Successfully.');
+                return redirect()->to('addenroll');
+            } else {
+                $session->setFlashdata('msg','Something went wrong. Please try again later.');
+                return redirect()->to('addenroll');
+            }
         } else {
-            $this->sibling->save($data);
-        }
-
-        return view('enrollment', $data);
-    }
+            $res = $this->sibling->save($data);
+            if($res) {
+                $session->setFlashdata('msg','Saved Successfully.');
+                return redirect()->to('addenroll');
+            } else {
+                $session->setFlashdata('msg','Something went wrong. Please try again later.');
+                return redirect()->to('addenroll');
+            }
+        }  
     }
 
     public function savefamily()  {
-        $idnum = $_POST['id'];
-        if(!session()->get('isLoggedIn')){
-            return redirect()->to('login');
-        }
-        else{
-            $session = session();
-            session_start();
-            $data = [
-            'currentuser' => $_SESSION['username'],
+        $session = session();
+        $id = $_POST['id'];
+        $data = [
             'id' => $this->request->getVar('id'),
             'relation' => $this->request->getVar('relation'), 
             'fullname' => $this->request->getVar('fullname'), 
@@ -179,46 +185,61 @@ class EnrollmentController extends BaseController
             'off_num' => $this->request->getVar('off_num'), 
             'email' => $this->request->getVar('email'), 
             'occupation' => $this->request->getVar('occupation'),
-            'account_id' => $_SESSION['id'],
+            'account_id' => $this->acc->select('id')->where('username', $_SESSION['username'])->first(),
         ];
 
-        if ($idnum != null) {
-            $this->family->set($data)->where('id', $id)->update();
+        if ($id != null) {
+            $res = $this->family->set($data)->where('id', $id)->update();
+            if($res) {
+                $session->setFlashdata('msg','Updated Successfully.');
+                return redirect()->to('addenroll');
+            } else {
+                $session->setFlashdata('msg','Something went wrong. Please try again later.');
+                return redirect()->to('addenroll');
+            }
         } else {
-            $this->family->save($data);
-        }
-
-        return view('enrollment', $data);
+            $res = $this->family->save($data);
+            if($res) {
+                $session->setFlashdata('msg','Saved Successfully.');
+                return redirect()->to('addenroll');
+            } else {
+                $session->setFlashdata('msg','Something went wrong. Please try again later.');
+                return redirect()->to('addenroll');
+            }
+        }  
     }
-    }
 
-    
     public function saveschool()  {
-        $idnum = $_POST['id'];
-        if(!session()->get('isLoggedIn')){
-            return redirect()->to('login');
-        }
-        else{
-            $session = session();
-            session_start();
-            $data = [
-            'currentuser' => $_SESSION['username'],
+        $session = session();
+        $id = $_POST['id'];
+        $data = [
             'id' => $this->request->getVar('id'),
             'grade' => $this->request->getVar('grade'),
             'school_name' => $this->request->getVar('school_name'), 
             'level' => $this->request->getVar('level'),
             'period' => $this->request->getVar('period'), 
-            'account_id' => $_SESSION['id'],
+            'account_id' => $this->acc->select('id')->where('username', $_SESSION['username'])->first(),
         ];
 
-        if ($idnum != null) {
-            $this->school->set($data)->where('id', $id)->update();
+        if ($id != null) {
+            $res = $this->school->set($data)->where('id', $id)->update();
+            if($res) {
+                $session->setFlashdata('msg','Updated Successfully.');
+                return redirect()->to('addenroll');
+            } else {
+                $session->setFlashdata('msg','Something went wrong. Please try again later.');
+                return redirect()->to('addenroll');
+            }
         } else {
-            $this->school->save($data);
-        }
-
-        return view('enrollment', $data);
-    }
+            $res = $this->school->save($data);
+            if($res) {
+                $session->setFlashdata('msg','Saved Successfully.');
+                return redirect()->to('addenroll');
+            } else {
+                $session->setFlashdata('msg','Something went wrong. Please try again later.');
+                return redirect()->to('addenroll');
+            }
+        }  
     }
 
 }

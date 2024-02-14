@@ -8,6 +8,10 @@ class Home extends BaseController
     {
         return view('index');
     }
+    public function Test()
+    {
+        return view('test');
+    }
     public function logreg()
     {
         helper(['form']);

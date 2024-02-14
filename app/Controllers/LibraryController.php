@@ -8,6 +8,7 @@ use App\Models\AddBooksModel;
 
 class LibraryController extends BaseController
 {
+    private $book, $borrowedBook;
     public function __construct()
     {
         $this->borrowedBook = new BorrowedBooksModel();
@@ -16,21 +17,14 @@ class LibraryController extends BaseController
 
     public function index()
     {
-        if(!session()->get('isLoggedIn')){
-            return redirect()->to('login');
-        }
-        else{
-            $session = session();
-            session_start();
-            $data = [
-            'currentuser' => $_SESSION['username'],
+        $data = [
             'booky' => $this->book->findAll(),
-            ];
+        ];
         return view('library', $data);
-        }
     }
 
     public function saveBorrowedBook()  {
+        $session = session();
         $id = $_POST['id'];
         $data = [
             'student_id' => $this->request->getVar('studIDnum'),
@@ -41,63 +35,64 @@ class LibraryController extends BaseController
         ];
 
         if ($id != null) {
-            $this->borrowedBook->set($data)->where('id', $id)->update();
-        } else {
-            $this->borrowedBook->save($data);
-        }
-        if(!session()->get('isLoggedIn'))
-        {
-            return redirect()->to('login');
-        }
-        else
-            {
-                $session = session();
-                session_start();
-                $data = [
-                    'currentuser' => $_SESSION['username'],
-                    'borrowedBook' => $this->borrowedBook->findAll(),
-                    'booky' => $this->book->findAll(),
-                    'borrow' => $this->book->select('*')->join('borrowedbooks','borrowedbooks.book_id = addbooks.id','inner')->orderBy('book_title')->FindAll(),
-                    'borrowed' => $this->borrowedBook->where('id', $id)->first(),
-                ];
-                
-                return view('librarian', $data);
+            $res = $this->borrowedBook->set($data)->where('id', $id)->update();
+            if($res) {
+                $session->setFlashdata('msg','Updated Successfully.');
+                return redirect()->to('librarian');
+            } else {
+                $session->setFlashdata('msg','Something went wrong. Please try again later.');
+                return redirect()->to('librarian');
             }
+        } else {
+            $res = $this->borrowedBook->save($data);
+            if($res) {
+                $session->setFlashdata('msg','Saved Successfully.');
+                return redirect()->to('librarian');
+            } else {
+                $session->setFlashdata('msg','Something went wrong. Please try again later.');
+                return redirect()->to('librarian');
+            }
+        }  
     }
 
+    //Student start 
     public function borrowBook()  {
+        $session = session();
         $id = $_POST['id'];
         $data = [
             'student_id' => $this->request->getVar('studIDnum'),
             'date_borrowed' => $this->request->getVar('dateBorrowed'),
             'date_return' => $this->request->getVar('dateReturn'),
-            'status' => 'Pending',
             'book_id' => $this->request->getVar('book_id'),
+            'status' => 'Pending'
         ];
 
         if ($id != null) {
-            $this->borrowedBook->set($data)->where('id', $id)->update();
-        } else {
-            $this->borrowedBook->save($data);
-        }
-        if(!session()->get('isLoggedIn'))
-        {
-            return redirect()->to('login');
-        }
-        else
-            {
-                $session = session();
-                session_start();
-                $data = [
-                    'currentuser' => $_SESSION['username'],
-                    'booky' => $this->book->findAll(),
-                ];
-                
-                return view('library', $data);
+            $res = $this->borrowedBook->set($data)->where('id', $id)->update();
+            if($res) {
+                $session->setFlashdata('msg','Updated Successfully.');
+                return redirect()->to('li');
+            } else {
+                $session->setFlashdata('msg','Something went wrong. Please try again later.');
+                return redirect()->to('li');
             }
+        } else {
+            $res = $this->borrowedBook->save($data);
+            if($res) {
+                $session->setFlashdata('msg','Saved Successfully.');
+                return redirect()->to('li');
+            } else {
+                $session->setFlashdata('msg','Something went wrong. Please try again later.');
+                return redirect()->to('li');
+            }
+        }
+                
+            
     }
+    
 
     public function saveBook()  {
+        $session = session();
         $id = $_POST['id'];
         $data = [
             'book_title' => $this->request->getPost('bookTitle'),
@@ -107,135 +102,91 @@ class LibraryController extends BaseController
         ];
 
         if ($id != null) {
-            $this->book->set($data)->where('id', $id)->update();
-        } else {
-            $this->book->save($data);
-        }
-        if(!session()->get('isLoggedIn'))
-        {
-            return redirect()->to('login');
-        }
-        else
-            {
-                $session = session();
-                session_start();
-                $data = [
-                    'currentuser' => $_SESSION['username'],
-                    'booky' => $this->book->findAll(),
-                    'borrowedBook' => $this->borrowedBook->findAll(),
-                    'borrow' => $this->book->select('*')->join('borrowedbooks','borrowedbooks.book_id = addbooks.id','inner')->orderBy('book_title')->FindAll(),
-                    'booke' => $this->book->where('id', $id)->first(),
-                ];
-                
-                return view('librarian', $data);
+            $res = $this->book->set($data)->where('id', $id)->update();
+            if($res) {
+                $session->setFlashdata('msg','Updated Successfully.');
+                return redirect()->to('librarian');
+            } else {
+                $session->setFlashdata('msg','Something went wrong. Please try again later.');
+                return redirect()->to('librarian');
             }
+        } else {
+            $res = $this->book->save($data);
+            if($res) {
+                $session->setFlashdata('msg','Saved Successfully.');
+                return redirect()->to('librarian');
+            } else {
+                $session->setFlashdata('msg','Something went wrong. Please try again later.');
+                return redirect()->to('librarian');
+            }
+        }   
     }
+
+    
 
     public function librarian()
     {
-        if(!session()->get('isLoggedIn')){
-            return redirect()->to('login');
-        }
-        else{
-            $session = session();
-            session_start();
-            $data = [
-                'currentuser' => $_SESSION['username'],
-                'booky' => $this->book->findAll(),
-                'borrow' => $this->book->select('*')->join('borrowedbooks','borrowedbooks.book_id = addbooks.id','inner')->orderBy('book_title')->FindAll(),
-                'borrowedBook' => $this->borrowedBook->findAll(),
-            ];
+        $data = [
+            'currentuser' => $_SESSION['username'],
+            'booky' => $this->book->findAll(),
+            'borrow' => $this->book->select('*')->join('borrowedbooks','borrowedbooks.book_id = addbooks.id','inner')->orderBy('addbooks.book_title')->FindAll(),
+            'borrowedBook' => $this->borrowedBook->findAll(),
+        ];
         return view('librarian', $data);
-        }
     }
 
     public function deleteBorrow($id)
     {
-        $this->borrowedBook->delete($id);
-        if(!session()->get('isLoggedIn'))
-        {
-            return redirect()->to('login');
+        $session = session();
+        $res = $this->borrowedBook->delete($id);
+        if($res) {
+            $session->setFlashdata('msg','Deleted Successfully.');
+            return redirect()->to('librarian');
+        } else {
+            $session->setFlashdata('msg','Something went wrong. Please try again later.');
+            return redirect()->to('librarian');
         }
-        else
-            {
-                $session = session();
-                session_start();
-                $data = [
-                    'currentuser' => $_SESSION['username'],
-                    'borrowedBook' => $this->borrowedBook->findAll(),
-                    'booky' => $this->book->findAll(),
-                    'borrow' => $this->book->select('*')->join('borrowedbooks','borrowedbooks.book_id = addbooks.id','inner')->orderBy('book_title')->FindAll(),
-                    'borrowed' => $this->borrowedBook->where('id', $id)->first(),
-                ];
-
-                return view('librarian', $data);
-    }
     }
 
     public function editBorrow($id)
     {
-        if(!session()->get('isLoggedIn'))
-        {
-            return redirect()->to('login');
-        }
-        else
-        {
-            $session = session();
-            session_start();
         $data = [
             'currentuser' => $_SESSION['username'],
             'borrowedBook' => $this->borrowedBook->findAll(),
             'booky' => $this->book->findAll(),
-            'borrow' => $this->book->select('*')->join('borrowedbooks','borrowedbooks.book_id = addbooks.id','inner')->orderBy('book_title')->FindAll(),
+            'borrow' => $this->book->select('*')->join('borrowedbooks','borrowedbooks.book_id = addbooks.id','inner')->orderBy('addbooks.book_title')->FindAll(),
             'borrowed' => $this->borrowedBook->where('id', $id)->first(),
         ];
 
         return view('librarian', $data);
-        }
+        
     }
 
     public function deleteBook($id)
     {
-        $this->book->delete($id);
-        if(!session()->get('isLoggedIn'))
-        {
-            return redirect()->to('login');
+        $session = session();
+        $res = $this->book->delete($id);
+        if($res) {
+            $session->setFlashdata('msg','Deleted Successfully.');
+            return redirect()->to('librarian');
+        } else {
+            $session->setFlashdata('msg','Something went wrong. Please try again later.');
+            return redirect()->to('librarian');
         }
-        else
-            {
-                $session = session();
-                session_start();
-                $data = [
-                    'currentuser' => $_SESSION['username'],
-                    'booky' => $this->book->findAll(),
-                    'borrowedBook' => $this->borrowedBook->findAll(),
-                    'borrow' => $this->book->select('*')->join('borrowedbooks','borrowedbooks.book_id = addbooks.id','inner')->orderBy('book_title')->FindAll(),
-                    'booke' => $this->book->where('id', $id)->first(),
-                ];
-
-                return view('librarian', $data);
-    }
+        
     }
 
     public function editBook($id)
     {
-        if(!session()->get('isLoggedIn'))
-        {
-            return redirect()->to('login');
-        }
-        else
-        {
-            $session = session();
-            session_start();
         $data = [
             'currentuser' => $_SESSION['username'],
             'booky' => $this->book->findAll(),
             'borrowedBook' => $this->borrowedBook->findAll(),
-            'borrow' => $this->book->select('*')->join('borrowedbooks','borrowedbooks.book_id = addbooks.id','inner')->orderBy('book_title')->FindAll(),
+            'borrow' => $this->book->select('*')->join('borrowedbooks','borrowedbooks.book_id = addbooks.id','inner')->orderBy('addbooks.book_title')->FindAll(),
             'booke' => $this->book->where('id', $id)->first(),
         ];
 
         return view('librarian', $data);
-        }
+        
     }
 }
