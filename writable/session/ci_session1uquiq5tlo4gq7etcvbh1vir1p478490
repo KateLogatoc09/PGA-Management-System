@@ -1,1 +1,1 @@
-__ci_last_regenerate|i:1707893169;_ci_previous_url|s:27:"http://localhost:8080/login";
+__ci_last_regenerate|i:1707893871;_ci_previous_url|s:28:"http://localhost:8080/admins";username|s:4:"mama";role|s:5:"ADMIN";token|s:60:"weTpLtOjmiJwfeMC7yaFbM5a3xsMzXwdHhq4w8q2HdRFl7EAQFLKwLfBOzbK";isLoggedin|b:1;msg|s:23:"Logged-in Successfully.";__ci_vars|a:1:{s:3:"msg";s:3:"old";}

@@ -61,6 +61,9 @@
                                         <th>Username</th>
                                         <th>Email</th>
                                         <th>Role</th>
+                                        <th>Status</th>
+                                        <th>Suspension</th>
+                                        <th>Activity</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -71,6 +74,9 @@
                                             <td><?= $accy['username'] ?></td>
                                             <td><?= $accy['email'] ?></td>
                                             <td><?= $accy['role'] ?></td>
+                                            <td><?= $accy['status'] ?></td>
+                                            <td><?= $accy['suspension'] ?></td>
+                                            <td><?= $accy['activity'] ?></td>
                                             <td> <a href="/deleteAccount/<?= $accy['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
                                             <a href="/editAccount/<?= $accy['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
                                            
@@ -107,9 +113,6 @@
                         <input type="email" class="form-control" name="email" placeholder="Enter Email"
                         value="<?php if (isset($acc['email'])) {echo $acc['email'];}?>" required>
 
-                        <label for="password">Password:</label>
-                        <input type="password" class="form-control" name="password" placeholder="Enter Password" required>
-
                         <label for="role">Role:</label>
                                         <select class="form-control" name="role" id="role" value= "
                                         <?php if (isset($acc['role'])) {echo $acc['role'];}?>" required>>
@@ -119,6 +122,23 @@
                                             <option value="parent">parent</option>
                                             <option value="librarian">librarian</option>
                                         </select>
+
+                                        <label for="status">status:</label>
+                                        <select class="form-control" name="status" id="status" value= "
+                                        <?php if (isset($acc['status'])) {echo $acc['status'];}?>" required>>
+                                            <option value="ACTIVE">Active</option>
+                                            <option value="INACTIVE">Inactive</option>
+                                            <option value="PENDING">Pending</option>
+                                            <option value="UNVERIFIED">Unverified</option>
+                                            <option value="VERIFIED">Verified</option>
+                                            <option value="BANNED">Banned</option>
+                                            <option value="SUSPENDED">Suspended</option>
+                                        </select>
+
+                        <label for="suspension">Suspension:</label>
+                        <input type="text" class="form-control" name="suspension" placeholder="Enter Suspension" 
+                        value="<?php if (isset($acc['suspension'])) {echo $acc['suspension'];}?>" required>
+
                         </div>
 
 <!-- Move the "Save changes" button inside the form -->
