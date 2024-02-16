@@ -99,6 +99,11 @@
                                         <th>Book Title</th>
                                         <th>Book Number</th>
                                         <th>Book Author</th>
+                                        <th>Book Publisher</th>
+                                        <th>Place of Publication</th>
+                                        <th>Book Category</th>
+                                        <th>Book Pages</th>
+                                        <th>ISBN</th>
                                         <th>Date Published</th>
                                         <th>Action</th>
                                     </tr>
@@ -110,6 +115,11 @@
                                             <td><?= $book['book_title'] ?></td>
                                             <td><?= $book['book_number'] ?></td>
                                             <td><?= $book['book_author'] ?></td>
+                                            <td><?= $book['book_publisher'] ?></td>
+                                            <td><?= $book['place_printed'] ?></td>
+                                            <td><?= $book['book_category'] ?></td>
+                                            <td><?= $book['book_pages'] ?></td>
+                                            <td><?= $book['ISBN'] ?></td>
                                             <td><?= $book['datepublish'] ?></td>
                                             <td> <a href="/deleteBook/<?= $book['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
                                             <a href="/editBook/<?= $book['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
@@ -144,10 +154,30 @@
                         <label for="bookNumber">Book Number</label>
                         <input type="text" class="form-control" id="bookNumber" name="bookNumber" placeholder="Enter Book Number" 
                         value="<?php if (isset($booke['book_number'])) {echo $booke['book_number'];}?>" required>
-
+                        
                         <label for="bookAuthor">Book Author</label>
                         <input type="text" class="form-control" id="bookAuthor" name="bookAuthor" placeholder="Enter Book Author" 
                         value="<?php if (isset($booke['book_author'])) {echo $booke['book_author'];}?>" required>
+
+                        <label for="book_publisher">Book Publisher</label>
+                        <input type="text" class="form-control" id="book_publisher" name="book_publisher" placeholder="Enter Book Publisher" 
+                        value="<?php if (isset($booke['book_publisher'])) {echo $booke['book_publisher'];}?>" required>
+
+                        <label for="place_printed">Place of Publication</label>
+                        <input type="text" class="form-control" id="place_printed" name="place_printed" placeholder="Enter Place of Publication" 
+                        value="<?php if (isset($booke['place_printed'])) {echo $booke['place_printed'];}?>" required>
+
+                        <label for="book_category">Book Category</label>
+                        <input type="text" class="form-control" id="book_category" name="book_category" placeholder="Enter Book Category" 
+                        value="<?php if (isset($booke['book_category'])) {echo $booke['book_category'];}?>" required>
+
+                        <label for="book_pages">Book Pages</label>
+                        <input type="number" class="form-control" id="book_pages" name="book_pages" placeholder="Enter Book Pages" 
+                        value="<?php if (isset($booke['book_pages'])) {echo $booke['book_pages'];}?>" required>
+
+                        <label for="ISBN">International Standard Book Number</label>
+                        <input type="text" class="form-control" id="ISBN" name="ISBN" placeholder="Enter International Standard Book Number" 
+                        value="<?php if (isset($booke['ISBN'])) {echo $booke['ISBN'];}?>" required>
 
                         <label for="datePublish">Date Publish</label>
                         <input type="date" class="form-control" id="datePublish" name="datePublish" placeholder="Enter Date Publish" 

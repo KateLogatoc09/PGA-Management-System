@@ -116,11 +116,11 @@
                         <label for="role">Role:</label>
                                         <select class="form-control" name="role" id="role" value= "
                                         <?php if (isset($acc['role'])) {echo $acc['role'];}?>" required>>
-                                            <option value="admin">admin</option>
-                                            <option value="teacher">teacher</option>
-                                            <option value="student">student</option>
-                                            <option value="parent">parent</option>
-                                            <option value="librarian">librarian</option>
+                                            <option value="ADMIN">admin</option>
+                                            <option value="TEACHER">teacher</option>
+                                            <option value="STUDENT">student</option>
+                                            <option value="PARENT">parent</option>
+                                            <option value="LIBRARIAN">librarian</option>
                                         </select>
 
                                         <label for="status">status:</label>

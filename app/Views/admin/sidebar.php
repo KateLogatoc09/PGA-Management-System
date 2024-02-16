@@ -78,6 +78,18 @@
                 </li>
 
                 <li class="menu-item">
+                  <a href="/adminstudent" class="menu-link">
+                    <div data-i18n="Analytics">Enrollment</div>
+                  </a>
+                </li>
+
+                <li class="menu-item">
+                  <a href="/adminstudinfo" class="menu-link">
+                    <div data-i18n="Analytics">Student Info</div>
+                  </a>
+                </li>
+
+                <li class="menu-item">
                   <a href="/addTeacher" class="menu-link">
                     <div data-i18n="Analytics">Teacher</div>
                   </a>

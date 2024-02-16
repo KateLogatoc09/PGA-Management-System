@@ -98,6 +98,11 @@ class LibraryController extends BaseController
             'book_title' => $this->request->getPost('bookTitle'),
             'book_number' => $this->request->getPost('bookNumber'),
             'book_author' => $this->request->getPost('bookAuthor'),
+            'book_publisher' => $this->request->getPost('book_publisher'),
+            'place_printed' => $this->request->getPost('place_printed'),
+            'book_category' => $this->request->getPost('book_category'),
+            'book_pages' => $this->request->getPost('book_pages'),
+            'ISBN' => $this->request->getPost('ISBN'),
             'datepublish' => $this->request->getPost('datePublish'),
         ];
 

@@ -19,12 +19,26 @@ $routes->get('/forget', 'Home::forget');
 
 $routes->get('/admins', 'AdminController::index', ['filter' => 'admin']);
 $routes->get('/alumni', 'AdminController::alumni', ['filter' => 'admin']);
+$routes->get('/adminstudent', 'AdminController::adminstudent', ['filter' => 'admin']);
+$routes->get('/adminstudinfo', 'AdminController::adminstudinfo', ['filter' => 'admin']);
+$routes->post('/adminfamily', 'AdminController::adminfamily', ['filter' => 'admin']);
+$routes->post('/adminaddress', 'AdminController::adminaddress', ['filter' => 'admin']);
 $routes->post('/saveAlumni', 'AdminController::saveAlumni', ['filter' => 'admin']);
+$routes->post('/saveLearner', 'AdminController::saveLearner', ['filter' => 'admin']);
+$routes->post('/adminadmissions', 'AdminController::adminadmissions', ['filter' => 'admin']);
 $routes->post('/saveAccount', 'AdminController::saveAccount', ['filter' => 'admin']);
 $routes->get('/deleteAccount/(:any)', 'AdminController::deleteAccount/$1', ['filter' => 'admin']);
 $routes->get('/editAccount/(:any)', 'AdminController::editAccount/$1', ['filter' => 'admin']);
 $routes->get('/deleteAlumni/(:any)', 'AdminController::deleteAlumni/$1', ['filter' => 'admin']);
 $routes->get('/editAlumni/(:any)', 'AdminController::editAlumni/$1', ['filter' => 'admin']);
+$routes->get('/deleteAdmissions/(:any)', 'AdminController::deleteAdmissions/$1', ['filter' => 'admin']);
+$routes->get('/editAdmissions/(:any)', 'AdminController::editAdmissions/$1', ['filter' => 'admin']);
+$routes->get('/deleteLearner/(:any)', 'AdminController::deleteLearner/$1', ['filter' => 'admin']);
+$routes->get('/editLearner/(:any)', 'AdminController::editLearner/$1', ['filter' => 'admin']);
+$routes->get('/deletefamily/(:any)', 'AdminController::deletefamily/$1', ['filter' => 'admin']);
+$routes->get('/editfamily/(:any)', 'AdminController::editfamily/$1', ['filter' => 'admin']);
+$routes->get('/deleteaddress/(:any)', 'AdminController::deleteaddress/$1', ['filter' => 'admin']);
+$routes->get('/editaddress/(:any)', 'AdminController::editaddress/$1', ['filter' => 'admin']);
 
 $routes->get('/addTeacher', 'AdminController::addTeacher', ['filter' => 'admin']);
 $routes->get('/teach/(:any)', 'AdminController::teach/$1', ['filter' => 'admin']);

@@ -67,6 +67,11 @@
                                         <th>Book Title</th>
                                         <th>Book Number</th>
                                         <th>Book Author</th>
+                                        <th>Book Publisher</th>
+                                        <th>Place of Publication</th>
+                                        <th>Book Category</th>
+                                        <th>Book Pages</th>
+                                        <th>ISBN</th>
                                         <th>Date Published</th>
                                     </tr>
                                 </thead>
@@ -77,6 +82,11 @@
                                             <td><?= $book['book_title'] ?></td>
                                             <td><?= $book['book_number'] ?></td>
                                             <td><?= $book['book_author'] ?></td>
+                                            <td><?= $book['book_publisher'] ?></td>
+                                            <td><?= $book['place_printed'] ?></td>
+                                            <td><?= $book['book_category'] ?></td>
+                                            <td><?= $book['book_pages'] ?></td>
+                                            <td><?= $book['ISBN'] ?></td>
                                             <td><?= $book['datepublish'] ?></td>
                                      </tr>
                                 <?php endforeach ?>
@@ -88,7 +98,7 @@
                     </div>
                     <!-- /.card -->
                 </div> <!-- /.dito -->
-             
+
 
             </div>
             <!-- / Content -->

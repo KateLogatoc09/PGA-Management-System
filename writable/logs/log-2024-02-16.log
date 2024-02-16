@@ -1,0 +1,474 @@
+CRITICAL - 2024-02-16 05:44:26 --> Invalid file: "admins.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admins.php')
+ 2 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admins', [], true)
+ 3 APPPATH\Controllers\AdminController.php(220): view('admins', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->editAccount('1')
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-02-16 07:04:04 --> Undefined array key "account_id.email"
+in APPPATH\Views\admin\studentbody.php on line 96.
+ 1 APPPATH\Views\admin\studentbody.php(96): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "account_id.email"', 'C:\\laragon\\www\\PGA-Management-System\\app\\Views\\admin\\studentbody.php', 96)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\admin\\studentbody.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(467): CodeIgniter\View\View->render('admin/studentbody', null, true)
+ 5 APPPATH\Views\adminstudent.php(2): CodeIgniter\View\View->include('admin/studentbody')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\adminstudent.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('adminstudent', [], true)
+ 9 APPPATH\Controllers\AdminController.php(241): view('adminstudent', [...])
+10 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->adminstudent()
+11 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+12 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+ERROR - 2024-02-16 07:26:00 --> mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`pga`.`admissions`, CONSTRAINT `admissions_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE) in C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `ad...', 0)
+#1 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ad...')
+#2 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ad...')
+#3 C:\laragon\www\PGA-Management-System\system\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ad...', Array, false)
+#4 C:\laragon\www\PGA-Management-System\system\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\PGA-Management-System\system\BaseModel.php(788): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\PGA-Management-System\system\Model.php(715): CodeIgniter\BaseModel->insert(Array, false)
+#7 C:\laragon\www\PGA-Management-System\system\BaseModel.php(698): CodeIgniter\Model->insert(Array, false)
+#8 C:\laragon\www\PGA-Management-System\app\Controllers\AdminController.php(265): CodeIgniter\BaseModel->save(Array)
+#9 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(919): App\Controllers\AdminController->adminadmissions()
+#10 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#11 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\laragon\www\PGA-Management-System\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#13 C:\laragon\www\PGA-Management-System\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#14 {main}
+CRITICAL - 2024-02-16 07:26:00 --> Cannot add or update a child row: a foreign key constraint fails (`pga`.`admissions`, CONSTRAINT `admissions_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE)
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `admissions` (`category`, `yr_lvl`, `program`, `status`) VALUES (:category:, :yr_lvl:, :program:, :status:)', [...], false)
+ 2 SYSTEMPATH\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(788): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(715): CodeIgniter\BaseModel->insert([...], false)
+ 5 SYSTEMPATH\BaseModel.php(698): CodeIgniter\Model->insert([...], false)
+ 6 APPPATH\Controllers\AdminController.php(265): CodeIgniter\BaseModel->save([...])
+ 7 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->adminadmissions()
+ 8 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-02-16 07:44:28 --> Undefined variable $student
+in APPPATH\Views\admin\studentbody.php on line 83.
+ 1 APPPATH\Views\admin\studentbody.php(83): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $student', 'C:\\laragon\\www\\PGA-Management-System\\app\\Views\\admin\\studentbody.php', 83)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\admin\\studentbody.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(467): CodeIgniter\View\View->render('admin/studentbody', null, true)
+ 5 APPPATH\Views\adminstudent.php(2): CodeIgniter\View\View->include('admin/studentbody')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\adminstudent.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('adminstudent', [], true)
+ 9 APPPATH\Controllers\AdminController.php(299): view('adminstudent', [...])
+10 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->editAdmissions('7')
+11 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+12 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-02-16 07:45:53 --> Undefined variable $admi
+in APPPATH\Views\admin\studentbody.php on line 147.
+ 1 APPPATH\Views\admin\studentbody.php(147): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $admi', 'C:\\laragon\\www\\PGA-Management-System\\app\\Views\\admin\\studentbody.php', 147)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\admin\\studentbody.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(467): CodeIgniter\View\View->render('admin/studentbody', null, true)
+ 5 APPPATH\Views\adminstudent.php(2): CodeIgniter\View\View->include('admin/studentbody')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\adminstudent.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('adminstudent', [], true)
+ 9 APPPATH\Controllers\AdminController.php(300): view('adminstudent', [...])
+10 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->editAdmissions('7')
+11 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+12 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-02-16 07:46:21 --> Undefined variable $id
+in APPPATH\Controllers\AdminController.php on line 239.
+ 1 APPPATH\Controllers\AdminController.php(239): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $id', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\AdminController.php', 239)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->adminstudent()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-02-16 07:46:38 --> Undefined variable $id
+in APPPATH\Controllers\AdminController.php on line 240.
+ 1 APPPATH\Controllers\AdminController.php(240): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $id', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\AdminController.php', 240)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->adminstudent()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-02-16 07:46:55 --> Undefined variable $id
+in APPPATH\Controllers\AdminController.php on line 241.
+ 1 APPPATH\Controllers\AdminController.php(241): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $id', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\AdminController.php', 241)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->adminstudent()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-02-16 08:00:44 --> Undefined variable $learner
+in APPPATH\Views\admin\studentbody.php on line 157.
+ 1 APPPATH\Views\admin\studentbody.php(157): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $learner', 'C:\\laragon\\www\\PGA-Management-System\\app\\Views\\admin\\studentbody.php', 157)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\admin\\studentbody.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(467): CodeIgniter\View\View->render('admin/studentbody', null, true)
+ 5 APPPATH\Views\adminstudent.php(2): CodeIgniter\View\View->include('admin/studentbody')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\adminstudent.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('adminstudent', [], true)
+ 9 APPPATH\Controllers\AdminController.php(303): view('adminstudent', [...])
+10 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->editAdmissions('9')
+11 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+12 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-02-16 08:16:32 --> Undefined property: App\Controllers\AdminController::$learn
+in APPPATH\Controllers\AdminController.php on line 373.
+ 1 APPPATH\Controllers\AdminController.php(373): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\AdminController::$learn', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\AdminController.php', 373)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->editLearner('13')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-02-16 09:22:01 --> Too few arguments to function App\Controllers\AdminController::adminstudinfo(), 0 passed in C:\laragon\www\PGA-Management-System\system\CodeIgniter.php on line 919 and exactly 1 expected
+in APPPATH\Controllers\AdminController.php on line 380.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->adminstudinfo()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-02-16 09:22:47 --> Undefined variable $id
+in APPPATH\Controllers\AdminController.php on line 384.
+ 1 APPPATH\Controllers\AdminController.php(384): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $id', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\AdminController.php', 384)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->adminstudinfo()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-02-16 12:09:48 --> Call to undefined method App\Models\AdmissionsModel::leftjoin
+in SYSTEMPATH\Model.php on line 873.
+ 1 APPPATH\Controllers\AdminController.php(240): CodeIgniter\Model->__call('leftjoin', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->adminstudent()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+ERROR - 2024-02-16 12:10:15 --> mysqli_sql_exception: Not unique table/alias: 'admissions' in C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\PGA-Management-System\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\PGA-Management-System\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\PGA-Management-System\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\PGA-Management-System\app\Controllers\AdminController.php(240): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(919): App\Controllers\AdminController->adminstudent()
+#8 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\PGA-Management-System\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\PGA-Management-System\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-02-16 12:10:15 --> Not unique table/alias: 'admissions'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `admissions`
+LEFT JOIN `admissions` ON `admissions`.`account_id` = `student_learner`.`account_id`
+ORDER BY `student_learner`.`last_name`', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(240): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->adminstudent()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+ERROR - 2024-02-16 12:12:47 --> mysqli_sql_exception: Not unique table/alias: 'admissions' in C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\PGA-Management-System\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\PGA-Management-System\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\PGA-Management-System\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\PGA-Management-System\app\Controllers\AdminController.php(240): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(919): App\Controllers\AdminController->adminstudent()
+#8 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\PGA-Management-System\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\PGA-Management-System\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-02-16 12:12:47 --> Not unique table/alias: 'admissions'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `admissions`
+LEFT JOIN `admissions` ON `admissions`.`account_id` = `student_learner`.`account_id`', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(240): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->adminstudent()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+ERROR - 2024-02-16 12:12:49 --> mysqli_sql_exception: Not unique table/alias: 'admissions' in C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\PGA-Management-System\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\PGA-Management-System\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\PGA-Management-System\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\PGA-Management-System\app\Controllers\AdminController.php(240): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(919): App\Controllers\AdminController->adminstudent()
+#8 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\PGA-Management-System\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\PGA-Management-System\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-02-16 12:12:49 --> Not unique table/alias: 'admissions'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `admissions`
+LEFT JOIN `admissions` ON `admissions`.`account_id` = `student_learner`.`account_id`', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(240): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->adminstudent()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+ERROR - 2024-02-16 12:13:54 --> mysqli_sql_exception: Not unique table/alias: 'admissions' in C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\PGA-Management-System\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\PGA-Management-System\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\PGA-Management-System\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\PGA-Management-System\app\Controllers\AdminController.php(240): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(919): App\Controllers\AdminController->adminstudent()
+#8 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\PGA-Management-System\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\PGA-Management-System\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-02-16 12:13:54 --> Not unique table/alias: 'admissions'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `admissions`
+LEFT JOIN `admissions` ON `admissions`.`account_id` = `student_learner`.`account_id`
+ORDER BY `student_learner`.`last_name`', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(240): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->adminstudent()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+ERROR - 2024-02-16 12:13:57 --> mysqli_sql_exception: Not unique table/alias: 'admissions' in C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\PGA-Management-System\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\PGA-Management-System\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\PGA-Management-System\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\PGA-Management-System\app\Controllers\AdminController.php(240): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(919): App\Controllers\AdminController->adminstudent()
+#8 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\PGA-Management-System\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\PGA-Management-System\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-02-16 12:13:57 --> Not unique table/alias: 'admissions'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `admissions`
+LEFT JOIN `admissions` ON `admissions`.`account_id` = `student_learner`.`account_id`
+ORDER BY `student_learner`.`last_name`', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(240): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->adminstudent()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+ERROR - 2024-02-16 12:17:29 --> mysqli_sql_exception: Not unique table/alias: 'admissions' in C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\PGA-Management-System\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\PGA-Management-System\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\PGA-Management-System\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\PGA-Management-System\app\Controllers\AdminController.php(240): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(919): App\Controllers\AdminController->adminstudent()
+#8 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\PGA-Management-System\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\PGA-Management-System\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-02-16 12:17:29 --> Not unique table/alias: 'admissions'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `admissions`
+INNER JOIN `admissions` ON `admissions`.`account_id` = `student_learner`.`account_id`
+ORDER BY `student_learner`.`last_name`', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(240): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->adminstudent()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+ERROR - 2024-02-16 12:22:31 --> mysqli_sql_exception: Not unique table/alias: 'student_learner' in C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\PGA-Management-System\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\PGA-Management-System\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\PGA-Management-System\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\PGA-Management-System\app\Controllers\AdminController.php(242): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(919): App\Controllers\AdminController->adminstudent()
+#8 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\PGA-Management-System\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\PGA-Management-System\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-02-16 12:22:31 --> Not unique table/alias: 'student_learner'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `student_learner`
+INNER JOIN `student_learner` ON `student_learner`.`account_id` = `admissions`.`account_id`
+ORDER BY `student_learner`.`last_name`', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(242): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->adminstudent()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-02-16 13:14:20 --> Undefined variable $le
+in APPPATH\Views\admin\studentinfo.php on line 79.
+ 1 APPPATH\Views\admin\studentinfo.php(79): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $le', 'C:\\laragon\\www\\PGA-Management-System\\app\\Views\\admin\\studentinfo.php', 79)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\admin\\studentinfo.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(467): CodeIgniter\View\View->render('admin/studentinfo', null, true)
+ 5 APPPATH\Views\adminstudinfo.php(2): CodeIgniter\View\View->include('admin/studentinfo')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\adminstudinfo.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('adminstudinfo', [], true)
+ 9 APPPATH\Controllers\AdminController.php(384): view('adminstudinfo', [...])
+10 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->adminstudinfo()
+11 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+12 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-02-16 13:17:34 --> Undefined variable $le
+in APPPATH\Views\admin\studentinfo.php on line 83.
+ 1 APPPATH\Views\admin\studentinfo.php(83): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $le', 'C:\\laragon\\www\\PGA-Management-System\\app\\Views\\admin\\studentinfo.php', 83)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\admin\\studentinfo.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(467): CodeIgniter\View\View->render('admin/studentinfo', null, true)
+ 5 APPPATH\Views\adminstudinfo.php(2): CodeIgniter\View\View->include('admin/studentinfo')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\adminstudinfo.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('adminstudinfo', [], true)
+ 9 APPPATH\Controllers\AdminController.php(384): view('adminstudinfo', [...])
+10 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->adminstudinfo()
+11 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+12 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-02-16 13:17:46 --> Undefined array key "student_id"
+in APPPATH\Views\admin\studentinfo.php on line 83.
+ 1 APPPATH\Views\admin\studentinfo.php(83): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "student_id"', 'C:\\laragon\\www\\PGA-Management-System\\app\\Views\\admin\\studentinfo.php', 83)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\admin\\studentinfo.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(467): CodeIgniter\View\View->render('admin/studentinfo', null, true)
+ 5 APPPATH\Views\adminstudinfo.php(2): CodeIgniter\View\View->include('admin/studentinfo')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\adminstudinfo.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('adminstudinfo', [], true)
+ 9 APPPATH\Controllers\AdminController.php(384): view('adminstudinfo', [...])
+10 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->adminstudinfo()
+11 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+12 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-02-16 13:26:01 --> syntax error, unexpected identifier "join", expecting "]"
+in APPPATH\Controllers\AdminController.php on line 381.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(285): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\AdminController.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(263): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\AdminController')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\AdminController')
+ 4 SYSTEMPATH\CodeIgniter.php(877): class_exists('\\App\\Controllers\\AdminController', true)
+ 5 SYSTEMPATH\CodeIgniter.php(481): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-02-16 13:26:30 --> syntax error, unexpected identifier "join", expecting "]"
+in APPPATH\Controllers\AdminController.php on line 444.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(285): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\AdminController.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(263): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\AdminController')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\AdminController')
+ 4 SYSTEMPATH\CodeIgniter.php(877): class_exists('\\App\\Controllers\\AdminController', true)
+ 5 SYSTEMPATH\CodeIgniter.php(481): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+ERROR - 2024-02-16 13:55:54 --> mysqli_sql_exception: Column 'relation' cannot be null in C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `fa...', 0)
+#1 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `fa...')
+#2 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `fa...')
+#3 C:\laragon\www\PGA-Management-System\system\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `fa...', Array, false)
+#4 C:\laragon\www\PGA-Management-System\system\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\PGA-Management-System\system\BaseModel.php(788): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\PGA-Management-System\system\Model.php(715): CodeIgniter\BaseModel->insert(Array, false)
+#7 C:\laragon\www\PGA-Management-System\system\BaseModel.php(698): CodeIgniter\Model->insert(Array, false)
+#8 C:\laragon\www\PGA-Management-System\app\Controllers\AdminController.php(414): CodeIgniter\BaseModel->save(Array)
+#9 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(919): App\Controllers\AdminController->adminfamily()
+#10 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#11 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\laragon\www\PGA-Management-System\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#13 C:\laragon\www\PGA-Management-System\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#14 {main}
+CRITICAL - 2024-02-16 13:55:54 --> Column 'relation' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `family` (`relation`, `fullname`, `res_add`, `off_add`, `mob_num`, `off_num`, `email`, `occupation`, `account_id`) VALUES (:relation:, :fullname:, :res_add:, :off_add:, :mob_num:, :off_num:, :email:, :occupation:, :account_id:)', [...], false)
+ 2 SYSTEMPATH\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(788): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(715): CodeIgniter\BaseModel->insert([...], false)
+ 5 SYSTEMPATH\BaseModel.php(698): CodeIgniter\Model->insert([...], false)
+ 6 APPPATH\Controllers\AdminController.php(414): CodeIgniter\BaseModel->save([...])
+ 7 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->adminfamily()
+ 8 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-02-16 14:06:58 --> Undefined array key "id"
+in APPPATH\Controllers\EnrollmentController.php on line 37.
+ 1 APPPATH\Controllers\EnrollmentController.php(37): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\EnrollmentController.php', 37)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\EnrollmentController->save()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EnrollmentController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-02-16 14:07:22 --> Undefined array key "id"
+in APPPATH\Controllers\EnrollmentController.php on line 37.
+ 1 APPPATH\Controllers\EnrollmentController.php(37): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\EnrollmentController.php', 37)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\EnrollmentController->save()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EnrollmentController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
