@@ -78,18 +78,6 @@
                 </li>
 
                 <li class="menu-item">
-                  <a href="/adminstudent" class="menu-link">
-                    <div data-i18n="Analytics">Enrollment</div>
-                  </a>
-                </li>
-
-                <li class="menu-item">
-                  <a href="/adminstudinfo" class="menu-link">
-                    <div data-i18n="Analytics">Student Info</div>
-                  </a>
-                </li>
-
-                <li class="menu-item">
                   <a href="/addTeacher" class="menu-link">
                     <div data-i18n="Analytics">Teacher</div>
                   </a>
@@ -102,6 +90,45 @@
                 </li>
                 
          
+              </ul>
+            </li>
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-street-view"></i>
+                <div data-i18n="Student">Student Information</div>
+              </a>
+              <ul class="menu-sub">
+  
+                <li class="menu-item">
+                  <a href="/admininfoadmissions" class="menu-link">
+                    <div data-i18n="Analytics">Admissions</div>
+                  </a>
+                </li>
+
+                <li class="menu-item">
+                  <a href="/adminstudent" class="menu-link">
+                    <div data-i18n="Analytics">Learner</div>
+                  </a>
+                </li>
+
+                <li class="menu-item">
+                  <a href="/admininfoaddress" class="menu-link">
+                    <div data-i18n="Analytics">Address</div>
+                  </a>
+                </li>
+
+                <li class="menu-item">
+                  <a href="/adminstudinfo" class="menu-link">
+                    <div data-i18n="Analytics">Family</div>
+                  </a>
+                </li>
+
+                <li class="menu-item">
+                  <a href="/admininfosibling" class="menu-link">
+                    <div data-i18n="Analytics">Sibling</div>
+                  </a>
+                </li>
+
               </ul>
             </li>
             <!-- Misc -->
@@ -126,6 +153,7 @@
             </li>
             <li class="menu-item">
                   <a href="/logout" class="menu-link">
+                  <i class="menu-icon tf-icons bx bx-undo"></i>
                     <div data-i18n="Analytics">Logout</div>
                   </a>
                 </li>

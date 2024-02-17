@@ -18,23 +18,7 @@
 
           <div class="container-xxl flex-grow-1 container-p-y">
             <div class="row">
-              <div class="col-lg-18 mb-4 order-0">
-                <div class="card">
-                  <div class="d-flex align-items-end row">
-                    <div class="col-sm-7">
-                      <div class="card-body">
-                        <h5 class="card-title text-primary">Welcome Admin! 🎉</h5>
-                      </div>
-
-                    </div>
-                    <div class="col-sm-5 text-center text-sm-left">
-                      <div class="card-body pb-0 px-0 px-md-4">
-                        <img src="../assets/img/illustrations/man-with-laptop-light.png" height="140" alt="View Badge User" data-app-dark-img="illustrations/man-with-laptop-dark.png" data-app-light-img="illustrations/man-with-laptop-light.png" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              
                 
               <div class="col-lg-18 mb-4 order-0">
                     <div class="card">
@@ -97,11 +81,11 @@
 
                 <div class="col-lg-18 mb-4 order-0">
                 <div class="card">
-                  <div class="d-flex align-items-end row">
-                    <div class="col-sm-7">
-                      <div class="card-body">
+                <div class="card-body">
                         <h5 class="card-title text-primary">Edit Alumni</h5>
                       </div>
+                  <div class="d-flex">
+                    <div class="col-sm-5">
                 <form action="/saveAlumni" method="post">
                     <!-- Add your form fields and content here -->
 
@@ -125,7 +109,10 @@
                         <label for="phone">Phone:</label>
                         <input type="text" class="form-control" name="phone" placeholder="Enter Phone"
                         value="<?php if (isset($alum['phone'])) {echo $alum['phone'];}?>" required>
-
+                        </div>
+</div>
+<div class="col-sm-5 text-center text-sm-left">
+  <div class="form-group margin-left">
                         <label for="address">Address:</label>
                         <input type="text" class="form-control" name="address" placeholder="Enter Address" 
                         value="<?php if (isset($alum['address'])) {echo $alum['address'];}?>" required>
@@ -137,20 +124,16 @@
                         <label for="yr_graduated">Year Graduated:</label>
                         <input type="date" class="form-control" name="yr_graduated" placeholder="Enter Year Graduated" 
                         value="<?php if (isset($alum['yr_graduated'])) {echo $alum['yr_graduated'];}?>" required>
-                        </div>
+                        
+  </div>
+</div>
+</div>
 
 <!-- Move the "Save changes" button inside the form -->
 <div class="modal-footer">
     <button type="submit" class="btn btn-primary">Save changes</button>
 </div>
 </form>
-</div>
-<div class="col-sm-5 text-center text-sm-left">
-  <div class="card-body pb-0 px-0 px-md-4">
-    <img src="../assets/img/illustrations/man-with-laptop-light.png" height="140" alt="View Badge User" data-app-dark-img="illustrations/man-with-laptop-dark.png" data-app-light-img="illustrations/man-with-laptop-light.png" />
-  </div>
-</div>
-</div>
 </div>
 </div>
 

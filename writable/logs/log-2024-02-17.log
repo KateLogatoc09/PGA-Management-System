@@ -1,0 +1,16 @@
+CRITICAL - 2024-02-17 12:05:45 --> Undefined array key "affliation"
+in APPPATH\Views\admin\studentsibling.php on line 60.
+ 1 APPPATH\Views\admin\studentsibling.php(60): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "affliation"', 'C:\\laragon\\www\\PGA-Management-System\\app\\Views\\admin\\studentsibling.php', 60)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\admin\\studentsibling.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(467): CodeIgniter\View\View->render('admin/studentsibling', null, true)
+ 5 APPPATH\Views\admininfosibling.php(2): CodeIgniter\View\View->include('admin/studentsibling')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\admininfosibling.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admininfosibling', [], true)
+ 9 APPPATH\Controllers\AdminController.php(530): view('admininfosibling', [...])
+10 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->admininfosibling()
+11 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+12 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')

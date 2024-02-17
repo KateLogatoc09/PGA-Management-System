@@ -72,19 +72,19 @@ class AdminController extends BaseController
             $res = $this->teacher->set($data)->where('id', $id)->update();
             if($res) {
                 $session->setFlashdata('msg','Updated Successfully.');
-                return redirect()->to('adminteach');
+                return redirect()->to('addTeacher');
             } else {
                 $session->setFlashdata('msg','Something went wrong. Please try again later.');
-                return redirect()->to('adminteach');
+                return redirect()->to('addTeacher');
             }
         } else {
             $res = $this->teacher->save($data);
             if($res) {
                 $session->setFlashdata('msg','Saved Successfully.');
-                return redirect()->to('adminteach');
+                return redirect()->to('addTeacher');
             } else {
                 $session->setFlashdata('msg','Something went wrong. Please try again later.');
-                return redirect()->to('adminteach');
+                return redirect()->to('addTeacher');
             }
         }  
     }
@@ -95,10 +95,10 @@ class AdminController extends BaseController
         $res = $this->teacher->delete($id);
         if($res) {
             $session->setFlashdata('msg','Deleted Successfully.');
-            return redirect()->to('adminteach');
+            return redirect()->to('addTeacher');
         } else {
             $session->setFlashdata('msg','Something went wrong. Please try again later.');
-            return redirect()->to('adminteach');
+            return redirect()->to('addTeacher');
         }
     }
 
@@ -238,9 +238,17 @@ class AdminController extends BaseController
         $data = [
             'currentuser' => $_SESSION['username'],
             'learner' => $this->admissions->select('*')->join('student_learner','student_learner.account_id = admissions.account_id','inner')->orderBy('student_learner.last_name')->FindAll(),
-            'student' => $this->learner->select('*')->join('admissions','admissions.account_id = student_learner.account_id','inner')->orderBy('student_learner.last_name')->FindAll(),
         ];
         return view('adminstudent', $data);
+    }
+
+    public function admininfoadmissions()
+    {
+        $data = [
+            'currentuser' => $_SESSION['username'],
+            'student' => $this->learner->select('*')->join('admissions','admissions.account_id = student_learner.account_id','inner')->orderBy('student_learner.last_name')->FindAll(),
+        ];
+        return view('admininfoadmissions', $data);
     }
 
     
@@ -261,19 +269,19 @@ class AdminController extends BaseController
             $res = $this->admissions->set($data)->where('id', $id)->update();
             if($res) {
                 $session->setFlashdata('msg','Updated Successfully.');
-                return redirect()->to('adminstudent');
+                return redirect()->to('admininfoadmissions');
             } else {
                 $session->setFlashdata('msg','Something went wrong. Please try again later.');
-                return redirect()->to('adminstudent');
+                return redirect()->to('admininfoadmissions');
             }
         } else {
             $res = $this->admissions->save($data);
             if($res) {
                 $session->setFlashdata('msg','Saved Successfully.');
-                return redirect()->to('adminstudent');
+                return redirect()->to('admininfoadmissions');
             } else {
                 $session->setFlashdata('msg','Something went wrong. Please try again later.');
-                return redirect()->to('adminstudent');
+                return redirect()->to('admininfoadmissions');
             }
         }  
     }
@@ -284,10 +292,10 @@ class AdminController extends BaseController
         $res = $this->admissions->delete($id);
         if($res) {
             $session->setFlashdata('msg','Deleted Successfully.');
-            return redirect()->to('adminstudent');
+            return redirect()->to('admininfoadmissions');
         } else {
             $session->setFlashdata('msg','Something went wrong. Please try again later.');
-            return redirect()->to('adminstudent');
+            return redirect()->to('admininfoadmissions');
         }
     }
 
@@ -296,12 +304,11 @@ class AdminController extends BaseController
     {
         $data = [
             'currentuser' => $_SESSION['username'],
-            'learner' => $this->admissions->select('*')->join('student_learner','student_learner.account_id = admissions.account_id','inner')->orderBy('student_learner.last_name')->FindAll(),
             'admissions' => $this->admissions->where('id', $id)->first(),
             'student' => $this->learner->select('*')->join('admissions','admissions.account_id = student_learner.account_id','inner')->orderBy('student_learner.last_name')->FindAll(),
         ];
 
-        return view('adminstudent', $data);
+        return view('admininfoadmissions', $data);
         
     }
 
@@ -368,7 +375,6 @@ class AdminController extends BaseController
             'currentuser' => $_SESSION['username'],
             'learner' => $this->admissions->select('*')->join('student_learner','student_learner.account_id = admissions.account_id','inner')->orderBy('student_learner.last_name')->FindAll(),
             'learn' => $this->learner->where('id', $id)->first(),
-            'student' => $this->learner->select('*')->join('admissions','admissions.account_id = student_learner.account_id','inner')->orderBy('student_learner.last_name')->FindAll(),
         ];
 
         return view('adminstudent', $data);
@@ -378,7 +384,6 @@ class AdminController extends BaseController
     {
         $data = [
             'family' => $this->learner->select('*')->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('family','family.account_id = student_learner.account_id','inner')->orderBy('student_learner.last_name')->FindAll(),
-            'address' => $this->learner->select('*')->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('address','address.account_id = student_learner.account_id','inner')->orderBy('student_learner.last_name')->FindAll(),
         ];
 
         return view('adminstudinfo', $data);
@@ -442,11 +447,19 @@ class AdminController extends BaseController
         $data = [
             'currentuser' => $_SESSION['username'],
             'family' => $this->learner->select('*')->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('family','family.account_id = student_learner.account_id','inner')->orderBy('student_learner.last_name')->FindAll(),
-            'address' => $this->learner->select('*')->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('address','address.account_id = student_learner.account_id','inner')->orderBy('student_learner.last_name')->FindAll(),
             'fam' => $this->family->where('id', $id)->first(),
         ];
 
         return view('adminstudinfo', $data);
+    }
+
+    public function admininfoaddress()
+    {
+        $data = [
+            'address' => $this->learner->select('*')->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('address','address.account_id = student_learner.account_id','inner')->orderBy('student_learner.last_name')->FindAll(),
+        ];
+
+        return view('admininfoaddress', $data);
     }
 
     
@@ -466,19 +479,19 @@ class AdminController extends BaseController
             $res = $this->address->set($data)->where('id', $id)->update();
             if($res) {
                 $session->setFlashdata('msg','Updated Successfully.');
-                return redirect()->to('adminstudinfo');
+                return redirect()->to('admininfoaddress');
             } else {
                 $session->setFlashdata('msg','Something went wrong. Please try again later.');
-                return redirect()->to('adminstudinfo');
+                return redirect()->to('admininfoaddress');
             }
         } else {
             $res = $this->address->save($data);
             if($res) {
                 $session->setFlashdata('msg','Saved Successfully.');
-                return redirect()->to('adminstudinfo');
+                return redirect()->to('admininfoaddress');
             } else {
                 $session->setFlashdata('msg','Something went wrong. Please try again later.');
-                return redirect()->to('adminstudinfo');
+                return redirect()->to('admininfoaddress');
             }
         }  
     }
@@ -489,10 +502,10 @@ class AdminController extends BaseController
         $res = $this->address->delete($id);
         if($res) {
             $session->setFlashdata('msg','Deleted Successfully.');
-            return redirect()->to('adminstudinfo');
+            return redirect()->to('admininfoaddress');
         } else {
             $session->setFlashdata('msg','Something went wrong. Please try again later.');
-            return redirect()->to('adminstudinfo');
+            return redirect()->to('admininfoaddress');
         }
     }
 
@@ -501,11 +514,76 @@ class AdminController extends BaseController
     {
         $data = [
             'currentuser' => $_SESSION['username'],
-            'family' => $this->learner->select('*')->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('family','family.account_id = student_learner.account_id','inner')->orderBy('student_learner.last_name')->FindAll(),
             'address' => $this->learner->select('*')->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('address','address.account_id = student_learner.account_id','inner')->orderBy('student_learner.last_name')->FindAll(),
             'add' => $this->address->where('id', $id)->first(),
         ];
 
-        return view('adminstudinfo', $data);
+        return view('admininfoaddress', $data);
+    }
+
+    public function admininfosibling()
+    {
+        $data = [
+            'sibling' => $this->learner->select('*')->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sibling','sibling.account_id = student_learner.account_id','inner')->orderBy('student_learner.last_name')->FindAll(),
+        ];
+
+        return view('admininfosibling', $data);
+    }
+
+    public function adminsibling()  {
+        $session = session();
+        $id = $_POST['id'];
+        $data = [
+            'id' => $this->request->getVar('id'),
+            'fullname' => $this->request->getVar('fullname'),
+            'yr_lvl' => $this->request->getVar('yr_lvl'),
+            'affiliation' => $this->request->getVar('affiliation'),
+            'account_id' => $this->request->getVar('account_id'),
+        ];
+
+        if ($id != null) {
+            $res = $this->sibling->set($data)->where('id', $id)->update();
+            if($res) {
+                $session->setFlashdata('msg','Updated Successfully.');
+                return redirect()->to('admininfosibling');
+            } else {
+                $session->setFlashdata('msg','Something went wrong. Please try again later.');
+                return redirect()->to('admininfosibling');
+            }
+        } else {
+            $res = $this->sibling->save($data);
+            if($res) {
+                $session->setFlashdata('msg','Saved Successfully.');
+                return redirect()->to('admininfosibling');
+            } else {
+                $session->setFlashdata('msg','Something went wrong. Please try again later.');
+                return redirect()->to('admininfosibling');
+            }
+        }  
+    }
+
+    public function deletesibling($id)
+    {
+        $session = session();
+        $res = $this->sibling->delete($id);
+        if($res) {
+            $session->setFlashdata('msg','Deleted Successfully.');
+            return redirect()->to('admininfosibling');
+        } else {
+            $session->setFlashdata('msg','Something went wrong. Please try again later.');
+            return redirect()->to('admininfosibling');
+        }
+    }
+
+    
+    public function editsibling($id)
+    {
+        $data = [
+            'currentuser' => $_SESSION['username'],
+            'sibling' => $this->learner->select('*')->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sibling','sibling.account_id = student_learner.account_id','inner')->orderBy('student_learner.last_name')->FindAll(),
+            'sib' => $this->sibling->where('id', $id)->first(),
+        ];
+
+        return view('admininfosibling', $data);
     }
 }

@@ -39,6 +39,12 @@ $routes->get('/deletefamily/(:any)', 'AdminController::deletefamily/$1', ['filte
 $routes->get('/editfamily/(:any)', 'AdminController::editfamily/$1', ['filter' => 'admin']);
 $routes->get('/deleteaddress/(:any)', 'AdminController::deleteaddress/$1', ['filter' => 'admin']);
 $routes->get('/editaddress/(:any)', 'AdminController::editaddress/$1', ['filter' => 'admin']);
+$routes->get('/admininfoaddress', 'AdminController::admininfoaddress', ['filter' => 'admin']);
+$routes->get('/admininfoadmissions', 'AdminController::admininfoadmissions', ['filter' => 'admin']);
+$routes->get('/admininfosibling', 'AdminController::admininfosibling', ['filter' => 'admin']);
+$routes->post('/adminsibling', 'AdminController::adminsibling', ['filter' => 'admin']);
+$routes->get('/deletesibling/(:any)', 'AdminController::deletesibling/$1', ['filter' => 'admin']);
+$routes->get('/editsibling/(:any)', 'AdminController::editsibling/$1', ['filter' => 'admin']);
 
 $routes->get('/addTeacher', 'AdminController::addTeacher', ['filter' => 'admin']);
 $routes->get('/teach/(:any)', 'AdminController::teach/$1', ['filter' => 'admin']);

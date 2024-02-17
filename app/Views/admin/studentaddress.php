@@ -18,12 +18,11 @@
 
           <div class="container-xxl flex-grow-1 container-p-y">
             <div class="row">
-              
-                
-              <div class="col-lg-18 mb-4 order-0">
-                    <div class="card">
+      
+<div class="col-lg-18 mb-4 order-0">
+              <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Teacher List</h3>
+                            <h3 class="card-title">Students' Address List</h3>
                             <div class="card-tools">
                                 <div class="input-group input-group-sm" style="width: 150px;">
                                     <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
@@ -42,28 +41,28 @@
                             <thead>
                                     <tr>
                                         <th>Id</th>
-                                        <th>ID Number</th>
-                                        <th>Firt Name</th>
-                                        <th>Middle Name</th>
-                                        <th>Last Name</th>
-                                        <th>Date of Birth</th>
-                                        <th>Action</th>
+                                        <th>Student's ID Number</th>
+                                        <th>Student's Name</th>
+                                        <th>Type of Address</th>
+                                        <th>Address</th>
+                                        <th>Postal Code</th>
+                                        <th>Telphone Number</th>
+                                        <th>Account Id</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <?php foreach ($teacher as $teach): ?>
+                                <?php foreach ($address as $ad): ?>
                                     <tr>
-                                            <td><?= $teach['id'] ?></td>
-                                            <td><?= $teach['idnum'] ?></td>
-                                            <td><?= $teach['fname'] ?></td>
-                                            <td><?= $teach['mname'] ?></td>
-                                            <td><?= $teach['lname'] ?></td>
-                                            <td><?= $teach['dob'] ?></td>
-                                            <td> <a href="/deleteteacher/<?= $teach['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
-                                            <a href="/editteacher/<?= $teach['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
-                                           
-                                           
-                                          
+                                            <td><?= $ad['id'] ?></td>
+                                            <td><?= $ad['student_id'] ?></td>
+                                            <td><?= $ad['last_name'] ?>, <?= $ad['first_name'] ?> <?= $ad['middle_name'] ?></td>
+                                            <td><?= $ad['type'] ?></td>
+                                            <td><?= $ad['address'] ?></td>
+                                            <td><?= $ad['postal_code'] ?></td>
+                                            <td><?= $ad['tel_num'] ?></td>
+                                            <td><?= $ad['account_id'] ?></td>
+                                            <td> <a href="/deleteaddress/<?= $ad['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
+                                            <a href="/editaddress/<?= $ad['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
                                      </tr>
                                 <?php endforeach ?>
                                 </tbody>
@@ -78,38 +77,39 @@
                 <div class="col-lg-18 mb-4 order-0">
                 <div class="card">
                 <div class="card-body">
-                        <h5 class="card-title text-primary">Edit Teacher</h5>
+                        <h5 class="card-title text-primary">Edit Students's Address</h5>
                       </div>
                   <div class="d-flex">
                     <div class="col-sm-5">
-                <form action="/saveteacher" method="post">
+                <form action="/adminaddress" method="post">
                     <!-- Add your form fields and content here -->
 
                     <div class="form-group margin-left">
-                    <input type="hidden" name="id" value="<?php if (isset($prof['id'])) {echo $prof['id'];}?>">
-                        <label for="idnum">ID number:</label>
-                        <input type="text" class="form-control" name="idnum" placeholder="Enter ID number" 
-                        value="<?php if (isset($prof['idnum'])) {echo $prof['idnum'];}?>" required>
-                                 
-                        <label for="fname">First Name:</label>
-                        <input type="text" class="form-control" name="fname" placeholder="Enter First Name"
-                        value="<?php if (isset($prof['fname'])) {echo $prof['fname'];}?>" required>
+                    <input type="hidden" class="form-control" name="id" value="<?php if (isset($add['id'])) {echo $add['id'];}?>">
+                        
+                        <label for="type">Type of Address:</label>
+                        <select class="form-control" name="type" id="type" value="<?php if (isset($add['type'])) {echo $add['type'];}?>">
+                            <option value="Permanent">Permanent</option>
+                            <option value="Mailing">Mailing</option>
+                        </select>
 
-                        <label for="mname">Middle Name:</label>
-                        <input type="text" class="form-control" name="mname" placeholder="Enter Middle Name" 
-                        value="<?php if (isset($prof['mname'])) {echo $prof['mname'];}?>" required>
+                    <label for="address">Address:</label>
+                        <input type="text" class="form-control" name="address" placeholder="Enter Address" value="<?php if (isset($add['address'])) {echo $add['address'];}?>">
+        
 
+            
+                    <label for="postal_code">Postal Code:</label>
+                        <input type="number" class="form-control" name="postal_code" placeholder="Enter Postal Code" value="<?php if (isset($add['postal_code'])) {echo $add['postal_code'];}?>">
+               
                         </div>
 </div>
 <div class="col-sm-5 text-center text-sm-left">
   <div class="form-group margin-left">
-  <label for="lname">Last Name:</label>
-                        <input type="text" class="form-control" name="lname" placeholder="Enter Last Name" 
-                        value="<?php if (isset($prof['lname'])) {echo $prof['lname'];}?>" required>
-                                 
-                        <label for="dob">Date of Birth:</label>
-                        <input type="date" class="form-control" name="dob" placeholder="Enter Date of Birth" 
-                        value="<?php if (isset($prof['dob'])) {echo $prof['dob'];}?>" required>    
+  <label for="tel_num">Telephone Number:</label>
+                                        <input type="number" class="form-control" name="tel_num" max_length="11" placeholder="Enter Telephone Number" value="<?php if (isset($add['tel_num'])) {echo $add['tel_num'];}?>">
+                                        <label for="account_id">Account Id</label>
+                        <input type="text" class="form-control" id="account_id" name="account_id" placeholder="Enter Account Id"                         
+                        value="<?php if (isset($add['account_id'])) {echo $add['account_id'];}?>" required>             
   </div>
 </div>
 </div>
@@ -121,6 +121,7 @@
 </form>
 </div>
 </div>
+
 
             </div>
             <!-- / Content -->
