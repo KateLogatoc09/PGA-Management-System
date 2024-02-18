@@ -82,6 +82,18 @@
                     <div data-i18n="Analytics">Tables</div>
                   </a>
                 </li>
+
+                <li class="menu-item">
+                  <a href="/books" class="menu-link">
+                    <div data-i18n="Analytics">Books</div>
+                  </a>
+                </li>
+
+                <li class="menu-item">
+                  <a href="/borrowers" class="menu-link">
+                    <div data-i18n="Analytics">Borrowers</div>
+                  </a>
+                </li>
                 
          
               </ul>
@@ -108,6 +120,7 @@
             </li>
             <li class="menu-item">
                   <a href="/logout" class="menu-link">
+                  <i class="menu-icon tf-icons bx bx-undo"></i>
                     <div data-i18n="Analytics">Logout</div>
                   </a>
                 </li>

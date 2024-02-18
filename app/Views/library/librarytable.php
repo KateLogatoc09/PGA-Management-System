@@ -105,7 +105,6 @@
                                         <th>Book Pages</th>
                                         <th>ISBN</th>
                                         <th>Date Published</th>
-                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -121,8 +120,6 @@
                                             <td><?= $book['book_pages'] ?></td>
                                             <td><?= $book['ISBN'] ?></td>
                                             <td><?= $book['datepublish'] ?></td>
-                                            <td> <a href="/deleteBook/<?= $book['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
-                                            <a href="/editBook/<?= $book['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
                                      </tr>
                                 <?php endforeach ?>
                                 </tbody>
@@ -134,72 +131,6 @@
                     <!-- /.card -->
                 </div> <!-- /.dito -->
 
-                              
-              <div class="col-lg-18 mb-4 order-0">
-                <div class="card">
-                  <div class="d-flex align-items-end row">
-                    <div class="col-sm-7">
-                      <div class="card-body">
-                        <h5 class="card-title text-primary">Add/Update Book List</h5>
-                      </div>
-                      <form action="/saveBook" method="post">
-                    <!-- Add your form fields and content here -->
-                    <div class="form-group margin-left">
-                    <input type="hidden" name="id" value="<?php if (isset($booke['id'])) {echo $booke['id'];}?>">
-
-                        <label for="bookTitle">Book Title</label>
-                        <input type="text" class="form-control" id="bookTitle" name="bookTitle" placeholder="Enter Book Title" 
-                        value="<?php if (isset($booke['book_title'])) {echo $booke['book_title'];}?>" required>
-
-                        <label for="bookNumber">Book Number</label>
-                        <input type="text" class="form-control" id="bookNumber" name="bookNumber" placeholder="Enter Book Number" 
-                        value="<?php if (isset($booke['book_number'])) {echo $booke['book_number'];}?>" required>
-                        
-                        <label for="bookAuthor">Book Author</label>
-                        <input type="text" class="form-control" id="bookAuthor" name="bookAuthor" placeholder="Enter Book Author" 
-                        value="<?php if (isset($booke['book_author'])) {echo $booke['book_author'];}?>" required>
-
-                        <label for="book_publisher">Book Publisher</label>
-                        <input type="text" class="form-control" id="book_publisher" name="book_publisher" placeholder="Enter Book Publisher" 
-                        value="<?php if (isset($booke['book_publisher'])) {echo $booke['book_publisher'];}?>" required>
-
-                        <label for="place_printed">Place of Publication</label>
-                        <input type="text" class="form-control" id="place_printed" name="place_printed" placeholder="Enter Place of Publication" 
-                        value="<?php if (isset($booke['place_printed'])) {echo $booke['place_printed'];}?>" required>
-
-                        <label for="book_category">Book Category</label>
-                        <input type="text" class="form-control" id="book_category" name="book_category" placeholder="Enter Book Category" 
-                        value="<?php if (isset($booke['book_category'])) {echo $booke['book_category'];}?>" required>
-
-                        <label for="book_pages">Book Pages</label>
-                        <input type="number" class="form-control" id="book_pages" name="book_pages" placeholder="Enter Book Pages" 
-                        value="<?php if (isset($booke['book_pages'])) {echo $booke['book_pages'];}?>" required>
-
-                        <label for="ISBN">International Standard Book Number</label>
-                        <input type="text" class="form-control" id="ISBN" name="ISBN" placeholder="Enter International Standard Book Number" 
-                        value="<?php if (isset($booke['ISBN'])) {echo $booke['ISBN'];}?>" required>
-
-                        <label for="datePublish">Date Publish</label>
-                        <input type="date" class="form-control" id="datePublish" name="datePublish" placeholder="Enter Date Publish" 
-                        value="<?php if (isset($booke['datepublish'])) {echo $booke['datepublish'];}?>" required>
-                    </div>
-                    
-                    <!-- Move the "Save changes" button inside the form -->
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Save changes</button>
-                    </div>
-                </form>
-                    </div>
-                    <div class="col-sm-5 text-center text-sm-left">
-                      <div class="card-body pb-0 px-0 px-md-4">
-                        <img src="../assets/img/illustrations/man-with-laptop-light.png" height="140" alt="View Badge User" data-app-dark-img="illustrations/man-with-laptop-dark.png" data-app-light-img="illustrations/man-with-laptop-light.png" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-                
                 <div class="col-lg-18 mb-4 order-0">
                     <div class="card">
                         <div class="card-header">
@@ -227,7 +158,6 @@
                                         <th>Date Borrowed</th>
                                         <th>Date Return</th>
                                         <th>Status</th>
-                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -239,10 +169,6 @@
                                             <td><?= $book['date_borrowed'] ?></td>
                                             <td><?= $book['date_return'] ?></td>
                                             <td><?= $book['status'] ?></td>
-                                            <td> <a href="/deleteBorrow/<?= $book['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
-                                            <a href="/editBorrow/<?= $book['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
-                                           
-                                           
                                           
                                      </tr>
                                 <?php endforeach ?>
@@ -254,59 +180,6 @@
                     </div>
                     <!-- /.card -->
                 </div> <!-- /.dito -->
-                    
-                <div class="col-lg-18 mb-4 order-0">
-                <div class="card">
-                  <div class="d-flex align-items-end row">
-                    <div class="col-sm-7">
-                      <div class="card-body">
-                        <h5 class="card-title text-primary">Update Borrow List</h5>
-                      </div>
-                      <form action="/saveBorrowedBook" method="post">
-                    <!-- Add your form fields and content here -->
-                    <div class="form-group margin-left">
-                    <input type="hidden" name="id" value="<?php if (isset($borrowed['id'])) {echo $borrowed['id'];}?>">
-
-                        <label for="book_id">Book Id</label>
-                        <input type="text" class="form-control" id="book_id" name="book_id" placeholder="Enter Book Id"                         
-                        value="<?php if (isset($borrowed['book_id'])) {echo $borrowed['book_id'];}?>" required> 
-
-                        <label for="studIDnum">Student ID Number</label>
-                        <input type="text" class="form-control" id="studIDnum" name="studIDnum" placeholder="Enter Student ID Number"                         
-                        value="<?php if (isset($borrowed['student_id'])) {echo $borrowed['student_id'];}?>" required>
-
-                        <label for="dateBorrowed">Date Borrowed</label>
-                        <input type="datetime-local" class="form-control" id="dateBorrowed" name="dateBorrowed" placeholder="Select Date Borrowed"
-                        value="<?php if (isset($borrowed['date_borrowed'])) {echo $borrowed['date_borrowed'];}?>" required>
-
-                        <label for="dateReturn">Date Return</label>
-                        <input type="datetime-local" class="form-control" id="dateReturn" name="dateReturn" placeholder="Select Date Return"
-                        value="<?php if (isset($borrowed['date_return'])) {echo $borrowed['date_return'];}?>" required>
-
-                        <label for="status">Status</label>
-                                        <select class="form-control" name="status" id="status"                         
-                                        value="<?php if (isset($borrowed['status'])) {echo $borrowed['status'];}?>" required>
-                                            <option value="Pending">Pending</option>
-                                            <option value="On Borrow">On Borrow</option>
-                                            <option value="Returned">Returned</option>
-                                        </select>
-                    </div>
-
-                    <!-- Move the "Save changes" button inside the form -->
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Save changes</button>
-                    </div>
-                </form>
-                    </div>
-                    <div class="col-sm-5 text-center text-sm-left">
-                      <div class="card-body pb-0 px-0 px-md-4">
-                        <img src="../assets/img/illustrations/man-with-laptop-light.png" height="140" alt="View Badge User" data-app-dark-img="illustrations/man-with-laptop-dark.png" data-app-light-img="illustrations/man-with-laptop-light.png" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
 
             </div>
             <!-- / Content -->

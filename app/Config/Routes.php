@@ -88,3 +88,5 @@ $routes->get('/deleteBorrow/(:any)', 'LibraryController::deleteBorrow/$1', ['fil
 $routes->get('/editBorrow/(:any)', 'LibraryController::editBorrow/$1', ['filter' => 'librarian']);
 $routes->get('/deleteBook/(:any)', 'LibraryController::deleteBook/$1', ['filter' => 'librarian']);
 $routes->get('/editBook/(:any)', 'LibraryController::editBook/$1', ['filter' => 'librarian']);
+$routes->get('/books', 'LibraryController::books', ['filter' => 'librarian']);
+$routes->get('/borrowers', 'LibraryController::borrowers', ['filter' => 'librarian']);
