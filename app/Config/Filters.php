@@ -7,6 +7,7 @@ use App\Filters\Admin;
 use App\Filters\Student;
 use App\Filters\Teacher;
 use App\Filters\Librarian;
+use App\Filters\Parents;
 use CodeIgniter\Config\BaseConfig;
 use CodeIgniter\Filters\CSRF;
 use CodeIgniter\Filters\DebugToolbar;
@@ -34,6 +35,7 @@ class Filters extends BaseConfig
         'student'       => Student::class,
         'teacher'       => Teacher::class,
         'librarian'     => Librarian::class,
+        'parents'     => Parents::class,
     ];
 
     /**

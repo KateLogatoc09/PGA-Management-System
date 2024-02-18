@@ -90,3 +90,5 @@ $routes->get('/deleteBook/(:any)', 'LibraryController::deleteBook/$1', ['filter'
 $routes->get('/editBook/(:any)', 'LibraryController::editBook/$1', ['filter' => 'librarian']);
 $routes->get('/books', 'LibraryController::books', ['filter' => 'librarian']);
 $routes->get('/borrowers', 'LibraryController::borrowers', ['filter' => 'librarian']);
+
+$routes->get('/parent', 'ParentController::parent', ['filter' => 'parents']);
