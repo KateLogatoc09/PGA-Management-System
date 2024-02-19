@@ -47,8 +47,10 @@
                                         <th>Place of Publication</th>
                                         <th>Book Category</th>
                                         <th>Book Pages</th>
+                                        <th>Book Quantity</th>
                                         <th>ISBN</th>
                                         <th>Date Published</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -63,8 +65,10 @@
                                             <td><?= $book['place_printed'] ?></td>
                                             <td><?= $book['book_category'] ?></td>
                                             <td><?= $book['book_pages'] ?></td>
+                                            <td><?= $book['book_qty'] ?></td>
                                             <td><?= $book['ISBN'] ?></td>
                                             <td><?= $book['datepublish'] ?></td>
+                                            <td><?= $book['status'] ?></td>
                                             <td> <a href="/deleteBook/<?= $book['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
                                             <a href="/editBook/<?= $book['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
                                      </tr>
@@ -123,6 +127,10 @@ value="<?php if (isset($booke['place_printed'])) {echo $booke['place_printed'];}
                         <input type="number" class="form-control" id="book_pages" name="book_pages" placeholder="Enter Book Pages" 
                         value="<?php if (isset($booke['book_pages'])) {echo $booke['book_pages'];}?>" required>
 
+                        <label for="book_qty">Book Quantity</label>
+                        <input type="number" class="form-control" id="book_qty" name="book_qty" placeholder="Enter Book Quantity" 
+                        value="<?php if (isset($booke['book_qty'])) {echo $booke['book_qty'];}?>" required>
+
                         <label for="ISBN">International Standard Book Number</label>
                         <input type="text" class="form-control" id="ISBN" name="ISBN" placeholder="Enter International Standard Book Number" 
                         value="<?php if (isset($booke['ISBN'])) {echo $booke['ISBN'];}?>" required>
@@ -130,6 +138,14 @@ value="<?php if (isset($booke['place_printed'])) {echo $booke['place_printed'];}
                         <label for="datePublish">Date Publish</label>
                         <input type="date" class="form-control" id="datePublish" name="datePublish" placeholder="Enter Date Publish" 
                         value="<?php if (isset($booke['datepublish'])) {echo $booke['datepublish'];}?>" required>
+
+                        <label for="exampleFormControlSelect1" class="form-label">Status</label>
+                        <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
+                          <option selected>Open this select menu</option>
+                          <option value="AVAILABLE">AVAILABLE</option>
+                          <option value="UNAVAILABLE">UNAVAILABLE</option>
+                        </select>
+                        
                         
   </div>
 </div>

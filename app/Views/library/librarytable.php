@@ -103,8 +103,10 @@
                                         <th>Place of Publication</th>
                                         <th>Book Category</th>
                                         <th>Book Pages</th>
+                                        <th>Book Quantity</th>
                                         <th>ISBN</th>
                                         <th>Date Published</th>
+                                        <th>Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -118,8 +120,10 @@
                                             <td><?= $book['place_printed'] ?></td>
                                             <td><?= $book['book_category'] ?></td>
                                             <td><?= $book['book_pages'] ?></td>
+                                            <td><?= $book['book_qty'] ?></td>
                                             <td><?= $book['ISBN'] ?></td>
                                             <td><?= $book['datepublish'] ?></td>
+                                            <td><?= $book['status'] ?></td>
                                      </tr>
                                 <?php endforeach ?>
                                 </tbody>

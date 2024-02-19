@@ -42,6 +42,10 @@ class Home extends BaseController
     {
         return view('recovery');
     }
+    public function attendance()
+    {
+        return view('attendance');
+    }
 
     
 

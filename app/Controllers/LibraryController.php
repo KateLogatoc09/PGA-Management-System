@@ -102,8 +102,10 @@ class LibraryController extends BaseController
             'place_printed' => $this->request->getPost('place_printed'),
             'book_category' => $this->request->getPost('book_category'),
             'book_pages' => $this->request->getPost('book_pages'),
+            'book_qty' => $this->request->getPost('book_qty'),
             'ISBN' => $this->request->getPost('ISBN'),
             'datepublish' => $this->request->getPost('datePublish'),
+            'status' => $this->request->getPost('status'),
         ];
 
         if ($id != null) {
