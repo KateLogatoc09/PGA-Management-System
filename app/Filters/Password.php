@@ -6,7 +6,7 @@ use CodeIgniter\Filters\FilterInterface;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 
-class Teacher implements FilterInterface
+class Password implements FilterInterface
 {
     /**
      * Do whatever processing this filter needs to do.
@@ -25,11 +25,9 @@ class Teacher implements FilterInterface
      */
     public function before(RequestInterface $request, $arguments = null)
     {
-        if(!session()->has('isLoggedin')) {
-            return redirect()->to('login')->with('msg', "You need to login");
-        } else if(session()->get('role') != 'TEACHER') {
-            return redirect()->back();
-        }
+        if(session()->has('isLoggedin') || !session()->has('once')) {
+            return redirect()->back()->with('msg', "You aren't allowed to access this page.");
+        } 
     }
 
     /**

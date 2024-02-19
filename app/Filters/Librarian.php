@@ -26,7 +26,7 @@ class Librarian implements FilterInterface
     public function before(RequestInterface $request, $arguments = null)
     {
         if(!session()->has('isLoggedin')) {
-            return redirect()->to('login')->with('fail', "You need to login");
+            return redirect()->to('login')->with('msg', "You need to login");
         } else if(session()->get('role') != 'LIBRARIAN') {
             return redirect()->back();
         }

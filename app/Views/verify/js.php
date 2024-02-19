@@ -28,7 +28,6 @@
 
 <!-- Custom JS -->
 <script>
-
 $(document).ready(function(){
             alertify.defaults = {
                 // dialogs defaults

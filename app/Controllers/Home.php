@@ -34,9 +34,13 @@ class Home extends BaseController
     {
         return view('verifying');
     }
-    public function forget()
+    public function forgot()
     {
-        return view('forget');
+        return view('forgot');
+    }
+    public function password()
+    {
+        return view('recovery');
     }
 
     

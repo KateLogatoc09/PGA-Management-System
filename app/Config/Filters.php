@@ -8,6 +8,8 @@ use App\Filters\Student;
 use App\Filters\Teacher;
 use App\Filters\Librarian;
 use App\Filters\Parents;
+use App\Filters\Password;
+use App\Filters\Verify;
 use CodeIgniter\Config\BaseConfig;
 use CodeIgniter\Filters\CSRF;
 use CodeIgniter\Filters\DebugToolbar;
@@ -35,7 +37,9 @@ class Filters extends BaseConfig
         'student'       => Student::class,
         'teacher'       => Teacher::class,
         'librarian'     => Librarian::class,
-        'parents'     => Parents::class,
+        'parents'       => Parents::class,
+        'password'      => Password::class,
+        'verify'        => Verify::class,
     ];
 
     /**

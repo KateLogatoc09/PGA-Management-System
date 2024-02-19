@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class AddBooksModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'addbooks';
+    protected $table            = 'books';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';

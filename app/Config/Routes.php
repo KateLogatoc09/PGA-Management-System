@@ -5,32 +5,35 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
+
+ //FIRST PAGE
 $routes->get('/', 'Home::index');
-$routes->get('/test', 'Home::Test');
-//$routes->get('/admins', 'AdminController::admin');
 
+//PAGES BEFORE LOGIN
 $routes->get('/login', 'Home::logreg', ['filter' => 'loggedin']);
-
 $routes->get('/reg', 'Home::reg', ['filter' => 'loggedin']);
 $routes->get('/about', 'Home::ab');
 $routes->get('/verify', 'Home::verify', ['filter' => 'loggedin']);
-$routes->get('/verifying', 'Home::verifying', ['filter' => 'loggedin']);
-$routes->get('/forget', 'Home::forget');
+$routes->get('/verifying', 'Home::verifying', ['filter' => 'verify']);
+$routes->get('/forgot', 'Home::forgot', ['filter' => 'loggedin']);
+$routes->get('/password', 'Home::password', ['filter' => 'password']);
 
+//ADMIN FIRSTPAGE
 $routes->get('/admins', 'AdminController::index', ['filter' => 'admin']);
+
+//ADMIN ALUMNI
 $routes->get('/alumni', 'AdminController::alumni', ['filter' => 'admin']);
+$routes->post('/saveAlumni', 'AdminController::saveAlumni', ['filter' => 'admin']);
+$routes->get('/deleteAlumni/(:any)', 'AdminController::deleteAlumni/$1', ['filter' => 'admin']);
+$routes->get('/editAlumni/(:any)', 'AdminController::editAlumni/$1', ['filter' => 'admin']);
+
+//ADMIN STUDENT
 $routes->get('/adminstudent', 'AdminController::adminstudent', ['filter' => 'admin']);
 $routes->get('/adminstudinfo', 'AdminController::adminstudinfo', ['filter' => 'admin']);
 $routes->post('/adminfamily', 'AdminController::adminfamily', ['filter' => 'admin']);
 $routes->post('/adminaddress', 'AdminController::adminaddress', ['filter' => 'admin']);
-$routes->post('/saveAlumni', 'AdminController::saveAlumni', ['filter' => 'admin']);
 $routes->post('/saveLearner', 'AdminController::saveLearner', ['filter' => 'admin']);
 $routes->post('/adminadmissions', 'AdminController::adminadmissions', ['filter' => 'admin']);
-$routes->post('/saveAccount', 'AdminController::saveAccount', ['filter' => 'admin']);
-$routes->get('/deleteAccount/(:any)', 'AdminController::deleteAccount/$1', ['filter' => 'admin']);
-$routes->get('/editAccount/(:any)', 'AdminController::editAccount/$1', ['filter' => 'admin']);
-$routes->get('/deleteAlumni/(:any)', 'AdminController::deleteAlumni/$1', ['filter' => 'admin']);
-$routes->get('/editAlumni/(:any)', 'AdminController::editAlumni/$1', ['filter' => 'admin']);
 $routes->get('/deleteAdmissions/(:any)', 'AdminController::deleteAdmissions/$1', ['filter' => 'admin']);
 $routes->get('/editAdmissions/(:any)', 'AdminController::editAdmissions/$1', ['filter' => 'admin']);
 $routes->get('/deleteLearner/(:any)', 'AdminController::deleteLearner/$1', ['filter' => 'admin']);
@@ -46,21 +49,31 @@ $routes->post('/adminsibling', 'AdminController::adminsibling', ['filter' => 'ad
 $routes->get('/deletesibling/(:any)', 'AdminController::deletesibling/$1', ['filter' => 'admin']);
 $routes->get('/editsibling/(:any)', 'AdminController::editsibling/$1', ['filter' => 'admin']);
 
+//ADMIN MANAGE ACCOUNTS
+$routes->post('/saveAccount', 'AdminController::saveAccount', ['filter' => 'admin']);
+$routes->get('/deleteAccount/(:any)', 'AdminController::deleteAccount/$1', ['filter' => 'admin']);
+$routes->get('/editAccount/(:any)', 'AdminController::editAccount/$1', ['filter' => 'admin']);
+
+//ADMIN TEACHER
 $routes->get('/addTeacher', 'AdminController::addTeacher', ['filter' => 'admin']);
 $routes->get('/teach/(:any)', 'AdminController::teach/$1', ['filter' => 'admin']);
 $routes->post('/saveteacher', 'AdminController::save', ['filter' => 'admin']);
 $routes->get('/deleteteacher/(:any)', 'AdminController::delete/$1', ['filter' => 'admin']);
 $routes->get('/editteacher/(:any)', 'AdminController::edit/$1', ['filter' => 'admin']);
 $routes->get('/teacher', 'TeacherController::teacher', ['filter' => 'teacher']);
+
+//ADMIN ENROLL
 $routes->get('/enroll', 'AdminController::enroll', ['filter' => 'admin']);
 $routes->get('/deleteenroll/(:any)', 'AdminController::delete/$1', ['filter' => 'admin']);
 $routes->get('/editenroll/(:any)', 'AdminController::edit/$1', ['filter' => 'admin']);
 
+//STUDENT GRADE
 $routes->get('/graph', 'GradeController::index', ['filter' => 'student']);
 
+//STUDENT PROFILE
 $routes->get('/student', 'StudentController::index', ['filter' => 'student']);
 
-
+//STUDENT ENROLL
 $routes->get('/addenroll', 'EnrollmentController::addenroll', ['filter' => 'student']);
 $routes->get('/enroll/(:any)', 'EnrollmentController::enroll/$1', ['filter' => 'student']);
 $routes->post('/save', 'EnrollmentController::save', ['filter' => 'student']);
@@ -74,11 +87,15 @@ $routes->post('/saveschool', 'EnrollmentController::saveschool', ['filter' => 's
 $routes->post('/registering', 'Authentication::Register', ['filter' => 'loggedin']);
 $routes->get('/logout', 'Authentication::Logout');
 $routes->post('/authenticate', 'Authentication::LoginAuth', ['filter' => 'loggedin']);
+
 //VERIFICATION
 $routes->post('/sending', 'Authentication::sending', ['filter' => 'loggedin']);
 $routes->post('/resend', 'Authentication::resend', ['filter' => 'loggedin']);
 $routes->post('/checking', 'Authentication::checking', ['filter' => 'loggedin']);
+$routes->post('/recovery', 'Authentication::recovery', ['filter' => 'loggedin']);
+$routes->post('/recovering', 'Authentication::recovering', ['filter' => 'loggedin']);
 
+//LIBRARIAN
 $routes->get('/li', 'LibraryController::index', ['filter' => 'librarian']);
 $routes->post('/saveBook', 'LibraryController::saveBook', ['filter' => 'librarian']);
 $routes->post('/saveBorrowedBook', 'LibraryController::saveBorrowedBook', ['filter' => 'librarian']);
@@ -91,4 +108,5 @@ $routes->get('/editBook/(:any)', 'LibraryController::editBook/$1', ['filter' => 
 $routes->get('/books', 'LibraryController::books', ['filter' => 'librarian']);
 $routes->get('/borrowers', 'LibraryController::borrowers', ['filter' => 'librarian']);
 
+//PARENTS
 $routes->get('/parent', 'ParentController::parent', ['filter' => 'parents']);

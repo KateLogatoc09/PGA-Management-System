@@ -19,15 +19,6 @@ class Authentication extends BaseController
   
     }
 
-    public function is_password_strong($password)
-    {
-        if (preg_match('#[0-9]#', $password) && preg_match('#[a-zA-Z]#', $password)) {
-            return TRUE;
-        }
-        return FALSE;
-    }
-
-
     public function Logout() {
         $random = substr(str_shuffle(str_repeat("0123456789abcdefghijklmnopqrstvwxyzABCDEFGHIJKLMNOPQRSTVWXYZ", 60)), 0, 60);
         $newToken = $random;
@@ -282,7 +273,7 @@ class Authentication extends BaseController
         if($check){
             if($check['status'] == 'UNVERIFIED' || $check['status'] == 'INACTIVE') {
                 $mail = new PHPMailer();
-        $mail->isSMTP();
+                $mail->isSMTP();
                 $mail->Host = 'smtp.gmail.com';
                 $mail->SMTPAuth = true;
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
@@ -333,7 +324,7 @@ class Authentication extends BaseController
                     $session->set($ses_data);
                     return redirect()->to('/verifying');
                 }
-            } else if($check['status'] == 'ACTIVE' || $check['status'] == 'PENDING') {
+            } else if($check['status'] == 'ACTIVE' || $check['status'] == 'VERIFIED' || $check['status'] == 'PENDING') {
                 $session->setFlashdata('msg','Account has already been verified.');
                 return redirect()->to('login');
             } else {
@@ -408,11 +399,7 @@ class Authentication extends BaseController
             ];
             $session->set($ses_data);
 
-            if(isset($_SESSION['verifier'])) {
-                return redirect()->to('verifying');
-            } else {
-                return redirect()->to('recovering');
-            }
+            return redirect()->to('verifying');
         }
 
     }
@@ -426,7 +413,7 @@ class Authentication extends BaseController
                 if($role == 'TEACHER' || $role == 'PERSONNEL' || $role == 'PARENT') {
                     $res = $this->acc->set('status', 'PENDING')->where('email', $_SESSION['verifier'])->update();
                     if($res) {
-                        $session->remove(['verifier', 'code']);
+                        unset($_SESSION['verifier']); unset($_SESSION['code']);
                         $session->setFlashdata('msg','Your email was verified successfully. However, further verification are required to gain access to your account. Contact us for more details.');
                         return redirect()->to('contact');
                     } else {
@@ -436,7 +423,7 @@ class Authentication extends BaseController
                 } else {
                     $res = $this->acc->set('status', 'VERIFIED')->where('email', $_SESSION['verifier'])->update();
                     if($res) {
-                        $session->remove(['verifier', 'code']);
+                        unset($_SESSION['verifier']); unset($_SESSION['code']);
                         $session->setFlashdata('msg','Your account was verified successfully.');
                         return redirect()->to('login');
                     } else {
@@ -451,11 +438,113 @@ class Authentication extends BaseController
             }
         } else {
             $session->setFlashdata('msg','Wrong Verification Code.');
-            if(isset($_SESSION['verifier'])) {
-                return redirect()->to('verifying');
+            return redirect()->to('verifying');
+        }
+    }
+
+    //FORGOT
+    public function recovery() {
+
+        $shuffle = substr(str_shuffle(str_repeat("0123456789", 6)), 0, 6);
+        $code = $shuffle;
+
+        $session = session();
+
+        $user = $this->request->getVar('email');
+        $check = $this->acc->where('email', $user)->first();
+        if($check){
+            if($check['status'] != 'BANNED' || !$check['status'] != 'SUSPENDED') {
+                $mail = new PHPMailer();
+                $mail->isSMTP();
+                $mail->Host = 'smtp.gmail.com';
+                $mail->SMTPAuth = true;
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+                $mail->Port = 465;
+                $mail->AuthType = 'XOAUTH2';
+
+                $provider = new Google(
+                    [
+                        'clientId' => '80579387547-1nvlh9celk9oath3ud4c5cng70e85eoa.apps.googleusercontent.com',
+                        'clientSecret' => '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',
+                    ]
+                );
+
+                $mail->setOAuth(
+                    new OAuth(
+                        [
+                            'provider' => $provider,
+                            'clientId' => '80579387547-1nvlh9celk9oath3ud4c5cng70e85eoa.apps.googleusercontent.com',
+                            'clientSecret' => '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',
+                            'refreshToken' => '1//0e81PK8YLhTUECgYIARAAGA4SNwF-L9IrnZji3Qh3a4qdrjZnSsZUbh7HbplDDGo1mn4KiQUIcXydcSQzbSUDKz233CVLOUqRVGA',
+                            'userName' => 'developers.pga@gmail.com',
+                        ]
+                    )
+                );
+
+                //sender information
+                $mail->setFrom('developers.pga@gmail.com', 'PGA developers');
+
+                //receiver email address and name
+                $mail->addAddress($user); 
+
+                $mail->isHTML(true);
+
+                $mail->Subject = 'Verify your account.';
+                $mail->Body    = 'Your verification code is '.$code.'.';
+                
+                // Send mail   
+                if (!$mail->send()) {
+                    $mail->smtpClose();
+                    $session->setFlashdata('msg','Something went wrong. Please try again later.');
+                    return redirect()->to('/forgot');
+                } else {
+                    $mail->smtpClose();
+                    $ses_data = [
+                        'forgot' => $user,
+                        'code' => sha1($code),
+                    ];
+                    $session->set($ses_data);
+                    return redirect()->to('/verifying');
+                }
             } else {
-                return redirect()->to('recovering');
+                $session->setFlashdata('msg','Account might have been suspended or permanently banned.');
+                return redirect()->to('login');
+            }
+
+        } else {
+            $session->setFlashdata('msg','User does not exist.');
+            return redirect()->to('login');
+        } 
+
+    }
+
+    public function recovering() {
+        $session = session();
+        helper(['form']);
+        $rules =[
+            'password' =>'required|min_length[8]|max_length[50]|',
+            'cpassword' => 'matches[password]',
+        ];
+            
+        if($this->validate($rules)){
+            $data =[
+                'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
+            ];
+            
+            if($_SESSION['once'] == sha1('2024P#SSR/C')) {
+                $res = $this->acc->set($data)->where('email', $_SESSION['forgot'])->update();
+                if($res) {
+                    $session->setFlashdata('msg', 'Your oassword was changed sucessfully. You\'re ready for log-in.');
+                    unset($_SESSION['forgot']);
+                    unset($_SESSION['once']);
+                    unset($_SESSION['code']);
+                    return redirect()->to('login');
+                } else {
+                    $session->setFlashdata('msg','Something went wrong. Please try again later.');
+                    return redirect()->to('forgot');
+                }
             }
         }
+
     }
 }
