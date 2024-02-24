@@ -237,7 +237,7 @@ class AdminController extends BaseController
     {
         $data = [
             'currentuser' => $_SESSION['username'],
-            'learner' => $this->admissions->select('*')->join('student_learner','student_learner.account_id = admissions.account_id','inner')->orderBy('student_learner.last_name')->FindAll(),
+            'learner' => $this->admissions->select('*')->join('student_learner','student_learner.account_id = admissions.account_id','right')->orderBy('student_learner.last_name')->FindAll(),
         ];
         return view('adminstudent', $data);
     }
@@ -316,43 +316,94 @@ class AdminController extends BaseController
     public function saveLearner()  {
         $session = session();
         $id = $_POST['id'];
-        $data = [
-            'currentuser' => $_SESSION['username'],
-            'id' => $this->request->getVar('id'),
-            'first_name' => $this->request->getVar('first_name'),
-            'middle_name' => $this->request->getVar('middle_name'),
-            'last_name' => $this->request->getVar('last_name'),
-            'nickname' => $this->request->getVar('nickname'),
-            'age' => $this->request->getVar('age'),
-            'gender' => $this->request->getVar('gender'),
-            'marital_status' => $this->request->getVar('marital_status'),
-            'birthdate' => $this->request->getVar('birthdate'),
-            'birthplace' => $this->request->getVar('birthplace'),
-            'mobile_num' => $this->request->getVar('mobile_num'),
-            'nationality' => $this->request->getVar('nationality'),
-            'religion' => $this->request->getVar('religion'),
-            'account_id' => $this->request->getVar('account_id'),
-        ];
+        $photo = $this->request->getFile('photo');
+        $check = $this->learner->select('photo')->where('account_id',$id)->first();
+        
+        if($photo != null) {
 
-        if ($id != null) {
-            $res = $this->learner->set($data)->where('id', $id)->update();
-            if($res) {
-                $session->setFlashdata('msg','Updated Successfully.');
-                return redirect()->to('adminstudent');
+            if($id != null) {
+                $test = $photo->move(PUBLIC_PATH.'\\account\\'.$id.'\\');
+                $name = $photo->getClientPath();
+                $path = '/account/'.$id.'/'.$name;
             } else {
-                $session->setFlashdata('msg','Something went wrong. Please try again later.');
-                return redirect()->to('adminstudent');
+                $test = $photo->move(PUBLIC_PATH.'\\account\\'.$this->request->getVar('account_id').'\\');
+                $name = $photo->getClientPath();
+                $path = '/account/'.$this->request->getVar('account_id').'/'.$name;
             }
-        } else {
-            $res = $this->learner->save($data);
-            if($res) {
-                $session->setFlashdata('msg','Saved Successfully.');
-                return redirect()->to('adminstudent');
+
+            $data = [
+                'id' => $this->request->getVar('id'),
+                'first_name' => $this->request->getVar('first_name'),
+                'middle_name' => $this->request->getVar('middle_name'),
+                'last_name' => $this->request->getVar('last_name'),
+                'nickname' => $this->request->getVar('nickname'),
+                'age' => $this->request->getVar('age'),
+                'gender' => $this->request->getVar('gender'),
+                'marital_status' => $this->request->getVar('marital_status'),
+                'birthdate' => $this->request->getVar('birthdate'),
+                'birthplace' => $this->request->getVar('birthplace'),
+                'mobile_num' => $this->request->getVar('mobile_num'),
+                'nationality' => $this->request->getVar('nationality'),
+                'religion' => $this->request->getVar('religion'),
+                'photo' => $path,
+                'account_id' => $this->request->getVar('account_id'),
+            ];
+
+            if ($id != null) {
+                if($check) {
+                unlink(PUBLIC_PATH.$check);
+                }
+                $res = $this->learner->set($data)->where('id', $id)->update();
+                if($res) {
+                    $session->setFlashdata('msg','Updated Successfully.');
+                } else {
+                    $session->setFlashdata('msg','Something went wrong. Please try again later.');
+                }
+                
             } else {
-                $session->setFlashdata('msg','Something went wrong. Please try again later.');
-                return redirect()->to('adminstudent');
-            }
-        }  
+                $res = $this->learner->save($data);
+                if($res) {
+                    $session->setFlashdata('msg','Saved Successfully.');
+                } else {
+                    $session->setFlashdata('msg','Something went wrong. Please try again later.');
+                }
+            }  
+        } else  {
+            $data = [
+                'id' => $this->request->getVar('id'),
+                'first_name' => $this->request->getVar('first_name'),
+                'middle_name' => $this->request->getVar('middle_name'),
+                'last_name' => $this->request->getVar('last_name'),
+                'nickname' => $this->request->getVar('nickname'),
+                'age' => $this->request->getVar('age'),
+                'gender' => $this->request->getVar('gender'),
+                'marital_status' => $this->request->getVar('marital_status'),
+                'birthdate' => $this->request->getVar('birthdate'),
+                'birthplace' => $this->request->getVar('birthplace'),
+                'mobile_num' => $this->request->getVar('mobile_num'),
+                'nationality' => $this->request->getVar('nationality'),
+                'religion' => $this->request->getVar('religion'),
+                'account_id' => $this->account->select('id')->where('username', $_SESSION['username'])->first(),
+            ];
+
+            if ($id != null) {
+                $res = $this->learner->set($data)->where('id', $id)->update();
+                if($res) {
+                    $session->setFlashdata('msg','Updated Successfully.');
+                } else {
+                    $session->setFlashdata('msg','Something went wrong. Please try again later.');
+                }
+                
+            } else {
+                $res = $this->learner->save($data);
+                if($res) {
+                    $session->setFlashdata('msg','Saved Successfully.');
+                } else {
+                    $session->setFlashdata('msg','Something went wrong. Please try again later.');
+                }
+            } 
+        }
+        return redirect()->to('adminstudent');
     }
     
     public function deleteLearner($id)
@@ -373,7 +424,7 @@ class AdminController extends BaseController
     {
         $data = [
             'currentuser' => $_SESSION['username'],
-            'learner' => $this->admissions->select('*')->join('student_learner','student_learner.account_id = admissions.account_id','inner')->orderBy('student_learner.last_name')->FindAll(),
+            'learner' => $this->admissions->select('*')->join('student_learner','student_learner.account_id = admissions.account_id','right')->orderBy('student_learner.last_name')->FindAll(),
             'learn' => $this->learner->where('id', $id)->first(),
         ];
 

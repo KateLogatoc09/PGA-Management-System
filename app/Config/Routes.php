@@ -17,6 +17,7 @@ $routes->get('/verify', 'Home::verify', ['filter' => 'loggedin']);
 $routes->get('/verifying', 'Home::verifying', ['filter' => 'verify']);
 $routes->get('/forgot', 'Home::forgot', ['filter' => 'loggedin']);
 $routes->get('/password', 'Home::password', ['filter' => 'password']);
+$routes->get('/qr-generator', 'Home::qr');
 $routes->get('/attendance', 'Home::attendance');
 
 //ATTENDANCE

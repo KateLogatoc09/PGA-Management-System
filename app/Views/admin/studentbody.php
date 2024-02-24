@@ -41,6 +41,7 @@
                             <thead>
                                     <tr>
                                         <th>Id</th>
+                                        <th>Photo</th>
                                         <th>Student Id</th>
                                         <th>First Name</th>
                                         <th>Middle Name</th>
@@ -54,7 +55,7 @@
                                         <th>Mobile Number</th>
                                         <th>Nationality</th>
                                         <th>Religion</th>
-                                        <th>Yaer Level</th>
+                                        <th>Year Level</th>
                                         <th>Section</th>
                                         <th>Account Id</th>
                                         <th>Actions</th>
@@ -64,6 +65,13 @@
                                 <?php foreach ($learner as $le): ?>
                                     <tr>
                                             <td><?= $le['id'] ?></td>
+                                            <td><img
+                                            src="<?= base_url().$le['photo'] ?>"
+                                            alt="user-avatar"
+                                            class="d-block rounded"
+                                            height="100"
+                                            width="100"
+                                            /></td>
                                             <td><?= $le['student_id'] ?></td>
                                             <td><?= $le['first_name'] ?></td>
                                             <td><?= $le['middle_name'] ?></td>
@@ -100,12 +108,47 @@
                       </div>
                   <div class="d-flex">
                     <div class="col-sm-5">
-                    <form action="/saveLearner" method="post">
+                    <form action="/saveLearner" method="post" enctype="multipart/form-data">
                     <!-- Add your form fields and content here -->
 
                     <div class="form-group margin-left">
                     <input type="hidden" class="form-control" name="id"
                                         value="<?php if (isset($learn['id'])) {echo $learn['id'];}?>">
+                                        <center>
+                                        <?php if(isset($learn['photo'])): ?>
+                                            <img
+                                            src="<?= $learn['photo'] ?>"
+                                            alt="user-avatar"
+                                            class="d-block rounded"
+                                            height="100"
+                                            width="100"
+                                            id="uploadedAvatar"
+                                            />
+                                        <?php else: ?>
+                                            <img
+                                            src="<?= base_url() ?>img/user-1.jpg"
+                                            alt="user-avatar"
+                                            class="d-block rounded"
+                                            height="100"
+                                            width="100"
+                                            id="uploadedAvatar"
+                                            />
+                                        <?php endif; ?>
+                                    <div class="button-wrapper my-4">
+                                    <label for="upload" class="btn btn-primary mb-2" tabindex="0">
+                                        <span class="d-none d-sm-block">Upload new photo</span>
+                                        <i class="bx bx-upload d-block d-sm-none"></i>
+                                        <input
+                                        type="file"
+                                        id="upload"
+                                        class="account-file-input"
+                                        hidden
+                                        accept="image/png, image/jpeg"
+                                        name="photo"
+                                        />
+                                    </label>
+                                    </div>
+                                    </center>
                           
                                     <label for="first_name">First Name:</label>
                                         <input type="text" class="form-control" name="first_name" placeholder="Enter First Name"

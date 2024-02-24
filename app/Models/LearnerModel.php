@@ -14,7 +14,7 @@ class LearnerModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = ['first_name','middle_name','last_name','nickname','birthdate','birthplace','age',
-    'gender','marital_status','mobile_num','nationality','religion','account_id'];
+    'gender','marital_status','mobile_num','nationality','religion','photo','account_id'];
 
     // Dates
     protected $useTimestamps = false;

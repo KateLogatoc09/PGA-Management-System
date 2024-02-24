@@ -35,43 +35,87 @@ class EnrollmentController extends BaseController
     public function save()  {
         $session = session();
         $id = $_POST['id'];
-        $data = [
-            'currentuser' => $_SESSION['username'],
-            'id' => $this->request->getVar('id'),
-            'first_name' => $this->request->getVar('first_name'),
-            'middle_name' => $this->request->getVar('middle_name'),
-            'last_name' => $this->request->getVar('last_name'),
-            'nickname' => $this->request->getVar('nickname'),
-            'age' => $this->request->getVar('age'),
-            'gender' => $this->request->getVar('gender'),
-            'marital_status' => $this->request->getVar('marital_status'),
-            'birthdate' => $this->request->getVar('birthdate'),
-            'birthplace' => $this->request->getVar('birthplace'),
-            'mobile_num' => $this->request->getVar('mobile_num'),
-            'nationality' => $this->request->getVar('nationality'),
-            'religion' => $this->request->getVar('religion'),
-            'account_id' => $this->acc->select('id')->where('username', $_SESSION['username'])->first(),
-        ];
+        $photo = $this->request->getFile('photo');
+        $acc = $this->acc->select('id')->where('username', $_SESSION['username'])->first();
+        $check = $this->learner->select('photo')->where('account_id',$acc)->first();
+        
+        if($photo != null) {
 
-        if ($id != null) {
-            $res = $this->learner->set($data)->where('id', $id)->update();
-            if($res) {
-                $session->setFlashdata('msg','Updated Successfully.');
-                return redirect()->to('addenroll');
+            $test = $photo->move(PUBLIC_PATH.'\\account\\'.$acc['id'].'\\');
+            $name = $photo->getClientPath();
+            $path = '/account/'.$acc['id'].'/'.$name;
+
+            $data = [
+                'id' => $this->request->getVar('id'),
+                'first_name' => $this->request->getVar('first_name'),
+                'middle_name' => $this->request->getVar('middle_name'),
+                'last_name' => $this->request->getVar('last_name'),
+                'nickname' => $this->request->getVar('nickname'),
+                'age' => $this->request->getVar('age'),
+                'gender' => $this->request->getVar('gender'),
+                'marital_status' => $this->request->getVar('marital_status'),
+                'birthdate' => $this->request->getVar('birthdate'),
+                'birthplace' => $this->request->getVar('birthplace'),
+                'mobile_num' => $this->request->getVar('mobile_num'),
+                'nationality' => $this->request->getVar('nationality'),
+                'religion' => $this->request->getVar('religion'),
+                'photo' => $path,
+                'account_id' => $this->acc->select('id')->where('username', $_SESSION['username'])->first(),
+            ];
+
+            if ($id != null) {
+                unlink(PUBLIC_PATH.$check);
+                $res = $this->learner->set($data)->where('id', $id)->update();
+                if($res) {
+                    $session->setFlashdata('msg','Updated Successfully.');
+                } else {
+                    $session->setFlashdata('msg','Something went wrong. Please try again later.');
+                }
+                
             } else {
-                $session->setFlashdata('msg','Something went wrong. Please try again later.');
-                return redirect()->to('addenroll');
-            }
-        } else {
-            $res = $this->learner->save($data);
-            if($res) {
-                $session->setFlashdata('msg','Saved Successfully.');
-                return redirect()->to('addenroll');
+                $res = $this->learner->save($data);
+                if($res) {
+                    $session->setFlashdata('msg','Saved Successfully.');
+                } else {
+                    $session->setFlashdata('msg','Something went wrong. Please try again later.');
+                }
+            }  
+        } else  {
+            $data = [
+                'id' => $this->request->getVar('id'),
+                'first_name' => $this->request->getVar('first_name'),
+                'middle_name' => $this->request->getVar('middle_name'),
+                'last_name' => $this->request->getVar('last_name'),
+                'nickname' => $this->request->getVar('nickname'),
+                'age' => $this->request->getVar('age'),
+                'gender' => $this->request->getVar('gender'),
+                'marital_status' => $this->request->getVar('marital_status'),
+                'birthdate' => $this->request->getVar('birthdate'),
+                'birthplace' => $this->request->getVar('birthplace'),
+                'mobile_num' => $this->request->getVar('mobile_num'),
+                'nationality' => $this->request->getVar('nationality'),
+                'religion' => $this->request->getVar('religion'),
+                'account_id' => $this->acc->select('id')->where('username', $_SESSION['username'])->first(),
+            ];
+
+            if ($id != null) {
+                $res = $this->learner->set($data)->where('id', $id)->update();
+                if($res) {
+                    $session->setFlashdata('msg','Updated Successfully.');
+                } else {
+                    $session->setFlashdata('msg','Something went wrong. Please try again later.');
+                }
+                
             } else {
-                $session->setFlashdata('msg','Something went wrong. Please try again later.');
-                return redirect()->to('addenroll');
-            }
-        }  
+                $res = $this->learner->save($data);
+                if($res) {
+                    $session->setFlashdata('msg','Saved Successfully.');
+                } else {
+                    $session->setFlashdata('msg','Something went wrong. Please try again later.');
+                }
+            } 
+        }
+        return redirect()->to('addenroll');
     }
 
     

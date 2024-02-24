@@ -1,5 +1,5 @@
 <?php
-
+defined('PUBLIC_PATH') || define('PUBLIC_PATH', ROOTPATH . 'public');
 /*
  | --------------------------------------------------------------------
  | App Namespace

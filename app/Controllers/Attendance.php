@@ -23,6 +23,6 @@ class Attendance extends BaseController
         $qrcode = new Generator;
         $session = session();
         $session->setFlashdata('qr', $qrcode->size(120)->generate($input));
-        return redirect()->to('attendance');
+        return redirect()->to('qr-generator');
     }
 }

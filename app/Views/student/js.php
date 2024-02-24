@@ -28,7 +28,17 @@
 
 <!-- Custom JS -->
 <script>
+//previmg 
+const prev = document.getElementById('uploadedAvatar');
+    const imginput = document.getElementById('upload');
 
+    imginput.addEventListener('change', function(){
+    const [file] = imginput.files
+    if (file) {
+        prev.src = URL.createObjectURL(file)
+    }
+    });
+    
 $(document).ready(function(){
             alertify.defaults = {
                 // dialogs defaults

@@ -140,8 +140,7 @@ value="<?php if (isset($booke['place_printed'])) {echo $booke['place_printed'];}
                         value="<?php if (isset($booke['datepublish'])) {echo $booke['datepublish'];}?>" required>
 
                         <label for="exampleFormControlSelect1" class="form-label">Status</label>
-                        <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
-                          <option selected>Open this select menu</option>
+                        <select class="form-select" id="exampleFormControlSelect1" name='status' aria-label="Default select example">
                           <option value="AVAILABLE">AVAILABLE</option>
                           <option value="UNAVAILABLE">UNAVAILABLE</option>
                         </select>

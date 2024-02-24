@@ -42,6 +42,7 @@
                                         <th>Id</th>
                                         <th>Book Id</th>
                                         <th>Student ID</th>
+                                        <th>Book Quantity</th>
                                         <th>Date Borrowed</th>
                                         <th>Date Return</th>
                                         <th>Status</th>
@@ -54,6 +55,7 @@
                                             <td><?= $book['id'] ?></td>
                                             <td><?= $book['book_id'] ?></td>
                                             <td><?= $book['student_id'] ?></td>
+                                            <td><?= $book['book_qty'] ?></td>
                                             <td><?= $book['date_borrowed'] ?></td>
                                             <td><?= $book['date_return'] ?></td>
                                             <td><?= $book['status'] ?></td>
@@ -94,23 +96,27 @@
                         <input type="text" class="form-control" id="studIDnum" name="studIDnum" placeholder="Enter Student ID Number"                         
                         value="<?php if (isset($borrowed['student_id'])) {echo $borrowed['student_id'];}?>" required>
 
-                        <label for="dateBorrowed">Date Borrowed</label>
-                        <input type="datetime-local" class="form-control" id="dateBorrowed" name="dateBorrowed" placeholder="Select Date Borrowed"
-                        value="<?php if (isset($borrowed['date_borrowed'])) {echo $borrowed['date_borrowed'];}?>" required>
+                        <label for="book_qty">Book Quantity</label>
+                        <input type="number" class="form-control" id="book_qty" name="book_qty" placeholder="Select Date Borrowed"
+                        value="<?php if (isset($borrowed['book_qty'])) {echo $borrowed['book_qty'];}?>" required>
                         </div>
 </div>
 <div class="col-sm-5 text-center text-sm-left">
   <div class="form-group margin-left">
-  <label for="dateReturn">Date Return</label>
+                        <label for="dateBorrowed">Date Borrowed</label>
+                        <input type="datetime-local" class="form-control" id="dateBorrowed" name="dateBorrowed" placeholder="Select Date Borrowed"
+                        value="<?php if (isset($borrowed['date_borrowed'])) {echo $borrowed['date_borrowed'];}?>" required>
+
+                       <label for="dateReturn">Date Return</label>
                         <input type="datetime-local" class="form-control" id="dateReturn" name="dateReturn" placeholder="Select Date Return"
                         value="<?php if (isset($borrowed['date_return'])) {echo $borrowed['date_return'];}?>" required>
 
                         <label for="status">Status</label>
                                         <select class="form-control" name="status" id="status"                         
                                         value="<?php if (isset($borrowed['status'])) {echo $borrowed['status'];}?>" required>
-                                            <option value="Pending">Pending</option>
-                                            <option value="On Borrow">On Borrow</option>
-                                            <option value="Returned">Returned</option>
+                                            <option value="PENDING">PENDING</option>
+                                            <option value="ON BORROW">ON BORROW</option>
+                                            <option value="RETURNED">RETURNED</option>
                                         </select>
                         
   </div>

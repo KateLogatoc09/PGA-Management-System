@@ -10,7 +10,7 @@
             </div>
             <div class="modal-body">
                 <!-- Your form content goes here -->
-                <form action="/save" method="post">
+                <form action="/save" method="post" enctype="multipart/form-data">
                     <!-- Add your form fields and content here -->
 
                     <div class="form-group">
@@ -18,8 +18,42 @@
                                         <input type="hidden" class="form-control" name="id"
                                         value="<?php if (isset($learner['id'])) {echo $learner['id'];}?>">
                         
+                                        <center>
+                                        <?php if(isset($photo)): ?>
+                                            <img
+                                            src="<?= $photo ?>"
+                                            alt="user-avatar"
+                                            class="d-block rounded"
+                                            height="100"
+                                            width="100"
+                                            id="uploadedAvatar"
+                                            />
+                                        <?php else: ?>
+                                            <img
+                                            src="<?= base_url() ?>img/user-1.jpg"
+                                            alt="user-avatar"
+                                            class="d-block rounded"
+                                            height="100"
+                                            width="100"
+                                            id="uploadedAvatar"
+                                            />
+                                        <?php endif; ?>
+                                    <div class="button-wrapper my-4">
+                                    <label for="upload" class="btn btn-primary mb-2" tabindex="0">
+                                        <span class="d-none d-sm-block">Upload new photo</span>
+                                        <i class="bx bx-upload d-block d-sm-none"></i>
+                                        <input
+                                        type="file"
+                                        id="upload"
+                                        class="account-file-input"
+                                        hidden
+                                        accept="image/png, image/jpeg"
+                                        name="photo"
+                                        />
+                                    </label>
+                                    </div>
+                                    </center>
 
-                            
                                     <label for="first_name">First Name:</label>
                                         <input type="text" class="form-control" name="first_name" placeholder="Enter First Name">
                         
