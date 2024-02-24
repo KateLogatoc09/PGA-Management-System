@@ -8,6 +8,11 @@ use App\Filters\Student;
 use App\Filters\Teacher;
 use App\Filters\Librarian;
 use App\Filters\Parents;
+use App\Filters\Registrar;
+use App\Filters\DAC;
+use App\Filters\IAC;
+use App\Filters\SAC;
+use App\Filters\AAC;
 use App\Filters\Password;
 use App\Filters\Verify;
 use CodeIgniter\Config\BaseConfig;
@@ -38,6 +43,11 @@ class Filters extends BaseConfig
         'teacher'       => Teacher::class,
         'librarian'     => Librarian::class,
         'parents'       => Parents::class,
+        'registrar'     => Registrar::class,
+        'DAC'           => DAC::class,
+        'IAC'           => IAC::class,
+        'SAC'           => SAC::class,
+        'AAC'           => AAC::class,
         'password'      => Password::class,
         'verify'        => Verify::class,
     ];

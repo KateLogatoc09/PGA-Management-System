@@ -74,6 +74,24 @@ class Authentication extends BaseController
                         else if($_SESSION['role'] == 'PARENT'){
                             return redirect()->to('/parent');
                         }
+                        else if($_SESSION['role'] == 'DAC'){
+                            return redirect()->to('/DAC');
+                        }
+                        else if($_SESSION['role'] == 'IAC'){
+                            return redirect()->to('/IAC');
+                        }
+                        else if($_SESSION['role'] == 'SAC'){
+                            return redirect()->to('/SAC');
+                        }
+                        else if($_SESSION['role'] == 'SAC'){
+                            return redirect()->to('/SAC');
+                        }
+                        else if($_SESSION['role'] == 'AAC'){
+                            return redirect()->to('/AAC');
+                        }
+                        else if($_SESSION['role'] == 'REGISTRAR'){
+                            return redirect()->to('/registrar');
+                        }
                         else{
                             return redirect()->to('/admins');
                         }
@@ -105,6 +123,21 @@ class Authentication extends BaseController
                         }
                         else if($_SESSION['role'] == 'PARENT'){
                             return redirect()->to('/parent');
+                        }
+                        else if($_SESSION['role'] == 'DAC'){
+                            return redirect()->to('/DAC');
+                        }
+                        else if($_SESSION['role'] == 'IAC'){
+                            return redirect()->to('/IAC');
+                        }
+                        else if($_SESSION['role'] == 'SAC'){
+                            return redirect()->to('/SAC');
+                        }
+                        else if($_SESSION['role'] == 'AAC'){
+                            return redirect()->to('/AAC');
+                        }
+                        else if($_SESSION['role'] == 'REGISTRAR'){
+                            return redirect()->to('/registrar');
                         }
                         else{
                             return redirect()->to('/admins');
@@ -163,6 +196,21 @@ class Authentication extends BaseController
                         else if($_SESSION['role'] == 'PARENT'){
                             return redirect()->to('/parent');
                         }
+                        else if($_SESSION['role'] == 'DAC'){
+                            return redirect()->to('/DAC');
+                        }
+                        else if($_SESSION['role'] == 'IAC'){
+                            return redirect()->to('/IAC');
+                        }
+                        else if($_SESSION['role'] == 'SAC'){
+                            return redirect()->to('/SAC');
+                        }
+                        else if($_SESSION['role'] == 'AAC'){
+                            return redirect()->to('/AAC');
+                        }
+                        else if($_SESSION['role'] == 'REGISTRAR'){
+                            return redirect()->to('/registrar');
+                        }
                         else{
                             return redirect()->to('/admins');
                         }
@@ -194,6 +242,21 @@ class Authentication extends BaseController
                         }
                         else if($_SESSION['role'] == 'PARENT'){
                             return redirect()->to('/parent');
+                        }
+                        else if($_SESSION['role'] == 'DAC'){
+                            return redirect()->to('/DAC');
+                        }
+                        else if($_SESSION['role'] == 'IAC'){
+                            return redirect()->to('/IAC');
+                        }
+                        else if($_SESSION['role'] == 'SAC'){
+                            return redirect()->to('/SAC');
+                        }
+                        else if($_SESSION['role'] == 'AAC'){
+                            return redirect()->to('/AAC');
+                        }
+                        else if($_SESSION['role'] == 'REGISTRAR'){
+                            return redirect()->to('/registrar');
                         }
                         else{
                             return redirect()->to('/admins');
@@ -410,7 +473,7 @@ class Authentication extends BaseController
         if(sha1($code) == $_SESSION['code']) {
             if(isset($_SESSION['verifier'])) {
                 $role = $this->acc->select('role')->where('email', $_SESSION['verifier'])->first();
-                if($role == 'TEACHER' || $role == 'PERSONNEL' || $role == 'PARENT') {
+                if($role == 'TEACHER' || $role == 'PERSONNEL' || $role == 'PARENT' || $role == 'DAC' || $role == 'IAC' || $role == 'SAC' || $role == 'AAC' || $role == 'REGISTRAR') {
                     $res = $this->acc->set('status', 'PENDING')->where('email', $_SESSION['verifier'])->update();
                     if($res) {
                         unset($_SESSION['verifier']); unset($_SESSION['code']);

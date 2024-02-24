@@ -115,3 +115,18 @@ $routes->get('/borrowers', 'LibraryController::borrowers', ['filter' => 'librari
 
 //PARENTS
 $routes->get('/parent', 'ParentController::parent', ['filter' => 'parents']);
+
+//REGISTRAR
+$routes->get('/registrar', 'RegistrarController::registrar', ['filter' => 'registrar']);
+
+//DAC
+$routes->get('/DAC', 'DACController::DAC', ['filter' => 'DAC']);
+
+//IAC
+$routes->get('/IAC', 'IACController::IAC', ['filter' => 'IAC']);
+
+//SAC
+$routes->get('/SAC', 'SACController::SAC', ['filter' => 'SAC']);
+
+//AAC
+$routes->get('/AAC', 'AACController::AAC', ['filter' => 'AAC']);

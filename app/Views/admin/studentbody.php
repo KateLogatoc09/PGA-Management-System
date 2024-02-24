@@ -169,8 +169,11 @@
                                     <label for="age">Age:</label>
                                         <input type="number" class="form-control" name="age" placeholder="Enter Age"
                                         value="<?php if (isset($learn['age'])) {echo $learn['age'];}?>">
-                            
-                                    <label for="gender">Gender:</label>
+                        </div>
+</div>
+<div class="col-sm-5 text-center text-sm-left">
+  <div class="form-group margin-left">
+  <label for="gender">Gender:</label>
                                         <select class="form-control" name="gender" id="gender" 
                                         value="<?php if (isset($learn['gender'])) {echo $learn['gender'];}?>">
                                             <option value="Male">Male</option>
@@ -185,10 +188,6 @@
                                             <option value="Separated">Separated</option>
                                             <option value="Widow">Widow</option>
                                         </select>
-                        </div>
-</div>
-<div class="col-sm-5 text-center text-sm-left">
-  <div class="form-group margin-left">
   <label for="birthdate">Birthdate:</label>
                                         <input type="date" class="form-control" name="birthdate" placeholder="Enter Birthdate"
                                         value="<?php if (isset($learn['birthdate'])) {echo $learn['birthdate'];}?>">
