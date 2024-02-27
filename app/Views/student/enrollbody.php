@@ -59,11 +59,11 @@
                       </div>
                       <?= $this->include('student/enrollment/school') ?>
                     </div>
-
+                    <h7 class="note">Note: Please make sure that you have filled all of the forms or the enrollment will be disregarded</h7>
                   </div>
                 </div>
               </div>
-                
+              <a href="/confirm" class="btn btn-primary sub">Submit</a>
               
                     </div>
                     <!-- /.card -->

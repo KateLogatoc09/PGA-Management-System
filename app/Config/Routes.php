@@ -80,6 +80,7 @@ $routes->get('/student', 'StudentController::index', ['filter' => 'student']);
 
 //STUDENT ENROLL
 $routes->get('/addenroll', 'EnrollmentController::addenroll', ['filter' => 'student']);
+$routes->get('/confirm', 'EnrollmentController::confirm', ['filter' => 'student']);
 $routes->get('/enroll/(:any)', 'EnrollmentController::enroll/$1', ['filter' => 'student']);
 $routes->post('/save', 'EnrollmentController::save', ['filter' => 'student']);
 $routes->post('/savefamily', 'EnrollmentController::savefamily', ['filter' => 'student']);

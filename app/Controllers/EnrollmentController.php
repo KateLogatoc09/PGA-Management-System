@@ -32,6 +32,11 @@ class EnrollmentController extends BaseController
         return view('enrollment');
     }
 
+    public function confirm()
+    {
+        return view('confirm');
+    }
+
     public function save()  {
         $session = session();
         $id = $_POST['id'];

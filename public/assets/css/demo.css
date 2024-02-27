@@ -169,6 +169,22 @@
   background-color: #0056b3;
 }
 
+.sub {
+  margin-left: 25%;
+  width: 50%;
+}
+
+.note{
+  margin-left: 2%;
+  color: #007bff;
+}
+
+i.menu-icon.tf-icons.bx.bx-calendar-check {
+  margin-bottom: 3%;
+  font-size: 100px;
+  margin-left: 45%;
+}
+
 
 
 
