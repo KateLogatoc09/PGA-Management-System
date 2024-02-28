@@ -14,7 +14,7 @@ class AdmissionsModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = ['student_id', 'section', 'category','yr_lvl','program', 'status',
-    'birth_cert', 'report_card', 'good_moral','account_id'];
+    'birth_cert', 'report_card', 'good_moral', 'photo','account_id'];
 
     // Dates
     protected $useTimestamps = false;

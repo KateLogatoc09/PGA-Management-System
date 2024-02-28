@@ -1,0 +1,86 @@
+CRITICAL - 2024-02-28 00:08:54 --> invalid_grant
+in VENDORPATH\league\oauth2-google\src\Provider\Google.php on line 118.
+ 1 VENDORPATH\league\oauth2-client\src\Provider\AbstractProvider.php(726): League\OAuth2\Client\Provider\Google->checkResponse(Object(GuzzleHttp\Psr7\Response), [...])
+ 2 VENDORPATH\league\oauth2-client\src\Provider\AbstractProvider.php(635): League\OAuth2\Client\Provider\AbstractProvider->getParsedResponse(Object(GuzzleHttp\Psr7\Request))
+ 3 VENDORPATH\phpmailer\phpmailer\src\OAuth.php(115): League\OAuth2\Client\Provider\AbstractProvider->getAccessToken(Object(League\OAuth2\Client\Grant\RefreshToken), [...])
+ 4 VENDORPATH\phpmailer\phpmailer\src\OAuth.php(128): PHPMailer\PHPMailer\OAuth->getToken()
+ 5 VENDORPATH\phpmailer\phpmailer\src\SMTP.php(618): PHPMailer\PHPMailer\OAuth->getOauth64()
+ 6 VENDORPATH\phpmailer\phpmailer\src\PHPMailer.php(2262): PHPMailer\PHPMailer\SMTP->authenticate('', '', 'XOAUTH2', Object(PHPMailer\PHPMailer\OAuth))
+ 7 VENDORPATH\phpmailer\phpmailer\src\PHPMailer.php(2062): PHPMailer\PHPMailer\PHPMailer->smtpConnect([])
+ 8 VENDORPATH\phpmailer\phpmailer\src\PHPMailer.php(1689): PHPMailer\PHPMailer\PHPMailer->smtpSend('Date: Wed, 28 Feb 2024 00:08:52 +0000
+To: luecozroyale@gmail.com
+From: PGA developers <developers.pga@gmail.com>
+Subject: Verify your account.
+Message-ID: <vi4zX1CTUrgc7UkAOHsZcFqplCioz7u8C2iJN02Gw@localhost>
+X-Mailer: PHPMailer 6.9.1 (https://github.com/PHPMailer/PHPMailer)
+MIME-Version: 1.0
+Content-Type: text/html; charset=iso-8859-1
+
+', 'Your verification code is 368459.
+')
+ 9 VENDORPATH\phpmailer\phpmailer\src\PHPMailer.php(1523): PHPMailer\PHPMailer\PHPMailer->postSend()
+10 APPPATH\Controllers\Authentication.php(377): PHPMailer\PHPMailer\PHPMailer->send()
+11 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\Authentication->sending()
+12 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Authentication))
+13 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+14 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+15 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-02-28 01:55:20 --> Undefined variable $data
+in APPPATH\Views\enrollment.php on line 25.
+ 1 APPPATH\Views\enrollment.php(25): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\laragon\\www\\PGA-Management-System\\app\\Views\\enrollment.php', 25)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\enrollment.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('enrollment', [], true)
+ 5 APPPATH\Controllers\EnrollmentController.php(78): view('enrollment', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\EnrollmentController->addenroll()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EnrollmentController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-02-28 01:56:39 --> syntax error, unexpected end of file, expecting "elseif" or "else" or "endif"
+in APPPATH\Views\enrollment.php on line 95.
+ 1 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('enrollment', [], true)
+ 3 APPPATH\Controllers\EnrollmentController.php(78): view('enrollment', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\EnrollmentController->addenroll()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EnrollmentController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-02-28 06:20:37 --> Call to a member function move() on null
+in APPPATH\Controllers\EnrollmentController.php on line 223.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\EnrollmentController->saveadmissions()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EnrollmentController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+ERROR - 2024-02-28 06:22:29 --> mysqli_sql_exception: Column 'category' cannot be null in C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `ad...', 0)
+#1 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ad...')
+#2 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ad...')
+#3 C:\laragon\www\PGA-Management-System\system\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ad...', Array, false)
+#4 C:\laragon\www\PGA-Management-System\system\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\PGA-Management-System\system\BaseModel.php(788): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\PGA-Management-System\system\Model.php(715): CodeIgniter\BaseModel->insert(Array, false)
+#7 C:\laragon\www\PGA-Management-System\system\BaseModel.php(698): CodeIgniter\Model->insert(Array, false)
+#8 C:\laragon\www\PGA-Management-System\app\Controllers\EnrollmentController.php(263): CodeIgniter\BaseModel->save(Array)
+#9 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(919): App\Controllers\EnrollmentController->saveadmissions()
+#10 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EnrollmentController))
+#11 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\laragon\www\PGA-Management-System\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#13 C:\laragon\www\PGA-Management-System\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#14 {main}
+CRITICAL - 2024-02-28 06:22:29 --> Column 'category' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `admissions` (`category`, `yr_lvl`, `program`, `birth_cert`, `report_card`, `good_moral`, `photo`, `account_id`) VALUES (:category:, :yr_lvl:, :program:, :birth_cert:, :report_card:, :good_moral:, :photo:, :account_id:)', [...], false)
+ 2 SYSTEMPATH\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(788): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(715): CodeIgniter\BaseModel->insert([...], false)
+ 5 SYSTEMPATH\BaseModel.php(698): CodeIgniter\Model->insert([...], false)
+ 6 APPPATH\Controllers\EnrollmentController.php(263): CodeIgniter\BaseModel->save([...])
+ 7 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\EnrollmentController->saveadmissions()
+ 8 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EnrollmentController))
+ 9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')

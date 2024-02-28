@@ -10,7 +10,7 @@
             </div>
             <div class="modal-body">
                 <!-- Your form content goes here -->
-                <form action="/saveadmissions" method="post">
+                <form action="/saveadmissions" method="post" enctype="multipart/form-data">
                     <!-- Add your form fields and content here -->
 
                     <div class="form-group">
@@ -50,6 +50,42 @@
                                             <option value="ABM">ABM</option>
                                             <option value="HUMMS">HUMMS</option>
                                         </select>
+
+                                        <label for="birth" class="hidden" id="birthlabel">Birth Certificate:</label>
+                                        <input
+                                        type="file"
+                                        class="form-control hidden"
+                                        id="birth"
+                                        accept="image/png, image/jpeg"
+                                        name="birth"
+                                        />
+
+                                        <label for="report" class="hidden" id="reportlabel">Report Card:</label>
+                                        <input
+                                        type="file"
+                                        class="form-control hidden"
+                                        id="report"
+                                        accept="image/png, image/jpeg"
+                                        name="report"
+                                        />
+
+                                        <label for="moral" class="hidden" id="morallabel">Good Moral:</label>
+                                        <input
+                                        type="file"
+                                        class="form-control hidden"
+                                        id="moral"
+                                        accept="image/png, image/jpeg"
+                                        name="moral"
+                                        />
+
+                                        <label for="2by2" class="hidden" id="2by2label">2x2 Photo:</label>
+                                        <input
+                                        type="file"
+                                        class="form-control hidden"
+                                        id="2by2"
+                                        accept="image/png, image/jpeg"
+                                        name="2by2"
+                                        />
                     </div>
                     
                     <!-- Add other form fields as needed -->

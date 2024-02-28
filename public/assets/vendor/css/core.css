@@ -18011,3 +18011,6 @@ html:not(.layout-footer-fixed) .content-wrapper {
 .btn-form:hover {
   color: #d95700;
 }
+.hidden {
+  display: none !important;
+}

@@ -38,6 +38,41 @@ const prev = document.getElementById('uploadedAvatar');
         prev.src = URL.createObjectURL(file)
     }
     });
+
+//Continuing
+const categ = document.getElementById('category');
+
+const detect = function () { 
+    if (categ.value == "Transferee") {
+        document.getElementById("birth").classList.remove("hidden");
+        document.getElementById("report").classList.remove("hidden");
+        document.getElementById("moral").classList.remove("hidden");
+        document.getElementById("2by2").classList.remove("hidden");
+        document.getElementById("birth").required = true;
+        document.getElementById("report").required = true;
+        document.getElementById("moral").required = true;
+        document.getElementById("2by2").required = true;
+        document.getElementById("birthlabel").classList.remove("hidden");
+        document.getElementById("reportlabel").classList.remove("hidden");
+        document.getElementById("morallabel").classList.remove("hidden");
+        document.getElementById("2by2label").classList.remove("hidden");
+    } else {
+        document.getElementById("birth").classList.add("hidden");
+        document.getElementById("report").classList.add("hidden");
+        document.getElementById("moral").classList.add("hidden");
+        document.getElementById("2by2").classList.add("hidden");
+        document.getElementById("birth").required = false;
+        document.getElementById("report").required = false;
+        document.getElementById("moral").required = false;
+        document.getElementById("2by2").required = false;
+        document.getElementById("birthlabel").classList.add("hidden");
+        document.getElementById("reportlabel").classList.add("hidden");
+        document.getElementById("morallabel").classList.add("hidden");
+        document.getElementById("2by2label").classList.add("hidden");
+    }
+}
+
+categ.addEventListener('change', detect);
     
 $(document).ready(function(){
             alertify.defaults = {

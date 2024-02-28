@@ -43,7 +43,7 @@ class Mailing extends BaseController
                     'provider' => $provider,
                     'clientId' => '80579387547-1nvlh9celk9oath3ud4c5cng70e85eoa.apps.googleusercontent.com',
                     'clientSecret' => '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',
-                    'refreshToken' => '1//0e81PK8YLhTUECgYIARAAGA4SNwF-L9IrnZji3Qh3a4qdrjZnSsZUbh7HbplDDGo1mn4KiQUIcXydcSQzbSUDKz233CVLOUqRVGA',
+                    'refreshToken' => '1//0gEXq5M_HNKxPCgYIARAAGBASNwF-L9IrD7uHL_3rMFWrJKDq-DZn2c6gLrKOVZ3vGTASBmFWQJvq_ErmjVqbC-2NfKFOWOPee7I',
                     'userName' => 'developers.pga@gmail.com',
                 ]
             )

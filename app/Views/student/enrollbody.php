@@ -28,9 +28,9 @@
                     <div class="col-sm-7">
                       <div class="card-body">
                         <h5 class="card-title text-primary">Student Information</h5>
-                        <a href="javascript:;" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#learnerModal">Learner Info</a>
-                        <a href="javascript:;" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#addressModal">Addresses</a>
-                        <a href="javascript:;" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#admissionModal">Admission Info</a>
+                        <a href="javascript:;" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#learnerModal" aria-disabled="<?php ($learn == 'False' ? 'false' : 'true') ?>">Learner Info</a>
+                        <a href="javascript:;" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#addressModal" aria-disabled="<?php ($learn == 'True' && $address != 'True' ? 'false' : 'true') ?>">Addresses</a>
+                        <a href="javascript:;" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#admissionModal" aria-disabled="<?php ($address == 'True' && $admission != 'True' ? 'false' : 'true') ?>">Admission Info</a>
                       </div>
                       <?= $this->include('student/enrollment/learner') ?>
                       <?= $this->include('student/enrollment/address') ?>
@@ -40,10 +40,10 @@
                     <div class="col-sm-7">
                       <div class="card-body">
                         <h5 class="card-title text-primary">Family Information</h5>
-                        <a href="javascript:;" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#FamilyModal">Parent Info</a>
+                        <a href="javascript:;" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#FamilyModal" aria-disabled="<?php ($admission == 'True' && $family != 'True' ? 'false' : 'true') ?>">Parent Info</a>
                         <p class="mb-10">
                           If you have siblings presently enrolled in PGA fill up the form below:<br>
-                            <a href="javascript:;" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#siblingModal">Sibling Info</a>
+                            <a href="javascript:;" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#siblingModal" aria-disabled="<?php ($family == 'True' && $sibling != 'True' ? 'false' : 'true') ?>">Sibling Info</a>
                         </p>
                       </div>
 
@@ -55,7 +55,7 @@
                     <div class="col-sm-7">
                       <div class="card-body">
                         <h5 class="card-title text-primary">Schools Attendend Information</h5>
-                        <a href="javascript:;" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#schoolModal">School Info</a>
+                        <a href="javascript:;" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#schoolModal" aria-disabled="<?php ($sibling == 'True' && $school != 'True' ? 'false' : 'true') ?>">School Info</a>
                       </div>
                       <?= $this->include('student/enrollment/school') ?>
                     </div>
