@@ -41,6 +41,7 @@
                             <thead>
                                     <tr>
                                         <th>Id</th>
+                                        <th>2x2 ID</th>
                                         <th>Student ID</th>
                                         <th>First Name</th>
                                         <th>Middle Name</th>
@@ -49,6 +50,9 @@
                                         <th>Year Level</th>
                                         <th>Section</th>
                                         <th>Program</th>
+                                        <th>Birth Certificate</th>
+                                        <th>Report Card</th>
+                                        <th>Good Moral</th>
                                         <th>Status</th>
                                         <th>Account Id</th>
                                     </tr>
@@ -57,6 +61,13 @@
                                 <?php foreach ($student as $ad): ?>
                                     <tr>
                                             <td><?= $ad['id'] ?></td>
+                                            <td><img
+                                            src="<?= base_url().$ad['photo'] ?>"
+                                            alt="user-avatar"
+                                            class="d-block rounded"
+                                            height="100"
+                                            width="100"
+                                            /></td>
                                             <td><?= $ad['student_id'] ?></td>
                                             <td><?= $ad['first_name'] ?></td>
                                             <td><?= $ad['middle_name'] ?></td>
@@ -65,6 +76,27 @@
                                             <td><?= $ad['yr_lvl'] ?></td>
                                             <td><?= $ad['section'] ?></td>
                                             <td><?= $ad['program'] ?></td>
+                                            <td><img
+                                            src="<?= base_url().$ad['birth_cert'] ?>"
+                                            alt="user-avatar"
+                                            class="d-block rounded"
+                                            height="100"
+                                            width="100"
+                                            /></td>
+                                            <td><img
+                                            src="<?= base_url().$ad['report_card'] ?>"
+                                            alt="user-avatar"
+                                            class="d-block rounded"
+                                            height="100"
+                                            width="100"
+                                            /></td>
+                                            <td><img
+                                            src="<?= base_url().$ad['good_moral'] ?>"
+                                            alt="user-avatar"
+                                            class="d-block rounded"
+                                            height="100"
+                                            width="100"
+                                            /></td>
                                             <td><?= $ad['status'] ?></td>
                                             <td><?= $ad['account_id'] ?></td>
                                             <td> <a href="/deleteAdmissions/<?= $ad['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
@@ -174,6 +206,9 @@
                                             <option value="ENROLLED">Enrolled</option>
                                             <option value="REJECTED">Rejected</option>
                                         </select>
+
+                                        <!--<label for="birth_cert">Birth Certificate:</label>
+                                        <input type="file" id="upload" accept="image/png, image/jpeg" name="birth_cert"/>-->
 
                                         <label for="account_id">Account Id</label>
                         <input type="text" class="form-control" id="account_id" name="account_id" placeholder="Enter Account Id"                         

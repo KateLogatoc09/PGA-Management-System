@@ -1,0 +1,16 @@
+CRITICAL - 2024-03-02 03:15:59 --> Undefined variable $le
+in APPPATH\Views\admin\studentadmissions.php on line 69.
+ 1 APPPATH\Views\admin\studentadmissions.php(69): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $le', 'C:\\laragon\\www\\PGA-Management-System\\app\\Views\\admin\\studentadmissions.php', 69)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\admin\\studentadmissions.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(467): CodeIgniter\View\View->render('admin/studentadmissions', null, true)
+ 5 APPPATH\Views\admininfoadmissions.php(2): CodeIgniter\View\View->include('admin/studentadmissions')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\admininfoadmissions.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admininfoadmissions', [], true)
+ 9 APPPATH\Controllers\AdminController.php(253): view('admininfoadmissions', [...])
+10 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->admininfoadmissions()
+11 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+12 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
