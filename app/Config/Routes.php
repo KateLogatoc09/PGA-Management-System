@@ -32,6 +32,9 @@ $routes->post('/saveAlumni', 'AdminController::saveAlumni', ['filter' => 'admin'
 $routes->get('/deleteAlumni/(:any)', 'AdminController::deleteAlumni/$1', ['filter' => 'admin']);
 $routes->get('/editAlumni/(:any)', 'AdminController::editAlumni/$1', ['filter' => 'admin']);
 
+//ADMIN MAIL
+$routes->get('/email', 'AdminController::mail', ['filter' => 'admin']);
+
 //ADMIN STUDENT
 $routes->get('/adminstudent', 'AdminController::adminstudent', ['filter' => 'admin']);
 $routes->get('/adminstudinfo', 'AdminController::adminstudinfo', ['filter' => 'admin']);

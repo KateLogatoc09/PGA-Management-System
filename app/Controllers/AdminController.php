@@ -33,7 +33,6 @@ class AdminController extends BaseController
     public function index()
     {
             $data = [
-                'currentuser' => $_SESSION['username'],
                 'account' => $this->account->findAll(),
                 ];
             return view ('admin', $data);
@@ -42,7 +41,6 @@ class AdminController extends BaseController
     public function alumni()
     {
             $data = [
-                'currentuser' => $_SESSION['username'],
                 'alumni' => $this->alumni->findAll(),
                 ];
             return view ('alumni', $data);
@@ -51,10 +49,14 @@ class AdminController extends BaseController
     public function addTeacher()
     {
             $data = [
-                'currentuser' => $_SESSION['username'],
                 'teacher' => $this->teacher->findAll(),
                 ];
                 return view('adminteach', $data);
+    }
+
+    public function mail()
+    {
+            return view ('email');
     }
 
     public function save()  {

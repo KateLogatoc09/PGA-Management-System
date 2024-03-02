@@ -88,6 +88,12 @@
                     <div data-i18n="Analytics">Alumni</div>
                   </a>
                 </li>
+
+                <li class="menu-item">
+                  <a href="/email" class="menu-link">
+                    <div data-i18n="Analytics">Mail</div>
+                  </a>
+                </li>
                 
          
               </ul>
