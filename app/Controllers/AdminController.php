@@ -12,11 +12,13 @@ use App\Models\AdmissionsModel;
 use App\Models\SiblingModel;
 use App\Models\FamilyModel;
 use App\Models\SchoolAttendedModel;
+use App\Models\Sections;
+use App\Models\Subjects;
 
 class AdminController extends BaseController
 {
     
-    private $teacher, $alumni, $account, $learner, $family, $address, $admissions, $sibling, $school;
+    private $teacher, $alumni, $account, $learner, $family, $address, $admissions, $sibling, $school, $sections, $subjects;
     public function __construct()
     {
         $this->teacher = new TeacherModel();
@@ -28,6 +30,8 @@ class AdminController extends BaseController
         $this->admissions = new AdmissionsModel();
         $this->sibling = new SiblingModel();
         $this->school = new SchoolAttendedModel();
+        $this->sections = new Sections();
+        $this->subjects = new Subjects();
     }
 
     public function index()
@@ -107,7 +111,6 @@ class AdminController extends BaseController
     public function edit($id)
     {
         $data = [
-            'currentuser' => $_SESSION['username'],
             'teacher' => $this->teacher->findAll(),
             'prof' => $this->teacher->where('id', $id)->first(),
         ];
@@ -168,7 +171,6 @@ class AdminController extends BaseController
     public function editAlumni($id)
     {
         $data = [
-            'currentuser' => $_SESSION['username'],
             'alumni' => $this->alumni->findAll(),
             'alum' => $this->alumni->where('id', $id)->first(),
         ];
@@ -226,7 +228,6 @@ class AdminController extends BaseController
     public function editAccount($id)
     {
         $data = [
-            'currentuser' => $_SESSION['username'],
             'account' => $this->account->findAll(),
             'acc' => $this->account->where('id', $id)->first(),
         ];
@@ -238,7 +239,6 @@ class AdminController extends BaseController
     public function adminstudent()
     {
         $data = [
-            'currentuser' => $_SESSION['username'],
             'learner' => $this->admissions->select('*')->join('student_learner','student_learner.account_id = admissions.account_id','right')->orderBy('student_learner.last_name')->FindAll(),
         ];
         return view('adminstudent', $data);
@@ -247,7 +247,7 @@ class AdminController extends BaseController
     public function admininfoadmissions()
     {
         $data = [
-            'currentuser' => $_SESSION['username'],
+            'stud_section' => $this->sections->findAll(),
             'student' => $this->learner->select('*')->join('admissions','admissions.account_id = student_learner.account_id','inner')->orderBy('student_learner.last_name')->FindAll(),
         ];
         return view('admininfoadmissions', $data);
@@ -264,6 +264,7 @@ class AdminController extends BaseController
             'section' => $this->request->getVar('section'),
             'program' => $this->request->getVar('program'),
             'status' => $this->request->getVar('status'),
+            'schedule' => $this->request->getVar('schedule'),
             'account_id' => $this->request->getVar('account_id'),
         ];
 
@@ -305,7 +306,7 @@ class AdminController extends BaseController
     public function editAdmissions($id)
     {
         $data = [
-            'currentuser' => $_SESSION['username'],
+            'stud_section' => $this->sections->findAll(),
             'admissions' => $this->admissions->where('id', $id)->first(),
             'student' => $this->learner->select('*')->join('admissions','admissions.account_id = student_learner.account_id','inner')->orderBy('student_learner.last_name')->FindAll(),
         ];
@@ -425,7 +426,6 @@ class AdminController extends BaseController
     public function editLearner($id)
     {
         $data = [
-            'currentuser' => $_SESSION['username'],
             'learner' => $this->admissions->select('*')->join('student_learner','student_learner.account_id = admissions.account_id','right')->orderBy('student_learner.last_name')->FindAll(),
             'learn' => $this->learner->where('id', $id)->first(),
         ];
@@ -498,7 +498,6 @@ class AdminController extends BaseController
     public function editfamily($id)
     {
         $data = [
-            'currentuser' => $_SESSION['username'],
             'family' => $this->learner->select('*')->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('family','family.account_id = student_learner.account_id','inner')->orderBy('student_learner.last_name')->FindAll(),
             'fam' => $this->family->where('id', $id)->first(),
         ];
@@ -566,7 +565,6 @@ class AdminController extends BaseController
     public function editaddress($id)
     {
         $data = [
-            'currentuser' => $_SESSION['username'],
             'address' => $this->learner->select('*')->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('address','address.account_id = student_learner.account_id','inner')->orderBy('student_learner.last_name')->FindAll(),
             'add' => $this->address->where('id', $id)->first(),
         ];
@@ -632,11 +630,138 @@ class AdminController extends BaseController
     public function editsibling($id)
     {
         $data = [
-            'currentuser' => $_SESSION['username'],
             'sibling' => $this->learner->select('*')->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sibling','sibling.account_id = student_learner.account_id','inner')->orderBy('student_learner.last_name')->FindAll(),
             'sib' => $this->sibling->where('id', $id)->first(),
         ];
 
         return view('admininfosibling', $data);
     }
+
+    
+    public function sections()
+    {
+        $data = [
+            'stud_section' => $this->sections->findAll(),
+        ];
+            return view ('sections', $data);
+    }
+
+    public function saveSection()  {
+        $session = session();
+        $id = $_POST['id'];
+        $data = [
+            'id' => $this->request->getVar('id'),
+            'name' => $this->request->getVar('name'),
+            'grade_level_id' => $this->request->getVar('grade_level_id'),
+        ];
+
+        if ($id != null) {
+            $res = $this->sections->set($data)->where('id', $id)->update();
+            if($res) {
+                $session->setFlashdata('msg','Updated Successfully.');
+                return redirect()->to('sections');
+            } else {
+                $session->setFlashdata('msg','Something went wrong. Please try again later.');
+                return redirect()->to('sections');
+            }
+        } else {
+            $res = $this->sections->save($data);
+            if($res) {
+                $session->setFlashdata('msg','Saved Successfully.');
+                return redirect()->to('sections');
+            } else {
+                $session->setFlashdata('msg','Something went wrong. Please try again later.');
+                return redirect()->to('sections');
+            }
+        }  
+    }
+
+    public function deleteSection($id)
+    {
+        $session = session();
+        $res = $this->sections->delete($id);
+        if($res) {
+            $session->setFlashdata('msg','Deleted Successfully.');
+            return redirect()->to('sections');
+        } else {
+            $session->setFlashdata('msg','Something went wrong. Please try again later.');
+            return redirect()->to('sections');
+        }
+    }
+
+    
+    public function editSection($id)
+    {
+        $data = [
+            'stud_section' => $this->sections->findAll(),
+            'sec' => $this->sections->where('id', $id)->first(),
+        ];
+
+        return view('sections', $data);
+    }
+
+    
+    public function subjects()
+    {
+        $data = [
+            'subject' => $this->subjects->findAll(),
+        ];
+            return view ('subjects', $data);
+    }
+
+    public function saveSubject()  {
+        $session = session();
+        $id = $_POST['id'];
+        $data = [
+            'id' => $this->request->getVar('id'),
+            'name' => $this->request->getVar('name'),
+            'type' => $this->request->getVar('type'),
+            'yr_lvl' => $this->request->getVar('yr_lvl'),
+        ];
+
+        if ($id != null) {
+            $res = $this->subjects->set($data)->where('id', $id)->update();
+            if($res) {
+                $session->setFlashdata('msg','Updated Successfully.');
+                return redirect()->to('subjects');
+            } else {
+                $session->setFlashdata('msg','Something went wrong. Please try again later.');
+                return redirect()->to('subjects');
+            }
+        } else {
+            $res = $this->subjects->save($data);
+            if($res) {
+                $session->setFlashdata('msg','Saved Successfully.');
+                return redirect()->to('subjects');
+            } else {
+                $session->setFlashdata('msg','Something went wrong. Please try again later.');
+                return redirect()->to('subjects');
+            }
+        }  
+    }
+
+    public function deleteSubject($id)
+    {
+        $session = session();
+        $res = $this->subjects->delete($id);
+        if($res) {
+            $session->setFlashdata('msg','Deleted Successfully.');
+            return redirect()->to('subjects');
+        } else {
+            $session->setFlashdata('msg','Something went wrong. Please try again later.');
+            return redirect()->to('subjects');
+        }
+    }
+
+    
+    public function editSubject($id)
+    {
+        $data = [
+            'subject' => $this->subjects->findAll(),
+            'sub' => $this->subjects->where('id', $id)->first(),
+        ];
+
+        return view('subjects', $data);
+    }
+
 }

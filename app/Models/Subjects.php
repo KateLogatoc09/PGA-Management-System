@@ -4,17 +4,16 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class AdmissionsModel extends Model
+class Subjects extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'admissions';
+    protected $table            = 'subjects';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['student_id', 'section', 'category','yr_lvl','program', 'status',
-    'birth_cert', 'report_card', 'good_moral', 'photo', 'schedule','account_id'];
+    protected $allowedFields    = ['name', 'type', 'yr_lvl'];
 
     // Dates
     protected $useTimestamps = false;

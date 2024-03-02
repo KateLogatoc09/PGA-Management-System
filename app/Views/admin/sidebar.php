@@ -98,6 +98,8 @@
          
               </ul>
             </li>
+
+
             <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-street-view"></i>
@@ -137,6 +139,29 @@
 
               </ul>
             </li>
+
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-book-bookmark"></i>
+                <div data-i18n="Academic">Academic Information</div>
+              </a>
+              <ul class="menu-sub">
+  
+                <li class="menu-item">
+                  <a href="/sections" class="menu-link">
+                    <div data-i18n="Analytics">Sections</div>
+                  </a>
+                </li>
+
+                <li class="menu-item">
+                  <a href="/subjects" class="menu-link">
+                    <div data-i18n="Analytics">Subjects</div>
+                  </a>
+                </li>
+                
+              </ul>
+            </li>
+
             <!-- Misc -->
             <li class="menu-header small text-uppercase"><span class="menu-header-text">Misc</span></li>
             <li class="menu-item">

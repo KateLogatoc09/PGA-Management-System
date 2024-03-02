@@ -53,6 +53,7 @@
                                         <th>Birth Certificate</th>
                                         <th>Report Card</th>
                                         <th>Good Moral</th>
+                                        <th>Schedule Date</th>
                                         <th>Status</th>
                                         <th>Account Id</th>
                                     </tr>
@@ -97,6 +98,7 @@
                                             height="100"
                                             width="100"
                                             /></td>
+                                            <td><?= $ad['schedule'] ?></td>
                                             <td><?= $ad['status'] ?></td>
                                             <td><?= $ad['account_id'] ?></td>
                                             <td> <a href="/deleteAdmissions/<?= $ad['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
@@ -158,36 +160,14 @@
                                         </select>
 
                                         <label for="section">Section:</label>
-                                        <select class="form-control" name="section" id="section"
-                                        value="<?php if (isset($admissions['section'])) {echo $admissions['section'];}?>">
-                                            <option value="PENDING">Pending</option>
-                                            <option value="St. Joseph Husband of Mary">St. Joseph Husband of Mary</option>
-                                            <option value="St. Perpetua and Felicity">St. Perpetua and Felicity</option>
-                                            <option value="St. Louise de Marillac">St. Louise de Marillac</option>
-                                            <option value="St. Dominic Savio">St. Dominic Savio</option>
-                                            <option value="St. Pedro Calungsod">St. Pedro Calungsod</option>
-                                            <option value="St. Gemma Galgani">St. Gemma Galgani</option>
-                                            <option value="St. Catherine of Sienna">St. Catherine of Sienna</option>
-                                            <option value="St. Lawrence of Manila">St. Lawrence of Manila</option>
-                                            <option value="St. Pio of Pietrelcina">St. Pio of Pietrelcina</option>
-                                            <option value="St. Matthew the Evangelist">St. Matthew the Evangelist</option>
-                                            <option value="St. Jerome of Stridon">St. Jerome of Stridon</option>
-                                            <option value="St. Francis of Assisi">St. Francis of Assisi</option>
-                                            <option value="St. Luke the Evangelist">St. Luke the Evangelist</option>
-                                            <option value="St. Therese of Lisieux">St. Therese of Lisieux</option>
-                                            <option value="St. Cecelia">St. Cecelia</option>
-                                            <option value="St. Martin the Porres">St. Martin the Porres</option>
-                                            <option value="St. Albert the Great">St. Albert the Great</option>
-                                            <option value="St. Stephen">St. Stephen</option>
-                                            <option value="St. Francis Xavier">St. Francis Xavier</option>
-                                            <option value="St. John the Beloved">St. John the Beloved</option>
-                                            <option value="St. Joseph Freinademetz">St. Joseph Freinademetz</option>
-                                            <option value="St. Thomas Aquinas">St. Thomas Aquinas</option>
-                                            <option value="St. Arnold Janssen">St. Arnold Janssen</option>
-                                            <option value="Agatha Sicily">Agatha Sicily</option>
-                                            <option value="Scholastica">Scholastica</option>
-                                        </select>
-                        </div>
+                                        <select name="section" id="section" class="form-control">
+                                        <option value="">Select Section</option>
+                                            <?php $uniqueCategories = array(); 
+                                                foreach ($stud_section as $se) {$stud_section = $se['name'];
+                                                if (!in_array($stud_section, $uniqueCategories)) {$uniqueCategories[] = $stud_section; 
+                                                echo '<option value="' . $stud_section . '">' . $stud_section . '</option>';}}?> 
+                                        </select>  
+                                        </div>
 </div>
 <div class="col-sm-5 text-center text-sm-left">
   <div class="form-group margin-left">
@@ -198,6 +178,11 @@
                                             <option value="ABM">ABM</option>
                                             <option value="HUMMS">HUMMS</option>
                                         </select>
+
+                                        
+                                        <label for="schedule">Schedule Date:</label>
+                                        <input type="date" class="form-control" name="schedule" placeholder="Enter Schedule Date" 
+                                        value="<?php if (isset($admissions['schedule'])) {echo $admissions['schedule'];}?>" required>  
 
                                         <label for="status">Status:</label>
                                         <select class="form-control" name="status" id="status">

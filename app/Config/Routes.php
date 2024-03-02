@@ -35,6 +35,16 @@ $routes->get('/editAlumni/(:any)', 'AdminController::editAlumni/$1', ['filter' =
 //ADMIN MAIL
 $routes->get('/email', 'AdminController::mail', ['filter' => 'admin']);
 
+//ADMIN ACADEMIC INFO
+$routes->get('/sections', 'AdminController::sections', ['filter' => 'admin']);
+$routes->post('/saveSection', 'AdminController::saveSection', ['filter' => 'admin']);
+$routes->get('/deleteSection/(:any)', 'AdminController::deleteSection/$1', ['filter' => 'admin']);
+$routes->get('/editSection/(:any)', 'AdminController::editSection/$1', ['filter' => 'admin']);
+$routes->get('/subjects', 'AdminController::subjects', ['filter' => 'admin']);
+$routes->post('/saveSubject', 'AdminController::saveSubject', ['filter' => 'admin']);
+$routes->get('/deleteSubject/(:any)', 'AdminController::deleteSubject/$1', ['filter' => 'admin']);
+$routes->get('/editSubject/(:any)', 'AdminController::editSubject/$1', ['filter' => 'admin']);
+
 //ADMIN STUDENT
 $routes->get('/adminstudent', 'AdminController::adminstudent', ['filter' => 'admin']);
 $routes->get('/adminstudinfo', 'AdminController::adminstudinfo', ['filter' => 'admin']);
