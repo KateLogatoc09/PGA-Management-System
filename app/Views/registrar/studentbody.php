@@ -9,7 +9,7 @@
         <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
           <!-- ... (existing navbar code) ... -->
         </nav>
-        <?= $this->include('admin/sidebar') ?>
+        <?= $this->include('registrar/sidebar') ?>
         <!-- / Navbar -->
 
         <!-- Content wrapper -->
@@ -88,8 +88,8 @@
                                             <td><?= $le['yr_lvl'] ?></td>
                                             <td><?= $le['section'] ?></td>
                                             <td><?= $le['account_id'] ?></td>
-                                            <td> <a href="/deleteLearner/<?= $le['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
-                                            <a href="/editLearner/<?= $le['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
+                                            <td> <a href="/regDeleteLearner/<?= $le['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
+                                            <a href="/regEditLearner/<?= $le['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
                                      </tr>
                                 <?php endforeach ?>
                                 </tbody>
@@ -108,7 +108,7 @@
                       </div>
                   <div class="d-flex">
                     <div class="col-sm-5">
-                    <form action="/saveLearner" method="post" enctype="multipart/form-data">
+                    <form action="/regSaveLearner" method="post" enctype="multipart/form-data">
                     <!-- Add your form fields and content here -->
 
                     <div class="form-group margin-left">

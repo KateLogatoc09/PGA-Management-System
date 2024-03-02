@@ -77,6 +77,35 @@
                   </a>
                 </li>
                 
+                <li class="menu-item">
+                  <a href="/registerstudent" class="menu-link">
+                    <div data-i18n="Analytics">Learner</div>
+                  </a>
+                </li>
+
+                <li class="menu-item">
+                  <a href="/regschool" class="menu-link">
+                    <div data-i18n="Analytics">Schools Attended</div>
+                  </a>
+                </li>
+
+                <li class="menu-item">
+                  <a href="/regfam" class="menu-link">
+                    <div data-i18n="Analytics">Family</div>
+                  </a>
+                </li>
+
+                <li class="menu-item">
+                  <a href="/regaddress" class="menu-link">
+                    <div data-i18n="Analytics">Address</div>
+                  </a>
+                </li>
+
+                <li class="menu-item">
+                  <a href="/regsibling" class="menu-link">
+                    <div data-i18n="Analytics">Sibling</div>
+                  </a>
+                </li>
          
               </ul>
             </li>

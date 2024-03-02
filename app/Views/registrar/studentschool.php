@@ -9,7 +9,7 @@
         <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
           <!-- ... (existing navbar code) ... -->
         </nav>
-        <?= $this->include('admin/sidebar') ?>
+        <?= $this->include('registrar/sidebar') ?>
         <!-- / Navbar -->
 
         <!-- Content wrapper -->
@@ -22,7 +22,7 @@
 <div class="col-lg-18 mb-4 order-0">
               <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Students' Address List</h3>
+                            <h3 class="card-title">Students' School Attended List</h3>
                             <div class="card-tools">
                                 <div class="input-group input-group-sm" style="width: 150px;">
                                     <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
@@ -43,26 +43,26 @@
                                         <th>Id</th>
                                         <th>Student's ID Number</th>
                                         <th>Student's Name</th>
-                                        <th>Type of Address</th>
-                                        <th>Address</th>
-                                        <th>Postal Code</th>
-                                        <th>Telphone Number</th>
+                                        <th>Grade</th>
+                                        <th>School Name</th>
+                                        <th>Level</th>
+                                        <th>Period</th>
                                         <th>Account Id</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <?php foreach ($address as $ad): ?>
+                                <?php foreach ($school as $sc): ?>
                                     <tr>
-                                            <td><?= $ad['id'] ?></td>
-                                            <td><?= $ad['student_id'] ?></td>
-                                            <td><?= $ad['last_name'] ?>, <?= $ad['first_name'] ?> <?= $ad['middle_name'] ?></td>
-                                            <td><?= $ad['type'] ?></td>
-                                            <td><?= $ad['address'] ?></td>
-                                            <td><?= $ad['postal_code'] ?></td>
-                                            <td><?= $ad['tel_num'] ?></td>
-                                            <td><?= $ad['account_id'] ?></td>
-                                            <td> <a href="/deleteaddress/<?= $ad['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
-                                            <a href="/editaddress/<?= $ad['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
+                                            <td><?= $sc['id'] ?></td>
+                                            <td><?= $sc['student_id'] ?></td>
+                                            <td><?= $sc['last_name'] ?>, <?= $sc['first_name'] ?> <?= $sc['middle_name'] ?></td>
+                                            <td><?= $sc['grade'] ?></td>
+                                            <td><?= $sc['school_name'] ?></td>
+                                            <td><?= $sc['level'] ?></td>
+                                            <td><?= $sc['period'] ?></td>
+                                            <td><?= $sc['account_id'] ?></td>
+                                            <td> <a href="/regDeleteschool/<?= $sc['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
+                                            <a href="/regEditschool/<?= $sc['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
                                      </tr>
                                 <?php endforeach ?>
                                 </tbody>
@@ -77,37 +77,42 @@
                 <div class="col-lg-18 mb-4 order-0">
                 <div class="card">
                 <div class="card-body">
-                        <h5 class="card-title text-primary">Edit Students' Address</h5>
+                        <h5 class="card-title text-primary">Edit Students' School Attended</h5>
                       </div>
                   <div class="d-flex">
                     <div class="col-sm-5">
-                <form action="/adminaddress" method="post">
+                <form action="/regSaveschool" method="post">
                     <!-- Add your form fields and content here -->
 
                     <div class="form-group margin-left">
-                    <input type="hidden" class="form-control" name="id" value="<?php if (isset($add['id'])) {echo $add['id'];}?>">
-                        
-                        <label for="type">Type of Address:</label>
-                        <select class="form-control" name="type" id="type" value="<?php if (isset($add['type'])) {echo $add['type'];}?>">
-                            <option value="Permanent">Permanent</option>
-                            <option value="Mailing">Mailing</option>
-                        </select>
+                    <input type="hidden" class="form-control" name="id" value="<?php if (isset($sch['id'])) {echo $sch['id'];}?>">
+             
+                                    <label for="grade">Grade/Year:</label>
+                                        <select class="form-control" name="grade" id="grade">
+                                        <option value="Pre-School (Kinder)">Pre-School (Kinder)</option>
+                                        <option value="Grade School (G1-G3)">Grade School (G1-G3)</option>
+                                        <option value="Grade School (G4-G6)">Grade School (G4-G6)</option>
+                                        <option value="Junior High School (G7-G10)">Junior High School (G7-G10)</option>
+                                    </select>
 
-                    <label for="address">Address:</label>
-                        <input type="text" class="form-control" name="address" placeholder="Enter Address" value="<?php if (isset($add['address'])) {echo $add['address'];}?>">
+                                    <label for="school_name">School Name:</label>
+                                        <input type="text" class="form-control" name="school_name" placeholder="Enter Name of School"
+                                        value="<?php if (isset($sch['school_name'])) {echo $sch['school_name'];}?>">
+
                         </div>
 </div>
 <div class="col-sm-5 text-center text-sm-left">
   <div class="form-group margin-left">
-  <label for="tel_num">Telephone Number:</label>
-                                        <input type="number" class="form-control" name="tel_num" max_length="11" placeholder="Enter Telephone Number" value="<?php if (isset($add['tel_num'])) {echo $add['tel_num'];}?>">
-
-                                        <label for="postal_code">Postal Code:</label>
-                        <input type="number" class="form-control" name="postal_code" placeholder="Enter Postal Code" value="<?php if (isset($add['postal_code'])) {echo $add['postal_code'];}?>">
-               
+                                    <label for="level">Level:</label>
+                                        <input type="text" class="form-control" name="level" placeholder="Enter Level"
+                                        value="<?php if (isset($sch['level'])) {echo $sch['level'];}?>">
+                               
+                                    <label for="period">Period Covered:</label>
+                                        <input type="text" class="form-control" name="period" placeholder="Enter Period Covered"
+                                        value="<?php if (isset($sch['period'])) {echo $sch['period'];}?>">
 
                         <input type="hidden" class="form-control" id="account_id" name="account_id" placeholder="Enter Account Id"                         
-                        value="<?php if (isset($add['account_id'])) {echo $add['account_id'];}?>" required>             
+                        value="<?php if (isset($sch['account_id'])) {echo $sch['account_id'];}?>" required>             
   </div>
 </div>
 </div>

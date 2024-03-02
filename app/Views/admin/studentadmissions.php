@@ -195,8 +195,7 @@
                                         <!--<label for="birth_cert">Birth Certificate:</label>
                                         <input type="file" id="upload" accept="image/png, image/jpeg" name="birth_cert"/>-->
 
-                                        <label for="account_id">Account Id</label>
-                        <input type="text" class="form-control" id="account_id" name="account_id" placeholder="Enter Account Id"                         
+                        <input type="hidden" class="form-control" id="account_id" name="account_id" placeholder="Enter Account Id"                         
                         value="<?php if (isset($admissions['account_id'])) {echo $admissions['account_id'];}?>" required> 
                                  
   </div>

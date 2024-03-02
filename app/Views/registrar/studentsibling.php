@@ -9,7 +9,7 @@
         <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
           <!-- ... (existing navbar code) ... -->
         </nav>
-        <?= $this->include('admin/sidebar') ?>
+        <?= $this->include('registrar/sidebar') ?>
         <!-- / Navbar -->
 
         <!-- Content wrapper -->
@@ -59,8 +59,8 @@
                                             <td><?= $si['yr_lvl'] ?></td>
                                             <td><?= $si['affiliation'] ?></td>
                                             <td><?= $si['account_id'] ?></td>
-                                            <td> <a href="/deletesibling/<?= $si['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
-                                            <a href="/editsibling/<?= $si['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
+                                            <td> <a href="/regDeletesibling/<?= $si['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
+                                            <a href="/regEditsibling/<?= $si['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
                                      </tr>
                                 <?php endforeach ?>
                                 </tbody>
@@ -79,7 +79,7 @@
                       </div>
                   <div class="d-flex">
                     <div class="col-sm-5">
-                <form action="/adminsibling" method="post">
+                <form action="/regSavesibling" method="post">
                     <!-- Add your form fields and content here -->
 
                     <div class="form-group margin-left">

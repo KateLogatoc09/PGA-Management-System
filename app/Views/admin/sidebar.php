@@ -73,7 +73,7 @@
              
                 <li class="menu-item active">
                   <a href="/admins" class="menu-link">
-                    <div data-i18n="Analytics">Home</div>
+                    <div data-i18n="Analytics">Accounts</div>
                   </a>
                 </li>
 
@@ -116,6 +116,12 @@
                 <li class="menu-item">
                   <a href="/adminstudent" class="menu-link">
                     <div data-i18n="Analytics">Learner</div>
+                  </a>
+                </li>
+
+                <li class="menu-item">
+                  <a href="/adminschool" class="menu-link">
+                    <div data-i18n="Analytics">Schools Attended</div>
                   </a>
                 </li>
 

@@ -78,21 +78,18 @@ class AdminController extends BaseController
             $res = $this->teacher->set($data)->where('id', $id)->update();
             if($res) {
                 $session->setFlashdata('msg','Updated Successfully.');
-                return redirect()->to('addTeacher');
             } else {
                 $session->setFlashdata('msg','Something went wrong. Please try again later.');
-                return redirect()->to('addTeacher');
             }
         } else {
             $res = $this->teacher->save($data);
             if($res) {
                 $session->setFlashdata('msg','Saved Successfully.');
-                return redirect()->to('addTeacher');
             } else {
                 $session->setFlashdata('msg','Something went wrong. Please try again later.');
-                return redirect()->to('addTeacher');
             }
         }  
+        return redirect()->to('addTeacher');
     }
 
     public function delete($id)
@@ -101,11 +98,10 @@ class AdminController extends BaseController
         $res = $this->teacher->delete($id);
         if($res) {
             $session->setFlashdata('msg','Deleted Successfully.');
-            return redirect()->to('addTeacher');
         } else {
             $session->setFlashdata('msg','Something went wrong. Please try again later.');
-            return redirect()->to('addTeacher');
         }
+        return redirect()->to('addTeacher');
     }
 
     public function edit($id)
@@ -137,21 +133,18 @@ class AdminController extends BaseController
             $res = $this->alumni->set($data)->where('id', $id)->update();
             if($res) {
                 $session->setFlashdata('msg','Updated Successfully.');
-                return redirect()->to('alumni');
             } else {
                 $session->setFlashdata('msg','Something went wrong. Please try again later.');
-                return redirect()->to('alumni');
             }
         } else {
             $res = $this->alumni->save($data);
             if($res) {
                 $session->setFlashdata('msg','Saved Successfully.');
-                return redirect()->to('alumni');
             } else {
                 $session->setFlashdata('msg','Something went wrong. Please try again later.');
-                return redirect()->to('alumni');
             }
         }   
+        return redirect()->to('alumni');
     }
 
     public function deleteAlumni($id)
@@ -160,11 +153,10 @@ class AdminController extends BaseController
         $res = $this->alumni->delete($id);
         if($res) {
             $session->setFlashdata('msg','Deleted Successfully.');
-            return redirect()->to('alumni');
         } else {
             $session->setFlashdata('msg','Something went wrong. Please try again later.');
-            return redirect()->to('alumni');
         }
+        return redirect()->to('alumni');
     }
 
     
@@ -195,21 +187,18 @@ class AdminController extends BaseController
             $res = $this->account->set($data)->where('id', $id)->update();
             if($res) {
                 $session->setFlashdata('msg','Updated Successfully.');
-                return redirect()->to('admins');
             } else {
                 $session->setFlashdata('msg','Something went wrong. Please try again later.');
-                return redirect()->to('admins');
             }
         } else {
             $res = $this->account->save($data);
             if($res) {
                 $session->setFlashdata('msg','Saved Successfully.');
-                return redirect()->to('admins');
             } else {
                 $session->setFlashdata('msg','Something went wrong. Please try again later.');
-                return redirect()->to('admins');
             }
         }  
+        return redirect()->to('admins');
     }
 
     public function deleteAccount($id)
@@ -218,11 +207,10 @@ class AdminController extends BaseController
         $res = $this->account->delete($id);
         if($res) {
             $session->setFlashdata('msg','Deleted Successfully.');
-            return redirect()->to('admins');
         } else {
             $session->setFlashdata('msg','Something went wrong. Please try again later.');
-            return redirect()->to('admins');
         }
+        return redirect()->to('admins');
     }
 
     public function editAccount($id)
@@ -234,14 +222,6 @@ class AdminController extends BaseController
 
         return view('admin', $data);
         
-    }
-
-    public function adminstudent()
-    {
-        $data = [
-            'learner' => $this->admissions->select('*')->join('student_learner','student_learner.account_id = admissions.account_id','right')->orderBy('student_learner.last_name')->FindAll(),
-        ];
-        return view('adminstudent', $data);
     }
 
     public function admininfoadmissions()
@@ -272,21 +252,18 @@ class AdminController extends BaseController
             $res = $this->admissions->set($data)->where('id', $id)->update();
             if($res) {
                 $session->setFlashdata('msg','Updated Successfully.');
-                return redirect()->to('admininfoadmissions');
             } else {
                 $session->setFlashdata('msg','Something went wrong. Please try again later.');
-                return redirect()->to('admininfoadmissions');
             }
         } else {
             $res = $this->admissions->save($data);
             if($res) {
                 $session->setFlashdata('msg','Saved Successfully.');
-                return redirect()->to('admininfoadmissions');
             } else {
                 $session->setFlashdata('msg','Something went wrong. Please try again later.');
-                return redirect()->to('admininfoadmissions');
             }
         }  
+        return redirect()->to('admininfoadmissions');
     }
 
     public function deleteAdmissions($id)
@@ -295,11 +272,10 @@ class AdminController extends BaseController
         $res = $this->admissions->delete($id);
         if($res) {
             $session->setFlashdata('msg','Deleted Successfully.');
-            return redirect()->to('admininfoadmissions');
         } else {
             $session->setFlashdata('msg','Something went wrong. Please try again later.');
-            return redirect()->to('admininfoadmissions');
         }
+        return redirect()->to('admininfoadmissions');
     }
 
     
@@ -314,7 +290,14 @@ class AdminController extends BaseController
         return view('admininfoadmissions', $data);
         
     }
-
+    
+    public function adminstudent()
+    {
+        $data = [
+            'learner' => $this->admissions->select('*')->join('student_learner','student_learner.account_id = admissions.account_id','right')->orderBy('student_learner.last_name')->FindAll(),
+        ];
+        return view('adminstudent', $data);
+    }
     
     public function saveLearner()  {
         $session = session();
@@ -354,7 +337,7 @@ class AdminController extends BaseController
 
             if ($id != null) {
                 if($check) {
-                unlink(PUBLIC_PATH.$check);
+                unlink(PUBLIC_PATH.Implode($check));
                 }
                 $res = $this->learner->set($data)->where('id', $id)->update();
                 if($res) {
@@ -415,11 +398,10 @@ class AdminController extends BaseController
         $res = $this->learner->delete($id);
         if($res) {
             $session->setFlashdata('msg','Deleted Successfully.');
-            return redirect()->to('adminstudent');
         } else {
             $session->setFlashdata('msg','Something went wrong. Please try again later.');
-            return redirect()->to('adminstudent');
         }
+        return redirect()->to('adminstudent');
     }
 
     
@@ -463,21 +445,18 @@ class AdminController extends BaseController
             $res = $this->family->set($data)->where('id', $id)->update();
             if($res) {
                 $session->setFlashdata('msg','Updated Successfully.');
-                return redirect()->to('adminstudinfo');
             } else {
                 $session->setFlashdata('msg','Something went wrong. Please try again later.');
-                return redirect()->to('adminstudinfo');
             }
         } else {
             $res = $this->family->save($data);
             if($res) {
                 $session->setFlashdata('msg','Saved Successfully.');
-                return redirect()->to('adminstudinfo');
             } else {
                 $session->setFlashdata('msg','Something went wrong. Please try again later.');
-                return redirect()->to('adminstudinfo');
             }
         }  
+        return redirect()->to('adminstudinfo');
     }
 
     
@@ -487,11 +466,10 @@ class AdminController extends BaseController
         $res = $this->family->delete($id);
         if($res) {
             $session->setFlashdata('msg','Deleted Successfully.');
-            return redirect()->to('adminstudinfo');
         } else {
             $session->setFlashdata('msg','Something went wrong. Please try again later.');
-            return redirect()->to('adminstudinfo');
         }
+        return redirect()->to('adminstudinfo');
     }
 
     
@@ -531,21 +509,18 @@ class AdminController extends BaseController
             $res = $this->address->set($data)->where('id', $id)->update();
             if($res) {
                 $session->setFlashdata('msg','Updated Successfully.');
-                return redirect()->to('admininfoaddress');
             } else {
                 $session->setFlashdata('msg','Something went wrong. Please try again later.');
-                return redirect()->to('admininfoaddress');
             }
         } else {
             $res = $this->address->save($data);
             if($res) {
                 $session->setFlashdata('msg','Saved Successfully.');
-                return redirect()->to('admininfoaddress');
             } else {
                 $session->setFlashdata('msg','Something went wrong. Please try again later.');
-                return redirect()->to('admininfoaddress');
             }
         }  
+        return redirect()->to('admininfoaddress');
     }
 
     public function deleteaddress($id)
@@ -554,11 +529,10 @@ class AdminController extends BaseController
         $res = $this->address->delete($id);
         if($res) {
             $session->setFlashdata('msg','Deleted Successfully.');
-            return redirect()->to('admininfoaddress');
         } else {
             $session->setFlashdata('msg','Something went wrong. Please try again later.');
-            return redirect()->to('admininfoaddress');
         }
+        return redirect()->to('admininfoaddress');
     }
 
     
@@ -596,21 +570,18 @@ class AdminController extends BaseController
             $res = $this->sibling->set($data)->where('id', $id)->update();
             if($res) {
                 $session->setFlashdata('msg','Updated Successfully.');
-                return redirect()->to('admininfosibling');
             } else {
                 $session->setFlashdata('msg','Something went wrong. Please try again later.');
-                return redirect()->to('admininfosibling');
             }
         } else {
             $res = $this->sibling->save($data);
             if($res) {
                 $session->setFlashdata('msg','Saved Successfully.');
-                return redirect()->to('admininfosibling');
             } else {
                 $session->setFlashdata('msg','Something went wrong. Please try again later.');
-                return redirect()->to('admininfosibling');
             }
         }  
+        return redirect()->to('admininfosibling');
     }
 
     public function deletesibling($id)
@@ -619,11 +590,10 @@ class AdminController extends BaseController
         $res = $this->sibling->delete($id);
         if($res) {
             $session->setFlashdata('msg','Deleted Successfully.');
-            return redirect()->to('admininfosibling');
         } else {
             $session->setFlashdata('msg','Something went wrong. Please try again later.');
-            return redirect()->to('admininfosibling');
         }
+        return redirect()->to('admininfosibling');
     }
 
     
@@ -635,6 +605,68 @@ class AdminController extends BaseController
         ];
 
         return view('admininfosibling', $data);
+    }
+
+    public function adminschool()
+    {
+        $data = [
+            'school' => $this->learner->select('*')->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('school_attended','school_attended.account_id = student_learner.account_id','inner')->orderBy('student_learner.last_name')->FindAll(),
+        ];
+
+        return view('adminschool', $data);
+    }
+
+    public function adminSaveschool()  {
+        $session = session();
+        $id = $_POST['id'];
+        $data = [
+            'id' => $this->request->getVar('id'),
+            'grade' => $this->request->getVar('grade'),
+            'school_name' => $this->request->getVar('school_name'),
+            'level' => $this->request->getVar('level'),
+            'period' => $this->request->getVar('period'),
+            'account_id' => $this->request->getVar('account_id'),
+        ];
+
+        if ($id != null) {
+            $res = $this->school->set($data)->where('id', $id)->update();
+            if($res) {
+                $session->setFlashdata('msg','Updated Successfully.');
+            } else {
+                $session->setFlashdata('msg','Something went wrong. Please try again later.');
+            }
+        } else {
+            $res = $this->school->save($data);
+            if($res) {
+                $session->setFlashdata('msg','Saved Successfully.');
+            } else {
+                $session->setFlashdata('msg','Something went wrong. Please try again later.');
+            }
+        }  
+        return redirect()->to('adminschool');
+    }
+
+    public function adminDeleteschool($id)
+    {
+        $session = session();
+        $res = $this->school->delete($id);
+        if($res) {
+            $session->setFlashdata('msg','Deleted Successfully.');
+        } else {
+            $session->setFlashdata('msg','Something went wrong. Please try again later.');
+        }
+        return redirect()->to('adminschool');
+    }
+
+    
+    public function adminEditschool($id)
+    {
+        $data = [
+            'school' => $this->learner->select('*')->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('school_attended','school_attended.account_id = student_learner.account_id','inner')->orderBy('student_learner.last_name')->FindAll(),
+            'sch' => $this->school->where('id', $id)->first(),
+        ];
+
+        return view('adminschool', $data);
     }
 
     
@@ -659,21 +691,18 @@ class AdminController extends BaseController
             $res = $this->sections->set($data)->where('id', $id)->update();
             if($res) {
                 $session->setFlashdata('msg','Updated Successfully.');
-                return redirect()->to('sections');
             } else {
                 $session->setFlashdata('msg','Something went wrong. Please try again later.');
-                return redirect()->to('sections');
             }
         } else {
             $res = $this->sections->save($data);
             if($res) {
                 $session->setFlashdata('msg','Saved Successfully.');
-                return redirect()->to('sections');
             } else {
                 $session->setFlashdata('msg','Something went wrong. Please try again later.');
-                return redirect()->to('sections');
             }
         }  
+        return redirect()->to('sections');
     }
 
     public function deleteSection($id)
@@ -682,11 +711,10 @@ class AdminController extends BaseController
         $res = $this->sections->delete($id);
         if($res) {
             $session->setFlashdata('msg','Deleted Successfully.');
-            return redirect()->to('sections');
         } else {
             $session->setFlashdata('msg','Something went wrong. Please try again later.');
-            return redirect()->to('sections');
         }
+        return redirect()->to('sections');
     }
 
     
@@ -723,21 +751,18 @@ class AdminController extends BaseController
             $res = $this->subjects->set($data)->where('id', $id)->update();
             if($res) {
                 $session->setFlashdata('msg','Updated Successfully.');
-                return redirect()->to('subjects');
             } else {
                 $session->setFlashdata('msg','Something went wrong. Please try again later.');
-                return redirect()->to('subjects');
             }
         } else {
             $res = $this->subjects->save($data);
             if($res) {
                 $session->setFlashdata('msg','Saved Successfully.');
-                return redirect()->to('subjects');
             } else {
                 $session->setFlashdata('msg','Something went wrong. Please try again later.');
-                return redirect()->to('subjects');
             }
         }  
+        return redirect()->to('subjects');
     }
 
     public function deleteSubject($id)
@@ -746,11 +771,10 @@ class AdminController extends BaseController
         $res = $this->subjects->delete($id);
         if($res) {
             $session->setFlashdata('msg','Deleted Successfully.');
-            return redirect()->to('subjects');
         } else {
             $session->setFlashdata('msg','Something went wrong. Please try again later.');
-            return redirect()->to('subjects');
         }
+        return redirect()->to('subjects');
     }
 
     

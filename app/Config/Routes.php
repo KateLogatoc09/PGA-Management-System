@@ -66,6 +66,10 @@ $routes->get('/admininfosibling', 'AdminController::admininfosibling', ['filter'
 $routes->post('/adminsibling', 'AdminController::adminsibling', ['filter' => 'admin']);
 $routes->get('/deletesibling/(:any)', 'AdminController::deletesibling/$1', ['filter' => 'admin']);
 $routes->get('/editsibling/(:any)', 'AdminController::editsibling/$1', ['filter' => 'admin']);
+$routes->get('/adminschool', 'AdminController::adminschool', ['filter' => 'admin']);
+$routes->post('/adminSaveschool', 'AdminController::adminSaveschool', ['filter' => 'admin']);
+$routes->get('/adminDeleteschool/(:any)', 'AdminController::adminDeleteschool/$1', ['filter' => 'admin']);
+$routes->get('/adminEditschool/(:any)', 'AdminController::adminEditschool/$1', ['filter' => 'admin']);
 
 //ADMIN MANAGE ACCOUNTS
 $routes->post('/saveAccount', 'AdminController::saveAccount', ['filter' => 'admin']);
@@ -132,6 +136,26 @@ $routes->get('/parent', 'ParentController::parent', ['filter' => 'parents']);
 
 //REGISTRAR
 $routes->get('/registrar', 'RegistrarController::registrar', ['filter' => 'registrar']);
+$routes->get('/registerstudent', 'RegistrarController::registerstudent', ['filter' => 'registrar']);
+$routes->post('/regSaveLearner', 'RegistrarController::regSaveLearner', ['filter' => 'registrar']);
+$routes->get('/regDeleteLearner/(:any)', 'RegistrarController::regDeleteLearner/$1', ['filter' => 'registrar']);
+$routes->get('/regEditLearner/(:any)', 'RegistrarController::regEditLearner/$1', ['filter' => 'registrar']);
+$routes->get('/regfam', 'RegistrarController::regfam', ['filter' => 'registrar']);
+$routes->post('/regSavefamily', 'RegistrarController::regSavefamily', ['filter' => 'registrar']);
+$routes->get('/regDeletefamily/(:any)', 'RegistrarController::regDeletefamily/$1', ['filter' => 'registrar']);
+$routes->get('/regEditfamily/(:any)', 'RegistrarController::regEditfamily/$1', ['filter' => 'registrar']);
+$routes->get('/regaddress', 'RegistrarController::regaddress', ['filter' => 'registrar']);
+$routes->post('/regSaveaddress', 'RegistrarController::regSaveaddress', ['filter' => 'registrar']);
+$routes->get('/regDeleteaddress/(:any)', 'RegistrarController::regDeleteaddress/$1', ['filter' => 'registrar']);
+$routes->get('/regEditaddress/(:any)', 'RegistrarController::regEditaddress/$1', ['filter' => 'registrar']);
+$routes->get('/regsibling', 'RegistrarController::regsibling', ['filter' => 'registrar']);
+$routes->post('/regSavesibling', 'RegistrarController::regSavesibling', ['filter' => 'registrar']);
+$routes->get('/regDeletesibling/(:any)', 'RegistrarController::regDeletesibling/$1', ['filter' => 'registrar']);
+$routes->get('/regEditsibling/(:any)', 'RegistrarController::regEditsibling/$1', ['filter' => 'registrar']);
+$routes->get('/regschool', 'RegistrarController::regschool', ['filter' => 'registrar']);
+$routes->post('/regSaveschool', 'RegistrarController::regSaveschool', ['filter' => 'registrar']);
+$routes->get('/regDeleteschool/(:any)', 'RegistrarController::regDeleteschool/$1', ['filter' => 'registrar']);
+$routes->get('/regEditschool/(:any)', 'RegistrarController::regEditschool/$1', ['filter' => 'registrar']);
 
 //DAC
 $routes->get('/DAC', 'DACController::DAC', ['filter' => 'DAC']);

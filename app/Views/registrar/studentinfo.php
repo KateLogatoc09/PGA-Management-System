@@ -9,7 +9,7 @@
         <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
           <!-- ... (existing navbar code) ... -->
         </nav>
-        <?= $this->include('admin/sidebar') ?>
+        <?= $this->include('registrar/sidebar') ?>
         <!-- / Navbar -->
 
         <!-- Content wrapper -->
@@ -70,8 +70,8 @@
                                             <td><?= $fa['email'] ?></td>
                                             <td><?= $fa['occupation'] ?></td>
                                             <td><?= $fa['account_id'] ?></td>
-                                            <td> <a href="/deletefamily/<?= $fa['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
-                                            <a href="/editfamily/<?= $fa['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
+                                            <td> <a href="/regDeletefamily/<?= $fa['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
+                                            <a href="/regEditfamily/<?= $fa['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
                                      </tr>
                                 <?php endforeach ?>
                                 </tbody>
@@ -86,11 +86,11 @@
                 <div class="col-lg-18 mb-4 order-0">
                 <div class="card">
                 <div class="card-body">
-                        <h5 class="card-title text-primary">Edit Students' Family Information</h5>
+                        <h5 class="card-title text-primary">Edit Students's Family Information</h5>
                       </div>
                   <div class="d-flex">
                     <div class="col-sm-5">
-                <form action="/adminfamily" method="post">
+                <form action="/regSavefamily" method="post">
                     <!-- Add your form fields and content here -->
 
                     <div class="form-group margin-left">
