@@ -7,11 +7,12 @@ use App\Models\AdmissionsModel;
 use App\Models\SiblingModel;
 use App\Models\FamilyModel;
 use App\Models\SchoolAttendedModel;
+use App\Models\Sections;
 use App\Controllers\BaseController;
 
 class RegistrarController extends BaseController
 {
-    private $learner, $family, $address, $admissions, $sibling, $school;
+    private $learner, $family, $address, $admissions, $sibling, $school, $section;
     public function __construct()
     {
         $this->learner = new LearnerModel();
@@ -20,6 +21,7 @@ class RegistrarController extends BaseController
         $this->admissions = new AdmissionsModel();
         $this->sibling = new SiblingModel();
         $this->school = new SchoolAttendedModel();
+        $this->sections = new Sections();
     }
 
     public function registrar(){
@@ -405,4 +407,109 @@ class RegistrarController extends BaseController
         return view('regschool', $data);
     }
 
+    
+    public function regadmissions()
+    {
+        $data = [
+            'stud_section' => $this->sections->findAll(),
+            'student' => $this->learner->select('*')->join('admissions','admissions.account_id = student_learner.account_id','inner')->orderBy('student_learner.last_name')->FindAll(),
+        ];
+        return view('regadmissions', $data);
+    }
+
+    
+    public function regSaveadmissions()  {
+        $session = session();
+        $id = $_POST['id'];
+        $twobytwo = $this->request->getFile('twobytwo');
+        $birth_cert = $this->request->getFile('birth_cert');
+        $report_card = $this->request->getFile('report_card');
+        $good_moral = $this->request->getFile('good_moral');
+
+        $data = [
+            'student_id' => $this->request->getVar('student_id'),
+            'category' => $this->request->getVar('category'),
+            'yr_lvl' => $this->request->getVar('yr_lvl'),
+            'section' => $this->request->getVar('section'),
+            'program' => $this->request->getVar('program'),
+            'status' => $this->request->getVar('status'),
+            'schedule' => $this->request->getVar('schedule'),
+            'account_id' => $this->request->getVar('account_id'),
+        ];
+
+        if($twobytwo != '') {
+            $test1 = $twobytwo->move(PUBLIC_PATH.'\\account\\'.$id.'\\');
+            $name1 = $twobytwo->getClientPath();
+            $path1 = '/account/'.$id.'/'.$name1;
+            
+            $data['photo'] = $path1;
+        }
+        
+        if($birth_cert != '') {
+            $test2 = $birth_cert->move(PUBLIC_PATH.'\\account\\'.$id.'\\');
+            $name2 = $birth_cert->getClientPath();
+            $path2 = '/account/'.$id.'/'.$name2;
+
+            $data['birth_cert'] = $path2;
+        } 
+
+        if($report_card != '') {
+            $test3 = $report_card->move(PUBLIC_PATH.'\\account\\'.$id.'\\');
+            $name3 = $report_card->getClientPath();
+            $path3 = '/account/'.$id.'/'.$name3;
+
+            $data['report_card'] = $path3;
+        } 
+
+        if($good_moral != '') {
+            $test4 = $good_moral->move(PUBLIC_PATH.'\\account\\'.$id.'\\');
+            $name4 = $good_moral->getClientPath();
+            $path4 = '/account/'.$id.'/'.$name4;
+
+            $data['good_moral'] = $path4;
+        } 
+
+        if ($id != null) {
+            $res = $this->admissions->set($data)->where('id', $id)->update();
+            if($res) {
+                $session->setFlashdata('msg','Updated Successfully.');
+            } else {
+                $session->setFlashdata('msg','Something went wrong. Please try again later.');
+            }
+        } else {
+            $res = $this->admissions->save($data);
+            if($res) {
+                $session->setFlashdata('msg','Saved Successfully.');
+            } else {
+                $session->setFlashdata('msg','Something went wrong. Please try again later.');
+            }
+        }  
+        return redirect()->to('regadmissions');
+    }
+
+    public function regDeleteadmissions($id)
+    {
+        $session = session();
+        $res = $this->admissions->delete($id);
+        if($res) {
+            $session->setFlashdata('msg','Deleted Successfully.');
+        } else {
+            $session->setFlashdata('msg','Something went wrong. Please try again later.');
+        }
+        return redirect()->to('regadmissions');
+    }
+
+    
+    public function regEditadmissions($id)
+    {
+        $data = [
+            'stud_section' => $this->sections->findAll(),
+            'admissions' => $this->admissions->where('id', $id)->first(),
+            'student' => $this->learner->select('*')->join('admissions','admissions.account_id = student_learner.account_id','inner')->orderBy('student_learner.last_name')->FindAll(),
+        ];
+
+        return view('regadmissions', $data);
+        
+    }
+  
 }

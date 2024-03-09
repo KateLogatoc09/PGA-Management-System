@@ -101,8 +101,8 @@
                                             <td><?= $ad['schedule'] ?></td>
                                             <td><?= $ad['status'] ?></td>
                                             <td><?= $ad['account_id'] ?></td>
-                                            <td> <a href="/deleteAdmissions/<?= $ad['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
-                                            <a href="/editAdmissions/<?= $ad['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
+                                            <td> <a href="/regDeleteadmissions/<?= $ad['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
+                                            <a href="/regEditadmissions/<?= $ad['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
                                      </tr>
                                 <?php endforeach ?>
                                 </tbody>
@@ -121,7 +121,7 @@
                       </div>
                   <div class="d-flex">
                     <div class="col-sm-5">
-                <form action="/adminadmissions" method="post" enctype="multipart/form-data">
+                <form action="/regSaveadmissions" method="post" enctype="multipart/form-data">
                     <!-- Add your form fields and content here -->
 
                     <div class="form-group margin-left">

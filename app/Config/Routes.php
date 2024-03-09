@@ -156,6 +156,10 @@ $routes->get('/regschool', 'RegistrarController::regschool', ['filter' => 'regis
 $routes->post('/regSaveschool', 'RegistrarController::regSaveschool', ['filter' => 'registrar']);
 $routes->get('/regDeleteschool/(:any)', 'RegistrarController::regDeleteschool/$1', ['filter' => 'registrar']);
 $routes->get('/regEditschool/(:any)', 'RegistrarController::regEditschool/$1', ['filter' => 'registrar']);
+$routes->get('/regadmissions', 'RegistrarController::regadmissions', ['filter' => 'registrar']);
+$routes->post('/regSaveadmissions', 'RegistrarController::regSaveadmissions', ['filter' => 'registrar']);
+$routes->get('/regDeleteadmissions/(:any)', 'RegistrarController::regDeleteadmissions/$1', ['filter' => 'registrar']);
+$routes->get('/regEditadmissions/(:any)', 'RegistrarController::regEditadmissions/$1', ['filter' => 'registrar']);
 
 //DAC
 $routes->get('/DAC', 'DACController::DAC', ['filter' => 'DAC']);

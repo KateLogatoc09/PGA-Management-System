@@ -77,6 +77,13 @@
                   </a>
                 </li>
                 
+
+                <li class="menu-item">
+                  <a href="/regadmissions" class="menu-link">
+                    <div data-i18n="Analytics">Admissions</div>
+                  </a>
+                </li>
+
                 <li class="menu-item">
                   <a href="/registerstudent" class="menu-link">
                     <div data-i18n="Analytics">Learner</div>

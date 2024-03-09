@@ -237,6 +237,11 @@ class AdminController extends BaseController
     public function adminadmissions()  {
         $session = session();
         $id = $_POST['id'];
+        $twobytwo = $this->request->getFile('twobytwo');
+        $birth_cert = $this->request->getFile('birth_cert');
+        $report_card = $this->request->getFile('report_card');
+        $good_moral = $this->request->getFile('good_moral');
+
         $data = [
             'student_id' => $this->request->getVar('student_id'),
             'category' => $this->request->getVar('category'),
@@ -247,6 +252,38 @@ class AdminController extends BaseController
             'schedule' => $this->request->getVar('schedule'),
             'account_id' => $this->request->getVar('account_id'),
         ];
+
+        if($twobytwo != '') {
+            $test1 = $twobytwo->move(PUBLIC_PATH.'\\account\\'.$id.'\\');
+            $name1 = $twobytwo->getClientPath();
+            $path1 = '/account/'.$id.'/'.$name1;
+            
+            $data['photo'] = $path1;
+        }
+        
+        if($birth_cert != '') {
+            $test2 = $birth_cert->move(PUBLIC_PATH.'\\account\\'.$id.'\\');
+            $name2 = $birth_cert->getClientPath();
+            $path2 = '/account/'.$id.'/'.$name2;
+
+            $data['birth_cert'] = $path2;
+        } 
+
+        if($report_card != '') {
+            $test3 = $report_card->move(PUBLIC_PATH.'\\account\\'.$id.'\\');
+            $name3 = $report_card->getClientPath();
+            $path3 = '/account/'.$id.'/'.$name3;
+
+            $data['report_card'] = $path3;
+        } 
+
+        if($good_moral != '') {
+            $test4 = $good_moral->move(PUBLIC_PATH.'\\account\\'.$id.'\\');
+            $name4 = $good_moral->getClientPath();
+            $path4 = '/account/'.$id.'/'.$name4;
+
+            $data['good_moral'] = $path4;
+        } 
 
         if ($id != null) {
             $res = $this->admissions->set($data)->where('id', $id)->update();

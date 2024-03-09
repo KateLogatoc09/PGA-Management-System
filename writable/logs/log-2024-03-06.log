@@ -1,0 +1,17 @@
+CRITICAL - 2024-03-06 04:46:14 --> The original file is not a valid file.
+in SYSTEMPATH\HTTP\Files\UploadedFile.php on line 146.
+ 1 SYSTEMPATH\HTTP\Files\UploadedFile.php(146): CodeIgniter\HTTP\Exceptions\HTTPException::forInvalidFile()
+ 2 APPPATH\Controllers\AdminController.php(265): CodeIgniter\HTTP\Files\UploadedFile->move('C:\\laragon\\www\\PGA-Management-System\\public\\account\\14\\/')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->adminadmissions()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-03-06 05:22:32 --> Undefined property: App\Controllers\RegistrarController::$sections
+in APPPATH\Controllers\RegistrarController.php on line 412.
+ 1 APPPATH\Controllers\RegistrarController.php(412): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\RegistrarController::$sections', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\RegistrarController.php', 412)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\RegistrarController->regadmissions()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RegistrarController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
