@@ -71,7 +71,11 @@ class AdminController extends BaseController
             'fname' => $this->request->getVar('fname'),
             'mname' => $this->request->getVar('mname'),
             'lname' => $this->request->getVar('lname'),
+            'age' => $this->request->getVar('age'),
+            'gender' => $this->request->getVar('gender'),
             'dob' => $this->request->getVar('dob'),
+            'address' => $this->request->getVar('address'),
+            'phone' => $this->request->getVar('phone'),
         ];
 
         if ($id != null) {

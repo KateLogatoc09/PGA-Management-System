@@ -186,21 +186,18 @@ class EnrollmentController extends BaseController
             $res = $this->address->set($data)->where('id', $id)->update();
             if($res) {
                 $session->setFlashdata('msg','Updated Successfully.');
-                return redirect()->to('addenroll');
             } else {
                 $session->setFlashdata('msg','Something went wrong. Please try again later.');
-                return redirect()->to('addenroll');
             }
         } else {
             $res = $this->address->save($data);
             if($res) {
                 $session->setFlashdata('msg','Saved Successfully.');
-                return redirect()->to('addenroll');
             } else {
                 $session->setFlashdata('msg','Something went wrong. Please try again later.');
-                return redirect()->to('addenroll');
             }
         }  
+        return redirect()->to('addenroll');
     }
 
     public function saveadmissions()  {
@@ -255,20 +252,16 @@ class EnrollmentController extends BaseController
                 $res = $this->admissions->set($data)->where('id', $id)->update();
                 if($res) {
                     $session->setFlashdata('msg','Updated Successfully.');
-                    return redirect()->to('addenroll');
                 } else {
                     $session->setFlashdata('msg','Something went wrong. Please try again later.');
-                    return redirect()->to('addenroll');
                 }
                 
             } else {
                 $res = $this->admissions->save($data);
                 if($res) {
                     $session->setFlashdata('msg','Saved Successfully.');
-                    return redirect()->to('addenroll');
                 } else {
                     $session->setFlashdata('msg','Something went wrong. Please try again later.');
-                    return redirect()->to('addenroll');
                 }
             } 
         } else {
@@ -283,23 +276,20 @@ class EnrollmentController extends BaseController
                 $res = $this->admissions->set($data)->where('id', $id)->update();
                 if($res) {
                     $session->setFlashdata('msg','Updated Successfully.');
-                    return redirect()->to('addenroll');
                 } else {
                     $session->setFlashdata('msg','Something went wrong. Please try again later.');
-                    return redirect()->to('addenroll');
                 }
                 
             } else {
                 $res = $this->admissions->save($data);
                 if($res) {
                     $session->setFlashdata('msg','Saved Successfully.');
-                    return redirect()->to('addenroll');
                 } else {
                     $session->setFlashdata('msg','Something went wrong. Please try again later.');
-                    return redirect()->to('addenroll');
                 }
             } 
         }
+        return redirect()->to('addenroll');
     }
 
     public function savesibling()  {
@@ -317,21 +307,18 @@ class EnrollmentController extends BaseController
             $res = $this->sibling->set($data)->where('id', $id)->update();
             if($res) {
                 $session->setFlashdata('msg','Updated Successfully.');
-                return redirect()->to('addenroll');
             } else {
                 $session->setFlashdata('msg','Something went wrong. Please try again later.');
-                return redirect()->to('addenroll');
             }
         } else {
             $res = $this->sibling->save($data);
             if($res) {
                 $session->setFlashdata('msg','Saved Successfully.');
-                return redirect()->to('addenroll');
             } else {
                 $session->setFlashdata('msg','Something went wrong. Please try again later.');
-                return redirect()->to('addenroll');
             }
         }  
+        return redirect()->to('addenroll');
     }
 
     public function savefamily()  {
@@ -354,21 +341,18 @@ class EnrollmentController extends BaseController
             $res = $this->family->set($data)->where('id', $id)->update();
             if($res) {
                 $session->setFlashdata('msg','Updated Successfully.');
-                return redirect()->to('addenroll');
             } else {
                 $session->setFlashdata('msg','Something went wrong. Please try again later.');
-                return redirect()->to('addenroll');
             }
         } else {
             $res = $this->family->save($data);
             if($res) {
                 $session->setFlashdata('msg','Saved Successfully.');
-                return redirect()->to('addenroll');
             } else {
                 $session->setFlashdata('msg','Something went wrong. Please try again later.');
-                return redirect()->to('addenroll');
             }
         }  
+        return redirect()->to('addenroll');
     }
 
     public function saveschool()  {

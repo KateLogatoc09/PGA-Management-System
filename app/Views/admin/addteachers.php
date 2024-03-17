@@ -46,7 +46,11 @@
                                         <th>Firt Name</th>
                                         <th>Middle Name</th>
                                         <th>Last Name</th>
+                                        <th>Age</th>
+                                        <th>Gender</th>
                                         <th>Date of Birth</th>
+                                        <th>Address</th>
+                                        <th>Phone</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -58,7 +62,11 @@
                                             <td><?= $teach['fname'] ?></td>
                                             <td><?= $teach['mname'] ?></td>
                                             <td><?= $teach['lname'] ?></td>
+                                            <td><?= $teach['age'] ?></td>
+                                            <td><?= $teach['gender'] ?></td>
                                             <td><?= $teach['dob'] ?></td>
+                                            <td><?= $teach['address'] ?></td>
+                                            <td><?= $teach['phone'] ?></td>
                                             <td> <a href="/deleteteacher/<?= $teach['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
                                             <a href="/editteacher/<?= $teach['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
                                            
@@ -99,17 +107,36 @@
                         <input type="text" class="form-control" name="mname" placeholder="Enter Middle Name" 
                         value="<?php if (isset($prof['mname'])) {echo $prof['mname'];}?>" required>
 
+                        <label for="lname">Last Name:</label>
+                        <input type="text" class="form-control" name="lname" placeholder="Enter Last Name" 
+                        value="<?php if (isset($prof['lname'])) {echo $prof['lname'];}?>" required>
+                           
+                        <label for="age">Age:</label>
+                        <input type="number" class="form-control" name="age" placeholder="Enter Age" 
+                        value="<?php if (isset($prof['age'])) {echo $prof['age'];}?>" required>
+
                         </div>
 </div>
 <div class="col-sm-5 text-center text-sm-left">
   <div class="form-group margin-left">
-  <label for="lname">Last Name:</label>
-                        <input type="text" class="form-control" name="lname" placeholder="Enter Last Name" 
-                        value="<?php if (isset($prof['lname'])) {echo $prof['lname'];}?>" required>
+                        <label for="gender">Gender:</label>
+                                        <select class="form-control" name="gender" id="gender" 
+                                        value="<?php if (isset($prof['gender'])) {echo $prof['gender'];}?>">
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                        </select>
                                  
                         <label for="dob">Date of Birth:</label>
                         <input type="date" class="form-control" name="dob" placeholder="Enter Date of Birth" 
                         value="<?php if (isset($prof['dob'])) {echo $prof['dob'];}?>" required>    
+
+                        <label for="address">Address:</label>
+                        <input type="text" class="form-control" name="address" placeholder="Enter Address" 
+                        value="<?php if (isset($prof['address'])) {echo $prof['address'];}?>" required>  
+
+                        <label for="phone">Phone:</label>
+                        <input type="text" class="form-control" name="phone" placeholder="Enter Phone" 
+                        value="<?php if (isset($prof['phone'])) {echo $prof['phone'];}?>" required>  
   </div>
 </div>
 </div>

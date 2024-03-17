@@ -13,7 +13,7 @@ class GradeModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['idnum','name','subject','grade'];
+    protected $allowedFields    = ['student_id','teacher_id','subject','grade'];
 
     // Dates
     protected $useTimestamps = false;

@@ -76,7 +76,12 @@
                     <div data-i18n="Analytics">Home</div>
                   </a>
                 </li>
-                
+
+                <li class="menu-item">
+                  <a href="/grade" class="menu-link">
+                    <div data-i18n="Analytics">Grades</div>
+                  </a>
+                </li>
          
               </ul>
             </li>

@@ -82,7 +82,13 @@ $routes->get('/teach/(:any)', 'AdminController::teach/$1', ['filter' => 'admin']
 $routes->post('/saveteacher', 'AdminController::save', ['filter' => 'admin']);
 $routes->get('/deleteteacher/(:any)', 'AdminController::delete/$1', ['filter' => 'admin']);
 $routes->get('/editteacher/(:any)', 'AdminController::edit/$1', ['filter' => 'admin']);
+
+//TEACHER
 $routes->get('/teacher', 'TeacherController::teacher', ['filter' => 'teacher']);
+$routes->get('/grade', 'TeacherController::grade', ['filter' => 'teacher']);
+$routes->post('/saveGrade', 'TeacherController::saveGrade', ['filter' => 'teacher']);
+$routes->get('/deleteGrade/(:any)', 'TeacherController::deleteGrade/$1', ['filter' => 'teacher']);
+$routes->get('/editGrade/(:any)', 'TeacherController::editGrade/$1', ['filter' => 'teacher']);
 
 //ADMIN ENROLL
 $routes->get('/enroll', 'AdminController::enroll', ['filter' => 'admin']);
@@ -136,6 +142,7 @@ $routes->get('/parent', 'ParentController::parent', ['filter' => 'parents']);
 
 //REGISTRAR
 $routes->get('/registrar', 'RegistrarController::registrar', ['filter' => 'registrar']);
+$routes->get('/reggrade', 'RegistrarController::reggrade', ['filter' => 'registrar']);
 $routes->get('/registerstudent', 'RegistrarController::registerstudent', ['filter' => 'registrar']);
 $routes->post('/regSaveLearner', 'RegistrarController::regSaveLearner', ['filter' => 'registrar']);
 $routes->get('/regDeleteLearner/(:any)', 'RegistrarController::regDeleteLearner/$1', ['filter' => 'registrar']);

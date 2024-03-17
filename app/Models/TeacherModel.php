@@ -13,7 +13,7 @@ class TeacherModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['idnum','fname','mname', 'lname', 'dob'];
+    protected $allowedFields    = ['idnum','fname','mname', 'lname', 'age', 'gender', 'dob', 'address', 'phone'];
 
     // Dates
     protected $useTimestamps = false;

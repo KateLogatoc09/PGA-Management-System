@@ -8,11 +8,12 @@ use App\Models\SiblingModel;
 use App\Models\FamilyModel;
 use App\Models\SchoolAttendedModel;
 use App\Models\Sections;
+use App\Models\GradeModel;
 use App\Controllers\BaseController;
 
 class RegistrarController extends BaseController
 {
-    private $learner, $family, $address, $admissions, $sibling, $school, $section;
+    private $learner, $family, $address, $admissions, $sibling, $school, $section, $grade;
     public function __construct()
     {
         $this->learner = new LearnerModel();
@@ -22,6 +23,7 @@ class RegistrarController extends BaseController
         $this->sibling = new SiblingModel();
         $this->school = new SchoolAttendedModel();
         $this->sections = new Sections();
+        $this->grade = new GradeModel();
     }
 
     public function registrar(){
@@ -511,5 +513,12 @@ class RegistrarController extends BaseController
         return view('regadmissions', $data);
         
     }
-  
+
+    public function reggrade()
+    {
+            $data = [
+                'grade' => $this->grade->findAll(),
+                ];
+            return view ('reggrade', $data);
+    }
 }
