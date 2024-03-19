@@ -98,7 +98,7 @@
 
                 <li class="menu-item">
                   <a href="/regfam" class="menu-link">
-                    <div data-i18n="Analytics">Family</div>
+                    <div data-i18n="Analytics">Parent</div>
                   </a>
                 </li>
 

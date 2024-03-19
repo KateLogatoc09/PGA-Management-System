@@ -23,7 +23,7 @@
 <div class="col-lg-18 mb-4 order-0">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Students' Family List</h3>
+                            <h3 class="card-title">Students' Parent List</h3>
                             <div class="card-tools">
                                 <div class="input-group input-group-sm" style="width: 150px;">
                                     <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
@@ -86,7 +86,7 @@
                 <div class="col-lg-18 mb-4 order-0">
                 <div class="card">
                 <div class="card-body">
-                        <h5 class="card-title text-primary">Edit Students' Family Information</h5>
+                        <h5 class="card-title text-primary">Edit Students' Parent Information</h5>
                       </div>
                   <div class="d-flex">
                     <div class="col-sm-5">
