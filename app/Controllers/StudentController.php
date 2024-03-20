@@ -30,6 +30,7 @@ class StudentController extends BaseController
     {
         $session = session();
         $curruser = $this->acc->select('id')->where('username', $_SESSION['username'])->first();
+        $enrolled = $this->admissions->select('status')->where('account_id', $curruser)->first();
         
         $data = [
             'learn' => $this->learner->where('account_id', $curruser)->first(),
@@ -38,6 +39,7 @@ class StudentController extends BaseController
             'address' => $this->address->where('account_id', $curruser)->FindAll(),
             'sibling' => $this->sibling->where('account_id', $curruser)->FindAll(),
             'school' => $this->school->where('account_id', $curruser)->FindAll(),
+            'status' => $enrolled,
         ];
 
         return view('student', $data);

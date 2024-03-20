@@ -16,8 +16,13 @@
                     <input type="hidden" class="form-control" name="id"
                         value="<?php if (isset($borrowedBook['id'])) {echo $borrowedBook['id'];}?>">
 
-                        <label for="book_id">Book Id</label>
-                        <input type="text" class="form-control" id="book_id" name="book_id" placeholder="Enter Book Id" required> 
+                        <label for="book_id">Book to be Borrowed:</label>
+                                        <select name="book_id" id="book_id" class="form-control">
+                                        <option value="">Select Book</option>
+                                            <?php foreach ($booky as $bk):?> 
+                                                <option value="<?= $bk['id'] ?>"><?= $bk['book_title'] ?></option>
+                                            <?php endforeach; ?>
+                                        </select> 
 
                         <label for="studIDnum">Student ID Number</label>
                         <input type="text" class="form-control" id="studIDnum" name="studIDnum" placeholder="Enter Student ID Number" required>

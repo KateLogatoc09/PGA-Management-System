@@ -1,3 +1,3 @@
 <?= $this->include('attendance/head') ?>
-<?= $this->include('attendance/qr') ?>
+<?= $this->include('attendance/scanner.php') ?>
 <?= $this->include('attendance/js') ?>

@@ -13,7 +13,7 @@
         <!-- / Navbar -->
 
         <!-- Content wrapper -->
-        <div class="content-wrapper">
+
           <!-- Content -->
 
           <div class="container-xxl flex-grow-1 container-p-y">
@@ -24,6 +24,8 @@
             <div class="row">
               <div class="col-lg-18 mb-4 order-0">
                 <div class="card">
+                <?php if(implode($status) == 'ENROLLED'): ?>
+                      <div class="content-wrapper">
                   <div class="d-flex align-items-end row">
                     <div class="col-sm-5">
                       <div class="card-body">
@@ -52,9 +54,8 @@
                         <h7 class="orange">Age:</h7>
                         <?php if (isset($learn['age'])) {echo $learn['age'];}?>
                         <br>
-
+                      
                       </div>
-
                     </div>
 
                     <div class="col-sm-5">
@@ -86,7 +87,7 @@
                 </div>
               </div>
 
-              <div class="col-lg-18 mb-4 order-0">
+              <div class="col-lg-18 my-4 mb-4 order-0">
                 <div class="card">
                   <div class="d-flex align-items-end row">
                     <div class="col-sm-5">
@@ -116,7 +117,7 @@
                 </div>
               </div>
 
-              <div class="col-lg-18 mb-4 order-0">
+              <div class="col-lg-18 mb-1 order-0">
                 <div class="card">
                   <div class="d-flex align-items-end row">
                     <div class="col-sm-5">
@@ -222,7 +223,9 @@
                   </div>
                 </div>
               </div>
-
+              <?php else: ?>
+                  <h5 class="m-4">No Information Available Yet.</h5>
+        <?php endif; ?>
             </div>
             <!-- / Content -->
 

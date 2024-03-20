@@ -21,10 +21,10 @@
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 
-    <script src="assets/js/book.js"></script>
+    <script src="../assets/js/book.js"></script>
 
     <!-- AlertJs -->
-<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 
 <!-- Custom JS -->
 <script>
@@ -115,5 +115,6 @@ $(document).ready(function(){
                 alertify.alert('Note: <?= implode($_SESSION['validator']) ?>');
             <?php endif; ?>
         });
-        </script>
+
+</script>
     

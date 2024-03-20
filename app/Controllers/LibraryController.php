@@ -37,7 +37,7 @@ class LibraryController extends BaseController
         ];
 
         if ($id != null) {
-            if($qty['book_qty'] >= $this->request->getVar('book_id') || $this->request->getVar('status') == "RETURNED") {
+            if($qty['book_qty'] >= $this->request->getVar('book_qty') || $this->request->getVar('status') == "RETURNED") {
                 $res = $this->borrowedBook->set($data)->where('id', $id)->update();
                 if($res) {
                     $session->setFlashdata('msg','Updated Successfully.');
@@ -51,7 +51,7 @@ class LibraryController extends BaseController
                 return redirect()->to('li');
             }
         } else {
-            if($qty['book_qty'] >= $this->request->getVar('book_id')) {
+            if($qty['book_qty'] >= $this->request->getVar('book_qty')) {
                 $res = $this->borrowedBook->save($data);
                 if($res) {
                     $session->setFlashdata('msg','Saved Successfully.');
@@ -72,17 +72,19 @@ class LibraryController extends BaseController
         $session = session();
         $id = $_POST['id'];
         $qty = $this->book->select('book_qty')->where('id',$this->request->getVar('book_id'))->first();
+        $stat = $this->book->select('status')->where('id',$this->request->getVar('book_id'))->first();
         $data = [
             'student_id' => $this->request->getVar('studIDnum'),
             'book_qty' => $this->request->getVar('book_qty'),
             'date_borrowed' => $this->request->getVar('dateBorrowed'),
             'date_return' => $this->request->getVar('dateReturn'),
             'book_id' => $this->request->getVar('book_id'),
-            'status' => 'Pending'
+            'status' => 'PENDING'
         ];
 
+        if($stat['status'] == 'AVAILABLE') {
         if ($id != null) {
-            if($qty['book_qty'] >= $this->request->getVar('book_id')) {
+            if($qty['book_qty'] >= $this->request->getVar('book_qty')) {
                 $res = $this->borrowedBook->set($data)->where('id', $id)->update();
                 if($res) {
                     $session->setFlashdata('msg','Updated Successfully.');
@@ -96,7 +98,7 @@ class LibraryController extends BaseController
                 return redirect()->to('li');
             }
         } else {
-            if($qty['book_qty']  >= $this->request->getVar('book_id')) {
+            if($qty['book_qty'] >= $this->request->getVar('book_qty')) {
                 $res = $this->borrowedBook->save($data);
                 if($res) {
                     $session->setFlashdata('msg','Saved Successfully.');
@@ -110,6 +112,10 @@ class LibraryController extends BaseController
                 return redirect()->to('li');
             }
         }
+    } else {
+        $session->setFlashdata('msg','Book is not available.');
+        return redirect()->to('li');
+    }
                 
             
     }

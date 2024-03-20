@@ -63,7 +63,6 @@
                     
                             <thead>
                                     <tr>
-                                        <th>Id</th>
                                         <th>Book Title</th>
                                         <th>Book Number</th>
                                         <th>Book Author</th>
@@ -78,7 +77,6 @@
                                 <tbody>
                                 <?php foreach ($booky as $book): ?>
                                     <tr>
-                                            <td><?= $book['id'] ?></td>
                                             <td><?= $book['book_title'] ?></td>
                                             <td><?= $book['book_number'] ?></td>
                                             <td><?= $book['book_author'] ?></td>
