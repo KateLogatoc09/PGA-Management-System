@@ -89,6 +89,7 @@
              
                                     <label for="grade">Grade/Year:</label>
                                         <select class="form-control" name="grade" id="grade">
+                                        <option value="">Select Grade</option>
                                         <option value="Pre-School (Kinder)">Pre-School (Kinder)</option>
                                         <option value="Grade School (G1-G3)">Grade School (G1-G3)</option>
                                         <option value="Grade School (G4-G6)">Grade School (G4-G6)</option>

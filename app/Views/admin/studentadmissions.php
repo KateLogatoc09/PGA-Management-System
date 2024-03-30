@@ -55,7 +55,6 @@
                                         <th>Good Moral</th>
                                         <th>Schedule Date</th>
                                         <th>Status</th>
-                                        <th>Account Id</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -100,7 +99,6 @@
                                             /></td>
                                             <td><?= $ad['schedule'] ?></td>
                                             <td><?= $ad['status'] ?></td>
-                                            <td><?= $ad['account_id'] ?></td>
                                             <td> <a href="/deleteAdmissions/<?= $ad['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
                                             <a href="/editAdmissions/<?= $ad['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
                                      </tr>
@@ -136,6 +134,7 @@
                         
                                         <label for="category">Student Category:</label>
                                         <select class="form-control" name="category" id="category">
+                                        <option value="">Select Category</option>
                                             <option value="Continuing">Continuing</option>
                                             <option value="Transferee">Transferee</option>
                                             <option value="Returnee">Returnee</option>
@@ -143,6 +142,7 @@
 
                                         <label for="yr_lvl">Year Level:</label>
                                         <select class="form-control" name="yr_lvl" id="yr_lvl">
+                                            <option value="">Select Year Level</option>
                                             <option value="Kinder 1">Kinder 1</option>
                                             <option value="Kinder 2">Kinder 2</option>
                                             <option value="Grade 1">Grade 1</option>
@@ -162,14 +162,14 @@
                                         <label for="section">Section:</label>
                                         <select name="section" id="section" class="form-control">
                                         <option value="">Select Section</option>
-                                            <?php $uniqueCategories = array(); 
-                                                foreach ($stud_section as $se) {$stud_section = $se['name'];
-                                                if (!in_array($stud_section, $uniqueCategories)) {$uniqueCategories[] = $stud_section; 
-                                                echo '<option value="' . $stud_section . '">' . $stud_section . '</option>';}}?> 
-                                        </select>  
+                                            <?php foreach ($stud_section as $se):?> 
+                                                <option value="<?= $se['id'] ?>"><?= $se['name'] ?></option>
+                                            <?php endforeach; ?>
+                                        </select> 
 
                                         <label for="program">Strand/Program:</label>
                                         <select class="form-control" name="program" id="program">
+                                        <option value="">Select Program</option>
                                             <option value="None">None</option>
                                             <option value="STEM">STEM</option>
                                             <option value="ABM">ABM</option>
@@ -187,6 +187,7 @@
 
                                         <label for="status">Status:</label>
                                         <select class="form-control" name="status" id="status">
+                                        <option value="">Select Status</option>
                                             <option value="PENDING">Pending</option>
                                             <option value="ON PROCESS">On Process</option>
                                             <option value="ENROLLED">Enrolled</option>

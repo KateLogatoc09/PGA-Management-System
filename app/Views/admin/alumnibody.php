@@ -98,6 +98,7 @@
                         <label for="gender">Gender:</label>
                                         <select class="form-control" name="gender" id="gender" value= "
                                         <?php if (isset($alum['gender'])) {echo $alum['gender'];}?>" required>>
+                                        <option value="">Select Gender</option>
                                             <option value="Male">Male</option>
                                             <option value="Female">Female</option>
                                         </select>

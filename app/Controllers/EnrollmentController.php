@@ -371,7 +371,7 @@ class EnrollmentController extends BaseController
             $res = $this->school->set($data)->where('id', $id)->update();
             if($res) {
                 $session->setFlashdata('msg','Updated Successfully.');
-                return redirect()->to('confirm');
+                return redirect()->to('addenroll');
             } else {
                 $session->setFlashdata('msg','Something went wrong. Please try again later.');
                 return redirect()->to('addenroll');
@@ -380,7 +380,7 @@ class EnrollmentController extends BaseController
             $res = $this->school->save($data);
             if($res) {
                 $session->setFlashdata('msg','Saved Successfully.');
-                return redirect()->to('confirm');
+                return redirect()->to('addenroll');
             } else {
                 $session->setFlashdata('msg','Something went wrong. Please try again later.');
                 return redirect()->to('addenroll');

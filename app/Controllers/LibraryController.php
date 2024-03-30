@@ -5,14 +5,18 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\BorrowedBooksModel;
 use App\Models\AddBooksModel;
+use App\Models\AccountModel;
+use App\Models\AdmissionsModel;
 
 class LibraryController extends BaseController
 {
-    private $book, $borrowedBook;
+    private $book, $borrowedBook, $acc, $admissions;
     public function __construct()
     {
         $this->borrowedBook = new BorrowedBooksModel();
         $this->book = new AddBooksModel();
+        $this->acc = new AccountModel();
+        $this->admissions = new AdmissionsModel();
     }
 
     public function index()
@@ -28,7 +32,7 @@ class LibraryController extends BaseController
         $qty = $this->book->select('book_qty')->where('id',$this->request->getVar('book_id'))->first();
         $id = $_POST['id'];
         $data = [
-            'student_id' => $this->request->getVar('studIDnum'),
+            'account_id' => $this->acc->select('id')->where('username', $_SESSION['username'])->first(),
             'book_qty' => $this->request->getVar('book_qty'),
             'date_borrowed' => $this->request->getVar('dateBorrowed'),
             'date_return' => $this->request->getVar('dateReturn'),
@@ -41,30 +45,25 @@ class LibraryController extends BaseController
                 $res = $this->borrowedBook->set($data)->where('id', $id)->update();
                 if($res) {
                     $session->setFlashdata('msg','Updated Successfully.');
-                    return redirect()->to('borrowers');
                 } else {
                     $session->setFlashdata('msg','Something went wrong. Please try again later.');
-                    return redirect()->to('borrowers');
                 }
             } else {
                 $session->setFlashdata('msg','There isn\'t enough books available.');
-                return redirect()->to('li');
             }
         } else {
             if($qty['book_qty'] >= $this->request->getVar('book_qty')) {
                 $res = $this->borrowedBook->save($data);
                 if($res) {
                     $session->setFlashdata('msg','Saved Successfully.');
-                    return redirect()->to('borrowers');
                 } else {
                     $session->setFlashdata('msg','Something went wrong. Please try again later.');
-                    return redirect()->to('borrowers');
                 }
             } else {
                 $session->setFlashdata('msg','There isn\'t enough books available.');
-                return redirect()->to('li');
             }
         }  
+        return redirect()->to('borrowers');
     }
 
     //Student start 
@@ -74,7 +73,7 @@ class LibraryController extends BaseController
         $qty = $this->book->select('book_qty')->where('id',$this->request->getVar('book_id'))->first();
         $stat = $this->book->select('status')->where('id',$this->request->getVar('book_id'))->first();
         $data = [
-            'student_id' => $this->request->getVar('studIDnum'),
+            'account_id' => $this->acc->select('id')->where('username', $_SESSION['username'])->first(),
             'book_qty' => $this->request->getVar('book_qty'),
             'date_borrowed' => $this->request->getVar('dateBorrowed'),
             'date_return' => $this->request->getVar('dateReturn'),
@@ -88,36 +87,28 @@ class LibraryController extends BaseController
                 $res = $this->borrowedBook->set($data)->where('id', $id)->update();
                 if($res) {
                     $session->setFlashdata('msg','Updated Successfully.');
-                    return redirect()->to('li');
                 } else {
                     $session->setFlashdata('msg','Something went wrong. Please try again later.');
-                    return redirect()->to('li');
                 }
             } else {
                 $session->setFlashdata('msg','There isn\'t enough books available.');
-                return redirect()->to('li');
             }
         } else {
             if($qty['book_qty'] >= $this->request->getVar('book_qty')) {
                 $res = $this->borrowedBook->save($data);
                 if($res) {
                     $session->setFlashdata('msg','Saved Successfully.');
-                    return redirect()->to('li');
                 } else {
                     $session->setFlashdata('msg','Something went wrong. Please try again later.');
-                    return redirect()->to('li');
                 }
             } else {
                 $session->setFlashdata('msg','There isn\'t enough books available.');
-                return redirect()->to('li');
             }
         }
     } else {
         $session->setFlashdata('msg','Book is not available.');
-        return redirect()->to('li');
-    }
-                
-            
+    }          
+    return redirect()->to('li');   
     }
     
 
@@ -142,30 +133,27 @@ class LibraryController extends BaseController
             $res = $this->book->set($data)->where('id', $id)->update();
             if($res) {
                 $session->setFlashdata('msg','Updated Successfully.');
-                return redirect()->to('books');
             } else {
                 $session->setFlashdata('msg','Something went wrong. Please try again later.');
-                return redirect()->to('books');
             }
         } else {
             $res = $this->book->save($data);
             if($res) {
                 $session->setFlashdata('msg','Saved Successfully.');
-                return redirect()->to('books');
             } else {
                 $session->setFlashdata('msg','Something went wrong. Please try again later.');
-                return redirect()->to('books');
             }
         }   
+        return redirect()->to('books');
     }
 
     public function librarian()
     {
         $data = [
-            'currentuser' => $_SESSION['username'],
             'booky' => $this->book->findAll(),
-            'borrow' => $this->book->select('*')->join('borrowedbooks','borrowedbooks.book_id = books.id','inner')->orderBy('books.book_title')->FindAll(),
-            'borrowedBook' => $this->borrowedBook->findAll(),
+            'borrow' => $this->book->select('*')->join('borrowedbooks','borrowedbooks.book_id = books.id','inner')
+            ->orderBy('books.book_title')->join('student_learner','student_learner.account_id = borrowedbooks.account_id','inner')
+            ->join('admissions','admissions.account_id = borrowedbooks.account_id','inner')->FindAll(),
         ];
         return view('librarian', $data);
     }
@@ -173,10 +161,12 @@ class LibraryController extends BaseController
     public function borrowers()
     {
         $data = [
-            'currentuser' => $_SESSION['username'],
-            'borrow' => $this->book->select('*')->join('borrowedbooks','borrowedbooks.book_id = books.id','inner')->orderBy('books.book_title')->FindAll(),
-            'borrowedBook' => $this->borrowedBook->findAll(),
-        ];
+            'borrow' => $this->book->select('*')->join('borrowedbooks','borrowedbooks.book_id = books.id','inner')
+            ->orderBy('books.book_title')->join('student_learner','student_learner.account_id = borrowedbooks.account_id','inner')
+            ->join('admissions','admissions.account_id = borrowedbooks.account_id','inner')->FindAll(),
+            'borrow2' => $this->book->select('*')->join('borrowedbooks','borrowedbooks.book_id = books.id','inner')->orderBy('books.book_title')->FindAll(),
+            'booky' => $this->book->findAll(),
+         ];
         return view('borrowers', $data);
     }
 
@@ -184,7 +174,6 @@ class LibraryController extends BaseController
     public function books()
     {
         $data = [
-            'currentuser' => $_SESSION['username'],
             'booky' => $this->book->findAll(),
         ];
         return view('books', $data);
@@ -196,20 +185,21 @@ class LibraryController extends BaseController
         $res = $this->borrowedBook->delete($id);
         if($res) {
             $session->setFlashdata('msg','Deleted Successfully.');
-            return redirect()->to('borrowers');
         } else {
             $session->setFlashdata('msg','Something went wrong. Please try again later.');
-            return redirect()->to('borrowers');
         }
+        return redirect()->to('borrowers');
     }
 
     public function editBorrow($id)
     {
         $data = [
-            'currentuser' => $_SESSION['username'],
-            'borrowedBook' => $this->borrowedBook->findAll(),
-            'borrow' => $this->book->select('*')->join('borrowedbooks','borrowedbooks.book_id = books.id','inner')->orderBy('books.book_title')->FindAll(),
+            'borrow' => $this->book->select('*')->join('borrowedbooks','borrowedbooks.book_id = books.id','inner')
+            ->orderBy('books.book_title')->join('student_learner','student_learner.account_id = borrowedbooks.account_id','inner')
+            ->join('admissions','admissions.account_id = borrowedbooks.account_id','inner')->FindAll(),
+            'borrow2' => $this->book->select('*')->join('borrowedbooks','borrowedbooks.book_id = books.id','inner')->orderBy('books.book_title')->FindAll(),
             'borrowed' => $this->borrowedBook->where('id', $id)->first(),
+            'booky' => $this->book->findAll(),
         ];
 
         return view('borrowers', $data);
@@ -222,23 +212,18 @@ class LibraryController extends BaseController
         $res = $this->book->delete($id);
         if($res) {
             $session->setFlashdata('msg','Deleted Successfully.');
-            return redirect()->to('books');
         } else {
             $session->setFlashdata('msg','Something went wrong. Please try again later.');
-            return redirect()->to('books');
         }
-        
+        return redirect()->to('books');
     }
 
     public function editBook($id)
     {
         $data = [
-            'currentuser' => $_SESSION['username'],
             'booky' => $this->book->findAll(),
             'booke' => $this->book->where('id', $id)->first(),
         ];
-
         return view('books', $data);
-        
     }
 }

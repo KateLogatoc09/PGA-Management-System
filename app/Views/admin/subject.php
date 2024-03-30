@@ -87,6 +87,7 @@
 
                                         <label for="type">Type of Subject:</label>
                                         <select class="form-control" name="type" id="Type of Subject">
+                                        <option value="">Select Type</option>
                                             <option value="Core Subject">Core Subject</option>
                                             <option value="Applied Subject">Applied Subject</option>
                                             <option value="Specialized Subject">Specialized Subject</option>

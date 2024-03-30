@@ -72,8 +72,14 @@
               <ul class="menu-sub">
              
                 <li class="menu-item active">
-                  <a href="#" class="menu-link">
+                  <a href="teacher" class="menu-link">
                     <div data-i18n="Analytics">Home</div>
+                  </a>
+                </li>
+
+                <li class="menu-item">
+                  <a href="/teacherinfo" class="menu-link">
+                    <div data-i18n="Analytics">Teacher Information</div>
                   </a>
                 </li>
 

@@ -13,7 +13,7 @@ class BorrowedBooksModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['student_id','book_qty', 'date_borrowed', 'date_return', 'status','book_id'];
+    protected $allowedFields    = ['account_id','book_qty', 'date_borrowed', 'date_return', 'status','book_id'];
 
     // Dates
     protected $useTimestamps = false;

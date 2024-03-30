@@ -47,7 +47,6 @@
                                         <th>Address</th>
                                         <th>Postal Code</th>
                                         <th>Telphone Number</th>
-                                        <th>Account Id</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -60,7 +59,6 @@
                                             <td><?= $ad['address'] ?></td>
                                             <td><?= $ad['postal_code'] ?></td>
                                             <td><?= $ad['tel_num'] ?></td>
-                                            <td><?= $ad['account_id'] ?></td>
                                             <td> <a href="/deleteaddress/<?= $ad['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
                                             <a href="/editaddress/<?= $ad['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
                                      </tr>
@@ -89,6 +87,7 @@
                         
                         <label for="type">Type of Address:</label>
                         <select class="form-control" name="type" id="type" value="<?php if (isset($add['type'])) {echo $add['type'];}?>">
+                        <option value="">Select Type</option>
                             <option value="Permanent">Permanent</option>
                             <option value="Mailing">Mailing</option>
                         </select>

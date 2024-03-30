@@ -41,9 +41,9 @@
                     
                             <thead>
                                     <tr>
-                                        <th>Id</th>
                                         <th>Student Id</th>
                                         <th>Teacher Id</th>
+                                        <th>Teacher Fullname</th>
                                         <th>Subject</th>
                                         <th>Grade</th>
                                     </tr>
@@ -51,9 +51,9 @@
                                 <tbody>
                                 <?php foreach ($grade as $g): ?>
                                     <tr>
-                                            <td><?= $g['id'] ?></td>
                                             <td><?= $g['student_id'] ?></td>
-                                            <td><?= $g['teacher_id'] ?></td>
+                                            <td><?= $g['idnum'] ?></td>
+                                            <td><?= $g['fname'] ?> <?= $g['mname'] ?> <?= $g['lname'] ?></td>
                                             <td><?= $g['subject'] ?></td>
                                             <td><?= $g['grade'] ?></td>
   

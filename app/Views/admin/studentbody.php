@@ -52,12 +52,12 @@
                                         <th>Birthdate</th>
                                         <th>Birthplace</th>
                                         <th>Marital Status</th>
+                                        <th>Email</th>
                                         <th>Mobile Number</th>
                                         <th>Nationality</th>
                                         <th>Religion</th>
                                         <th>Year Level</th>
                                         <th>Section</th>
-                                        <th>Account Id</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -82,12 +82,12 @@
                                             <td><?= $le['birthdate'] ?></td>
                                             <td><?= $le['birthplace'] ?></td>
                                             <td><?= $le['marital_status'] ?></td>
+                                            <td><?= $le['email'] ?></td>
                                             <td><?= $le['mobile_num'] ?></td>
                                             <td><?= $le['nationality'] ?></td>
                                             <td><?= $le['religion'] ?></td>
                                             <td><?= $le['yr_lvl'] ?></td>
                                             <td><?= $le['section'] ?></td>
-                                            <td><?= $le['account_id'] ?></td>
                                             <td> <a href="/deleteLearner/<?= $le['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
                                             <a href="/editLearner/<?= $le['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
                                      </tr>
@@ -176,6 +176,7 @@
   <label for="gender">Gender:</label>
                                         <select class="form-control" name="gender" id="gender" 
                                         value="<?php if (isset($learn['gender'])) {echo $learn['gender'];}?>">
+                                        <option value="">Select Gender</option>
                                             <option value="Male">Male</option>
                                             <option value="Female">Female</option>
                                         </select>
@@ -183,6 +184,7 @@
                                         <label for="marital_status">Marital Status:</label>
                                             <select class="form-control" name="marital_status" id="marital_status"
                                             value="<?php if (isset($learn['marital_status'])) {echo $learn['marital_status'];}?>">
+                                            <option value="">Select Marital Status</option>
                                             <option value="Single">Single</option>
                                             <option value="Married">Married</option>
                                             <option value="Separated">Separated</option>

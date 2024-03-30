@@ -54,7 +54,7 @@
                                     <tr>
                                             <td><?= $g['id'] ?></td>
                                             <td><?= $g['student_id'] ?></td>
-                                            <td><?= $g['teacher_id'] ?></td>
+                                            <td><?= $g['idnum'] ?></td>
                                             <td><?= $g['subject'] ?></td>
                                             <td><?= $g['grade'] ?></td>
                                             <td> <a href="/deleteGrade/<?= $g['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
@@ -88,11 +88,7 @@
                         <label for="student_id">Student Id:</label>
                         <input type="text" class="form-control" name="student_id" placeholder="Enter Student Id" 
                         value="<?php if (isset($gr['student_id'])) {echo $gr['student_id'];}?>" required>
-
-                        <label for="teacher_id">Teacher Id:</label>
-                        <input type="text" class="form-control" name="teacher_id" placeholder="Enter Teacher Id" 
-                        value="<?php if (isset($gr['teacher_id'])) {echo $gr['teacher_id'];}?>" required>
-                        </div>
+</div>
 </div>
 <div class="col-sm-5 text-center text-sm-left">
   <div class="form-group margin-left">

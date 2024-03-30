@@ -41,7 +41,7 @@
                     
                             <thead>
                                     <tr>
-                                        <th>Id</th>
+                                        <th>ID</th>
                                         <th>ID Number</th>
                                         <th>Firt Name</th>
                                         <th>Middle Name</th>
@@ -51,6 +51,7 @@
                                         <th>Date of Birth</th>
                                         <th>Address</th>
                                         <th>Phone</th>
+                                        <th>Account ID</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -67,6 +68,7 @@
                                             <td><?= $teach['dob'] ?></td>
                                             <td><?= $teach['address'] ?></td>
                                             <td><?= $teach['phone'] ?></td>
+                                            <td><?= $teach['account_id'] ?></td>
                                             <td> <a href="/deleteteacher/<?= $teach['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
                                             <a href="/editteacher/<?= $teach['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
                                            
@@ -122,6 +124,7 @@
                         <label for="gender">Gender:</label>
                                         <select class="form-control" name="gender" id="gender" 
                                         value="<?php if (isset($prof['gender'])) {echo $prof['gender'];}?>">
+                                        <option value="">Select Gender</option>
                                             <option value="Male">Male</option>
                                             <option value="Female">Female</option>
                                         </select>
@@ -136,7 +139,8 @@
 
                         <label for="phone">Phone:</label>
                         <input type="text" class="form-control" name="phone" placeholder="Enter Phone" 
-                        value="<?php if (isset($prof['phone'])) {echo $prof['phone'];}?>" required>  
+                        value="<?php if (isset($prof['phone'])) {echo $prof['phone'];}?>" required> 
+                        
   </div>
 </div>
 </div>

@@ -24,9 +24,6 @@
                                             <?php endforeach; ?>
                                         </select> 
 
-                        <label for="studIDnum">Student ID Number</label>
-                        <input type="text" class="form-control" id="studIDnum" name="studIDnum" placeholder="Enter Student ID Number" required>
-
                         <label for="book_qty">Book Quantity</label>
                         <input type="number" class="form-control" id="book_qty" name="book_qty" placeholder="Enter No. of Books to be borrowed" required>
 

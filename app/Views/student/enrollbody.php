@@ -1,3 +1,4 @@
+<?= $this->include('student/head') ?>
 <body>
 <?php $session = session()?>
   <!-- Layout wrapper -->
@@ -28,9 +29,9 @@
                     <div class="col-sm-7">
                       <div class="card-body">
                         <h5 class="card-title text-primary">Student Information</h5>
-                        <a href="javascript:;" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#learnerModal" aria-disabled="<?php ($learn == 'False' ? 'false' : 'true') ?>">Learner Info</a>
-                        <a href="javascript:;" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#addressModal" aria-disabled="<?php ($learn == 'True' && $address != 'True' ? 'false' : 'true') ?>">Addresses</a>
-                        <a href="javascript:;" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#admissionModal" aria-disabled="<?php ($address == 'True' && $admission != 'True' ? 'false' : 'true') ?>">Admission Info</a>
+                        <a href="javascript:;" class="btn btn-sm btn-outline-primary" data-toggle="modal" <?php if($learn == 'False'): echo 'data-target="#learnerModal"'; endif;?>>Learner Info</a>
+                        <a href="javascript:;" class="btn btn-sm btn-outline-primary" data-toggle="modal" <?php if($learn == 'True'): echo 'data-target="#addressModal"'; endif; ?> >Addresses</a>
+                        <a href="javascript:;" class="btn btn-sm btn-outline-primary" data-toggle="modal" <?php if($address == 'True' && $admission != 'True'): echo 'data-target="#admissionModal"'; endif; ?>>Admission Info</a>
                       </div>
                       <?= $this->include('student/enrollment/learner') ?>
                       <?= $this->include('student/enrollment/address') ?>
@@ -40,10 +41,10 @@
                     <div class="col-sm-7">
                       <div class="card-body">
                         <h5 class="card-title text-primary">Family Information</h5>
-                        <a href="javascript:;" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#FamilyModal" aria-disabled="<?php ($admission == 'True' && $family != 'True' ? 'false' : 'true') ?>">Parent Info</a>
+                        <a href="javascript:;" class="btn btn-sm btn-outline-primary" data-toggle="modal" <?php if($admission == 'True'): echo 'data-target="#FamilyModal"'; endif; ?>>Parent Info</a>
                         <p class="mb-10">
                           If you have siblings presently enrolled in PGA fill up the form below:<br>
-                            <a href="javascript:;" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#siblingModal" aria-disabled="<?php ($family == 'True' && $sibling != 'True' ? 'false' : 'true') ?>">Sibling Info</a>
+                            <a href="javascript:;" class="btn btn-sm btn-outline-primary" data-toggle="modal" <?php if($family == 'True'): echo 'data-target="#siblingModal"'; endif; ?>>Sibling Info</a>
                         </p>
                       </div>
 
@@ -55,7 +56,7 @@
                     <div class="col-sm-7">
                       <div class="card-body">
                         <h5 class="card-title text-primary">Schools Attendend Information</h5>
-                        <a href="javascript:;" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#schoolModal" aria-disabled="<?php ($sibling == 'True' && $school != 'True' ? 'false' : 'true') ?>">School Info</a>
+                        <a href="javascript:;" class="btn btn-sm btn-outline-primary" data-toggle="modal" <?php if($sibling == 'True'): echo 'data-target="#schoolModal"'; endif; ?>>School Info</a>
                       </div>
                       <?= $this->include('student/enrollment/school') ?>
                     </div>
@@ -63,8 +64,7 @@
                   </div>
                 </div>
               </div>
-              <a href="/confirm" class="btn btn-primary sub">Submit</a>
-              
+                            <a href="/confirm" class="btn btn-primary sub">Submit</a>
                     </div>
                     <!-- /.card -->
                 </div> <!-- /.dito -->
@@ -87,3 +87,7 @@
 </body>
 
 </html>
+
+<?= $this->include('student/js') ?>
+
+

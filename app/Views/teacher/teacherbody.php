@@ -17,41 +17,50 @@
           <!-- Content -->
 
           <div class="container-xxl flex-grow-1 container-p-y">
-          <h5 class="card-title text-primary">Welcome Teacher <?= $_SESSION['username']?>! 🎉</h5>
-                        <p class="mb-4">
-                          Study Hard and Get a Diploma.
-                        </p>
+          <h5 class="card-title text-primary">Welcome <?= $_SESSION['username']; ?>! 🎉</h5>
+
             <div class="row">
               <div class="col-lg-18 mb-4 order-0">
                 <div class="card">
+
+                      <div class="content-wrapper">
                   <div class="d-flex align-items-end row">
-                    <div class="col-sm-7">
+                    <div class="col-sm-5">
                       <div class="card-body">
                         <h5 class="card-title text-primary">Teacher Information</h5>
-                        
-
+                        <br>
+                        <h7 class="orange">Teacher ID:</h7>
+                        <?php if (isset($teach['idnum'])) {echo $teach['idnum'];}?>
+                        <br>
+                        <h7 class="orange">Full Name:</h7>
+                        <?php if (isset($teach['fname'])) {echo $teach['fname'];}?>
+                        <?php if (isset($teach['mname'])) {echo $teach['mname'];}?>
+                        <?php if (isset($teach['lname'])) {echo $teach['lname'];}?>
+                        <br>
+                        <h7 class="orange">Age:</h7>
+                        <?php if (isset($teach['age'])) {echo $teach['age'];}?>
+                        <br>
+                        <h7 class="orange">Gender:</h7>
+                        <?php if (isset($teach['gender'])) {echo $teach['gender'];}?>
                       </div>
-
-
-
                     </div>
 
-
-                    <div class="col-sm-5 text-center text-sm-left">
-                      <div class="card-body pb-0 px-0 px-md-4">
-                        <img src="../assets/img/illustrations/man-with-laptop-light.png" height="140" alt="View Badge User" data-app-dark-img="illustrations/man-with-laptop-dark.png" data-app-light-img="illustrations/man-with-laptop-light.png" />
+                    <div class="col-sm-5">
+                      <div class="card-body">   
+                        <h7 class="orange">Birthdate:</h7>
+                        <?php if (isset($teach['dob'])) {echo $teach['dob'];}?>
+                        <br>
+                        <h7 class="orange">Address:</h7>
+                        <?php if (isset($teach['address'])) {echo $teach['address'];}?>
+                        <br>  
+                        <h7 class="orange">Phone Number:</h7>
+                        <?php if (isset($teach['phone'])) {echo $teach['phone'];}?>
                       </div>
                     </div>
+                    
                   </div>
                 </div>
               </div>
-                
-              
-                    </div>
-                    <!-- /.card -->
-                </div> <!-- /.dito -->
-
-
 
             </div>
             <!-- / Content -->

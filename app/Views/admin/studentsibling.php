@@ -46,7 +46,6 @@
                                         <th>Sibling's Fullname</th>
                                         <th>Sibling's Year Level</th>
                                         <th>Sibling's Affiliation</th>
-                                        <th>Account Id</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -58,7 +57,6 @@
                                             <td><?= $si['fullname'] ?></td>
                                             <td><?= $si['yr_lvl'] ?></td>
                                             <td><?= $si['affiliation'] ?></td>
-                                            <td><?= $si['account_id'] ?></td>
                                             <td> <a href="/deletesibling/<?= $si['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
                                             <a href="/editsibling/<?= $si['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
                                      </tr>
@@ -92,6 +90,7 @@
                                         <label for="yr_lvl">Year Level:</label>
                                         <select class="form-control" name="yr_lvl" id="yr_lvl"
                                         value="<?php if (isset($sib['yr_lvl'])) {echo $sib['yr_lvl'];}?>">
+                                        <option value="">Select Year Level</option>
                                             <option value="Kinder 1">Kinder 1</option>
                                             <option value="Kinder 2">Kinder 2</option>
                                             <option value="Grade 1">Grade 1</option>

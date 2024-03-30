@@ -517,7 +517,7 @@ class RegistrarController extends BaseController
     public function reggrade()
     {
             $data = [
-                'grade' => $this->grade->findAll(),
+                'grade' => $this->grade->select('*')->join('teachers','teachers.id = student_grades.teacher_account','inner')->findAll(),
                 ];
             return view ('reggrade', $data);
     }

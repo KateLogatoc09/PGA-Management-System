@@ -335,7 +335,8 @@ class AdminController extends BaseController
     public function adminstudent()
     {
         $data = [
-            'learner' => $this->admissions->select('*')->join('student_learner','student_learner.account_id = admissions.account_id','right')->orderBy('student_learner.last_name')->FindAll(),
+            'learner' => $this->admissions->select('*')->join('student_learner','student_learner.account_id = admissions.account_id','inner')
+            ->join('accounts','accounts.id = student_learner.account_id','inner')->orderBy('student_learner.last_name')->FindAll(),
         ];
         return view('adminstudent', $data);
     }
@@ -449,7 +450,8 @@ class AdminController extends BaseController
     public function editLearner($id)
     {
         $data = [
-            'learner' => $this->admissions->select('*')->join('student_learner','student_learner.account_id = admissions.account_id','right')->orderBy('student_learner.last_name')->FindAll(),
+            'learner' => $this->admissions->select('*')->join('student_learner','student_learner.account_id = admissions.account_id','inner')
+            ->join('accounts','accounts.id = student_learner.account_id','inner')->orderBy('student_learner.last_name')->FindAll(),
             'learn' => $this->learner->where('id', $id)->first(),
         ];
 

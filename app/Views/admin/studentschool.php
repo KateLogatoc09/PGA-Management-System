@@ -47,7 +47,6 @@
                                         <th>School Name</th>
                                         <th>Level</th>
                                         <th>Period</th>
-                                        <th>Account Id</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -60,7 +59,6 @@
                                             <td><?= $sc['school_name'] ?></td>
                                             <td><?= $sc['level'] ?></td>
                                             <td><?= $sc['period'] ?></td>
-                                            <td><?= $sc['account_id'] ?></td>
                                             <td> <a href="/adminDeleteschool/<?= $sc['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
                                             <a href="/adminEditschool/<?= $sc['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
                                      </tr>
@@ -89,6 +87,7 @@
              
                                     <label for="grade">Grade/Year:</label>
                                         <select class="form-control" name="grade" id="grade">
+                                        <option value="">Select Grade</option>
                                         <option value="Pre-School (Kinder)">Pre-School (Kinder)</option>
                                         <option value="Grade School (G1-G3)">Grade School (G1-G3)</option>
                                         <option value="Grade School (G4-G6)">Grade School (G4-G6)</option>

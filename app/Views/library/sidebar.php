@@ -73,7 +73,7 @@
              
                 <li class="menu-item active">
                   <a href="/li" class="menu-link">
-                    <div data-i18n="Analytics">Home</div>
+                    <div data-i18n="Analytics">Borrow Book</div>
                   </a>
                 </li>
 

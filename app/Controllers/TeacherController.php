@@ -5,24 +5,81 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\GradeModel;
 use App\Models\Subjects;
+use App\Models\AccountModel;
+use App\Models\TeacherModel;
 
 class TeacherController extends BaseController
 {
-    private $grade, $subjects;
+    private $grade, $subjects, $acc, $teacher;
     public function __construct()
     {
         $this->grade = new GradeModel();
         $this->subjects = new Subjects();
+        $this->acc = new AccountModel();
+        $this->teacher = new TeacherModel();
     }
 
-    public function teacher(){
-            return view ('teacher');
+    public function teacher()
+    {
+        $session = session();
+        $curruser = $this->acc->select('id')->where('username', $_SESSION['username'])->first();
+
+        $data = [
+            'teach' => $this->teacher->where('account_id', $curruser)->first(),
+        ];
+
+        return view('teacher', $data);
+    }
+    
+    public function teacherinfo(){
+        $session = session();
+        $curruser = $this->acc->select('id')->where('username', $_SESSION['username'])->first();
+        
+        $data = [
+            'prof' => $this->teacher->where('account_id', $curruser)->first(),
+        ];
+            return view ('teacherinfo', $data);
+        }
+
+
+    public function teachersave()  {
+        $session = session();
+        $id = $_POST['id'];
+            $data = [
+                'idnum' => $this->request->getVar('idnum'),
+                'fname' => $this->request->getVar('fname'),
+                'mname' => $this->request->getVar('mname'),
+                'lname' => $this->request->getVar('lname'),
+                'age' => $this->request->getVar('age'),
+                'gender' => $this->request->getVar('gender'),
+                'dob' => $this->request->getVar('dob'),
+                'address' => $this->request->getVar('address'),
+                'phone' => $this->request->getVar('phone'),
+                'account_id' => $this->acc->select('id')->where('username', $_SESSION['username'])->first(),
+            ];
+    
+            if ($id != null) {
+                $res = $this->teacher->set($data)->where('id', $id)->update();
+                if($res) {
+                    $session->setFlashdata('msg','Updated Successfully.');
+                } else {
+                    $session->setFlashdata('msg','Something went wrong. Please try again later.');
+                }
+            } else {
+                $res = $this->teacher->save($data);
+                if($res) {
+                    $session->setFlashdata('msg','Saved Successfully.');
+                } else {
+                    $session->setFlashdata('msg','Something went wrong. Please try again later.');
+                }
+            }  
+            return redirect()->to('teacher');
         }
 
         public function grade()
     {
             $data = [
-                'grade' => $this->grade->findAll(),
+                'grade' => $this->teacher->select('*')->join('student_grades','teachers.id = student_grades.teacher_account','inner')->findAll(),
                 'subject' => $this->subjects->findAll(),
                 ];
             return view ('grade', $data);
@@ -33,7 +90,8 @@ class TeacherController extends BaseController
             $id = $_POST['id'];
             $data = [
                 'student_id' => $this->request->getVar('student_id'),
-                'teacher_id' => $this->request->getVar('teacher_id'),
+                'teacher_account' => $this->teacher->select('teachers.id')
+                ->join('accounts','accounts.id = teachers.account_id','inner')->where('username', $_SESSION['username'])->first(),
                 'subject' => $this->request->getVar('subject'),
                 'grade' => $this->request->getVar('grade'),
             ];
@@ -72,8 +130,8 @@ class TeacherController extends BaseController
         public function editGrade($id)
         {
             $data = [
-                'grade' => $this->grade->findAll(),
-                'subject' => $this->subjects->findAll(),
+                'grade' => $this->teacher->select('*')->join('student_grades','teachers.id = student_grades.teacher_account','inner')->findAll(),
+               'subject' => $this->subjects->findAll(),
                 'gr' => $this->grade->where('id', $id)->first(),
             ];
     

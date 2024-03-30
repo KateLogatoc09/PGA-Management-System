@@ -85,6 +85,8 @@ $routes->get('/editteacher/(:any)', 'AdminController::edit/$1', ['filter' => 'ad
 
 //TEACHER
 $routes->get('/teacher', 'TeacherController::teacher', ['filter' => 'teacher']);
+$routes->post('/teachersave', 'TeacherController::teachersave', ['filter' => 'teacher']);
+$routes->get('/teacherinfo', 'TeacherController::teacherinfo', ['filter' => 'teacher']);
 $routes->get('/grade', 'TeacherController::grade', ['filter' => 'teacher']);
 $routes->post('/saveGrade', 'TeacherController::saveGrade', ['filter' => 'teacher']);
 $routes->get('/deleteGrade/(:any)', 'TeacherController::deleteGrade/$1', ['filter' => 'teacher']);
@@ -100,6 +102,8 @@ $routes->get('/graph', 'GradeController::index', ['filter' => 'student']);
 
 //STUDENT PROFILE
 $routes->get('/student', 'StudentController::index', ['filter' => 'student']);
+$routes->get('/studentlibrary', 'StudentController::studentlibrary', ['filter' => 'student']);
+$routes->post('/studentborrowBook', 'StudentController::studentborrowBook', ['filter' => 'student']);
 
 //STUDENT ENROLL
 $routes->get('/addenroll', 'EnrollmentController::addenroll', ['filter' => 'student']);

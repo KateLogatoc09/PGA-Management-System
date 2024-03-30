@@ -115,14 +115,14 @@ value="<?php if (isset($booke['book_publisher'])) {echo $booke['book_publisher']
 <input type="text" class="form-control" id="place_printed" name="place_printed" placeholder="Enter Place of Publication" 
 value="<?php if (isset($booke['place_printed'])) {echo $booke['place_printed'];}?>" required>
 
+<label for="book_category">Book Category</label>
+                        <input type="text" class="form-control" id="book_category" name="book_category" placeholder="Enter Book Category" 
+                        value="<?php if (isset($booke['book_category'])) {echo $booke['book_category'];}?>" required>
+
                         </div>
 </div>
 <div class="col-sm-5 text-center text-sm-left">
   <div class="form-group margin-left">
-  <label for="book_category">Book Category</label>
-                        <input type="text" class="form-control" id="book_category" name="book_category" placeholder="Enter Book Category" 
-                        value="<?php if (isset($booke['book_category'])) {echo $booke['book_category'];}?>" required>
-
                         <label for="book_pages">Book Pages</label>
                         <input type="number" class="form-control" id="book_pages" name="book_pages" placeholder="Enter Book Pages" 
                         value="<?php if (isset($booke['book_pages'])) {echo $booke['book_pages'];}?>" required>
@@ -141,6 +141,7 @@ value="<?php if (isset($booke['place_printed'])) {echo $booke['place_printed'];}
 
                         <label for="exampleFormControlSelect1" class="form-label">Status</label>
                         <select class="form-select" id="exampleFormControlSelect1" name='status' aria-label="Default select example">
+                        <option value="">Select Status</option>
                           <option value="AVAILABLE">AVAILABLE</option>
                           <option value="UNAVAILABLE">UNAVAILABLE</option>
                         </select>

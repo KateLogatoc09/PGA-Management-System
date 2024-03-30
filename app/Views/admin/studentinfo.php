@@ -52,7 +52,6 @@
                                         <th>Office Number</th>
                                         <th>Email</th>
                                         <th>Occupation</th>
-                                        <th>Account Id</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -69,7 +68,6 @@
                                             <td><?= $fa['off_num'] ?></td>
                                             <td><?= $fa['email'] ?></td>
                                             <td><?= $fa['occupation'] ?></td>
-                                            <td><?= $fa['account_id'] ?></td>
                                             <td> <a href="/deletefamily/<?= $fa['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
                                             <a href="/editfamily/<?= $fa['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
                                      </tr>
@@ -99,6 +97,7 @@
                     <label for="relation">Relationship To Student:</label>
                         <select class="form-control" name="relation" id="relation" 
                         value="<?php if (isset($fam['relation'])) {echo $fam['relation'];}?>">
+                        <option value="">Select Relationship</option>
                         <option value="Mother">Mother</option>
                         <option value="Father">Father</option>
                         <option value="Guardian">Guardian</option>
