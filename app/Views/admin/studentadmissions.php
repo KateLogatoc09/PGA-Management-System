@@ -55,6 +55,7 @@
                                         <th>Good Moral</th>
                                         <th>Schedule Date</th>
                                         <th>Status</th>
+                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -74,7 +75,7 @@
                                             <td><?= $ad['last_name'] ?></td>
                                             <td><?= $ad['category'] ?></td>
                                             <td><?= $ad['yr_lvl'] ?></td>
-                                            <td><?= $ad['section'] ?></td>
+                                            <td><?= $ad['name'] ?></td>
                                             <td><?= $ad['program'] ?></td>
                                             <td><img
                                             src="<?= base_url().$ad['birth_cert'] ?>"

@@ -87,7 +87,7 @@
                                             <td><?= $le['nationality'] ?></td>
                                             <td><?= $le['religion'] ?></td>
                                             <td><?= $le['yr_lvl'] ?></td>
-                                            <td><?= $le['section'] ?></td>
+                                            <td><?= $le['name'] ?></td>
                                             <td> <a href="/deleteLearner/<?= $le['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
                                             <a href="/editLearner/<?= $le['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
                                      </tr>

@@ -40,7 +40,7 @@
                     
                             <thead>
                                     <tr>
-                                        <th>Id</th>
+                                    <th>Id</th>
                                         <th>Photo</th>
                                         <th>Student Id</th>
                                         <th>First Name</th>
@@ -52,6 +52,7 @@
                                         <th>Birthdate</th>
                                         <th>Birthplace</th>
                                         <th>Marital Status</th>
+                                        <th>Email</th>
                                         <th>Mobile Number</th>
                                         <th>Nationality</th>
                                         <th>Religion</th>
@@ -81,11 +82,12 @@
                                             <td><?= $le['birthdate'] ?></td>
                                             <td><?= $le['birthplace'] ?></td>
                                             <td><?= $le['marital_status'] ?></td>
+                                            <td><?= $le['email'] ?></td>
                                             <td><?= $le['mobile_num'] ?></td>
                                             <td><?= $le['nationality'] ?></td>
                                             <td><?= $le['religion'] ?></td>
                                             <td><?= $le['yr_lvl'] ?></td>
-                                            <td><?= $le['section'] ?></td>
+                                            <td><?= $le['name'] ?></td>
                                             <td> <a href="/regDeleteLearner/<?= $le['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
                                             <a href="/regEditLearner/<?= $le['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
                                      </tr>
