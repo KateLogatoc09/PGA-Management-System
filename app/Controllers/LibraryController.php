@@ -151,7 +151,7 @@ class LibraryController extends BaseController
     {
         $data = [
             'booky' => $this->book->findAll(),
-            'borrow' => $this->book->select('*')->join('borrowedbooks','borrowedbooks.book_id = books.id','inner')
+            'borrow' => $this->book->select('borrowedbooks.id as id, first_name, middle_name, last_name, student_id, book_title, ISBN, borrowedbooks.book_qty as book_qty, date_borrowed, date_return, borrowedbooks.status as status')->join('borrowedbooks','borrowedbooks.book_id = books.id','inner')
             ->orderBy('books.book_title')->join('student_learner','student_learner.account_id = borrowedbooks.account_id','inner')
             ->join('admissions','admissions.account_id = borrowedbooks.account_id','inner')->FindAll(),
         ];
@@ -161,7 +161,7 @@ class LibraryController extends BaseController
     public function borrowers()
     {
         $data = [
-            'borrow' => $this->book->select('*')->join('borrowedbooks','borrowedbooks.book_id = books.id','inner')
+            'borrow' => $this->book->select('borrowedbooks.id as id, first_name, middle_name, last_name, student_id, book_title, ISBN, borrowedbooks.book_qty as book_qty, date_borrowed, date_return, borrowedbooks.status as status')->join('borrowedbooks','borrowedbooks.book_id = books.id','inner')
             ->orderBy('books.book_title')->join('student_learner','student_learner.account_id = borrowedbooks.account_id','inner')
             ->join('admissions','admissions.account_id = borrowedbooks.account_id','inner')->FindAll(),
             'borrow2' => $this->book->select('*')->join('borrowedbooks','borrowedbooks.book_id = books.id','inner')->orderBy('books.book_title')->FindAll(),
@@ -194,7 +194,7 @@ class LibraryController extends BaseController
     public function editBorrow($id)
     {
         $data = [
-            'borrow' => $this->book->select('*')->join('borrowedbooks','borrowedbooks.book_id = books.id','inner')
+            'borrow' => $this->book->select('borrowedbooks.id as id, first_name, middle_name, last_name, student_id, book_title, ISBN, borrowedbooks.book_qty as book_qty, date_borrowed, date_return, borrowedbooks.status as status')->join('borrowedbooks','borrowedbooks.book_id = books.id','inner')
             ->orderBy('books.book_title')->join('student_learner','student_learner.account_id = borrowedbooks.account_id','inner')
             ->join('admissions','admissions.account_id = borrowedbooks.account_id','inner')->FindAll(),
             'borrow2' => $this->book->select('*')->join('borrowedbooks','borrowedbooks.book_id = books.id','inner')->orderBy('books.book_title')->FindAll(),

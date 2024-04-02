@@ -102,6 +102,7 @@
                                     <tr>
                                         <th>Id</th>
                                         <th>Book Borrowed</th>
+                                        <th>ISBN</th>
                                         <th>Student ID</th>
                                         <th>Fullname of Borrower</th>
                                         <th>Number of Books Borrowed</th>
@@ -115,9 +116,10 @@
                                     <tr>
                                             <td><?= $book['id'] ?></td>
                                             <td><?= $book['book_title'] ?></td>
+                                            <td><?= $book['ISBN'] ?></td>
                                             <td><?= $book['student_id'] ?></td>
                                             <td><?= $book['last_name'] ?>, <?= $book['first_name'] ?> <?= $book['middle_name'] ?></td>
-                                            <td><?= $book['book_number'] ?></td>
+                                            <td><?= $book['book_qty'] ?></td>
                                             <td><?= $book['date_borrowed'] ?></td>
                                             <td><?= $book['date_return'] ?></td>
                                             <td><?= $book['status'] ?></td>

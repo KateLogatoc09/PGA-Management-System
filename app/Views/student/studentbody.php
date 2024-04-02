@@ -24,6 +24,7 @@
             <div class="row">
               <div class="col-lg-18 mb-4 order-0">
                 <div class="card">
+                <?php if(is_array($status)): ?>
                 <?php if(implode($status) == 'ENROLLED'): ?>
                       <div class="content-wrapper">
                   <div class="d-flex align-items-end row">
@@ -223,7 +224,7 @@
                   </div>
                 </div>
               </div>
-              <?php else: ?>
+              <?php endif; else: ?>
                   <h5 class="m-4">No Information Available Yet.</h5>
         <?php endif; ?>
             </div>

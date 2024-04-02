@@ -1,0 +1,95 @@
+CRITICAL - 2024-04-02 10:44:39 --> implode(): Argument #1 ($pieces) must be of type array, string given
+in APPPATH\Views\student\studentbody.php on line 27.
+ 1 APPPATH\Views\student\studentbody.php(27): implode('')
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\student\\studentbody.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(467): CodeIgniter\View\View->render('student/studentbody', null, true)
+ 5 APPPATH\Views\student.php(2): CodeIgniter\View\View->include('student/studentbody')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\student.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('student', [], true)
+ 9 APPPATH\Controllers\StudentController.php(48): view('student', [...])
+10 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\StudentController->index()
+11 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\StudentController))
+12 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+ERROR - 2024-04-02 10:52:10 --> mysqli_sql_exception: Unknown column 'date_returned' in 'field list' in C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `borrowe...', 0)
+#1 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `borrowe...')
+#2 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `borrowe...')
+#3 C:\laragon\www\PGA-Management-System\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `borrowe...', Array, false)
+#4 C:\laragon\www\PGA-Management-System\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\PGA-Management-System\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\PGA-Management-System\app\Controllers\LibraryController.php(156): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(919): App\Controllers\LibraryController->librarian()
+#8 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+#9 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\PGA-Management-System\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\PGA-Management-System\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-04-02 10:52:10 --> Unknown column 'date_returned' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `borrowedbooks`.`id` as `id`, `first_name`, `last_name`, `student_id`, `book_title`, `ISBN`, `borrowedbooks`.`book_qty` as `book_qty`, `date_borrowed`, `date_returned`, `borrowedbooks`.`status` as `status`
+FROM `books`
+INNER JOIN `borrowedbooks` ON `borrowedbooks`.`book_id` = `books`.`id`
+INNER JOIN `student_learner` ON `student_learner`.`account_id` = `borrowedbooks`.`account_id`
+INNER JOIN `admissions` ON `admissions`.`account_id` = `borrowedbooks`.`account_id`
+ORDER BY `books`.`book_title`', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\LibraryController.php(156): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->librarian()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-04-02 10:53:44 --> Undefined array key "middle_name"
+in APPPATH\Views\library\librarytable.php on line 119.
+ 1 APPPATH\Views\library\librarytable.php(119): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "middle_name"', 'C:\\laragon\\www\\PGA-Management-System\\app\\Views\\library\\librarytable.php', 119)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\library\\librarytable.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(467): CodeIgniter\View\View->render('library/librarytable', null, true)
+ 5 APPPATH\Views\librarian.php(2): CodeIgniter\View\View->include('library/librarytable')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\librarian.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('librarian', [], true)
+ 9 APPPATH\Controllers\LibraryController.php(158): view('librarian', [...])
+10 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->librarian()
+11 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+12 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-04-02 10:54:49 --> Undefined array key "book_number"
+in APPPATH\Views\library\librarytable.php on line 120.
+ 1 APPPATH\Views\library\librarytable.php(120): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "book_number"', 'C:\\laragon\\www\\PGA-Management-System\\app\\Views\\library\\librarytable.php', 120)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\library\\librarytable.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(467): CodeIgniter\View\View->render('library/librarytable', null, true)
+ 5 APPPATH\Views\librarian.php(2): CodeIgniter\View\View->include('library/librarytable')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\librarian.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('librarian', [], true)
+ 9 APPPATH\Controllers\LibraryController.php(158): view('librarian', [...])
+10 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->librarian()
+11 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+12 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-04-02 10:58:28 --> Undefined array key "account_id"
+in APPPATH\Views\library\libborrow.php on line 57.
+ 1 APPPATH\Views\library\libborrow.php(57): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "account_id"', 'C:\\laragon\\www\\PGA-Management-System\\app\\Views\\library\\libborrow.php', 57)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\library\\libborrow.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(467): CodeIgniter\View\View->render('library/libborrow', null, true)
+ 5 APPPATH\Views\borrowers.php(2): CodeIgniter\View\View->include('library/libborrow')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\borrowers.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('borrowers', [], true)
+ 9 APPPATH\Controllers\LibraryController.php(170): view('borrowers', [...])
+10 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->borrowers()
+11 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+12 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')

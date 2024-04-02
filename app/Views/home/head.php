@@ -24,12 +24,8 @@
     <!-- Customized Bootstrap Stylesheet -->
     <link href="<?= base_url() ?>css/style.css" rel="stylesheet">
 
-    <!-- AlertJs -->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
-    <!-- Default theme -->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
-
-
+    <!-- SWEETALERT2 -->
+    <link href="../sweetalert/sweetalert2.css" rel="stylesheet">
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <style>

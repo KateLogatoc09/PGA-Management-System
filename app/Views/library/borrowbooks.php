@@ -14,7 +14,7 @@
                     <!-- Add your form fields and content here -->
                     <div class="form-group">
                     <input type="hidden" class="form-control" name="id"
-                        value="<?php if (isset($borrowedBook['id'])) {echo $borrowedBook['id'];}?>">
+                        value="<?php if(isset($borrowedBook['id'])) {echo $borrowedBook['id'];}?>">
 
                         <label for="book_id">Book to be Borrowed:</label>
                                         <select name="book_id" id="book_id" class="form-control">
@@ -23,6 +23,9 @@
                                                 <option value="<?= $bk['id'] ?>"><?= $bk['book_title'] ?></option>
                                             <?php endforeach; ?>
                                         </select> 
+
+                        <label for="studIDnum">Student ID Number</label>
+                        <input type="text" class="form-control" id="studIDnum" name="studIDnum" placeholder="Enter Student ID Number" required>
 
                         <label for="book_qty">Book Quantity</label>
                         <input type="number" class="form-control" id="book_qty" name="book_qty" placeholder="Enter No. of Books to be borrowed" required>

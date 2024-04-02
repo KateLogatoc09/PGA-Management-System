@@ -1,0 +1,4 @@
+[02-Apr-2024 11:16:13 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function base_url() in C:\laragon\www\PGA-Management-System\app\Views\student\head.php:21
+Stack trace:
+#0 {main}
+  thrown in C:\laragon\www\PGA-Management-System\app\Views\student\head.php on line 21
