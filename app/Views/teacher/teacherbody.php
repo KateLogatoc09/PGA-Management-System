@@ -27,6 +27,7 @@
                   <div class="d-flex align-items-end row">
                     <div class="col-sm-5">
                       <div class="card-body">
+                      <?php if(is_array($teach)): ?>
                         <h5 class="card-title text-primary">Teacher Information</h5>
                         <br>
                         <h7 class="orange">Teacher ID:</h7>
@@ -61,7 +62,9 @@
                   </div>
                 </div>
               </div>
-
+              <?php else: ?>
+                <h5 class="m-4">No Information Available Yet.</h5>
+              <?php endif; ?>
             </div>
             <!-- / Content -->
 
