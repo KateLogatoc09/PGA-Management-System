@@ -48,6 +48,7 @@
                                         <th>Date Borrowed</th>
                                         <th>Date Return</th>
                                         <th>Status</th>
+                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -62,64 +63,10 @@
                                             <td><?= $book['date_borrowed'] ?></td>
                                             <td><?= $book['date_return'] ?></td>
                                             <td><?= $book['status'] ?></td>
-                                            
-                                     </tr>
-                                <?php endforeach ?>
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- /.card-body -->
-                    </div>
-                    </div>
-                    <!-- /.card -->
-                </div> <!-- /.dito -->
-
-                <div class="col-lg-18 mb-4 order-0">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">Transactions</h3>
-                            <div class="card-tools">
-                                <div class="input-group input-group-sm" style="width: 150px;">
-                                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-                                    <div class="input-group-append">
-                                        <button type="submit" class="btn btn-default">
-                                            <i class="fas fa-search"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body table-responsive p-0">
-                         <table class="table table-hover text-nowrap">
-                    
-                            <thead>
-                                    <tr>
-                                        <th>Id</th>
-                                        <th>Book Borrowed</th>
-                                        <th>Account ID</th>
-                                        <th>Book Quantity</th>
-                                        <th>Date Borrowed</th>
-                                        <th>Date Return</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                <?php foreach ($borrow2 as $book): ?>
-                                    <tr>
-                                            <td><?= $book['id'] ?></td>
-                                            <td><?= $book['book_title'] ?></td>
-                                            <td><?= $book['account_id'] ?></td>
-                                            <td><?= $book['book_qty'] ?></td>
-                                            <td><?= $book['date_borrowed'] ?></td>
-                                            <td><?= $book['date_return'] ?></td>
-                                            <td><?= $book['status'] ?></td>
                                             <td> <a href="/deleteBorrow/<?= $book['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
                                             <a href="/editBorrow/<?= $book['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
                                            
                                            
-                                          
                                      </tr>
                                 <?php endforeach ?>
                                 </tbody>

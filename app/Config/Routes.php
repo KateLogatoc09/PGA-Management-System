@@ -129,10 +129,8 @@ $routes->post('/recovery', 'Authentication::recovery', ['filter' => 'loggedin'])
 $routes->post('/recovering', 'Authentication::recovering', ['filter' => 'loggedin']);
 
 //LIBRARIAN
-$routes->get('/li', 'LibraryController::index', ['filter' => 'librarian']);
 $routes->post('/saveBook', 'LibraryController::saveBook', ['filter' => 'librarian']);
 $routes->post('/saveBorrowedBook', 'LibraryController::saveBorrowedBook', ['filter' => 'librarian']);
-$routes->post('/borrowBook', 'LibraryController::borrowBook', ['filter' => 'librarian']);
 $routes->get('/librarian', 'LibraryController::librarian', ['filter' => 'librarian']);
 $routes->get('/deleteBorrow/(:any)', 'LibraryController::deleteBorrow/$1', ['filter' => 'librarian']);
 $routes->get('/editBorrow/(:any)', 'LibraryController::editBorrow/$1', ['filter' => 'librarian']);

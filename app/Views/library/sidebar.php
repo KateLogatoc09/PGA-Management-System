@@ -70,12 +70,6 @@
                 <div data-i18n="Dashboards">Dashboards</div>
               </a>
               <ul class="menu-sub">
-             
-                <li class="menu-item active">
-                  <a href="/li" class="menu-link">
-                    <div data-i18n="Analytics">Borrow Book</div>
-                  </a>
-                </li>
 
                 <li class="menu-item">
                   <a href="/librarian" class="menu-link">

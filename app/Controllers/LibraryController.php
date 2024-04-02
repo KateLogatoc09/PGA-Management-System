@@ -19,20 +19,11 @@ class LibraryController extends BaseController
         $this->admissions = new AdmissionsModel();
     }
 
-    public function index()
-    {
-        $data = [
-            'booky' => $this->book->findAll(),
-        ];
-        return view('library', $data);
-    }
-
     public function saveBorrowedBook()  {
         $session = session();
         $qty = $this->book->select('book_qty')->where('id',$this->request->getVar('book_id'))->first();
         $id = $_POST['id'];
         $data = [
-            'account_id' => $this->acc->select('id')->where('username', $_SESSION['username'])->first(),
             'book_qty' => $this->request->getVar('book_qty'),
             'date_borrowed' => $this->request->getVar('dateBorrowed'),
             'date_return' => $this->request->getVar('dateReturn'),
@@ -65,52 +56,6 @@ class LibraryController extends BaseController
         }  
         return redirect()->to('borrowers');
     }
-
-    //Student start 
-    public function borrowBook()  {
-        $session = session();
-        $id = $_POST['id'];
-        $qty = $this->book->select('book_qty')->where('id',$this->request->getVar('book_id'))->first();
-        $stat = $this->book->select('status')->where('id',$this->request->getVar('book_id'))->first();
-        $data = [
-            'account_id' => $this->acc->select('id')->where('username', $_SESSION['username'])->first(),
-            'book_qty' => $this->request->getVar('book_qty'),
-            'date_borrowed' => $this->request->getVar('dateBorrowed'),
-            'date_return' => $this->request->getVar('dateReturn'),
-            'book_id' => $this->request->getVar('book_id'),
-            'status' => 'PENDING'
-        ];
-
-        if($stat['status'] == 'AVAILABLE') {
-        if ($id != null) {
-            if($qty['book_qty'] >= $this->request->getVar('book_qty')) {
-                $res = $this->borrowedBook->set($data)->where('id', $id)->update();
-                if($res) {
-                    $session->setFlashdata('msg','Updated Successfully.');
-                } else {
-                    $session->setFlashdata('msg','Something went wrong. Please try again later.');
-                }
-            } else {
-                $session->setFlashdata('msg','There isn\'t enough books available.');
-            }
-        } else {
-            if($qty['book_qty'] >= $this->request->getVar('book_qty')) {
-                $res = $this->borrowedBook->save($data);
-                if($res) {
-                    $session->setFlashdata('msg','Saved Successfully.');
-                } else {
-                    $session->setFlashdata('msg','Something went wrong. Please try again later.');
-                }
-            } else {
-                $session->setFlashdata('msg','There isn\'t enough books available.');
-            }
-        }
-    } else {
-        $session->setFlashdata('msg','Book is not available.');
-    }          
-    return redirect()->to('li');   
-    }
-    
 
     public function saveBook()  {
         $session = session();
@@ -164,7 +109,6 @@ class LibraryController extends BaseController
             'borrow' => $this->book->select('borrowedbooks.id as id, first_name, middle_name, last_name, student_id, book_title, ISBN, borrowedbooks.book_qty as book_qty, date_borrowed, date_return, borrowedbooks.status as status')->join('borrowedbooks','borrowedbooks.book_id = books.id','inner')
             ->orderBy('books.book_title')->join('student_learner','student_learner.account_id = borrowedbooks.account_id','inner')
             ->join('admissions','admissions.account_id = borrowedbooks.account_id','inner')->FindAll(),
-            'borrow2' => $this->book->select('*')->join('borrowedbooks','borrowedbooks.book_id = books.id','inner')->orderBy('books.book_title')->FindAll(),
             'booky' => $this->book->findAll(),
          ];
         return view('borrowers', $data);
@@ -197,7 +141,6 @@ class LibraryController extends BaseController
             'borrow' => $this->book->select('borrowedbooks.id as id, first_name, middle_name, last_name, student_id, book_title, ISBN, borrowedbooks.book_qty as book_qty, date_borrowed, date_return, borrowedbooks.status as status')->join('borrowedbooks','borrowedbooks.book_id = books.id','inner')
             ->orderBy('books.book_title')->join('student_learner','student_learner.account_id = borrowedbooks.account_id','inner')
             ->join('admissions','admissions.account_id = borrowedbooks.account_id','inner')->FindAll(),
-            'borrow2' => $this->book->select('*')->join('borrowedbooks','borrowedbooks.book_id = books.id','inner')->orderBy('books.book_title')->FindAll(),
             'borrowed' => $this->borrowedBook->where('id', $id)->first(),
             'booky' => $this->book->findAll(),
         ];

@@ -100,16 +100,17 @@
                         <label for="role">Role:</label>
                                         <select class="form-control" name="role" id="role" value= "
                                         <?php if (isset($acc['role'])) {echo $acc['role'];}?>" required>>
-                                            <option value="ADMIN">Admin</option>
+                                            <option value="">Select Role</option>
+                                            <!--<option value="ADMIN">Admin</option>-->
                                             <option value="TEACHER">Teacher</option>
                                             <option value="STUDENT">Student</option>
                                             <option value="PARENT">Parent</option>
                                             <option value="REGISTRAR">Registrar</option>
-                                            <option value="DAC">Disciplinary Affairs Coordinator</option>
-                                            <option value="IAC">Internal Affairs Coordinator</option>
-                                            <option value="SAC">Student Affairs Coordinator</option>
-                                            <option value="AAC">Academic Affairs Coordinator</option>
                                             <option value="LIBRARIAN">Librarian</option>
+                                            <!--<option value="DAC">Disciplinary Affairs Coordinator</option>
+                                            <option value="IAC">Internal Affairs Coordinator</option>
+                                            <option value="SAC">Student Affairs Coordinator</option>-->
+                                            <option value="AAC">Academic Affairs Coordinator</option>
                                         </select>
 
                                         <label for="status">status:</label>
