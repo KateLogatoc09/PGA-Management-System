@@ -35,7 +35,7 @@ class RegistrarController extends BaseController
         $data = [
             'learner' => $this->admissions->select('student_learner.id as id, first_name, middle_name, last_name, nickname, birthdate, birthplace, age,
             gender, marital_status, mobile_num, nationality, religion, student_learner.photo, student_id, email, name, yr_lvl')->join('student_learner','student_learner.account_id = admissions.account_id','inner')
-            ->join('accounts','accounts.id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','inner')
+            ->join('accounts','accounts.id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
             ->orderBy('student_learner.last_name')->FindAll(),
             ];
         return view('registerstudent', $data);
@@ -153,7 +153,7 @@ class RegistrarController extends BaseController
         $data = [
             'learner' => $this->admissions->select('student_learner.id as id, first_name, middle_name, last_name, nickname, birthdate, birthplace, age,
             gender, marital_status, mobile_num, nationality, religion, student_learner.photo, student_id, email, name, yr_lvl')->join('student_learner','student_learner.account_id = admissions.account_id','inner')
-            ->join('accounts','accounts.id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','inner')
+            ->join('accounts','accounts.id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
             ->orderBy('student_learner.last_name')->FindAll(),
             'learn' => $this->learner->where('id', $id)->first(),
         ];
@@ -422,7 +422,7 @@ class RegistrarController extends BaseController
             'stud_section' => $this->sections->findAll(),
             'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, category,yr_lvl,program, status,
             birth_cert, report_card, good_moral, admissions.photo, schedule')->join('admissions','admissions.account_id = student_learner.account_id','inner')
-            ->join('sections','sections.id = admissions.section','inner')->orderBy('student_learner.last_name')->FindAll(),
+            ->join('sections','sections.id = admissions.section','left')->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('regadmissions', $data);
     }
@@ -517,7 +517,7 @@ class RegistrarController extends BaseController
             'admissions' => $this->admissions->where('id', $id)->first(),
             'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, category,yr_lvl,program, status,
             birth_cert, report_card, good_moral, admissions.photo, schedule')->join('admissions','admissions.account_id = student_learner.account_id','inner')
-            ->join('sections','sections.id = admissions.section','inner')->orderBy('student_learner.last_name')->FindAll(),
+            ->join('sections','sections.id = admissions.section','left')->orderBy('student_learner.last_name')->FindAll(),
        ];
 
         return view('regadmissions', $data);

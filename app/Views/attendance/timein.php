@@ -17,16 +17,16 @@
           <!-- Content -->
 
         <div class="container-xxl flex-grow-1 container-p-y">
-        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Attendance /</span> Scanner</h4>
+        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Attendance /</span> Time In</h4>
         <div class="card my-4">
                 <h5 class="card-header">Monitoring</h5>
                 <hr class="my-0">
-                <!--<form action="<?php echo site_url();?>/managerooms_ap" method="POST" enctype="multipart/form-data"> -->
                     <div class="card-body d-flex row">
                         <div class="col-sm-6 col-md-6 d-sm-block d-md-block align-items-sm-center">
                         <video id="preview" width="100%" height="100%" autoplay controls></video>
                         </div>
                         <div class="col-sm-6 col-md-6 d-sm-block d-md-block ps-2">
+                        <form action="<?php echo base_url(); ?>/time_in" method="POST">
                             <div class="row mb-4">
                                 <div class="col-md-12">
                                     <label for="sid" class="form-label">Students' ID:</label>
@@ -40,6 +40,7 @@
                                     />
                                 </div>
                             </div>
+                            </form>
                             <div class="card">
                                 <div class="table-responsive text-nowrap rounded-3 overflow-y-scroll h-px-400 invisible-scrollbar">
                                 <table class="table table-hover text-center">
@@ -47,23 +48,24 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Students' ID</th>
-                                        <th>Name</th>
+                                        <th>Type</th>
+                                        <th>Time</th>
                                     </tr>
                                     </thead>
                                     <tbody class="table-border-bottom-0">
+                                        <?php foreach($attendance as $att): ?>
                                         <tr>
-                                            <td>TRY</td>
-                                            <td>TRY</td>
-                                            <td>TRY</td>
+                                            <td><?= $att['id']; ?></td>
+                                            <td><?= $att['student_id']; ?></td>
+                                            <td><?= $att['type']; ?></td>
+                                            <td><?= $att['time']; ?></td>
                                         </tr>
+                                        <?php endforeach; ?>
                                     </tbody>
                                 </table>
                                 </div>
                             </div>
                         </div>
-
-                        
-                    <!-- </form> -->
               </div>
           <!-- Content wrapper -->
 </div>
@@ -78,6 +80,7 @@
     let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
         scanner.addListener('scan', function (content) {
             document.getElementById("sid").value = content;
+            document.forms[0].submit();
         });
         Instascan.Camera.getCameras().then(function (cameras) {
             if (cameras.length > 0) {
@@ -87,7 +90,7 @@
             }
         }).catch(function (e) {
             console.error(e);
-        });
+        })
   </script>
 </body>
 

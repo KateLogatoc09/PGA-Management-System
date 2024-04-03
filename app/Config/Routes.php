@@ -18,10 +18,11 @@ $routes->get('/verifying', 'Home::verifying', ['filter' => 'verify']);
 $routes->get('/forgot', 'Home::forgot', ['filter' => 'loggedin']);
 $routes->get('/password', 'Home::password', ['filter' => 'password']);
 $routes->get('/qr-generator', 'Home::qr');
-$routes->get('/attendance', 'Home::attendance');
 
 //ATTENDANCE
 $routes->post('/generate', 'Attendance::simple_qr');
+$routes->post('/time_in', 'Attendance::time_in');
+$routes->get('/attendance_in', 'Attendance::attendance_in');
 
 //ADMIN FIRSTPAGE
 $routes->get('/admins', 'AdminController::index', ['filter' => 'admin']);

@@ -7,16 +7,20 @@ use App\Models\GradeModel;
 use App\Models\Subjects;
 use App\Models\AccountModel;
 use App\Models\TeacherModel;
+use App\Models\AdmissionsModel;
+use App\Models\LearnerModel;
 
 class TeacherController extends BaseController
 {
-    private $grade, $subjects, $acc, $teacher;
+    private $grade, $subjects, $acc, $teacher, $admissions, $learner;
     public function __construct()
     {
         $this->grade = new GradeModel();
         $this->subjects = new Subjects();
         $this->acc = new AccountModel();
         $this->teacher = new TeacherModel();
+        $this->admissions = new AdmissionsModel();
+        $this->learner = new LearnerModel();
     }
 
     public function teacher()
@@ -80,6 +84,8 @@ class TeacherController extends BaseController
     {
             $data = [
                 'grade' => $this->teacher->select('*')->join('student_grades','teachers.id = student_grades.teacher_account','inner')->findAll(),
+                'learner' => $this->admissions->select('admissions.student_id as id, student_id, first_name, middle_name, last_name')->join('student_learner','student_learner.account_id = admissions.account_id','inner')
+                ->join('sections','sections.id = admissions.section','inner')->orderBy('student_learner.last_name')->FindAll(),
                 'subject' => $this->subjects->findAll(),
                 ];
             return view ('grade', $data);
@@ -88,13 +94,22 @@ class TeacherController extends BaseController
         public function saveGrade()  {
             $session = session();
             $id = $_POST['id'];
+            $sid = $this->request->getVar('student_id');
+            $res = $this->admissions->select('admissions.student_id')->where('admissions.student_id', $sid)->first();
+
             $data = [
-                'student_id' => $this->request->getVar('student_id'),
                 'teacher_account' => $this->teacher->select('teachers.id')
                 ->join('accounts','accounts.id = teachers.account_id','inner')->where('username', $_SESSION['username'])->first(),
                 'subject' => $this->request->getVar('subject'),
                 'grade' => $this->request->getVar('grade'),
             ];
+
+            if($res) {
+                $data['student_id'] = $sid;
+            } else {
+                $session->setFlashdata('msg','Student doesn\'t exist.');
+                return redirect()->to('grade');
+            }
     
             if ($id != null) {
                 $res = $this->grade->set($data)->where('id', $id)->update();
@@ -131,6 +146,8 @@ class TeacherController extends BaseController
         {
             $data = [
                 'grade' => $this->teacher->select('*')->join('student_grades','teachers.id = student_grades.teacher_account','inner')->findAll(),
+                'learner' => $this->admissions->select('*')->join('student_learner','student_learner.account_id = admissions.account_id','inner')
+                ->join('sections','sections.id = admissions.section','inner')->orderBy('student_learner.last_name')->FindAll(),
                'subject' => $this->subjects->findAll(),
                 'gr' => $this->grade->where('id', $id)->first(),
             ];

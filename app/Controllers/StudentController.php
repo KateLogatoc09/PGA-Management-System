@@ -87,7 +87,7 @@ public function studentborrowBook()  {
         if($qty['book_qty'] >= $this->request->getVar('book_qty')) {
             $res = $this->borrowedBook->save($data);
             if($res) {
-                $session->setFlashdata('msg','Saved Successfully.');
+                $session->setFlashdata('msg','Borrowed Successfully.');
             } else {
                 $session->setFlashdata('msg','Something went wrong. Please try again later.');
             }

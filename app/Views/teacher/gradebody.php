@@ -87,7 +87,12 @@
                     <input type="hidden" name="id" value="<?php if (isset($gr['id'])) {echo $gr['id'];}?>">
                         <label for="student_id">Student Id:</label>
                         <input type="text" class="form-control" name="student_id" placeholder="Enter Student Id" 
-                        value="<?php if (isset($gr['student_id'])) {echo $gr['student_id'];}?>" required>
+                        value="<?php if (isset($gr['student_id'])) {echo $gr['student_id'];}?> " list="list" required>
+                        <datalist type="hidden" id="list">
+                                            <?php foreach ($learner as $le):?> 
+                                                <option value="<?= $le['student_id'] ?>"><?= $le['first_name'] ?><?= $le['middle_name'] ?><?= $le['last_name'] ?></option>
+                                            <?php endforeach; ?>
+                                        </datalist> 
 </div>
 </div>
 <div class="col-sm-5 text-center text-sm-left">

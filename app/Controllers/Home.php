@@ -46,10 +46,7 @@ class Home extends BaseController
     {
         return view('qr');
     }
-    public function attendance()
-    {
-        return view('attendance');
-    }
+    
 
     
 

@@ -91,13 +91,13 @@
                     <div class="form-group margin-left">
                     <input type="hidden" name="id" value="<?php if (isset($borrowed['id'])) {echo $borrowed['id'];}?>">
 
-                    <label for="book_id">Book Borrowed:</label>
-                                        <select name="book_id" id="book_id" class="form-control">
-                                        <option value="">Select Book</option>
+                    <label for="book_id">ID of Book to be Borrowed:</label>
+                    <input type="text" name="book_id" list="list" class="form-control">
+                                        <datalist type="hidden" id="list">
                                             <?php foreach ($booky as $bk):?> 
                                                 <option value="<?= $bk['id'] ?>"><?= $bk['book_title'] ?></option>
                                             <?php endforeach; ?>
-                                        </select> 
+                                        </datalist> 
                                         
                         <label for="book_qty">Book Quantity</label>
                         <input type="number" class="form-control" id="book_qty" name="book_qty" placeholder="Select Date Borrowed"
