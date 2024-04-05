@@ -22,7 +22,9 @@ $routes->get('/qr-generator', 'Home::qr');
 //ATTENDANCE
 $routes->post('/generate', 'Attendance::simple_qr');
 $routes->post('/time_in', 'Attendance::time_in');
+$routes->post('/time_out', 'Attendance::time_out');
 $routes->get('/attendance_in', 'Attendance::attendance_in');
+$routes->get('/attendance_out', 'Attendance::attendance_out');
 
 //ADMIN FIRSTPAGE
 $routes->get('/admins', 'AdminController::index', ['filter' => 'admin']);

@@ -41,11 +41,33 @@ class Attendance extends BaseController
         
     }
 
+    public function time_out() {
+        date_default_timezone_set('Asia/Singapore');
+
+        $data = [
+            'student_id' => $this->request->getVar('sid'),
+            'type' => 'OUT',
+            'time' => date("Y-m-d H:i:s"),
+        ];
+
+        $this->att->save($data);
+        return redirect()->to('attendance_out');
+        
+    }
+
     public function attendance_in()
     {
         $data = [
             'attendance' => $this->att->select('*')->where('type', 'IN')->FindAll(),
         ];
         return view('attendancein', $data);
+    }
+
+    public function attendance_out()
+    {
+        $data = [
+            'attendance' => $this->att->select('*')->where('type', 'OUT')->FindAll(),
+        ];
+        return view('attendanceout', $data);
     }
 }

@@ -77,8 +77,14 @@
               <ul class="menu-sub">
   
                 <li class="menu-item">
-                  <a href="/attendance" class="menu-link">
-                    <div data-i18n="Analytics">Scanner</div>
+                  <a href="/attendance_in" class="menu-link">
+                    <div data-i18n="Analytics">Attendance in</div>
+                  </a>
+                </li>
+
+                <li class="menu-item">
+                  <a href="/attendance_out" class="menu-link">
+                    <div data-i18n="Analytics">Attendance Out</div>
                   </a>
                 </li>
 
