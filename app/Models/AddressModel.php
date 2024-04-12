@@ -13,7 +13,7 @@ class AddressModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['type','address','postal_code','tel_num', 'account_id'];
+    protected $allowedFields    = ['type','region', 'province', 'municipality', 'barangay', 'street', 'postal_code','tel_num', 'account_id'];
 
     // Dates
     protected $useTimestamps = false;

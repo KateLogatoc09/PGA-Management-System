@@ -29,51 +29,6 @@ $routes->get('/attendance_out', 'Attendance::attendance_out');
 //ADMIN FIRSTPAGE
 $routes->get('/admins', 'AdminController::index', ['filter' => 'admin']);
 
-//ADMIN ALUMNI
-$routes->get('/alumni', 'AdminController::alumni', ['filter' => 'admin']);
-$routes->post('/saveAlumni', 'AdminController::saveAlumni', ['filter' => 'admin']);
-$routes->get('/deleteAlumni/(:any)', 'AdminController::deleteAlumni/$1', ['filter' => 'admin']);
-$routes->get('/editAlumni/(:any)', 'AdminController::editAlumni/$1', ['filter' => 'admin']);
-
-//ADMIN MAIL
-$routes->get('/email', 'AdminController::mail', ['filter' => 'admin']);
-
-//ADMIN ACADEMIC INFO
-$routes->get('/sections', 'AdminController::sections', ['filter' => 'admin']);
-$routes->post('/saveSection', 'AdminController::saveSection', ['filter' => 'admin']);
-$routes->get('/deleteSection/(:any)', 'AdminController::deleteSection/$1', ['filter' => 'admin']);
-$routes->get('/editSection/(:any)', 'AdminController::editSection/$1', ['filter' => 'admin']);
-$routes->get('/subjects', 'AdminController::subjects', ['filter' => 'admin']);
-$routes->post('/saveSubject', 'AdminController::saveSubject', ['filter' => 'admin']);
-$routes->get('/deleteSubject/(:any)', 'AdminController::deleteSubject/$1', ['filter' => 'admin']);
-$routes->get('/editSubject/(:any)', 'AdminController::editSubject/$1', ['filter' => 'admin']);
-
-//ADMIN STUDENT
-$routes->get('/adminstudent', 'AdminController::adminstudent', ['filter' => 'admin']);
-$routes->get('/adminstudinfo', 'AdminController::adminstudinfo', ['filter' => 'admin']);
-$routes->post('/adminfamily', 'AdminController::adminfamily', ['filter' => 'admin']);
-$routes->post('/adminaddress', 'AdminController::adminaddress', ['filter' => 'admin']);
-$routes->post('/saveLearner', 'AdminController::saveLearner', ['filter' => 'admin']);
-$routes->post('/adminadmissions', 'AdminController::adminadmissions', ['filter' => 'admin']);
-$routes->get('/deleteAdmissions/(:any)', 'AdminController::deleteAdmissions/$1', ['filter' => 'admin']);
-$routes->get('/editAdmissions/(:any)', 'AdminController::editAdmissions/$1', ['filter' => 'admin']);
-$routes->get('/deleteLearner/(:any)', 'AdminController::deleteLearner/$1', ['filter' => 'admin']);
-$routes->get('/editLearner/(:any)', 'AdminController::editLearner/$1', ['filter' => 'admin']);
-$routes->get('/deletefamily/(:any)', 'AdminController::deletefamily/$1', ['filter' => 'admin']);
-$routes->get('/editfamily/(:any)', 'AdminController::editfamily/$1', ['filter' => 'admin']);
-$routes->get('/deleteaddress/(:any)', 'AdminController::deleteaddress/$1', ['filter' => 'admin']);
-$routes->get('/editaddress/(:any)', 'AdminController::editaddress/$1', ['filter' => 'admin']);
-$routes->get('/admininfoaddress', 'AdminController::admininfoaddress', ['filter' => 'admin']);
-$routes->get('/admininfoadmissions', 'AdminController::admininfoadmissions', ['filter' => 'admin']);
-$routes->get('/admininfosibling', 'AdminController::admininfosibling', ['filter' => 'admin']);
-$routes->post('/adminsibling', 'AdminController::adminsibling', ['filter' => 'admin']);
-$routes->get('/deletesibling/(:any)', 'AdminController::deletesibling/$1', ['filter' => 'admin']);
-$routes->get('/editsibling/(:any)', 'AdminController::editsibling/$1', ['filter' => 'admin']);
-$routes->get('/adminschool', 'AdminController::adminschool', ['filter' => 'admin']);
-$routes->post('/adminSaveschool', 'AdminController::adminSaveschool', ['filter' => 'admin']);
-$routes->get('/adminDeleteschool/(:any)', 'AdminController::adminDeleteschool/$1', ['filter' => 'admin']);
-$routes->get('/adminEditschool/(:any)', 'AdminController::adminEditschool/$1', ['filter' => 'admin']);
-
 //ADMIN MANAGE ACCOUNTS
 $routes->post('/saveAccount', 'AdminController::saveAccount', ['filter' => 'admin']);
 $routes->get('/deleteAccount/(:any)', 'AdminController::deleteAccount/$1', ['filter' => 'admin']);
@@ -109,7 +64,12 @@ $routes->get('/studentlibrary', 'StudentController::studentlibrary', ['filter' =
 $routes->post('/studentborrowBook', 'StudentController::studentborrowBook', ['filter' => 'student']);
 
 //STUDENT ENROLL
-$routes->get('/addenroll', 'EnrollmentController::addenroll', ['filter' => 'student']);
+$routes->get('/learner', 'EnrollmentController::learner', ['filter' => 'student']);
+$routes->get('/address', 'EnrollmentController::address', ['filter' => 'student']);
+$routes->get('/admission', 'EnrollmentController::admission', ['filter' => 'student']);
+$routes->get('/family', 'EnrollmentController::family', ['filter' => 'student']);
+$routes->get('/sibling', 'EnrollmentController::sibling', ['filter' => 'student']);
+$routes->get('/school', 'EnrollmentController::school', ['filter' => 'student']);
 $routes->get('/confirm', 'EnrollmentController::confirm', ['filter' => 'student']);
 $routes->get('/enroll/(:any)', 'EnrollmentController::enroll/$1', ['filter' => 'student']);
 $routes->post('/save', 'EnrollmentController::save', ['filter' => 'student']);
@@ -172,6 +132,25 @@ $routes->get('/regadmissions', 'RegistrarController::regadmissions', ['filter' =
 $routes->post('/regSaveadmissions', 'RegistrarController::regSaveadmissions', ['filter' => 'registrar']);
 $routes->get('/regDeleteadmissions/(:any)', 'RegistrarController::regDeleteadmissions/$1', ['filter' => 'registrar']);
 $routes->get('/regEditadmissions/(:any)', 'RegistrarController::regEditadmissions/$1', ['filter' => 'registrar']);
+
+//REGISTRAR MAIL
+$routes->get('/email', 'RegistrarController::mail', ['filter' => 'registrar']);
+
+//REGISTRAR ACADEMIC INFO
+$routes->get('/sections', 'RegistrarController::sections', ['filter' => 'registrar']);
+$routes->post('/saveSection', 'RegistrarController::saveSection', ['filter' => 'registrar']);
+$routes->get('/deleteSection/(:any)', 'RegistrarController::deleteSection/$1', ['filter' => 'registrar']);
+$routes->get('/editSection/(:any)', 'RegistrarController::editSection/$1', ['filter' => 'registrar']);
+$routes->get('/subjects', 'RegistrarController::subjects', ['filter' => 'registrar']);
+$routes->post('/saveSubject', 'RegistrarController::saveSubject', ['filter' => 'registrar']);
+$routes->get('/deleteSubject/(:any)', 'RegistrarController::deleteSubject/$1', ['filter' => 'registrar']);
+$routes->get('/editSubject/(:any)', 'RegistrarController::editSubject/$1', ['filter' => 'registrar']);
+
+//REGISTRAR ALUMNI
+$routes->get('/alumni', 'RegistrarController::alumni', ['filter' => 'registrar']);
+$routes->post('/saveAlumni', 'RegistrarController::saveAlumni', ['filter' => 'registrar']);
+$routes->get('/deleteAlumni/(:any)', 'RegistrarController::deleteAlumni/$1', ['filter' => 'registrar']);
+$routes->get('/editAlumni/(:any)', 'RegistrarController::editAlumni/$1', ['filter' => 'registrar']);
 
 //DAC
 $routes->get('/DAC', 'DACController::DAC', ['filter' => 'DAC']);

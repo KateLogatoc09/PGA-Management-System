@@ -78,7 +78,7 @@
                 </li>
 
                 <li class="menu-item">
-                  <a href="/addenroll" class="menu-link">
+                  <a href="/learner" class="menu-link">
                     <div data-i18n="Analytics">Enrollment</div>
                   </a>
                 </li>

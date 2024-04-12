@@ -27,60 +27,39 @@ class EnrollmentController extends BaseController
   
     }
 
-    public function addenroll()
-    {
-        $session = session();
-        $curruser = $this->acc->select('id')->where('username', $_SESSION['username'])->first();
-        $res1 = $this->learner->where('account_id', $curruser)->first();
-        $res2 = $this->family->where('account_id', $curruser)->first();
-        $res3 = $this->address->where('account_id', $curruser)->first();
-        $res4 = $this->admissions->where('account_id', $curruser)->first();
-        $res5 = $this->sibling->where('account_id', $curruser)->first();
-        $res6 = $this->school->where('account_id', $curruser)->first();
-
-        $data = [];
-        if($res1) {
-            $data['learn'] = 'True';
-        } else {
-            $data['learn'] = 'False';
-        }
-
-        if($res2) {
-            $data['family'] = 'True';
-        } else {
-            $data['family'] = 'False';
-        }
-
-        if($res3) {
-            $data['address'] = 'True';
-        } else {
-            $data['address'] = 'False';
-        }
-
-        if($res4) {
-            $data['admission'] = 'True';
-        } else {
-            $data['admission'] = 'False';
-        }
-
-        if($res5) {
-            $data['sibling'] = 'True';
-        } else {
-            $data['sibling'] = 'False';
-        }
-
-        if($res6) {
-            $data['school'] = 'True';
-        } else {
-            $data['school'] = 'False';
-        }
-
-        return view('enrollment', $data);
-    }
-
     public function confirm()
     {
         return view('confirm');
+    }
+    
+    public function learner()
+    {
+        return view('learner');
+    }
+
+    public function address()
+    {
+        return view('address');
+    }
+
+    public function admission()
+    {
+        return view('admission');
+    }
+
+    public function family()
+    {
+        return view('family');
+    }
+
+    public function sibling()
+    {
+        return view('sibling');
+    }
+
+    public function school()
+    {
+        return view('school');
     }
 
     public function save()  {
@@ -119,6 +98,7 @@ class EnrollmentController extends BaseController
                 $res = $this->learner->set($data)->where('id', $id)->update();
                 if($res) {
                     $session->setFlashdata('msg','Updated Successfully.');
+                    return redirect()->to('address');
                 } else {
                     $session->setFlashdata('msg','Something went wrong. Please try again later.');
                 }
@@ -127,6 +107,7 @@ class EnrollmentController extends BaseController
                 $res = $this->learner->save($data);
                 if($res) {
                     $session->setFlashdata('msg','Saved Successfully.');
+                    return redirect()->to('address');
                 } else {
                     $session->setFlashdata('msg','Something went wrong. Please try again later.');
                 }
@@ -153,6 +134,7 @@ class EnrollmentController extends BaseController
                 $res = $this->learner->set($data)->where('id', $id)->update();
                 if($res) {
                     $session->setFlashdata('msg','Updated Successfully.');
+                    return redirect()->to('address');
                 } else {
                     $session->setFlashdata('msg','Something went wrong. Please try again later.');
                 }
@@ -161,12 +143,13 @@ class EnrollmentController extends BaseController
                 $res = $this->learner->save($data);
                 if($res) {
                     $session->setFlashdata('msg','Saved Successfully.');
+                    return redirect()->to('address');
                 } else {
                     $session->setFlashdata('msg','Something went wrong. Please try again later.');
                 }
             } 
         }
-        return redirect()->to('addenroll');
+        return redirect()->to('learner');
     }
 
     
@@ -176,7 +159,11 @@ class EnrollmentController extends BaseController
         $data = [
             'id' => $this->request->getVar('id'),
             'type' => $this->request->getVar('type'),
-            'address' => $this->request->getVar('address'),
+            'region' => $this->request->getVar('region'),
+            'province' => $this->request->getVar('province'),
+            'municipality' => $this->request->getVar('municipality'),
+            'barangay' => $this->request->getVar('barangay'),
+            'street' => $this->request->getVar('street'),
             'postal_code' => $this->request->getVar('postal_code'),
             'tel_num' => $this->request->getVar('tel_num'),
             'account_id' => $this->acc->select('id')->where('username', $_SESSION['username'])->first(),
@@ -186,6 +173,7 @@ class EnrollmentController extends BaseController
             $res = $this->address->set($data)->where('id', $id)->update();
             if($res) {
                 $session->setFlashdata('msg','Updated Successfully.');
+                return redirect()->to('admission');
             } else {
                 $session->setFlashdata('msg','Something went wrong. Please try again later.');
             }
@@ -193,11 +181,12 @@ class EnrollmentController extends BaseController
             $res = $this->address->save($data);
             if($res) {
                 $session->setFlashdata('msg','Saved Successfully.');
+                return redirect()->to('admission');
             } else {
                 $session->setFlashdata('msg','Something went wrong. Please try again later.');
             }
         }  
-        return redirect()->to('addenroll');
+        return redirect()->to('address');
     }
 
     public function saveadmissions()  {
@@ -252,6 +241,7 @@ class EnrollmentController extends BaseController
                 $res = $this->admissions->set($data)->where('id', $id)->update();
                 if($res) {
                     $session->setFlashdata('msg','Updated Successfully.');
+                    return redirect()->to('family');
                 } else {
                     $session->setFlashdata('msg','Something went wrong. Please try again later.');
                 }
@@ -260,6 +250,7 @@ class EnrollmentController extends BaseController
                 $res = $this->admissions->save($data);
                 if($res) {
                     $session->setFlashdata('msg','Saved Successfully.');
+                    return redirect()->to('family');
                 } else {
                     $session->setFlashdata('msg','Something went wrong. Please try again later.');
                 }
@@ -276,6 +267,7 @@ class EnrollmentController extends BaseController
                 $res = $this->admissions->set($data)->where('id', $id)->update();
                 if($res) {
                     $session->setFlashdata('msg','Updated Successfully.');
+                    return redirect()->to('family');
                 } else {
                     $session->setFlashdata('msg','Something went wrong. Please try again later.');
                 }
@@ -284,12 +276,13 @@ class EnrollmentController extends BaseController
                 $res = $this->admissions->save($data);
                 if($res) {
                     $session->setFlashdata('msg','Saved Successfully.');
+                    return redirect()->to('family');
                 } else {
                     $session->setFlashdata('msg','Something went wrong. Please try again later.');
                 }
             } 
         }
-        return redirect()->to('addenroll');
+        return redirect()->to('admission');
     }
 
     public function savesibling()  {
@@ -307,6 +300,7 @@ class EnrollmentController extends BaseController
             $res = $this->sibling->set($data)->where('id', $id)->update();
             if($res) {
                 $session->setFlashdata('msg','Updated Successfully.');
+                return redirect()->to('school');
             } else {
                 $session->setFlashdata('msg','Something went wrong. Please try again later.');
             }
@@ -314,11 +308,12 @@ class EnrollmentController extends BaseController
             $res = $this->sibling->save($data);
             if($res) {
                 $session->setFlashdata('msg','Saved Successfully.');
+                return redirect()->to('school');
             } else {
                 $session->setFlashdata('msg','Something went wrong. Please try again later.');
             }
         }  
-        return redirect()->to('addenroll');
+        return redirect()->to('sibling');
     }
 
     public function savefamily()  {
@@ -341,6 +336,7 @@ class EnrollmentController extends BaseController
             $res = $this->family->set($data)->where('id', $id)->update();
             if($res) {
                 $session->setFlashdata('msg','Updated Successfully.');
+                return redirect()->to('sibling');
             } else {
                 $session->setFlashdata('msg','Something went wrong. Please try again later.');
             }
@@ -348,11 +344,12 @@ class EnrollmentController extends BaseController
             $res = $this->family->save($data);
             if($res) {
                 $session->setFlashdata('msg','Saved Successfully.');
+                return redirect()->to('sibling');
             } else {
                 $session->setFlashdata('msg','Something went wrong. Please try again later.');
             }
         }  
-        return redirect()->to('addenroll');
+        return redirect()->to('family');
     }
 
     public function saveschool()  {
@@ -371,21 +368,19 @@ class EnrollmentController extends BaseController
             $res = $this->school->set($data)->where('id', $id)->update();
             if($res) {
                 $session->setFlashdata('msg','Updated Successfully.');
-                return redirect()->to('addenroll');
+                return redirect()->to('confirm');
             } else {
                 $session->setFlashdata('msg','Something went wrong. Please try again later.');
-                return redirect()->to('addenroll');
             }
         } else {
             $res = $this->school->save($data);
             if($res) {
                 $session->setFlashdata('msg','Saved Successfully.');
-                return redirect()->to('addenroll');
+                return redirect()->to('confirm');
             } else {
                 $session->setFlashdata('msg','Something went wrong. Please try again later.');
-                return redirect()->to('addenroll');
             }
         }  
+        return redirect()->to('school');
     }
-
 }

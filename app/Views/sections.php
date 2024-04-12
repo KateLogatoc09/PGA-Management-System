@@ -1,3 +1,3 @@
-<?= $this->include('admin/head') ?>
-<?= $this->include('admin/section') ?>
-<?= $this->include('admin/js') ?>
+<?= $this->include('registrar/head') ?>
+<?= $this->include('registrar/section') ?>
+<?= $this->include('registrar/js') ?>

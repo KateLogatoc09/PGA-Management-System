@@ -10,10 +10,12 @@ use App\Models\SchoolAttendedModel;
 use App\Models\Sections;
 use App\Models\GradeModel;
 use App\Controllers\BaseController;
+use App\Models\AlumniModel;
+use App\Models\Subjects;
 
 class RegistrarController extends BaseController
 {
-    private $learner, $family, $address, $admissions, $sibling, $school, $section, $grade;
+    private $learner, $family, $address, $admissions, $sibling, $school, $section, $grade, $sections, $subjects, $alumni;
     public function __construct()
     {
         $this->learner = new LearnerModel();
@@ -24,12 +26,203 @@ class RegistrarController extends BaseController
         $this->school = new SchoolAttendedModel();
         $this->sections = new Sections();
         $this->grade = new GradeModel();
+        $this->alumni = new AlumniModel();
+        $this->sections = new Sections();
+        $this->subjects = new Subjects();
     }
 
     public function registrar(){
             return view ('registrar');
         }
     
+        
+    public function mail()
+    {
+            return view ('email');
+    }
+
+    public function alumni()
+    {
+        $data = [
+            'alumni' => $this->alumni->findAll(),
+                ];
+        return view ('alumni', $data);
+    }
+
+    public function saveAlumni()  {
+        $session = session();
+        $id = $_POST['id'];
+        $data = [
+            'fullname' => $this->request->getVar('fullname'),
+            'gender' => $this->request->getVar('gender'),
+            'email' => $this->request->getVar('email'),
+            'phone' => $this->request->getVar('phone'),
+            'address' => $this->request->getVar('address'),
+            'occupation' => $this->request->getVar('occupation'),
+            'yr_graduated' => $this->request->getVar('yr_graduated'),
+        ];
+
+        if ($id != null) {
+            $res = $this->alumni->set($data)->where('id', $id)->update();
+            if($res) {
+                $session->setFlashdata('msg','Updated Successfully.');
+            } else {
+                $session->setFlashdata('msg','Something went wrong. Please try again later.');
+            }
+        } else {
+            $res = $this->alumni->save($data);
+            if($res) {
+                $session->setFlashdata('msg','Saved Successfully.');
+            } else {
+                $session->setFlashdata('msg','Something went wrong. Please try again later.');
+            }
+        }   
+        return redirect()->to('alumni');
+    }
+
+    public function deleteAlumni($id)
+    {
+        $session = session();
+        $res = $this->alumni->delete($id);
+        if($res) {
+            $session->setFlashdata('msg','Deleted Successfully.');
+        } else {
+            $session->setFlashdata('msg','Something went wrong. Please try again later.');
+        }
+        return redirect()->to('alumni');
+    }
+
+    
+    public function editAlumni($id)
+    {
+        $data = [
+            'alumni' => $this->alumni->findAll(),
+            'alum' => $this->alumni->where('id', $id)->first(),
+        ];
+
+        return view('alumni', $data);
+        
+    }
+
+    public function sections()
+    {
+        $data = [
+            'stud_section' => $this->sections->findAll(),
+        ];
+            return view ('sections', $data);
+    }
+
+    public function saveSection()  {
+        $session = session();
+        $id = $_POST['id'];
+        $data = [
+            'id' => $this->request->getVar('id'),
+            'name' => $this->request->getVar('name'),
+            'grade_level_id' => $this->request->getVar('grade_level_id'),
+        ];
+
+        if ($id != null) {
+            $res = $this->sections->set($data)->where('id', $id)->update();
+            if($res) {
+                $session->setFlashdata('msg','Updated Successfully.');
+            } else {
+                $session->setFlashdata('msg','Something went wrong. Please try again later.');
+            }
+        } else {
+            $res = $this->sections->save($data);
+            if($res) {
+                $session->setFlashdata('msg','Saved Successfully.');
+            } else {
+                $session->setFlashdata('msg','Something went wrong. Please try again later.');
+            }
+        }  
+        return redirect()->to('sections');
+    }
+
+    public function deleteSection($id)
+    {
+        $session = session();
+        $res = $this->sections->delete($id);
+        if($res) {
+            $session->setFlashdata('msg','Deleted Successfully.');
+        } else {
+            $session->setFlashdata('msg','Something went wrong. Please try again later.');
+        }
+        return redirect()->to('sections');
+    }
+
+    
+    public function editSection($id)
+    {
+        $data = [
+            'stud_section' => $this->sections->findAll(),
+            'sec' => $this->sections->where('id', $id)->first(),
+        ];
+
+        return view('sections', $data);
+    }
+
+    
+    public function subjects()
+    {
+        $data = [
+            'subject' => $this->subjects->findAll(),
+        ];
+            return view ('subjects', $data);
+    }
+
+    public function saveSubject()  {
+        $session = session();
+        $id = $_POST['id'];
+        $data = [
+            'id' => $this->request->getVar('id'),
+            'name' => $this->request->getVar('name'),
+            'type' => $this->request->getVar('type'),
+            'yr_lvl' => $this->request->getVar('yr_lvl'),
+        ];
+
+        if ($id != null) {
+            $res = $this->subjects->set($data)->where('id', $id)->update();
+            if($res) {
+                $session->setFlashdata('msg','Updated Successfully.');
+            } else {
+                $session->setFlashdata('msg','Something went wrong. Please try again later.');
+            }
+        } else {
+            $res = $this->subjects->save($data);
+            if($res) {
+                $session->setFlashdata('msg','Saved Successfully.');
+            } else {
+                $session->setFlashdata('msg','Something went wrong. Please try again later.');
+            }
+        }  
+        return redirect()->to('subjects');
+    }
+
+    public function deleteSubject($id)
+    {
+        $session = session();
+        $res = $this->subjects->delete($id);
+        if($res) {
+            $session->setFlashdata('msg','Deleted Successfully.');
+        } else {
+            $session->setFlashdata('msg','Something went wrong. Please try again later.');
+        }
+        return redirect()->to('subjects');
+    }
+
+    
+    public function editSubject($id)
+    {
+        $data = [
+            'subject' => $this->subjects->findAll(),
+            'sub' => $this->subjects->where('id', $id)->first(),
+        ];
+
+        return view('subjects', $data);
+    }
+
+
     public function registerstudent()
     {
         $data = [

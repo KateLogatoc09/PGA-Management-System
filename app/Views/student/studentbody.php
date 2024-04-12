@@ -97,7 +97,7 @@
                         <br>
                         <?php foreach ($address as $a): ?>
                           <h7 class="orange"><?= $a['type'] ?> Address:</h7>
-                        <?= $a['address'] ?>
+                          <?= $a['street'] ?>, <?= $a['barangay'] ?>, <?= $a['municipality'] ?>, <?= $a['province'] ?>, <?= $a['region'] ?>
                         <br>
                         <h7 class="orange">Postal Code:</h7>
                         <?= $a['postal_code'] ?>
