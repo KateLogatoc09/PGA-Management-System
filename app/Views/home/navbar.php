@@ -3,8 +3,8 @@
      <div class="container-fluid sticky">
         <div class="row border-top px-xl-5">
             <div class="col-lg-3 d-none d-lg-block">
-                <a href="" class="text-decoration-none navy">
-                    <h1 class="m-2 white"><span class="secondary">PG</span>ACADEMY</h1>
+                <a href="" class="text-decoration-none blue">
+                    <h1 class="m-2 text-midnight"><span class="secondary">PG</span>ACADEMY</h1>
                 </a>
             </div>
             <div class="col-lg-9">

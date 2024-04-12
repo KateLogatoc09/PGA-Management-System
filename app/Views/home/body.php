@@ -280,10 +280,10 @@
                 </div>
                 <div class="col-lg-5">
                     <div class="card border-0">
-                        <div class="card-header bg-light text-center p-4">
-                            <h1 class="m-0">Sign Up Now</h1>
+                        <div class="card-header bg-primary text-center p-4">
+                            <h1 class="m-0 text-white">Sign Up Now</h1>
                         </div>
-                        <div class="card-body rounded-bottom bg-primary p-5">
+                        <div class="card-body rounded-bottom bg-light p-5">
                             <form>
                                 <div class="form-group">
                                     <input type="text" class="form-control border-0 p-4" placeholder="Your name" required="required" />

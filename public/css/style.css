@@ -19,8 +19,8 @@
   --white: #fff;
   --gray: #6c757d;
   --gray-dark: #343a40;
-  --primary: darkblue;
-  --secondary: lightblue;
+  --primary: lightblue;
+  --secondary: darkblue;
   --success: #28a745;
   --info: #17a2b8;
   --warning: #ffc107;
@@ -34,6 +34,10 @@
   --breakpoint-xl: 1200px;
   --font-family-sans-serif: "Poppins", sans-serif;
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.blue{
+color: blue;
 }
 
 *,
@@ -2327,7 +2331,7 @@ textarea.form-control {
 .btn {
   display: inline-block;
   font-weight: 400;
-  color: #6C6A74;
+  color: white;
   text-align: center;
   vertical-align: middle;
   user-select: none;
@@ -2353,7 +2357,7 @@ textarea.form-control {
 
 .btn:focus, .btn.focus {
   outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(255, 102, 0, 0.25);
+  box-shadow: midnightblue;
 }
 
 .btn.disabled, .btn:disabled {
@@ -2370,14 +2374,14 @@ fieldset:disabled a.btn {
 }
 
 .btn-primary {
-  color: var(--primary);
+  color: white;
   background-color: var(--secondary);
   border-color: var(--secondary);
 }
 
 .btn-primary:hover {
-  color: var(--primary);
-  background-color: var(--white);
+  color: white;
+  background-color: blue;
   border-color: var(--secondary);
 }
 
@@ -2385,7 +2389,7 @@ fieldset:disabled a.btn {
   color: #fff;
   background-color: var(--primary);
   border-color: var(--primary);
-  box-shadow: 0 0 0 0.2rem rgba(255, 125, 38, 0.5);
+  box-shadow: midnightblue;
 }
 
 .btn-primary.disabled, .btn-primary:disabled {
@@ -2396,14 +2400,14 @@ fieldset:disabled a.btn {
 
 .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
 .show > .btn-primary.dropdown-toggle {
-  color: #fff;
-  background-color: #cc5200;
-  border-color: #bf4d00;
+  color: var(--gray-dark);
+  background-color: aqua;
+  border-color: midnightblue;
 }
 
 .btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
 .show > .btn-primary.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.2rem rgba(255, 125, 38, 0.5);
+  box-shadow: midnightblue;
 }
 
 .btn-secondary {
@@ -2677,7 +2681,7 @@ fieldset:disabled a.btn {
 }
 
 .btn-outline-primary:focus, .btn-outline-primary.focus {
-  box-shadow: 0 0 0 0.2rem rgba(255, 102, 0, 0.5);
+  box-shadow: midnightblue;
 }
 
 .btn-outline-primary.disabled, .btn-outline-primary:disabled {
@@ -2694,7 +2698,7 @@ fieldset:disabled a.btn {
 
 .btn-outline-primary:not(:disabled):not(.disabled):active:focus, .btn-outline-primary:not(:disabled):not(.disabled).active:focus,
 .show > .btn-outline-primary.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.2rem rgba(255, 102, 0, 0.5);
+  box-shadow: midnightblue;
 }
 
 .btn-outline-secondary {
@@ -2928,7 +2932,7 @@ fieldset:disabled a.btn {
 }
 
 .btn-link:hover {
-  color: #b34700;
+  color: midnightblue;
   text-decoration: underline;
 }
 
@@ -4073,7 +4077,7 @@ input[type="button"].btn-block {
 
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
-  color: #fff;
+  color: #6c757d;
   background-color: var(--secondary);
 }
 
@@ -4868,7 +4872,7 @@ a.badge-primary:hover, a.badge-primary:focus {
 
 a.badge-primary:focus, a.badge-primary.focus {
   outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(255, 102, 0, 0.5);
+  box-shadow: midnightblue;
 }
 
 .badge-secondary {
@@ -6415,7 +6419,7 @@ button.bg-danger:focus {
 }
 
 .bg-light {
-  background-color: #FFFFFF !important;
+  background-color: lightblue !important;
 }
 
 a.bg-light:hover, a.bg-light:focus,
@@ -9524,6 +9528,10 @@ button.bg-dark:focus {
   color: #fff !important;
 }
 
+.text-midnight {
+  color: midnightblue !important;
+}
+
 .text-primary {
   color: darkblue !important;
 }
@@ -9533,7 +9541,7 @@ a.text-primary:hover, a.text-primary:focus {
 }
 
 .text-secondary {
-  color: var(--secondary) !important;
+  color: var(--primary) !important;
 }
 
 a.text-secondary:hover, a.text-secondary:focus {
@@ -9987,7 +9995,7 @@ h6,
 
 .navbar-light .navbar-nav .nav-link {
   padding: 20px 15px;
-  color: var(--light);
+  color: black;
   font-size: 18px;
   font-weight: 500;
   outline: none;
