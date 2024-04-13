@@ -57,7 +57,7 @@
                                             <td><?= $ad['student_id'] ?></td>
                                             <td><?= $ad['last_name'] ?>, <?= $ad['first_name'] ?> <?= $ad['middle_name'] ?></td>
                                             <td><?= $ad['type'] ?></td>
-                                            <td><?= $ad['address'] ?></td>
+                                            <td><?= $ad['street'] ?>, <?= $ad['barangay'] ?>, <?= $ad['municipality'] ?>, <?= $ad['province'] ?>, <?= $ad['region'] ?></td>
                                             <td><?= $ad['postal_code'] ?></td>
                                             <td><?= $ad['tel_num'] ?></td>
                                             <td> <a href="/regDeleteaddress/<?= $ad['id'] ?>" class="btn btn-danger btn-sm">Delete</a>

@@ -1,0 +1,16 @@
+CRITICAL - 2024-04-13 03:21:05 --> Undefined array key "address"
+in APPPATH\Views\registrar\studentaddress.php on line 60.
+ 1 APPPATH\Views\registrar\studentaddress.php(60): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "address"', 'C:\\laragon\\www\\PGA-Management-System\\app\\Views\\registrar\\studentaddress.php', 60)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\registrar\\studentaddress.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(467): CodeIgniter\View\View->render('registrar/studentaddress', null, true)
+ 5 APPPATH\Views\regaddress.php(2): CodeIgniter\View\View->include('registrar/studentaddress')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\regaddress.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('regaddress', [], true)
+ 9 APPPATH\Controllers\RegistrarController.php(430): view('regaddress', [...])
+10 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\RegistrarController->regaddress()
+11 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RegistrarController))
+12 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
