@@ -62,7 +62,10 @@ class Authentication extends BaseController
 
                         $session->setFlashdata('msg','Logged-in Successfully.');
 
-                        if($_SESSION['role'] == 'STUDENT'){
+                        if($_SESSION['role'] == 'GENERAL'){
+                            return redirect()->to('/general');
+                        }
+                        else if($_SESSION['role'] == 'STUDENT'){
                             return redirect()->to('/student');
                         }
                         else if($_SESSION['role'] == 'TEACHER'){
@@ -115,7 +118,10 @@ class Authentication extends BaseController
 
                         $session->setFlashdata('msg','Logged-in Successfully.');
 
-                        if($_SESSION['role'] == 'STUDENT'){
+                        if($_SESSION['role'] == 'GENERAL'){
+                            return redirect()->to('/general');
+                        }
+                        else if($_SESSION['role'] == 'STUDENT'){
                             return redirect()->to('/student');
                         }
                         else if($_SESSION['role'] == 'TEACHER'){
@@ -190,7 +196,10 @@ class Authentication extends BaseController
 
                         $session->setFlashdata('msg','Logged-in Successfully.');
 
-                        if($_SESSION['role'] == 'STUDENT'){
+                        if($_SESSION['role'] == 'GENERAL'){
+                            return redirect()->to('/general');
+                        }
+                        else if($_SESSION['role'] == 'STUDENT'){
                             return redirect()->to('/student');
                         }
                         else if($_SESSION['role'] == 'TEACHER'){
@@ -240,7 +249,10 @@ class Authentication extends BaseController
 
                         $session->setFlashdata('msg','Logged-in Successfully.');
 
-                        if($_SESSION['role'] == 'STUDENT'){
+                        if($_SESSION['role'] == 'GENERAL'){
+                            return redirect()->to('/general');
+                        }
+                        else if($_SESSION['role'] == 'STUDENT'){
                             return redirect()->to('/student');
                         }
                         else if($_SESSION['role'] == 'TEACHER'){
@@ -318,7 +330,7 @@ class Authentication extends BaseController
             'username' => $this->request->getVar('username'),
             'email' => $this->request->getVar('email'),
             'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
-            'role' => $this->request->getVar('role'),
+            'role' => 'GENERAL',
             'status' => 'UNVERIFIED',
             'token' => sha1($Token),
             ];
@@ -482,19 +494,12 @@ class Authentication extends BaseController
     public function checking() {
         $session = session();
         $code = $this->request->getVar('code');
+        $check = $this->acc->where('email', $_SESSION['verifier'])->first();
         if(sha1($code) == $_SESSION['code']) {
             if(isset($_SESSION['verifier'])) {
-                $role = $this->acc->select('role')->where('email', $_SESSION['verifier'])->first();
-                if($role == 'TEACHER' || $role == 'PERSONNEL' || $role == 'PARENT' || $role == 'DAC' || $role == 'IAC' || $role == 'SAC' || $role == 'AAC' || $role == 'REGISTRAR') {
-                    $res = $this->acc->set('status', 'PENDING')->where('email', $_SESSION['verifier'])->update();
-                    if($res) {
-                        unset($_SESSION['verifier']); unset($_SESSION['code']);
-                        $session->setFlashdata('msg','Your email was verified successfully. However, further verification are required to gain access to your account. Contact us for more details.');
-                        return redirect()->to('contact');
-                    } else {
-                        $session->setFlashdata('msg','Something went wrong. Please try again later.');
-                        return redirect()->to('verify');
-                    }
+                if($check['status'] == 'BANNED' || $check['status'] == 'SUSPENDED') {
+                    $session->setFlashdata('msg','Account might have been suspended or permanently banned.');
+                    return redirect()->to('contact');
                 } else {
                     $res = $this->acc->set('status', 'VERIFIED')->where('email', $_SESSION['verifier'])->update();
                     if($res) {
@@ -609,7 +614,7 @@ class Authentication extends BaseController
             if($_SESSION['once'] == sha1('2024P#SSR/C')) {
                 $res = $this->acc->set($data)->where('email', $_SESSION['forgot'])->update();
                 if($res) {
-                    $session->setFlashdata('msg', 'Your oassword was changed sucessfully. You\'re ready for log-in.');
+                    $session->setFlashdata('msg', 'Your password was changed sucessfully. You\'re ready for log-in.');
                     unset($_SESSION['forgot']);
                     unset($_SESSION['once']);
                     unset($_SESSION['code']);

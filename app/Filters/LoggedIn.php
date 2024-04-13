@@ -26,6 +26,8 @@ class LoggedIn implements FilterInterface
     public function before(RequestInterface $request, $arguments = null)
     {
         if(session()->has('isLoggedin')) {
+            $session = session();
+            $session->setFlashdata('msg','You aren\'t allowed to access this page.');
             return redirect()->back();
         }
     }

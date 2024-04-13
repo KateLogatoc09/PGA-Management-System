@@ -1,4 +1,5 @@
 <body>
+    <?php session() ?>
      <!-- Navbar Start -->
      <div class="container-fluid sticky">
         <div class="row border-top px-xl-5">
@@ -31,9 +32,13 @@
                                 </div>
                             </div>-->
                         </div>
-                        
+                        <?php if(isset($_SESSION['username'])): ?>
+                        <?php echo 'Welcome, '.$_SESSION['username']; ?>
+                        <a href="logout" class="nav-item nav-link">Logout</a>
+                        <?php else: ?>
                         <a class="btn btn-primary btn-lg mx-2 space" href="/login">Login</a>
-                            <a class="btn btn-primary btn-lg mx-2" href="/reg">Register</a>
+                        <a class="btn btn-primary btn-lg mx-2" href="/reg">Register</a>
+                        <?php endif; ?>
                     </div>
                 </nav>
             </div>

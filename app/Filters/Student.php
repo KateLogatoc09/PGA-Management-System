@@ -26,7 +26,9 @@ class Student implements FilterInterface
     public function before(RequestInterface $request, $arguments = null)
     {
         if(!session()->has('isLoggedin')) {
-            return redirect()->to('login')->with('msg', "You need to login");
+            $session = session();
+            $session->setFlashdata('msg','You need to login first.');
+            return redirect()->to('login');
         } else if(session()->get('role') != 'STUDENT') {
             return redirect()->back();
         }

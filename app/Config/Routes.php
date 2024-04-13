@@ -17,13 +17,11 @@ $routes->get('/verify', 'Home::verify', ['filter' => 'loggedin']);
 $routes->get('/verifying', 'Home::verifying', ['filter' => 'verify']);
 $routes->get('/forgot', 'Home::forgot', ['filter' => 'loggedin']);
 $routes->get('/password', 'Home::password', ['filter' => 'password']);
-$routes->get('/qr-generator', 'Home::qr');
 
 //GENERAL
-$routes->get('/general', 'GeneralController::general');
+$routes->get('/general', 'GeneralController::general', ['filter' => 'isloggedin']);
 
 //ATTENDANCE
-$routes->post('/generate', 'Attendance::simple_qr', ['filter' => 'guard']);
 $routes->post('/time_in', 'Attendance::time_in', ['filter' => 'guard']);
 $routes->post('/time_out', 'Attendance::time_out', ['filter' => 'guard']);
 $routes->get('/attendance_in', 'Attendance::attendance_in', ['filter' => 'guard']);
@@ -65,6 +63,7 @@ $routes->get('/graph', 'GradeController::index', ['filter' => 'student']);
 
 //STUDENT PROFILE
 $routes->get('/student', 'StudentController::index', ['filter' => 'student']);
+$routes->post('/generate', 'StudentController::simple_qr', ['filter' => 'student']);
 $routes->get('/studentlibrary', 'StudentController::studentlibrary', ['filter' => 'student']);
 $routes->post('/studentborrowBook', 'StudentController::studentborrowBook', ['filter' => 'student']);
 

@@ -46,12 +46,6 @@
                   </a>
                 </li>
 
-                <li class="menu-item">
-                  <a href="/qr-generator" class="menu-link">
-                    <div data-i18n="Analytics">Simple QR Generator</div>
-                  </a>
-                </li>
-
               </ul>
             </li>
             <!-- Misc -->

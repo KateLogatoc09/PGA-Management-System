@@ -26,13 +26,17 @@ class Verify implements FilterInterface
     public function before(RequestInterface $request, $arguments = null)
     {
         if(session()->has('isLoggedin')) {
-            return redirect()->back()->with('msg', "You aren't allowed to access this page.");
+            $session = session();
+            $session->setFlashdata('msg','You aren\'t allowed to access this page.');
+            return redirect()->back();
         } else if(!session()->has('verifier') && session()->has('forgot')) {
             
         } else if(!session()->has('forgot') && session()->has('verifier')) {
             
         } else if(!session()->has('forgot') && !session()->has('verifier')) {
-            return redirect()->back()->with('msg', "You aren't allowed to access this page.");
+            $session = session();
+            $session->setFlashdata('msg','You aren\'t allowed to access this page.');
+            return redirect()->back();
         }
     }
 
