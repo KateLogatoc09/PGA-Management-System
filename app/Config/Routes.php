@@ -19,6 +19,9 @@ $routes->get('/forgot', 'Home::forgot', ['filter' => 'loggedin']);
 $routes->get('/password', 'Home::password', ['filter' => 'password']);
 $routes->get('/qr-generator', 'Home::qr');
 
+//GENERAL
+$routes->get('/general', 'GeneralController::general');
+
 //ATTENDANCE
 $routes->post('/generate', 'Attendance::simple_qr', ['filter' => 'guard']);
 $routes->post('/time_in', 'Attendance::time_in', ['filter' => 'guard']);
