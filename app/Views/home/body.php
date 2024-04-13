@@ -55,40 +55,40 @@
 
 
 
-    <!-- FAQ Start -->
-    <div class="container-fluid bg-registration py-5" style="margin: 90px 0;">
-        <div class="container py-5">
-            <div class="row align-items-center">
-                <div class="col-lg-7 mb-5 mb-lg-0">
-                    <div class="mb-4">
-                        <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Frequently Ask Question</h5>
-                        <h1 class="text-white">Any Question about our Institution?</h1>
-                    </div>
-                    <p class="text-white">DOMINO OPTIMO MAXIMO "TO THE LORD THE BEST, AND THE GREATEST"</p>
-
+  <!-- FAQ Start -->
+<div class="container-fluid bg-registration py-5" style="margin: 90px 0;">
+    <div class="container py-5">
+        <div class="row align-items-center">
+            <div class="col-lg-7 mb-5 mb-lg-0">
+                <div class="mb-4">
+                    <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Frequently Ask Question</h5>
+                    <h1 class="text-white">Any Question about our Institution?</h1>
                 </div>
-                <div class="col-lg-5">
-                    <div class="card border-0">
-                        <div class="card-header bg-primary text-center p-4">
-                            <h1 class="m-0 text-white">Ask Now</h1>
-                        </div>
-                        <div class="card-body rounded-bottom bg-light p-5">
-                            <form>
-                                <div class="form-group">
-                                    <input type="text" class="form-control border-0 p-4" placeholder="Type here" required="required" />
-                                </div>
-
-                                <div>
-                                    <button class="btn btn-dark btn-block border-0 py-3" type="submit">Submit</button>
-                                </div>
-                            </form>
-                        </div>
+                <p class="text-white">DOMINO OPTIMO MAXIMO "TO THE LORD THE BEST, AND THE GREATEST"</p>
+            </div>
+            <div class="col-lg-5">
+                <div class="card border-0">
+                    <div class="card-header bg-primary text-center p-4">
+                        <h1 class="m-0 text-white">Ask Now</h1>
+                    </div>
+                    <div class="card-body rounded-bottom bg-light p-5">
+                        <form action="send_email.php" method="post">
+                            <div class="form-group">
+                                <input type="email" name="recipient_email" class="form-control border-0 p-4 mb-3" placeholder="Recipient's Email" required="required" />
+                                <textarea name="email_content" class="form-control border-0 p-4" placeholder="Email Content" required="required" rows="5"></textarea>
+                            </div>
+                            <div>
+                                <button class="btn btn-dark btn-block border-0 py-3" type="submit">Send Email</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- FAQ End -->
+</div>
+<!-- FAQ End -->
+
 
 
 <!-- Announcement Start -->
@@ -207,11 +207,12 @@
                     <div class="col-md-6 mb-5">
                         <h5 class="text-secondary text-uppercase mb-4" style="letter-spacing: 5px;">Get In Touch</h5>
                         <p><i class="fa fa-map-marker-alt mr-2"></i>Puerto Galera, Oriental Mindoro, Philippines</p>
-                        <p><i class="fa fa-phone-alt mr-2"></i>+012 345 67890</p>
-                        <p><i class="fa fa-envelope mr-2"></i>info@example.com</p>
+                        <p><i class="fa fa-phone-alt mr-2"></i>0956 355 6148</p>
+                        <p><i class="fa fa-envelope mr-2"></i>pga_1967@yahoo.com</p>
                         <div class="d-flex justify-content-start mt-4">
 
                             <a class="btn btn-outline-light btn-square mr-2" href="https://www.facebook.com/pgacare1967"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-light btn-square mr-2" href="mailto:pga_1967@yahoo.com"><i class="fas fa-envelope"></i></a>
 
                         </div>
                     </div>
