@@ -30,9 +30,10 @@
                                     <a href="/student" class="dropdown-item">Student</a>
                                 </div>
                             </div>-->
-                            <a class="btn btn-primary btn-lg mx-2 space" href="/login">Login</a>
-                            <a class="btn btn-primary btn-lg mx-2" href="/reg">Register</a>
                         </div>
+                        
+                        <a class="btn btn-primary btn-lg mx-2 space" href="/login">Login</a>
+                            <a class="btn btn-primary btn-lg mx-2" href="/reg">Register</a>
                     </div>
                 </nav>
             </div>
