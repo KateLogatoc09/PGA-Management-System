@@ -42,18 +42,6 @@
                           </div>
 
                           <div class="mb-2 col-md-12">
-                              <label for="time" class="form-label">Time to be Posted</label>
-                              <input
-                              class="form-control"
-                              type="datetime-local"
-                              id="time"
-                              name="time"
-                              autofocus
-                              required
-                              />
-                          </div>
-
-                          <div class="mb-2 col-md-12">
                               <label for="message" class="form-label">Content/Message</label>
                               <textarea class="form-control" id="message" name="message" style="resize:none" rows="6" required></textarea>
                           </div>
