@@ -19,12 +19,15 @@ $routes->get('/forgot', 'Home::forgot', ['filter' => 'loggedin']);
 $routes->get('/password', 'Home::password', ['filter' => 'password']);
 $routes->get('/qr-generator', 'Home::qr');
 
+//GENERAL
+$routes->get('/general', 'GeneralController::general');
+
 //ATTENDANCE
-$routes->post('/generate', 'Attendance::simple_qr');
-$routes->post('/time_in', 'Attendance::time_in');
-$routes->post('/time_out', 'Attendance::time_out');
-$routes->get('/attendance_in', 'Attendance::attendance_in');
-$routes->get('/attendance_out', 'Attendance::attendance_out');
+$routes->post('/generate', 'Attendance::simple_qr', ['filter' => 'guard']);
+$routes->post('/time_in', 'Attendance::time_in', ['filter' => 'guard']);
+$routes->post('/time_out', 'Attendance::time_out', ['filter' => 'guard']);
+$routes->get('/attendance_in', 'Attendance::attendance_in', ['filter' => 'guard']);
+$routes->get('/attendance_out', 'Attendance::attendance_out', ['filter' => 'guard']);
 
 //ADMIN FIRSTPAGE
 $routes->get('/admins', 'AdminController::index', ['filter' => 'admin']);
@@ -33,6 +36,8 @@ $routes->get('/admins', 'AdminController::index', ['filter' => 'admin']);
 $routes->post('/saveAccount', 'AdminController::saveAccount', ['filter' => 'admin']);
 $routes->get('/deleteAccount/(:any)', 'AdminController::deleteAccount/$1', ['filter' => 'admin']);
 $routes->get('/editAccount/(:any)', 'AdminController::editAccount/$1', ['filter' => 'admin']);
+
+$routes->get('/announce', 'AdminController::announce', ['filter' => 'admin']);
 
 //ADMIN TEACHER
 $routes->get('/addTeacher', 'AdminController::addTeacher', ['filter' => 'admin']);
@@ -163,3 +168,11 @@ $routes->get('/SAC', 'SACController::SAC', ['filter' => 'SAC']);
 
 //AAC
 $routes->get('/AAC', 'AACController::AAC', ['filter' => 'AAC']);
+$routes->get('/aacsections', 'AACController::aacsections', ['filter' => 'AAC']);
+$routes->post('/aacsaveSection', 'AACController::aacsaveSection', ['filter' => 'AAC']);
+$routes->get('/aacdeleteSection/(:any)', 'AACController::aacdeleteSection/$1', ['filter' => 'AAC']);
+$routes->get('/aaceditSection/(:any)', 'AACController::aaceditSection/$1', ['filter' => 'AAC']);
+$routes->get('/aacsubjects', 'AACController::aacsubjects', ['filter' => 'AAC']);
+$routes->post('/aacsaveSubject', 'AACController::aacsaveSubject', ['filter' => 'AAC']);
+$routes->get('/aacdeleteSubject/(:any)', 'AACController::aacdeleteSubject/$1', ['filter' => 'AAC']);
+$routes->get('/aaceditSubject/(:any)', 'AACController::aaceditSubject/$1', ['filter' => 'AAC']);

@@ -7,11 +7,11 @@ use App\Models\AdmissionsModel;
 use App\Models\SiblingModel;
 use App\Models\FamilyModel;
 use App\Models\SchoolAttendedModel;
-use App\Models\Sections;
 use App\Models\GradeModel;
 use App\Controllers\BaseController;
 use App\Models\AlumniModel;
 use App\Models\Subjects;
+use App\Models\Sections;
 
 class RegistrarController extends BaseController
 {

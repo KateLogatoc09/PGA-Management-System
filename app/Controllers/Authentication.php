@@ -92,6 +92,9 @@ class Authentication extends BaseController
                         else if($_SESSION['role'] == 'REGISTRAR'){
                             return redirect()->to('/registrar');
                         }
+                        else if($_SESSION['role'] == 'GUARD'){
+                            return redirect()->to('/attendance_in');
+                        }
                         else{
                             return redirect()->to('/admins');
                         }
@@ -138,6 +141,9 @@ class Authentication extends BaseController
                         }
                         else if($_SESSION['role'] == 'REGISTRAR'){
                             return redirect()->to('/registrar');
+                        }
+                        else if($_SESSION['role'] == 'GUARD'){
+                            return redirect()->to('/attendance_in');
                         }
                         else{
                             return redirect()->to('/admins');
@@ -211,6 +217,9 @@ class Authentication extends BaseController
                         else if($_SESSION['role'] == 'REGISTRAR'){
                             return redirect()->to('/registrar');
                         }
+                        else if($_SESSION['role'] == 'GUARD'){
+                            return redirect()->to('/attendance_in');
+                        }
                         else{
                             return redirect()->to('/admins');
                         }
@@ -257,6 +266,9 @@ class Authentication extends BaseController
                         }
                         else if($_SESSION['role'] == 'REGISTRAR'){
                             return redirect()->to('/registrar');
+                        }
+                        else if($_SESSION['role'] == 'GUARD'){
+                            return redirect()->to('/attendance_in');
                         }
                         else{
                             return redirect()->to('/admins');

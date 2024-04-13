@@ -13,6 +13,7 @@ use App\Filters\DAC;
 use App\Filters\IAC;
 use App\Filters\SAC;
 use App\Filters\AAC;
+use App\Filters\Guard;
 use App\Filters\Password;
 use App\Filters\Verify;
 use CodeIgniter\Config\BaseConfig;
@@ -48,6 +49,7 @@ class Filters extends BaseConfig
         'IAC'           => IAC::class,
         'SAC'           => SAC::class,
         'AAC'           => AAC::class,
+        'guard'         => Guard::class,
         'password'      => Password::class,
         'verify'        => Verify::class,
     ];

@@ -36,6 +36,10 @@
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
+.space{
+  margin-left: 10.5rem !important;
+}
+
 .blue{
 color: blue;
 }
