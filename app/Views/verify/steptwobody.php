@@ -34,6 +34,7 @@
                     id="code"
                     name="code"
                     placeholder="Enter your code"
+                    maxlength="6"
                     autofocus
                   />
                 </div>

@@ -7,7 +7,6 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\OAuth;
 use League\OAuth2\Client\Provider\Google;
-use SimpleSoftwareIO\QrCode\Generator;
 use App\Controllers\BaseController;
 
 class Attendance extends BaseController
@@ -17,14 +16,6 @@ class Attendance extends BaseController
     public function __construct() {
         $this->acc = new \App\Models\AccountModel();
         $this->att  = new \App\Models\AttendanceModel();
-    }
-
-    public function simple_qr() {
-        $input = $this->request->getVar('id');
-        $qrcode = new Generator;
-        $session = session();
-        $session->setFlashdata('qr', $qrcode->size(120)->generate($input));
-        return redirect()->to('qr-generator');
     }
 
     public function time_in() {

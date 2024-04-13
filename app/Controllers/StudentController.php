@@ -11,6 +11,7 @@ use App\Models\SiblingModel;
 use App\Models\FamilyModel;
 use App\Models\SchoolAttendedModel;
 use App\Models\BorrowedBooksModel;
+use SimpleSoftwareIO\QrCode\Generator;
 use App\Models\AddBooksModel;
 
 class StudentController extends BaseController
@@ -48,6 +49,14 @@ class StudentController extends BaseController
         return view('student', $data);
     }
 
+    public function simple_qr() {
+        $curruser = $this->acc->select('id')->where('username', $_SESSION['username'])->first();
+        $id = $this->admissions->select('student_id')->where('account_id', $curruser)->first();
+        $qrcode = new Generator;
+        $session = session();
+        $session->setFlashdata('qr', $qrcode->size(120)->generate($id['student_id']));
+        return redirect()->to('student');
+    }
     
     public function studentlibrary()
     {

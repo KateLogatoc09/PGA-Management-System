@@ -84,16 +84,6 @@
                   </div>
                 </div>
                 <div class="mb-3">
-                  <label for="role" class="form-label">Are you a/an?</label>
-                  <select class="form-select" name="role" aria-label="Select your Role" required>
-                    <option selected disabled>Select your Role</option>
-                    <option value="STUDENT">Student</option>
-                    <option value="TEACHER">Teacher</option>
-                    <option value="PARENT">Parent</option>
-                    <option value="PERSONNEL">Personnel</option>
-                  </select>
-                </div>
-                <div class="mb-3">
                   <button class="btn btn-primary d-grid w-100" type="submit">Sign up</button>
                 </div>
               </form>

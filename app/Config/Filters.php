@@ -3,6 +3,7 @@
 namespace Config;
 
 use App\Filters\LoggedIn;
+use App\Filters\isLoggedIn;
 use App\Filters\Admin;
 use App\Filters\Student;
 use App\Filters\Teacher;
@@ -39,6 +40,7 @@ class Filters extends BaseConfig
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
         'loggedin'      => LoggedIn::class,
+        'isloggedin'      => isLoggedIn::class,
         'admin'         => Admin::class,
         'student'       => Student::class,
         'teacher'       => Teacher::class,

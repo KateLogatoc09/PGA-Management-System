@@ -26,7 +26,9 @@ class Password implements FilterInterface
     public function before(RequestInterface $request, $arguments = null)
     {
         if(session()->has('isLoggedin') || !session()->has('once')) {
-            return redirect()->back()->with('msg', "You aren't allowed to access this page.");
+            $session = session();
+            $session->setFlashdata('msg','You aren\'t allowed to access this page.');
+            return redirect()->back();
         } 
     }
 
