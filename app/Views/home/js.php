@@ -63,3 +63,23 @@ $(document).ready(function(){
             <?php endif; ?>
 })
         </script>
+
+<script>
+    // Function to update the current date and time
+    function updateDateTime() {
+        // Get the current date and time
+        var now = new Date();
+
+        // Format the date and time
+        var formattedDateTime = now.toLocaleString();
+
+        // Set the formatted date and time to the h1 element
+        document.getElementById("currentDateTime").textContent = formattedDateTime;
+    }
+
+    // Call the updateDateTime function to initially display the date and time
+    updateDateTime();
+
+    // Update the date and time every second
+    setInterval(updateDateTime, 1000);
+</script>

@@ -4,7 +4,8 @@
         <div class="row border-top px-xl-5">
             <div class="col-lg-3 d-none d-lg-block">
                 <a href="" class="text-decoration-none blue">
-                    <h1 class="m-2 text-midnight"><span class="secondary">PG</span>ACADEMY</h1>
+                <h1 class="m-2 text-midnight"><span class="secondary">PG</span><span style="color: white;">ACADEMY</span></h1>
+
                 </a>
             </div>
             <div class="col-lg-9">
