@@ -144,49 +144,49 @@
     <div class="container-fluid py-5">
         <div class="container py-5">
             <div class="text-center mb-5">
-                <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">PGA INC.</h5>
-                <h1>Vision, Mission, Goals, Core Values</h1>
+                <h1 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">PUERTO GALERA ACADEMY INC.</h1>
             </div>
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="owl-carousel testimonial-carousel">
                         <div class="text-center">
-                            <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
+                        <i class="fas fa-eye fa-3x text-primary mb-4"> VISION</i>
+
                             <h4 class="font-weight-normal mb-4">We envision Puerto Galera Academy, INC. as an evangelized and evangelizing Parochial school committed to excellence for life sustaining and quality Catholic Education to form a caring and competent learners enlivened by gospel values through integral human formation for the Church and the country.</h4>
-                            <span>VISION</span>
+                         
                         </div>
                         <div class="text-center">
-                            <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
+                        <i class="fas fa-bullseye fa-3x text-primary mb-4">MISSION</i>
                             <h4 class="font-weight-normal mb-4">To zelously proclaim the Good News, we commit ourselves to form students in the pursuit of excellence through Faith, Virtue, Standard and Competency based education realizing their God given potentials with integrity and preferential option for the poor, indigenous people and environmental conservation.</h4>
-                            <span>MISSION</span>
+                           
                         </div>
                         <div class="text-center">
-                            <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
+                        <i class="fas fa-trophy fa-3x text-primary mb-4">GOALS</i>
                             <h5 class="font-weight-normal mb-4">1. Provide an environment in which every individual is cared for spiritually, morally, intellectually, physically,socially and emotionally.
                             </h5>
                             <h5 class="font-weight-normal mb-4">2.Deliver a stimulating learning environment with a technological orientation across the whole curriculum.
                             </h5>
                             </h5>
-                            <span>GOALS</span>
+                            
                         </div>
                         <div class="text-center">
-                            <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
+                        <i class="fas fa-trophy fa-3x text-primary mb-4">GOALS</i>
                             <h5 class="font-weight-normal mb-4">3. Advocate programs that uphold the love of God and country and care for the integrity of life and creation.
                             </h5>
                             <h5 class="font-weight-normal mb-4">4. Strengthen and enrich values formation based on the moral standards of Christ.
                             </h5>
                             <h5 class="font-weight-normal mb-4">5. Deliver civic duties thru community extension services and charitable outreaches.
                             </h5>
-                            <span>GOALS</span>
+                         
                         </div>
                         <div class="text-center">
-                            <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
+                        <i class="fas fa-heart fa-3x text-primary mb-4">CORE VALUES</i>
                             <h4 class="font-weight-bold mb-4">C-Charity</h4>
                             <h4 class="font-weight-bold mb-4">A-Activism</h4>
                             <h4 class="font-weight-bold mb-4">R-Reverence</h4>
                             <h4 class="font-weight-bold mb-4">E-Excellence</h4>
                             <h4 class="font-weight-bold mb-4">S-Stewardship</h4>
-                            <span>CORE VALUES</span>
+                     
                         </div>
                     </div>
                 </div>
