@@ -36,7 +36,7 @@
         <div class="container py-5">
             <div class="row align-items-center">
                 <div class="col-lg-5">
-                    <img class="img-fluid rounded mb-4 mb-lg-0 w-100" src="<?= base_url() ?>img/about.jpg" alt="">
+                    <img class="img-fluid rounded mb-4 mb-lg-0 w-100" src="<?= base_url() ?>img/registration.jpg" alt="">
                 </div>
                 <div class="col-lg-7">
                     <div class="text-left mb-4">
@@ -161,7 +161,7 @@
                            
                         </div>
                         <div class="text-center">
-                        <i class="fas fa-trophy fa-3x text-primary mb-4">GOALS</i>
+                        <i class="fas fa-flag-checkered fa-3x text-primary mb-4"> GOALS</i>
                             <h5 class="font-weight-normal mb-4">1. Provide an environment in which every individual is cared for spiritually, morally, intellectually, physically,socially and emotionally.
                             </h5>
                             <h5 class="font-weight-normal mb-4">2.Deliver a stimulating learning environment with a technological orientation across the whole curriculum.
@@ -170,7 +170,7 @@
                             
                         </div>
                         <div class="text-center">
-                        <i class="fas fa-trophy fa-3x text-primary mb-4">GOALS</i>
+                        <i class="fas fa-flag-checkered fa-3x text-primary mb-4"> GOALS</i>
                             <h5 class="font-weight-normal mb-4">3. Advocate programs that uphold the love of God and country and care for the integrity of life and creation.
                             </h5>
                             <h5 class="font-weight-normal mb-4">4. Strengthen and enrich values formation based on the moral standards of Christ.
