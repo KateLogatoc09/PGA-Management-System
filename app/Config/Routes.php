@@ -37,6 +37,8 @@ $routes->post('/saveAccount', 'AdminController::saveAccount', ['filter' => 'admi
 $routes->get('/deleteAccount/(:any)', 'AdminController::deleteAccount/$1', ['filter' => 'admin']);
 $routes->get('/editAccount/(:any)', 'AdminController::editAccount/$1', ['filter' => 'admin']);
 
+$routes->get('/announce', 'AdminController::announce', ['filter' => 'admin']);
+
 //ADMIN TEACHER
 $routes->get('/addTeacher', 'AdminController::addTeacher', ['filter' => 'admin']);
 $routes->get('/teach/(:any)', 'AdminController::teach/$1', ['filter' => 'admin']);

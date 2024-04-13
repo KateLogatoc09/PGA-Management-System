@@ -24,6 +24,12 @@ class AdminController extends BaseController
             return view ('admin', $data);
     }
 
+
+    public function announce()
+    {
+            return view ('announce');
+    }
+
     public function addTeacher()
     {
             $data = [

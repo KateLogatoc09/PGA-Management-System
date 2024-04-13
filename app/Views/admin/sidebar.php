@@ -40,6 +40,13 @@
                     <div data-i18n="Analytics">Teacher</div>
                   </a>
                 </li>
+
+                
+                <li class="menu-item">
+                  <a href="/announce" class="menu-link">
+                    <div data-i18n="Analytics">Announcement</div>
+                  </a>
+                </li>
               </ul>
             </li>
 
