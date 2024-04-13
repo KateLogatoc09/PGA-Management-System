@@ -91,7 +91,6 @@
     <!-- FAQ End -->
 
 
-<<<<<<< HEAD
 <!-- Announcement Start -->
 <div class="container-fluid py-5">
     <div class="container pt-5 pb-3">
@@ -140,40 +139,6 @@
 <!-- Announcement End -->
 
 
-=======
-    <!-- Announcement Start -->
-    <div class="container-fluid py-5">
-        <div class="container pt-5 pb-3">
-            <div class="text-center mb-5">
-                <h1>Announcements</h1>
-            </div>
-            <!-- Field Announcement Start     -->
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8">
-                        <div class="card border-0">
-                            <div class="card-header bg-primary text-center p-4">
-                                <h1 id="currentDateTime" class="m-0 text-white" style="font-size: 2.5rem;"></h1>
-                            </div>
-                            <div class="card-body rounded-bottom bg-light p-5">
-                                <form>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control border-0 p-4" style="font-size: 1.5rem;" placeholder="Announcement" required="required" />
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- Field Announcement ENd     -->
-        </div>
-    </div>
-    <!-- Announcement End -->
-
->>>>>>> 4b97b083e89ab914773e56173befd9f1748159a4
 
     <!-- Testimonial Start -->
     <div class="container-fluid py-5">
