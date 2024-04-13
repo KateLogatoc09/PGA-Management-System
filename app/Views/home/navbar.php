@@ -21,7 +21,7 @@
                             <a href="/home" class="nav-item nav-link active">Home</a>
                             <a href="/about" class="nav-item nav-link">About</a>
                             <a href="" class="nav-item nav-link">Courses</a>
-                            <a href="/graph" class="nav-item nav-link">Grades</a>
+                            <!--<a href="/graph" class="nav-item nav-link">Grades</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Blog</a>
                                 <div class="dropdown-menu rounded-0 m-0">
@@ -29,11 +29,10 @@
                                     <a href="/teacher" class="dropdown-item">Teacher</a>
                                     <a href="/student" class="dropdown-item">Student</a>
                                 </div>
-                            </div>
-                            <br>
-                        </div>
-                        <a class="btn btn-primary btn-lg mx-2" href="/login">Login</a>
+                            </div>-->
+                            <a class="btn btn-primary btn-lg mx-2 space" href="/login">Login</a>
                             <a class="btn btn-primary btn-lg mx-2" href="/reg">Register</a>
+                        </div>
                     </div>
                 </nav>
             </div>

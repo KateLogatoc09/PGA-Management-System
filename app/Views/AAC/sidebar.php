@@ -72,12 +72,23 @@
               <ul class="menu-sub">
              
                 <li class="menu-item active">
-                  <a href="#" class="menu-link">
+                  <a href="/AAC" class="menu-link">
                     <div data-i18n="Analytics">Home</div>
                   </a>
                 </li>
-                
-         
+
+                <li class="menu-item">
+                  <a href="/aacsections" class="menu-link">
+                    <div data-i18n="Analytics">Sections</div>
+                  </a>
+                </li>
+
+                <li class="menu-item">
+                  <a href="/aacsubjects" class="menu-link">
+                    <div data-i18n="Analytics">Subjects</div>
+                  </a>
+                </li>
+
               </ul>
             </li>
             <!-- Misc -->
