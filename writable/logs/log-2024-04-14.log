@@ -1,0 +1,45 @@
+CRITICAL - 2024-04-14 00:40:51 --> Invalid file: "applyStudent.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('applyStudent.php')
+ 2 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('applyStudent', [], true)
+ 3 APPPATH\Controllers\GeneralController.php(14): view('applyStudent')
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\GeneralController->applyStudent()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\GeneralController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-04-14 02:01:45 --> Class "App\Controllers\Application" not found
+in APPPATH\Controllers\RegistrarController.php on line 34.
+ 1 SYSTEMPATH\CodeIgniter.php(891): App\Controllers\RegistrarController->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(485): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-04-14 02:46:35 --> Class "SimpleSoftwareIO\QrCode\Generator" not found
+in APPPATH\Controllers\StudentController.php on line 55.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\StudentController->simple_qr()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\StudentController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-04-14 02:53:59 --> Class "SimpleSoftwareIO\QrCode\Generator" not found
+in APPPATH\Controllers\StudentController.php on line 55.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\StudentController->simple_qr()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\StudentController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-04-14 02:54:22 --> Class "SimpleSoftwareIO\QrCode\Generator" not found
+in APPPATH\Controllers\TeacherController.php on line 31.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->teacher_qr()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-04-14 02:55:27 --> Class "SimpleSoftwareIO\QrCode\Generator" not found
+in APPPATH\Controllers\TeacherController.php on line 31.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->teacher_qr()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')

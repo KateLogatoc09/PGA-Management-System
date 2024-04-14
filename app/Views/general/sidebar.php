@@ -30,8 +30,14 @@
               <ul class="menu-sub">
              
                 <li class="menu-item active">
-                  <a href="#" class="menu-link">
+                  <a href="/general" class="menu-link">
                     <div data-i18n="Analytics">Home</div>
+                  </a>
+                </li>
+                
+                <li class="menu-item active">
+                  <a href="/announcement" class="menu-link">
+                    <div data-i18n="Analytics">Announcements</div>
                   </a>
                 </li>
                 

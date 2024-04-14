@@ -31,6 +31,12 @@
 
               
               <li class="menu-item">
+                  <a href="/application" class="menu-link">
+                    <div data-i18n="Analytics">Account Applications</div>
+                  </a>
+                </li>
+              
+              <li class="menu-item">
                   <a href="/alumni" class="menu-link">
                     <div data-i18n="Analytics">Alumni</div>
                   </a>

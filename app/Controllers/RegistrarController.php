@@ -12,10 +12,12 @@ use App\Controllers\BaseController;
 use App\Models\AlumniModel;
 use App\Models\Subjects;
 use App\Models\Sections;
+use App\Models\ApplicationModel;
+use App\Models\AccountModel;
 
 class RegistrarController extends BaseController
 {
-    private $learner, $family, $address, $admissions, $sibling, $school, $section, $grade, $sections, $subjects, $alumni;
+    private $learner, $family, $address, $admissions, $sibling, $school, $section, $grade, $sections, $subjects, $alumni, $app, $account;
     public function __construct()
     {
         $this->learner = new LearnerModel();
@@ -29,6 +31,8 @@ class RegistrarController extends BaseController
         $this->alumni = new AlumniModel();
         $this->sections = new Sections();
         $this->subjects = new Subjects();
+        $this->app = new ApplicationModel();
+        $this->account = new AccountModel();
     }
 
     public function registrar(){
@@ -39,6 +43,17 @@ class RegistrarController extends BaseController
     public function mail()
     {
             return view ('email');
+    }
+
+       
+    public function application()
+    {
+        $data = [
+            'appli' => $this->account->select('*')->join('application','application.account_id = accounts.id','inner')->orderBy('application.fullname')->FindAll(),
+
+        ];
+
+            return view ('application', $data);
     }
 
     public function alumni()

@@ -20,6 +20,11 @@ $routes->get('/password', 'Home::password', ['filter' => 'password']);
 
 //GENERAL
 $routes->get('/general', 'GeneralController::general', ['filter' => 'isloggedin']);
+$routes->get('/applyStudent', 'GeneralController::applyStudent', ['filter' => 'isloggedin']);
+$routes->get('/applyParent', 'GeneralController::applyParent', ['filter' => 'isloggedin']);
+$routes->get('/applyConfirm', 'GeneralController::applyConfirm', ['filter' => 'isloggedin']);
+$routes->get('/announcement', 'GeneralController::announcement', ['filter' => 'isloggedin']);
+
 
 //ATTENDANCE
 $routes->post('/time_in', 'Attendance::time_in', ['filter' => 'guard']);
@@ -52,6 +57,7 @@ $routes->get('/grade', 'TeacherController::grade', ['filter' => 'teacher']);
 $routes->post('/saveGrade', 'TeacherController::saveGrade', ['filter' => 'teacher']);
 $routes->get('/deleteGrade/(:any)', 'TeacherController::deleteGrade/$1', ['filter' => 'teacher']);
 $routes->get('/editGrade/(:any)', 'TeacherController::editGrade/$1', ['filter' => 'teacher']);
+$routes->post('/teacher_qr', 'TeacherController::teacher_qr', ['filter' => 'teacher']);
 
 //ADMIN ENROLL
 $routes->get('/enroll', 'AdminController::enroll', ['filter' => 'admin']);
@@ -136,6 +142,7 @@ $routes->get('/regadmissions', 'RegistrarController::regadmissions', ['filter' =
 $routes->post('/regSaveadmissions', 'RegistrarController::regSaveadmissions', ['filter' => 'registrar']);
 $routes->get('/regDeleteadmissions/(:any)', 'RegistrarController::regDeleteadmissions/$1', ['filter' => 'registrar']);
 $routes->get('/regEditadmissions/(:any)', 'RegistrarController::regEditadmissions/$1', ['filter' => 'registrar']);
+$routes->get('/application', 'RegistrarController::application', ['filter' => 'registrar']);
 
 //REGISTRAR MAIL
 $routes->get('/email', 'RegistrarController::mail', ['filter' => 'registrar']);

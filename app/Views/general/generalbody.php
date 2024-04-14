@@ -104,7 +104,7 @@
                         />
                   </center>
                   <p class="card-text">Apply? Submit necessary documents to enjoy various features and privileges as a student.</p>
-                  <a href="javascript:void(0)" class="btn btn-primary">Apply</a>
+                  <a href="applyStudent" class="btn btn-primary">Apply</a>
                 </div>
               </div>
             </div>
@@ -124,7 +124,7 @@
                         />
                   </center>
                   <p class="card-text"> Apply? Submit necessary documents to enjoy various features and privileges as a parent.</p>
-                  <a href="javascript:void(0)" class="btn btn-primary">Apply</a>
+                  <a href="applyParent" class="btn btn-primary">Apply</a>
                 </div>
               </div>
             </div>

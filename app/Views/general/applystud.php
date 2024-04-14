@@ -1,4 +1,6 @@
 <body>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v19.0" nonce="AFffryss"></script>
 <?php $session = session()?>
   <!-- Layout wrapper -->
   <div class="layout-wrapper layout-content-navbar d-flex align-items-center justify-content-center">
@@ -75,7 +77,7 @@
               </ul>
             </div>
           </nav>
-        <?= $this->include('teacher/sidebar') ?>
+        <?= $this->include('general/sidebar') ?>
         <!-- / Navbar -->
 
         <!-- Content wrapper -->
@@ -83,63 +85,50 @@
           <!-- Content -->
 
           <div class="container-xxl flex-grow-1 container-p-y">
-          <h5 class="card-title text-primary">Welcome <?= $_SESSION['username']; ?>! 🎉</h5>
-
             <div class="row">
-              <div class="col-lg-18 mb-4 order-0">
+
+            <div class="col-lg-18 mb-4 order-0">
                 <div class="card">
-
-                      <div class="content-wrapper">
-                  <div class="d-flex align-items-end row">
+                <div class="card-body">
+                        <h5 class="card-title text-primary">Fill Out The Fields Needed for Verification</h5>
+                      </div>
+                  <div class="d-flex">
                     <div class="col-sm-5">
-                      <div class="card-body">
-                      <?php if(is_array($teach)): ?>
-                        <h5 class="card-title text-primary">Teacher Information</h5>
-                        <br>
-                        <h7 class="orange">Teacher ID:</h7>
-                        <?php if (isset($teach['idnum'])) {echo $teach['idnum'];}?>
-                        <br>
-                        <?php if(isset($_SESSION['qr'])): ?>
-                        <?php echo '<br>'; echo $_SESSION['qr'];  endif;?>
-                        <hr>
-                        <form action="/teacher_qr" method="post">
-                        <button type="submit" class="btn btn-primary">Generate</button>
-                        </form>
-                        <br>
+                <form action="#" method="post">
+                    <!-- Add your form fields and content here -->
+
+                    <div class="form-group margin-left">
+                    <input type="hidden" name="id" value="<?php if (isset($prof['id'])) {echo $prof['id'];}?>">
+                        <label for="fullname">Full Name:</label>
+                        <input type="text" class="form-control" name="fullname" placeholder="First Name Middle Name, Last Name" required>
+                                 
+                        <label for="valid_id">Upload Student Id:</label>
+                        <input type="text" class="form-control" name="valid_id" placeholder="Upload Student Id" required>
+
+                        </div>
+</div>
+<div class="col-sm-5 text-center text-sm-left">
+  <div class="form-group margin-left">
                        
-                        <h7 class="orange">Full Name:</h7>
-                        <?php if (isset($teach['fname'])) {echo $teach['fname'];}?>
-                        <?php if (isset($teach['mname'])) {echo $teach['mname'];}?>
-                        <?php if (isset($teach['lname'])) {echo $teach['lname'];}?>
-                        <br>
-                        <h7 class="orange">Age:</h7>
-                        <?php if (isset($teach['age'])) {echo $teach['age'];}?>
-                        <br>
-                        <h7 class="orange">Gender:</h7>
-                        <?php if (isset($teach['gender'])) {echo $teach['gender'];}?>
-                      </div>
-                    </div>
+  <label for="card">Upload Form 137:</label>
+                        <input type="text" class="form-control" name="card" placeholder="Upload Form 137" required>
 
-                    <div class="col-sm-5">
-                      <div class="card-body">   
-                        <h7 class="orange">Birthdate:</h7>
-                        <?php if (isset($teach['dob'])) {echo $teach['dob'];}?>
-                        <br>
-                        <h7 class="orange">Address:</h7>
-                        <?php if (isset($teach['address'])) {echo $teach['address'];}?>
-                        <br>  
-                        <h7 class="orange">Phone Number:</h7>
-                        <?php if (isset($teach['phone'])) {echo $teach['phone'];}?>
-                      </div>
-                    </div>
-                    
-                  </div>
-                </div>
-              </div>
-              <?php else: ?>
-                <h5 class="m-4">No Information Available Yet.</h5>
-              <?php endif; ?>
-            </div>
+                        <label for="birth_cert">Upload Birth Certificate:</label>
+                        <input type="text" class="form-control" name="birth_cert" placeholder="Upload Birth Certificate" required>
+
+  </div>
+</div>
+</div>
+
+<!-- Move the "Save changes" button inside the form -->
+<div class="modal-footer">
+    <button type="submit" class="btn btn-primary">Submit</button>
+</div>
+</form>
+</div>
+</div>
+
+
             <!-- / Content -->
 
             

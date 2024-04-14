@@ -9,6 +9,7 @@ use App\Models\AccountModel;
 use App\Models\TeacherModel;
 use App\Models\AdmissionsModel;
 use App\Models\LearnerModel;
+use SimpleSoftwareIO\QrCode\Generator;
 
 class TeacherController extends BaseController
 {
@@ -21,6 +22,16 @@ class TeacherController extends BaseController
         $this->teacher = new TeacherModel();
         $this->admissions = new AdmissionsModel();
         $this->learner = new LearnerModel();
+    }
+
+    
+    public function teacher_qr() {
+        $curruser = $this->acc->select('id')->where('username', $_SESSION['username'])->first();
+        $id = $this->teacher->select('idnum')->where('account_id', $curruser)->first();
+        $qrcode = new Generator;
+        $session = session();
+        $session->setFlashdata('qr', $qrcode->size(120)->generate($id['idnum']));
+        return redirect()->to('teacher');
     }
 
     public function teacher()
