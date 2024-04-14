@@ -1,3 +1,20 @@
+<?php
+// Define the number of records per page
+$recordsPerPage = 5;
+
+// Calculate the total number of pages
+$totalPages = ceil(count($student) / $recordsPerPage);
+
+// Get the current page number from the query string, default to 1 if not set
+$currentPage = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
+
+// Calculate the offset for the subset of records to be displayed on the current page
+$offset = ($currentPage - 1) * $recordsPerPage;
+
+// Get a subset of records for the current page
+$studentSubset = array_slice($student, $offset, $recordsPerPage);
+?>
+
 <body>
 <?php $session = session()?>
   <!-- Layout wrapper -->
@@ -125,7 +142,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <?php foreach ($student as $ad): ?>
+                                <?php foreach ($studentSubset as $ad): ?>
                                     <tr>
                                             <td><?= $ad['id'] ?></td>
                                             <td><img
@@ -178,6 +195,27 @@
                     </div>
                     <!-- /.card -->
                 </div> <!-- /.dito -->
+
+                  <!-- Pagination buttons -->
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <li class="page-item <?= $currentPage <= 1 ? 'disabled' : '' ?>">
+        <a class="page-link" href="?page=<?= $currentPage - 1 ?>" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
+        <li class="page-item <?= $currentPage == $i ? 'active' : '' ?>"><a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a></li>
+      <?php endfor; ?>
+      <li class="page-item <?= $currentPage >= $totalPages ? 'disabled' : '' ?>">
+        <a class="page-link" href="?page=<?= $currentPage + 1 ?>" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  
 
                 <div class="col-lg-18 mb-4 order-0">
                 <div class="card">
@@ -305,6 +343,8 @@
     </div>
   </div>
   <!-- / Layout wrapper -->
+
+
 
   <script src="assets/js/book.js"></script>
 </body>
