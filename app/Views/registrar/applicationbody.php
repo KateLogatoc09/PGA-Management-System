@@ -1,3 +1,20 @@
+<?php
+// Define the number of records per page
+$recordsPerPage = 5;
+
+// Calculate the total number of pages
+$totalPages = ceil(count($appli) / $recordsPerPage);
+
+// Get the current page number from the query string, default to 1 if not set
+$currentPage = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
+
+// Calculate the offset for the subset of records to be displayed on the current page
+$offset = ($currentPage - 1) * $recordsPerPage;
+
+// Get a subset of records for the current page
+$appliSubset = array_slice($appli, $offset, $recordsPerPage);
+?>
+
 <body>
 <?php $session = session()?>
   <!-- Layout wrapper -->
@@ -117,7 +134,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <?php foreach ($appli as $applica): ?>
+                                <?php foreach ($appliSubset as $applica): ?>
                                     <tr>
                                             <td><?= $applica['id'] ?></td>
                                             <td><?= $applica['fullname'] ?></td>

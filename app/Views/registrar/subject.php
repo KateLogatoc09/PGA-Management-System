@@ -1,3 +1,20 @@
+<?php
+// Define the number of records per page
+$recordsPerPage = 5;
+
+// Calculate the total number of pages
+$totalPages = ceil(count($subject) / $recordsPerPage);
+
+// Get the current page number from the query string, default to 1 if not set
+$currentPage = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
+
+// Calculate the offset for the subset of records to be displayed on the current page
+$offset = ($currentPage - 1) * $recordsPerPage;
+
+// Get a subset of records for the current page
+$subjectSubset = array_slice($subject, $offset, $recordsPerPage);
+?>
+
 <body>
 <?php $session = session()?>
   <!-- Layout wrapper -->
@@ -114,7 +131,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <?php foreach ($subject as $ad): ?>
+                                <?php foreach ($subjectSubset as $ad): ?>
                                     <tr>
                                             <td><?= $ad['id'] ?></td>
                                             <td><?= $ad['name'] ?></td>
@@ -132,6 +149,31 @@
                     </div>
                     <!-- /.card -->
                 </div> <!-- /.dito -->
+
+
+                <!-- Pagination buttons -->
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <li class="page-item <?= $currentPage <= 1 ? 'disabled' : '' ?>">
+        <a class="page-link" href="?page=<?= max($currentPage - 1, 1) ?>" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+          <span class="sr-only">Previous</span>
+        </a>
+      </li>
+      <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+        <li class="page-item <?= $i === $currentPage ? 'active' : '' ?>"><a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a></li>
+      <?php endfor; ?>
+      <li class="page-item <?= $currentPage >= $totalPages ? 'disabled' : '' ?>">
+        <a class="page-link" href="?page=<?= min($currentPage + 1, $totalPages) ?>" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+          <span class="sr-only">Next</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <!-- / Pagination buttons -->
+
+  
 
                 <div class="col-lg-18 mb-4 order-0">
                 <div class="card">
@@ -192,6 +234,8 @@
     </div>
   </div>
   <!-- / Layout wrapper -->
+
+  
 
   <script src="assets/js/book.js"></script>
 </body>

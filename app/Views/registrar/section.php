@@ -1,3 +1,20 @@
+<?php
+// Define the number of records per page
+$recordsPerPage = 5;
+
+// Calculate the total number of pages
+$totalPages = ceil(count($stud_section) / $recordsPerPage);
+
+// Get the current page number from the query string, default to 1 if not set
+$currentPage = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
+
+// Calculate the offset for the subset of records to be displayed on the current page
+$offset = ($currentPage - 1) * $recordsPerPage;
+
+// Get a subset of records for the current page
+$sectionSubset = array_slice($stud_section, $offset, $recordsPerPage);
+?>
+
 <body>
 <?php $session = session()?>
   <!-- Layout wrapper -->
@@ -85,95 +102,107 @@
           <div class="container-xxl flex-grow-1 container-p-y">
             <div class="row">
 
- <div class="col-lg-18 mb-4 order-0">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">Section List</h3>
-                            <div class="card-tools">
-                                <div class="input-group input-group-sm" style="width: 150px;">
-                                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-                                    <div class="input-group-append">
-                                        <button type="submit" class="btn btn-default">
-                                            <i class="fas fa-search"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body table-responsive p-0">
-                         <table class="table table-hover text-nowrap">
-                    
-                            <thead>
-                                    <tr>
-                                        <th>Id</th>                      
-                                        <th>Section Name</th>
-                                        <th>Grade Level</th> 
-                                        <th>Action</th> 
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                <?php foreach ($stud_section as $ad): ?>
-                                    <tr>
-                                            <td><?= $ad['id'] ?></td>
-                                            <td><?= $ad['name'] ?></td>
-                                            <td><?= $ad['grade_level_id'] ?></td>
-                                            <td> <a href="/deleteSection/<?= $ad['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
-                                            <a href="/editSection/<?= $ad['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
-                                     </tr>
-                                <?php endforeach ?>
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- /.card-body -->
-                    </div>
-                    </div>
-                    <!-- /.card -->
-                </div> <!-- /.dito -->
-
-                <div class="col-lg-18 mb-4 order-0">
+              <div class="col-lg-18 mb-4 order-0">
                 <div class="card">
-                <div class="card-body">
-                        <h5 class="card-title text-primary">Edit Section</h5>
+                  <div class="card-header">
+                    <h3 class="card-title">Section List</h3>
+                    <div class="card-tools">
+                      <div class="input-group input-group-sm" style="width: 150px;">
+                        <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                        <div class="input-group-append">
+                          <button type="submit" class="btn btn-default">
+                            <i class="fas fa-search"></i>
+                          </button>
+                        </div>
                       </div>
+                    </div>
+                  </div>
+                  <!-- /.card-header -->
+                  <div class="card-body table-responsive p-0">
+                    <table class="table table-hover text-nowrap">
+
+                      <thead>
+                        <tr>
+                          <th>Id</th>
+                          <th>Section Name</th>
+                          <th>Grade Level</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <?php foreach ($sectionSubset as $ad): ?>
+                          <tr>
+                            <td><?= $ad['id'] ?></td>
+                            <td><?= $ad['name'] ?></td>
+                            <td><?= $ad['grade_level_id'] ?></td>
+                            <td> <a href="/deleteSection/<?= $ad['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
+                              <a href="/editSection/<?= $ad['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
+                          </tr>
+                        <?php endforeach ?>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!-- /.card-body -->
+                  <!-- Pagination buttons -->
+                  <div class="card-footer clearfix">
+                    <ul class="pagination pagination-sm m-0 float-right">
+                      <?php if ($currentPage > 1): ?>
+                        <li class="page-item"><a class="page-link" href="?page=<?= $currentPage - 1 ?>">Previous</a></li>
+                      <?php endif; ?>
+                      <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                        <li class="page-item <?= $i === $currentPage ? 'active' : '' ?>"><a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a></li>
+                      <?php endfor; ?>
+                      <?php if ($currentPage < $totalPages): ?>
+                        <li class="page-item"><a class="page-link" href="?page=<?= $currentPage + 1 ?>">Next</a></li>
+                      <?php endif; ?>
+                    </ul>
+                  </div>
+                </div>
+                <!-- /.card -->
+              </div> <!-- /.dito -->
+
+              <div class="col-lg-18 mb-4 order-0">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title text-primary">Edit Section</h5>
+                  </div>
                   <div class="d-flex">
                     <div class="col-sm-5">
-                <form action="/saveSection" method="post">
-                    <!-- Add your form fields and content here -->
+                      <form action="/saveSection" method="post">
+                        <!-- Add your form fields and content here -->
 
-                    <div class="form-group margin-left">
-                    <input type="hidden" class="form-control" name="id"
-                                        value="<?php if (isset($sec['id'])) {echo $sec['id'];}?>">
+                        <div class="form-group margin-left">
+                          <input type="hidden" class="form-control" name="id"
+                                 value="<?php if (isset($sec['id'])) {echo $sec['id'];}?>">
 
-                                        
-                                        <label for="name">Section Name:</label>
-                                        <input type="text" class="form-control" name="name" placeholder="Enter Section Name"
-                                        value="<?php if (isset($sec['name'])) {echo $sec['name'];}?>">
-       
-                                        </div>
-</div>
-<div class="col-sm-5 text-center text-sm-left">
-  <div class="form-group margin-left">
-                                        <label for="grade_level_id">Grade Level:</label>
-                                        <input type="text" class="form-control" name="grade_level_id" placeholder="Enter Grade Level" 
-                                        value="<?php if (isset($sec['grade_level_id'])) {echo $sec['grade_level_id'];}?>" required>  
-                      
-  </div>
-</div>
-</div>
 
-<!-- Move the "Save changes" button inside the form -->
-<div class="modal-footer">
-    <button type="submit" class="btn btn-primary">Save changes</button>
-</div>
-</form>
-</div>
-</div>
+                          <label for="name">Section Name:</label>
+                          <input type="text" class="form-control" name="name" placeholder="Enter Section Name"
+                                 value="<?php if (isset($sec['name'])) {echo $sec['name'];}?>">
+
+                        </div>
+                    </div>
+                    <div class="col-sm-5 text-center text-sm-left">
+                      <div class="form-group margin-left">
+                        <label for="grade_level_id">Grade Level:</label>
+                        <input type="text" class="form-control" name="grade_level_id" placeholder="Enter Grade Level"
+                               value="<?php if (isset($sec['grade_level_id'])) {echo $sec['grade_level_id'];}?>" required>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Move the "Save changes" button inside the form -->
+                  <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                  </div>
+                  </form>
+                </div>
+              </div>
 
             </div>
             <!-- / Content -->
 
-            
+
             <div class="content-backdrop fade"></div>
           </div>
           <!-- Content wrapper -->

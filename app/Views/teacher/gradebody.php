@@ -116,7 +116,26 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <?php foreach ($grade as $g): ?>
+                                <!-- Pagination Logic -->
+                                <?php
+                                // Define the number of records per page
+                                $recordsPerPage = 5;
+
+                                // Calculate the total number of pages
+                                $totalPages = ceil(count($grade) / $recordsPerPage);
+
+                                // Get the current page number from the query string, default to 1 if not set
+                                $currentPage = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
+
+                                // Calculate the offset for the subset of records to be displayed on the current page
+                                $offset = ($currentPage - 1) * $recordsPerPage;
+
+                                // Get a subset of records to display based on the current page and records per page
+                                $subset = array_slice($grade, $offset, $recordsPerPage);
+
+                                // Loop through the subset of records to display
+                                foreach ($subset as $g) :
+                                ?>
                                     <tr>
                                             <td><?= $g['id'] ?></td>
                                             <td><?= $g['student_id'] ?></td>
@@ -125,15 +144,39 @@
                                             <td><?= $g['grade'] ?></td>
                                             <td> <a href="/deleteGrade/<?= $g['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
                                             <a href="/editGrade/<?= $g['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
-                                           
-                                           
-                                          
-                                     </tr>
+                                    </tr>
                                 <?php endforeach ?>
+                                <!-- End Pagination Logic -->
                                 </tbody>
                             </table>
                         </div>
                         <!-- /.card-body -->
+                        <!-- Pagination Links -->
+                        <div class="card-footer">
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination justify-content-center">
+                                    <?php if ($currentPage > 1) : ?>
+                                        <li class="page-item">
+                                            <a class="page-link" href="?page=<?= $currentPage - 1 ?>" aria-label="Previous">
+                                                <span aria-hidden="true">&laquo;</span>
+                                            </a>
+                                        </li>
+                                    <?php endif; ?>
+                                    <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
+                                        <li class="page-item <?= $i == $currentPage ? 'active' : '' ?>">
+                                            <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
+                                        </li>
+                                    <?php endfor; ?>
+                                    <?php if ($currentPage < $totalPages) : ?>
+                                        <li class="page-item">
+                                            <a class="page-link" href="?page=<?= $currentPage + 1 ?>" aria-label="Next">
+                                                <span aria-hidden="true">&raquo;</span>
+                                            </a>
+                                        </li>
+                                    <?php endif; ?>
+                                </ul>
+                            </nav>
+                        </div>
                     </div>
                     </div>
                     <!-- /.card -->
