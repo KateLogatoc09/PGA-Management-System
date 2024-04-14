@@ -146,7 +146,7 @@
 
                             
                                     <label for="middle_name">Middle Name:</label>
-                                        <input type="text" class="form-control" name="middle_name" placeholder="Enter Middle Name" required>
+                                        <input type="text" class="form-control" name="middle_name" placeholder="Enter Middle Name">
                         
 
                             
@@ -193,7 +193,7 @@
 
                             
                                     <label for="last_name">Mobile Number:</label>
-                                        <input type="number" class="form-control" name="mobile_num" max_length="11" placeholder="Enter Mobile Number" required>
+                                        <input type="tel" class="form-control" name="mobile_num" maxlength="11" placeholder="Enter Mobile Number" required>
                         
                             
                                     <label for="last_name">Nationality:</label>
