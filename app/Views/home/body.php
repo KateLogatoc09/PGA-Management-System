@@ -72,10 +72,10 @@
                         <h1 class="m-0 text-white">Ask Now</h1>
                     </div>
                     <div class="card-body rounded-bottom bg-light p-5">
-                        <form action="send_email.php" method="post">
+                        <form action="ask_now" method="post">
                             <div class="form-group">
-                                <input type="email" name="recipient_email" class="form-control border-0 p-4 mb-3" placeholder="Recipient's Email" required="required" />
-                                <textarea name="email_content" class="form-control border-0 p-4" placeholder="Email Content" required="required" rows="5"></textarea>
+                                <input type="email" name="sender" class="form-control border-0 p-4 mb-3" placeholder="Recipient's Email" required="required" />
+                                <textarea name="message" class="form-control border-0 p-4" placeholder="Email Content" required="required" rows="5"></textarea>
                             </div>
                             <div>
                                 <button class="btn btn-dark btn-block border-0 py-3" type="submit">Send Email</button>

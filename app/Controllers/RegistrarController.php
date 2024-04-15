@@ -1,6 +1,11 @@
 <?php
 
 namespace App\Controllers;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\OAuth;
+use League\OAuth2\Client\Provider\Google;
 use App\Models\LearnerModel;
 use App\Models\AddressModel;
 use App\Models\AdmissionsModel;
@@ -35,14 +40,15 @@ class RegistrarController extends BaseController
         $this->account = new AccountModel();
     }
 
-    public function registrar(){
-            return view ('registrar');
-        }
+    public function registrar()
+    {
+        return view ('registrar');
+    }
     
         
     public function mail()
     {
-            return view ('email');
+        return view('email');
     }
 
        
@@ -738,5 +744,72 @@ class RegistrarController extends BaseController
                 'grade' => $this->grade->select('*')->join('teachers','teachers.id = student_grades.teacher_account','inner')->findAll(),
                 ];
             return view ('reggrade', $data);
+    }
+
+    public function send() {
+        $recipient = $this->request->getVar('recipient');
+        $subject = $this->request->getVar('subject');
+        $message = $this->request->getVar('message');
+        $attachment = $this->request->getFile('attachment');
+
+        $session = session();
+
+        $mail = new PHPMailer();
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+        $mail->Port = 465;
+        $mail->AuthType = 'XOAUTH2';
+
+        $provider = new Google(
+            [
+                'clientId' => '80579387547-1nvlh9celk9oath3ud4c5cng70e85eoa.apps.googleusercontent.com',
+                'clientSecret' => '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',
+            ]
+        );
+
+        $mail->setOAuth(
+            new OAuth(
+                [
+                    'provider' => $provider,
+                    'clientId' => '80579387547-1nvlh9celk9oath3ud4c5cng70e85eoa.apps.googleusercontent.com',
+                    'clientSecret' => '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',
+                    'refreshToken' => '1//0gEXq5M_HNKxPCgYIARAAGBASNwF-L9IrD7uHL_3rMFWrJKDq-DZn2c6gLrKOVZ3vGTASBmFWQJvq_ErmjVqbC-2NfKFOWOPee7I',
+                    'userName' => 'developers.pga@gmail.com',
+                ]
+            )
+        );
+
+        //sender information
+        $mail->setFrom('developers.pga@gmail.com', 'PGA developers');
+
+        //receiver email address and name
+        $mail->addAddress($recipient); 
+
+        $mail->isHTML(true);
+
+        $mail->Subject = $subject;
+        $mail->Body    = $message;
+
+        if($attachment != '') {
+            $test = $attachment->move(PUBLIC_PATH.'\\attachments\\');
+            $name = $attachment->getClientPath();
+            $path = 'attachments/'.$name;
+
+            $mail->addAttachment($path);
+        }
+                
+        // Send mail   
+        if (!$mail->send()) {
+            $mail->smtpClose();
+            $session->setFlashdata('msg','Something went wrong. Please try again later.');
+            return redirect()->to('email');
+        } else {
+            $mail->smtpClose();
+            $session->setFlashdata('msg','Sent Successfully.');
+            return redirect()->to('email');
+        }
+
     }
 }

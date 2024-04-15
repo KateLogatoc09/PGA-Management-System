@@ -90,7 +90,7 @@
       <div class="card">
           <h5 class="card-header">Send Email</h5>
           <hr class="my-0">
-          <form action="#" method="POST" enctype="multipart/form-data">
+          <form action="/send" method="POST" enctype="multipart/form-data">
               <div class="card-body d-flex row">
                   <div class="col-sm-12 col-md-12 d-sm-block d-md-block ps-2">
                       <div class="row">
@@ -134,8 +134,8 @@
                                   id="upload"
                                   class="account-file-input"
                                   hidden
-                                  accept="image/png, image/jpeg"
-                                  name="photo"
+                                  accept="image/png, image/jpeg, application/pdf"
+                                  name="attachment"
                                   />
                               </label>
                           </div>
@@ -166,5 +166,4 @@
 
   <script src="assets/js/book.js"></script>
 </body>
-
 </html>

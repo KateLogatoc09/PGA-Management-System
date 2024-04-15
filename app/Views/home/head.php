@@ -48,4 +48,22 @@
             $('.navbar-nav a[href*="' + currentLocation + '"]').addClass('active');
         });
     </script>
+
+    <!-- ONESIGNAL -->
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+    <script>
+        window.OneSignalDeferred = window.OneSignalDeferred || [];
+        window.OneSignalDeferred.push(async function(OneSignal) {
+            await OneSignal.init({
+                appId: "c18a35ec-6e89-4b4d-965d-53c7e23d53b8",
+                notifyButton: {
+                    enable: true
+                },
+                serviceWorkerParam: { scope: "/push/onesignal/" },
+                serviceWorkerPath: "push/onesignal/OneSignalSDKWorker.js",
+            });
+        });
+    </script>
+
+
 </head>

@@ -13,7 +13,7 @@ class AttendanceModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['student_id', 'type', 'time'];
+    protected $allowedFields    = ['idnumb', 'type', 'time'];
 
     // Dates
     protected $useTimestamps = false;

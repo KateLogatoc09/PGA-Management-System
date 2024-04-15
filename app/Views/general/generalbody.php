@@ -89,7 +89,7 @@
           <?php if($_SESSION['role'] == 'GENERAL'): ?>
           <div class="row mb-3">
             <!-- Student -->
-            <div class="col-md-6 col-lg-4">
+            <div class="col-md-6 col-lg-3">
               <div class="card text-center mb-3">
                 <div class="card-body">
                   <h5 class="card-title">Student Account</h5>
@@ -109,7 +109,7 @@
               </div>
             </div>
             <!-- Parent -->
-            <div class="col-md-6 col-lg-4">
+            <div class="col-md-6 col-lg-3">
               <div class="card text-center mb-3">
                 <div class="card-body">
                   <h5 class="card-title">Parent Account</h5>
@@ -129,7 +129,7 @@
               </div>
             </div>
             <!-- Personnel -->
-            <div class="col-md-6 col-lg-4">
+            <div class="col-md-6 col-lg-3">
               <div class="card text-center mb-3">
                 <div class="card-body">
                   <h5 class="card-title">Personnel Account</h5>
@@ -144,6 +144,26 @@
                         />
                   </center>
                   <p class="card-text">Apply? Submit necessary documents to enjoy various features and privileges as a personnel.</p>
+                  <a href="javascript:void(0)" class="btn btn-primary">Apply</a>
+                </div>
+              </div>
+            </div>
+            <!-- Alumni -->
+            <div class="col-md-6 col-lg-3">
+              <div class="card text-center mb-3">
+                <div class="card-body">
+                  <h5 class="card-title">Alumni Account</h5>
+                  <center>
+                  <img
+                          src="../assets/img/avatars/mortarboard.png"
+                          alt="user-avatar"
+                          class="d-block rounded"
+                          height="100"
+                          width="100"
+                          id="uploadedAvatar"
+                        />
+                  </center>
+                  <p class="card-text">Apply? Submit necessary documents to enjoy various features and privileges as an alumni.</p>
                   <a href="javascript:void(0)" class="btn btn-primary">Apply</a>
                 </div>
               </div>
@@ -423,6 +443,20 @@
               <a href="https://www.facebook.com/pgacare1967">Pga Cares</a>
             </blockquote>
           </div>
+          <div class="col-md-8 order-0">
+                <div class="card">
+                  <div class="d-flex align-items-end row">
+                    <div class="col-sm-20">
+                      <div class="card-body">
+                        <h2 class="card-title text-primary">Announcement</h2>
+                        <i class="menu-icon tf-icons bx bx-calendar-check"></i>
+                        <p class="mb-6 center">Reminder Test</p>
+                      </div>
+
+                    </div>        
+                  </div>
+                </div>
+              </div>
           <div>
 
             <!-- / Content -->

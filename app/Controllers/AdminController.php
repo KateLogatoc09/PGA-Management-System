@@ -145,4 +145,9 @@ class AdminController extends BaseController
         return view('admin', $data);
         
     }
+
+
+    public function addannounce() {
+        
+    }
 }

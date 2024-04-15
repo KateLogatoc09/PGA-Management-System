@@ -34,6 +34,7 @@
                         </div>
                         <?php if(isset($_SESSION['username'])): ?>
                         <?php echo 'Welcome, '.$_SESSION['username']; ?>
+                        <a href="general" class="nav-item nav-link">Portal</a>
                         <a href="logout" class="nav-item nav-link">Logout</a>
                         <?php else: ?>
                         <a class="btn btn-primary btn-lg mx-2 space" href="/login">Login</a>

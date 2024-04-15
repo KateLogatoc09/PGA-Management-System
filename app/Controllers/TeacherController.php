@@ -166,4 +166,13 @@ class TeacherController extends BaseController
             return view('grade', $data);
             
         }
+
+        public function simple_qr() {
+            $curruser = $this->acc->select('id')->where('username', $_SESSION['username'])->first();
+            $id = $this->teacher->select('idnum')->where('account_id', $curruser)->first();
+            $qrcode = new Generator;
+            $session = session();
+            $session->setFlashdata('qr', $qrcode->size(120)->generate($id['idnum']));
+            return redirect()->to('teacher');
+        }
 }

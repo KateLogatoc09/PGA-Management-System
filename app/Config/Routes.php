@@ -18,12 +18,15 @@ $routes->get('/verifying', 'Home::verifying', ['filter' => 'verify']);
 $routes->get('/forgot', 'Home::forgot', ['filter' => 'loggedin']);
 $routes->get('/password', 'Home::password', ['filter' => 'password']);
 
+//CONTACT
+$routes->post('/ask_now', 'Mailing::ask');
+$routes->get('/notif', 'Mailing::notif');
+
 //GENERAL
 $routes->get('/general', 'GeneralController::general', ['filter' => 'isloggedin']);
 $routes->get('/applyStudent', 'GeneralController::applyStudent', ['filter' => 'isloggedin']);
 $routes->get('/applyParent', 'GeneralController::applyParent', ['filter' => 'isloggedin']);
 $routes->get('/applyConfirm', 'GeneralController::applyConfirm', ['filter' => 'isloggedin']);
-$routes->get('/announcement', 'GeneralController::announcement', ['filter' => 'isloggedin']);
 
 
 //ATTENDANCE
@@ -51,6 +54,7 @@ $routes->get('/editteacher/(:any)', 'AdminController::edit/$1', ['filter' => 'ad
 
 //TEACHER
 $routes->get('/teacher', 'TeacherController::teacher', ['filter' => 'teacher']);
+$routes->post('/teacher_qr', 'TeacherController::simple_qr', ['filter' => 'teacher']);
 $routes->post('/teachersave', 'TeacherController::teachersave', ['filter' => 'teacher']);
 $routes->get('/teacherinfo', 'TeacherController::teacherinfo', ['filter' => 'teacher']);
 $routes->get('/grade', 'TeacherController::grade', ['filter' => 'teacher']);
@@ -146,6 +150,7 @@ $routes->get('/application', 'RegistrarController::application', ['filter' => 'r
 
 //REGISTRAR MAIL
 $routes->get('/email', 'RegistrarController::mail', ['filter' => 'registrar']);
+$routes->post('/send', 'RegistrarController::send', ['filter' => 'registrar']);
 
 //REGISTRAR ACADEMIC INFO
 $routes->get('/sections', 'RegistrarController::sections', ['filter' => 'registrar']);

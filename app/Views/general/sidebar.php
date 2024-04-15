@@ -35,12 +35,6 @@
                   </a>
                 </li>
                 
-                <li class="menu-item active">
-                  <a href="/announcement" class="menu-link">
-                    <div data-i18n="Analytics">Announcements</div>
-                  </a>
-                </li>
-                
          
               </ul>
             </li>

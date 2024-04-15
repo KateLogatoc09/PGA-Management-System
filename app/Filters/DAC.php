@@ -25,11 +25,12 @@ class DAC implements FilterInterface
      */
     public function before(RequestInterface $request, $arguments = null)
     {
+        $session = session();
         if(!session()->has('isLoggedin')) {
-            $session = session();
             $session->setFlashdata('msg','You need to login first.');
             return redirect()->to('login');
         } else if(session()->get('role') != 'DAC') {
+            $session->setFlashdata('msg','You aren\'t allowed to access this page.');
             return redirect()->back();
         }
     }

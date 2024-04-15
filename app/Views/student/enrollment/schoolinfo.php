@@ -96,7 +96,7 @@
                       </div>
                   <div class="d-flex">
                     <div class="col-sm-5">
-                    <form action="/saveschool" method="post">
+                    <form action="/saveschool" method="post" id="form">
                     <!-- Add your form fields and content here -->
 
                     <div class="form-group margin-left">
@@ -131,6 +131,8 @@
 <button type="submit" class="btn btn-primary">Next</button></center>
 </div>
 </form>
+<button class="btn btn-primary" id="add">Add Another</button>
+<button class="btn btn-primary hidden" id="remove">Remove</button>
 </div>
 </div>
 
@@ -150,6 +152,101 @@
   </div>
   <!-- / Layout wrapper -->
 </body>
+<script>
+const add = document.getElementById('add');
+const remove = document.getElementById('remove');
+const form = document.getElementById('form');
+var x = 0;
+var y = 1;
+const opt = '<option value="Pre-School (Kinder)">Pre-School (Kinder)</option><option value="Grade School (G1-G3)">Grade School (G1-G3)</option><option value="Grade School (G4-G6)">Grade School (G4-G6)</option><option value="Junior High School (G7-G10)">Junior High School (G7-G10)</option>';
+
+const create = function () {
+  //DIV
+  window['div' + y] = document.createElement("div");
+  window['div' + y].className = "form-group margin-left";
+  window['div' + y].setAttribute("id", "div" + y); // set the CSS class
+  form.appendChild(window['div' + y]); // put it into the DOM
+  //GRADE
+  window['label' + x] = document.createElement("label");
+  window['label' + x].innerHTML = "Grade/Year:";
+  window['label' + x].setAttribute("for", "grade" + y);
+  window['div' + y].appendChild(window['label' + x]); // put it into the DOM
+
+  window['input' + x] = document.createElement("select");
+  window['input' + x].className = "form-control";
+  window['input' + x].setAttribute("name", "grade" + y);
+  window['input' + x].setAttribute("required", "");
+  window['input' + x].innerHTML = opt;
+  window['div' + y].appendChild(window['input' + x]); // put it into the DOM
+
+  x++;
+  //SCHNAME
+  window['label' + x] = document.createElement("label");
+  window['label' + x].innerHTML = "School Name:";
+  window['label' + x].setAttribute("for", "school_name" + y);
+  window['div' + y].appendChild(window['label' + x]); // put it into the DOM
+
+  window['input' + x] = document.createElement("input");
+  window['input' + x].type = "text";
+  window['input' + x].className = "form-control";
+  window['input' + x].setAttribute("name", "school_name" + y);
+  window['input' + x].setAttribute("placeholder", "Enter Name of School");
+  window['input' + x].setAttribute("required", "");
+  window['div' + y].appendChild(window['input' + x]); // put it into the DOM
+
+  x++
+  //LEVEL
+  window['label' + x] = document.createElement("label");
+  window['label' + x].innerHTML = "Level:";
+  window['label' + x].setAttribute("for", "level" + y);
+  window['div' + y].appendChild(window['label' + x]); // put it into the DOM
+
+  window['input' + x] = document.createElement("input");
+  window['input' + x].type = "text";
+  window['input' + x].className = "form-control";
+  window['input' + x].setAttribute("name", "level" + y);
+  window['input' + x].setAttribute("placeholder", "Enter Level");
+  window['input' + x].setAttribute("required", "");
+  window['div' + y].appendChild(window['input' + x]); // put it into the DOM
+
+  x++;
+  //PERIOD
+  window['label' + x] = document.createElement("label");
+  window['label' + x].innerHTML = "Period Covered:";
+  window['label' + x].setAttribute("for", "period" + y);
+  window['div' + y].appendChild(window['label' + x]); // put it into the DOM
+
+  window['input' + x] = document.createElement("input");
+  window['input' + x].type = "text";
+  window['input' + x].className = "form-control";
+  window['input' + x].setAttribute("name", "period" + y);
+  window['input' + x].setAttribute("placeholder", "Enter Period Covered");
+  window['input' + x].setAttribute("required", "");
+  window['div' + y].appendChild(window['input' + x]); // put it into the DOM
+
+  x++
+  y++;
+
+  remove.classList.remove("hidden");
+}
+
+const rem = function () {
+  if(y > 1) {
+    y--;
+    if(y = 1) {
+    form.removeChild(window['div' + y]);
+    remove.classList.add("hidden");
+    } else { 
+    form.removeChild(window['div' + y]);
+    }
+  }
+}
+
+
+add.addEventListener('click', create);
+remove.addEventListener('click', rem);
+
+</script>
 </html>
 
 <?= $this->include('student/js') ?>

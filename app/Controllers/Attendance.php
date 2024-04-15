@@ -22,7 +22,7 @@ class Attendance extends BaseController
         date_default_timezone_set('Asia/Singapore');
 
         $data = [
-            'student_id' => $this->request->getVar('sid'),
+            'idnum' => $this->request->getVar('sid'),
             'type' => 'IN',
             'time' => date("Y-m-d H:i:s"),
         ];
@@ -36,7 +36,7 @@ class Attendance extends BaseController
         date_default_timezone_set('Asia/Singapore');
 
         $data = [
-            'student_id' => $this->request->getVar('sid'),
+            'idnum' => $this->request->getVar('sid'),
             'type' => 'OUT',
             'time' => date("Y-m-d H:i:s"),
         ];
