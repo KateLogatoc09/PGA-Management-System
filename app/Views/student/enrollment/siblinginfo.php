@@ -226,7 +226,7 @@ const create = function () {
 const rem = function () {
   if(y > 1) {
     y--;
-    if(y = 1) {
+    if(y === 1) {
     form.removeChild(window['div' + y]);
     remove.classList.add("hidden");
     } else { 

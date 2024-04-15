@@ -62,6 +62,57 @@ class RegistrarController extends BaseController
             return view ('application', $data);
     }
 
+    public function editApplication($id)
+    {
+        $data = [
+            'appli' => $this->account->select('*')->join('application','application.account_id = accounts.id','inner')->orderBy('application.fullname')->FindAll(),
+            'ap' => $this->app->where('id', $id)->first(),
+            ];
+
+        return view('application', $data);
+        
+    }
+
+    public function saveApplication()
+    {
+        $session = session();
+        $id = $_POST['id'];
+        $data = [
+            'status' => $this->request->getVar('status'),
+        ];
+
+        if ($id != null) {
+            $res = $this->app->set($data)->where('id', $id)->update();
+            if($res) {
+                $session->setFlashdata('msg','Updated Successfully.');
+            } else {
+                $session->setFlashdata('msg','Something went wrong. Please try again later.');
+            }
+        } else {
+            $res = $this->app->save($data);
+            if($res) {
+                $session->setFlashdata('msg','Saved Successfully.');
+            } else {
+                $session->setFlashdata('msg','Something went wrong. Please try again later.');
+            }
+        }  
+         
+        return redirect()->to('application');
+        
+    }
+
+    public function deleteApplication($id)
+    {
+        $session = session();
+        $res = $this->app->delete($id);
+        if($res) {
+            $session->setFlashdata('msg','Deleted Successfully.');
+        } else {
+            $session->setFlashdata('msg','Something went wrong. Please try again later.');
+        }
+        return redirect()->to('application');
+    }
+
     public function alumni()
     {
         $data = [

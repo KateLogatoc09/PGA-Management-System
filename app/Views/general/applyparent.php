@@ -94,7 +94,7 @@
                       </div>
                   <div class="d-flex">
                     <div class="col-sm-5">
-                <form action="#" method="post">
+                <form action="apply_pr" method="post" enctype="multipart/form-data">
                     <!-- Add your form fields and content here -->
 
                     <div class="form-group margin-left">
@@ -103,7 +103,7 @@
                         <input type="text" class="form-control" name="fullname" placeholder="First Name Middle Name, Last Name" required>
                                  
                         <label for="valid_id">Upload Valid Id:</label>
-                        <input type="text" class="form-control" name="valid_id" placeholder="Upload Valid Id" required>
+                        <input type="file" class="form-control" name="valid_id" placeholder="Upload Valid Id" required>
 
                         </div>
 </div>
@@ -111,7 +111,7 @@
   <div class="form-group margin-left">
 
                         <label for="birth_cert">Upload Birth Certificate of Child:</label>
-                        <input type="text" class="form-control" name="birth_cert" placeholder="Upload Birth Certificate" required>
+                        <input type="file" class="form-control" name="birth_cert" placeholder="Upload Birth Certificate" required>
 
   </div>
 </div>

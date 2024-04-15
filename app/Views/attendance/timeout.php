@@ -122,7 +122,7 @@
                                         <?php foreach($attendance as $att): ?>
                                         <tr>
                                             <td><?= $att['id']; ?></td>
-                                            <td><?= $att['student_id']; ?></td>
+                                            <td><?= $att['idnumb']; ?></td>
                                             <td><?= $att['type']; ?></td>
                                             <td><?= $att['time']; ?></td>
                                         </tr>

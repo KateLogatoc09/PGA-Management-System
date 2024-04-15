@@ -130,6 +130,8 @@ $appliSubset = array_slice($appli, $offset, $recordsPerPage);
                                         <th>Card</th>
                                         <th>Birth Certificate</th>
                                         <th>Email</th>
+                                        <th>Type</th>
+                                        <th>Status</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -138,10 +140,30 @@ $appliSubset = array_slice($appli, $offset, $recordsPerPage);
                                     <tr>
                                             <td><?= $applica['id'] ?></td>
                                             <td><?= $applica['fullname'] ?></td>
-                                            <td><?= $applica['valid_id'] ?></td>
-                                            <td><?= $applica['card'] ?></td>
-                                            <td><?= $applica['birth_cert'] ?></td>
+                                            <td><img
+                                            src="<?= base_url().$applica['valid_id'] ?>"
+                                            alt="user-avatar"
+                                            class="d-block rounded"
+                                            height="100"
+                                            width="100"
+                                            /></td>
+                                            <td><img
+                                            src="<?= base_url().$applica['card'] ?>"
+                                            alt="user-avatar"
+                                            class="d-block rounded"
+                                            height="100"
+                                            width="100"
+                                            /></td>
+                                            <td><img
+                                            src="<?= base_url().$applica['birth_cert'] ?>"
+                                            alt="user-avatar"
+                                            class="d-block rounded"
+                                            height="100"
+                                            width="100"
+                                            /></td>
                                             <td><?= $applica['email'] ?></td>
+                                            <td><?= $applica['type'] ?></td>
+                                            <td><?= $applica['status'] ?></td>
                                             <td> <a href="/deleteApplication/<?= $applica['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
                                             <a href="/editApplication/<?= $applica['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
                                            
@@ -172,27 +194,20 @@ $appliSubset = array_slice($appli, $offset, $recordsPerPage);
                     <input type="hidden" name="id" value="<?php if (isset($ap['id'])) {echo $ap['id'];}?>">
                         <label for="fullname">Fullname:</label>
                         <input type="text" class="form-control" name="fullname" placeholder="Enter Fullname" 
-                        value="<?php if (isset($ap['fullname'])) {echo $ap['fullname'];}?>" required>
+                        value="<?php if (isset($ap['fullname'])) {echo $ap['fullname'];}?>" readonly>
 
-                        <label for="valid_id">Valid Id:</label>
-                        <input type="file" class="form-control" name="valid_id" placeholder="Upload Valid Id" 
-                        value="<?php if (isset($ap['valid_id'])) {echo $ap['valid_id'];}?>" required>
-                                 
-                        <label for="card">Form 137:</label>
-                        <input type="file" class="form-control" name="card" placeholder="Upload Valid Id" 
-                        value="<?php if (isset($ap['card'])) {echo $ap['card'];}?>" required>
                         </div>
 </div>
 <div class="col-sm-5 text-center text-sm-left">
   <div class="form-group margin-left">
-                        <label for="birth_cert">Birth Certificate:</label>
-                        <input type="file" class="form-control" name="birth_cert" placeholder="Upload Birth Certificate" 
-                        value="<?php if (isset($ap['birth_cert'])) {echo $ap['birth_cert'];}?>" required>
-                        
+
                         <label for="status">Status:</label>
-                        <input type="text" class="form-control" name="status" placeholder="Enter Status" 
-                        value="<?php if (isset($ap['status'])) {echo $ap['status'];}?>" required>
-                                 
+                                        <select class="form-control" name="status" id="status">
+                                        <option value="">Status</option>
+                                            <option value="PENDING">Pending</option>
+                                            <option value="APPROVED">Approved</option>
+                                            <option value="REJECTED">Rejected</option>
+                                        </select>
   </div>
 </div>
 </div>

@@ -143,8 +143,8 @@
                           id="uploadedAvatar"
                         />
                   </center>
-                  <p class="card-text">Apply? Submit necessary documents to enjoy various features and privileges as a personnel.</p>
-                  <a href="javascript:void(0)" class="btn btn-primary">Apply</a>
+                  <p class="card-text">Please coordinate with our IT department in Puerto Galera Academy to have a personnel account.</p>
+                  <a href="javascript:void(0)" class="btn btn-primary">Ok</a>
                 </div>
               </div>
             </div>

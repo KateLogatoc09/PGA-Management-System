@@ -4,16 +4,17 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class ApplicationModel extends Model
+class NotificationModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'application';
+    protected $table            = 'notifications';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['fullname','valid_id','card', 'birth_cert', 'type', 'status', 'account_id'];
+    protected $allowedFields    = ['title', 'content', 'date'];
+
     // Dates
     protected $useTimestamps = false;
     protected $dateFormat    = 'datetime';

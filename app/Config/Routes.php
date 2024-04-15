@@ -27,7 +27,9 @@ $routes->get('/general', 'GeneralController::general', ['filter' => 'isloggedin'
 $routes->get('/applyStudent', 'GeneralController::applyStudent', ['filter' => 'isloggedin']);
 $routes->get('/applyParent', 'GeneralController::applyParent', ['filter' => 'isloggedin']);
 $routes->get('/applyConfirm', 'GeneralController::applyConfirm', ['filter' => 'isloggedin']);
-
+$routes->get('/notification', 'GeneralController::notification', ['filter' => 'isloggedin']);
+$routes->post('/apply_st', 'GeneralController::apply_st', ['filter' => 'isloggedin']);
+$routes->post('/apply_pr', 'GeneralController::apply_pr', ['filter' => 'isloggedin']);
 
 //ATTENDANCE
 $routes->post('/time_in', 'Attendance::time_in', ['filter' => 'guard']);
@@ -147,6 +149,9 @@ $routes->post('/regSaveadmissions', 'RegistrarController::regSaveadmissions', ['
 $routes->get('/regDeleteadmissions/(:any)', 'RegistrarController::regDeleteadmissions/$1', ['filter' => 'registrar']);
 $routes->get('/regEditadmissions/(:any)', 'RegistrarController::regEditadmissions/$1', ['filter' => 'registrar']);
 $routes->get('/application', 'RegistrarController::application', ['filter' => 'registrar']);
+$routes->get('/editApplication/(:any)', 'RegistrarController::editApplication/$1', ['filter' => 'registrar']);
+$routes->post('/saveApplication', 'RegistrarController::saveApplication', ['filter' => 'registrar']);
+$routes->get('/deleteApplication/(:any)', 'RegistrarController::deleteApplication/$1', ['filter' => 'registrar']);
 
 //REGISTRAR MAIL
 $routes->get('/email', 'RegistrarController::mail', ['filter' => 'registrar']);
