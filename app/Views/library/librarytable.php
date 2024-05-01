@@ -110,6 +110,7 @@
                                                     <th>Book Category</th>
                                                     <th>Book Pages</th>
                                                     <th>Book Quantity</th>
+                                                    <th>Shelf Number</th>
                                                     <th>ISBN</th>
                                                     <th>Date Published</th>
                                                     <th>Status</th>
@@ -135,6 +136,7 @@
                                                     <td><?= $book['book_category'] ?></td>
                                                     <td><?= $book['book_pages'] ?></td>
                                                     <td><?= $book['book_qty'] ?></td>
+                                                    <td><?= $book['book_shelf'] ?></td>
                                                     <td><?= $book['ISBN'] ?></td>
                                                     <td><?= $book['datepublish'] ?></td>
                                                     <td><?= $book['status'] ?></td>
@@ -204,7 +206,6 @@
                                                     <th>Date Borrowed</th>
                                                     <th>Date Return</th>
                                                     <th>Status</th>
-                                                    <th>Actions</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -227,10 +228,6 @@
                                                     <td><?= $book['date_borrowed'] ?></td>
                                                     <td><?= $book['date_return'] ?></td>
                                                     <td><?= $book['status'] ?></td>
-                                                    <td>
-                                                        <a href="/deleteBorrow/<?= $book['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
-                                                        <a href="/editBorrow/<?= $book['id'] ?>" class="btn btn-primary btn-sm">Edit</a>
-                                                    </td>
                                                 </tr>
                                                 <?php endforeach ?>
                                                 <!-- End Pagination Logic -->

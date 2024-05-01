@@ -112,7 +112,6 @@ $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
                     <table class="table table-hover text-nowrap">
                       <thead>
                         <tr>
-                          <th>Id</th>
                           <th>Student's ID Number</th>
                           <th>Student's Name</th>
                           <th>Grade</th>
@@ -130,7 +129,6 @@ $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
                         foreach ($paginatedSchool as $sc):
                         ?>
                         <tr>
-                          <td><?= $sc['id'] ?></td>
                           <td><?= $sc['student_id'] ?></td>
                           <td><?= $sc['last_name'] ?>, <?= $sc['first_name'] ?> <?= $sc['middle_name'] ?></td>
                           <td><?= $sc['grade'] ?></td>

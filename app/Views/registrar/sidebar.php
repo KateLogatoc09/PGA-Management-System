@@ -59,6 +59,12 @@
                     <div data-i18n="Analytics">Subjects</div>
                   </a>
                 </li>
+
+                <li class="menu-item">
+                  <a href="/reggrade" class="menu-link">
+                    <div data-i18n="Analytics">Grades</div>
+                  </a>
+                </li>
                 
               </ul>
             </li>
@@ -110,12 +116,6 @@
                 <li class="menu-item">
                   <a href="/regsibling" class="menu-link">
                     <div data-i18n="Analytics">Sibling</div>
-                  </a>
-                </li>
-
-                <li class="menu-item">
-                  <a href="/reggrade" class="menu-link">
-                    <div data-i18n="Analytics">Grades</div>
                   </a>
                 </li>
          

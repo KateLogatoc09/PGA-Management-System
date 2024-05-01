@@ -144,6 +144,7 @@ $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
                           <th>Place of Publication</th>
                           <th>Book Category</th>
                           <th>Book Pages</th>
+                          <th>Shelf Number</th>
                           <th>ISBN</th>
                           <th>Date Published</th>
                         </tr>
@@ -165,6 +166,7 @@ $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
                           <td><?= $book['place_printed'] ?></td>
                           <td><?= $book['book_category'] ?></td>
                           <td><?= $book['book_pages'] ?></td>
+                          <td><?= $book['book_shelf'] ?></td>
                           <td><?= $book['ISBN'] ?></td>
                           <td><?= $book['datepublish'] ?></td>
                         </tr>

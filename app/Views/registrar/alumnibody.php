@@ -124,7 +124,6 @@ $alumniSubset = array_slice($alumni, $offset, $recordsPerPage);
                     
                             <thead>
                                     <tr>
-                                        <th>Id</th>
                                         <th>Full Name</th>
                                         <th>Gender</th>
                                         <th>Email</th>
@@ -138,7 +137,6 @@ $alumniSubset = array_slice($alumni, $offset, $recordsPerPage);
                                 <tbody>
                                 <?php foreach ($alumniSubset as $al): ?>
                                     <tr>
-                                            <td><?= $al['id'] ?></td>
                                             <td><?= $al['fullname'] ?></td>
                                             <td><?= $al['gender'] ?></td>
                                             <td><?= $al['email'] ?></td>

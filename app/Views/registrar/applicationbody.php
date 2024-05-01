@@ -124,7 +124,6 @@ $appliSubset = array_slice($appli, $offset, $recordsPerPage);
                     
                             <thead>
                                     <tr>
-                                        <th>Id</th>
                                         <th>Full Name</th>
                                         <th>Id</th>
                                         <th>Card</th>
@@ -138,7 +137,6 @@ $appliSubset = array_slice($appli, $offset, $recordsPerPage);
                                 <tbody>
                                 <?php foreach ($appliSubset as $applica): ?>
                                     <tr>
-                                            <td><?= $applica['id'] ?></td>
                                             <td><?= $applica['fullname'] ?></td>
                                             <td><img
                                             src="<?= base_url().$applica['valid_id'] ?>"

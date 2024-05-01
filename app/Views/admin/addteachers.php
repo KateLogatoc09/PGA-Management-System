@@ -107,7 +107,6 @@
                     
                             <thead>
                                     <tr>
-                                        <th>ID</th>
                                         <th>ID Number</th>
                                         <th>Firt Name</th>
                                         <th>Middle Name</th>
@@ -143,7 +142,6 @@
                                 <!-- Display Teacher List -->
                                 <?php foreach ($teacherSubset as $teach): ?>
                                     <tr>
-                                            <td><?= $teach['id'] ?></td>
                                             <td><?= $teach['idnum'] ?></td>
                                             <td><?= $teach['fname'] ?></td>
                                             <td><?= $teach['mname'] ?></td>

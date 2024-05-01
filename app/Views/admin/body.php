@@ -107,7 +107,6 @@
                     
                             <thead>
                                     <tr>
-                                        <th>Id</th>
                                         <th>Username</th>
                                         <th>Email</th>
                                         <th>Role</th>
@@ -139,7 +138,6 @@
                                 <!-- Display Account List -->
                                 <?php foreach ($accountsSubset as $accy): ?>
                                     <tr>
-                                        <td><?= $accy['id'] ?></td>
                                         <td><?= $accy['username'] ?></td>
                                         <td><?= $accy['email'] ?></td>
                                         <td><?= $accy['role'] ?></td>
@@ -188,6 +186,77 @@
                 </ul>
             </div>
             <!-- End Pagination -->
+
+
+<div class="col-lg-18 mb-4 order-0">
+                <div class="card">
+                <div class="card-body">
+                        <h5 class="card-title text-primary">Create/Edit Account</h5>
+                      </div>
+                  <div class="d-flex">
+                    <div class="col-sm-5">
+                <form action="/saveAccount" method="post">
+                    <!-- Add your form fields and content here -->
+
+                    <div class="form-group margin-left">
+                    <input type="hidden" name="id" value="<?php if (isset($acc['id'])) {echo $acc['id'];}?>">
+                        <label for="username">Username:</label>
+                        <input type="text" class="form-control" name="username" placeholder="Enter Username" 
+                        value="<?php if (isset($acc['username'])) {echo $acc['username'];}?>" required>
+                                 
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" name="email" placeholder="Enter Email"
+                        value="<?php if (isset($acc['email'])) {echo $acc['email'];}?>" required>
+
+                        <label for="role">Role:</label>
+                                        <select class="form-control" name="role" id="role" value= "
+                                        <?php if (isset($acc['role'])) {echo $acc['role'];}?>" required>>
+                                            <option value="">Select Role</option>
+                                            <!--<option value="ADMIN">Admin</option>-->
+                                            <option value="TEACHER">Teacher</option>
+                                            <option value="STUDENT">Student</option>
+                                            <option value="PARENT">Parent</option>
+                                            <option value="REGISTRAR">Registrar</option>
+                                            <option value="LIBRARIAN">Librarian</option>
+                                            <!--<option value="DAC">Disciplinary Affairs Coordinator</option>
+                                            <option value="IAC">Internal Affairs Coordinator</option>
+                                            <option value="SAC">Student Affairs Coordinator</option>-->
+                                            <option value="AAC">Academic Affairs Coordinator</option>
+                                        </select>
+                        </div>
+</div>
+<div class="col-sm-5 text-center text-sm-left">
+  <div class="form-group margin-left">
+  <label for="status">status:</label>
+                                        <select class="form-control" name="status" id="status" value= "
+                                        <?php if (isset($acc['status'])) {echo $acc['status'];}?>" required>>
+                                            <option value="ACTIVE">Active</option>
+                                            <option value="INACTIVE">Inactive</option>
+                                            <option value="PENDING">Pending</option>
+                                            <option value="UNVERIFIED">Unverified</option>
+                                            <option value="VERIFIED">Verified</option>
+                                            <option value="BANNED">Banned</option>
+                                            <option value="SUSPENDED">Suspended</option>
+                                        </select>
+
+                        <label for="suspension">Suspension:</label>
+                        <input type="text" class="form-control" name="suspension" placeholder="Enter Suspension" 
+                        value="<?php if (isset($acc['suspension'])) {echo $acc['suspension'];}?>" required>
+                        
+  </div>
+</div>
+</div>
+
+<!-- Move the "Save changes" button inside the form -->
+<div class="modal-footer">
+    <button type="submit" class="btn btn-primary">Save changes</button>
+</div>
+</form>
+</div>
+</div>
+
+
+            </div>
             <!-- / Content -->
 
             

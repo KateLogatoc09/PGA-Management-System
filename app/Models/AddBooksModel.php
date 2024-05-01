@@ -14,7 +14,7 @@ class AddBooksModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = ['book_title', 'book_number', 'book_author', 'book_publisher', 'place_printed', 
-    'book_category', 'book_pages', 'book_qty', 'ISBN', 'datepublish', 'status'];
+    'book_category', 'book_pages', 'book_qty', 'book_shelf', 'ISBN', 'datepublish', 'status'];
 
     // Dates
     protected $useTimestamps = false;

@@ -104,7 +104,6 @@
                     <table class="table table-hover text-nowrap">
                       <thead>
                         <tr>
-                          <th>Id</th>
                           <th>Book Borrowed</th>
                           <th>ISBN</th>
                           <th>Student ID</th>
@@ -112,6 +111,7 @@
                           <th>Number of Books Borrowed</th>
                           <th>Date Borrowed</th>
                           <th>Date Return</th>
+                          <th>Fines</th>
                           <th>Status</th>
                           <th>Actions</th>
                         </tr>
@@ -127,7 +127,6 @@
                         foreach ($subset as $book) :
                         ?>
                           <tr>
-                            <td><?= $book['id'] ?></td>
                             <td><?= $book['book_title'] ?></td>
                             <td><?= $book['ISBN'] ?></td>
                             <td><?= $book['student_id'] ?></td>
@@ -135,6 +134,7 @@
                             <td><?= $book['book_qty'] ?></td>
                             <td><?= $book['date_borrowed'] ?></td>
                             <td><?= $book['date_return'] ?></td>
+                            <td><?= $book['fines'] ?></td>
                             <td><?= $book['status'] ?></td>
                             <td>
                               <a href="/deleteBorrow/<?= $book['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
@@ -191,8 +191,8 @@
                       <div class="form-group margin-left">
                         <input type="hidden" name="id" value="<?php if (isset($borrowed['id'])) {echo $borrowed['id'];}?>">
 
-                        <label for="book_id">ID of Book to be Borrowed:</label>
-                        <input type="text" name="book_id" list="list" class="form-control">
+                        <label for="book_id">ID of Book Borrowed:</label>
+                        <input type="text" name="book_id" list="list" class="form-control" value="<?php if (isset($borrowed['book_id'])) {echo $borrowed['book_id'];} ?>" readonly>
                         <datalist type="hidden" id="list">
                           <?php foreach ($booky as $bk) : ?>
                             <option value="<?= $bk['id'] ?>"><?= $bk['book_title'] ?></option>
@@ -200,7 +200,7 @@
                         </datalist>
 
                         <label for="book_qty">Book Quantity</label>
-                        <input type="number" class="form-control" id="book_qty" name="book_qty" placeholder="Select Date Borrowed" value="<?php if (isset($borrowed['book_qty'])) {echo $borrowed['book_qty'];} ?>" required>
+                        <input type="number" class="form-control" id="book_qty" name="book_qty" placeholder="Enter Book Quantity" value="<?php if (isset($borrowed['book_qty'])) {echo $borrowed['book_qty'];} ?>" required>
 
                         <label for="dateBorrowed">Date Borrowed</label>
                         <input type="datetime-local" class="form-control" id="dateBorrowed" name="dateBorrowed" placeholder="Select Date Borrowed" value="<?php if (isset($borrowed['date_borrowed'])) {echo $borrowed['date_borrowed'];} ?>" required>
@@ -211,6 +211,10 @@
                     <div class="form-group margin-left">
                       <label for="dateReturn">Date Return</label>
                       <input type="datetime-local" class="form-control" id="dateReturn" name="dateReturn" placeholder="Select Date Return" value="<?php if (isset($borrowed['date_return'])) {echo $borrowed['date_return'];} ?>" required>
+
+                      <label for="fines">Fines</label>
+                        <input type="number" class="form-control" id="fines" name="fines" placeholder="Enter Amount of Fines" value="<?php if (isset($borrowed['fines'])) {echo $borrowed['fines'];} ?>" required>
+
 
                       <label for="status">Status</label>
                       <select class="form-control" name="status" id="status" value="<?php if (isset($borrowed['status'])) {echo $borrowed['status'];} ?>" required>

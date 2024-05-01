@@ -106,7 +106,6 @@
                     
                             <thead>
                                     <tr>
-                                    <th>Id</th>
                                         <th>Photo</th>
                                         <th>Student Id</th>
                                         <th>First Name</th>
@@ -138,7 +137,6 @@
                                 foreach ($subset as $le) :
                                 ?>
                                     <tr>
-                                            <td><?= $le['id'] ?></td>
                                             <td><img
                                             src="<?= base_url().$le['photo'] ?>"
                                             alt="user-avatar"

@@ -104,7 +104,6 @@
                     <table class="table table-hover text-nowrap">
                       <thead>
                         <tr>
-                          <th>Id</th>
                           <th>Book Title</th>
                           <th>Book Number</th>
                           <th>Book Author</th>
@@ -113,6 +112,7 @@
                           <th>Book Category</th>
                           <th>Book Pages</th>
                           <th>Book Quantity</th>
+                          <th>Shelf Number</th>
                           <th>ISBN</th>
                           <th>Date Published</th>
                           <th>Status</th>
@@ -130,7 +130,6 @@
                         foreach ($subset as $book) :
                         ?>
                           <tr>
-                            <td><?= $book['id'] ?></td>
                             <td><?= $book['book_title'] ?></td>
                             <td><?= $book['book_number'] ?></td>
                             <td><?= $book['book_author'] ?></td>
@@ -139,6 +138,7 @@
                             <td><?= $book['book_category'] ?></td>
                             <td><?= $book['book_pages'] ?></td>
                             <td><?= $book['book_qty'] ?></td>
+                            <td><?= $book['book_shelf'] ?></td>
                             <td><?= $book['ISBN'] ?></td>
                             <td><?= $book['datepublish'] ?></td>
                             <td><?= $book['status'] ?></td>
@@ -185,36 +185,93 @@
             </div> <!-- /.dito -->
 
             <div class="col-lg-18 mb-4 order-0">
-              <div class="card">
+                <div class="card">
                 <div class="card-body">
-                  <h5 class="card-title text-primary">Add/Update Book List</h5>
-                </div>
-                <div class="d-flex">
-                  <div class="col-sm-5">
-                    <form action="/saveBook" method="post">
-                      <!-- Add your form fields and content here -->
-
-                      <div class="form-group margin-left">
-                        <input type="hidden" name="id" value="<?php if (isset($booke['id'])) {echo $booke['id'];}?>">
-
-                        <!-- Add your form inputs here -->
+                        <h5 class="card-title text-primary">Add/Update Book List</h5>
                       </div>
-                    </div>
-                    <div class="col-sm-5 text-center text-sm-left">
-                      <div class="form-group margin-left">
-                        <!-- Add your form inputs here -->
-                      </div>
-                    </div>
-                  </div>
+                  <div class="d-flex">
+                    <div class="col-sm-5">
+                <form action="/saveBook" method="post">
+                    <!-- Add your form fields and content here -->
 
-                  <!-- Move the "Save changes" button inside the form -->
-                  <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Save changes</button>
-                  </div>
-                </form>
-              </div>
-            </div>
+                    <div class="form-group margin-left">
+                    <input type="hidden" name="id" value="<?php if (isset($booke['id'])) {echo $booke['id'];}?>">
 
+<label for="bookTitle">Book Title</label>
+<input type="text" class="form-control" id="bookTitle" name="bookTitle" placeholder="Enter Book Title" 
+value="<?php if (isset($booke['book_title'])) {echo $booke['book_title'];}?>" required>
+
+<label for="bookNumber">Book Number</label>
+<input type="text" class="form-control" id="bookNumber" name="bookNumber" placeholder="Enter Book Number" 
+value="<?php if (isset($booke['book_number'])) {echo $booke['book_number'];}?>" required>
+
+<label for="bookAuthor">Book Author</label>
+<input type="text" class="form-control" id="bookAuthor" name="bookAuthor" placeholder="Enter Book Author" 
+value="<?php if (isset($booke['book_author'])) {echo $booke['book_author'];}?>" required>
+
+<label for="book_publisher">Book Publisher</label>
+<input type="text" class="form-control" id="book_publisher" name="book_publisher" placeholder="Enter Book Publisher" 
+value="<?php if (isset($booke['book_publisher'])) {echo $booke['book_publisher'];}?>" required>
+
+<label for="place_printed">Place of Publication</label>
+<input type="text" class="form-control" id="place_printed" name="place_printed" placeholder="Enter Place of Publication" 
+value="<?php if (isset($booke['place_printed'])) {echo $booke['place_printed'];}?>" required>
+                        
+                        <label for="book_category" class="form-label">Book Category</label>
+                        <select class="form-select" id="book_category" name='book_category' aria-label="Select Book Category">
+                        <option value="">Select Book Category</option>
+                          <option value="TEXTBOOKS">Textbooks</option>
+                          <option value="FICTION AND STORYBOOK">Fiction and Storybook</option>
+                          <option value="REFERENCE AND FILIPINIANA">Reference and Filipiniana</option>
+                          <option value="BOOKS WITH MULTIPLE COPIES">Books with Multiple Copies</option>
+                          <option value="TEACHER'S REFERENCES">Teacher's References</option>
+                          <option value="OTHER TEXTBOOKS">Other Textbooks</option>
+                        </select>
+
+                        </div>
+</div>
+<div class="col-sm-5 text-center text-sm-left">
+  <div class="form-group margin-left">
+                        <label for="book_pages">Book Pages</label>
+                        <input type="number" class="form-control" id="book_pages" name="book_pages" placeholder="Enter Book Pages" 
+                        value="<?php if (isset($booke['book_pages'])) {echo $booke['book_pages'];}?>" required>
+
+                        <label for="book_qty">Book Quantity</label>
+                        <input type="number" class="form-control" id="book_qty" name="book_qty" placeholder="Enter Book Quantity" 
+                        value="<?php if (isset($booke['book_qty'])) {echo $booke['book_qty'];}?>" required>
+                        
+                        <label for="book_shelf">Shelf Number</label>
+                        <input type="text" class="form-control" id="book_shelf" name="book_shelf" placeholder="Enter Shelf Number" 
+                        value="<?php if (isset($booke['book_shelf'])) {echo $booke['book_shelf'];}?>" required>
+
+
+                        <label for="ISBN">International Standard Book Number</label>
+                        <input type="text" class="form-control" id="ISBN" name="ISBN" placeholder="Enter International Standard Book Number" 
+                        value="<?php if (isset($booke['ISBN'])) {echo $booke['ISBN'];}?>" required>
+
+                        <label for="datePublish">Date Publish</label>
+                        <input type="date" class="form-control" id="datePublish" name="datePublish" placeholder="Enter Date Publish" 
+                        value="<?php if (isset($booke['datepublish'])) {echo $booke['datepublish'];}?>" required>
+
+                        <label for="exampleFormControlSelect1" class="form-label">Status</label>
+                        <select class="form-select" id="exampleFormControlSelect1" name='status' aria-label="Default select example">
+                        <option value="">Select Status</option>
+                          <option value="AVAILABLE">AVAILABLE</option>
+                          <option value="UNAVAILABLE">UNAVAILABLE</option>
+                        </select>
+                        
+                        
+  </div>
+</div>
+</div>
+
+<!-- Move the "Save changes" button inside the form -->
+<div class="modal-footer">
+    <button type="submit" class="btn btn-primary">Save changes</button>
+</div>
+</form>
+</div>
+</div>
 
           </div>
           <!-- / Content -->

@@ -61,7 +61,7 @@ class StudentController extends BaseController
     public function studentlibrary()
     {
         $data = [
-            'booky' => $this->book->findAll(),
+            'booky' => $this->book->select('*')->where('status', 'AVAILABLE')->findAll(),
         ];
         return view('studentlibrary', $data);
     }

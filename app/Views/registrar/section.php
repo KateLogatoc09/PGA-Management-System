@@ -123,7 +123,6 @@ $sectionSubset = array_slice($stud_section, $offset, $recordsPerPage);
 
                       <thead>
                         <tr>
-                          <th>Id</th>
                           <th>Section Name</th>
                           <th>Grade Level</th>
                           <th>Action</th>
@@ -132,7 +131,6 @@ $sectionSubset = array_slice($stud_section, $offset, $recordsPerPage);
                       <tbody>
                         <?php foreach ($sectionSubset as $ad): ?>
                           <tr>
-                            <td><?= $ad['id'] ?></td>
                             <td><?= $ad['name'] ?></td>
                             <td><?= $ad['grade_level_id'] ?></td>
                             <td> <a href="/deleteSection/<?= $ad['id'] ?>" class="btn btn-danger btn-sm">Delete</a>

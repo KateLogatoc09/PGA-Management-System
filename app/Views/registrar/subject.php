@@ -122,8 +122,7 @@ $subjectSubset = array_slice($subject, $offset, $recordsPerPage);
                          <table class="table table-hover text-nowrap">
                     
                             <thead>
-                                    <tr>
-                                        <th>Id</th>                      
+                                    <tr>                    
                                         <th>Subject Name</th>
                                         <th>Type of Subject</th>
                                         <th>Grade Level</th> 
@@ -133,7 +132,6 @@ $subjectSubset = array_slice($subject, $offset, $recordsPerPage);
                                 <tbody>
                                 <?php foreach ($subjectSubset as $ad): ?>
                                     <tr>
-                                            <td><?= $ad['id'] ?></td>
                                             <td><?= $ad['name'] ?></td>
                                             <td><?= $ad['type'] ?></td>
                                             <td><?= $ad['yr_lvl'] ?></td>

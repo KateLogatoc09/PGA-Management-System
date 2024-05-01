@@ -123,7 +123,6 @@ $studentSubset = array_slice($student, $offset, $recordsPerPage);
                     
                             <thead>
                                     <tr>
-                                        <th>Id</th>
                                         <th>2x2 ID</th>
                                         <th>Student ID</th>
                                         <th>First Name</th>
@@ -144,7 +143,6 @@ $studentSubset = array_slice($student, $offset, $recordsPerPage);
                                 <tbody>
                                 <?php foreach ($studentSubset as $ad): ?>
                                     <tr>
-                                            <td><?= $ad['id'] ?></td>
                                             <td><img
                                             src="<?= base_url().$ad['photo'] ?>"
                                             alt="user-avatar"
