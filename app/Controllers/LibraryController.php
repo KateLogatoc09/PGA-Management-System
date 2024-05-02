@@ -116,11 +116,30 @@ class LibraryController extends BaseController
         return view('borrowers', $data);
     }
 
+    public function searchBorrower()
+    {
+        $data = [
+            'borrow' => $this->book->select('borrowedbooks.id as id, first_name, middle_name, last_name, student_id, book_title, book_shelf, ISBN, borrowedbooks.book_qty as book_qty, date_borrowed, date_return, fines, borrowedbooks.status as status')->join('borrowedbooks','borrowedbooks.book_id = books.id','inner')
+            ->orderBy('books.book_title')->join('student_learner','student_learner.account_id = borrowedbooks.account_id','inner')
+            ->join('admissions','admissions.account_id = borrowedbooks.account_id','inner')->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))->FindAll(),
+            'booky' => $this->book->orderBy('book_title')->findAll(),
+         ];
+        return view('borrowers', $data);
+    }
+
     
     public function books()
     {
         $data = [
             'booky' => $this->book->orderBy('book_title')->findAll(),
+        ];
+        return view('books', $data);
+    }
+
+    public function searchBook()
+    {
+        $data = [
+            'booky' => $this->book->like('book_title', $this->request->getVar('search'))->orLike('book_number', $this->request->getVar('search'))->orderBy('book_title')->findAll(),
         ];
         return view('books', $data);
     }

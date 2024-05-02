@@ -19,11 +19,18 @@ class AdminController extends BaseController
     public function index()
     {
             $data = [
-                'account' => $this->account->findAll(),
+                'account' => $this->account->orderBy('username')->findAll(),
                 ];
             return view ('admin', $data);
     }
 
+    public function searchAccount()
+    {
+            $data = [
+                'account' => $this->account->like('username', $this->request->getVar('search'))->orLike('email', $this->request->getVar('search'))->orderBy('username')->findAll(),
+                ];
+            return view ('admin', $data);
+    }
 
     public function announce()
     {
@@ -33,7 +40,17 @@ class AdminController extends BaseController
     public function addTeacher()
     {
             $data = [
-                'teacher' => $this->teacher->findAll(),
+                'teacher' => $this->teacher->orderBy('lname')->findAll(),
+                ];
+                return view('adminteach', $data);
+    }
+
+
+    public function searchTeacher()
+    {
+            $data = [
+                'teacher' => $this->teacher->like('fname', $this->request->getVar('search'))->orLike('mname', $this->request->getVar('search'))
+                ->orLike('lname', $this->request->getVar('search'))->orLike('idnum', $this->request->getVar('search'))->orderBy('lname')->findAll(),
                 ];
                 return view('adminteach', $data);
     }

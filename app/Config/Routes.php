@@ -49,6 +49,8 @@ $routes->get('/announce', 'AdminController::announce', ['filter' => 'admin']);
 
 //ADMIN TEACHER
 $routes->get('/addTeacher', 'AdminController::addTeacher', ['filter' => 'admin']);
+$routes->get('/searchAccount', 'AdminController::searchAccount', ['filter' => 'admin']);
+$routes->get('/searchTeacher', 'AdminController::searchTeacher', ['filter' => 'admin']);
 $routes->get('/teach/(:any)', 'AdminController::teach/$1', ['filter' => 'admin']);
 $routes->post('/saveteacher', 'AdminController::save', ['filter' => 'admin']);
 $routes->get('/deleteteacher/(:any)', 'AdminController::delete/$1', ['filter' => 'admin']);
@@ -56,6 +58,7 @@ $routes->get('/editteacher/(:any)', 'AdminController::edit/$1', ['filter' => 'ad
 
 //TEACHER
 $routes->get('/teacher', 'TeacherController::teacher', ['filter' => 'teacher']);
+$routes->get('/searchGrade', 'TeacherController::searchGrade', ['filter' => 'teacher']);
 $routes->post('/teacher_qr', 'TeacherController::simple_qr', ['filter' => 'teacher']);
 $routes->post('/teachersave', 'TeacherController::teachersave', ['filter' => 'teacher']);
 $routes->get('/teacherinfo', 'TeacherController::teacherinfo', ['filter' => 'teacher']);
@@ -77,6 +80,7 @@ $routes->get('/graph', 'GradeController::index', ['filter' => 'student']);
 $routes->get('/student', 'StudentController::index', ['filter' => 'student']);
 $routes->post('/generate', 'StudentController::simple_qr', ['filter' => 'student']);
 $routes->get('/studentlibrary', 'StudentController::studentlibrary', ['filter' => 'student']);
+$routes->get('/searchLibrary', 'StudentController::searchLibrary', ['filter' => 'student']);
 $routes->post('/studentborrowBook', 'StudentController::studentborrowBook', ['filter' => 'student']);
 
 //STUDENT ENROLL
@@ -110,6 +114,8 @@ $routes->post('/recovering', 'Authentication::recovering', ['filter' => 'loggedi
 //LIBRARIAN
 $routes->post('/saveBook', 'LibraryController::saveBook', ['filter' => 'librarian']);
 $routes->post('/saveBorrowedBook', 'LibraryController::saveBorrowedBook', ['filter' => 'librarian']);
+$routes->get('/searchBorrower', 'LibraryController::searchBorrower', ['filter' => 'librarian']);
+$routes->get('/searchBook', 'LibraryController::searchBook', ['filter' => 'librarian']);
 $routes->get('/librarian', 'LibraryController::librarian', ['filter' => 'librarian']);
 $routes->get('/deleteBorrow/(:any)', 'LibraryController::deleteBorrow/$1', ['filter' => 'librarian']);
 $routes->get('/editBorrow/(:any)', 'LibraryController::editBorrow/$1', ['filter' => 'librarian']);
@@ -124,6 +130,10 @@ $routes->get('/parent', 'ParentController::parent', ['filter' => 'parents']);
 //REGISTRAR
 $routes->get('/registrar', 'RegistrarController::registrar', ['filter' => 'registrar']);
 $routes->get('/reggrade', 'RegistrarController::reggrade', ['filter' => 'registrar']);
+$routes->get('/searchAppli', 'RegistrarController::searchAppli', ['filter' => 'registrar']);
+$routes->get('/searchSection', 'RegistrarController::searchSection', ['filter' => 'registrar']);
+$routes->get('/searchSubject', 'RegistrarController::searchSubject', ['filter' => 'registrar']);
+$routes->get('/searchStudgrade', 'RegistrarController::searchStudgrade', ['filter' => 'registrar']);
 $routes->get('/registerstudent', 'RegistrarController::registerstudent', ['filter' => 'registrar']);
 $routes->post('/regSaveLearner', 'RegistrarController::regSaveLearner', ['filter' => 'registrar']);
 $routes->get('/regDeleteLearner/(:any)', 'RegistrarController::regDeleteLearner/$1', ['filter' => 'registrar']);
@@ -185,6 +195,8 @@ $routes->get('/SAC', 'SACController::SAC', ['filter' => 'SAC']);
 //AAC
 $routes->get('/AAC', 'AACController::AAC', ['filter' => 'AAC']);
 $routes->get('/aacsections', 'AACController::aacsections', ['filter' => 'AAC']);
+$routes->get('/searchAacsection', 'AACController::searchAacsection', ['filter' => 'AAC']);
+$routes->get('/searchAacsubject', 'AACController::searchAacsubject', ['filter' => 'AAC']);
 $routes->post('/aacsaveSection', 'AACController::aacsaveSection', ['filter' => 'AAC']);
 $routes->get('/aacdeleteSection/(:any)', 'AACController::aacdeleteSection/$1', ['filter' => 'AAC']);
 $routes->get('/aaceditSection/(:any)', 'AACController::aaceditSection/$1', ['filter' => 'AAC']);
@@ -192,3 +204,33 @@ $routes->get('/aacsubjects', 'AACController::aacsubjects', ['filter' => 'AAC']);
 $routes->post('/aacsaveSubject', 'AACController::aacsaveSubject', ['filter' => 'AAC']);
 $routes->get('/aacdeleteSubject/(:any)', 'AACController::aacdeleteSubject/$1', ['filter' => 'AAC']);
 $routes->get('/aaceditSubject/(:any)', 'AACController::aaceditSubject/$1', ['filter' => 'AAC']);
+
+//AAC sections
+$routes->get('/St_Joseph_Husband_of_Mary', 'AACController::St_Joseph_Husband_of_Mary', ['filter' => 'AAC']);
+$routes->get('/St_Perpetua_and_Felicity', 'AACController::St_Perpetua_and_Felicity', ['filter' => 'AAC']);
+$routes->get('/St_Louise_de_Marillac', 'AACController::St_Louise_de_Marillac', ['filter' => 'AAC']);
+$routes->get('/St_Dominic_Savio', 'AACController::St_Dominic_Savio', ['filter' => 'AAC']);
+$routes->get('/St_Pedro_Calungsod', 'AACController::St_Pedro_Calungsod', ['filter' => 'AAC']);
+$routes->get('/St_Gemma_Galgani', 'AACController::St_Gemma_Galgani', ['filter' => 'AAC']);
+$routes->get('/St_Catherine_of_Siena', 'AACController::St_Catherine_of_Siena', ['filter' => 'AAC']);
+$routes->get('/St_Lawrence_of_Manila', 'AACController::St_Lawrence_of_Manila', ['filter' => 'AAC']);
+$routes->get('/St_Pio_of_Pietrelcina', 'AACController::St_Pio_of_Pietrelcina', ['filter' => 'AAC']);
+$routes->get('/St_Matthew_the_Evangelist', 'AACController::St_Matthew_the_Evangelist', ['filter' => 'AAC']);
+$routes->get('/St_Jerome_of_Stridon', 'AACController::St_Jerome_of_Stridon', ['filter' => 'AAC']);
+$routes->get('/St_Francis_of_Assisi', 'AACController::St_Francis_of_Assisi', ['filter' => 'AAC']);
+$routes->get('/St_Luke_the_Evangelist', 'AACController::St_Luke_the_Evangelist', ['filter' => 'AAC']);
+$routes->get('/St_Cecelia', 'AACController::St_Cecelia', ['filter' => 'AAC']);
+$routes->get('/St_Therese_of_Lisieux', 'AACController::St_Therese_of_Lisieux', ['filter' => 'AAC']);
+$routes->get('/St_Martin_the_Porres', 'AACController::St_Martin_the_Porres', ['filter' => 'AAC']);
+$routes->get('/St_Albert_the_Great', 'AACController::St_Albert_the_Great', ['filter' => 'AAC']);
+$routes->get('/St_Stephen', 'AACController::St_Stephen', ['filter' => 'AAC']);
+$routes->get('/St_Francis_Xavier', 'AACController::St_Francis_Xavier', ['filter' => 'AAC']);
+$routes->get('/St_John_the_Beloved', 'AACController::St_John_the_Beloved', ['filter' => 'AAC']);
+$routes->get('/St_Joseph_Freinademetz', 'AACController::St_Joseph_Freinademetz', ['filter' => 'AAC']);
+$routes->get('/St_Thomas_Aquinas', 'AACController::St_Thomas_Aquinas', ['filter' => 'AAC']);
+$routes->get('/St_Arnold_Janssen', 'AACController::St_Arnold_Janssen', ['filter' => 'AAC']);
+$routes->get('/St_Agatha_Sicily', 'AACController::St_Agatha_Sicily', ['filter' => 'AAC']);
+$routes->get('/St_Scholastica', 'AACController::St_Scholastica', ['filter' => 'AAC']);
+
+$routes->get('/searchCecelia', 'AACController::searchCecelia', ['filter' => 'AAC']);
+$routes->get('/searchTherese', 'AACController::searchTherese', ['filter' => 'AAC']);

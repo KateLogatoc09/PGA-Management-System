@@ -50,15 +50,20 @@ class RegistrarController extends BaseController
     {
         return view('email');
     }
-
        
     public function application()
     {
         $data = [
             'appli' => $this->account->select('*')->join('application','application.account_id = accounts.id','inner')->orderBy('application.fullname')->FindAll(),
-
         ];
+            return view ('application', $data);
+    }
 
+    public function searchAppli()
+    {
+        $data = [
+            'appli' => $this->account->select('*')->join('application','application.account_id = accounts.id','inner')->like('email', $this->request->getVar('search'))->orLike('application.fullname', $this->request->getVar('search'))->orderBy('application.fullname')->findAll(),
+        ];
             return view ('application', $data);
     }
 
@@ -184,6 +189,15 @@ class RegistrarController extends BaseController
             return view ('sections', $data);
     }
 
+
+    public function searchSection()
+    {
+        $data = [
+            'stud_section' => $this->sections->like('name', $this->request->getVar('search'))->findAll(),
+        ];
+            return view ('sections', $data);
+    }
+
     public function saveSection()  {
         $session = session();
         $id = $_POST['id'];
@@ -238,7 +252,15 @@ class RegistrarController extends BaseController
     public function subjects()
     {
         $data = [
-            'subject' => $this->subjects->findAll(),
+            'subject' => $this->subjects->orderBy('name')->findAll(),
+        ];
+            return view ('subjects', $data);
+    }
+
+    public function searchSubject()
+    {
+        $data = [
+            'subject' => $this->subjects->like('name', $this->request->getVar('search'))->orderBy('name')->findAll(),
         ];
             return view ('subjects', $data);
     }
@@ -793,6 +815,15 @@ class RegistrarController extends BaseController
     {
             $data = [
                 'grade' => $this->grade->select('*')->join('teachers','teachers.id = student_grades.teacher_account','inner')->findAll(),
+                ];
+            return view ('reggrade', $data);
+    }
+
+    
+    public function searchStudgrade()
+    {
+            $data = [
+                'grade' => $this->grade->select('*')->join('teachers','teachers.id = student_grades.teacher_account','inner')->like('student_id', $this->request->getVar('search'))->orLike('teacher_account', $this->request->getVar('search'))->findAll(),
                 ];
             return view ('reggrade', $data);
     }

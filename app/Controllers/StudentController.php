@@ -66,6 +66,14 @@ class StudentController extends BaseController
         return view('studentlibrary', $data);
     }
 
+    public function searchLibrary()
+    {
+        $data = [
+            'booky' => $this->book->like('book_title', $this->request->getVar('search'))->orLike('book_number', $this->request->getVar('search'))->where('status', 'AVAILABLE')->orderBy('book_title')->findAll(),
+        ];
+        return view('studentlibrary', $data);
+    }
+
 public function studentborrowBook()  {
     $session = session();
     $id = $_POST['id'];

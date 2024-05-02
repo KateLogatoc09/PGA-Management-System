@@ -107,13 +107,15 @@ $sectionSubset = array_slice($stud_section, $offset, $recordsPerPage);
                   <div class="card-header">
                     <h3 class="card-title">Section List</h3>
                     <div class="card-tools">
-                      <div class="input-group input-group-sm" style="width: 150px;">
-                        <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                      <div class="input-group input-group-sm" style="width: 400px;">
+                      <form action="/searchSection" method="get">
                         <div class="input-group-append">
+                        <input type="text" name="search" class="form-control float-right" placeholder="Search">
                           <button type="submit" class="btn btn-default">
-                            <i class="fas fa-search"></i>
+                          <i class="menu-icon tf-icons bx bx-search"></i>
                           </button>
                         </div>
+                      </form>
                       </div>
                     </div>
                   </div>

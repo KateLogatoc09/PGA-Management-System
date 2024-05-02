@@ -122,13 +122,15 @@ $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
                   <div class="card-header">
                     <h3 class="card-title">Books Available</h3>
                     <div class="card-tools">
-                      <div class="input-group input-group-sm" style="width: 150px;">
-                        <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                      <div class="input-group input-group-sm" style="width: 200px;">
+                      <form action="/searchLibrary" method="get">
                         <div class="input-group-append">
+                        <input type="text" name="search" class="form-control float-right" placeholder="Search">
                           <button type="submit" class="btn btn-default">
-                            <i class="fas fa-search"></i>
+                          <i class="menu-icon tf-icons bx bx-search"></i>
                           </button>
                         </div>
+                      </form>
                       </div>
                     </div>
                   </div>

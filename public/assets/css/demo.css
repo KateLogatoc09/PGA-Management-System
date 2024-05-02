@@ -2,6 +2,9 @@
 * demo.css
 * File include item demo only specific css only
 ******************************************************************************/
+input.form-control.float-right {
+  margin-right: 10px;
+}
 
 .menu .app-brand.demo {
   height: 64px;
