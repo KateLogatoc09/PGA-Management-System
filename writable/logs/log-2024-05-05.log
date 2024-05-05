@@ -1,0 +1,36 @@
+CRITICAL - 2024-05-05 02:48:28 --> Call to undefined method App\Models\AddBooksModel::and
+in SYSTEMPATH\Model.php on line 873.
+ 1 APPPATH\Controllers\LibraryController.php(136): CodeIgniter\Model->__call('and', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->textbooks()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-05 02:48:48 --> Call to undefined method App\Models\AddBooksModel::andWhere
+in SYSTEMPATH\Model.php on line 873.
+ 1 APPPATH\Controllers\LibraryController.php(136): CodeIgniter\Model->__call('andWhere', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->textbooks()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-05 03:02:25 --> Invalid file: "searchShelf1.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('searchShelf1.php')
+ 2 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('searchShelf1', [], true)
+ 3 APPPATH\Controllers\LibraryController.php(151): view('searchShelf1', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->searchShelf1()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-05 04:11:30 --> Invalid file: "reference_filipiniana2.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('reference_filipiniana2.php')
+ 2 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('reference_filipiniana2', [], true)
+ 3 APPPATH\Controllers\LibraryController.php(233): view('reference_filipiniana2', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->reference_filipiniana2()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')

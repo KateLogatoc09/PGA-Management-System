@@ -31,7 +31,7 @@
 
                 <li class="menu-item">
                   <a href="/librarian" class="menu-link">
-                    <div data-i18n="Analytics">Tables</div>
+                    <div data-i18n="Analytics">Home</div>
                   </a>
                 </li>
 
@@ -47,9 +47,91 @@
                   </a>
                 </li>
                 
-         
               </ul>
             </li>
+
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-book-bookmark"></i>
+                <div data-i18n="category">Book Categories</div>
+              </a>
+              <ul class="menu-sub">
+             
+                <li class="menu-item">
+                  <a href="/textbooks" class="menu-link">
+                    <div data-i18n="Analytics">Textbooks</div>
+                  </a>
+                </li>
+                
+                <li class="menu-item">
+                  <a href="/fiction_storybook" class="menu-link">
+                    <div data-i18n="Analytics">Fiction & Storybooks</div>
+                  </a>
+                </li>
+         
+                <li class="menu-item">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <div data-i18n="Analytics">Reference & Filipiniana</div>
+                </a>
+                      <ul class="menu-sub">
+                        <li class="menu-item">
+                          <a href="/reference_filipiniana" class="menu-link">
+                            <div data-i18n="Analytics">Shelf 4 & 10</div>
+                          </a>
+                        </li>
+                   
+                        <li class="menu-item">
+                          <a href="/reference_filipiniana2" class="menu-link">
+                            <div data-i18n="Analytics">Shelf 11 & 12</div>
+                          </a>
+                        </li>
+
+                        <li class="menu-item">
+                          <a href="/reference_filipiniana3" class="menu-link">
+                            <div data-i18n="Analytics">Shelf 13 & 14</div>
+                          </a>
+                        </li>
+
+                      </ul>
+                  </a>
+                </li>
+
+                <li class="menu-item">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <div data-i18n="Analytics">Books with Multiple Copies</div>
+                </a>
+                      <ul class="menu-sub">
+                        <li class="menu-item">
+                          <a href="/multiple_copies" class="menu-link">
+                            <div data-i18n="Analytics">Shelf 5 & 7</div>
+                          </a>
+                        </li>
+                   
+                        <li class="menu-item">
+                          <a href="/multiple_copies2" class="menu-link">
+                            <div data-i18n="Analytics">Shelf 8 & 9</div>
+                          </a>
+                        </li>
+
+                      </ul>
+                  </a>
+                </li>
+
+                <li class="menu-item">
+                  <a href="/teacher_references" class="menu-link">
+                    <div data-i18n="Analytics">Teacher's References</div>
+                  </a>
+                </li>
+
+                <li class="menu-item">
+                  <a href="/other_textbooks" class="menu-link">
+                    <div data-i18n="Analytics">Other Textbooks</div>
+                  </a>
+                </li>
+
+              </ul>
+            </li>
+
             <!-- Misc -->
             <li class="menu-header small text-uppercase"><span class="menu-header-text">Misc</span></li>
             <li class="menu-item">

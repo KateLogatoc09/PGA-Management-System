@@ -123,6 +123,33 @@ $routes->get('/deleteBook/(:any)', 'LibraryController::deleteBook/$1', ['filter'
 $routes->get('/editBook/(:any)', 'LibraryController::editBook/$1', ['filter' => 'librarian']);
 $routes->get('/books', 'LibraryController::books', ['filter' => 'librarian']);
 $routes->get('/borrowers', 'LibraryController::borrowers', ['filter' => 'librarian']);
+$routes->get('/textbooks', 'LibraryController::textbooks', ['filter' => 'librarian']);
+$routes->get('/searchShelf1', 'LibraryController::searchShelf1', ['filter' => 'librarian']);
+$routes->get('/searchShelf2', 'LibraryController::searchShelf2', ['filter' => 'librarian']);
+$routes->get('/fiction_storybook', 'LibraryController::fiction_storybook', ['filter' => 'librarian']);
+$routes->get('/searchShelf3', 'LibraryController::searchShelf3', ['filter' => 'librarian']);
+$routes->get('/searchShelf6', 'LibraryController::searchShelf6', ['filter' => 'librarian']);
+$routes->get('/reference_filipiniana', 'LibraryController::reference_filipiniana', ['filter' => 'librarian']);
+$routes->get('/searchShelf4', 'LibraryController::searchShelf4', ['filter' => 'librarian']);
+$routes->get('/searchShelf10', 'LibraryController::searchShelf10', ['filter' => 'librarian']);
+$routes->get('/reference_filipiniana2', 'LibraryController::reference_filipiniana2', ['filter' => 'librarian']);
+$routes->get('/searchShelf11', 'LibraryController::searchShelf11', ['filter' => 'librarian']);
+$routes->get('/searchShelf12', 'LibraryController::searchShelf12', ['filter' => 'librarian']);
+$routes->get('/reference_filipiniana3', 'LibraryController::reference_filipiniana3', ['filter' => 'librarian']);
+$routes->get('/searchShelf13', 'LibraryController::searchShelf13', ['filter' => 'librarian']);
+$routes->get('/searchShelf14', 'LibraryController::searchShelf14', ['filter' => 'librarian']);
+$routes->get('/multiple_copies', 'LibraryController::multiple_copies', ['filter' => 'librarian']);
+$routes->get('/multiple_copies2', 'LibraryController::multiple_copies2', ['filter' => 'librarian']);
+$routes->get('/searchShelf5', 'LibraryController::searchShelf5', ['filter' => 'librarian']);
+$routes->get('/searchShelf7', 'LibraryController::searchShelf7', ['filter' => 'librarian']);
+$routes->get('/searchShelf8', 'LibraryController::searchShelf8', ['filter' => 'librarian']);
+$routes->get('/searchShelf9', 'LibraryController::searchShelf9', ['filter' => 'librarian']);
+$routes->get('/teacher_references', 'LibraryController::teacher_references', ['filter' => 'librarian']);
+$routes->get('/searchShelf15', 'LibraryController::searchShelf15', ['filter' => 'librarian']);
+$routes->get('/searchShelf16', 'LibraryController::searchShelf16', ['filter' => 'librarian']);
+$routes->get('/other_textbooks', 'LibraryController::other_textbooks', ['filter' => 'librarian']);
+$routes->get('/searchShelf17', 'LibraryController::searchShelf17', ['filter' => 'librarian']);
+$routes->get('/searchShelf18', 'LibraryController::searchShelf18', ['filter' => 'librarian']);
 
 //PARENTS
 $routes->get('/parent', 'ParentController::parent', ['filter' => 'parents']);
@@ -232,5 +259,6 @@ $routes->get('/St_Arnold_Janssen', 'AACController::St_Arnold_Janssen', ['filter'
 $routes->get('/St_Agatha_Sicily', 'AACController::St_Agatha_Sicily', ['filter' => 'AAC']);
 $routes->get('/St_Scholastica', 'AACController::St_Scholastica', ['filter' => 'AAC']);
 
+//aayusin pa search filter dito:
 $routes->get('/searchCecelia', 'AACController::searchCecelia', ['filter' => 'AAC']);
 $routes->get('/searchTherese', 'AACController::searchTherese', ['filter' => 'AAC']);

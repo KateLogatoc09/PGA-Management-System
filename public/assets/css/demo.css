@@ -2,8 +2,12 @@
 * demo.css
 * File include item demo only specific css only
 ******************************************************************************/
-input.form-control.float-right {
-  margin-right: 10px;
+.center{
+  text-align: center !important;
+}
+
+.blue{
+  color: #007bff !important;
 }
 
 .menu .app-brand.demo {

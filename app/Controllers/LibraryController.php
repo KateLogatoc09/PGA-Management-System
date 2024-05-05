@@ -96,13 +96,7 @@ class LibraryController extends BaseController
 
     public function librarian()
     {
-        $data = [
-            'booky' => $this->book->orderBy('book_title')->findAll(),
-            'borrow' => $this->book->select('borrowedbooks.id as id, first_name, middle_name, last_name, student_id, book_title, book_shelf, ISBN, borrowedbooks.book_qty as book_qty, date_borrowed, date_return, fines, borrowedbooks.status as status')->join('borrowedbooks','borrowedbooks.book_id = books.id','inner')
-            ->orderBy('books.book_title')->join('student_learner','student_learner.account_id = borrowedbooks.account_id','inner')
-            ->join('admissions','admissions.account_id = borrowedbooks.account_id','inner')->FindAll(),
-        ];
-        return view('librarian', $data);
+        return view('librarian');
     }
 
     public function borrowers()
@@ -134,6 +128,289 @@ class LibraryController extends BaseController
             'booky' => $this->book->orderBy('book_title')->findAll(),
         ];
         return view('books', $data);
+    }
+
+    public function textbooks()
+    {
+        $data = [
+            'shelf1' => $this->book->where('book_category', 'TEXTBOOKS')->where('book_shelf', '1')->orderBy('book_title')->findAll(),
+            'shelf2' => $this->book->where('book_category', 'TEXTBOOKS')->where('book_shelf', '2')->orderBy('book_title')->findAll(),
+        ];
+        return view('textbooks', $data);
+    }
+
+    public function searchShelf1()
+    {
+        $data = [
+            'shelf1' => $this->book->where('book_category', 'TEXTBOOKS')->where('book_shelf', '1')
+            ->like('book_title', $this->request->getVar('search'))->orLike('book_number', $this->request->getVar('search'))->
+            orderBy('book_title')->findAll(),
+            'shelf2' => $this->book->where('book_category', 'TEXTBOOKS')->where('book_shelf', '2')->orderBy('book_title')->findAll(),
+        ];
+        return view('textbooks', $data);
+    }
+
+    public function searchShelf2()
+    {
+        $data = [
+            'shelf1' => $this->book->where('book_category', 'TEXTBOOKS')->where('book_shelf', '1')->orderBy('book_title')->findAll(), 
+            'shelf2' => $this->book->where('book_category', 'TEXTBOOKS')->where('book_shelf', '2')
+            ->like('book_title', $this->request->getVar('search'))->orLike('book_number', $this->request->getVar('search'))->
+            orderBy('book_title')->findAll(),
+        ];
+        return view('textbooks', $data);
+    }
+
+    public function fiction_storybook()
+    {
+        $data = [
+            'shelf3' => $this->book->where('book_category', 'FICTION AND STORYBOOK')->where('book_shelf', '3')->orderBy('book_title')->findAll(),
+            'shelf6' => $this->book->where('book_category', 'FICTION AND STORYBOOK')->where('book_shelf', '6')->orderBy('book_title')->findAll(),
+        ];
+        return view('fiction_storybook', $data);
+    }
+
+    public function searchShelf3()
+    {
+        $data = [
+            'shelf3' => $this->book->where('book_category', 'FICTION AND STORYBOOK')->where('book_shelf', '3')
+            ->like('book_title', $this->request->getVar('search'))->orLike('book_number', $this->request->getVar('search'))->
+            orderBy('book_title')->findAll(),
+            'shelf6' => $this->book->where('book_category', 'FICTION AND STORYBOOK')->where('book_shelf', '6')->orderBy('book_title')->findAll(),
+        ];
+        return view('fiction_storybook', $data);
+    }
+
+    public function searchShelf6()
+    {
+        $data = [
+            'shelf3' => $this->book->where('book_category', 'FICTION AND STORYBOOK')->where('book_shelf', '3')->orderBy('book_title')->findAll(),
+            'shelf6' => $this->book->where('book_category', 'FICTION AND STORYBOOK')->where('book_shelf', '6')
+            ->like('book_title', $this->request->getVar('search'))->orLike('book_number', $this->request->getVar('search'))->
+            orderBy('book_title')->findAll(),
+        ];
+        return view('fiction_storybook', $data);
+    }
+    
+    public function reference_filipiniana()
+    {
+        $data = [
+            'shelf4' => $this->book->where('book_category', 'REFERENCE AND FILIPINIANA')->where('book_shelf', '4')->orderBy('book_title')->findAll(),
+            'shelf10' => $this->book->where('book_category', 'REFERENCE AND FILIPINIANA')->where('book_shelf', '10')->orderBy('book_title')->findAll(),
+        ];
+        return view('reference_filipiniana', $data);
+    }
+
+    public function searchShelf4()
+    {
+        $data = [
+            'shelf4' => $this->book->where('book_category', 'REFERENCE AND FILIPINIANA')->where('book_shelf', '4')->like('book_title', $this->request->getVar('search'))
+            ->orLike('book_number', $this->request->getVar('search'))->orderBy('book_title')->findAll(),
+            'shelf10' => $this->book->where('book_category', 'REFERENCE AND FILIPINIANA')->where('book_shelf', '10')->orderBy('book_title')->findAll(),
+        ];
+        return view('reference_filipiniana', $data);
+    }
+
+    
+    public function searchShelf10()
+    {
+        $data = [
+            'shelf4' => $this->book->where('book_category', 'REFERENCE AND FILIPINIANA')->where('book_shelf', '4')->orderBy('book_title')->findAll(),
+            'shelf10' => $this->book->where('book_category', 'REFERENCE AND FILIPINIANA')->where('book_shelf', '10')
+            ->like('book_title', $this->request->getVar('search'))->orLike('book_number', $this->request->getVar('search'))
+            ->orderBy('book_title')->findAll(),
+        ];
+        return view('reference_filipiniana', $data);
+    }
+
+    public function reference_filipiniana2()
+    {
+        $data = [
+            'shelf11' => $this->book->where('book_category', 'REFERENCE AND FILIPINIANA')->where('book_shelf', '11')->orderBy('book_title')->findAll(),
+            'shelf12' => $this->book->where('book_category', 'REFERENCE AND FILIPINIANA')->where('book_shelf', '12')->orderBy('book_title')->findAll(),
+        ];
+        return view('reference_filipiniana2', $data);
+    }
+
+    public function searchShelf11()
+    {
+        $data = [
+            'shelf11' => $this->book->where('book_category', 'REFERENCE AND FILIPINIANA')->where('book_shelf', '11')
+            ->like('book_title', $this->request->getVar('search'))->orLike('book_number', $this->request->getVar('search'))
+            ->orderBy('book_title')->findAll(),
+            'shelf12' => $this->book->where('book_category', 'REFERENCE AND FILIPINIANA')->where('book_shelf', '12')->orderBy('book_title')->findAll(),
+        ];
+        return view('reference_filipiniana2', $data);
+    }
+
+    public function searchShelf12()
+    {
+        $data = [
+            'shelf11' => $this->book->where('book_category', 'REFERENCE AND FILIPINIANA')->where('book_shelf', '11')->orderBy('book_title')->findAll(),
+            'shelf12' => $this->book->where('book_category', 'REFERENCE AND FILIPINIANA')->where('book_shelf', '12')
+            ->like('book_title', $this->request->getVar('search'))->orLike('book_number', $this->request->getVar('search'))
+            ->orderBy('book_title')->findAll(),
+        ];
+        return view('reference_filipiniana2', $data);
+    }
+
+    public function reference_filipiniana3()
+    {
+        $data = [
+            'shelf13' => $this->book->where('book_category', 'REFERENCE AND FILIPINIANA')->where('book_shelf', '13')->orderBy('book_title')->findAll(),
+            'shelf14' => $this->book->where('book_category', 'REFERENCE AND FILIPINIANA')->where('book_shelf', '14')->orderBy('book_title')->findAll(),
+        ];
+        return view('reference_filipiniana3', $data);
+    }
+
+    public function searchShelf13()
+    {
+        $data = [
+            'shelf13' => $this->book->where('book_category', 'REFERENCE AND FILIPINIANA')->where('book_shelf', '13')
+            ->like('book_title', $this->request->getVar('search'))->orLike('book_number', $this->request->getVar('search'))
+            ->orderBy('book_title')->findAll(),
+            'shelf14' => $this->book->where('book_category', 'REFERENCE AND FILIPINIANA')->where('book_shelf', '14')->orderBy('book_title')->findAll(),
+        ];
+        return view('reference_filipiniana3', $data);
+    }
+
+    public function searchShelf14()
+    {
+        $data = [
+            'shelf14' => $this->book->where('book_category', 'REFERENCE AND FILIPINIANA')->where('book_shelf', '14')
+            ->like('book_title', $this->request->getVar('search'))->orLike('book_number', $this->request->getVar('search'))
+            ->orderBy('book_title')->findAll(),
+            'shelf13' => $this->book->where('book_category', 'REFERENCE AND FILIPINIANA')->where('book_shelf', '13')->orderBy('book_title')->findAll(),
+        ];
+        return view('reference_filipiniana3', $data);
+    }    
+
+    public function multiple_copies()
+    {
+        $data = [
+            'shelf5' => $this->book->where('book_category', 'BOOKS WITH MULTIPLE COPIES')->where('book_shelf', '5')->orderBy('book_title')->findAll(),
+            'shelf7' => $this->book->where('book_category', 'BOOKS WITH MULTIPLE COPIES')->where('book_shelf', '7')->orderBy('book_title')->findAll(),
+        ];
+        return view('multiple_copies', $data);
+    }
+
+    public function searchShelf5()
+    {
+        $data = [
+            'shelf5' => $this->book->where('book_category', 'BOOKS WITH MULTIPLE COPIES')->where('book_shelf', '5')
+            ->like('book_title', $this->request->getVar('search'))->orLike('book_number', $this->request->getVar('search'))
+            ->orderBy('book_title')->findAll(),
+            'shelf7' => $this->book->where('book_category', 'BOOKS WITH MULTIPLE COPIES')->where('book_shelf', '7')->orderBy('book_title')->findAll(),
+        ];
+        return view('multiple_copies', $data);
+    }
+
+    
+    public function searchShelf7()
+    {
+        $data = [
+            'shelf7' => $this->book->where('book_category', 'BOOKS WITH MULTIPLE COPIES')->where('book_shelf', '7')
+            ->like('book_title', $this->request->getVar('search'))->orLike('book_number', $this->request->getVar('search'))
+            ->orderBy('book_title')->findAll(),
+            'shelf5' => $this->book->where('book_category', 'BOOKS WITH MULTIPLE COPIES')->where('book_shelf', '5')->orderBy('book_title')->findAll(),
+        ];
+        return view('multiple_copies', $data);
+    }
+
+    
+    public function multiple_copies2()
+    {
+        $data = [
+            'shelf8' => $this->book->where('book_category', 'BOOKS WITH MULTIPLE COPIES')->where('book_shelf', '8')->orderBy('book_title')->findAll(),
+            'shelf9' => $this->book->where('book_category', 'BOOKS WITH MULTIPLE COPIES')->where('book_shelf', '9')->orderBy('book_title')->findAll(),
+        ];
+        return view('multiple_copies2', $data);
+    }
+
+    public function searchShelf8()
+    {
+        $data = [
+            'shelf8' => $this->book->where('book_category', 'BOOKS WITH MULTIPLE COPIES')->where('book_shelf', '8')
+            ->like('book_title', $this->request->getVar('search'))->orLike('book_number', $this->request->getVar('search'))
+            ->orderBy('book_title')->findAll(),
+            'shelf9' => $this->book->where('book_category', 'BOOKS WITH MULTIPLE COPIES')->where('book_shelf', '9')->orderBy('book_title')->findAll(),
+        ];
+        return view('multiple_copies2', $data);
+    }
+
+
+    public function searchShelf9()
+    {
+        $data = [
+            'shelf9' => $this->book->where('book_category', 'BOOKS WITH MULTIPLE COPIES')->where('book_shelf', '9')
+            ->like('book_title', $this->request->getVar('search'))->orLike('book_number', $this->request->getVar('search'))
+            ->orderBy('book_title')->findAll(),
+            'shelf8' => $this->book->where('book_category', 'BOOKS WITH MULTIPLE COPIES')->where('book_shelf', '8')->orderBy('book_title')->findAll(),
+        ];
+        return view('multiple_copies2', $data);
+    }
+
+    
+    public function teacher_references()
+    {
+        $data = [
+            'shelf15' => $this->book->where('book_category', 'TEACHER\'S REFERENCES')->where('book_shelf', '15')->orderBy('book_title')->findAll(),
+            'shelf16' => $this->book->where('book_category', 'TEACHER\'S REFERENCES')->where('book_shelf', '16')->orderBy('book_title')->findAll(),
+        ];
+        return view('teacher_references', $data);
+    }
+
+    public function searchShelf15()
+    {
+        $data = [
+            'shelf15' => $this->book->where('book_category', 'TEACHER\'S REFERENCES')->where('book_shelf', '15')
+            ->like('book_title', $this->request->getVar('search'))->orLike('book_number', $this->request->getVar('search'))
+            ->orderBy('book_title')->findAll(),
+            'shelf16' => $this->book->where('book_category', 'TEACHER\'S REFERENCES')->where('book_shelf', '16')->orderBy('book_title')->findAll(),
+        ];
+        return view('teacher_references', $data);
+    }
+
+    public function searchShelf16()
+    {
+        $data = [
+            'shelf16' => $this->book->where('book_category', 'TEACHER\'S REFERENCES')->where('book_shelf', '16')
+            ->like('book_title', $this->request->getVar('search'))->orLike('book_number', $this->request->getVar('search'))
+            ->orderBy('book_title')->findAll(),
+            'shelf15' => $this->book->where('book_category', 'TEACHER\'S REFERENCES')->where('book_shelf', '15')->orderBy('book_title')->findAll(),
+        ];
+        return view('teacher_references', $data);
+    }
+    
+    public function other_textbooks()
+    {
+        $data = [
+            'shelf17' => $this->book->where('book_category', 'OTHER TEXTBOOKS')->where('book_shelf', '17')->orderBy('book_title')->findAll(),
+            'shelf18' => $this->book->where('book_category', 'OTHER TEXTBOOKS')->where('book_shelf', '18')->orderBy('book_title')->findAll(),
+        ];
+        return view('other_textbooks', $data);
+    }
+
+    public function searchShelf17()
+    {
+        $data = [
+            'shelf17' => $this->book->where('book_category', 'OTHER TEXTBOOKS')->where('book_shelf', '17')
+            ->like('book_title', $this->request->getVar('search'))->orLike('book_number', $this->request->getVar('search'))
+            ->orderBy('book_title')->findAll(),
+            'shelf18' => $this->book->where('book_category', 'OTHER TEXTBOOKS')->where('book_shelf', '18')->orderBy('book_title')->findAll(),
+        ];
+        return view('other_textbooks', $data);
+    }
+
+    public function searchShelf18()
+    {
+        $data = [
+            'shelf18' => $this->book->where('book_category', 'OTHER TEXTBOOKS')->where('book_shelf', '18')
+            ->like('book_title', $this->request->getVar('search'))->orLike('book_number', $this->request->getVar('search'))
+            ->orderBy('book_title')->findAll(),
+            'shelf17' => $this->book->where('book_category', 'OTHER TEXTBOOKS')->where('book_shelf', '17')->orderBy('book_title')->findAll(),
+        ];
+        return view('other_textbooks', $data);
     }
 
     public function searchBook()

@@ -78,194 +78,43 @@
                 <div class="content-wrapper">
                     <!-- Content -->
 
-                    <div class="container-xxl flex-grow-1 container-p-y">
-                        <div class="row">
+          <div class="container-xxl flex-grow-1 container-p-y">
+          <h5 class="card-title text-primary">Welcome <?= $_SESSION['username']?>! 🎉</h5>
+  
+            <div class="row">
+              <div class="col-lg-18 mb-4 order-0">
+                <div class="card">
+                  <div class="d-flex align-items-end row">
+                    <div class="col-sm-7">
+                      <div class="card-body">
+                        <h5 class="card-title text-primary">Librarian Information</h5>
+                        
 
-                            <div class="col-lg-18 mb-4 order-0">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h3 class="card-title">Book List</h3>
-                                        <div class="card-tools">
-                                            <div class="input-group input-group-sm" style="width: 150px;">
-                                                <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-                                                <div class="input-group-append">
-                                                    <button type="submit" class="btn btn-default">
-                                                        <i class="fas fa-search"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- /.card-header -->
-                                    <div class="card-body table-responsive p-0">
-                                        <table class="table table-hover text-nowrap">
-                                            <thead>
-                                                <tr>
-                                                    <th>Id</th>
-                                                    <th>Book Title</th>
-                                                    <th>Book Number</th>
-                                                    <th>Book Author</th>
-                                                    <th>Book Publisher</th>
-                                                    <th>Place of Publication</th>
-                                                    <th>Book Category</th>
-                                                    <th>Book Pages</th>
-                                                    <th>Book Quantity</th>
-                                                    <th>Shelf Number</th>
-                                                    <th>ISBN</th>
-                                                    <th>Date Published</th>
-                                                    <th>Status</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <!-- Pagination Logic -->
-                                                <?php
-                                                $recordsPerPage = 5; // Number of records to show per page
-                                                $totalPages = ceil(count($booky) / $recordsPerPage); // Calculate total pages
-                                                $currentPage = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1; // Get current page, default to 1
-                                                $offset = ($currentPage - 1) * $recordsPerPage; // Calculate offset for array slicing
-                                                $subset = array_slice($booky, $offset, $recordsPerPage); // Get subset of data for the current page
-                                                foreach ($subset as $book):
-                                                ?>
-                                                <tr>
-                                                    <td><?= $book['id'] ?></td>
-                                                    <td><?= $book['book_title'] ?></td>
-                                                    <td><?= $book['book_number'] ?></td>
-                                                    <td><?= $book['book_author'] ?></td>
-                                                    <td><?= $book['book_publisher'] ?></td>
-                                                    <td><?= $book['place_printed'] ?></td>
-                                                    <td><?= $book['book_category'] ?></td>
-                                                    <td><?= $book['book_pages'] ?></td>
-                                                    <td><?= $book['book_qty'] ?></td>
-                                                    <td><?= $book['book_shelf'] ?></td>
-                                                    <td><?= $book['ISBN'] ?></td>
-                                                    <td><?= $book['datepublish'] ?></td>
-                                                    <td><?= $book['status'] ?></td>
-                                                </tr>
-                                                <?php endforeach ?>
-                                                <!-- End Pagination Logic -->
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <!-- /.card-body -->
-                                    <!-- Pagination Links -->
-                                    <div class="card-footer">
-                                        <nav aria-label="Page navigation example">
-                                            <ul class="pagination justify-content-center">
-                                                <?php if ($currentPage > 1) : ?>
-                                                <li class="page-item">
-                                                    <a class="page-link" href="?page=<?= $currentPage - 1 ?>" aria-label="Previous">
-                                                        <span aria-hidden="true">&laquo;</span>
-                                                    </a>
-                                                </li>
-                                                <?php endif; ?>
-                                                <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
-                                                <li class="page-item <?= $i == $currentPage ? 'active' : '' ?>">
-                                                    <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
-                                                </li>
-                                                <?php endfor; ?>
-                                                <?php if ($currentPage < $totalPages) : ?>
-                                                <li class="page-item">
-                                                    <a class="page-link" href="?page=<?= $currentPage + 1 ?>" aria-label="Next">
-                                                        <span aria-hidden="true">&raquo;</span>
-                                                    </a>
-                                                </li>
-                                                <?php endif; ?>
-                                            </ul>
-                                        </nav>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /.card -->
+                      </div>
 
-                            <div class="col-lg-18 mb-4 order-0">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h3 class="card-title">Borrower List</h3>
-                                        <div class="card-tools">
-                                            <div class="input-group input-group-sm" style="width: 150px;">
-                                                <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-                                                <div class="input-group-append">
-                                                    <button type="submit" class="btn btn-default">
-                                                        <i class="fas fa-search"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- /.card-header -->
-                                    <div class="card-body table-responsive p-0">
-                                        <table class="table table-hover text-nowrap">
-                                            <thead>
-                                                <tr>
-                                                    <th>Id</th>
-                                                    <th>Book Borrowed</th>
-                                                    <th>ISBN</th>
-                                                    <th>Student ID</th>
-                                                    <th>Fullname of Borrower</th>
-                                                    <th>Number of Books Borrowed</th>
-                                                    <th>Date Borrowed</th>
-                                                    <th>Date Return</th>
-                                                    <th>Status</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <!-- Pagination Logic -->
-                                                <?php
-                                                $recordsPerPage = 5; // Number of records to show per page
-                                                $totalPages = ceil(count($borrow) / $recordsPerPage); // Calculate total pages
-                                                $currentPage = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1; // Get current page, default to 1
-                                                $offset = ($currentPage - 1) * $recordsPerPage; // Calculate offset for array slicing
-                                                $subset = array_slice($borrow, $offset, $recordsPerPage); // Get subset of data for the current page
-                                                foreach ($subset as $book):
-                                                ?>
-                                                <tr>
-                                                    <td><?= $book['id'] ?></td>
-                                                    <td><?= $book['book_title'] ?></td>
-                                                    <td><?= $book['ISBN'] ?></td>
-                                                    <td><?= $book['student_id'] ?></td>
-                                                    <td><?= $book['last_name'] ?>, <?= $book['first_name'] ?> <?= $book['middle_name'] ?></td>
-                                                    <td><?= $book['book_qty'] ?></td>
-                                                    <td><?= $book['date_borrowed'] ?></td>
-                                                    <td><?= $book['date_return'] ?></td>
-                                                    <td><?= $book['status'] ?></td>
-                                                </tr>
-                                                <?php endforeach ?>
-                                                <!-- End Pagination Logic -->
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <!-- /.card-body -->
-                                    <!-- Pagination Links -->
-                                    <div class="card-footer">
-                                        <nav aria-label="Page navigation example">
-                                            <ul class="pagination justify-content-center">
-                                                <?php if ($currentPage > 1) : ?>
-                                                <li class="page-item">
-                                                    <a class="page-link" href="?page=<?= $currentPage - 1 ?>" aria-label="Previous">
-                                                        <span aria-hidden="true">&laquo;</span>
-                                                    </a>
-                                                </li>
-                                                <?php endif; ?>
-                                                <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
-                                                <li class="page-item <?= $i == $currentPage ? 'active' : '' ?>">
-                                                    <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
-                                                </li>
-                                                <?php endfor; ?>
-                                                <?php if ($currentPage < $totalPages) : ?>
-                                                <li class="page-item">
-                                                    <a class="page-link" href="?page=<?= $currentPage + 1 ?>" aria-label="Next">
-                                                        <span aria-hidden="true">&raquo;</span>
-                                                    </a>
-                                                </li>
-                                                <?php endif; ?>
-                                            </ul>
-                                        </nav>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /.card -->
-                        </div>
-                        <!-- / Content -->
+
+
+                    </div>
+
+
+                    <div class="col-sm-5 text-center text-sm-left">
+                      <div class="card-body pb-0 px-0 px-md-4">
+                        <img src="../assets/img/illustrations/man-with-laptop-light.png" height="140" alt="View Badge User" data-app-dark-img="illustrations/man-with-laptop-dark.png" data-app-light-img="illustrations/man-with-laptop-light.png" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                
+              
+                    </div>
+                    <!-- /.card -->
+                </div> <!-- /.dito -->
+
+
+
+            </div>
+            <!-- / Content -->
 
                         <div class="content-backdrop fade"></div>
                     </div>
