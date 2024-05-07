@@ -83,7 +83,7 @@ public function studentborrowBook()  {
         'account_id' => $this->acc->select('id')->where('username', $_SESSION['username'])->first(),
         'book_qty' => $this->request->getVar('book_qty'),
         'date_borrowed' => $this->request->getVar('dateBorrowed'),
-        'date_return' => $this->request->getVar('dateReturn'),
+        'date_to_be_return' => $this->request->getVar('dateReturn'),
         'book_id' => $this->request->getVar('book_id'),
         'status' => 'PENDING'
     ];

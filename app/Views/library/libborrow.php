@@ -112,7 +112,8 @@
                           <th>Fullname of Borrower</th>
                           <th>Number of Books Borrowed</th>
                           <th>Date Borrowed</th>
-                          <th>Date Return</th>
+                          <th>Date To Be Returned</th>
+                          <th>Date Returned</th>
                           <th>Fines</th>
                           <th>Status</th>
                           <th>Actions</th>
@@ -135,7 +136,8 @@
                             <td><?= $book['last_name'] ?>, <?= $book['first_name'] ?> <?= $book['middle_name'] ?></td>
                             <td><?= $book['book_qty'] ?></td>
                             <td><?= $book['date_borrowed'] ?></td>
-                            <td><?= $book['date_return'] ?></td>
+                            <td><?= $book['date_to_be_return'] ?></td>
+                            <td><?= $book['date_returned'] ?></td>
                             <td><?= $book['fines'] ?></td>
                             <td><?= $book['status'] ?></td>
                             <td>
@@ -207,12 +209,17 @@
                         <label for="dateBorrowed">Date Borrowed</label>
                         <input type="datetime-local" class="form-control" id="dateBorrowed" name="dateBorrowed" placeholder="Select Date Borrowed" value="<?php if (isset($borrowed['date_borrowed'])) {echo $borrowed['date_borrowed'];} ?>" required>
 
+                        <label for="dateReturn">Date Return</label>
+                      <input type="datetime-local" class="form-control" id="dateReturn" name="dateReturn" placeholder="Select Date To be Return" value="<?php if (isset($borrowed['date_to_be_return'])) {echo $borrowed['date_to_be_return'];} ?>" required>
+
                       </div>
                   </div>
                   <div class="col-sm-5 text-center text-sm-left">
                     <div class="form-group margin-left">
-                      <label for="dateReturn">Date Return</label>
-                      <input type="datetime-local" class="form-control" id="dateReturn" name="dateReturn" placeholder="Select Date Return" value="<?php if (isset($borrowed['date_return'])) {echo $borrowed['date_return'];} ?>" required>
+                      
+                      <label for="date_returned">Date Return</label>
+                      <input type="datetime-local" class="form-control" id="date_returned" name="date_returned" placeholder="Select Date Returned" value="<?php if (isset($borrowed['date_returned'])) {echo $borrowed['date_returned'];} ?>" required>
+
 
                       <label for="fines">Fines</label>
                         <input type="number" class="form-control" id="fines" name="fines" placeholder="Enter Amount of Fines" value="<?php if (isset($borrowed['fines'])) {echo $borrowed['fines'];} ?>" required>
