@@ -91,7 +91,7 @@
                             <h3 class="card-title">St. Francis of Assisi</h3>
                             <div class="card-tools">
                       <div class="input-group input-group-sm" style="width: 400px;">
-                      <form action="#" method="get">
+                      <form action="/searchFrancis" method="get">
                         <div class="input-group-append">
                         <input type="text" name="search" class="form-control float-right" placeholder="Search">
                           <button type="submit" class="btn btn-default">
@@ -116,6 +116,7 @@
                                         <th>Year Level</th>
                                         <th>Section</th>
                                         <th>Program</th>
+                                        <th>Adviser</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -128,7 +129,8 @@
                                             <td><?= $ad['category'] ?></td>
                                             <td><?= $ad['yr_lvl'] ?></td>
                                             <td><?= $ad['name'] ?></td>
-                                            <td><?= $ad['program'] ?></td>    
+                                            <td><?= $ad['program'] ?></td>   
+                                            <td><?= $ad['fname'] ?> <?= $ad['mname'] ?> <?= $ad['lname'] ?></td>
                                      </tr>
                                 <?php endforeach ?>
                                 </tbody>

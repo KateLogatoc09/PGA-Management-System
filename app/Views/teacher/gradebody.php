@@ -145,7 +145,7 @@
                                             <td><?= $g['student_id'] ?></td>
                                             <td><?= $g['last_name'] ?>, <?= $g['first_name'] ?> <?= $g['middle_name'] ?></td>
                                             <td><?= $g['name'] ?></td>
-                                            <td><?= $g['subject'] ?></td>
+                                            <td><?= $g['subject_name'] ?></td>
                                             <td><?= $g['grade'] ?></td>
                                             <td><?= $g['idnum'] ?></td>
                                             <td> <a href="/deleteGrade/<?= $g['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
@@ -205,21 +205,22 @@
                         value="<?php if (isset($gr['student_id'])) {echo $gr['student_id'];}?> " list="list" required>
                         <datalist type="hidden" id="list">
                                             <?php foreach ($learner as $le):?> 
-                                                <option value="<?= $le['student_id'] ?>"><?= $le['first_name'] ?><?= $le['middle_name'] ?><?= $le['last_name'] ?></option>
+                                                <option value="<?= $le['student_id'] ?>"><?= $le['first_name'] ?> <?= $le['middle_name'] ?> <?= $le['last_name'] ?></option>
                                             <?php endforeach; ?>
                                         </datalist> 
+                                        
+                                        <label for="subject">Subject:</label>
+                                        <select name="subject" id="subject" class="form-control">
+                                        <option value="">Select Subject</option>
+                                            <?php $uniqueCategories = array(); 
+                                                foreach ($subject as $se) {$subject = $se['subject_name'];
+                                                if (!in_array($subject, $uniqueCategories)) {$uniqueCategories[] = $subject; 
+                                                echo '<option value="' . $se['id'] . '">' . $subject . '</option>';}}?> 
+                                        </select>  
 </div>
 </div>
 <div class="col-sm-5 text-center text-sm-left">
   <div class="form-group margin-left">
-                        <label for="subject">Subject:</label>
-                                        <select name="subject" id="subject" class="form-control">
-                                        <option value="">Select Subject</option>
-                                            <?php $uniqueCategories = array(); 
-                                                foreach ($subject as $se) {$subject = $se['name'];
-                                                if (!in_array($subject, $uniqueCategories)) {$uniqueCategories[] = $subject; 
-                                                echo '<option value="' . $subject . '">' . $subject . '</option>';}}?> 
-                                        </select>  
                         <label for="grade">Grade:</label>
                         <input type="number" class="form-control" name="grade" placeholder="Enter Grade" 
                         value="<?php if (isset($gr['grade'])) {echo $gr['grade'];}?>" required>        

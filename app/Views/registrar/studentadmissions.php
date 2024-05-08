@@ -131,6 +131,7 @@ $studentSubset = array_slice($student, $offset, $recordsPerPage);
                                         <th>Category</th>
                                         <th>Year Level</th>
                                         <th>Section</th>
+                                        <th>Adviser</th>
                                         <th>Program</th>
                                         <th>Birth Certificate</th>
                                         <th>Report Card</th>
@@ -157,6 +158,7 @@ $studentSubset = array_slice($student, $offset, $recordsPerPage);
                                             <td><?= $ad['category'] ?></td>
                                             <td><?= $ad['yr_lvl'] ?></td>
                                             <td><?= $ad['name'] ?></td>
+                                            <td><?= $ad['fname'] ?> <?= $ad['mname'] ?> <?= $ad['lname'] ?></td>
                                             <td><?= $ad['program'] ?></td>
                                             <td><img
                                             src="<?= base_url().$ad['birth_cert'] ?>"

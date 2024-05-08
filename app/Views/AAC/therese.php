@@ -88,7 +88,7 @@
  <div class="col-lg-18 mb-4 order-0">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">St. Therese of Lisieux Students (SSC)</h3>
+                            <h3 class="card-title">St. Therese of Lisieux (SSC)</h3>
                             <div class="card-tools">
                       <div class="input-group input-group-sm" style="width: 400px;">
                       <form action="/searchTherese" method="get">
@@ -116,6 +116,7 @@
                                         <th>Year Level</th>
                                         <th>Section</th>
                                         <th>Program</th>
+                                        <th>Adviser</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -129,6 +130,7 @@
                                             <td><?= $ad['yr_lvl'] ?></td>
                                             <td><?= $ad['name'] ?></td>
                                             <td><?= $ad['program'] ?></td>    
+                                            <td><?= $ad['fname'] ?> <?= $ad['mname'] ?> <?= $ad['lname'] ?></td>
                                      </tr>
                                 <?php endforeach ?>
                                 </tbody>

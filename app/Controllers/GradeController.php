@@ -12,7 +12,7 @@ class GradeController extends BaseController
 
         return view('student/content/graph', $data);
     }
-    }
+
     private function getChartData()
     {
         $chartModel = new GradeModel(); // Replace with your actual model name
@@ -20,4 +20,5 @@ class GradeController extends BaseController
 
         return $data;
     }
+    
 }

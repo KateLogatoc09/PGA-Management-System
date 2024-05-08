@@ -107,21 +107,21 @@
                          <table class="table table-hover text-nowrap">
                     
                             <thead>
-                                    <tr>
-                                        <th>Id</th>                      
+                                    <tr>                  
                                         <th>Subject Name</th>
                                         <th>Type of Subject</th>
                                         <th>Grade Level</th> 
+                                        <th>Subject Teacher</th>
                                         <th>Action</th> 
                                     </tr>
                                 </thead>
                                 <tbody>
                                 <?php foreach ($subject as $ad): ?>
                                     <tr>
-                                            <td><?= $ad['id'] ?></td>
-                                            <td><?= $ad['name'] ?></td>
+                                            <td><?= $ad['subject_name'] ?></td>
                                             <td><?= $ad['type'] ?></td>
                                             <td><?= $ad['yr_lvl'] ?></td>
+                                            <td><?= $ad['lname'] ?>, <?= $ad['fname'] ?> <?= $ad['mname'] ?></td>
                                             <td> <a href="/aacdeleteSubject/<?= $ad['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
                                             <a href="/aaceditSubject/<?= $ad['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
                                      </tr>
@@ -149,9 +149,9 @@
                     <input type="hidden" class="form-control" name="id"
                                         value="<?php if (isset($sub['id'])) {echo $sub['id'];}?>">
 
-                                        <label for="name">Subject Name:</label>
-                                        <input type="text" class="form-control" name="name" placeholder="Enter Subject Name"
-                                        value="<?php if (isset($sub['name'])) {echo $sub['name'];}?>">
+                                        <label for="subject_name">Subject Name:</label>
+                                        <input type="text" class="form-control" name="subject_name" placeholder="Enter Subject Name"
+                                        value="<?php if (isset($sub['subject_name'])) {echo $sub['subject_name'];}?>">
 
                                         <label for="type">Type of Subject:</label>
                                         <select class="form-control" name="type" id="Type of Subject">
@@ -165,6 +165,15 @@
 </div>
 <div class="col-sm-5 text-center text-sm-left">
   <div class="form-group margin-left">
+                                        <label for="teacher_id">Subject Teacher:</label>
+                        <input type="text" class="form-control" name="teacher_id" placeholder="Enter Subject Teacher" 
+                        value="<?php if (isset($sub['teacher_id'])) {echo $sub['teacher_id'];}?> " list="list" required>
+                        <datalist type="hidden" id="list">
+                                            <?php foreach ($teacher as $te):?> 
+                                                <option value="<?= $te['idnum'] ?>"><?= $te['fname'] ?> <?= $te['mname'] ?> <?= $te['lname'] ?></option>
+                                            <?php endforeach; ?>
+                                        </datalist> 
+
                                         <label for="yr_lvl">Grade Level:</label>
                                         <input type="text" class="form-control" name="yr_lvl" placeholder="Enter Grade Level" 
                                         value="<?php if (isset($sub['yr_lvl'])) {echo $sub['yr_lvl'];}?>" required>  

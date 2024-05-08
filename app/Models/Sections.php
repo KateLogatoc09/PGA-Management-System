@@ -13,7 +13,7 @@ class Sections extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['name', 'grade_level_id'];
+    protected $allowedFields    = ['name', 'grade_level_id', 'adviser'];
 
     // Dates
     protected $useTimestamps = false;

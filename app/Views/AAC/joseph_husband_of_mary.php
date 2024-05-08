@@ -88,10 +88,10 @@
  <div class="col-lg-18 mb-4 order-0">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">St. Joseph Husband of Mary Students</h3>
+                            <h3 class="card-title">St. Joseph Husband of Mary</h3>
                             <div class="card-tools">
                       <div class="input-group input-group-sm" style="width: 400px;">
-                      <form action="#" method="get">
+                      <form action="/searchJoseph_husband_of_mary" method="get">
                         <div class="input-group-append">
                         <input type="text" name="search" class="form-control float-right" placeholder="Search">
                           <button type="submit" class="btn btn-default">
@@ -116,6 +116,7 @@
                                         <th>Year Level</th>
                                         <th>Section</th>
                                         <th>Program</th>
+                                        <th>Adviser</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -129,6 +130,7 @@
                                             <td><?= $ad['yr_lvl'] ?></td>
                                             <td><?= $ad['name'] ?></td>
                                             <td><?= $ad['program'] ?></td>    
+                                            <td><?= $ad['fname'] ?> <?= $ad['mname'] ?> <?= $ad['lname'] ?></td>
                                      </tr>
                                 <?php endforeach ?>
                                 </tbody>

@@ -3,17 +3,19 @@
 namespace App\Controllers;
 use App\Models\Subjects;
 use App\Models\Sections;
+use App\Models\TeacherModel;
 use App\Models\LearnerModel;
 
 use App\Controllers\BaseController;
 
 class AACController extends BaseController
 {
-    private $section, $subjects, $learner;
+    private $section, $subjects, $learner, $teacher;
     public function __construct()
     {
         $this->sections = new Sections();
         $this->subjects = new Subjects();
+        $this->teacher = new TeacherModel();
         $this->learner = new LearnerModel();
     }
 
@@ -24,7 +26,9 @@ class AACController extends BaseController
         public function aacsections()
         {
             $data = [
-                'stud_section' => $this->sections->findAll(),
+                'stud_section' => $this->sections->select('sections.id as id, name, grade_level_id, adviser, fname, mname, lname')
+                ->join('teachers','sections.adviser = teachers.idnum','inner')->findAll(),
+                'teacher' => $this->teacher->orderBy('lname')->findAll(),
             ];
                 return view ('aacsections', $data);
         }
@@ -32,7 +36,9 @@ class AACController extends BaseController
     public function searchAacsection()
     {
         $data = [
-            'stud_section' => $this->sections->like('name', $this->request->getVar('search'))->findAll(),
+            'stud_section' => $this->sections->select('sections.id as id, name, grade_level_id, adviser, fname, mname, lname')
+                ->join('teachers','sections.adviser = teachers.idnum','inner')->like('name', $this->request->getVar('search'))->findAll(),
+            'teacher' => $this->teacher->orderBy('lname')->findAll(),
         ];
             return view ('aacsections', $data);
     }
@@ -40,11 +46,20 @@ class AACController extends BaseController
         public function aacsaveSection()  {
             $session = session();
             $id = $_POST['id'];
+            $tid = $this->request->getVar('adviser');
+            $res = $this->teacher->select('teachers.idnum')->where('teachers.idnum', $tid)->first();
+
             $data = [
-                'id' => $this->request->getVar('id'),
                 'name' => $this->request->getVar('name'),
                 'grade_level_id' => $this->request->getVar('grade_level_id'),
             ];
+
+            if($res) {
+                $data['adviser'] = $tid;
+            } else {
+                $session->setFlashdata('msg','Teacher doesn\'t exist.');
+                return redirect()->to('aacsections');
+            }
     
             if ($id != null) {
                 $res = $this->sections->set($data)->where('id', $id)->update();
@@ -60,7 +75,8 @@ class AACController extends BaseController
                 } else {
                     $session->setFlashdata('msg','Something went wrong. Please try again later.');
                 }
-            }  
+            }   
+          
             return redirect()->to('aacsections');
         }
     
@@ -80,7 +96,9 @@ class AACController extends BaseController
         public function aaceditSection($id)
         {
             $data = [
-                'stud_section' => $this->sections->findAll(),
+                'stud_section' => $this->sections->select('sections.id as id, name, grade_level_id, adviser, fname, mname, lname')
+                ->join('teachers','sections.adviser = teachers.idnum','inner')->findAll(),
+                'teacher' => $this->teacher->orderBy('lname')->findAll(),
                 'sec' => $this->sections->where('id', $id)->first(),
             ];
     
@@ -91,7 +109,9 @@ class AACController extends BaseController
         public function aacsubjects()
         {
             $data = [
-                'subject' => $this->subjects->orderBy('name')->findAll(),
+                'subject' => $this->subjects->select('subjects.id as id, subject_name, type, teacher_id, yr_lvl, fname, mname, lname')
+                ->join('teachers','subjects.teacher_id = teachers.idnum','inner')->orderBy('subject_name')->findAll(),
+                'teacher' => $this->teacher->orderBy('lname')->findAll(),
             ];
                 return view ('aacsubjects', $data);
         }
@@ -100,7 +120,9 @@ class AACController extends BaseController
     public function searchAacsubject()
     {
         $data = [
-            'subject' => $this->subjects->like('name', $this->request->getVar('search'))->orderBy('name')->findAll(),
+            'subject' => $this->subjects->select('subjects.id as id, subject_name, type, teacher_id, yr_lvl, fname, mname, lname')
+            ->join('teachers','subjects.teacher_id = teachers.idnum','inner')->like('subject_name', $this->request->getVar('search'))->orderBy('subject_name')->findAll(),
+            'teacher' => $this->teacher->orderBy('lname')->findAll(),
         ];
             return view ('aacsubjects', $data);
     }
@@ -108,12 +130,21 @@ class AACController extends BaseController
         public function aacsaveSubject()  {
             $session = session();
             $id = $_POST['id'];
+            $tid = $this->request->getVar('teacher_id');
+            $res = $this->teacher->select('teachers.idnum')->where('teachers.idnum', $tid)->first();
+
             $data = [
-                'id' => $this->request->getVar('id'),
-                'name' => $this->request->getVar('name'),
+                'subject_name' => $this->request->getVar('subject_name'),
                 'type' => $this->request->getVar('type'),
                 'yr_lvl' => $this->request->getVar('yr_lvl'),
             ];
+
+            if($res) {
+                $data['teacher_id'] = $tid;
+            } else {
+                $session->setFlashdata('msg','Teacher doesn\'t exist.');
+                return redirect()->to('aacsubjects');
+            }
     
             if ($id != null) {
                 $res = $this->subjects->set($data)->where('id', $id)->update();
@@ -129,11 +160,12 @@ class AACController extends BaseController
                 } else {
                     $session->setFlashdata('msg','Something went wrong. Please try again later.');
                 }
-            }  
+            }   
+          
             return redirect()->to('aacsubjects');
         }
     
-        public function deleteSubject($id)
+        public function aacdeleteSubject($id)
         {
             $session = session();
             $res = $this->subjects->delete($id);
@@ -149,7 +181,9 @@ class AACController extends BaseController
         public function aaceditSubject($id)
         {
             $data = [
-                'subject' => $this->subjects->findAll(),
+                'subject' => $this->subjects->select('subjects.id as id, subject_name, type, teacher_id, yr_lvl, fname, mname, lname')
+                ->join('teachers','subjects.teacher_id = teachers.idnum','inner')->orderBy('subject_name')->findAll(),
+                'teacher' => $this->teacher->orderBy('lname')->findAll(),
                 'sub' => $this->subjects->where('id', $id)->first(),
             ];
     
@@ -159,9 +193,10 @@ class AACController extends BaseController
     public function searchCecelia()
     {
         $data = [
-            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program')
-            ->where('section', '15')->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
-            ->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
+            ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
+            ->join('teachers','sections.adviser = teachers.idnum','inner')
+            ->where('section', '15')->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
             ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
             ->orderBy('student_learner.last_name')->FindAll(),
        ];
@@ -171,9 +206,10 @@ class AACController extends BaseController
     public function searchTherese()
     {
         $data = [
-            'student' => $this->learner->where('section', '14')->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program')
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
-            ->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
+            ->join('teachers','sections.adviser = teachers.idnum','inner')
+            ->where('section', '14')->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
             ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
             ->orderBy('student_learner.last_name')->FindAll(),
        ];
@@ -183,8 +219,9 @@ class AACController extends BaseController
     public function St_Joseph_Husband_of_Mary()
     {
         $data = [
-            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program')
-            ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')->where('section', '1')
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
+            ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '1')
             ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Joseph_Husband_of_Mary', $data);
@@ -193,9 +230,10 @@ class AACController extends BaseController
     public function St_Perpetua_and_Felicity()
     {
         $data = [
-            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program')
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
-            ->orderBy('student_learner.last_name')->where('section', '2')->FindAll(),
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '2')
+            ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Perpetua_and_Felicity', $data);
     }
@@ -203,9 +241,10 @@ class AACController extends BaseController
     public function St_Louise_de_Marillac()
     {
         $data = [
-            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program')
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
-            ->orderBy('student_learner.last_name')->where('section', '3')->FindAll(),
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '3')
+            ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Louise_de_Marillac', $data);
     }
@@ -213,9 +252,10 @@ class AACController extends BaseController
     public function St_Dominic_Savio()
     {
         $data = [
-            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program')
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
-            ->orderBy('student_learner.last_name')->where('section', '4')->FindAll(),
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '4')
+            ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Dominic_Savio', $data);
     }
@@ -223,9 +263,10 @@ class AACController extends BaseController
     public function St_Pedro_Calungsod()
     {
         $data = [
-            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program')
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
-            ->orderBy('student_learner.last_name')->where('section', '5')->FindAll(),
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '5')
+            ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Pedro_Calungsod', $data);
     }
@@ -233,9 +274,10 @@ class AACController extends BaseController
     public function St_Gemma_Galgani()
     {
         $data = [
-            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program')
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
-            ->orderBy('student_learner.last_name')->where('section', '6')->FindAll(),
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '6')
+            ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Gemma_Galgani', $data);
     }
@@ -243,9 +285,10 @@ class AACController extends BaseController
     public function St_Catherine_of_Siena()
     {
         $data = [
-            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program')
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
-            ->orderBy('student_learner.last_name')->where('section', '7')->FindAll(),
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '7')
+            ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Catherine_of_Siena', $data);
     }
@@ -253,9 +296,10 @@ class AACController extends BaseController
     public function St_Lawrence_of_Manila()
     {
         $data = [
-            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program')
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
-            ->orderBy('student_learner.last_name')->where('section', '8')->FindAll(),
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '8')
+            ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Lawrence_of_Manila', $data);
     }
@@ -263,9 +307,10 @@ class AACController extends BaseController
     public function St_Pio_of_Pietrelcina()
     {
         $data = [
-            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program')
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
-            ->orderBy('student_learner.last_name')->where('section', '9')->FindAll(),
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '9')
+            ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Pio_of_Pietrelcina', $data);
     }
@@ -273,9 +318,10 @@ class AACController extends BaseController
     public function St_Matthew_the_Evangelist()
     {
         $data = [
-            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program')
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
-            ->orderBy('student_learner.last_name')->where('section', '10')->FindAll(),
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '10')
+            ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Matthew_the_Evangelist', $data);
     }
@@ -283,9 +329,10 @@ class AACController extends BaseController
     public function St_Jerome_of_Stridon()
     {
         $data = [
-            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program')
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
-            ->orderBy('student_learner.last_name')->where('section', '11')->FindAll(),
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '11')
+            ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Jerome_of_Stridon', $data);
     }
@@ -293,9 +340,10 @@ class AACController extends BaseController
     public function St_Francis_of_Assisi()
     {
         $data = [
-            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program')
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
-            ->orderBy('student_learner.last_name')->where('section', '12')->FindAll(),
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '12')
+            ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Francis_of_Assisi', $data);
     }
@@ -303,9 +351,10 @@ class AACController extends BaseController
     public function St_Luke_the_Evangelist()
     {
         $data = [
-            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program')
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
-            ->orderBy('student_learner.last_name')->where('section', '13')->FindAll(),
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '13')
+            ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Luke_the_Evangelist', $data);
     }
@@ -313,9 +362,10 @@ class AACController extends BaseController
     public function St_Therese_of_Lisieux()
     {
         $data = [
-            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program')
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
-            ->orderBy('student_learner.last_name')->where('section', '14')->FindAll(),
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '14')
+            ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Therese_of_Lisieux', $data);
     }
@@ -323,9 +373,10 @@ class AACController extends BaseController
     public function St_Cecelia()
     {
         $data = [
-            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program')
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
-            ->orderBy('student_learner.last_name')->where('section', '15')->FindAll(),
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '15')
+            ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Cecelia', $data);
     }
@@ -333,9 +384,10 @@ class AACController extends BaseController
     public function St_Martin_the_Porres()
     {
         $data = [
-            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program')
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
-            ->orderBy('student_learner.last_name')->where('section', '16')->FindAll(),
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '16')
+            ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Martin_the_Porres', $data);
     }
@@ -343,9 +395,10 @@ class AACController extends BaseController
     public function St_Albert_the_Great()
     {
         $data = [
-            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program')
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
-            ->orderBy('student_learner.last_name')->where('section', '17')->FindAll(),
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '17')
+            ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Albert_the_Great', $data);
     }
@@ -353,9 +406,10 @@ class AACController extends BaseController
     public function St_Stephen()
     {
         $data = [
-            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program')
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
-            ->orderBy('student_learner.last_name')->where('section', '18')->FindAll(),
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '18')
+            ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Stephen', $data);
     }
@@ -363,9 +417,10 @@ class AACController extends BaseController
     public function St_Francis_Xavier()
     {
         $data = [
-            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program')
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
-            ->orderBy('student_learner.last_name')->where('section', '19')->FindAll(),
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '19')
+            ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Francis_Xavier', $data);
     }
@@ -373,9 +428,10 @@ class AACController extends BaseController
     public function St_John_the_Beloved()
     {
         $data = [
-            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program')
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
-            ->orderBy('student_learner.last_name')->where('section', '20')->FindAll(),
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '20')
+            ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_John_the_Beloved', $data);
     }
@@ -383,9 +439,10 @@ class AACController extends BaseController
     public function St_Joseph_Freinademetz()
     {
         $data = [
-            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program')
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
-            ->orderBy('student_learner.last_name')->where('section', '21')->FindAll(),
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '21')
+            ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Joseph_Freinademetz', $data);
     }
@@ -393,9 +450,10 @@ class AACController extends BaseController
     public function St_Thomas_Aquinas()
     {
         $data = [
-            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program')
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
-            ->orderBy('student_learner.last_name')->where('section', '22')->FindAll(),
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '22')
+            ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Thomas_Aquinas', $data);
     }
@@ -404,9 +462,10 @@ class AACController extends BaseController
     public function St_Arnold_Janssen()
     {
         $data = [
-            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program')
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
-            ->orderBy('student_learner.last_name')->where('section', '23')->FindAll(),
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '23')
+            ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Arnold_Janssen', $data);
     }
@@ -415,9 +474,10 @@ class AACController extends BaseController
     public function St_Agatha_Sicily()
     {
         $data = [
-            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program')
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
-            ->orderBy('student_learner.last_name')->where('section', '24')->FindAll(),
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '24')
+            ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Agatha_Sicily', $data);
     }
@@ -426,9 +486,10 @@ class AACController extends BaseController
     public function St_Scholastica()
     {
         $data = [
-            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program')
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
-            ->orderBy('student_learner.last_name')->where('section', '25')->FindAll(),
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '25')
+            ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Scholastica', $data);
     }

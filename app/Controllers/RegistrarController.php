@@ -708,8 +708,8 @@ class RegistrarController extends BaseController
         $data = [
             'stud_section' => $this->sections->findAll(),
             'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, category,yr_lvl,program, status,
-            birth_cert, report_card, good_moral, admissions.photo, schedule')->join('admissions','admissions.account_id = student_learner.account_id','inner')
-            ->join('sections','sections.id = admissions.section','left')->orderBy('student_learner.last_name')->FindAll(),
+            birth_cert, report_card, good_moral, admissions.photo, schedule, fname, mname, lname')->join('admissions','admissions.account_id = student_learner.account_id','inner')
+            ->join('sections','sections.id = admissions.section','left')->join('teachers','sections.adviser = teachers.idnum','left')->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('regadmissions', $data);
     }
@@ -801,10 +801,10 @@ class RegistrarController extends BaseController
     {
         $data = [
             'stud_section' => $this->sections->findAll(),
-            'admissions' => $this->admissions->where('id', $id)->first(),
             'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, category,yr_lvl,program, status,
-            birth_cert, report_card, good_moral, admissions.photo, schedule')->join('admissions','admissions.account_id = student_learner.account_id','inner')
-            ->join('sections','sections.id = admissions.section','left')->orderBy('student_learner.last_name')->FindAll(),
+            birth_cert, report_card, good_moral, admissions.photo, schedule, fname, mname, lname')->join('admissions','admissions.account_id = student_learner.account_id','inner')
+            ->join('sections','sections.id = admissions.section','left')->join('teachers','sections.adviser = teachers.idnum','left')->orderBy('student_learner.last_name')->FindAll(),
+            'admissions' => $this->admissions->where('id', $id)->first(),
        ];
 
         return view('regadmissions', $data);

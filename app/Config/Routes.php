@@ -259,6 +259,29 @@ $routes->get('/St_Arnold_Janssen', 'AACController::St_Arnold_Janssen', ['filter'
 $routes->get('/St_Agatha_Sicily', 'AACController::St_Agatha_Sicily', ['filter' => 'AAC']);
 $routes->get('/St_Scholastica', 'AACController::St_Scholastica', ['filter' => 'AAC']);
 
-//aayusin pa search filter dito:
+//SEARCH FILTER:
+$routes->get('/searchAgatha', 'AACController::searchAgatha', ['filter' => 'AAC']);
+$routes->get('/searchAlbert', 'AACController::searchAlbert', ['filter' => 'AAC']);
+$routes->get('/searchArnold', 'AACController::searchArnold', ['filter' => 'AAC']);
+$routes->get('/searchCatherine', 'AACController::searchCatherine', ['filter' => 'AAC']);
+$routes->get('/searchDominic', 'AACController::searchDominic', ['filter' => 'AAC']);
+$routes->get('/searchFrancis', 'AACController::searchFrancis', ['filter' => 'AAC']);
+$routes->get('/searchGemma', 'AACController::searchGemma', ['filter' => 'AAC']);
+$routes->get('/searchJerome', 'AACController::searchJerome', ['filter' => 'AAC']);
+$routes->get('/searchJohn', 'AACController::searchJohn', ['filter' => 'AAC']);
+$routes->get('/searchJoseph_husband_of_mary', 'AACController::searchJoseph_husband_of_mary', ['filter' => 'AAC']);
+$routes->get('/searchJoseph', 'AACController::searchJoseph', ['filter' => 'AAC']);
+$routes->get('/searchLawrence', 'AACController::searchLawrence', ['filter' => 'AAC']);
+$routes->get('/searchLouise', 'AACController::searchLouise', ['filter' => 'AAC']);
+$routes->get('/searchLuke', 'AACController::searchLuke', ['filter' => 'AAC']);
+$routes->get('/searchMartin', 'AACController::searchMartin', ['filter' => 'AAC']);
+$routes->get('/searchMatthew', 'AACController::searchMatthew', ['filter' => 'AAC']);
+$routes->get('/searchPedro', 'AACController::searchPedro', ['filter' => 'AAC']);
+$routes->get('/searchPerpetua_felicity', 'AACController::searchPerpetua_felicity', ['filter' => 'AAC']);
+$routes->get('/searchPio', 'AACController::searchPio', ['filter' => 'AAC']);
+$routes->get('/searchScholastica', 'AACController::searchScholastica', ['filter' => 'AAC']);
+$routes->get('/searchStephen', 'AACController::searchStephen', ['filter' => 'AAC']);
+$routes->get('/searchThomas', 'AACController::searchThomas', ['filter' => 'AAC']);
+$routes->get('/searchXavier', 'AACController::searchXavier', ['filter' => 'AAC']);
 $routes->get('/searchCecelia', 'AACController::searchCecelia', ['filter' => 'AAC']);
 $routes->get('/searchTherese', 'AACController::searchTherese', ['filter' => 'AAC']);

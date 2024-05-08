@@ -94,9 +94,9 @@ class TeacherController extends BaseController
         public function grade()
     {
             $data = [
-                'grade' => $this->grade->select('student_grades.id as id, student_grades.student_id, idnum, subject, grade, first_name, middle_name, last_name, name')->join('teachers','student_grades.teacher_account = teachers.id','inner')
+                'grade' => $this->grade->select('student_grades.id as id, student_grades.student_id, idnum, subject, grade, first_name, middle_name, last_name, name, subject_name')->join('teachers','student_grades.teacher_account = teachers.id','inner')
                 ->join('admissions','student_grades.student_id = admissions.student_id','inner')->join('student_learner','student_learner.account_id = admissions.account_id','inner')
-                ->join('sections','sections.id = admissions.section','inner')->findAll(),
+                ->join('sections','sections.id = admissions.section','inner')->join('subjects','subjects.id = student_grades.subject','inner')->findAll(),
                 'learner' => $this->admissions->select('admissions.student_id as id, student_id, first_name, middle_name, last_name')->join('student_learner','student_learner.account_id = admissions.account_id','inner')
                 ->join('sections','sections.id = admissions.section','inner')->orderBy('student_learner.last_name')->FindAll(),
                 'subject' => $this->subjects->findAll(),
@@ -107,9 +107,11 @@ class TeacherController extends BaseController
     public function searchGrade()
     {
             $data = [
-                'grade' => $this->grade->select('student_grades.id as id, student_grades.student_id, idnum, subject, grade, first_name, middle_name, last_name, name')->join('teachers','student_grades.teacher_account = teachers.id','inner')
-                ->join('admissions','student_grades.student_id = admissions.student_id','inner')->join('student_learner','student_learner.account_id = admissions.account_id','inner')
-                ->join('sections','sections.id = admissions.section','inner')->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))->orLike('student_grades.student_id', $this->request->getVar('search'))->FindAll(),
+                'grade' => $this->grade->select('student_grades.id as id, student_grades.student_id, idnum, subject, grade, first_name, middle_name, last_name, name, subject_name')
+                ->join('teachers','student_grades.teacher_account = teachers.id','inner')->join('admissions','student_grades.student_id = admissions.student_id','inner')
+                ->join('student_learner','student_learner.account_id = admissions.account_id','inner')->join('sections','sections.id = admissions.section','inner')
+                ->join('subjects','subjects.id = student_grades.subject','inner')->like('last_name', $this->request->getVar('search'))
+                ->orLike('first_name', $this->request->getVar('search'))->orLike('student_grades.student_id', $this->request->getVar('search'))->FindAll(),
                 'learner' => $this->admissions->select('admissions.student_id as id, student_id, first_name, middle_name, last_name')->join('student_learner','student_learner.account_id = admissions.account_id','inner')
                 ->join('sections','sections.id = admissions.section','inner')->orderBy('student_learner.last_name')->FindAll(),
                 'subject' => $this->subjects->findAll(),
@@ -171,9 +173,9 @@ class TeacherController extends BaseController
         public function editGrade($id)
         {
             $data = [
-                'grade' => $this->grade->select('student_grades.id as id, student_grades.student_id, idnum, subject, grade, first_name, middle_name, last_name, name')->join('teachers','student_grades.teacher_account = teachers.id','inner')
+                'grade' => $this->grade->select('student_grades.id as id, student_grades.student_id, idnum, subject, grade, first_name, middle_name, last_name, name, subject_name')->join('teachers','student_grades.teacher_account = teachers.id','inner')
                 ->join('admissions','student_grades.student_id = admissions.student_id','inner')->join('student_learner','student_learner.account_id = admissions.account_id','inner')
-                ->join('sections','sections.id = admissions.section','inner')->findAll(),
+                ->join('sections','sections.id = admissions.section','inner')->join('subjects','subjects.id = student_grades.subject','inner')->findAll(),
                 'learner' => $this->admissions->select('*')->join('student_learner','student_learner.account_id = admissions.account_id','inner')
                 ->join('sections','sections.id = admissions.section','inner')->orderBy('student_learner.last_name')->FindAll(),
                'subject' => $this->subjects->findAll(),

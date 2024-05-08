@@ -13,7 +13,7 @@ class Subjects extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['name', 'type', 'yr_lvl'];
+    protected $allowedFields    = ['subject_name', 'type', 'teacher_id', 'yr_lvl'];
 
     // Dates
     protected $useTimestamps = false;
