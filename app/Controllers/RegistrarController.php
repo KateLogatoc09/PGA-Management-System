@@ -545,7 +545,10 @@ class RegistrarController extends BaseController
         $data = [
             'id' => $this->request->getVar('id'),
             'type' => $this->request->getVar('type'),
-            'address' => $this->request->getVar('address'),
+            'region' => $this->request->getVar('region'),
+            'province' => $this->request->getVar('province'),
+            'municipality' => $this->request->getVar('municipality'),
+            'barangay' => $this->request->getVar('barangay'),
             'postal_code' => $this->request->getVar('postal_code'),
             'tel_num' => $this->request->getVar('tel_num'),
             'account_id' => $this->request->getVar('account_id'),

@@ -134,15 +134,15 @@
   <option>Choose a barangay</option>
   </select>
                                                    
-                                                        <label for="street">Street</label>
-                                        <input type="text" class="form-control" id="street" name="street" placeholder="House No. , Street" required/>
+  <label for="street">Street</label>
+  <input type="text" class="form-control" id="street" name="street" placeholder="House No. , Street" required/>
                                         
-                                    <label for="postal_code">Postal Code:</label>
-                                        <input type="number" class="form-control" name="postal_code" placeholder="Enter Postal Code">
+  <label for="postal_code">Postal Code:</label>
+  <input type="number" class="form-control" name="postal_code" placeholder="Enter Postal Code">
                         
                             
-                                    <label for="tel_num">Telephone Number:</label>
-                                        <input type="number" class="form-control" name="tel_num" max_length="11" placeholder="Enter Telephone Number" required>
+  <label for="tel_num">Telephone Number:</label>
+  <input type="number" class="form-control" name="tel_num" max_length="11" placeholder="Enter Telephone Number" required>
              
   </div>
 </div>
