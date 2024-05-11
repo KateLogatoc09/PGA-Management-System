@@ -142,7 +142,7 @@ $appliSubset = array_slice($appli, $offset, $recordsPerPage);
                         $start = ($currentPage - 1) * $recordsPerPage;
                         $end = $start + $recordsPerPage;
                         $appliSubset = array_slice($appli, $start, $recordsPerPage);
-                        
+                        $x = 1;
                         foreach ($appliSubset as $applica):
                         ?>
                                     <tr>
@@ -153,6 +153,8 @@ $appliSubset = array_slice($appli, $offset, $recordsPerPage);
                                             class="d-block rounded"
                                             height="100"
                                             width="100"
+                                            id="id<?=$x?>"
+                                            onclick="openFullscreenid<?=$x?>();"
                                             /></td>
                                             <td><img
                                             src="<?= base_url().$applica['card'] ?>"
@@ -160,6 +162,8 @@ $appliSubset = array_slice($appli, $offset, $recordsPerPage);
                                             class="d-block rounded"
                                             height="100"
                                             width="100"
+                                            id="c<?=$x?>"
+                                            onclick="openFullscreenc<?=$x?>();"
                                             /></td>
                                             <td><img
                                             src="<?= base_url().$applica['birth_cert'] ?>"
@@ -167,17 +171,19 @@ $appliSubset = array_slice($appli, $offset, $recordsPerPage);
                                             class="d-block rounded"
                                             height="100"
                                             width="100"
+                                            id="b<?=$x?>"
+                                            onclick="openFullscreenb<?=$x?>();"
                                             /></td>
                                             <td><?= $applica['email'] ?></td>
                                             <td><?= $applica['type'] ?></td>
                                             <td><?= $applica['status'] ?></td>
-                                            <td> <a href="/deleteApplication/<?= $applica['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
+                                            <td> <a href="/deleteApplication/<?= $applica['id'] ?>" class="btn btn-danger btn-sm" id="d<?=$x?>">Delete</a>
                                             <a href="/editApplication/<?= $applica['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
                                            
                                            
                                           
                                      </tr>
-                                <?php endforeach ?>
+                                <?php $x++; endforeach ?>
                                 </tbody>
                             </table>
                         </div>
@@ -267,7 +273,61 @@ $appliSubset = array_slice($appli, $offset, $recordsPerPage);
     </div>
   </div>
   <!-- / Layout wrapper -->
+  <script>    
+    <?php $y = 1; foreach ($appliSubset as $applica): ?>
 
+      function openFullscreenid<?=$y?>() {
+        if (document.getElementById('id<?=$y?>').requestFullscreen) {
+          document.getElementById('id<?=$y?>').requestFullscreen();
+        } else if (document.getElementById('id<?=$y?>').webkitRequestFullscreen) { /* Safari */
+          document.getElementById('id<?=$y?>').webkitRequestFullscreen();
+        } else if (document.getElementById('id<?=$y?>').msRequestFullscreen) { /* IE11 */
+          document.getElementById('id<?=$y?>').msRequestFullscreen();
+        }
+      }
+
+      function openFullscreenb<?=$y?>() {
+        if (document.getElementById('b<?=$y?>').requestFullscreen) {
+          document.getElementById('b<?=$y?>').requestFullscreen();
+        } else if (document.getElementById('b<?=$y?>').webkitRequestFullscreen) { /* Safari */
+          document.getElementById('b<?=$y?>').webkitRequestFullscreen();
+        } else if (document.getElementById('b<?=$y?>').msRequestFullscreen) { /* IE11 */
+          document.getElementById('b<?=$y?>').msRequestFullscreen();
+        }
+      }
+
+      function openFullscreenc<?=$y?>() {
+        if (document.getElementById('c<?=$y?>').requestFullscreen) {
+          document.getElementById('c<?=$y?>').requestFullscreen();
+        } else if (document.getElementById('c<?=$y?>').webkitRequestFullscreen) { /* Safari */
+          document.getElementById('c<?=$y?>').webkitRequestFullscreen();
+        } else if (document.getElementById('c<?=$y?>').msRequestFullscreen) { /* IE11 */
+          document.getElementById('c<?=$y?>').msRequestFullscreen();
+        }
+      }
+
+      document.getElementById("d<?=$y?>").addEventListener("click", function (event) {
+    event.preventDefault()
+      //sweetalert2 code
+      Swal.fire({
+          title: 'PGA',
+          text: "Are you sure? You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location = $(this).attr('href');
+        } else if (result.isDenied) {
+          Swal.fire('Changes are not saved', '', 'info');
+        }
+      })
+    });
+    
+    <?php $y++; endforeach ?>
+  </script>
   <script src="assets/js/book.js"></script>
 </body>
 

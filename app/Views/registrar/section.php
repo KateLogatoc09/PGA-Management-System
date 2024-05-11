@@ -132,15 +132,15 @@ $sectionSubset = array_slice($stud_section, $offset, $recordsPerPage);
                         </tr>
                       </thead>
                       <tbody>
-                        <?php foreach ($sectionSubset as $ad): ?>
+                        <?php $x = 1; foreach ($sectionSubset as $ad): ?>
                           <tr>
                           <td><?= $ad['name'] ?></td>
                               <td><?= $ad['grade_level_id'] ?></td>
                               <td><?= $ad['lname'] ?>, <?= $ad['fname'] ?> <?= $ad['mname'] ?></td>
-                            <td> <a href="/deleteSection/<?= $ad['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
-                              <a href="/editSection/<?= $ad['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
+                            <td> <a href="/deleteSection/<?= $ad['id'] ?>" class="btn btn-danger btn-sm" id="d<?=$x?>">Delete</a>
+                              <a href="/editSection/<?= $ad['id'] ?>" class="btn btn-primary btn-sm" >Edit</a></td>
                           </tr>
-                        <?php endforeach ?>
+                        <?php $x++; endforeach ?>
                       </tbody>
                     </table>
                   </div>
@@ -204,7 +204,7 @@ $sectionSubset = array_slice($stud_section, $offset, $recordsPerPage);
                       <div class="form-group margin-left">
                       <label for="adviser">Section Adviser:</label>
                         <input type="text" class="form-control" name="adviser" placeholder="Enter Section Adviser" 
-                        value="<?php if (isset($sec['adviser'])) {echo $sec['adviser'];}?> " list="list" required>
+                        value="<?php if (isset($sec['adviser'])) {echo $sec['adviser'];}?>" list="list" required>
                         <datalist type="hidden" id="list">
                                             <?php foreach ($teacher as $te):?> 
                                                 <option value="<?= $te['idnum'] ?>"><?= $te['fname'] ?> <?= $te['mname'] ?> <?= $te['lname'] ?></option>
@@ -235,7 +235,31 @@ $sectionSubset = array_slice($stud_section, $offset, $recordsPerPage);
     </div>
   </div>
   <!-- / Layout wrapper -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+  <script>
+  <?php $y = 1; foreach ($sectionSubset as $ad): ?>
+  document.getElementById("d<?=$y?>").addEventListener("click", function (event) {
+    event.preventDefault()
+      //sweetalert2 code
+      Swal.fire({
+          title: 'PGA',
+          text: "Are you sure? You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location = $(this).attr('href');
+        } else if (result.isDenied) {
+          Swal.fire('Changes are not saved', '', 'info');
+        }
+      })
+    });
+<?php $y++; endforeach; ?>
+  </script>
   <script src="assets/js/book.js"></script>
 </body>
 

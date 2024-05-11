@@ -126,6 +126,7 @@ $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
                         // Paginate Data
                         $offset = ($currentPage - 1) * $recordsPerPage;
                         $paginatedSibling = array_slice($sibling, $offset, $recordsPerPage);
+                        $x = 1;
                         foreach ($paginatedSibling as $si):
                         ?>
                         <tr>
@@ -136,11 +137,11 @@ $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
                           <td><?= $si['affiliation'] ?></td>
                           <td><?= $si['account_id'] ?></td>
                           <td>
-                            <a href="/regDeletesibling/<?= $si['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
+                            <a href="/regDeletesibling/<?= $si['id'] ?>" class="btn btn-danger btn-sm" id="d<?=$x?>">Delete</a>
                             <a href="/regEditsibling/<?= $si['id'] ?>" class="btn btn-primary btn-sm">Edit</a>
                           </td>
                         </tr>
-                        <?php endforeach ?>
+                        <?php $x++; endforeach ?>
                       </tbody>
                     </table>
                   </div>
@@ -251,7 +252,29 @@ $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
     </div>
   </div>
   <!-- / Layout wrapper -->
-
+  <script>
+<?php $y = 1; foreach ($paginatedSibling as $si): ?>
+  document.getElementById("d<?=$y?>").addEventListener("click", function (event) {
+    event.preventDefault()
+      //sweetalert2 code
+      Swal.fire({
+          title: 'PGA',
+          text: "Are you sure? You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location = $(this).attr('href');
+        } else if (result.isDenied) {
+          Swal.fire('Changes are not saved', '', 'info');
+        }
+      })
+    });
+<?php $y++; endforeach; ?>
+</script>
   <script src="assets/js/book.js"></script>
 </body>
 

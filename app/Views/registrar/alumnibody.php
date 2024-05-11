@@ -135,7 +135,7 @@ $alumniSubset = array_slice($alumni, $offset, $recordsPerPage);
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <?php foreach ($alumniSubset as $al): ?>
+                                <?php $x = 1;  foreach ($alumniSubset as $al): ?>
                                     <tr>
                                             <td><?= $al['fullname'] ?></td>
                                             <td><?= $al['gender'] ?></td>
@@ -144,10 +144,10 @@ $alumniSubset = array_slice($alumni, $offset, $recordsPerPage);
                                             <td><?= $al['address'] ?></td>
                                             <td><?= $al['occupation'] ?></td>
                                             <td><?= $al['yr_graduated'] ?></td>
-                                            <td> <a href="/deleteAlumni/<?= $al['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
+                                            <td> <a href="/deleteAlumni/<?= $al['id'] ?>" class="btn btn-danger btn-sm" id="d<?=$x?>">Delete</a>
                                             <a href="/editAlumni/<?= $al['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
                                      </tr>
-                                <?php endforeach ?>
+                                <?php $x++; endforeach ?>
                                 </tbody>
                             </table>
                         </div>
@@ -258,7 +258,31 @@ $alumniSubset = array_slice($alumni, $offset, $recordsPerPage);
   </div>
   <!-- / Layout wrapper -->
 
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+<script>
+<?php $y = 1; foreach ($alumniSubset as $al): ?>
+document.getElementById("d<?=$y?>").addEventListener("click", function (event) {
+  event.preventDefault()
+    //sweetalert2 code
+    Swal.fire({
+        title: 'PGA',
+        text: "Are you sure? You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location = $(this).attr('href');
+      } else if (result.isDenied) {
+        Swal.fire('Changes are not saved', '', 'info');
+      }
+    })
+  });
+<?php $y++; endforeach; ?>
+</script>
   <script src="assets/js/book.js"></script>
 </body>
 

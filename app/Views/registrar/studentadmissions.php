@@ -191,7 +191,7 @@ $studentSubset = array_slice($student, $offset, $recordsPerPage);
                                             /></td>
                                             <td><?= $ad['schedule'] ?></td>
                                             <td><?= $ad['status'] ?></td>
-                                            <td> <a href="/regDeleteadmissions/<?= $ad['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
+                                            <td> <a href="/regDeleteadmissions/<?= $ad['id'] ?>" class="btn btn-danger btn-sm" id="d<?=$x?>">Delete</a>
                                             <a href="/regEditadmissions/<?= $ad['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
                                      </tr>
                                 <?php $x++; endforeach ?>
@@ -298,11 +298,6 @@ $studentSubset = array_slice($student, $offset, $recordsPerPage);
                                             <option value="HUMMS">HUMMS</option>
                                         </select>
 
-
-                                        </div>
-</div>
-<div class="col-sm-5 text-center text-sm-left">
-  <div class="form-group margin-left">
                                         <label for="schedule">Schedule Date:</label>
                                         <input type="date" class="form-control" name="schedule" placeholder="Enter Schedule Date" 
                                         value="<?php if (isset($admissions['schedule'])) {echo $admissions['schedule'];}?>" required>  
@@ -317,23 +312,159 @@ $studentSubset = array_slice($student, $offset, $recordsPerPage);
                                             <option value="GRADUATED">Graduated</option>
                                         </select>
 
-                                        <label for="twobytwo">2x2 ID:</label>
-                                        <input type="file" id="upload" accept="image/png, image/jpeg" name="twobytwo"/>
-
-
-                                        <label for="birth_cert">Birth Certificate:</label>
-                                        <input type="file" id="upload" accept="image/png, image/jpeg" name="birth_cert"/>
-
+                                        </div>
+</div>
+<div class="col-sm-5 text-center text-sm-left">
+  <div class="form-group margin-left">
+    <center>
                                         
-                                        <label for="report_card">Report Card:</label>
-                                        <input type="file" id="upload" accept="image/png, image/jpeg" name="report_card"/>
+                                        <label><strong>2x2 ID:</strong></label>
+                                        <?php if(isset($admissions['photo'])): ?>
+                                            <img
+                                            src="<?= $admissions['photo']?>"
+                                            alt="user-avatar"
+                                            class="d-block rounded"
+                                            height="100"
+                                            width="100"
+                                            id="twobytwoimg"
+                                            />
+                                        <?php else: ?>
+                                            <img
+                                            src="<?= base_url() ?>img/placeholder.jpg"
+                                            alt="user-avatar"
+                                            class="d-block rounded"
+                                            height="100"
+                                            width="100"
+                                            id="twobytwoimg"
+                                            />
+                                        <?php endif; ?>
 
-                                        
-                                        <label for="good_moral">Good Moral:</label>
-                                        <input type="file" id="upload" accept="image/png, image/jpeg" name="good_moral"/>
+                                        <div class="button-wrapper my-4">
+                                      <label for="twobytwo" class="btn btn-primary mb-2" tabindex="0">
+                                        <span class="d-none d-sm-block">Upload</span>
+                                        <i class="bx bx-upload d-block d-sm-none"></i>
+                                        <input
+                                        type="file"
+                                        id="twobytwo"
+                                        class="account-file-input"
+                                        hidden
+                                        accept="image/png, image/jpeg"
+                                        name="twobytwo"
+                                        />
+                                    </label>
+                                    </div>
+
+                                    <label><strong>Birth Certificate:</strong></label>
+                                    <?php if(isset($admissions['birth_cert'])): ?>
+                                            <img
+                                            src="<?= $admissions['birth_cert']?>"
+                                            alt="user-avatar"
+                                            class="d-block rounded"
+                                            height="100"
+                                            width="100"
+                                            id="birth_certimg"
+                                            />
+                                        <?php else: ?>
+                                            <img
+                                            src="<?= base_url() ?>img/placeholder.jpg"
+                                            alt="user-avatar"
+                                            class="d-block rounded"
+                                            height="100"
+                                            width="100"
+                                            id="birth_certimg"
+                                            />
+                                        <?php endif; ?>
+
+                                        <div class="button-wrapper my-4">
+                                      <label for="birth_cert" class="btn btn-primary mb-2" tabindex="0">
+                                        <span class="d-none d-sm-block">Upload</span>
+                                        <i class="bx bx-upload d-block d-sm-none"></i>
+                                        <input
+                                        type="file"
+                                        id="birth_cert"
+                                        class="account-file-input"
+                                        hidden
+                                        accept="image/png, image/jpeg"
+                                        name="birth_cert"
+                                        />
+                                    </label>
+                                    </div>
+
+                                    <label><strong>Report Card:</strong></label>
+                                    <?php if(isset($admissions['report_card'])): ?>
+                                            <img
+                                            src="<?= $admissions['report_card']?>"
+                                            alt="user-avatar"
+                                            class="d-block rounded"
+                                            height="100"
+                                            width="100"
+                                            id="report_cardimg"
+                                            />
+                                        <?php else: ?>
+                                            <img
+                                            src="<?= base_url() ?>img/placeholder.jpg"
+                                            alt="user-avatar"
+                                            class="d-block rounded"
+                                            height="100"
+                                            width="100"
+                                            id="report_cardimg"
+                                            />
+                                        <?php endif; ?>
+
+                                        <div class="button-wrapper my-4">
+                                      <label for="report_card" class="btn btn-primary mb-2" tabindex="0">
+                                        <span class="d-none d-sm-block">Upload</span>
+                                        <i class="bx bx-upload d-block d-sm-none"></i>
+                                        <input
+                                        type="file"
+                                        id="report_card"
+                                        class="account-file-input"
+                                        hidden
+                                        accept="image/png, image/jpeg"
+                                        name="report_card"
+                                        />
+                                    </label>
+                                    </div>
+
+                                    <label><strong>Good Moral:</strong></label>
+                                    <?php if(isset($admissions['good_moral'])): ?>
+                                            <img
+                                            src="<?= $admissions['good_moral']?>"
+                                            alt="user-avatar"
+                                            class="d-block rounded"
+                                            height="100"
+                                            width="100"
+                                            id="good_moralimg"
+                                            />
+                                        <?php else: ?>
+                                            <img
+                                            src="<?= base_url() ?>img/placeholder.jpg"
+                                            alt="user-avatar"
+                                            class="d-block rounded"
+                                            height="100"
+                                            width="100"
+                                            id="good_moralimg"
+                                            />
+                                        <?php endif; ?>
+
+                                        <div class="button-wrapper my-4">
+                                      <label for="good_moral" class="btn btn-primary mb-2" tabindex="0">
+                                        <span class="d-none d-sm-block">Upload</span>
+                                        <i class="bx bx-upload d-block d-sm-none"></i>
+                                        <input
+                                        type="file"
+                                        id="good_moral"
+                                        class="account-file-input"
+                                        hidden
+                                        accept="image/png, image/jpeg"
+                                        name="good_moral"
+                                        />
+                                    </label>
+                                    </div>
 
                         <input type="hidden" class="form-control" id="account_id" name="account_id" placeholder="Enter Account Id"                         
                         value="<?php if (isset($admissions['account_id'])) {echo $admissions['account_id'];}?>" required> 
+    </center>
                                  
   </div>
 </div>
@@ -365,6 +496,48 @@ $studentSubset = array_slice($student, $offset, $recordsPerPage);
 
   <script src="assets/js/book.js"></script>
   <script>
+    //2x2
+    const twobytwo = document.getElementById('twobytwoimg');
+    const twobytwoinput = document.getElementById('twobytwo');
+
+    twobytwoinput.addEventListener('change', function(){
+    const [file] = twobytwoinput.files
+    if (file) {
+        twobytwo.src = URL.createObjectURL(file)
+    }
+    });
+    //birth
+    const birth = document.getElementById('birth_certimg');
+    const birthinput = document.getElementById('birth_cert');
+
+    birthinput.addEventListener('change', function(){
+    const [file] = birthinput.files
+    if (file) {
+        birth.src = URL.createObjectURL(file)
+    }
+    });
+    //report
+    const report = document.getElementById('report_cardimg');
+    const reportinput = document.getElementById('report_card');
+
+    reportinput.addEventListener('change', function(){
+    const [file] = reportinput.files
+    if (file) {
+        report.src = URL.createObjectURL(file)
+    }
+    });
+    //goodmoral 
+    const gmoral = document.getElementById('good_moralimg');
+    const gmoralinput = document.getElementById('good_moral');
+
+    gmoralinput.addEventListener('change', function(){
+    const [file] = gmoralinput.files
+    if (file) {
+        gmoral.src = URL.createObjectURL(file)
+    }
+    });
+
+
     <?php $y = 1; foreach ($studentSubset as $add): ?>
 
       function openFullscreenp<?=$y?>() {
@@ -406,6 +579,26 @@ $studentSubset = array_slice($student, $offset, $recordsPerPage);
           document.getElementById('g<?=$y?>').msRequestFullscreen();
         }
       }
+
+      document.getElementById("d<?=$y?>").addEventListener("click", function (event) {
+    event.preventDefault()
+      //sweetalert2 code
+      Swal.fire({
+          title: 'PGA',
+          text: "Are you sure? You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location = $(this).attr('href');
+        } else if (result.isDenied) {
+          Swal.fire('Changes are not saved', '', 'info');
+        }
+      })
+    });
     <?php $y++; endforeach ?>
   </script>
 </body>

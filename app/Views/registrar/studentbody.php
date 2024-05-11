@@ -134,6 +134,7 @@
                                 $currentPage = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
                                 $offset = ($currentPage - 1) * $recordsPerPage;
                                 $subset = array_slice($learner, $offset, $recordsPerPage);
+                                $x = 1;
                                 foreach ($subset as $le) :
                                 ?>
                                     <tr>
@@ -143,6 +144,8 @@
                                             class="d-block rounded"
                                             height="100"
                                             width="100"
+                                            id="p<?=$x?>"
+                                            onclick="openFullscreenp<?=$x?>();"
                                             /></td>
                                             <td><?= $le['student_id'] ?></td>
                                             <td><?= $le['first_name'] ?></td>
@@ -160,10 +163,10 @@
                                             <td><?= $le['religion'] ?></td>
                                             <td><?= $le['yr_lvl'] ?></td>
                                             <td><?= $le['name'] ?></td>
-                                            <td> <a href="/regDeleteLearner/<?= $le['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
+                                            <td> <a href="/regDeleteLearner/<?= $le['id'] ?>" class="btn btn-danger btn-sm" id="d<?=$x?>">Delete</a>
                                             <a href="/regEditLearner/<?= $le['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
                                      </tr>
-                                <?php endforeach ?>
+                                <?php $x++; endforeach ?>
                                 </tbody>
                             </table>
                         </div>
@@ -344,7 +347,52 @@
     </div>
   </div>
   <!-- / Layout wrapper -->
+<script>
+//2x2
+const twobytwo = document.getElementById('uploadedAvatar');
+    const twobytwoinput = document.getElementById('upload');
 
+    twobytwoinput.addEventListener('change', function(){
+    const [file] = twobytwoinput.files
+    if (file) {
+        twobytwo.src = URL.createObjectURL(file)
+    }
+    });  
+
+<?php $y = 1; foreach ($subset as $le): ?>
+
+function openFullscreenp<?=$y?>() {
+  if (document.getElementById('p<?=$y?>').requestFullscreen) {
+    document.getElementById('p<?=$y?>').requestFullscreen();
+  } else if (document.getElementById('p<?=$y?>').webkitRequestFullscreen) { /* Safari */
+    document.getElementById('p<?=$y?>').webkitRequestFullscreen();
+  } else if (document.getElementById('p<?=$y?>').msRequestFullscreen) { /* IE11 */
+    document.getElementById('p<?=$y?>').msRequestFullscreen();
+  }
+}
+
+document.getElementById("d<?=$y?>").addEventListener("click", function (event) {
+    event.preventDefault()
+      //sweetalert2 code
+      Swal.fire({
+          title: 'PGA',
+          text: "Are you sure? You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location = $(this).attr('href');
+        } else if (result.isDenied) {
+          Swal.fire('Changes are not saved', '', 'info');
+        }
+      })
+    });
+
+<?php $y++; endforeach; ?>
+</script>
   <script src="assets/js/book.js"></script>
 </body>
 

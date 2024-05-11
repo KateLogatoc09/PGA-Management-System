@@ -281,9 +281,9 @@ class RegistrarController extends BaseController
         $session = session();
         $id = $_POST['id'];
         $data = [
-            'id' => $this->request->getVar('id'),
-            'name' => $this->request->getVar('name'),
+            'subject_name' => $this->request->getVar('subject_name'),
             'type' => $this->request->getVar('type'),
+            'teacher_id' => $this->request->getVar('teacher_id'),
             'yr_lvl' => $this->request->getVar('yr_lvl'),
         ];
 
