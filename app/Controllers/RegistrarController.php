@@ -19,10 +19,11 @@ use App\Models\Subjects;
 use App\Models\Sections;
 use App\Models\ApplicationModel;
 use App\Models\AccountModel;
+use App\Models\TeacherModel;
 
 class RegistrarController extends BaseController
 {
-    private $learner, $family, $address, $admissions, $sibling, $school, $section, $grade, $sections, $subjects, $alumni, $app, $account;
+    private $acc, $learner, $family, $address, $admissions, $sibling, $school, $grade, $sections, $subjects, $alumni, $app, $account, $teacher;
     public function __construct()
     {
         $this->learner = new LearnerModel();
@@ -31,13 +32,14 @@ class RegistrarController extends BaseController
         $this->admissions = new AdmissionsModel();
         $this->sibling = new SiblingModel();
         $this->school = new SchoolAttendedModel();
-        $this->sections = new Sections();
         $this->grade = new GradeModel();
         $this->alumni = new AlumniModel();
         $this->sections = new Sections();
         $this->subjects = new Subjects();
         $this->app = new ApplicationModel();
         $this->account = new AccountModel();
+        $this->teacher = new TeacherModel();
+        $this->acc = new AccountModel();
     }
 
     public function registrar()
@@ -184,7 +186,9 @@ class RegistrarController extends BaseController
     public function sections()
     {
         $data = [
-            'stud_section' => $this->sections->findAll(),
+            'stud_section' => $this->sections->select('sections.id as id, name, grade_level_id, adviser, fname, mname, lname')
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->findAll(),
+            'teacher' => $this->teacher->orderBy('lname')->findAll(),
         ];
             return view ('sections', $data);
     }
@@ -193,7 +197,9 @@ class RegistrarController extends BaseController
     public function searchSection()
     {
         $data = [
-            'stud_section' => $this->sections->like('name', $this->request->getVar('search'))->findAll(),
+            'stud_section' => $this->sections->select('sections.id as id, name, grade_level_id, adviser, fname, mname, lname')
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->like('name', $this->request->getVar('search'))->findAll(),
+            'teacher' => $this->teacher->orderBy('lname')->findAll(),
         ];
             return view ('sections', $data);
     }
@@ -241,7 +247,9 @@ class RegistrarController extends BaseController
     public function editSection($id)
     {
         $data = [
-            'stud_section' => $this->sections->findAll(),
+            'stud_section' => $this->sections->select('sections.id as id, name, grade_level_id, adviser, fname, mname, lname')
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->findAll(),
+            'teacher' => $this->teacher->orderBy('lname')->findAll(),
             'sec' => $this->sections->where('id', $id)->first(),
         ];
 
@@ -252,7 +260,9 @@ class RegistrarController extends BaseController
     public function subjects()
     {
         $data = [
-            'subject' => $this->subjects->orderBy('name')->findAll(),
+            'subject' => $this->subjects->select('subjects.id as id, subject_name, type, teacher_id, yr_lvl, fname, mname, lname')
+            ->join('teachers','subjects.teacher_id = teachers.idnum','inner')->orderBy('subject_name')->findAll(),
+            'teacher' => $this->teacher->orderBy('lname')->findAll(),
         ];
             return view ('subjects', $data);
     }
@@ -260,7 +270,9 @@ class RegistrarController extends BaseController
     public function searchSubject()
     {
         $data = [
-            'subject' => $this->subjects->like('name', $this->request->getVar('search'))->orderBy('name')->findAll(),
+            'subject' => $this->subjects->select('subjects.id as id, subject_name, type, teacher_id, yr_lvl, fname, mname, lname')
+            ->join('teachers','subjects.teacher_id = teachers.idnum','inner')->like('name', $this->request->getVar('search'))->orderBy('name')->findAll(),
+            'teacher' => $this->teacher->orderBy('lname')->findAll(),
         ];
             return view ('subjects', $data);
     }
@@ -309,7 +321,9 @@ class RegistrarController extends BaseController
     public function editSubject($id)
     {
         $data = [
-            'subject' => $this->subjects->findAll(),
+            'subject' => $this->subjects->select('subjects.id as id, subject_name, type, teacher_id, yr_lvl, fname, mname, lname')
+            ->join('teachers','subjects.teacher_id = teachers.idnum','inner')->orderBy('subject_name')->findAll(),
+            'teacher' => $this->teacher->orderBy('lname')->findAll(),
             'sub' => $this->subjects->where('id', $id)->first(),
         ];
 
@@ -714,6 +728,36 @@ class RegistrarController extends BaseController
         return view('regadmissions', $data);
     }
 
+    public function enrollmentform()
+    {
+        $data = [
+            'stud_section' => $this->sections->findAll(),
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, category,yr_lvl,program, admissions.status,
+            birth_cert, report_card, good_moral, admissions.photo, schedule, fname, mname, lname, email, admissions.account_id')->join('admissions','admissions.account_id = student_learner.account_id','inner')
+            ->join('accounts','accounts.id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')->join('teachers','sections.adviser = teachers.idnum','left')
+            ->orderBy('student_learner.last_name')->FindAll(),
+       ];
+        return view('enrollmentform', $data);
+    }
+   
+   public function expandAdmissions($id)
+   {
+    $expand = $this->acc->select('id')->where('id', $id)->first();
+    
+       $data = [
+           'learn' => $this->learner->where('student_learner.account_id', $expand)->first(),
+           'ad' => $this->admissions->select('student_id, name, category,yr_lvl,program, status,
+            birth_cert, report_card, good_moral, admissions.photo, schedule, fname, mname, lname')
+            ->join('sections','sections.id = admissions.section','left')->join('teachers','sections.adviser = teachers.idnum','left')
+            ->where('admissions.account_id', $expand)->first(),
+           'fam' => $this->family->where('family.account_id', $expand)->FindAll(),
+           'address' => $this->address->where('address.account_id', $expand)->FindAll(),
+           'sibling' => $this->sibling->where('sibling.account_id', $expand)->FindAll(),
+           'school' => $this->school->where('school_attended.account_id', $expand)->FindAll(),
+       ];
+
+       return view('expandAdmissions', $data);
+   }
     
     public function regSaveadmissions()  {
         $session = session();
@@ -814,7 +858,11 @@ class RegistrarController extends BaseController
     public function reggrade()
     {
             $data = [
-                'grade' => $this->grade->select('*')->join('teachers','teachers.id = student_grades.teacher_account','inner')->findAll(),
+                'grade' => $this->grade->select('student_grades.id as id, student_grades.student_id, idnum, subject, grade, first_name, middle_name, last_name, name, subject_name')->join('teachers','student_grades.teacher_account = teachers.id','inner')
+                ->join('admissions','student_grades.student_id = admissions.student_id','inner')->join('student_learner','student_learner.account_id = admissions.account_id','inner')
+                ->join('sections','sections.id = admissions.section','inner')->join('subjects','subjects.id = student_grades.subject','inner')->findAll(),
+                'learner' => $this->admissions->select('admissions.student_id as id, student_id, first_name, middle_name, last_name')->join('student_learner','student_learner.account_id = admissions.account_id','inner')
+                ->join('sections','sections.id = admissions.section','inner')->orderBy('student_learner.last_name')->FindAll(),
                 ];
             return view ('reggrade', $data);
     }
@@ -823,7 +871,13 @@ class RegistrarController extends BaseController
     public function searchStudgrade()
     {
             $data = [
-                'grade' => $this->grade->select('*')->join('teachers','teachers.id = student_grades.teacher_account','inner')->like('student_id', $this->request->getVar('search'))->orLike('teacher_account', $this->request->getVar('search'))->findAll(),
+                'grade' => $this->grade->select('student_grades.id as id, student_grades.student_id, idnum, subject, grade, first_name, middle_name, last_name, name, subject_name')
+                ->join('teachers','student_grades.teacher_account = teachers.id','inner')->join('admissions','student_grades.student_id = admissions.student_id','inner')
+                ->join('student_learner','student_learner.account_id = admissions.account_id','inner')->join('sections','sections.id = admissions.section','inner')
+                ->join('subjects','subjects.id = student_grades.subject','inner')->like('last_name', $this->request->getVar('search'))
+                ->orLike('first_name', $this->request->getVar('search'))->orLike('student_grades.student_id', $this->request->getVar('search'))->FindAll(),
+                'learner' => $this->admissions->select('admissions.student_id as id, student_id, first_name, middle_name, last_name')->join('student_learner','student_learner.account_id = admissions.account_id','inner')
+                ->join('sections','sections.id = admissions.section','inner')->orderBy('student_learner.last_name')->FindAll(),
                 ];
             return view ('reggrade', $data);
     }

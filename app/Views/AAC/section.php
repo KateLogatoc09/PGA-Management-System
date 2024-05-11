@@ -1,3 +1,20 @@
+<?php
+// Define the number of records per page
+$recordsPerPage = 5;
+
+// Calculate the total number of pages
+$totalPages = ceil(count($stud_section) / $recordsPerPage);
+
+// Get the current page number from the query string, default to 1 if not set
+$currentPage = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
+
+// Calculate the offset for the subset of records to be displayed on the current page
+$offset = ($currentPage - 1) * $recordsPerPage;
+
+// Get a subset of records for the current page
+$sectionSubset = array_slice($stud_section, $offset, $recordsPerPage);
+?>
+
 <body>
 <?php $session = session()?>
   <!-- Layout wrapper -->
@@ -107,8 +124,7 @@
                          <table class="table table-hover text-nowrap">
                     
                             <thead>
-                                    <tr>
-                                        <th>Id</th>                      
+                                    <tr>                  
                                         <th>Section Name</th>
                                         <th>Grade Level</th> 
                                         <th>Adviser</th>
@@ -116,9 +132,8 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <?php foreach ($stud_section as $ad): ?>
+                                <?php foreach ($sectionSubset as $ad): ?>
                                     <tr>
-                                            <td><?= $ad['id'] ?></td>
                                             <td><?= $ad['name'] ?></td>
                                             <td><?= $ad['grade_level_id'] ?></td>
                                             <td><?= $ad['lname'] ?>, <?= $ad['fname'] ?> <?= $ad['mname'] ?></td>
@@ -129,11 +144,38 @@
                                 </tbody>
                             </table>
                         </div>
-                        <!-- /.card-body -->
-                    </div>
-                    </div>
-                    <!-- /.card -->
-                </div> <!-- /.dito -->
+                      <!-- /.card-body -->
+                  <!-- Pagination Links -->
+                  <div class="card-footer">
+                    <nav aria-label="Page navigation example">
+                      <ul class="pagination justify-content-center">
+                        <?php if ($currentPage > 1) : ?>
+                          <li class="page-item">
+                            <a class="page-link" href="?page=<?= $currentPage - 1 ?>" aria-label="Previous">
+                              <span aria-hidden="true">&laquo;</span>
+                            </a>
+                          </li>
+                        <?php endif; ?>
+                        <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
+                          <li class="page-item <?= $i == $currentPage ? 'active' : '' ?>">
+                            <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
+                          </li>
+                        <?php endfor; ?>
+                        <?php if ($currentPage < $totalPages) : ?>
+                          <li class="page-item">
+                            <a class="page-link" href="?page=<?= $currentPage + 1 ?>" aria-label="Next">
+                              <span aria-hidden="true">&raquo;</span>
+                            </a>
+                          </li>
+                        <?php endif; ?>
+                      </ul>
+                    </nav>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card -->
+            </div> <!-- /.dito -->
+
 
                 <div class="col-lg-18 mb-4 order-0">
                 <div class="card">
@@ -162,9 +204,9 @@
 <div class="col-sm-5 text-center text-sm-left">
   <div class="form-group margin-left">
                                          
-                                        <label for="adviser">Subject Teacher:</label>
-                        <input type="text" class="form-control" name="adviser" placeholder="Enter Subject Teacher" 
-                        value="<?php if (isset($sub['adviser'])) {echo $sub['adviser'];}?> " list="list" required>
+                                        <label for="adviser">Section Adviser:</label>
+                        <input type="text" class="form-control" name="adviser" placeholder="Enter Section Adviser" 
+                        value="<?php if (isset($sec['adviser'])) {echo $sec['adviser'];}?> " list="list" required>
                         <datalist type="hidden" id="list">
                                             <?php foreach ($teacher as $te):?> 
                                                 <option value="<?= $te['idnum'] ?>"><?= $te['fname'] ?> <?= $te['mname'] ?> <?= $te['lname'] ?></option>

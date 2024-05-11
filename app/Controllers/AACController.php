@@ -189,32 +189,6 @@ class AACController extends BaseController
     
             return view('aacsubjects', $data);
         }
-  
-    public function searchCecelia()
-    {
-        $data = [
-            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
-            ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
-            ->join('teachers','sections.adviser = teachers.idnum','inner')
-            ->where('section', '15')->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
-            ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
-            ->orderBy('student_learner.last_name')->FindAll(),
-       ];
-        return view('St_Cecelia', $data);
-    }
-
-    public function searchTherese()
-    {
-        $data = [
-            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
-            ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
-            ->join('teachers','sections.adviser = teachers.idnum','inner')
-            ->where('section', '14')->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
-            ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
-            ->orderBy('student_learner.last_name')->FindAll(),
-       ];
-        return view('St_Therese_of_Lisieux', $data);
-    }
 
     public function St_Joseph_Husband_of_Mary()
     {
@@ -222,6 +196,19 @@ class AACController extends BaseController
             'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
             ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '1')
+            ->orderBy('student_learner.last_name')->FindAll(),
+       ];
+        return view('St_Joseph_Husband_of_Mary', $data);
+    }
+
+    public function searchJoseph_Husband_of_Mary()
+    {
+        $data = [
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
+            ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '1')
+            ->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
+            ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
             ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Joseph_Husband_of_Mary', $data);
@@ -238,12 +225,39 @@ class AACController extends BaseController
         return view('St_Perpetua_and_Felicity', $data);
     }
 
+
+    public function searchPerpetua_felicity()
+    {
+        $data = [
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
+            ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '2')
+            ->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
+            ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
+            ->orderBy('student_learner.last_name')->FindAll(),
+       ];
+        return view('St_Perpetua_and_Felicity', $data);
+    }
+
     public function St_Louise_de_Marillac()
     {
         $data = [
             'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
             ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '3')
+            ->orderBy('student_learner.last_name')->FindAll(),
+       ];
+        return view('St_Louise_de_Marillac', $data);
+    }
+
+    public function searchLouise()
+    {
+        $data = [
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
+            ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '3')
+            ->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
+            ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
             ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Louise_de_Marillac', $data);
@@ -260,12 +274,38 @@ class AACController extends BaseController
         return view('St_Dominic_Savio', $data);
     }
 
+    public function searchDominic()
+    {
+        $data = [
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
+            ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '4')
+            ->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
+            ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
+            ->orderBy('student_learner.last_name')->FindAll(),
+       ];
+        return view('St_Dominic_Savio', $data);
+    }
+
     public function St_Pedro_Calungsod()
     {
         $data = [
             'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
             ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '5')
+            ->orderBy('student_learner.last_name')->FindAll(),
+       ];
+        return view('St_Pedro_Calungsod', $data);
+    }
+
+    public function searchPedro()
+    {
+        $data = [
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
+            ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '5')
+            ->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
+            ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
             ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Pedro_Calungsod', $data);
@@ -282,12 +322,38 @@ class AACController extends BaseController
         return view('St_Gemma_Galgani', $data);
     }
 
+    public function searchGemma()
+    {
+        $data = [
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
+            ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '6')
+            ->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
+            ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
+            ->orderBy('student_learner.last_name')->FindAll(),
+       ];
+        return view('St_Gemma_Galgani', $data);
+    }
+
     public function St_Catherine_of_Siena()
     {
         $data = [
             'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
             ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '7')
+            ->orderBy('student_learner.last_name')->FindAll(),
+       ];
+        return view('St_Catherine_of_Siena', $data);
+    }
+
+    public function searchCatherine()
+    {
+        $data = [
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
+            ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '7')
+            ->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
+            ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
             ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Catherine_of_Siena', $data);
@@ -304,12 +370,39 @@ class AACController extends BaseController
         return view('St_Lawrence_of_Manila', $data);
     }
 
+    
+    public function searchLawrence()
+    {
+        $data = [
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
+            ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '8')
+            ->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
+            ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
+            ->orderBy('student_learner.last_name')->FindAll(),
+       ];
+        return view('St_Lawrence_of_Manila', $data);
+    }
+
     public function St_Pio_of_Pietrelcina()
     {
         $data = [
             'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
             ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '9')
+            ->orderBy('student_learner.last_name')->FindAll(),
+       ];
+        return view('St_Pio_of_Pietrelcina', $data);
+    }
+
+    public function searchPio()
+    {
+        $data = [
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
+            ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '9')
+            ->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
+            ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
             ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Pio_of_Pietrelcina', $data);
@@ -326,12 +419,39 @@ class AACController extends BaseController
         return view('St_Matthew_the_Evangelist', $data);
     }
 
+    
+    public function searchMatthew()
+    {
+        $data = [
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
+            ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '10')
+            ->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
+            ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
+            ->orderBy('student_learner.last_name')->FindAll(),
+       ];
+        return view('St_Matthew_the_Evangelist', $data);
+    }
+
     public function St_Jerome_of_Stridon()
     {
         $data = [
             'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
             ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '11')
+            ->orderBy('student_learner.last_name')->FindAll(),
+       ];
+        return view('St_Jerome_of_Stridon', $data);
+    }
+
+    public function searchJerome()
+    {
+        $data = [
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
+            ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '11')
+            ->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
+            ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
             ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Jerome_of_Stridon', $data);
@@ -348,6 +468,19 @@ class AACController extends BaseController
         return view('St_Francis_of_Assisi', $data);
     }
 
+    public function searchFrancis()
+    {
+        $data = [
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
+            ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '12')
+            ->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
+            ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
+            ->orderBy('student_learner.last_name')->FindAll(),
+       ];
+        return view('St_Francis_of_Assisi', $data);
+    }
+
     public function St_Luke_the_Evangelist()
     {
         $data = [
@@ -359,12 +492,39 @@ class AACController extends BaseController
         return view('St_Luke_the_Evangelist', $data);
     }
     
+    public function searchLuke()
+    {
+        $data = [
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
+            ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '13')
+            ->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
+            ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
+            ->orderBy('student_learner.last_name')->FindAll(),
+       ];
+        return view('St_Luke_the_Evangelist', $data);
+    }
+
     public function St_Therese_of_Lisieux()
     {
         $data = [
             'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
             ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '14')
+            ->orderBy('student_learner.last_name')->FindAll(),
+       ];
+        return view('St_Therese_of_Lisieux', $data);
+    }
+
+
+    public function searchTherese()
+    {
+        $data = [
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
+            ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
+            ->join('teachers','sections.adviser = teachers.idnum','inner')
+            ->where('section', '14')->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
+            ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
             ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Therese_of_Lisieux', $data);
@@ -381,12 +541,39 @@ class AACController extends BaseController
         return view('St_Cecelia', $data);
     }
 
+    public function searchCecelia()
+    {
+        $data = [
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
+            ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '15')
+            ->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
+            ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
+            ->orderBy('student_learner.last_name')->FindAll(),
+       ];
+        return view('St_Cecelia', $data);
+    }
+
     public function St_Martin_the_Porres()
     {
         $data = [
             'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
             ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '16')
+            ->orderBy('student_learner.last_name')->FindAll(),
+       ];
+        return view('St_Martin_the_Porres', $data);
+    }
+
+
+    public function searchMartin()
+    {
+        $data = [
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
+            ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '16')
+            ->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
+            ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
             ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Martin_the_Porres', $data);
@@ -403,12 +590,39 @@ class AACController extends BaseController
         return view('St_Albert_the_Great', $data);
     }
 
+    public function searchAlbert()
+    {
+        $data = [
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
+            ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '17')
+            ->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
+            ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
+            ->orderBy('student_learner.last_name')->FindAll(),
+       ];
+        return view('St_Albert_the_Great', $data);
+    }
+
     public function St_Stephen()
     {
         $data = [
             'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
             ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '18')
+            ->orderBy('student_learner.last_name')->FindAll(),
+       ];
+        return view('St_Stephen', $data);
+    }
+
+    
+    public function searchStephen()
+    {
+        $data = [
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
+            ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '18')
+            ->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
+            ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
             ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Stephen', $data);
@@ -425,6 +639,20 @@ class AACController extends BaseController
         return view('St_Francis_Xavier', $data);
     }
 
+
+    public function searchXavier()
+    {
+        $data = [
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
+            ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '19')
+            ->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
+            ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
+            ->orderBy('student_learner.last_name')->FindAll(),
+       ];
+        return view('St_Francis_Xavier', $data);
+    }
+
     public function St_John_the_Beloved()
     {
         $data = [
@@ -436,12 +664,39 @@ class AACController extends BaseController
         return view('St_John_the_Beloved', $data);
     }
 
+    
+    public function searchJohn()
+    {
+        $data = [
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
+            ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '20')
+            ->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
+            ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
+            ->orderBy('student_learner.last_name')->FindAll(),
+       ];
+        return view('St_John_the_Beloved', $data);
+    }
+
     public function St_Joseph_Freinademetz()
     {
         $data = [
             'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
             ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '21')
+            ->orderBy('student_learner.last_name')->FindAll(),
+       ];
+        return view('St_Joseph_Freinademetz', $data);
+    }
+    
+    public function searchJoseph()
+    {
+        $data = [
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
+            ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '21')
+            ->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
+            ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
             ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Joseph_Freinademetz', $data);
@@ -459,6 +714,19 @@ class AACController extends BaseController
     }
 
     
+    public function searchThomas()
+    {
+        $data = [
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
+            ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '22')
+            ->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
+            ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
+            ->orderBy('student_learner.last_name')->FindAll(),
+       ];
+        return view('St_Thomas_Aquinas', $data);
+    }
+
     public function St_Arnold_Janssen()
     {
         $data = [
@@ -470,7 +738,19 @@ class AACController extends BaseController
         return view('St_Arnold_Janssen', $data);
     }
 
-    
+    public function searchArnold()
+    {
+        $data = [
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
+            ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '23')
+            ->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
+            ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
+            ->orderBy('student_learner.last_name')->FindAll(),
+       ];
+        return view('St_Arnold_Janssen', $data);
+    }
+
     public function St_Agatha_Sicily()
     {
         $data = [
@@ -482,6 +762,18 @@ class AACController extends BaseController
         return view('St_Agatha_Sicily', $data);
     }
 
+    public function searchAgatha()
+    {
+        $data = [
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
+            ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '24')
+            ->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
+            ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
+            ->orderBy('student_learner.last_name')->FindAll(),
+       ];
+        return view('St_Agatha_Sicily', $data);
+    }
     
     public function St_Scholastica()
     {
@@ -489,6 +781,19 @@ class AACController extends BaseController
             'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
             ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '25')
+            ->orderBy('student_learner.last_name')->FindAll(),
+       ];
+        return view('St_Scholastica', $data);
+    }
+
+    public function searchScholastica()
+    {
+        $data = [
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
+            ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '25')
+            ->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
+            ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
             ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Scholastica', $data);

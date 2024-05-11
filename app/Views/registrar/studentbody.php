@@ -164,40 +164,41 @@
                                             <a href="/regEditLearner/<?= $le['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
                                      </tr>
                                 <?php endforeach ?>
-                                <!-- Pagination Links -->
-                                <tr>
-                                  <td colspan="19">
-                                    <ul class="pagination justify-content-center">
-                                      <?php if ($currentPage > 1) : ?>
-                                        <li class="page-item">
-                                          <a class="page-link" href="?page=<?= $currentPage - 1 ?>" aria-label="Previous">
-                                            <span aria-hidden="true">&laquo;</span>
-                                          </a>
-                                        </li>
-                                      <?php endif; ?>
-                                      <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
-                                        <li class="page-item <?= $i == $currentPage ? 'active' : '' ?>">
-                                          <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
-                                        </li>
-                                      <?php endfor; ?>
-                                      <?php if ($currentPage < $totalPages) : ?>
-                                        <li class="page-item">
-                                          <a class="page-link" href="?page=<?= $currentPage + 1 ?>" aria-label="Next">
-                                            <span aria-hidden="true">&raquo;</span>
-                                          </a>
-                                        </li>
-                                      <?php endif; ?>
-                                    </ul>
-                                  </td>
-                                </tr>
                                 </tbody>
                             </table>
                         </div>
                         <!-- /.card-body -->
-                    </div>
-                    </div>
-                    <!-- /.card -->
-                </div> <!-- /.dito -->
+                  <!-- Pagination Links -->
+                  <div class="card-footer">
+                    <nav aria-label="Page navigation example">
+                      <ul class="pagination justify-content-center">
+                        <?php if ($currentPage > 1) : ?>
+                          <li class="page-item">
+                            <a class="page-link" href="?page=<?= $currentPage - 1 ?>" aria-label="Previous">
+                              <span aria-hidden="true">&laquo;</span>
+                            </a>
+                          </li>
+                        <?php endif; ?>
+                        <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
+                          <li class="page-item <?= $i == $currentPage ? 'active' : '' ?>">
+                            <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
+                          </li>
+                        <?php endfor; ?>
+                        <?php if ($currentPage < $totalPages) : ?>
+                          <li class="page-item">
+                            <a class="page-link" href="?page=<?= $currentPage + 1 ?>" aria-label="Next">
+                              <span aria-hidden="true">&raquo;</span>
+                            </a>
+                          </li>
+                        <?php endif; ?>
+                      </ul>
+                    </nav>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card -->
+            </div> <!-- /.dito -->
+
 
                 <div class="col-lg-18 mb-4 order-0">
                 <div class="card">

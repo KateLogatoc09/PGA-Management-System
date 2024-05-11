@@ -60,48 +60,74 @@
               <ul class="menu-sub">
               
               <li class="menu-item">
-                  <a href="/St_Joseph_Husband_of_Mary" class="menu-link">
-                    <div data-i18n="Analytics">St. Joseph Husband of Mary</div>
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <div data-i18n="Analytics">Elementary Section/s</div>
+                </a>
+                      <ul class="menu-sub">
+                   
+                        <li class="menu-item">
+                            <a href="/St_Joseph_Husband_of_Mary" class="menu-link">
+                              <div data-i18n="Analytics">St. Joseph Husband of Mary</div>
+                            </a>
+                          </li>
+
+                          <li class="menu-item">
+                            <a href="/St_Perpetua_and_Felicity" class="menu-link">
+                              <div data-i18n="Analytics">St. Perpetua and Felicity</div>
+                            </a>
+                          </li>
+
+                          <li class="menu-item">
+                            <a href="/St_Louise_de_Marillac" class="menu-link">
+                              <div data-i18n="Analytics">St. Louise de Marillac</div>
+                            </a>
+                          </li>
+
+                          <li class="menu-item">
+                            <a href="/St_Dominic_Savio" class="menu-link">
+                              <div data-i18n="Analytics">St. Dominic Savio</div>
+                            </a>
+                          </li>
+
+                          <li class="menu-item">
+                            <a href="/St_Pedro_Calungsod" class="menu-link">
+                              <div data-i18n="Analytics">St. Pedro Calungsod</div>
+                            </a>
+                          </li>
+
+                          <li class="menu-item">
+                            <a href="/St_Gemma_Galgani" class="menu-link">
+                              <div data-i18n="Analytics">St. Gemma Galgani</div>
+                            </a>
+                          </li>
+
+                      </ul>
                   </a>
                 </li>
 
                 <li class="menu-item">
-                  <a href="/St_Perpetua_and_Felicity" class="menu-link">
-                    <div data-i18n="Analytics">St. Perpetua and Felicity</div>
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <div data-i18n="Analytics">Grade 7 Section/s</div>
+                </a>
+                      <ul class="menu-sub">
+
+                      <li class="menu-item">
+                        <a href="/St_Catherine_of_Siena" class="menu-link">
+                          <div data-i18n="Analytics">St. Catherine of Siena</div>
+                        </a>
+                      </li>
+
+                      </ul>
                   </a>
                 </li>
 
                 <li class="menu-item">
-                  <a href="/St_Louise_de_Marillac" class="menu-link">
-                    <div data-i18n="Analytics">St. Louise de Marillac</div>
-                  </a>
-                </li>
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <div data-i18n="Analytics">Grade 8 Sections</div>
+                </a>
+                      <ul class="menu-sub">
 
-                <li class="menu-item">
-                  <a href="/St_Dominic_Savio" class="menu-link">
-                    <div data-i18n="Analytics">St. Dominic Savio</div>
-                  </a>
-                </li>
-
-                <li class="menu-item">
-                  <a href="/St_Pedro_Calungsod" class="menu-link">
-                    <div data-i18n="Analytics">St. Pedro Calungsod</div>
-                  </a>
-                </li>
-
-                <li class="menu-item">
-                  <a href="/St_Gemma_Galgani" class="menu-link">
-                    <div data-i18n="Analytics">St. Gemma Galgani</div>
-                  </a>
-                </li>
-
-                <li class="menu-item">
-                  <a href="/St_Catherine_of_Siena" class="menu-link">
-                    <div data-i18n="Analytics">St. Catherine of Siena</div>
-                  </a>
-                </li>
-
-                <li class="menu-item">
+                      <li class="menu-item">
                   <a href="/St_Lawrence_of_Manila" class="menu-link">
                     <div data-i18n="Analytics">St. Lawrence of Manila</div>
                   </a>
@@ -126,8 +152,18 @@
                   </a>
                 </li>
 
-                
+
+                      </ul>
+                  </a>
+                </li>
+
                 <li class="menu-item">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <div data-i18n="Analytics">Grade 9 Sections</div>
+                </a>
+                      <ul class="menu-sub">
+
+                      <li class="menu-item">
                   <a href="/St_Francis_of_Assisi" class="menu-link">
                     <div data-i18n="Analytics">St. Francis of Assisi</div>
                   </a>
@@ -145,8 +181,18 @@
                     <div data-i18n="Analytics">St. Therese of Lisieux</div>
                   </a>
                 </li>
+                      
+                      </ul>
+                  </a>
+                </li>
 
                 <li class="menu-item">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <div data-i18n="Analytics">Grade 10 Sections</div>
+                </a>
+                      <ul class="menu-sub">
+
+                      <li class="menu-item">
                   <a href="/St_Cecelia" class="menu-link">
                     <div data-i18n="Analytics">St. Cecelia</div>
                   </a>
@@ -164,7 +210,18 @@
                   </a>
                 </li>
 
-                <li class="menu-item">
+                      
+                      </ul>
+                  </a>
+                </li>
+
+               <li class="menu-item">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <div data-i18n="Analytics">Grade 11 Sections</div>
+                </a>
+                      <ul class="menu-sub">
+
+                      <li class="menu-item">
                   <a href="/St_Stephen" class="menu-link">
                     <div data-i18n="Analytics">St. Stephen</div>
                   </a>
@@ -181,8 +238,18 @@
                     <div data-i18n="Analytics">St. John the Beloved</div>
                   </a>
                 </li>
+                      
+                      </ul>
+                  </a>
+                </li>
 
                 <li class="menu-item">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <div data-i18n="Analytics">Grade 12 Sections</div>
+                </a>
+                      <ul class="menu-sub">
+
+                      <li class="menu-item">
                   <a href="/St_Joseph_Freinademetz" class="menu-link">
                     <div data-i18n="Analytics">St. Joseph Freinademetz</div>
                   </a>
@@ -200,7 +267,18 @@
                   </a>
                 </li>
 
+
+                      </ul>
+                  </a>
+                </li>
+
                 <li class="menu-item">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <div data-i18n="Analytics">Grade 13 Sections</div>
+                </a>
+                      <ul class="menu-sub">
+
+                      <li class="menu-item">
                   <a href="/St_Agatha_Sicily" class="menu-link">
                     <div data-i18n="Analytics">St. Agatha Sicily</div>
                   </a>
@@ -209,6 +287,10 @@
                 <li class="menu-item">
                   <a href="/St_Scholastica" class="menu-link">
                     <div data-i18n="Analytics">St. Scholastica</div>
+                  </a>
+                </li>
+
+                      </ul>
                   </a>
                 </li>
 

@@ -115,11 +115,12 @@ $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
                     <table class="table table-hover text-nowrap">
                       <thead>
                         <tr>
-                          <th>Student Id</th>
-                          <th>Teacher Id</th>
-                          <th>Teacher Fullname</th>
-                          <th>Subject</th>
-                          <th>Grade</th>
+                            <th>Student Id</th>
+                            <th>Fullname of Student</th>
+                            <th>Section</th>
+                            <th>Subject</th>
+                            <th>Grade</th>
+                            <th>Teacher Id</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -132,32 +133,52 @@ $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
                         foreach ($paginatedGrade as $g):
                         ?>
                         <tr>
-                          <td><?= $g['student_id'] ?></td>
-                          <td><?= $g['idnum'] ?></td>
-                          <td><?= $g['fname'] ?> <?= $g['mname'] ?> <?= $g['lname'] ?></td>
-                          <td><?= $g['subject'] ?></td>
-                          <td><?= $g['grade'] ?></td>
+                            <td><?= $g['student_id'] ?></td>
+                            <td><?= $g['last_name'] ?>, <?= $g['first_name'] ?> <?= $g['middle_name'] ?></td>
+                            <td><?= $g['name'] ?></td>
+                            <td><?= $g['subject_name'] ?></td>
+                            <td><?= $g['grade'] ?></td>
+                            <td><?= $g['idnum'] ?></td>
                         </tr>
                         <?php endforeach ?>
                       </tbody>
                     </table>
                   </div>
                   <!-- /.card-body -->
+                  <!-- Pagination Links -->
+                  <div class="card-footer">
+                    <nav aria-label="Page navigation example">
+                      <ul class="pagination justify-content-center">
+                        <?php if ($currentPage > 1) : ?>
+                          <li class="page-item">
+                            <a class="page-link" href="?page=<?= $currentPage - 1 ?>" aria-label="Previous">
+                              <span aria-hidden="true">&laquo;</span>
+                            </a>
+                          </li>
+                        <?php endif; ?>
+                        <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
+                          <li class="page-item <?= $i == $currentPage ? 'active' : '' ?>">
+                            <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
+                          </li>
+                        <?php endfor; ?>
+                        <?php if ($currentPage < $totalPages) : ?>
+                          <li class="page-item">
+                            <a class="page-link" href="?page=<?= $currentPage + 1 ?>" aria-label="Next">
+                              <span aria-hidden="true">&raquo;</span>
+                            </a>
+                          </li>
+                        <?php endif; ?>
+                      </ul>
+                    </nav>
+                  </div>
                 </div>
               </div>
               <!-- /.card -->
             </div> <!-- /.dito -->
+
           </div>
           <!-- / Content -->
-          <!-- Pagination -->
-          <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
-              <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-              <li class="page-item <?= ($i == $currentPage) ? 'active' : '' ?>"><a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a></li>
-              <?php endfor ?>
-            </ul>
-          </nav>
-          <!-- / Pagination -->
+          
 
           <div class="content-backdrop fade"></div>
         </div>

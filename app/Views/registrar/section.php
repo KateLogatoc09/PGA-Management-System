@@ -125,16 +125,18 @@ $sectionSubset = array_slice($stud_section, $offset, $recordsPerPage);
 
                       <thead>
                         <tr>
-                          <th>Section Name</th>
-                          <th>Grade Level</th>
-                          <th>Action</th>
+                            <th>Section Name</th>
+                            <th>Grade Level</th> 
+                            <th>Adviser</th>
+                            <th>Action</th> 
                         </tr>
                       </thead>
                       <tbody>
                         <?php foreach ($sectionSubset as $ad): ?>
                           <tr>
-                            <td><?= $ad['name'] ?></td>
-                            <td><?= $ad['grade_level_id'] ?></td>
+                          <td><?= $ad['name'] ?></td>
+                              <td><?= $ad['grade_level_id'] ?></td>
+                              <td><?= $ad['lname'] ?>, <?= $ad['fname'] ?> <?= $ad['mname'] ?></td>
                             <td> <a href="/deleteSection/<?= $ad['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
                               <a href="/editSection/<?= $ad['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
                           </tr>
@@ -142,24 +144,38 @@ $sectionSubset = array_slice($stud_section, $offset, $recordsPerPage);
                       </tbody>
                     </table>
                   </div>
-                  <!-- /.card-body -->
-                  <!-- Pagination buttons -->
-                  <div class="card-footer clearfix">
-                    <ul class="pagination pagination-sm m-0 float-right">
-                      <?php if ($currentPage > 1): ?>
-                        <li class="page-item"><a class="page-link" href="?page=<?= $currentPage - 1 ?>">Previous</a></li>
-                      <?php endif; ?>
-                      <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-                        <li class="page-item <?= $i === $currentPage ? 'active' : '' ?>"><a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a></li>
-                      <?php endfor; ?>
-                      <?php if ($currentPage < $totalPages): ?>
-                        <li class="page-item"><a class="page-link" href="?page=<?= $currentPage + 1 ?>">Next</a></li>
-                      <?php endif; ?>
-                    </ul>
+                <!-- /.card-body -->
+                  <!-- Pagination Links -->
+                  <div class="card-footer">
+                    <nav aria-label="Page navigation example">
+                      <ul class="pagination justify-content-center">
+                        <?php if ($currentPage > 1) : ?>
+                          <li class="page-item">
+                            <a class="page-link" href="?page=<?= $currentPage - 1 ?>" aria-label="Previous">
+                              <span aria-hidden="true">&laquo;</span>
+                            </a>
+                          </li>
+                        <?php endif; ?>
+                        <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
+                          <li class="page-item <?= $i == $currentPage ? 'active' : '' ?>">
+                            <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
+                          </li>
+                        <?php endfor; ?>
+                        <?php if ($currentPage < $totalPages) : ?>
+                          <li class="page-item">
+                            <a class="page-link" href="?page=<?= $currentPage + 1 ?>" aria-label="Next">
+                              <span aria-hidden="true">&raquo;</span>
+                            </a>
+                          </li>
+                        <?php endif; ?>
+                      </ul>
+                    </nav>
                   </div>
                 </div>
-                <!-- /.card -->
-              </div> <!-- /.dito -->
+              </div>
+              <!-- /.card -->
+            </div> <!-- /.dito -->
+
 
               <div class="col-lg-18 mb-4 order-0">
                 <div class="card">
@@ -172,21 +188,28 @@ $sectionSubset = array_slice($stud_section, $offset, $recordsPerPage);
                         <!-- Add your form fields and content here -->
 
                         <div class="form-group margin-left">
-                          <input type="hidden" class="form-control" name="id"
-                                 value="<?php if (isset($sec['id'])) {echo $sec['id'];}?>">
+                        <input type="hidden" class="form-control" name="id"
+                                        value="<?php if (isset($sec['id'])) {echo $sec['id'];}?>">
 
+                                        <label for="name">Section Name:</label>
+                                        <input type="text" class="form-control" name="name" placeholder="Enter Section Name"
+                                        value="<?php if (isset($sec['name'])) {echo $sec['name'];}?>">
 
-                          <label for="name">Section Name:</label>
-                          <input type="text" class="form-control" name="name" placeholder="Enter Section Name"
-                                 value="<?php if (isset($sec['name'])) {echo $sec['name'];}?>">
-
+                                        <label for="grade_level_id">Grade Level:</label>
+                                        <input type="text" class="form-control" name="grade_level_id" placeholder="Enter Grade Level" 
+                                        value="<?php if (isset($sec['grade_level_id'])) {echo $sec['grade_level_id'];}?>" required> 
                         </div>
                     </div>
                     <div class="col-sm-5 text-center text-sm-left">
                       <div class="form-group margin-left">
-                        <label for="grade_level_id">Grade Level:</label>
-                        <input type="text" class="form-control" name="grade_level_id" placeholder="Enter Grade Level"
-                               value="<?php if (isset($sec['grade_level_id'])) {echo $sec['grade_level_id'];}?>" required>
+                      <label for="adviser">Section Adviser:</label>
+                        <input type="text" class="form-control" name="adviser" placeholder="Enter Section Adviser" 
+                        value="<?php if (isset($sec['adviser'])) {echo $sec['adviser'];}?> " list="list" required>
+                        <datalist type="hidden" id="list">
+                                            <?php foreach ($teacher as $te):?> 
+                                                <option value="<?= $te['idnum'] ?>"><?= $te['fname'] ?> <?= $te['mname'] ?> <?= $te['lname'] ?></option>
+                                            <?php endforeach; ?>
+                                        </datalist> 
                       </div>
                     </div>
                   </div>

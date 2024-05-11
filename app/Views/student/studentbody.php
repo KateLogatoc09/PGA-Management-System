@@ -83,11 +83,8 @@
           <!-- Content -->
 
           <div class="container-xxl flex-grow-1 container-p-y">
-          <h5 class="card-title text-primary">Welcome <?= $_SESSION['username']; ?>! 🎉</h5>
-                        <p class="mb-4">
-                          Study Hard and Get a Diploma.
-                        </p>
             <div class="row">
+            <h1 class="center blue">Student Information</h1> 
               <div class="col-lg-18 mb-4 order-0">
                 <div class="card">
                 <?php if(is_array($status)): ?>
@@ -96,7 +93,9 @@
                   <div class="d-flex align-items-end row">
                     <div class="col-sm-5">
                       <div class="card-body">
-                        <h5 class="card-title text-primary">Student Information</h5>
+                        <h5 class="card-title text-primary"><?php if (isset($learn['first_name'])) {echo $learn['first_name'];}?>
+                        <?php if (isset($learn['middle_name'])) {echo $learn['middle_name'];}?>
+                        <?php if (isset($learn['last_name'])) {echo $learn['last_name'];}?></h5>
                         <br>
                         <h7 class="orange">Student ID:</h7>
                         <?php if (isset($ad['student_id'])) {echo $ad['student_id'];}?>
@@ -113,20 +112,25 @@
                         <?php if (isset($learn['middle_name'])) {echo $learn['middle_name'];}?>
                         <?php if (isset($learn['last_name'])) {echo $learn['last_name'];}?>
                         <br>
-                        <h7 class="orange">Year Level:</h7>
-                        <?php if (isset($ad['yr_lvl'])) {echo $ad['yr_lvl'];}?>
-                        <br>
-                        <h7 class="orange">Section:</h7>
-                        <?php if (isset($ad['section'])) {echo $ad['section'];}?>
-                        <br>
-                        <h7 class="orange">Program:</h7>
-                        <?php if (isset($ad['program'])) {echo $ad['program'];}?>
-                        <br>
                         <h7 class="orange">Nickname:</h7>
                         <?php if (isset($learn['nickname'])) {echo $learn['nickname'];}?>
                         <br>
                         <h7 class="orange">Age:</h7>
                         <?php if (isset($learn['age'])) {echo $learn['age'];}?>
+                        <br>
+                        <h7 class="orange">Year Level:</h7>
+                        <?php if (isset($ad['yr_lvl'])) {echo $ad['yr_lvl'];}?>
+                        <br>
+                        <h7 class="orange">Section:</h7>
+                        <?php if (isset($ad['name'])) {echo $ad['name'];}?>
+                        <br>
+                        <h7 class="orange">Adviser:</h7>
+                        <?php if (isset($ad['fname'])) {echo $ad['fname'];}?>
+                        <?php if (isset($ad['mname'])) {echo $ad['mname'];}?>
+                        <?php if (isset($ad['lname'])) {echo $ad['lname'];}?>
+                        <br>
+                        <h7 class="orange">Program:</h7>
+                        <?php if (isset($ad['program'])) {echo $ad['program'];}?>
                         <br>
                       
                       </div>

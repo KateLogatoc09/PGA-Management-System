@@ -145,103 +145,39 @@ $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
                     </table>
                   </div>
                   <!-- /.card-body -->
+                  <!-- Pagination Links -->
+                  <div class="card-footer">
+                    <nav aria-label="Page navigation example">
+                      <ul class="pagination justify-content-center">
+                        <?php if ($currentPage > 1) : ?>
+                          <li class="page-item">
+                            <a class="page-link" href="?page=<?= $currentPage - 1 ?>" aria-label="Previous">
+                              <span aria-hidden="true">&laquo;</span>
+                            </a>
+                          </li>
+                        <?php endif; ?>
+                        <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
+                          <li class="page-item <?= $i == $currentPage ? 'active' : '' ?>">
+                            <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
+                          </li>
+                        <?php endfor; ?>
+                        <?php if ($currentPage < $totalPages) : ?>
+                          <li class="page-item">
+                            <a class="page-link" href="?page=<?= $currentPage + 1 ?>" aria-label="Next">
+                              <span aria-hidden="true">&raquo;</span>
+                            </a>
+                          </li>
+                        <?php endif; ?>
+                      </ul>
+                    </nav>
+                  </div>
                 </div>
               </div>
               <!-- /.card -->
+            </div> <!-- /.dito -->
 
-              <div class="col-lg-18 mb-4 order-0">
-                <nav aria-label="Page navigation example">
-                  <ul class="pagination">
-                    <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-                    <li class="page-item <?php if ($i == $currentPage) echo 'active'; ?>">
-                      <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
-                    </li>
-                    <?php endfor ?>
-                  </ul>
-                </nav>
-              </div>
 
-            </div>
             <div class="col-lg-18 mb-4 order-0">
-                <div class="card">
-                <div class="card-body">
-                        <h5 class="card-title text-primary">Edit Students' Sibling</h5>
-                      </div>
-                  <div class="d-flex">
-                    <div class="col-sm-5">
-                <form action="/regSavesibling" method="post">
-                    <!-- Add your form fields and content here -->
-
-                    <div class="form-group margin-left">
-                    <input type="hidden" class="form-control" name="id" value="<?php if (isset($sib['id'])) {echo $sib['id'];}?>">
-                    
-                                        <label for="fullname">Full Name:</label>
-                                        <input type="text" class="form-control" name="fullname" placeholder="Enter Full Name"
-                                        value="<?php if (isset($sib['fullname'])) {echo $sib['fullname'];}?>">
-                                 
-                                        <label for="yr_lvl">Year Level:</label>
-                                        <select class="form-control" name="yr_lvl" id="yr_lvl"
-                                        value="<?php if (isset($sib['yr_lvl'])) {echo $sib['yr_lvl'];}?>">
-                                        <option value="">Select Year Level</option>
-                                            <option value="Kinder 1">Kinder 1</option>
-                                            <option value="Kinder 2">Kinder 2</option>
-                                            <option value="Grade 1">Grade 1</option>
-                                            <option value="Grade 2">Grade 2</option>
-                                            <option value="Grade 3">Grade 3</option>
-                                            <option value="Grade 4">Grade 4</option>
-                                            <option value="Grade 5">Grade 5</option>
-                                            <option value="Grade 6">Grade 6</option>
-                                            <option value="Grade 7">Grade 7</option>
-                                            <option value="Grade 8">Grade 8</option>
-                                            <option value="Grade 9">Grade 9</option>
-                                            <option value="Grade 10">Grade 10</option>
-                                            <option value="Grade 11">Grade 11</option>
-                                            <option value="Grade 12">Grade 12</option>
-                                        </select>
-
-                        </div>
-</div>
-<div class="col-sm-5 text-center text-sm-left">
-  <div class="form-group margin-left">
-  <label for="affiliation">Affiliation:</label>
-                                        <input type="text" class="form-control" name="affiliation" placeholder="Enter Affiliation"
-                                        value="<?php if (isset($sib['affiliation'])) {echo $sib['affiliation'];}?>">
-                                 
-               
-                        <input type="hidden" class="form-control" id="account_id" name="account_id" placeholder="Enter Account Id"                         
-                        value="<?php if (isset($sib['account_id'])) {echo $sib['account_id'];}?>" required>             
-  </div>
-</div>
-</div>
-
-<!-- Move the "Save changes" button inside the form -->
-<div class="modal-footer">
-    <button type="submit" class="btn btn-primary">Save changes</button>
-</div>
-</form>
-</div>
-</div>
-
-
-            </div>
-            <!-- / Content -->
-
-            
-            <div class="content-backdrop fade"></div>
-          </div>
-          <!-- Content wrapper -->
-        </div>
-        <!-- / Layout page -->
-      </div>
-    </div>
-  </div>
-  <!-- / Layout wrapper -->
-
-  <script src="assets/js/book.js"></script>
-</body>
-
-</html>
-  <div class="col-lg-18 mb-4 order-0">
                 <div class="card">
                 <div class="card-body">
                         <h5 class="card-title text-primary">Edit Students' Sibling</h5>

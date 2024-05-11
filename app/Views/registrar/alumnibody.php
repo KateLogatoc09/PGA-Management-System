@@ -151,33 +151,38 @@ $alumniSubset = array_slice($alumni, $offset, $recordsPerPage);
                                 </tbody>
                             </table>
                         </div>
-                        <!-- /.card-body -->
-                    </div>
-                    </div>
-                    <!-- /.card -->
-                </div> <!-- /.dito -->
+                  <!-- /.card-body -->
+                  <!-- Pagination Links -->
+                  <div class="card-footer">
+                    <nav aria-label="Page navigation example">
+                      <ul class="pagination justify-content-center">
+                        <?php if ($currentPage > 1) : ?>
+                          <li class="page-item">
+                            <a class="page-link" href="?page=<?= $currentPage - 1 ?>" aria-label="Previous">
+                              <span aria-hidden="true">&laquo;</span>
+                            </a>
+                          </li>
+                        <?php endif; ?>
+                        <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
+                          <li class="page-item <?= $i == $currentPage ? 'active' : '' ?>">
+                            <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
+                          </li>
+                        <?php endfor; ?>
+                        <?php if ($currentPage < $totalPages) : ?>
+                          <li class="page-item">
+                            <a class="page-link" href="?page=<?= $currentPage + 1 ?>" aria-label="Next">
+                              <span aria-hidden="true">&raquo;</span>
+                            </a>
+                          </li>
+                        <?php endif; ?>
+                      </ul>
+                    </nav>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card -->
+            </div> <!-- /.dito -->
 
-  <!-- Pagination buttons -->
-  <nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-center">
-      <li class="page-item <?= $currentPage <= 1 ? 'disabled' : '' ?>">
-        <a class="page-link" href="?page=<?= max($currentPage - 1, 1) ?>" aria-label="Previous">
-          <span aria-hidden="true">&laquo;</span>
-          <span class="sr-only">Previous</span>
-        </a>
-      </li>
-      <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-        <li class="page-item <?= $i === $currentPage ? 'active' : '' ?>"><a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a></li>
-      <?php endfor; ?>
-      <li class="page-item <?= $currentPage >= $totalPages ? 'disabled' : '' ?>">
-        <a class="page-link" href="?page=<?= min($currentPage + 1, $totalPages) ?>" aria-label="Next">
-          <span aria-hidden="true">&raquo;</span>
-          <span class="sr-only">Next</span>
-        </a>
-      </li>
-    </ul>
-  </nav>
-  <!-- / Pagination buttons -->
 
 
                 <div class="col-lg-18 mb-4 order-0">

@@ -109,7 +109,6 @@
                     
                             <thead>
                                     <tr>
-                                        <th>Id</th>
                                         <th>Student Id</th>
                                         <th>Fullname of Student</th>
                                         <th>Section</th>
@@ -141,7 +140,6 @@
                                 foreach ($subset as $g) :
                                 ?>
                                     <tr>
-                                            <td><?= $g['id'] ?></td>
                                             <td><?= $g['student_id'] ?></td>
                                             <td><?= $g['last_name'] ?>, <?= $g['first_name'] ?> <?= $g['middle_name'] ?></td>
                                             <td><?= $g['name'] ?></td>

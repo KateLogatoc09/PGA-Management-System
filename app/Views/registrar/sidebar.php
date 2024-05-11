@@ -29,6 +29,17 @@
               </a>
               <ul class="menu-sub">
 
+              <li class="menu-item active">
+                  <a href="/registrar" class="menu-link">
+                    <div data-i18n="Analytics">Home</div>
+                  </a>
+                </li>
+
+                <li class="menu-item">
+                  <a href="/enrollmentform" class="menu-link">
+                    <div data-i18n="Analytics">Enrollment Forms</div>
+                  </a>
+                </li>
               
               <li class="menu-item">
                   <a href="/application" class="menu-link">
@@ -72,17 +83,10 @@
             <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-book-bookmark"></i>
-                <div data-i18n="Academic">Enrollment Information</div>
+                <div data-i18n="Academic">Enrollment Tables</div>
               </a>
               <ul class="menu-sub">
              
-                <li class="menu-item active">
-                  <a href="/registrar" class="menu-link">
-                    <div data-i18n="Analytics">Home</div>
-                  </a>
-                </li>
-                
-
                 <li class="menu-item">
                   <a href="/regadmissions" class="menu-link">
                     <div data-i18n="Analytics">Admissions</div>

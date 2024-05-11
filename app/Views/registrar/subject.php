@@ -128,15 +128,17 @@ $subjectSubset = array_slice($subject, $offset, $recordsPerPage);
                                         <th>Subject Name</th>
                                         <th>Type of Subject</th>
                                         <th>Grade Level</th> 
+                                        <th>Subject Teacher</th>
                                         <th>Action</th> 
                                     </tr>
                                 </thead>
                                 <tbody>
                                 <?php foreach ($subjectSubset as $ad): ?>
                                     <tr>
-                                            <td><?= $ad['name'] ?></td>
+                                            <td><?= $ad['subject_name'] ?></td>
                                             <td><?= $ad['type'] ?></td>
                                             <td><?= $ad['yr_lvl'] ?></td>
+                                            <td><?= $ad['lname'] ?>, <?= $ad['fname'] ?> <?= $ad['mname'] ?></td>
                                             <td> <a href="/deleteSubject/<?= $ad['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
                                             <a href="/editSubject/<?= $ad['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
                                      </tr>
@@ -145,33 +147,36 @@ $subjectSubset = array_slice($subject, $offset, $recordsPerPage);
                             </table>
                         </div>
                         <!-- /.card-body -->
-                    </div>
-                    </div>
-                    <!-- /.card -->
-                </div> <!-- /.dito -->
-
-
-                <!-- Pagination buttons -->
-  <nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-center">
-      <li class="page-item <?= $currentPage <= 1 ? 'disabled' : '' ?>">
-        <a class="page-link" href="?page=<?= max($currentPage - 1, 1) ?>" aria-label="Previous">
-          <span aria-hidden="true">&laquo;</span>
-          <span class="sr-only">Previous</span>
-        </a>
-      </li>
-      <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-        <li class="page-item <?= $i === $currentPage ? 'active' : '' ?>"><a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a></li>
-      <?php endfor; ?>
-      <li class="page-item <?= $currentPage >= $totalPages ? 'disabled' : '' ?>">
-        <a class="page-link" href="?page=<?= min($currentPage + 1, $totalPages) ?>" aria-label="Next">
-          <span aria-hidden="true">&raquo;</span>
-          <span class="sr-only">Next</span>
-        </a>
-      </li>
-    </ul>
-  </nav>
-  <!-- / Pagination buttons -->
+                  <!-- Pagination Links -->
+                  <div class="card-footer">
+                    <nav aria-label="Page navigation example">
+                      <ul class="pagination justify-content-center">
+                        <?php if ($currentPage > 1) : ?>
+                          <li class="page-item">
+                            <a class="page-link" href="?page=<?= $currentPage - 1 ?>" aria-label="Previous">
+                              <span aria-hidden="true">&laquo;</span>
+                            </a>
+                          </li>
+                        <?php endif; ?>
+                        <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
+                          <li class="page-item <?= $i == $currentPage ? 'active' : '' ?>">
+                            <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
+                          </li>
+                        <?php endfor; ?>
+                        <?php if ($currentPage < $totalPages) : ?>
+                          <li class="page-item">
+                            <a class="page-link" href="?page=<?= $currentPage + 1 ?>" aria-label="Next">
+                              <span aria-hidden="true">&raquo;</span>
+                            </a>
+                          </li>
+                        <?php endif; ?>
+                      </ul>
+                    </nav>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card -->
+            </div> <!-- /.dito -->
 
   
 
@@ -186,12 +191,13 @@ $subjectSubset = array_slice($subject, $offset, $recordsPerPage);
                     <!-- Add your form fields and content here -->
 
                     <div class="form-group margin-left">
+
                     <input type="hidden" class="form-control" name="id"
                                         value="<?php if (isset($sub['id'])) {echo $sub['id'];}?>">
 
-                                        <label for="name">Subject Name:</label>
-                                        <input type="text" class="form-control" name="name" placeholder="Enter Subject Name"
-                                        value="<?php if (isset($sub['name'])) {echo $sub['name'];}?>">
+                                        <label for="subject_name">Subject Name:</label>
+                                        <input type="text" class="form-control" name="subject_name" placeholder="Enter Subject Name"
+                                        value="<?php if (isset($sub['subject_name'])) {echo $sub['subject_name'];}?>">
 
                                         <label for="type">Type of Subject:</label>
                                         <select class="form-control" name="type" id="Type of Subject">
@@ -205,6 +211,15 @@ $subjectSubset = array_slice($subject, $offset, $recordsPerPage);
 </div>
 <div class="col-sm-5 text-center text-sm-left">
   <div class="form-group margin-left">
+  <label for="teacher_id">Subject Teacher:</label>
+                        <input type="text" class="form-control" name="teacher_id" placeholder="Enter Subject Teacher" 
+                        value="<?php if (isset($sub['teacher_id'])) {echo $sub['teacher_id'];}?> " list="list" required>
+                        <datalist type="hidden" id="list">
+                                            <?php foreach ($teacher as $te):?> 
+                                                <option value="<?= $te['idnum'] ?>"><?= $te['fname'] ?> <?= $te['mname'] ?> <?= $te['lname'] ?></option>
+                                            <?php endforeach; ?>
+                                        </datalist> 
+
                                         <label for="yr_lvl">Grade Level:</label>
                                         <input type="text" class="form-control" name="yr_lvl" placeholder="Enter Grade Level" 
                                         value="<?php if (isset($sub['yr_lvl'])) {echo $sub['yr_lvl'];}?>" required>  

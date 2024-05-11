@@ -157,6 +157,7 @@ $routes->get('/parent', 'ParentController::parent', ['filter' => 'parents']);
 //REGISTRAR
 $routes->get('/registrar', 'RegistrarController::registrar', ['filter' => 'registrar']);
 $routes->get('/reggrade', 'RegistrarController::reggrade', ['filter' => 'registrar']);
+$routes->get('/enrollmentform', 'RegistrarController::enrollmentform', ['filter' => 'registrar']);
 $routes->get('/searchAppli', 'RegistrarController::searchAppli', ['filter' => 'registrar']);
 $routes->get('/searchSection', 'RegistrarController::searchSection', ['filter' => 'registrar']);
 $routes->get('/searchSubject', 'RegistrarController::searchSubject', ['filter' => 'registrar']);
@@ -185,6 +186,7 @@ $routes->get('/regadmissions', 'RegistrarController::regadmissions', ['filter' =
 $routes->post('/regSaveadmissions', 'RegistrarController::regSaveadmissions', ['filter' => 'registrar']);
 $routes->get('/regDeleteadmissions/(:any)', 'RegistrarController::regDeleteadmissions/$1', ['filter' => 'registrar']);
 $routes->get('/regEditadmissions/(:any)', 'RegistrarController::regEditadmissions/$1', ['filter' => 'registrar']);
+$routes->get('/expandAdmissions/(:any)', 'RegistrarController::expandAdmissions/$1', ['filter' => 'registrar']);
 $routes->get('/application', 'RegistrarController::application', ['filter' => 'registrar']);
 $routes->get('/editApplication/(:any)', 'RegistrarController::editApplication/$1', ['filter' => 'registrar']);
 $routes->post('/saveApplication', 'RegistrarController::saveApplication', ['filter' => 'registrar']);

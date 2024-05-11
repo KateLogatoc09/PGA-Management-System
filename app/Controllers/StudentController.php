@@ -38,7 +38,10 @@ class StudentController extends BaseController
         
         $data = [
             'learn' => $this->learner->where('account_id', $curruser)->first(),
-            'ad' => $this->admissions->where('account_id', $curruser)->first(),
+            'ad' => $this->admissions->select('admissions.id as id, student_id, name, category,yr_lvl,program, status,
+            birth_cert, report_card, good_moral, admissions.photo, schedule, fname, mname, lname')
+            ->join('sections','sections.id = admissions.section','left')->join('teachers','sections.adviser = teachers.idnum','left')
+            ->where('admissions.account_id', $curruser)->first(),
             'fam' => $this->family->where('account_id', $curruser)->FindAll(),
             'address' => $this->address->where('account_id', $curruser)->FindAll(),
             'sibling' => $this->sibling->where('account_id', $curruser)->FindAll(),
