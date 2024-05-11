@@ -142,7 +142,7 @@ $studentSubset = array_slice($student, $offset, $recordsPerPage);
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <?php foreach ($studentSubset as $ad): ?>
+                                <?php $x = 1; foreach ($studentSubset as $ad): ?>
                                     <tr>
                                             <td><img
                                             src="<?= base_url().$ad['photo'] ?>"
@@ -150,6 +150,8 @@ $studentSubset = array_slice($student, $offset, $recordsPerPage);
                                             class="d-block rounded"
                                             height="100"
                                             width="100"
+                                            id="p<?=$x?>"
+                                            onclick="openFullscreenp<?=$x?>();"
                                             /></td>
                                             <td><?= $ad['student_id'] ?></td>
                                             <td><?= $ad['first_name'] ?></td>
@@ -166,6 +168,8 @@ $studentSubset = array_slice($student, $offset, $recordsPerPage);
                                             class="d-block rounded"
                                             height="100"
                                             width="100"
+                                            id="b<?=$x?>"
+                                            onclick="openFullscreenb<?=$x?>();"
                                             /></td>
                                             <td><img
                                             src="<?= base_url().$ad['report_card'] ?>"
@@ -173,6 +177,8 @@ $studentSubset = array_slice($student, $offset, $recordsPerPage);
                                             class="d-block rounded"
                                             height="100"
                                             width="100"
+                                            id="r<?=$x?>"
+                                            onclick="openFullscreenr<?=$x?>();"
                                             /></td>
                                             <td><img
                                             src="<?= base_url().$ad['good_moral'] ?>"
@@ -180,13 +186,15 @@ $studentSubset = array_slice($student, $offset, $recordsPerPage);
                                             class="d-block rounded"
                                             height="100"
                                             width="100"
+                                            id="g<?=$x?>"
+                                            onclick="openFullscreeng<?=$x?>();"
                                             /></td>
                                             <td><?= $ad['schedule'] ?></td>
                                             <td><?= $ad['status'] ?></td>
                                             <td> <a href="/regDeleteadmissions/<?= $ad['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
                                             <a href="/regEditadmissions/<?= $ad['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
                                      </tr>
-                                <?php endforeach ?>
+                                <?php $x++; endforeach ?>
                                 </tbody>
                             </table>
                         </div>
@@ -356,6 +364,50 @@ $studentSubset = array_slice($student, $offset, $recordsPerPage);
 
 
   <script src="assets/js/book.js"></script>
+  <script>
+    <?php $y = 1; foreach ($studentSubset as $add): ?>
+
+      function openFullscreenp<?=$y?>() {
+        if (document.getElementById('p<?=$y?>').requestFullscreen) {
+          document.getElementById('p<?=$y?>').requestFullscreen();
+        } else if (document.getElementById('p<?=$y?>').webkitRequestFullscreen) { /* Safari */
+          document.getElementById('p<?=$y?>').webkitRequestFullscreen();
+        } else if (document.getElementById('p<?=$y?>').msRequestFullscreen) { /* IE11 */
+          document.getElementById('p<?=$y?>').msRequestFullscreen();
+        }
+      }
+
+      function openFullscreenb<?=$y?>() {
+        if (document.getElementById('b<?=$y?>').requestFullscreen) {
+          document.getElementById('b<?=$y?>').requestFullscreen();
+        } else if (document.getElementById('b<?=$y?>').webkitRequestFullscreen) { /* Safari */
+          document.getElementById('b<?=$y?>').webkitRequestFullscreen();
+        } else if (document.getElementById('b<?=$y?>').msRequestFullscreen) { /* IE11 */
+          document.getElementById('b<?=$y?>').msRequestFullscreen();
+        }
+      }
+
+      function openFullscreenr<?=$y?>() {
+        if (document.getElementById('r<?=$y?>').requestFullscreen) {
+          document.getElementById('r<?=$y?>').requestFullscreen();
+        } else if (document.getElementById('r<?=$y?>').webkitRequestFullscreen) { /* Safari */
+          document.getElementById('r<?=$y?>').webkitRequestFullscreen();
+        } else if (document.getElementById('r<?=$y?>').msRequestFullscreen) { /* IE11 */
+          document.getElementById('r<?=$y?>').msRequestFullscreen();
+        }
+      }
+
+      function openFullscreeng<?=$y?>() {
+        if (document.getElementById('g<?=$y?>').requestFullscreen) {
+          document.getElementById('g<?=$y?>').requestFullscreen();
+        } else if (document.getElementById('g<?=$y?>').webkitRequestFullscreen) { /* Safari */
+          document.getElementById('g<?=$y?>').webkitRequestFullscreen();
+        } else if (document.getElementById('g<?=$y?>').msRequestFullscreen) { /* IE11 */
+          document.getElementById('g<?=$y?>').msRequestFullscreen();
+        }
+      }
+    <?php $y++; endforeach ?>
+  </script>
 </body>
 
 </html>
