@@ -127,6 +127,7 @@
                         $currentPage = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
                         $offset = ($currentPage - 1) * $recordsPerPage;
                         $subset = array_slice($borrow, $offset, $recordsPerPage);
+                        $x = 1;
                         foreach ($subset as $book) :
                         ?>
                           <tr>
@@ -141,11 +142,11 @@
                             <td><?= $book['fines'] ?></td>
                             <td><?= $book['status'] ?></td>
                             <td>
-                              <a href="/deleteBorrow/<?= $book['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
+                              <a href="/deleteBorrow/<?= $book['id'] ?>" class="btn btn-danger btn-sm" id="d<?=$x?>">Delete</a>
                               <a href="/editBorrow/<?= $book['id'] ?>" class="btn btn-primary btn-sm">Edit</a>
                             </td>
                           </tr>
-                        <?php endforeach ?>
+                        <?php $x++; endforeach ?>
                         <!-- End Pagination Logic -->
                       </tbody>
                     </table>
@@ -257,7 +258,29 @@
     </div>
   </div>
   <!-- / Layout wrapper -->
-
+  <script>
+  <?php $y = 1; foreach ($subset as $book): ?>
+  document.getElementById("d<?=$y?>").addEventListener("click", function (event) {
+    event.preventDefault()
+      //sweetalert2 code
+      Swal.fire({
+          title: 'PGA',
+          text: "Are you sure? You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location = $(this).attr('href');
+        } else if (result.isDenied) {
+          Swal.fire('Changes are not saved', '', 'info');
+        }
+      })
+    });
+<?php $y++; endforeach; ?>
+  </script>
 </body>
 
 </html>

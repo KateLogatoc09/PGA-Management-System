@@ -137,6 +137,7 @@
                                 $subset = array_slice($grade, $offset, $recordsPerPage);
 
                                 // Loop through the subset of records to display
+                                $x = 1;
                                 foreach ($subset as $g) :
                                 ?>
                                     <tr>
@@ -146,10 +147,10 @@
                                             <td><?= $g['subject_name'] ?></td>
                                             <td><?= $g['grade'] ?></td>
                                             <td><?= $g['idnum'] ?></td>
-                                            <td> <a href="/deleteGrade/<?= $g['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
+                                            <td> <a href="/deleteGrade/<?= $g['id'] ?>" class="btn btn-danger btn-sm" id="d<?=$x?>">Delete</a>
                                             <a href="/editGrade/<?= $g['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
                                     </tr>
-                                <?php endforeach ?>
+                                <?php $x++; endforeach ?>
                                 <!-- End Pagination Logic -->
                                 </tbody>
                             </table>
@@ -247,7 +248,29 @@
     </div>
   </div>
   <!-- / Layout wrapper -->
-
+  <script>
+  <?php $y = 1; foreach ($subset as $g): ?>
+  document.getElementById("d<?=$y?>").addEventListener("click", function (event) {
+    event.preventDefault()
+      //sweetalert2 code
+      Swal.fire({
+          title: 'PGA',
+          text: "Are you sure? You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location = $(this).attr('href');
+        } else if (result.isDenied) {
+          Swal.fire('Changes are not saved', '', 'info');
+        }
+      })
+    });
+<?php $y++; endforeach; ?>
+  </script>
   <script src="assets/js/book.js"></script>
 </body>
 

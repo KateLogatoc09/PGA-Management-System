@@ -138,7 +138,7 @@
                                 ?>
 
                                 <!-- Display Account List -->
-                                <?php foreach ($accountsSubset as $accy): ?>
+                                <?php $x = 1; foreach ($accountsSubset as $accy): ?>
                                     <tr>
                                         <td><?= $accy['username'] ?></td>
                                         <td><?= $accy['email'] ?></td>
@@ -147,11 +147,11 @@
                                         <td><?= $accy['suspension'] ?></td>
                                         <td><?= $accy['activity'] ?></td>
                                         <td>
-                                            <a href="/deleteAccount/<?= $accy['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
+                                            <a href="/deleteAccount/<?= $accy['id'] ?>" class="btn btn-danger btn-sm" id="d<?=$x?>">Delete</a>
                                             <a href="/editAccount/<?= $accy['id'] ?>" class="btn btn-primary btn-sm">Edit</a>
                                         </td>
                                     </tr>
-                                <?php endforeach ?>
+                                <?php $x++; endforeach ?>
                                 <!-- End Display Account List -->
                                 </tbody>
                             </table>
@@ -271,7 +271,29 @@
     </div>
   </div>
   <!-- / Layout wrapper -->
-
+  <script>
+  <?php $y = 1; foreach ($accountsSubset as $accy): ?>
+  document.getElementById("d<?=$y?>").addEventListener("click", function (event) {
+    event.preventDefault()
+      //sweetalert2 code
+      Swal.fire({
+          title: 'PGA',
+          text: "Are you sure? You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location = $(this).attr('href');
+        } else if (result.isDenied) {
+          Swal.fire('Changes are not saved', '', 'info');
+        }
+      })
+    });
+<?php $y++; endforeach; ?>
+  </script>
   <script src="assets/js/book.js"></script>
 </body>
 
