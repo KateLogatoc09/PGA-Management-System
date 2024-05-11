@@ -206,7 +206,7 @@ $sectionSubset = array_slice($stud_section, $offset, $recordsPerPage);
                                          
                                         <label for="adviser">Section Adviser:</label>
                         <input type="text" class="form-control" name="adviser" placeholder="Enter Section Adviser" 
-                        value="<?php if (isset($sec['adviser'])) {echo $sec['adviser'];}?> " list="list" required>
+                        value="<?php if (isset($sec['adviser'])) {echo $sec['adviser'];}?>" list="list" required>
                         <datalist type="hidden" id="list">
                                             <?php foreach ($teacher as $te):?> 
                                                 <option value="<?= $te['idnum'] ?>"><?= $te['fname'] ?> <?= $te['mname'] ?> <?= $te['lname'] ?></option>

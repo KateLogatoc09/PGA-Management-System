@@ -47,14 +47,14 @@ class AACController extends BaseController
             $session = session();
             $id = $_POST['id'];
             $tid = $this->request->getVar('adviser');
-            $res = $this->teacher->select('teachers.idnum')->where('teachers.idnum', $tid)->first();
+            $re = $this->teacher->select('idnum')->where('idnum', $tid)->first();
 
             $data = [
                 'name' => $this->request->getVar('name'),
                 'grade_level_id' => $this->request->getVar('grade_level_id'),
             ];
 
-            if($res) {
+            if($re) {
                 $data['adviser'] = $tid;
             } else {
                 $session->setFlashdata('msg','Teacher doesn\'t exist.');
@@ -131,7 +131,7 @@ class AACController extends BaseController
             $session = session();
             $id = $_POST['id'];
             $tid = $this->request->getVar('teacher_id');
-            $res = $this->teacher->select('teachers.idnum')->where('teachers.idnum', $tid)->first();
+            $re = $this->teacher->select('*')->where('idnum', $tid)->first();
 
             $data = [
                 'subject_name' => $this->request->getVar('subject_name'),
@@ -139,7 +139,7 @@ class AACController extends BaseController
                 'yr_lvl' => $this->request->getVar('yr_lvl'),
             ];
 
-            if($res) {
+            if($re) {
                 $data['teacher_id'] = $tid;
             } else {
                 $session->setFlashdata('msg','Teacher doesn\'t exist.');

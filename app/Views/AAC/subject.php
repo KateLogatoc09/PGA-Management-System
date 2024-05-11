@@ -209,7 +209,7 @@ $subjectSubset = array_slice($subject, $offset, $recordsPerPage);
   <div class="form-group margin-left">
                                         <label for="teacher_id">Subject Teacher:</label>
                         <input type="text" class="form-control" name="teacher_id" placeholder="Enter Subject Teacher" 
-                        value="<?php if (isset($sub['teacher_id'])) {echo $sub['teacher_id'];}?> " list="list" required>
+                        value="<?php if (isset($sub['teacher_id'])) {echo $sub['teacher_id'];}?>" list="list" required>
                         <datalist type="hidden" id="list">
                                             <?php foreach ($teacher as $te):?> 
                                                 <option value="<?= $te['idnum'] ?>"><?= $te['fname'] ?> <?= $te['mname'] ?> <?= $te['lname'] ?></option>
