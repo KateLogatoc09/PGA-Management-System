@@ -4,16 +4,16 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class BorrowedBooksModel extends Model
+class FeedbackModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'borrowedbooks';
+    protected $table            = 'feedback';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['account_id','book_qty', 'date_borrowed', 'date_to_be_return', 'date_returned', 'circulation', 'fines','status','book_id'];
+    protected $allowedFields    = ['rating', 'comment', 'account_id'];
 
     // Dates
     protected $useTimestamps = false;

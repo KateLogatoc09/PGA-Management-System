@@ -1,11 +1,18 @@
 <?php
-// Pagination Configuration
-$totalRecords = count($grade);
-$recordsPerPage = 5;
-$totalPages = ceil($totalRecords / $recordsPerPage);
+      // Define the number of records per page
+      $recordsPerPage = 5;
 
-// Current Page
-$currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
+      // Calculate the total number of pages
+      $totalPages = ceil(count($feedback) / $recordsPerPage);
+
+      // Get the current page number from the query string, default to 1 if not set
+      $currentPage = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
+
+      // Calculate the offset for the subset of records to be displayed on the current page
+      $offset = ($currentPage - 1) * $recordsPerPage;
+
+      // Get a subset of records for the current page
+      $subset = array_slice($feedback, $offset, $recordsPerPage);
 ?>
 
 <body>
@@ -82,7 +89,7 @@ $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
             </ul>
           </div>
         </nav>
-        <?= $this->include('registrar/sidebar') ?>
+        <?= $this->include('admin/sidebar') ?>
         <!-- / Navbar -->
 
         <!-- Content wrapper -->
@@ -96,10 +103,10 @@ $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
               <div class="col-lg-18 mb-4 order-0">
                 <div class="card">
                   <div class="card-header">
-                    <h3 class="card-title">Grades List</h3>
+                    <h3 class="card-title">Feedbacks</h3>
                     <div class="card-tools">
                       <div class="input-group input-group-sm" style="width: 400px;">
-                      <form action="/searchStudgrade" method="get">
+                      <form action="#" method="get">
                         <div class="input-group-append">
                         <input type="text" name="search" class="form-control float-right" placeholder="Search">
                           <button type="submit" class="btn btn-default">
@@ -115,30 +122,18 @@ $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
                     <table class="table table-hover text-nowrap">
                       <thead>
                         <tr>
-                            <th>Student Id</th>
-                            <th>Fullname of Student</th>
-                            <th>Section</th>
-                            <th>Subject</th>
-                            <th>Grade</th>
-                            <th>Teacher Id</th>
+                            <th>Rating</th>
+                            <th>Comment</th>
+                            <th>Email</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <?php
-                        // Paginate the results
-                        $start = ($currentPage - 1) * $recordsPerPage;
-                        $end = $start + $recordsPerPage;
-                        $paginatedGrade = array_slice($grade, $start, $recordsPerPage);
-                        
-                        foreach ($paginatedGrade as $g):
+                        <?php foreach ($subset as $g):
                         ?>
                         <tr>
-                            <td><?= $g['student_id'] ?></td>
-                            <td><?= $g['last_name'] ?>, <?= $g['first_name'] ?> <?= $g['middle_name'] ?></td>
-                            <td><?= $g['name'] ?></td>
-                            <td><?= $g['subject_name'] ?></td>
-                            <td><?= $g['grade'] ?></td>
-                            <td><?= $g['idnum'] ?></td>
+                            <td><?= $g['rating'] ?></td>
+                            <td><?= $g['comment'] ?></td>
+                            <td><?= $g['email'] ?></td>
                         </tr>
                         <?php endforeach ?>
                       </tbody>

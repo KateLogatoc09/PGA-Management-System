@@ -4,21 +4,46 @@ namespace App\Controllers;
 use App\Models\NotificationModel;
 use App\Controllers\BaseController;
 use App\Models\ApplicationModel;
+use App\Models\FeedbackModel;
 use App\Models\AccountModel;
 
 class GeneralController extends BaseController
 {
-    private $notification, $app, $acc;
+    private $notification, $app, $acc, $feedback;
     public function __construct()
     {
         $this->notification = new NotificationModel();
         $this->app = new ApplicationModel();
         $this->acc = new AccountModel();
+        $this->feedback = new FeedbackModel();
     }
 
     public function general(){
             return view ('general');
         }
+    
+    public function feedback(){
+            return view ('feedback');
+        }
+    
+        public function sendfeedback()  {
+            $session = session();
+            $id = $_POST['id'];
+            $data = [
+                'rating' => $this->request->getPost('rating'),
+                'comment' => $this->request->getPost('comment'),   
+                'account_id' => $this->acc->select('id')->where('username', $_SESSION['username'])->first(), 
+            ];
+    
+            $res = $this->feedback->save($data);
+            if($res) {
+                $session->setFlashdata('msg','Feedback Sent Successfully.');             
+            } else {
+                $session->setFlashdata('msg','Something went wrong. Please try again later.');
+            }   
+            return redirect()->to('feedback');
+        }
+    
 
     public function notification(){
         $data = [

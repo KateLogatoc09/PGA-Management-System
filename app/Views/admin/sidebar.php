@@ -47,6 +47,13 @@
                     <div data-i18n="Analytics">Announcement</div>
                   </a>
                 </li>
+
+                <li class="menu-item">
+                  <a href="/feedbackview" class="menu-link">
+                    <div data-i18n="Analytics">Feedbacks</div>
+                  </a>
+                </li>
+
               </ul>
             </li>
 

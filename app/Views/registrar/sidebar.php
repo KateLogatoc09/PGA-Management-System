@@ -76,6 +76,18 @@
                     <div data-i18n="Analytics">Grades</div>
                   </a>
                 </li>
+
+                <li class="menu-item">
+                  <a href="/parentChild" class="menu-link">
+                    <div data-i18n="Analytics">Parents</div>
+                  </a>
+                </li>
+
+                <li class="menu-item">
+                  <a href="/feedback" class="menu-link">
+                    <div data-i18n="Analytics">Feedback</div>
+                  </a>
+                </li>
                 
               </ul>
             </li>

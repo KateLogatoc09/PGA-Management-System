@@ -24,11 +24,13 @@ $routes->get('/notif', 'Mailing::notif');
 
 //GENERAL
 $routes->get('/general', 'GeneralController::general', ['filter' => 'isloggedin']);
+$routes->get('/feedback', 'GeneralController::feedback', ['filter' => 'isloggedin']);
 $routes->get('/applyStudent', 'GeneralController::applyStudent', ['filter' => 'isloggedin']);
 $routes->get('/applyParent', 'GeneralController::applyParent', ['filter' => 'isloggedin']);
 $routes->get('/applyConfirm', 'GeneralController::applyConfirm', ['filter' => 'isloggedin']);
 $routes->get('/notification', 'GeneralController::notification', ['filter' => 'isloggedin']);
 $routes->post('/apply_st', 'GeneralController::apply_st', ['filter' => 'isloggedin']);
+$routes->post('/sendfeedback', 'GeneralController::sendfeedback', ['filter' => 'isloggedin']);
 $routes->post('/apply_pr', 'GeneralController::apply_pr', ['filter' => 'isloggedin']);
 
 //ATTENDANCE
@@ -46,6 +48,7 @@ $routes->get('/deleteAccount/(:any)', 'AdminController::deleteAccount/$1', ['fil
 $routes->get('/editAccount/(:any)', 'AdminController::editAccount/$1', ['filter' => 'admin']);
 
 $routes->get('/announce', 'AdminController::announce', ['filter' => 'admin']);
+$routes->get('/feedbackview', 'AdminController::feedbackview', ['filter' => 'admin']);
 
 //ADMIN TEACHER
 $routes->get('/addTeacher', 'AdminController::addTeacher', ['filter' => 'admin']);
@@ -207,6 +210,10 @@ $routes->get('/subjects', 'RegistrarController::subjects', ['filter' => 'registr
 $routes->post('/saveSubject', 'RegistrarController::saveSubject', ['filter' => 'registrar']);
 $routes->get('/deleteSubject/(:any)', 'RegistrarController::deleteSubject/$1', ['filter' => 'registrar']);
 $routes->get('/editSubject/(:any)', 'RegistrarController::editSubject/$1', ['filter' => 'registrar']);
+$routes->get('/parentChild', 'RegistrarController::parentChild', ['filter' => 'registrar']);
+$routes->get('/deleteParentacc/(:any)', 'RegistrarController::deleteParentacc/$1', ['filter' => 'registrar']);
+$routes->get('/editParentacc/(:any)', 'RegistrarController::editParentacc/$1', ['filter' => 'registrar']);
+$routes->get('/searchParentchild', 'RegistrarController::searchParentchild', ['filter' => 'registrar']);
 
 //REGISTRAR ALUMNI
 $routes->get('/alumni', 'RegistrarController::alumni', ['filter' => 'registrar']);

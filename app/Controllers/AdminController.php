@@ -5,15 +5,17 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\TeacherModel;
 use App\Models\AccountModel;
+use App\Models\FeedbackModel;
 
 class AdminController extends BaseController
 {
     
-    private $teacher, $account;
+    private $teacher, $account, $feedback;
     public function __construct()
     {
         $this->teacher = new TeacherModel();
         $this->account = new AccountModel();
+        $this->feedback = new FeedbackModel();
     }
 
     public function index()
@@ -22,6 +24,15 @@ class AdminController extends BaseController
                 'account' => $this->account->orderBy('username')->findAll(),
                 ];
             return view ('admin', $data);
+    }
+
+    public function feedbackview()
+    {
+            $data = [
+                'feedback' => $this->feedback->select('feedback.id as id, rating, comment, email')
+                ->join('accounts','accounts.id = feedback.account_id','inner')->findAll(),
+                ];
+            return view ('feedbackview', $data);
     }
 
     public function searchAccount()

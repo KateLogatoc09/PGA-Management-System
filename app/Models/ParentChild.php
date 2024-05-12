@@ -4,16 +4,16 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class BorrowedBooksModel extends Model
+class ParentChild extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'borrowedbooks';
+    protected $table            = 'parent_child';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['account_id','book_qty', 'date_borrowed', 'date_to_be_return', 'date_returned', 'circulation', 'fines','status','book_id'];
+    protected $allowedFields    = ['child_id', 'parent_id'];
 
     // Dates
     protected $useTimestamps = false;
@@ -38,4 +38,28 @@ class BorrowedBooksModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    // Create and save grade level
+    public function add_grade_level($data){
+        $this -> insert($data);
+        return $this-> getInsertID();
+    }
+
+    // Fetch all saved grade level
+    public function get_all_grade_level(){
+        return $this-> findAll();
+    }
+
+    public function update_grade_level($grade_level_id, $data){
+        $this->update($grade_level_id, $data);
+        return $this->affectedRows();
+    }
+
+
+    public function delete_grade_level($grade_level_id)
+    {
+        $this->delete($grade_level_id);
+        return $this->affectedRows();
+    }
+    
 }

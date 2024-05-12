@@ -128,26 +128,6 @@
                 </div>
               </div>
             </div>
-            <!-- Personnel -->
-            <div class="col-md-6 col-lg-3">
-              <div class="card text-center mb-3">
-                <div class="card-body">
-                  <h5 class="card-title">Personnel Account</h5>
-                  <center>
-                  <img
-                          src="../assets/img/avatars/teacher.png"
-                          alt="user-avatar"
-                          class="d-block rounded"
-                          height="100"
-                          width="100"
-                          id="uploadedAvatar"
-                        />
-                  </center>
-                  <p class="card-text">Please coordinate with our IT department in Puerto Galera Academy to have a personnel account.</p>
-                  <a href="javascript:void(0)" class="btn btn-primary">Ok</a>
-                </div>
-              </div>
-            </div>
             <!-- Alumni -->
             <div class="col-md-6 col-lg-3">
               <div class="card text-center mb-3">
@@ -165,6 +145,25 @@
                   </center>
                   <p class="card-text">Apply? Submit necessary documents to enjoy various features and privileges as an alumni.</p>
                   <a href="javascript:void(0)" class="btn btn-primary">Apply</a>
+                </div>
+              </div>
+            </div>
+            <!-- Personnel -->
+            <div class="col-md-6 col-lg-3">
+              <div class="card text-center mb-3">
+                <div class="card-body">
+                  <h5 class="card-title">Personnel Account</h5>
+                  <center>
+                  <img
+                          src="../assets/img/avatars/teacher.png"
+                          alt="user-avatar"
+                          class="d-block rounded"
+                          height="100"
+                          width="100"
+                          id="uploadedAvatar"
+                        />
+                  </center>
+                  <p class="card-text">Please coordinate with our IT department in Puerto Galera Academy to have a personnel account to enjoy various features.</p>
                 </div>
               </div>
             </div>

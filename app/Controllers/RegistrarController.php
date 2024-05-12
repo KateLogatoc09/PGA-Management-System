@@ -19,11 +19,13 @@ use App\Models\Subjects;
 use App\Models\Sections;
 use App\Models\ApplicationModel;
 use App\Models\AccountModel;
+use App\Models\ParentChild;
 use App\Models\TeacherModel;
 
 class RegistrarController extends BaseController
 {
-    private $acc, $learner, $family, $address, $admissions, $sibling, $school, $grade, $sections, $subjects, $alumni, $app, $account, $teacher;
+    private $acc, $learner, $family, $address, $admissions, $sibling, $school, $grade, $sections,
+     $subjects, $alumni, $app, $account, $teacher, $parent_child;
     public function __construct()
     {
         $this->learner = new LearnerModel();
@@ -40,6 +42,7 @@ class RegistrarController extends BaseController
         $this->account = new AccountModel();
         $this->teacher = new TeacherModel();
         $this->acc = new AccountModel();
+        $this->parent_child = new ParentChild();
     }
 
     public function registrar()
@@ -854,8 +857,7 @@ class RegistrarController extends BaseController
             'admissions' => $this->admissions->where('id', $id)->first(),
        ];
 
-        return view('regadmissions', $data);
-        
+        return view('regadmissions', $data); 
     }
 
     public function reggrade()
@@ -870,6 +872,70 @@ class RegistrarController extends BaseController
             return view ('reggrade', $data);
     }
 
+    
+    public function parentChild()
+    {
+            $data = [
+                'table' => $this->parent_child->select('parent_child.id as id, child_id, first_name, middle_name, last_name, fullname')
+                ->join('application','application.id = parent_child.parent_id','inner')
+                ->join('admissions','admissions.student_id = parent_child.child_id','inner')
+                ->join('student_learner','student_learner.account_id = admissions.account_id','inner')
+                ->where('type', 'PARENT')->where('application.status', 'APPROVED')->FindAll(),
+                'parent' => $this->app->FindAll(),
+                'student' => $this->admissions->select('admissions.student_id as id, student_id, first_name, middle_name, last_name')
+                ->join('student_learner','student_learner.account_id = admissions.account_id','inner')
+                ->orderBy('student_learner.last_name')->FindAll(),
+                ];
+            return view ('parentChild', $data);
+    }
+
+
+    public function searchParentchild()
+    {
+            $data = [
+                'table' => $this->parent_child->select('parent_child.id as id, child_id, first_name, middle_name, last_name, fullname')
+                ->join('application','application.id = parent_child.parent_id','inner')
+                ->join('admissions','admissions.student_id = parent_child.child_id','inner')
+                ->join('student_learner','student_learner.account_id = admissions.account_id','inner')
+                ->where('type', 'PARENT')->where('application.status', 'APPROVED')
+                ->like('fullname', $this->request->getVar('search'))->FindAll(),
+                'parent' => $this->app->FindAll(),
+                'student' => $this->admissions->select('admissions.student_id as id, student_id, first_name, middle_name, last_name')
+                ->join('student_learner','student_learner.account_id = admissions.account_id','inner')
+                ->orderBy('student_learner.last_name')->FindAll(),
+                ];
+            return view ('parentChild', $data);
+    }
+
+    public function editParentacc($id)
+    {
+        $data = [
+            'table' => $this->parent_child->select('parent_child.id as id, child_id, first_name, middle_name, last_name, fullname')
+                ->join('application','application.id = parent_child.parent_id','inner')
+                ->join('admissions','admissions.student_id = parent_child.child_id','inner')
+                ->join('student_learner','student_learner.account_id = admissions.account_id','inner')
+                ->where('type', 'PARENT')->where('application.status', 'APPROVED')->FindAll(),
+            'parent' => $this->app->FindAll(),
+            'student' => $this->admissions->select('admissions.student_id as id, student_id, first_name, middle_name, last_name')
+            ->join('student_learner','student_learner.account_id = admissions.account_id','inner')
+            ->orderBy('student_learner.last_name')->FindAll(),
+            'par' => $this->parent_child->where('id', $id)->first(),
+       ];
+
+        return view('parentChild', $data); 
+    }
+
+    public function deleteParentacc($id)
+    {
+        $session = session();
+        $res = $this->parent_child->delete($id);
+        if($res) {
+            $session->setFlashdata('msg','Deleted Successfully.');
+        } else {
+            $session->setFlashdata('msg','Something went wrong. Please try again later.');
+        }
+        return redirect()->to('parentChild');
+    }
     
     public function searchStudgrade()
     {
