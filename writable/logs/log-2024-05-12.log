@@ -1,0 +1,633 @@
+CRITICAL - 2024-05-12 01:18:20 --> count(): Argument #1 ($value) must be of type Countable|array, null given
+in APPPATH\Views\student\librarybody.php on line 6.
+ 1 SYSTEMPATH\View\View.php(226): include()
+ 2 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\View\View.php(467): CodeIgniter\View\View->render('student/librarybody', null, true)
+ 4 APPPATH\Views\studentlibrary.php(2): CodeIgniter\View\View->include('student/librarybody')
+ 5 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\studentlibrary.php')
+ 6 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 7 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('studentlibrary', [], true)
+ 8 APPPATH\Controllers\StudentController.php(69): view('studentlibrary', [...])
+ 9 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\StudentController->studentlibrary()
+10 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\StudentController))
+11 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-12 01:19:03 --> Undefined variable $paginatedBooky
+in APPPATH\Views\student\librarybody.php on line 156.
+ 1 APPPATH\Views\student\librarybody.php(156): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $paginatedBooky', 'C:\\laragon\\www\\PGA-Management-System\\app\\Views\\student\\librarybody.php', 156)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\student\\librarybody.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(467): CodeIgniter\View\View->render('student/librarybody', null, true)
+ 5 APPPATH\Views\studentlibrary.php(2): CodeIgniter\View\View->include('student/librarybody')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\studentlibrary.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('studentlibrary', [], true)
+ 9 APPPATH\Controllers\StudentController.php(69): view('studentlibrary', [...])
+10 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\StudentController->studentlibrary()
+11 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\StudentController))
+12 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-12 02:29:16 --> Undefined array key "book_title"
+in APPPATH\Views\library\libborrow.php on line 200.
+ 1 APPPATH\Views\library\libborrow.php(200): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "book_title"', 'C:\\laragon\\www\\PGA-Management-System\\app\\Views\\library\\libborrow.php', 200)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\library\\libborrow.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(467): CodeIgniter\View\View->render('library/libborrow', null, true)
+ 5 APPPATH\Views\borrowers.php(2): CodeIgniter\View\View->include('library/libborrow')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\borrowers.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('borrowers', [], true)
+ 9 APPPATH\Controllers\LibraryController.php(449): view('borrowers', [...])
+10 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->editBorrow('23')
+11 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+12 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-12 02:30:20 --> Undefined array key "book.id"
+in APPPATH\Views\library\libborrow.php on line 200.
+ 1 APPPATH\Views\library\libborrow.php(200): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "book.id"', 'C:\\laragon\\www\\PGA-Management-System\\app\\Views\\library\\libborrow.php', 200)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\library\\libborrow.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(467): CodeIgniter\View\View->render('library/libborrow', null, true)
+ 5 APPPATH\Views\borrowers.php(2): CodeIgniter\View\View->include('library/libborrow')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\borrowers.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('borrowers', [], true)
+ 9 APPPATH\Controllers\LibraryController.php(449): view('borrowers', [...])
+10 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->editBorrow('23')
+11 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+12 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-12 02:30:23 --> Undefined array key "book.id"
+in APPPATH\Views\library\libborrow.php on line 200.
+ 1 APPPATH\Views\library\libborrow.php(200): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "book.id"', 'C:\\laragon\\www\\PGA-Management-System\\app\\Views\\library\\libborrow.php', 200)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\library\\libborrow.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(467): CodeIgniter\View\View->render('library/libborrow', null, true)
+ 5 APPPATH\Views\borrowers.php(2): CodeIgniter\View\View->include('library/libborrow')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\borrowers.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('borrowers', [], true)
+ 9 APPPATH\Controllers\LibraryController.php(449): view('borrowers', [...])
+10 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->editBorrow('23')
+11 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+12 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+ERROR - 2024-05-12 02:34:06 --> mysqli_sql_exception: Column 'id' in where clause is ambiguous in C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `borrowe...', 0)
+#1 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `borrowe...')
+#2 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `borrowe...')
+#3 C:\laragon\www\PGA-Management-System\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `borrowe...', Array, false)
+#4 C:\laragon\www\PGA-Management-System\system\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\PGA-Management-System\system\BaseModel.php(662): CodeIgniter\Model->doFirst()
+#6 C:\laragon\www\PGA-Management-System\app\Controllers\LibraryController.php(450): CodeIgniter\BaseModel->first()
+#7 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(919): App\Controllers\LibraryController->editBorrow('23')
+#8 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+#9 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\PGA-Management-System\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\PGA-Management-System\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-05-12 02:34:06 --> Column 'id' in where clause is ambiguous
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `borrowedbooks`.`id` as `id`, `first_name`, `middle_name`, `last_name`, `student_id`, `book_title`, `book_shelf`, `ISBN`, `borrowedbooks`.`book_qty` as `book_qty`, `date_borrowed`, `date_returned`, `date_to_be_return`, `fines`, `borrowedbooks`.`status` as `status`
+FROM `borrowedbooks`
+INNER JOIN `books` ON `books`.`id` = `borrowedbooks`.`book_id`
+INNER JOIN `student_learner` ON `student_learner`.`account_id` = `borrowedbooks`.`account_id`
+INNER JOIN `admissions` ON `admissions`.`account_id` = `borrowedbooks`.`account_id`
+WHERE `id` = :id:
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(662): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\LibraryController.php(450): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->editBorrow('23')
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-12 02:36:36 --> Trying to access array offset on value of type null
+in APPPATH\Controllers\LibraryController.php on line 37.
+ 1 APPPATH\Controllers\LibraryController.php(37): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\LibraryController.php', 37)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->saveBorrowedBook()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-12 02:37:22 --> Trying to access array offset on value of type null
+in APPPATH\Controllers\LibraryController.php on line 37.
+ 1 APPPATH\Controllers\LibraryController.php(37): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\LibraryController.php', 37)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->saveBorrowedBook()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-12 02:37:59 --> Trying to access array offset on value of type null
+in APPPATH\Controllers\LibraryController.php on line 37.
+ 1 APPPATH\Controllers\LibraryController.php(37): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\LibraryController.php', 37)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->saveBorrowedBook()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-12 02:39:11 --> Trying to access array offset on value of type null
+in APPPATH\Controllers\LibraryController.php on line 37.
+ 1 APPPATH\Controllers\LibraryController.php(37): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\LibraryController.php', 37)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->saveBorrowedBook()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-12 02:41:31 --> Trying to access array offset on value of type null
+in APPPATH\Controllers\LibraryController.php on line 37.
+ 1 APPPATH\Controllers\LibraryController.php(37): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\LibraryController.php', 37)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->saveBorrowedBook()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-12 02:41:40 --> Trying to access array offset on value of type null
+in APPPATH\Controllers\LibraryController.php on line 37.
+ 1 APPPATH\Controllers\LibraryController.php(37): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\LibraryController.php', 37)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->saveBorrowedBook()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-12 02:44:29 --> Undefined variable $bk
+in APPPATH\Views\student\borrowbooks.php on line 20.
+ 1 APPPATH\Views\student\borrowbooks.php(20): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $bk', 'C:\\laragon\\www\\PGA-Management-System\\app\\Views\\student\\borrowbooks.php', 20)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\student\\borrowbooks.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(467): CodeIgniter\View\View->render('student/borrowbooks', null, true)
+ 5 APPPATH\Views\student\librarybody.php(115): CodeIgniter\View\View->include('student/borrowbooks')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\student\\librarybody.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\View\View.php(467): CodeIgniter\View\View->render('student/librarybody', null, true)
+ 9 APPPATH\Views\studentlibrary.php(2): CodeIgniter\View\View->include('student/librarybody')
+10 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\studentlibrary.php')
+11 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+12 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('studentlibrary', [], true)
+13 APPPATH\Controllers\StudentController.php(69): view('studentlibrary', [...])
+14 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\StudentController->studentlibrary()
+15 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\StudentController))
+16 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+17 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+18 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-12 02:51:24 --> Trying to access array offset on value of type null
+in APPPATH\Controllers\LibraryController.php on line 37.
+ 1 APPPATH\Controllers\LibraryController.php(37): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\LibraryController.php', 37)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->saveBorrowedBook()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+ERROR - 2024-05-12 03:01:29 --> mysqli_sql_exception: Unknown column 'teacher_id' in 'where clause' in C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `admissi...', 0)
+#1 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `admissi...')
+#2 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `admissi...')
+#3 C:\laragon\www\PGA-Management-System\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `admissi...', Array, false)
+#4 C:\laragon\www\PGA-Management-System\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\PGA-Management-System\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\PGA-Management-System\app\Controllers\TeacherController.php(105): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(919): App\Controllers\TeacherController->grade()
+#8 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+#9 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\PGA-Management-System\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\PGA-Management-System\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-05-12 03:01:29 --> Unknown column 'teacher_id' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `admissions`.`student_id` as `id`, `student_id`, `first_name`, `middle_name`, `last_name`
+FROM `admissions`
+INNER JOIN `student_learner` ON `student_learner`.`account_id` = `admissions`.`account_id`
+INNER JOIN `sections` ON `sections`.`id` = `admissions`.`section`
+WHERE `teacher_id` = :teacher_id:
+ORDER BY `student_learner`.`last_name`', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\TeacherController.php(105): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->grade()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+ERROR - 2024-05-12 03:01:50 --> mysqli_sql_exception: Unknown column 'teacher_id' in 'where clause' in C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `admissi...', 0)
+#1 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `admissi...')
+#2 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `admissi...')
+#3 C:\laragon\www\PGA-Management-System\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `admissi...', Array, false)
+#4 C:\laragon\www\PGA-Management-System\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\PGA-Management-System\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\PGA-Management-System\app\Controllers\TeacherController.php(105): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(919): App\Controllers\TeacherController->grade()
+#8 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+#9 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\PGA-Management-System\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\PGA-Management-System\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-05-12 03:01:51 --> Unknown column 'teacher_id' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `admissions`.`student_id` as `id`, `student_id`, `first_name`, `middle_name`, `last_name`
+FROM `admissions`
+INNER JOIN `student_learner` ON `student_learner`.`account_id` = `admissions`.`account_id`
+INNER JOIN `sections` ON `sections`.`id` = `admissions`.`section`
+WHERE `teacher_id` = :teacher_id:
+ORDER BY `student_learner`.`last_name`', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\TeacherController.php(105): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->grade()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+ERROR - 2024-05-12 03:03:25 --> mysqli_sql_exception: Unknown column 'subjects.teacher_id' in 'where clause' in C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `admissi...', 0)
+#1 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `admissi...')
+#2 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `admissi...')
+#3 C:\laragon\www\PGA-Management-System\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `admissi...', Array, false)
+#4 C:\laragon\www\PGA-Management-System\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\PGA-Management-System\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\PGA-Management-System\app\Controllers\TeacherController.php(106): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(919): App\Controllers\TeacherController->grade()
+#8 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+#9 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\PGA-Management-System\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\PGA-Management-System\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-05-12 03:03:25 --> Unknown column 'subjects.teacher_id' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `admissions`.`student_id` as `id`, `student_id`, `first_name`, `middle_name`, `last_name`
+FROM `admissions`
+INNER JOIN `student_learner` ON `student_learner`.`account_id` = `admissions`.`account_id`
+INNER JOIN `sections` ON `sections`.`id` = `admissions`.`section`
+WHERE `subjects`.`teacher_id` = :subjects.teacher_id:
+ORDER BY `student_learner`.`last_name`', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\TeacherController.php(106): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->grade()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-12 03:17:03 --> Undefined variable $teachid
+in APPPATH\Controllers\TeacherController.php on line 118.
+ 1 APPPATH\Controllers\TeacherController.php(118): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $teachid', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\TeacherController.php', 118)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->searchGrade()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-12 04:38:35 --> Undefined variable $advisoryClass
+in APPPATH\Controllers\TeacherController.php on line 122.
+ 1 APPPATH\Controllers\TeacherController.php(122): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $advisoryClass', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\TeacherController.php', 122)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->advisoryClass()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-12 06:02:39 --> Undefined property: App\Controllers\TeacherController::$family
+in APPPATH\Controllers\TeacherController.php on line 140.
+ 1 APPPATH\Controllers\TeacherController.php(140): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\TeacherController::$family', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\TeacherController.php', 140)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->expandStudent('17')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+ERROR - 2024-05-12 06:04:27 --> mysqli_sql_exception: Unknown column 'student_grades.account_id' in 'where clause' in C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `subject...', 0)
+#1 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `subject...')
+#2 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `subject...')
+#3 C:\laragon\www\PGA-Management-System\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `subject...', Array, false)
+#4 C:\laragon\www\PGA-Management-System\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\PGA-Management-System\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\PGA-Management-System\app\Controllers\TeacherController.php(149): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(919): App\Controllers\TeacherController->expandStudent('17')
+#8 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+#9 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\PGA-Management-System\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\PGA-Management-System\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-05-12 06:04:27 --> Unknown column 'student_grades.account_id' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `subject_name`, `type`, `teacher_id`, `fname`, `mname`, `lname`, `subject`, `grade`
+FROM `student_grades`
+INNER JOIN `subjects` ON `student_grades`.`subject` = `subjects`.`id`
+INNER JOIN `teachers` ON `subjects`.`teacher_id` = `teachers`.`id`
+WHERE `student_grades`.`account_id` = :student_grades.account_id:', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\TeacherController.php(149): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->expandStudent('17')
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+ERROR - 2024-05-12 06:10:03 --> mysqli_sql_exception: Column 'student_id' in field list is ambiguous in C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `subject...', 0)
+#1 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `subject...')
+#2 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `subject...')
+#3 C:\laragon\www\PGA-Management-System\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `subject...', Array, false)
+#4 C:\laragon\www\PGA-Management-System\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\PGA-Management-System\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\PGA-Management-System\app\Controllers\TeacherController.php(150): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(919): App\Controllers\TeacherController->expandStudent('17')
+#8 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+#9 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\PGA-Management-System\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\PGA-Management-System\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-05-12 06:10:03 --> Column 'student_id' in field list is ambiguous
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `subject_name`, `type`, `student_id`, `teacher_id`, `fname`, `mname`, `lname`, `subject`, `grade`, `account_id`
+FROM `student_grades`
+INNER JOIN `admissions` ON `student_grades`.`student_id` = `admissions`.`student_id`
+INNER JOIN `accounts` ON `admissions`.`student_id` = `accounts`.`id`
+INNER JOIN `subjects` ON `student_grades`.`subject` = `subjects`.`id`
+INNER JOIN `teachers` ON `subjects`.`teacher_id` = `teachers`.`id`
+WHERE `accounts`.`id` = :accounts.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\TeacherController.php(150): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->expandStudent('17')
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+ERROR - 2024-05-12 06:10:14 --> mysqli_sql_exception: Column 'account_id' in field list is ambiguous in C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `subject...', 0)
+#1 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `subject...')
+#2 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `subject...')
+#3 C:\laragon\www\PGA-Management-System\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `subject...', Array, false)
+#4 C:\laragon\www\PGA-Management-System\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\PGA-Management-System\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\PGA-Management-System\app\Controllers\TeacherController.php(150): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(919): App\Controllers\TeacherController->expandStudent('17')
+#8 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+#9 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\PGA-Management-System\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\PGA-Management-System\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-05-12 06:10:14 --> Column 'account_id' in field list is ambiguous
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `subject_name`, `type`, `admissions`.`student_id`, `teacher_id`, `fname`, `mname`, `lname`, `subject`, `grade`, `account_id`
+FROM `student_grades`
+INNER JOIN `admissions` ON `student_grades`.`student_id` = `admissions`.`student_id`
+INNER JOIN `accounts` ON `admissions`.`student_id` = `accounts`.`id`
+INNER JOIN `subjects` ON `student_grades`.`subject` = `subjects`.`id`
+INNER JOIN `teachers` ON `subjects`.`teacher_id` = `teachers`.`id`
+WHERE `accounts`.`id` = :accounts.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\TeacherController.php(150): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->expandStudent('17')
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-12 06:10:35 --> Invalid file: "expandStudent.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('expandStudent.php')
+ 2 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('expandStudent', [], true)
+ 3 APPPATH\Controllers\TeacherController.php(153): view('expandStudent', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->expandStudent('17')
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-12 06:17:13 --> Undefined variable $sub
+in APPPATH\Controllers\TeacherController.php on line 140.
+ 1 APPPATH\Controllers\TeacherController.php(140): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $sub', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\TeacherController.php', 140)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->expandStudent('17')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+ERROR - 2024-05-12 06:17:27 --> mysqli_sql_exception: Unknown column 'student_id' in 'field list' in C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `student...', 0)
+#1 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `student...')
+#2 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `student...')
+#3 C:\laragon\www\PGA-Management-System\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `student...', Array, false)
+#4 C:\laragon\www\PGA-Management-System\system\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\PGA-Management-System\system\BaseModel.php(662): CodeIgniter\Model->doFirst()
+#6 C:\laragon\www\PGA-Management-System\app\Controllers\TeacherController.php(140): CodeIgniter\BaseModel->first()
+#7 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(919): App\Controllers\TeacherController->expandStudent('17')
+#8 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+#9 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\PGA-Management-System\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\PGA-Management-System\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-05-12 06:17:27 --> Unknown column 'student_id' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `student_id`
+FROM `subjects`
+WHERE `id` IS NULL
+ LIMIT 1', [], false)
+ 2 SYSTEMPATH\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(662): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\TeacherController.php(140): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->expandStudent('17')
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+ERROR - 2024-05-12 06:19:09 --> mysqli_sql_exception: Unknown column 'student_id' in 'field list' in C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `student...', 0)
+#1 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `student...')
+#2 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `student...')
+#3 C:\laragon\www\PGA-Management-System\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `student...', Array, false)
+#4 C:\laragon\www\PGA-Management-System\system\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\PGA-Management-System\system\BaseModel.php(662): CodeIgniter\Model->doFirst()
+#6 C:\laragon\www\PGA-Management-System\app\Controllers\TeacherController.php(140): CodeIgniter\BaseModel->first()
+#7 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(919): App\Controllers\TeacherController->expandStudent('17')
+#8 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+#9 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\PGA-Management-System\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\PGA-Management-System\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-05-12 06:19:09 --> Unknown column 'student_id' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `student_id`
+FROM `subjects`
+WHERE `id` IS NULL
+ LIMIT 1', [], false)
+ 2 SYSTEMPATH\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(662): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\TeacherController.php(140): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->expandStudent('17')
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+ERROR - 2024-05-12 06:19:47 --> mysqli_sql_exception: Unknown column 'student_id' in 'field list' in C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `student...', 0)
+#1 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `student...')
+#2 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `student...')
+#3 C:\laragon\www\PGA-Management-System\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `student...', Array, false)
+#4 C:\laragon\www\PGA-Management-System\system\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\PGA-Management-System\system\BaseModel.php(662): CodeIgniter\Model->doFirst()
+#6 C:\laragon\www\PGA-Management-System\app\Controllers\TeacherController.php(140): CodeIgniter\BaseModel->first()
+#7 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(919): App\Controllers\TeacherController->expandStudent('17')
+#8 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+#9 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\PGA-Management-System\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\PGA-Management-System\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-05-12 06:19:47 --> Unknown column 'student_id' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `student_id`
+FROM `subjects`
+WHERE `id` IS NULL
+ LIMIT 1', [], false)
+ 2 SYSTEMPATH\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(662): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\TeacherController.php(140): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->expandStudent('17')
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+ERROR - 2024-05-12 06:20:57 --> mysqli_sql_exception: Unknown column 'student_id' in 'field list' in C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `student...', 0)
+#1 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `student...')
+#2 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `student...')
+#3 C:\laragon\www\PGA-Management-System\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `student...', Array, false)
+#4 C:\laragon\www\PGA-Management-System\system\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\PGA-Management-System\system\BaseModel.php(662): CodeIgniter\Model->doFirst()
+#6 C:\laragon\www\PGA-Management-System\app\Controllers\TeacherController.php(140): CodeIgniter\BaseModel->first()
+#7 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(919): App\Controllers\TeacherController->expandStudent('17')
+#8 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+#9 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\PGA-Management-System\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\PGA-Management-System\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-05-12 06:20:57 --> Unknown column 'student_id' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `student_id`
+FROM `subjects`
+WHERE `student_id` IS NULL
+ LIMIT 1', [], false)
+ 2 SYSTEMPATH\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(662): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\TeacherController.php(140): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->expandStudent('17')
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+ERROR - 2024-05-12 06:23:13 --> mysqli_sql_exception: Unknown column 'student_id' in 'field list' in C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `student...', 0)
+#1 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `student...')
+#2 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `student...')
+#3 C:\laragon\www\PGA-Management-System\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `student...', Array, false)
+#4 C:\laragon\www\PGA-Management-System\system\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\PGA-Management-System\system\BaseModel.php(662): CodeIgniter\Model->doFirst()
+#6 C:\laragon\www\PGA-Management-System\app\Controllers\TeacherController.php(140): CodeIgniter\BaseModel->first()
+#7 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(919): App\Controllers\TeacherController->expandStudent('17')
+#8 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+#9 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\PGA-Management-System\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\PGA-Management-System\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-05-12 06:23:13 --> Unknown column 'student_id' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `student_id`
+FROM `subjects`
+WHERE `student_id` IS NULL
+ LIMIT 1', [], false)
+ 2 SYSTEMPATH\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(662): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\TeacherController.php(140): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->expandStudent('17')
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+ERROR - 2024-05-12 06:23:43 --> mysqli_sql_exception: Unknown column 'student_id' in 'field list' in C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `student...', 0)
+#1 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `student...')
+#2 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `student...')
+#3 C:\laragon\www\PGA-Management-System\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `student...', Array, false)
+#4 C:\laragon\www\PGA-Management-System\system\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\PGA-Management-System\system\BaseModel.php(662): CodeIgniter\Model->doFirst()
+#6 C:\laragon\www\PGA-Management-System\app\Controllers\TeacherController.php(140): CodeIgniter\BaseModel->first()
+#7 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(919): App\Controllers\TeacherController->expandStudent('17')
+#8 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+#9 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\PGA-Management-System\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\PGA-Management-System\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-05-12 06:23:43 --> Unknown column 'student_id' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `student_id`
+FROM `subjects`
+WHERE `student_id` IS NULL
+ LIMIT 1', [], false)
+ 2 SYSTEMPATH\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(662): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\TeacherController.php(140): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->expandStudent('17')
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+ERROR - 2024-05-12 06:23:58 --> mysqli_sql_exception: Unknown column 'student_id' in 'field list' in C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `student...', 0)
+#1 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `student...')
+#2 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `student...')
+#3 C:\laragon\www\PGA-Management-System\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `student...', Array, false)
+#4 C:\laragon\www\PGA-Management-System\system\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\PGA-Management-System\system\BaseModel.php(662): CodeIgniter\Model->doFirst()
+#6 C:\laragon\www\PGA-Management-System\app\Controllers\TeacherController.php(140): CodeIgniter\BaseModel->first()
+#7 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(919): App\Controllers\TeacherController->expandStudent('17')
+#8 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+#9 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\PGA-Management-System\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\PGA-Management-System\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-05-12 06:23:58 --> Unknown column 'student_id' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `student_id`
+FROM `subjects`
+WHERE `student_id` IS NULL
+ LIMIT 1', [], false)
+ 2 SYSTEMPATH\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(662): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\TeacherController.php(140): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->expandStudent('17')
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-12 06:48:35 --> syntax error, unexpected end of file
+in APPPATH\Views\teacher\expandStudent.php on line 289.
+ 1 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\View\View.php(467): CodeIgniter\View\View->render('teacher/expandStudent', null, true)
+ 3 APPPATH\Views\expandStudent.php(2): CodeIgniter\View\View->include('teacher/expandStudent')
+ 4 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\expandStudent.php')
+ 5 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 6 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('expandStudent', [], true)
+ 7 APPPATH\Controllers\TeacherController.php(155): view('expandStudent', [...])
+ 8 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->expandStudent('17')
+ 9 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+10 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')

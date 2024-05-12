@@ -83,8 +83,7 @@
           <!-- Content -->
 
           <div class="container-xxl flex-grow-1 container-p-y">
-          <h5 class="card-title text-primary">Welcome <?= $_SESSION['username']; ?>! 🎉</h5>
-
+          <h1 class="center blue">Teacher Profile</h1> 
             <div class="row">
               <div class="col-lg-18 mb-4 order-0">
                 <div class="card">
@@ -94,7 +93,9 @@
                     <div class="col-sm-5">
                       <div class="card-body">
                       <?php if(is_array($teach)): ?>
-                        <h5 class="card-title text-primary">Teacher Information</h5>
+                        <h5 class="card-title text-primary"> <?php if (isset($teach['fname'])) {echo $teach['fname'];}?>
+                        <?php if (isset($teach['mname'])) {echo $teach['mname'];}?>
+                        <?php if (isset($teach['lname'])) {echo $teach['lname'];}?></h5>
                         <br>
                         <h7 class="orange">Teacher ID:</h7>
                         <?php if (isset($teach['idnum'])) {echo $teach['idnum'];}?>
@@ -139,7 +140,9 @@
               <?php else: ?>
                 <h5 class="m-4">No Information Available Yet.</h5>
               <?php endif; ?>
+
             </div>
+            <center><a href="/teacherinfo" class="btn btn-primary">Add/ Edit Information</a><center>
             <!-- / Content -->
 
             

@@ -112,6 +112,7 @@
                           <th>Book Publisher</th>
                           <th>Place of Publication</th>
                           <th>Book Category</th>
+                          <th>Book Type</th>
                           <th>Book Pages</th>
                           <th>Book Quantity</th>
                           <th>Shelf Number</th>
@@ -139,6 +140,7 @@
                             <td><?= $book['book_publisher'] ?></td>
                             <td><?= $book['place_printed'] ?></td>
                             <td><?= $book['book_category'] ?></td>
+                            <td><?= $book['book_type'] ?></td>
                             <td><?= $book['book_pages'] ?></td>
                             <td><?= $book['book_qty'] ?></td>
                             <td><?= $book['book_shelf'] ?></td>
@@ -231,6 +233,13 @@ value="<?php if (isset($booke['place_printed'])) {echo $booke['place_printed'];}
                           <option value="OTHER TEXTBOOKS">Other Textbooks</option>
                         </select>
 
+                        <label for="book_type">Book Type</label>
+                        <select class="form-select" id="book_type" name='book_type' aria-label="Select Book Type">
+                        <option value="">Select Book Type</option>
+                          <option value="NEW ARRIVAL BOOK">New Arrival Book</option>
+                          <option value="RESERVE BOOK">Reserve Book</option>
+                          <option value="NORMAL">Normal</option>
+                        </select>
                         </div>
 </div>
 <div class="col-sm-5 text-center text-sm-left">

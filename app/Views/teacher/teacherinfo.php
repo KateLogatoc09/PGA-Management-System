@@ -148,6 +148,7 @@
 <!-- Move the "Save changes" button inside the form -->
 <div class="modal-footer">
     <button type="submit" class="btn btn-primary">Save changes</button>
+    <a href="/teacher" class="btn btn-primary">Back</a>
 </div>
 </form>
 </div>

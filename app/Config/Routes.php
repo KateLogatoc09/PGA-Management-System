@@ -66,7 +66,9 @@ $routes->get('/grade', 'TeacherController::grade', ['filter' => 'teacher']);
 $routes->post('/saveGrade', 'TeacherController::saveGrade', ['filter' => 'teacher']);
 $routes->get('/deleteGrade/(:any)', 'TeacherController::deleteGrade/$1', ['filter' => 'teacher']);
 $routes->get('/editGrade/(:any)', 'TeacherController::editGrade/$1', ['filter' => 'teacher']);
+$routes->get('/expandStudent/(:any)', 'TeacherController::expandStudent/$1', ['filter' => 'teacher']);
 $routes->post('/teacher_qr', 'TeacherController::teacher_qr', ['filter' => 'teacher']);
+$routes->get('/advisoryClass', 'TeacherController::advisoryClass', ['filter' => 'teacher']);
 
 //ADMIN ENROLL
 $routes->get('/enroll', 'AdminController::enroll', ['filter' => 'admin']);

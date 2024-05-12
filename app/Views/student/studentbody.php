@@ -84,7 +84,7 @@
 
           <div class="container-xxl flex-grow-1 container-p-y">
             <div class="row">
-            <h1 class="center blue">Student Information</h1> 
+            <h1 class="center blue">Student Profile</h1> 
               <div class="col-lg-18 mb-4 order-0">
                 <div class="card">
                 <?php if(is_array($status)): ?>
@@ -247,7 +247,7 @@
                   <div class="d-flex align-items-end row">
                     <div class="col-sm-5">
                       <div class="card-body">
-                        <h5 class="card-title text-primary">Sibling/s</h5>
+                        <h5 class="card-title text-primary">Sibling/s Enrolled in PGA</h5>
                         <br>
                         <?php foreach ($sibling as $s): ?>
                         <h7 class="orange">Fullname:</h7>

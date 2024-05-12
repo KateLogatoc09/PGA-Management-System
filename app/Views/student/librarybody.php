@@ -1,11 +1,18 @@
 <?php
-// Pagination Configuration
-$totalRecords = count($booky);
-$recordsPerPage = 10;
-$totalPages = ceil($totalRecords / $recordsPerPage);
+// Define the number of records per page
+$recordsPerPage = 5;
 
-// Current Page
-$currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
+// Calculate the total number of pages
+$totalPages = ceil(count($booky) / $recordsPerPage);
+
+// Get the current page number from the query string, default to 1 if not set
+$currentPage = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
+
+// Calculate the offset for the subset of records to be displayed on the current page
+$offset = ($currentPage - 1) * $recordsPerPage;
+
+// Get a subset of records for the current page
+$paginatedBooky = array_slice($booky, $offset, $recordsPerPage);
 ?>
 
 <body>
@@ -145,6 +152,7 @@ $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
                           <th>Book Publisher</th>
                           <th>Place of Publication</th>
                           <th>Book Category</th>
+                          <th>Book Type</th>
                           <th>Book Pages</th>
                           <th>Shelf Number</th>
                           <th>ISBN</th>
@@ -153,11 +161,6 @@ $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
                       </thead>
                       <tbody>
                         <?php
-                        // Paginate the results
-                        $start = ($currentPage - 1) * $recordsPerPage;
-                        $end = $start + $recordsPerPage;
-                        $paginatedBooky = array_slice($booky, $start, $recordsPerPage);
-                        
                         foreach ($paginatedBooky as $book):
                         ?>
                         <tr>
@@ -167,6 +170,7 @@ $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
                           <td><?= $book['book_publisher'] ?></td>
                           <td><?= $book['place_printed'] ?></td>
                           <td><?= $book['book_category'] ?></td>
+                          <td><?= $book['book_type'] ?></td>
                           <td><?= $book['book_pages'] ?></td>
                           <td><?= $book['book_shelf'] ?></td>
                           <td><?= $book['ISBN'] ?></td>
@@ -177,24 +181,41 @@ $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
                     </table>
                   </div>
                   <!-- /.card-body -->
+                  <!-- Pagination Links -->
+                  <div class="card-footer">
+                    <nav aria-label="Page navigation example">
+                      <ul class="pagination justify-content-center">
+                        <?php if ($currentPage > 1) : ?>
+                          <li class="page-item">
+                            <a class="page-link" href="?page=<?= $currentPage - 1 ?>" aria-label="Previous">
+                              <span aria-hidden="true">&laquo;</span>
+                            </a>
+                          </li>
+                        <?php endif; ?>
+                        <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
+                          <li class="page-item <?= $i == $currentPage ? 'active' : '' ?>">
+                            <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
+                          </li>
+                        <?php endfor; ?>
+                        <?php if ($currentPage < $totalPages) : ?>
+                          <li class="page-item">
+                            <a class="page-link" href="?page=<?= $currentPage + 1 ?>" aria-label="Next">
+                              <span aria-hidden="true">&raquo;</span>
+                            </a>
+                          </li>
+                        <?php endif; ?>
+                      </ul>
+                    </nav>
+                  </div>
                 </div>
               </div>
               <!-- /.card -->
             </div> <!-- /.dito -->
 
+
             
           </div>
           <!-- / Content -->
-
-          <!-- Pagination -->
-          <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
-              <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-              <li class="page-item <?= ($i == $currentPage) ? 'active' : '' ?>"><a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a></li>
-              <?php endfor ?>
-            </ul>
-          </nav>
-          <!-- / Pagination -->
 
           <div class="content-backdrop fade"></div>
         </div>

@@ -75,7 +75,7 @@
               </ul>
             </div>
           </nav>
-        <?= $this->include('registrar/sidebar') ?>
+        <?= $this->include('teacher/sidebar') ?>
         <!-- / Navbar -->
 
         <!-- Content wrapper -->
@@ -84,7 +84,7 @@
 
           <div class="container-xxl flex-grow-1 container-p-y">
             <div class="row">
-            <h1 class="center blue">Enrollee Information</h1> 
+            <h1 class="center blue">Student Information</h1> 
               <div class="col-lg-18 mb-4 order-0">
                 <div class="card">
 
@@ -239,47 +239,22 @@
                   <div class="d-flex align-items-end row">
                     <div class="col-sm-5">
                       <div class="card-body">
-                        <h5 class="card-title text-primary">Sibling/s Enrolled in PGA</h5>
+                        <h5 class="card-title text-primary">Grades</h5>
                         <br>
-                        <?php foreach ($sibling as $s): ?>
-                        <h7 class="orange">Fullname:</h7>
-                        <?= $s['fullname'] ?>
+                        <?php foreach ($grade as $g): ?>
+                        <h7 class="orange">Subject:</h7>
+                        <?= $g['subject_name'] ?>
                         <br>
-                        <h7 class="orange">Year Level:</h7>
-                        <?= $s['yr_lvl'] ?>
+                        <h7 class="orange">Subject Type:</h7>
+                        <?= $g['type'] ?>
                         <br>
-                        <h7 class="orange">Affiliation:</h7>
-                        <?= $s['affiliation'] ?>
+                        <h7 class="orange">Grade:</h7>
+                        <?= $g['grade'] ?>
                         <br>
-                      </div>
-
-                    </div>
-
-                    <div class="col-sm-5">
-                      <div class="card-body">
-                      <?php endforeach ?>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-lg-18 mb-4 order-0">
-                <div class="card">
-                  <div class="d-flex align-items-end row">
-                    <div class="col-sm-5">
-                      <div class="card-body">
-                        <h5 class="card-title text-primary">Schools Attended</h5>
-                        <br>
-                        <?php foreach ($school as $s): ?>
-                          <h7 class="orange"><?= $s['grade'] ?>:</h7>
-                        <?= $s['school_name'] ?>
-                        <br>
-                        <h7 class="orange">Level:</h7>
-                        <?= $s['level'] ?>
-                        <br>
-                        <h7 class="orange">Period:</h7>
-                        <?= $s['period'] ?>
+                        <h7 class="orange">Subject Teacher:</h7>
+                        <?php if (isset($g['fname'])) {echo $g['fname'];}?>
+                        <?php if (isset($g['mname'])) {echo $g['mname'];}?>
+                        <?php if (isset($g['lname'])) {echo $g['lname'];}?>
                         <br>
                       </div>
 
@@ -293,7 +268,7 @@
                   </div>
                 </div>
               </div>
-              <center><a href="/enrollmentform" class="btn btn-primary">Back</a><center>
+              <center><a href="/advisoryClass" class="btn btn-primary">Back</a><center>
             </div>
             <!-- / Content -->
 

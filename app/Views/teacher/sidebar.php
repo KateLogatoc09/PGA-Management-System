@@ -37,14 +37,14 @@
                 </li>
 
                 <li class="menu-item">
-                  <a href="/teacherinfo" class="menu-link">
-                    <div data-i18n="Analytics">Teacher Information</div>
+                  <a href="/advisoryClass" class="menu-link">
+                    <div data-i18n="Analytics">Advisory Class</div>
                   </a>
                 </li>
 
                 <li class="menu-item">
                   <a href="/grade" class="menu-link">
-                    <div data-i18n="Analytics">Grades</div>
+                    <div data-i18n="Analytics">Encode Grades</div>
                   </a>
                 </li>
          

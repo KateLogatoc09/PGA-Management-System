@@ -112,6 +112,7 @@
                           <th>Book Publisher</th>
                           <th>Place of Publication</th>
                           <th>Book Category</th>
+                          <th>Book Type</th>
                           <th>Book Pages</th>
                           <th>Book Quantity</th>
                           <th>Shelf Number</th>
@@ -139,6 +140,7 @@
                             <td><?= $book['book_publisher'] ?></td>
                             <td><?= $book['place_printed'] ?></td>
                             <td><?= $book['book_category'] ?></td>
+                            <td><?= $book['book_type'] ?></td>
                             <td><?= $book['book_pages'] ?></td>
                             <td><?= $book['book_qty'] ?></td>
                             <td><?= $book['book_shelf'] ?></td>
@@ -215,6 +217,7 @@
                           <th>Book Publisher</th>
                           <th>Place of Publication</th>
                           <th>Book Category</th>
+                          <th>Book Type</th>
                           <th>Book Pages</th>
                           <th>Book Quantity</th>
                           <th>Shelf Number</th>
@@ -242,6 +245,7 @@
                             <td><?= $book['book_publisher'] ?></td>
                             <td><?= $book['place_printed'] ?></td>
                             <td><?= $book['book_category'] ?></td>
+                            <td><?= $book['book_type'] ?></td>
                             <td><?= $book['book_pages'] ?></td>
                             <td><?= $book['book_qty'] ?></td>
                             <td><?= $book['book_shelf'] ?></td>
