@@ -38,6 +38,7 @@
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
     <link rel="stylesheet" href="../assets/vendor/libs/apex-charts/apex-charts.css" />
+    <link rel="stylesheet" href="../assets/vendor/libs/rateyo/jquery.rateyo.css" />
 
     <!-- SWEETALERT2 -->
     <link href="../sweetalert/sweetalert2.css" rel="stylesheet">

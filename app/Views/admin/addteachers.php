@@ -232,7 +232,7 @@
                         <label for="gender">Gender:</label>
                                         <select class="form-control" name="gender" id="gender" 
                                         value="<?php if (isset($prof['gender'])) {echo $prof['gender'];}?>">
-                                        <option value="">Select Gender</option>
+                                        <option>Select Gender</option>
                                             <option value="Male">Male</option>
                                             <option value="Female">Female</option>
                                         </select>

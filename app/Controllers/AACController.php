@@ -35,9 +35,15 @@ class AACController extends BaseController
         
     public function searchAacsection()
     {
+        if($this->request->getVar('categ') == 'Adviser') {
+            $categ = "CONCAT(fname,lname)";
+        } else {
+            $categ = $this->request->getVar('categ');
+        }
+
         $data = [
             'stud_section' => $this->sections->select('sections.id as id, name, grade_level_id, adviser, fname, mname, lname')
-                ->join('teachers','sections.adviser = teachers.idnum','inner')->like('name', $this->request->getVar('search'))->findAll(),
+                ->join('teachers','sections.adviser = teachers.idnum','inner')->like($categ, $this->request->getVar('search'))->findAll(),
             'teacher' => $this->teacher->orderBy('lname')->findAll(),
         ];
             return view ('aacsections', $data);
@@ -119,9 +125,15 @@ class AACController extends BaseController
         
     public function searchAacsubject()
     {
+        if($this->request->getVar('categ') == 'Teacher') {
+            $categ = "CONCAT(fname,lname)";
+        } else {
+            $categ = $this->request->getVar('categ');
+        }
+
         $data = [
             'subject' => $this->subjects->select('subjects.id as id, subject_name, type, teacher_id, yr_lvl, fname, mname, lname')
-            ->join('teachers','subjects.teacher_id = teachers.idnum','inner')->like('subject_name', $this->request->getVar('search'))->orderBy('subject_name')->findAll(),
+            ->join('teachers','subjects.teacher_id = teachers.idnum','inner')->like($categ, $this->request->getVar('search'))->orderBy('subject_name')->findAll(),
             'teacher' => $this->teacher->orderBy('lname')->findAll(),
         ];
             return view ('aacsubjects', $data);

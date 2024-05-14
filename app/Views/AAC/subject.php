@@ -109,7 +109,13 @@ $subjectSubset = array_slice($subject, $offset, $recordsPerPage);
                       <div class="input-group input-group-sm" style="width: 400px;">
                       <form action="/searchAacsubject" method="get">
                         <div class="input-group-append">
-                        <input type="text" name="search" class="form-control float-right" placeholder="Search">
+                        <input type="text" name="search" class="form-control float-right me-2" placeholder="Search">
+                        <select class="form-control" name="categ">
+                              <option value="subject_name">Subject Name</option>
+                              <option value="type">Type of Subject</option>
+                              <option value="yr_lvl">Grade Level</option>
+                              <option value="Teacher">Teacher</option>
+                          </select>
                           <button type="submit" class="btn btn-default">
                           <i class="menu-icon tf-icons bx bx-search"></i>
                           </button>

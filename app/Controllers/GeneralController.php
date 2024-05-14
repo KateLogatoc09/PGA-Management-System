@@ -23,7 +23,11 @@ class GeneralController extends BaseController
         }
     
     public function feedback(){
-            return view ('feedback');
+        $acc = $this->acc->select('id')->where('username', $_SESSION['username'])->first();
+        $data = [
+            'sfeed' => $this->feedback->where('account_id',$acc)->first(),
+        ];
+            return view ('feedback', $data);
         }
     
         public function sendfeedback()  {
@@ -34,13 +38,21 @@ class GeneralController extends BaseController
                 'comment' => $this->request->getPost('comment'),   
                 'account_id' => $this->acc->select('id')->where('username', $_SESSION['username'])->first(), 
             ];
-    
-            $res = $this->feedback->save($data);
-            if($res) {
-                $session->setFlashdata('msg','Feedback Sent Successfully.');             
+            if($id != null) {
+                $res = $this->feedback->set($data)->where('id', $id)->update();
+                if($res) {
+                    $session->setFlashdata('msg','Feedback Sent Successfully.');             
+                } else {
+                    $session->setFlashdata('msg','Something went wrong. Please try again later.');
+                } 
             } else {
-                $session->setFlashdata('msg','Something went wrong. Please try again later.');
-            }   
+            $res = $this->feedback->save($data);
+                if($res) {
+                    $session->setFlashdata('msg','Feedback Sent Successfully.');             
+                } else {
+                    $session->setFlashdata('msg','Something went wrong. Please try again later.');
+                }   
+            }
             return redirect()->to('feedback');
         }
     

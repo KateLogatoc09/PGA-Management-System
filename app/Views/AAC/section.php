@@ -110,7 +110,11 @@ $sectionSubset = array_slice($stud_section, $offset, $recordsPerPage);
                       <div class="input-group input-group-sm" style="width: 400px;">
                       <form action="/searchAacsection" method="get">
                         <div class="input-group-append">
-                        <input type="text" name="search" class="form-control float-right" placeholder="Search">
+                        <input type="text" name="search" class="form-control float-right me-2" placeholder="Search">
+                        <select class="form-control" name="categ">
+                              <option value="name">Section Name</option>
+                              <option value="Adviser">Adviser</option>
+                          </select>
                           <button type="submit" class="btn btn-default">
                           <i class="menu-icon tf-icons bx bx-search"></i>
                           </button>

@@ -111,15 +111,17 @@
                 <form action="/sendfeedback" method="post" enctype="multipart/form-data">
                     <!-- Add your form fields and content here -->
 
+                    <input type="hidden" class="form-control" name="id" value="<?php if (isset($sfeed['id'])) {echo $sfeed['id'];}?>">
+                  
                     <div class="form-group margin-left">
-                    <input type="hidden" name="id" value="">
-                        <label for="rating">Rating:</label>
-                        <input type="number" class="form-control" name="rating" placeholder="Rating" required>
+                        <label for="rateYo">Rating:</label> <small id="ratingnum"></small>
+                        <div id="rateYo"></div>
+                        <input type="hidden" name="rating" id="rating">
                                  
                       
 
   <label for="comment" class="form-label">Feedback/Comment</label>
-                              <textarea class="form-control" id="comment" name="comment" style="resize:none" rows="6"></textarea>
+  <textarea class="form-control" id="comment" name="comment" style="resize:none" rows="6"><?php if(isset($sfeed['comment'])) { echo $sfeed['comment']; }?></textarea>
 
   </div>
 </div>
@@ -127,7 +129,7 @@
 
 <!-- Move the "Save changes" button inside the form -->
 <div class="modal-footer">
-    <button type="submit" class="btn btn-primary">Submit</button>
+<button class="btn btn-primary" id="submit">Submit</button>
 </div>
 </form>
 </div>
@@ -147,5 +149,29 @@
   </div>
   <!-- / Layout wrapper -->
 </body>
+
+<script>
+  
+  $(function () {
+ 
+  var $rateYo = $("#rateYo").rateYo();
+
+// Setter
+$("#rateYo").rateYo("option", "halfStar", true); //returns a jQuery Element
+$("#rateYo").rateYo("option", "ratedFill", "#0790f2");
+$("#rateYo").rateYo("option", "onSet", function () { $("#ratingnum").text($rateYo.rateYo("rating"));}); 
+
+<?php if(isset($sfeed['rating'])): ?>
+  $("#rateYo").rateYo("option", "rating", <?= $sfeed['rating']; ?>);
+<?php endif; ?>
+  $("#submit").click(function () {
+    /* get rating */
+    var rating = $rateYo.rateYo("rating");
+    $("#rating").val(rating);
+  });
+ 
+});
+
+</script>
 
 </html>
