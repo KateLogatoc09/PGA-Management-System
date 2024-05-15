@@ -6,9 +6,75 @@
       <!-- Layout container -->
       <div class="layout-page">
         <!-- Navbar -->
-        <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
-          <!-- ... (existing navbar code) ... -->
-        </nav>
+        <nav
+            class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+            id="layout-navbar"
+          >
+            <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+              <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+                <i class="bx bx-menu bx-sm"></i>
+              </a>
+            </div>
+
+            <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+            <h5 class="mt-3">Welcome<?php if(isset($_SESSION['username'])): ?>, <?= $_SESSION['username']; endif; ?>!</h5>
+              <ul class="navbar-nav flex-row align-items-center ms-auto">
+                <!-- User -->
+                <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                  <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                    <div class="avatar avatar-online">
+                      <img src="<?php if(isset($_SESSION['img'])): ?><?= site_url().'/'.$_SESSION['img']; ?><?php else: ?>../assets/img/avatars/1.png<?php endif; ?>" alt class="w-px-40 h-auto rounded-circle" />
+                    </div>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end">
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        <div class="d-flex">
+                          <div class="flex-shrink-0 me-3">
+                            <div class="avatar avatar-online">
+                              <img src="<?php if(isset($_SESSION['img'])): ?><?= site_url().'/'.$_SESSION['img']; ?><?php else: ?>../assets/img/avatars/1.png<?php endif; ?>" alt class="w-px-40 h-auto rounded-circle" />
+                            </div>
+                          </div>
+                          <div class="flex-grow-1">
+                            <span class="fw-semibold d-block"><?php if(isset($_SESSION['username'])): ?><?= $_SESSION['username']; endif; ?></span>
+                            <small class="text-muted">User</small>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <li>
+                      <div class="dropdown-divider"></div>
+                    </li>
+
+                    <li>
+                      <a class="dropdown-item active" href="/general">
+                        <i class="bx bx-user me-2"></i>
+                        <span class="align-middle">Home</span>
+                      </a>
+                    </li>
+                    
+                    <li>
+                      <a class="dropdown-item active" href="/">
+                        <i class="bx bx-notification me-2"></i>
+                        <span class="align-middle">Notifications</span>
+                      </a>
+                    </li>
+
+                    <li>
+                      <div class="dropdown-divider"></div>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="logout">
+                        <i class="bx bx-power-off me-2"></i>
+                        <span class="align-middle">Log Out</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <!--/ User -->
+              </ul>
+            </div>
+          </nav>
         <?= $this->include('admin/sidebar') ?>
         <!-- / Navbar -->
 
@@ -24,7 +90,7 @@
       <div class="card">
           <h5 class="card-header">Announcement</h5>
           <hr class="my-0">
-          <form action="#" method="POST" enctype="multipart/form-data">
+          <form action="addAnnouncement" method="POST" enctype="multipart/form-data">
               <div class="card-body d-flex row">
                   <div class="col-sm-12 col-md-12 d-sm-block d-md-block ps-2">
                       <div class="row">
@@ -42,8 +108,8 @@
                           </div>
 
                           <div class="mb-2 col-md-12">
-                              <label for="message" class="form-label">Content/Message</label>
-                              <textarea class="form-control" id="message" name="message" style="resize:none" rows="6" required></textarea>
+                              <label for="content" class="form-label">Content/Message</label>
+                              <textarea class="form-control" id="content" name="content" style="resize:none" rows="6" required></textarea>
                           </div>
 
 
@@ -59,7 +125,7 @@
                                   class="account-file-input"
                                   hidden
                                   accept="image/png, image/jpeg"
-                                  name="photo"
+                                  name="attachment"
                                   />
                               </label>
                           </div>

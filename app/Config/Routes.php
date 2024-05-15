@@ -46,7 +46,7 @@ $routes->get('/admins', 'AdminController::index', ['filter' => 'admin']);
 $routes->post('/saveAccount', 'AdminController::saveAccount', ['filter' => 'admin']);
 $routes->get('/deleteAccount/(:any)', 'AdminController::deleteAccount/$1', ['filter' => 'admin']);
 $routes->get('/editAccount/(:any)', 'AdminController::editAccount/$1', ['filter' => 'admin']);
-
+$routes->post('/addAnnouncement', 'AdminController::addannounce', ['filter' => 'admin']);
 $routes->get('/announce', 'AdminController::announce', ['filter' => 'admin']);
 $routes->get('/feedbackview', 'AdminController::feedbackview', ['filter' => 'admin']);
 

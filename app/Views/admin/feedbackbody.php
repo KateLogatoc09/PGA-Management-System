@@ -105,16 +105,6 @@
                   <div class="card-header">
                     <h3 class="card-title">Feedbacks</h3>
                     <div class="card-tools">
-                      <div class="input-group input-group-sm" style="width: 400px;">
-                      <form action="#" method="get">
-                        <div class="input-group-append">
-                        <input type="text" name="search" class="form-control float-right" placeholder="Search">
-                          <button type="submit" class="btn btn-default">
-                          <i class="menu-icon tf-icons bx bx-search"></i>
-                          </button>
-                        </div>
-                      </form>
-                      </div>
                     </div>
                   </div>
                   <!-- /.card-header -->

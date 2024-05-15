@@ -94,7 +94,11 @@
                       <div class="input-group input-group-sm" style="width: 400px;">
                       <form action="/searchAccount" method="get">
                         <div class="input-group-append">
-                        <input type="text" name="search" class="form-control float-right" placeholder="Search">
+                        <input type="text" name="search" class="form-control float-right me-2" placeholder="Search">
+                        <select class="form-control" name="categ">
+                              <option value="username">Username</option>
+                              <option value="email">Email</option>
+                          </select>
                           <button type="submit" class="btn btn-default">
                           <i class="menu-icon tf-icons bx bx-search"></i>
                           </button>

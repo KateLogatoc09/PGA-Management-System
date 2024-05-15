@@ -36,7 +36,7 @@ class AACController extends BaseController
     public function searchAacsection()
     {
         if($this->request->getVar('categ') == 'Adviser') {
-            $categ = "CONCAT(fname,lname)";
+            $categ = "CONCAT(fname,' ',mname,' ',lname)";
         } else {
             $categ = $this->request->getVar('categ');
         }
@@ -126,7 +126,7 @@ class AACController extends BaseController
     public function searchAacsubject()
     {
         if($this->request->getVar('categ') == 'Teacher') {
-            $categ = "CONCAT(fname,lname)";
+            $categ = "CONCAT(fname,' ',mname,' ',lname)";
         } else {
             $categ = $this->request->getVar('categ');
         }
@@ -204,6 +204,7 @@ class AACController extends BaseController
 
     public function St_Joseph_Husband_of_Mary()
     {
+        
         $data = [
             'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
@@ -215,12 +216,19 @@ class AACController extends BaseController
 
     public function searchJoseph_Husband_of_Mary()
     {
+        if($this->request->getVar('categ') == 'Student') {
+            $categ = "CONCAT(first_name,' ',middle_name,' ',last_name)";
+        } else if($this->request->getVar('categ') == 'Adviser') {
+            $categ = "CONCAT(fname,' ',mname,' ',lname)";
+        } else {
+            $categ = $this->request->getVar('categ');
+        }
+
         $data = [
             'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
             ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '1')
-            ->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
-            ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
+            ->like($categ, $this->request->getVar('search'))
             ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Joseph_Husband_of_Mary', $data);
@@ -240,12 +248,19 @@ class AACController extends BaseController
 
     public function searchPerpetua_felicity()
     {
+        if($this->request->getVar('categ') == 'Student') {
+            $categ = "CONCAT(first_name,' ',middle_name,' ',last_name)";
+        } else if($this->request->getVar('categ') == 'Adviser') {
+            $categ = "CONCAT(fname,' ',mname,' ',lname)";
+        } else {
+            $categ = $this->request->getVar('categ');
+        }
+
         $data = [
             'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
             ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '2')
-            ->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
-            ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
+            ->like($categ, $this->request->getVar('search'))
             ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Perpetua_and_Felicity', $data);
@@ -264,12 +279,19 @@ class AACController extends BaseController
 
     public function searchLouise()
     {
+        if($this->request->getVar('categ') == 'Student') {
+            $categ = "CONCAT(first_name,' ',middle_name,' ',last_name)";
+        } else if($this->request->getVar('categ') == 'Adviser') {
+            $categ = "CONCAT(fname,' ',mname,' ',lname)";
+        } else {
+            $categ = $this->request->getVar('categ');
+        }
+
         $data = [
             'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
             ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '3')
-            ->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
-            ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
+            ->like($categ, $this->request->getVar('search'))
             ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Louise_de_Marillac', $data);
@@ -288,12 +310,19 @@ class AACController extends BaseController
 
     public function searchDominic()
     {
+        if($this->request->getVar('categ') == 'Student') {
+            $categ = "CONCAT(first_name,' ',middle_name,' ',last_name)";
+        } else if($this->request->getVar('categ') == 'Adviser') {
+            $categ = "CONCAT(fname,' ',mname,' ',lname)";
+        } else {
+            $categ = $this->request->getVar('categ');
+        }
+
         $data = [
             'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
             ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '4')
-            ->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
-            ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
+            ->like($categ, $this->request->getVar('search'))
             ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Dominic_Savio', $data);
@@ -312,12 +341,19 @@ class AACController extends BaseController
 
     public function searchPedro()
     {
+        if($this->request->getVar('categ') == 'Student') {
+            $categ = "CONCAT(first_name,' ',middle_name,' ',last_name)";
+        } else if($this->request->getVar('categ') == 'Adviser') {
+            $categ = "CONCAT(fname,' ',mname,' ',lname)";
+        } else {
+            $categ = $this->request->getVar('categ');
+        }
+
         $data = [
             'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
             ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '5')
-            ->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
-            ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
+            ->like($categ, $this->request->getVar('search'))
             ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Pedro_Calungsod', $data);
@@ -336,12 +372,19 @@ class AACController extends BaseController
 
     public function searchGemma()
     {
+        if($this->request->getVar('categ') == 'Student') {
+            $categ = "CONCAT(first_name,' ',middle_name,' ',last_name)";
+        } else if($this->request->getVar('categ') == 'Adviser') {
+            $categ = "CONCAT(fname,' ',mname,' ',lname)";
+        } else {
+            $categ = $this->request->getVar('categ');
+        }
+
         $data = [
             'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
             ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '6')
-            ->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
-            ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
+            ->like($categ, $this->request->getVar('search'))
             ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Gemma_Galgani', $data);
@@ -360,12 +403,19 @@ class AACController extends BaseController
 
     public function searchCatherine()
     {
+        if($this->request->getVar('categ') == 'Student') {
+            $categ = "CONCAT(first_name,' ',middle_name,' ',last_name)";
+        } else if($this->request->getVar('categ') == 'Adviser') {
+            $categ = "CONCAT(fname,' ',mname,' ',lname)";
+        } else {
+            $categ = $this->request->getVar('categ');
+        }
+
         $data = [
             'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
             ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '7')
-            ->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
-            ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
+            ->like($categ, $this->request->getVar('search'))
             ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Catherine_of_Siena', $data);
@@ -385,12 +435,19 @@ class AACController extends BaseController
     
     public function searchLawrence()
     {
+        if($this->request->getVar('categ') == 'Student') {
+            $categ = "CONCAT(first_name,' ',middle_name,' ',last_name)";
+        } else if($this->request->getVar('categ') == 'Adviser') {
+            $categ = "CONCAT(fname,' ',mname,' ',lname)";
+        } else {
+            $categ = $this->request->getVar('categ');
+        }
+
         $data = [
             'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
             ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '8')
-            ->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
-            ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
+            ->like($categ, $this->request->getVar('search'))
             ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Lawrence_of_Manila', $data);
@@ -409,12 +466,19 @@ class AACController extends BaseController
 
     public function searchPio()
     {
+        if($this->request->getVar('categ') == 'Student') {
+            $categ = "CONCAT(first_name,' ',middle_name,' ',last_name)";
+        } else if($this->request->getVar('categ') == 'Adviser') {
+            $categ = "CONCAT(fname,' ',mname,' ',lname)";
+        } else {
+            $categ = $this->request->getVar('categ');
+        }
+
         $data = [
             'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
             ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '9')
-            ->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
-            ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
+            ->like($categ, $this->request->getVar('search'))
             ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Pio_of_Pietrelcina', $data);
@@ -434,12 +498,19 @@ class AACController extends BaseController
     
     public function searchMatthew()
     {
+        if($this->request->getVar('categ') == 'Student') {
+            $categ = "CONCAT(first_name,' ',middle_name,' ',last_name)";
+        } else if($this->request->getVar('categ') == 'Adviser') {
+            $categ = "CONCAT(fname,' ',mname,' ',lname)";
+        } else {
+            $categ = $this->request->getVar('categ');
+        }
+
         $data = [
             'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
             ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '10')
-            ->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
-            ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
+            ->like($categ, $this->request->getVar('search'))
             ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Matthew_the_Evangelist', $data);
@@ -458,12 +529,19 @@ class AACController extends BaseController
 
     public function searchJerome()
     {
+        if($this->request->getVar('categ') == 'Student') {
+            $categ = "CONCAT(first_name,' ',middle_name,' ',last_name)";
+        } else if($this->request->getVar('categ') == 'Adviser') {
+            $categ = "CONCAT(fname,' ',mname,' ',lname)";
+        } else {
+            $categ = $this->request->getVar('categ');
+        }
+
         $data = [
             'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
             ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '11')
-            ->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
-            ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
+            ->like($categ, $this->request->getVar('search'))
             ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Jerome_of_Stridon', $data);
@@ -482,12 +560,19 @@ class AACController extends BaseController
 
     public function searchFrancis()
     {
+        if($this->request->getVar('categ') == 'Student') {
+            $categ = "CONCAT(first_name,' ',middle_name,' ',last_name)";
+        } else if($this->request->getVar('categ') == 'Adviser') {
+            $categ = "CONCAT(fname,' ',mname,' ',lname)";
+        } else {
+            $categ = $this->request->getVar('categ');
+        }
+
         $data = [
             'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
             ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '12')
-            ->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
-            ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
+            ->like($categ, $this->request->getVar('search'))
             ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Francis_of_Assisi', $data);
@@ -506,12 +591,19 @@ class AACController extends BaseController
     
     public function searchLuke()
     {
+        if($this->request->getVar('categ') == 'Student') {
+            $categ = "CONCAT(first_name,' ',middle_name,' ',last_name)";
+        } else if($this->request->getVar('categ') == 'Adviser') {
+            $categ = "CONCAT(fname,' ',mname,' ',lname)";
+        } else {
+            $categ = $this->request->getVar('categ');
+        }
+
         $data = [
             'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
             ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '13')
-            ->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
-            ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
+            ->like($categ, $this->request->getVar('search'))
             ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Luke_the_Evangelist', $data);
@@ -531,12 +623,19 @@ class AACController extends BaseController
 
     public function searchTherese()
     {
+        if($this->request->getVar('categ') == 'Student') {
+            $categ = "CONCAT(first_name,' ',middle_name,' ',last_name)";
+        } else if($this->request->getVar('categ') == 'Adviser') {
+            $categ = "CONCAT(fname,' ',mname,' ',lname)";
+        } else {
+            $categ = $this->request->getVar('categ');
+        }
+
         $data = [
             'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
             ->join('teachers','sections.adviser = teachers.idnum','inner')
-            ->where('section', '14')->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
-            ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
+            ->where('section', '14')->like($categ, $this->request->getVar('search'))
             ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Therese_of_Lisieux', $data);
@@ -555,12 +654,19 @@ class AACController extends BaseController
 
     public function searchCecelia()
     {
+        if($this->request->getVar('categ') == 'Student') {
+            $categ = "CONCAT(first_name,' ',middle_name,' ',last_name)";
+        } else if($this->request->getVar('categ') == 'Adviser') {
+            $categ = "CONCAT(fname,' ',mname,' ',lname)";
+        } else {
+            $categ = $this->request->getVar('categ');
+        }
+
         $data = [
             'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
             ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '15')
-            ->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
-            ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
+            ->like($categ, $this->request->getVar('search'))
             ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Cecelia', $data);
@@ -580,12 +686,19 @@ class AACController extends BaseController
 
     public function searchMartin()
     {
+        if($this->request->getVar('categ') == 'Student') {
+            $categ = "CONCAT(first_name,' ',middle_name,' ',last_name)";
+        } else if($this->request->getVar('categ') == 'Adviser') {
+            $categ = "CONCAT(fname,' ',mname,' ',lname)";
+        } else {
+            $categ = $this->request->getVar('categ');
+        }
+
         $data = [
             'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
             ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '16')
-            ->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
-            ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
+            ->like($categ, $this->request->getVar('search'))
             ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Martin_the_Porres', $data);
@@ -604,12 +717,19 @@ class AACController extends BaseController
 
     public function searchAlbert()
     {
+        if($this->request->getVar('categ') == 'Student') {
+            $categ = "CONCAT(first_name,' ',middle_name,' ',last_name)";
+        } else if($this->request->getVar('categ') == 'Adviser') {
+            $categ = "CONCAT(fname,' ',mname,' ',lname)";
+        } else {
+            $categ = $this->request->getVar('categ');
+        }
+
         $data = [
             'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
             ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '17')
-            ->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
-            ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
+            ->like($categ, $this->request->getVar('search'))
             ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Albert_the_Great', $data);
@@ -629,12 +749,19 @@ class AACController extends BaseController
     
     public function searchStephen()
     {
+        if($this->request->getVar('categ') == 'Student') {
+            $categ = "CONCAT(first_name,' ',middle_name,' ',last_name)";
+        } else if($this->request->getVar('categ') == 'Adviser') {
+            $categ = "CONCAT(fname,' ',mname,' ',lname)";
+        } else {
+            $categ = $this->request->getVar('categ');
+        }
+
         $data = [
             'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
             ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '18')
-            ->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
-            ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
+            ->like($categ, $this->request->getVar('search'))
             ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Stephen', $data);
@@ -654,12 +781,19 @@ class AACController extends BaseController
 
     public function searchXavier()
     {
+        if($this->request->getVar('categ') == 'Student') {
+            $categ = "CONCAT(first_name,' ',middle_name,' ',last_name)";
+        } else if($this->request->getVar('categ') == 'Adviser') {
+            $categ = "CONCAT(fname,' ',mname,' ',lname)";
+        } else {
+            $categ = $this->request->getVar('categ');
+        }
+
         $data = [
             'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
             ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '19')
-            ->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
-            ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
+            ->like($categ, $this->request->getVar('search'))
             ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Francis_Xavier', $data);
@@ -679,12 +813,19 @@ class AACController extends BaseController
     
     public function searchJohn()
     {
+        if($this->request->getVar('categ') == 'Student') {
+            $categ = "CONCAT(first_name,' ',middle_name,' ',last_name)";
+        } else if($this->request->getVar('categ') == 'Adviser') {
+            $categ = "CONCAT(fname,' ',mname,' ',lname)";
+        } else {
+            $categ = $this->request->getVar('categ');
+        }
+
         $data = [
             'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
             ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '20')
-            ->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
-            ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
+            ->like($categ, $this->request->getVar('search'))
             ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_John_the_Beloved', $data);
@@ -703,12 +844,19 @@ class AACController extends BaseController
     
     public function searchJoseph()
     {
+        if($this->request->getVar('categ') == 'Student') {
+            $categ = "CONCAT(first_name,' ',middle_name,' ',last_name)";
+        } else if($this->request->getVar('categ') == 'Adviser') {
+            $categ = "CONCAT(fname,' ',mname,' ',lname)";
+        } else {
+            $categ = $this->request->getVar('categ');
+        }
+
         $data = [
             'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
             ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '21')
-            ->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
-            ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
+            ->like($categ, $this->request->getVar('search'))
             ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Joseph_Freinademetz', $data);
@@ -728,12 +876,19 @@ class AACController extends BaseController
     
     public function searchThomas()
     {
+        if($this->request->getVar('categ') == 'Student') {
+            $categ = "CONCAT(first_name,' ',middle_name,' ',last_name)";
+        } else if($this->request->getVar('categ') == 'Adviser') {
+            $categ = "CONCAT(fname,' ',mname,' ',lname)";
+        } else {
+            $categ = $this->request->getVar('categ');
+        }
+
         $data = [
             'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
             ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '22')
-            ->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
-            ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
+            ->like($categ, $this->request->getVar('search'))
             ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Thomas_Aquinas', $data);
@@ -752,12 +907,19 @@ class AACController extends BaseController
 
     public function searchArnold()
     {
+        if($this->request->getVar('categ') == 'Student') {
+            $categ = "CONCAT(first_name,' ',middle_name,' ',last_name)";
+        } else if($this->request->getVar('categ') == 'Adviser') {
+            $categ = "CONCAT(fname,' ',mname,' ',lname)";
+        } else {
+            $categ = $this->request->getVar('categ');
+        }
+
         $data = [
             'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
             ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '23')
-            ->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
-            ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
+            ->like($categ, $this->request->getVar('search'))
             ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Arnold_Janssen', $data);
@@ -776,12 +938,19 @@ class AACController extends BaseController
 
     public function searchAgatha()
     {
+        if($this->request->getVar('categ') == 'Student') {
+            $categ = "CONCAT(first_name,' ',middle_name,' ',last_name)";
+        } else if($this->request->getVar('categ') == 'Adviser') {
+            $categ = "CONCAT(fname,' ',mname,' ',lname)";
+        } else {
+            $categ = $this->request->getVar('categ');
+        }
+
         $data = [
             'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
             ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '24')
-            ->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
-            ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
+            ->like($categ, $this->request->getVar('search'))
             ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Agatha_Sicily', $data);
@@ -800,12 +969,19 @@ class AACController extends BaseController
 
     public function searchScholastica()
     {
+        if($this->request->getVar('categ') == 'Student') {
+            $categ = "CONCAT(first_name,' ',middle_name,' ',last_name)";
+        } else if($this->request->getVar('categ') == 'Adviser') {
+            $categ = "CONCAT(fname,' ',mname,' ',lname)";
+        } else {
+            $categ = $this->request->getVar('categ');
+        }
+
         $data = [
             'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname')
             ->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
             ->join('teachers','sections.adviser = teachers.idnum','inner')->where('section', '25')
-            ->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))
-            ->orLike('middle_name', $this->request->getVar('search'))->orLike('student_id', $this->request->getVar('search'))
+            ->like($categ, $this->request->getVar('search'))
             ->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('St_Scholastica', $data);

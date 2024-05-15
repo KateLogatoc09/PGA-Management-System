@@ -110,7 +110,13 @@
                       <div class="input-group input-group-sm" style="width: 400px;">
                       <form action="/searchPerpetua_felicity" method="get">
                         <div class="input-group-append">
-                        <input type="text" name="search" class="form-control float-right" placeholder="Search">
+                        <input type="text" name="search" class="form-control float-right me-2" placeholder="Search">
+                        <select class="form-control" name="categ">
+                              <option value="Student">Student</option>
+                              <option value="category">Category</option>
+                              <option value="yr_lvl">Grade Level</option>
+                              <option value="Adviser">Adviser</option>
+                          </select>
                           <button type="submit" class="btn btn-default">
                           <i class="menu-icon tf-icons bx bx-search"></i>
                           </button>

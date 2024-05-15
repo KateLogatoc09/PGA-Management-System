@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\AnnouncementModel;
 use App\Models\TeacherModel;
 use App\Models\AccountModel;
 use App\Models\FeedbackModel;
@@ -10,12 +11,13 @@ use App\Models\FeedbackModel;
 class AdminController extends BaseController
 {
     
-    private $teacher, $account, $feedback;
+    private $teacher, $account, $feedback, $announce;
     public function __construct()
     {
         $this->teacher = new TeacherModel();
         $this->account = new AccountModel();
         $this->feedback = new FeedbackModel();
+        $this->announce = new AnnouncementModel();
     }
 
     public function index()
@@ -38,7 +40,7 @@ class AdminController extends BaseController
     public function searchAccount()
     {
             $data = [
-                'account' => $this->account->like('username', $this->request->getVar('search'))->orLike('email', $this->request->getVar('search'))->orderBy('username')->findAll(),
+                'account' => $this->account->like($this->request->getVar('categ'), $this->request->getVar('search'))->orLike('email', $this->request->getVar('search'))->orderBy('username')->findAll(),
                 ];
             return view ('admin', $data);
     }
@@ -59,9 +61,14 @@ class AdminController extends BaseController
 
     public function searchTeacher()
     {
+        if($this->request->getVar('categ') == 'Teacher') {
+            $categ = "CONCAT(fname,' ',mname,' ',lname)";
+        } else {
+            $categ = $this->request->getVar('categ');
+        }
+
             $data = [
-                'teacher' => $this->teacher->like('fname', $this->request->getVar('search'))->orLike('mname', $this->request->getVar('search'))
-                ->orLike('lname', $this->request->getVar('search'))->orLike('idnum', $this->request->getVar('search'))->orderBy('lname')->findAll(),
+                'teacher' => $this->teacher->like($categ, $this->request->getVar('search'))->orderBy('lname')->findAll(),
                 ];
                 return view('adminteach', $data);
     }
@@ -176,6 +183,29 @@ class AdminController extends BaseController
 
 
     public function addannounce() {
-        
+        $session = session();
+        $attach = $this->request->getFile('attachment');
+        $data = [
+            'subject' => $this->request->getVar('subject'),
+            'content' => $this->request->getVar('content'),
+            'date' => date("Y-m-d H:i:s")
+        ];
+
+        if($attach != '') {
+            $date = date("Y-m-d");
+            $attach->move(PUBLIC_PATH.'\\announcement\\'.$date.'\\');
+            $name = $attach->getClientPath();
+            $path = '/announcement/'.$date.'/'.$name;
+            $data['attachment'] = $path;
+        }
+
+        $res = $this->announce->save($data);
+        if($res) {
+            $session->setFlashdata('msg','Saved Successfully.');
+        } else {
+            $session->setFlashdata('msg','Something went wrong. Please try again later.');
+        }
+
+        return redirect()->to('announce');
     }
 }
