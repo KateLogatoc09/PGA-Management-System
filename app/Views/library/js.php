@@ -28,6 +28,26 @@
 
 <!-- Custom JS -->
 <script>
+    
+    <?php for($x = 1;$x <= 3;$x++): ?>
+        document.getElementById("logout<?= $x?>").addEventListener("click", function (event) {
+        event.preventDefault()
+        //sweetalert2 code
+        Swal.fire({
+            title: 'PGA',
+            text: "Are you sure?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes'
+        }).then((result) => {
+            if (result.isConfirmed) {
+            window.location = $(this).attr('href');
+            }
+        })
+        });
+    <?php endfor; ?>
 
 $(document).ready(function(){
             <?php if (isset($_SESSION['msg'])): ?>

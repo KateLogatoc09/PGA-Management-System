@@ -325,7 +325,7 @@
               </a>
             </li>
             <li class="menu-item">
-                  <a href="/logout" class="menu-link">
+                  <a href="/logout" id="logout1" class="menu-link">
                   <i class="menu-icon tf-icons bx bx-undo"></i>
                     <div data-i18n="Analytics">Logout</div>
                   </a>

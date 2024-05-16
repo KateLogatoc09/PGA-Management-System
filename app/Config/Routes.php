@@ -72,6 +72,7 @@ $routes->get('/editGrade/(:any)', 'TeacherController::editGrade/$1', ['filter' =
 $routes->get('/expandStudent/(:any)', 'TeacherController::expandStudent/$1', ['filter' => 'teacher']);
 $routes->post('/teacher_qr', 'TeacherController::teacher_qr', ['filter' => 'teacher']);
 $routes->get('/advisoryClass', 'TeacherController::advisoryClass', ['filter' => 'teacher']);
+$routes->get('/searchAdvisory', 'TeacherController::searchAdvisory', ['filter' => 'teacher']);
 
 //ADMIN ENROLL
 $routes->get('/enroll', 'AdminController::enroll', ['filter' => 'admin']);
@@ -163,10 +164,17 @@ $routes->get('/parent', 'ParentController::parent', ['filter' => 'parents']);
 $routes->get('/registrar', 'RegistrarController::registrar', ['filter' => 'registrar']);
 $routes->get('/reggrade', 'RegistrarController::reggrade', ['filter' => 'registrar']);
 $routes->get('/enrollmentform', 'RegistrarController::enrollmentform', ['filter' => 'registrar']);
+$routes->get('/searchForm', 'RegistrarController::searchForm', ['filter' => 'registrar']);
 $routes->get('/searchAppli', 'RegistrarController::searchAppli', ['filter' => 'registrar']);
 $routes->get('/searchSection', 'RegistrarController::searchSection', ['filter' => 'registrar']);
 $routes->get('/searchSubject', 'RegistrarController::searchSubject', ['filter' => 'registrar']);
 $routes->get('/searchStudgrade', 'RegistrarController::searchStudgrade', ['filter' => 'registrar']);
+$routes->get('/searchStudAdmission', 'RegistrarController::searchStudAdmission', ['filter' => 'registrar']);
+$routes->get('/searchLearner', 'RegistrarController::searchLearner', ['filter' => 'registrar']);
+$routes->get('/searchSchool', 'RegistrarController::searchSchool', ['filter' => 'registrar']);
+$routes->get('/searchParent', 'RegistrarController::searchParent', ['filter' => 'registrar']);
+$routes->get('/searchAddress', 'RegistrarController::searchAddress', ['filter' => 'registrar']);
+$routes->get('/searchSibling', 'RegistrarController::searchSibling', ['filter' => 'registrar']);
 $routes->get('/registerstudent', 'RegistrarController::registerstudent', ['filter' => 'registrar']);
 $routes->post('/regSaveLearner', 'RegistrarController::regSaveLearner', ['filter' => 'registrar']);
 $routes->get('/regDeleteLearner/(:any)', 'RegistrarController::regDeleteLearner/$1', ['filter' => 'registrar']);
@@ -220,6 +228,7 @@ $routes->get('/alumni', 'RegistrarController::alumni', ['filter' => 'registrar']
 $routes->post('/saveAlumni', 'RegistrarController::saveAlumni', ['filter' => 'registrar']);
 $routes->get('/deleteAlumni/(:any)', 'RegistrarController::deleteAlumni/$1', ['filter' => 'registrar']);
 $routes->get('/editAlumni/(:any)', 'RegistrarController::editAlumni/$1', ['filter' => 'registrar']);
+$routes->get('/searchAlumni', 'RegistrarController::searchAlumni', ['filter' => 'registrar']);
 
 //DAC
 $routes->get('/DAC', 'DACController::DAC', ['filter' => 'DAC']);

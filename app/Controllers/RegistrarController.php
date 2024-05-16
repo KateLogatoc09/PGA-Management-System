@@ -67,7 +67,7 @@ class RegistrarController extends BaseController
     public function searchAppli()
     {
         $data = [
-            'appli' => $this->account->select('*')->join('application','application.account_id = accounts.id','inner')->like('email', $this->request->getVar('search'))->orLike('application.fullname', $this->request->getVar('search'))->orderBy('application.fullname')->findAll(),
+            'appli' => $this->account->select('*')->join('application','application.account_id = accounts.id','inner')->like($this->request->getVar('categ'), $this->request->getVar('search'))->orLike('application.fullname', $this->request->getVar('search'))->orderBy('application.fullname')->findAll(),
         ];
             return view ('application', $data);
     }
@@ -127,6 +127,14 @@ class RegistrarController extends BaseController
     {
         $data = [
             'alumni' => $this->alumni->findAll(),
+                ];
+        return view ('alumni', $data);
+    }
+
+    public function searchAlumni()
+    {
+        $data = [
+            'alumni' => $this->alumni->like($this->request->getVar('categ'),$this->request->getVar('table_search'))->findAll(),
                 ];
         return view ('alumni', $data);
     }
@@ -199,9 +207,15 @@ class RegistrarController extends BaseController
 
     public function searchSection()
     {
+        if($this->request->getVar('categ') == 'Adviser') {
+            $categ = "CONCAT(fname,' ',mname,' ',lname)";
+        } else {
+            $categ = $this->request->getVar('categ');
+        }
+
         $data = [
             'stud_section' => $this->sections->select('sections.id as id, name, grade_level_id, adviser, fname, mname, lname')
-            ->join('teachers','sections.adviser = teachers.idnum','inner')->like('name', $this->request->getVar('search'))->findAll(),
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->like($categ, $this->request->getVar('search'))->findAll(),
             'teacher' => $this->teacher->orderBy('lname')->findAll(),
         ];
             return view ('sections', $data);
@@ -272,9 +286,15 @@ class RegistrarController extends BaseController
 
     public function searchSubject()
     {
+        if($this->request->getVar('categ') == 'Teacher') {
+            $categ = "CONCAT(fname,' ',mname,' ',lname)";
+        } else {
+            $categ = $this->request->getVar('categ');
+        }
+
         $data = [
             'subject' => $this->subjects->select('subjects.id as id, subject_name, type, teacher_id, yr_lvl, fname, mname, lname')
-            ->join('teachers','subjects.teacher_id = teachers.idnum','inner')->like('name', $this->request->getVar('search'))->orderBy('name')->findAll(),
+            ->join('teachers','subjects.teacher_id = teachers.idnum','inner')->like($categ, $this->request->getVar('search'))->orderBy('subject_name')->findAll(),
             'teacher' => $this->teacher->orderBy('lname')->findAll(),
         ];
             return view ('subjects', $data);
@@ -340,6 +360,24 @@ class RegistrarController extends BaseController
             'learner' => $this->admissions->select('student_learner.id as id, first_name, middle_name, last_name, nickname, birthdate, birthplace, age,
             gender, marital_status, mobile_num, nationality, religion, student_learner.photo, student_id, email, name, yr_lvl')->join('student_learner','student_learner.account_id = admissions.account_id','inner')
             ->join('accounts','accounts.id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
+            ->orderBy('student_learner.last_name')->FindAll(),
+            ];
+        return view('registerstudent', $data);
+    }
+
+    public function searchLearner()
+    {
+        if($this->request->getVar('categ') == 'Student') {
+            $categ = "CONCAT(first_name,' ',middle_name,' ',last_name)";
+        } else {
+            $categ = $this->request->getVar('categ');
+        }
+
+        $data = [
+            'learner' => $this->admissions->select('student_learner.id as id, first_name, middle_name, last_name, nickname, birthdate, birthplace, age,
+            gender, marital_status, mobile_num, nationality, religion, student_learner.photo, student_id, email, name, yr_lvl')->join('student_learner','student_learner.account_id = admissions.account_id','inner')
+            ->join('accounts','accounts.id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')
+            ->like($categ, $this->request->getVar('table_search'))
             ->orderBy('student_learner.last_name')->FindAll(),
             ];
         return view('registerstudent', $data);
@@ -474,6 +512,21 @@ class RegistrarController extends BaseController
         return view('regfam', $data);
     }
 
+    public function searchParent() 
+    {
+        if($this->request->getVar('categ') == 'Student') {
+            $categ = "CONCAT(first_name,' ',middle_name,' ',last_name)";
+        } else {
+            $categ = $this->request->getVar('categ');
+        }
+
+        $data = [
+            'family' => $this->learner->select('*')->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('family','family.account_id = student_learner.account_id','inner')->like($categ, $this->request->getVar('table_search'))->orderBy('student_learner.last_name')->FindAll(),
+        ];
+
+        return view('regfam', $data);
+    }
+
     public function regSavefamily()  {
         $session = session();
         $id = $_POST['id'];
@@ -536,6 +589,21 @@ class RegistrarController extends BaseController
     {
         $data = [
             'address' => $this->learner->select('*')->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('address','address.account_id = student_learner.account_id','inner')->orderBy('student_learner.last_name')->FindAll(),
+        ];
+
+        return view('regaddress', $data);
+    }
+
+    public function searchAddress()
+    {
+        if($this->request->getVar('categ') == 'Student') {
+            $categ = "CONCAT(first_name,' ',middle_name,' ',last_name)";
+        } else {
+            $categ = $this->request->getVar('categ');
+        }
+        
+        $data = [
+            'address' => $this->learner->select('*')->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('address','address.account_id = student_learner.account_id','inner')->like($categ, $this->request->getVar('table_search'))->orderBy('student_learner.last_name')->FindAll(),
         ];
 
         return view('regaddress', $data);
@@ -607,6 +675,21 @@ class RegistrarController extends BaseController
         return view('regsibling', $data);
     }
 
+    public function searchSibling()
+    {
+        if($this->request->getVar('categ') == 'Student') {
+            $categ = "CONCAT(first_name,' ',middle_name,' ',last_name)";
+        } else {
+            $categ = $this->request->getVar('categ');
+        }
+
+        $data = [
+            'sibling' => $this->learner->select('*')->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('sibling','sibling.account_id = student_learner.account_id','inner')->like($categ, $this->request->getVar('table_search'))->orderBy('student_learner.last_name')->FindAll(),
+        ];
+
+        return view('regsibling', $data);
+    }
+
     public function regSavesibling()  {
         $session = session();
         $id = $_POST['id'];
@@ -664,6 +747,21 @@ class RegistrarController extends BaseController
     {
         $data = [
             'school' => $this->learner->select('*')->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('school_attended','school_attended.account_id = student_learner.account_id','inner')->orderBy('student_learner.last_name')->FindAll(),
+        ];
+
+        return view('regschool', $data);
+    }
+
+    public function searchSchool()
+    {
+        if($this->request->getVar('categ') == 'Student') {
+            $categ = "CONCAT(first_name,' ',middle_name,' ',last_name)";
+        } else {
+            $categ = $this->request->getVar('categ');
+        }
+
+        $data = [
+            'school' => $this->learner->select('*')->join('admissions','admissions.account_id = student_learner.account_id','inner')->join('school_attended','school_attended.account_id = student_learner.account_id','inner')->like($categ, $this->request->getVar('table_search'))->orderBy('student_learner.last_name')->FindAll(),
         ];
 
         return view('regschool', $data);
@@ -734,6 +832,24 @@ class RegistrarController extends BaseController
         return view('regadmissions', $data);
     }
 
+    public function searchStudAdmission()
+    {
+        if($this->request->getVar('categ') == 'Adviser') {
+            $categ = "CONCAT(fname,' ',mname,' ',lname)";
+        } else {
+            $categ = $this->request->getVar('categ');
+        }
+
+        $data = [
+            'stud_section' => $this->sections->findAll(),
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, category,yr_lvl,program, status,
+            birth_cert, report_card, good_moral, admissions.photo, schedule, fname, mname, lname')->join('admissions','admissions.account_id = student_learner.account_id','inner')
+            ->join('sections','sections.id = admissions.section','left')->join('teachers','sections.adviser = teachers.idnum','left')->like($categ, $this->request->getVar('table_search'))->orderBy('student_learner.last_name')->FindAll(),
+       ];
+        return view('regadmissions', $data);
+    }
+    
+
     public function enrollmentform()
     {
         $data = [
@@ -742,6 +858,24 @@ class RegistrarController extends BaseController
             birth_cert, report_card, good_moral, admissions.photo, schedule, fname, mname, lname, email, admissions.account_id')->join('admissions','admissions.account_id = student_learner.account_id','inner')
             ->join('accounts','accounts.id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')->join('teachers','sections.adviser = teachers.idnum','left')
             ->orderBy('student_learner.last_name')->FindAll(),
+       ];
+        return view('enrollmentform', $data);
+    }
+
+    public function searchForm()
+    {
+        if($this->request->getVar('categ') == 'Adviser') {
+            $categ = "CONCAT(fname,' ',mname,' ',lname)";
+        } else {
+            $categ = $this->request->getVar('categ');
+        }
+
+        $data = [
+            'stud_section' => $this->sections->findAll(),
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, category,yr_lvl,program, admissions.status,
+            birth_cert, report_card, good_moral, admissions.photo, schedule, fname, mname, lname, email, admissions.account_id')->join('admissions','admissions.account_id = student_learner.account_id','inner')
+            ->join('accounts','accounts.id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')->join('teachers','sections.adviser = teachers.idnum','left')
+            ->like($categ, $this->request->getVar('table_search'))->orderBy('student_learner.last_name')->FindAll(),
        ];
         return view('enrollmentform', $data);
     }
@@ -892,13 +1026,19 @@ class RegistrarController extends BaseController
 
     public function searchParentchild()
     {
+        if($this->request->getVar('categ') == 'Student') {
+            $categ = "CONCAT(first_name,' ',middle_name,' ',last_name)";
+        } else {
+            $categ = $this->request->getVar('categ');
+        }
+
             $data = [
                 'table' => $this->parent_child->select('parent_child.id as id, child_id, first_name, middle_name, last_name, fullname')
                 ->join('application','application.id = parent_child.parent_id','inner')
                 ->join('admissions','admissions.student_id = parent_child.child_id','inner')
                 ->join('student_learner','student_learner.account_id = admissions.account_id','inner')
                 ->where('type', 'PARENT')->where('application.status', 'APPROVED')
-                ->like('fullname', $this->request->getVar('search'))->FindAll(),
+                ->like($categ, $this->request->getVar('search'))->FindAll(),
                 'parent' => $this->app->FindAll(),
                 'student' => $this->admissions->select('admissions.student_id as id, student_id, first_name, middle_name, last_name')
                 ->join('student_learner','student_learner.account_id = admissions.account_id','inner')
@@ -939,12 +1079,17 @@ class RegistrarController extends BaseController
     
     public function searchStudgrade()
     {
+        if($this->request->getVar('categ') == 'Student') {
+            $categ = "CONCAT(first_name,' ',middle_name,' ',last_name)";
+        } else {
+            $categ = $this->request->getVar('categ');
+        }
+
             $data = [
                 'grade' => $this->grade->select('student_grades.id as id, student_grades.student_id, idnum, subject, grade, first_name, middle_name, last_name, name, subject_name')
                 ->join('teachers','student_grades.teacher_account = teachers.id','inner')->join('admissions','student_grades.student_id = admissions.student_id','inner')
                 ->join('student_learner','student_learner.account_id = admissions.account_id','inner')->join('sections','sections.id = admissions.section','inner')
-                ->join('subjects','subjects.id = student_grades.subject','inner')->like('last_name', $this->request->getVar('search'))
-                ->orLike('first_name', $this->request->getVar('search'))->orLike('student_grades.student_id', $this->request->getVar('search'))->FindAll(),
+                ->join('subjects','subjects.id = student_grades.subject','inner')->like($categ, $this->request->getVar('search'))->FindAll(),
                 'learner' => $this->admissions->select('admissions.student_id as id, student_id, first_name, middle_name, last_name')->join('student_learner','student_learner.account_id = admissions.account_id','inner')
                 ->join('sections','sections.id = admissions.section','inner')->orderBy('student_learner.last_name')->FindAll(),
                 ];

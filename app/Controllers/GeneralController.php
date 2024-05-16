@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers;
+use App\Models\AnnouncementModel;
 use App\Models\NotificationModel;
 use App\Controllers\BaseController;
 use App\Models\ApplicationModel;
@@ -9,17 +10,21 @@ use App\Models\AccountModel;
 
 class GeneralController extends BaseController
 {
-    private $notification, $app, $acc, $feedback;
+    private $notification, $app, $acc, $feedback, $announce;
     public function __construct()
     {
         $this->notification = new NotificationModel();
+        $this->announce = new AnnouncementModel();
         $this->app = new ApplicationModel();
         $this->acc = new AccountModel();
         $this->feedback = new FeedbackModel();
     }
 
     public function general(){
-            return view ('general');
+            $data = [
+                'announcement' => $this->announce->findAll(),
+            ];
+            return view ('general', $data);
         }
     
     public function feedback(){

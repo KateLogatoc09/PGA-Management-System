@@ -133,6 +133,28 @@ class TeacherController extends BaseController
         return view('advisoryClass', $data);
     }
 
+    public function searchAdvisory()
+    {
+        $session = session();
+        $curruser = $this->acc->select('id')->where('username', $_SESSION['username'])->first();
+        $teachid = $this->teacher->select('idnum')->where('account_id', $curruser)->first();
+
+        if($this->request->getVar('categ') == 'Adviser') {
+            $categ = "CONCAT(fname,' ',mname,' ',lname)";
+        } else {
+            $categ = $this->request->getVar('categ');
+        }
+
+        $data = [
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, section, category,yr_lvl,program, fname, mname, lname, admissions.account_id')
+            ->join('admissions','admissions.account_id = student_learner.account_id','inner')
+            ->join('sections','sections.id = admissions.section','left')->join('teachers','sections.adviser = teachers.idnum','inner')->like($categ, $this->request->getVar('search'))
+            ->where('adviser', $teachid)->orderBy('student_learner.last_name')->FindAll(),
+            'section' => $this->sections->select('adviser, name')->where('adviser', $teachid)->first(),
+       ];
+        return view('advisoryClass', $data);
+    }
+
     public function expandStudent($id)
     {
      $expand = $this->acc->select('id')->where('id', $id)->first();
@@ -161,13 +183,18 @@ class TeacherController extends BaseController
         $curruser = $this->acc->select('id')->where('username', $_SESSION['username'])->first();
         $teachid = $this->teacher->select('idnum')->where('account_id', $curruser)->first();
 
+        if($this->request->getVar('categ') == 'Student') {
+            $categ = "CONCAT(first_name,' ',middle_name,' ',last_name)";
+        } else {
+            $categ = $this->request->getVar('categ');
+        }
+        
             $data = [
                 'grade' => $this->grade->select('student_grades.id as id, student_grades.student_id, idnum, subject, grade, first_name, middle_name, last_name, name, subject_name, teacher_id')
                 ->join('teachers','student_grades.teacher_account = teachers.id','inner')
                 ->join('admissions','student_grades.student_id = admissions.student_id','inner')->join('student_learner','student_learner.account_id = admissions.account_id','inner')
                 ->join('sections','sections.id = admissions.section','inner')->join('subjects','subjects.id = student_grades.subject','inner')->where('teacher_id', $teachid)
-                ->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))->orLike('middle_name', $this->request->getVar('search'))
-                ->orLike('student_grades.student_id', $this->request->getVar('search'))->FindAll(),
+                ->like($categ, $this->request->getVar('search'))->FindAll(),
                 'learner' => $this->admissions->select('admissions.student_id as id, student_id, first_name, middle_name, last_name')->join('student_learner','student_learner.account_id = admissions.account_id','inner')
                 ->join('sections','sections.id = admissions.section','inner')->orderBy('student_learner.last_name')->FindAll(),
                 'subject' => $this->subjects->findAll(),

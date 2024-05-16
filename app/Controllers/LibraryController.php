@@ -116,12 +116,17 @@ class LibraryController extends BaseController
 
     public function searchBorrower()
     {
+        if($this->request->getVar('categ') == 'borrower') {
+            $categ = "CONCAT(first_name,' ',middle_name,' ',last_name)";
+        } else {
+            $categ = $this->request->getVar('categ');
+        }
         $data = [
             'borrow' => $this->book->select('borrowedbooks.id as id, first_name, middle_name, last_name, student_id, book_title, 
             book_shelf, ISBN, borrowedbooks.book_qty as book_qty, date_borrowed, date_returned, date_to_be_return, fines, 
             borrowedbooks.status as status, book_type')->join('borrowedbooks','borrowedbooks.book_id = books.id','inner')
             ->orderBy('books.book_title')->join('student_learner','student_learner.account_id = borrowedbooks.account_id','inner')
-            ->join('admissions','admissions.account_id = borrowedbooks.account_id','inner')->like('last_name', $this->request->getVar('search'))->orLike('first_name', $this->request->getVar('search'))->FindAll(),
+            ->join('admissions','admissions.account_id = borrowedbooks.account_id','inner')->like($categ, $this->request->getVar('search'))->FindAll(),
             'booky' => $this->book->orderBy('book_title')->findAll(),
          ];
         return view('borrowers', $data);
@@ -149,7 +154,7 @@ class LibraryController extends BaseController
     {
         $data = [
             'shelf1' => $this->book->where('book_category', 'TEXTBOOKS')->where('book_shelf', '1')
-            ->like('book_title', $this->request->getVar('search'))->orLike('book_number', $this->request->getVar('search'))->
+            ->like($this->request->getVar('categ'), $this->request->getVar('search'))->
             orderBy('book_title')->findAll(),
             'shelf2' => $this->book->where('book_category', 'TEXTBOOKS')->where('book_shelf', '2')->orderBy('book_title')->findAll(),
         ];
@@ -161,7 +166,7 @@ class LibraryController extends BaseController
         $data = [
             'shelf1' => $this->book->where('book_category', 'TEXTBOOKS')->where('book_shelf', '1')->orderBy('book_title')->findAll(), 
             'shelf2' => $this->book->where('book_category', 'TEXTBOOKS')->where('book_shelf', '2')
-            ->like('book_title', $this->request->getVar('search'))->orLike('book_number', $this->request->getVar('search'))->
+            ->like($this->request->getVar('categ'), $this->request->getVar('search'))->
             orderBy('book_title')->findAll(),
         ];
         return view('textbooks', $data);
@@ -180,7 +185,7 @@ class LibraryController extends BaseController
     {
         $data = [
             'shelf3' => $this->book->where('book_category', 'FICTION AND STORYBOOK')->where('book_shelf', '3')
-            ->like('book_title', $this->request->getVar('search'))->orLike('book_number', $this->request->getVar('search'))->
+            ->like($this->request->getVar('categ'), $this->request->getVar('search'))->
             orderBy('book_title')->findAll(),
             'shelf6' => $this->book->where('book_category', 'FICTION AND STORYBOOK')->where('book_shelf', '6')->orderBy('book_title')->findAll(),
         ];
@@ -192,7 +197,7 @@ class LibraryController extends BaseController
         $data = [
             'shelf3' => $this->book->where('book_category', 'FICTION AND STORYBOOK')->where('book_shelf', '3')->orderBy('book_title')->findAll(),
             'shelf6' => $this->book->where('book_category', 'FICTION AND STORYBOOK')->where('book_shelf', '6')
-            ->like('book_title', $this->request->getVar('search'))->orLike('book_number', $this->request->getVar('search'))->
+            ->like($this->request->getVar('categ'), $this->request->getVar('search'))->
             orderBy('book_title')->findAll(),
         ];
         return view('fiction_storybook', $data);
@@ -210,8 +215,8 @@ class LibraryController extends BaseController
     public function searchShelf4()
     {
         $data = [
-            'shelf4' => $this->book->where('book_category', 'REFERENCE AND FILIPINIANA')->where('book_shelf', '4')->like('book_title', $this->request->getVar('search'))
-            ->orLike('book_number', $this->request->getVar('search'))->orderBy('book_title')->findAll(),
+            'shelf4' => $this->book->where('book_category', 'REFERENCE AND FILIPINIANA')->where('book_shelf', '4')->like($this->request->getVar('categ'), $this->request->getVar('search'))
+            ->orderBy('book_title')->findAll(),
             'shelf10' => $this->book->where('book_category', 'REFERENCE AND FILIPINIANA')->where('book_shelf', '10')->orderBy('book_title')->findAll(),
         ];
         return view('reference_filipiniana', $data);
@@ -223,7 +228,7 @@ class LibraryController extends BaseController
         $data = [
             'shelf4' => $this->book->where('book_category', 'REFERENCE AND FILIPINIANA')->where('book_shelf', '4')->orderBy('book_title')->findAll(),
             'shelf10' => $this->book->where('book_category', 'REFERENCE AND FILIPINIANA')->where('book_shelf', '10')
-            ->like('book_title', $this->request->getVar('search'))->orLike('book_number', $this->request->getVar('search'))
+            ->like($this->request->getVar('categ'), $this->request->getVar('search'))
             ->orderBy('book_title')->findAll(),
         ];
         return view('reference_filipiniana', $data);
@@ -242,7 +247,7 @@ class LibraryController extends BaseController
     {
         $data = [
             'shelf11' => $this->book->where('book_category', 'REFERENCE AND FILIPINIANA')->where('book_shelf', '11')
-            ->like('book_title', $this->request->getVar('search'))->orLike('book_number', $this->request->getVar('search'))
+            ->like($this->request->getVar('categ'), $this->request->getVar('search'))
             ->orderBy('book_title')->findAll(),
             'shelf12' => $this->book->where('book_category', 'REFERENCE AND FILIPINIANA')->where('book_shelf', '12')->orderBy('book_title')->findAll(),
         ];
@@ -254,7 +259,7 @@ class LibraryController extends BaseController
         $data = [
             'shelf11' => $this->book->where('book_category', 'REFERENCE AND FILIPINIANA')->where('book_shelf', '11')->orderBy('book_title')->findAll(),
             'shelf12' => $this->book->where('book_category', 'REFERENCE AND FILIPINIANA')->where('book_shelf', '12')
-            ->like('book_title', $this->request->getVar('search'))->orLike('book_number', $this->request->getVar('search'))
+            ->like($this->request->getVar('categ'), $this->request->getVar('search'))
             ->orderBy('book_title')->findAll(),
         ];
         return view('reference_filipiniana2', $data);
@@ -273,7 +278,7 @@ class LibraryController extends BaseController
     {
         $data = [
             'shelf13' => $this->book->where('book_category', 'REFERENCE AND FILIPINIANA')->where('book_shelf', '13')
-            ->like('book_title', $this->request->getVar('search'))->orLike('book_number', $this->request->getVar('search'))
+            ->like($this->request->getVar('categ'), $this->request->getVar('search'))
             ->orderBy('book_title')->findAll(),
             'shelf14' => $this->book->where('book_category', 'REFERENCE AND FILIPINIANA')->where('book_shelf', '14')->orderBy('book_title')->findAll(),
         ];
@@ -284,7 +289,7 @@ class LibraryController extends BaseController
     {
         $data = [
             'shelf14' => $this->book->where('book_category', 'REFERENCE AND FILIPINIANA')->where('book_shelf', '14')
-            ->like('book_title', $this->request->getVar('search'))->orLike('book_number', $this->request->getVar('search'))
+            ->like($this->request->getVar('categ'), $this->request->getVar('search'))
             ->orderBy('book_title')->findAll(),
             'shelf13' => $this->book->where('book_category', 'REFERENCE AND FILIPINIANA')->where('book_shelf', '13')->orderBy('book_title')->findAll(),
         ];
@@ -304,7 +309,7 @@ class LibraryController extends BaseController
     {
         $data = [
             'shelf5' => $this->book->where('book_category', 'BOOKS WITH MULTIPLE COPIES')->where('book_shelf', '5')
-            ->like('book_title', $this->request->getVar('search'))->orLike('book_number', $this->request->getVar('search'))
+            ->like($this->request->getVar('categ'), $this->request->getVar('search'))
             ->orderBy('book_title')->findAll(),
             'shelf7' => $this->book->where('book_category', 'BOOKS WITH MULTIPLE COPIES')->where('book_shelf', '7')->orderBy('book_title')->findAll(),
         ];
@@ -316,7 +321,7 @@ class LibraryController extends BaseController
     {
         $data = [
             'shelf7' => $this->book->where('book_category', 'BOOKS WITH MULTIPLE COPIES')->where('book_shelf', '7')
-            ->like('book_title', $this->request->getVar('search'))->orLike('book_number', $this->request->getVar('search'))
+            ->like($this->request->getVar('categ'), $this->request->getVar('search'))
             ->orderBy('book_title')->findAll(),
             'shelf5' => $this->book->where('book_category', 'BOOKS WITH MULTIPLE COPIES')->where('book_shelf', '5')->orderBy('book_title')->findAll(),
         ];
@@ -337,7 +342,7 @@ class LibraryController extends BaseController
     {
         $data = [
             'shelf8' => $this->book->where('book_category', 'BOOKS WITH MULTIPLE COPIES')->where('book_shelf', '8')
-            ->like('book_title', $this->request->getVar('search'))->orLike('book_number', $this->request->getVar('search'))
+            ->like($this->request->getVar('categ'), $this->request->getVar('search'))
             ->orderBy('book_title')->findAll(),
             'shelf9' => $this->book->where('book_category', 'BOOKS WITH MULTIPLE COPIES')->where('book_shelf', '9')->orderBy('book_title')->findAll(),
         ];
@@ -349,7 +354,7 @@ class LibraryController extends BaseController
     {
         $data = [
             'shelf9' => $this->book->where('book_category', 'BOOKS WITH MULTIPLE COPIES')->where('book_shelf', '9')
-            ->like('book_title', $this->request->getVar('search'))->orLike('book_number', $this->request->getVar('search'))
+            ->like($this->request->getVar('categ'), $this->request->getVar('search'))
             ->orderBy('book_title')->findAll(),
             'shelf8' => $this->book->where('book_category', 'BOOKS WITH MULTIPLE COPIES')->where('book_shelf', '8')->orderBy('book_title')->findAll(),
         ];
@@ -370,7 +375,7 @@ class LibraryController extends BaseController
     {
         $data = [
             'shelf15' => $this->book->where('book_category', 'TEACHER\'S REFERENCES')->where('book_shelf', '15')
-            ->like('book_title', $this->request->getVar('search'))->orLike('book_number', $this->request->getVar('search'))
+            ->like($this->request->getVar('categ'), $this->request->getVar('search'))
             ->orderBy('book_title')->findAll(),
             'shelf16' => $this->book->where('book_category', 'TEACHER\'S REFERENCES')->where('book_shelf', '16')->orderBy('book_title')->findAll(),
         ];
@@ -381,7 +386,7 @@ class LibraryController extends BaseController
     {
         $data = [
             'shelf16' => $this->book->where('book_category', 'TEACHER\'S REFERENCES')->where('book_shelf', '16')
-            ->like('book_title', $this->request->getVar('search'))->orLike('book_number', $this->request->getVar('search'))
+            ->like($this->request->getVar('categ'), $this->request->getVar('search'))
             ->orderBy('book_title')->findAll(),
             'shelf15' => $this->book->where('book_category', 'TEACHER\'S REFERENCES')->where('book_shelf', '15')->orderBy('book_title')->findAll(),
         ];
@@ -401,7 +406,7 @@ class LibraryController extends BaseController
     {
         $data = [
             'shelf17' => $this->book->where('book_category', 'OTHER TEXTBOOKS')->where('book_shelf', '17')
-            ->like('book_title', $this->request->getVar('search'))->orLike('book_number', $this->request->getVar('search'))
+            ->like($this->request->getVar('categ'), $this->request->getVar('search'))
             ->orderBy('book_title')->findAll(),
             'shelf18' => $this->book->where('book_category', 'OTHER TEXTBOOKS')->where('book_shelf', '18')->orderBy('book_title')->findAll(),
         ];
@@ -412,7 +417,7 @@ class LibraryController extends BaseController
     {
         $data = [
             'shelf18' => $this->book->where('book_category', 'OTHER TEXTBOOKS')->where('book_shelf', '18')
-            ->like('book_title', $this->request->getVar('search'))->orLike('book_number', $this->request->getVar('search'))
+            ->like($this->request->getVar('categ'), $this->request->getVar('search'))
             ->orderBy('book_title')->findAll(),
             'shelf17' => $this->book->where('book_category', 'OTHER TEXTBOOKS')->where('book_shelf', '17')->orderBy('book_title')->findAll(),
         ];
@@ -422,7 +427,7 @@ class LibraryController extends BaseController
     public function searchBook()
     {
         $data = [
-            'booky' => $this->book->like('book_title', $this->request->getVar('search'))->orLike('book_number', $this->request->getVar('search'))->orderBy('book_title')->findAll(),
+            'booky' => $this->book->like($this->request->getVar('categ'), $this->request->getVar('search'))->orderBy('book_title')->findAll(),
         ];
         return view('books', $data);
     }
