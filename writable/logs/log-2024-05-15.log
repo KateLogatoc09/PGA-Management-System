@@ -28,3 +28,120 @@ in SYSTEMPATH\Database\BaseConnection.php on line 646.
  9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
 10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
 11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-15 06:25:48 --> syntax error, unexpected token ">", expecting end of file
+in APPPATH\Views\library\addbooks.php on line 203.
+ 1 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\View\View.php(467): CodeIgniter\View\View->render('library/addbooks', null, true)
+ 3 APPPATH\Views\books.php(2): CodeIgniter\View\View->include('library/addbooks')
+ 4 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\books.php')
+ 5 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 6 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('books', [], true)
+ 7 APPPATH\Controllers\LibraryController.php(479): view('books', [...])
+ 8 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->editBook('6')
+ 9 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+10 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-15 06:26:10 --> Trying to access array offset on value of type null
+in APPPATH\Views\library\addbooks.php on line 203.
+ 1 APPPATH\Views\library\addbooks.php(203): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\laragon\\www\\PGA-Management-System\\app\\Views\\library\\addbooks.php', 203)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\library\\addbooks.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(467): CodeIgniter\View\View->render('library/addbooks', null, true)
+ 5 APPPATH\Views\books.php(2): CodeIgniter\View\View->include('library/addbooks')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\books.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('books', [], true)
+ 9 APPPATH\Controllers\LibraryController.php(479): view('books', [...])
+10 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->editBook('assets', 'js', 'book.js')
+11 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+12 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+ERROR - 2024-05-15 07:10:40 --> mysqli_sql_exception: Unknown column 'teacher_account' in 'field list' in C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `teacher...', 0)
+#1 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `teacher...')
+#2 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `teacher...')
+#3 C:\laragon\www\PGA-Management-System\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `teacher...', Array, false)
+#4 C:\laragon\www\PGA-Management-System\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\PGA-Management-System\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\PGA-Management-System\app\Controllers\TeacherController.php(184): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(919): App\Controllers\TeacherController->saveGrade()
+#8 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+#9 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\PGA-Management-System\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\PGA-Management-System\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-05-15 07:10:40 --> Unknown column 'teacher_account' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `teacher_account`
+FROM `subjects`
+WHERE `id` = :id:', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\TeacherController.php(184): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->saveGrade()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-15 07:22:11 --> Array to string conversion
+in APPPATH\Controllers\TeacherController.php on line 218.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\TeacherController.php', 218)
+ 2 APPPATH\Controllers\TeacherController.php(218): implode([...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->saveGrade()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-15 07:22:28 --> Array to string conversion
+in APPPATH\Controllers\TeacherController.php on line 218.
+ 1 APPPATH\Controllers\TeacherController.php(218): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\TeacherController.php', 218)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->saveGrade()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-15 07:22:43 --> Array to string conversion
+in APPPATH\Controllers\TeacherController.php on line 218.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\TeacherController.php', 218)
+ 2 APPPATH\Controllers\TeacherController.php(218): implode([...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->saveGrade()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-15 07:23:13 --> Undefined array key "id"
+in APPPATH\Controllers\TeacherController.php on line 218.
+ 1 APPPATH\Controllers\TeacherController.php(218): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\TeacherController.php', 218)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->saveGrade()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-15 07:28:28 --> Array to string conversion
+in APPPATH\Controllers\TeacherController.php on line 216.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\TeacherController.php', 216)
+ 2 APPPATH\Controllers\TeacherController.php(216): implode([...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->saveGrade()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-15 07:43:43 --> Trying to access array offset on value of type null
+in APPPATH\Controllers\LibraryController.php on line 37.
+ 1 APPPATH\Controllers\LibraryController.php(37): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\LibraryController.php', 37)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->saveBorrowedBook()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-15 07:44:14 --> Trying to access array offset on value of type null
+in APPPATH\Controllers\LibraryController.php on line 37.
+ 1 APPPATH\Controllers\LibraryController.php(37): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\LibraryController.php', 37)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->saveBorrowedBook()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')

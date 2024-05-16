@@ -178,7 +178,16 @@ class TeacherController extends BaseController
         public function saveGrade()  {
             $session = session();
             $id = $_POST['id'];
+            //get curr user id
+            $curruser = $this->acc->select('id')->where('username', $_SESSION['username'])->first();
+            //get idnum of curr user id
+            $teachid = $this->teacher->select('idnum')->where('account_id', $curruser)->first();
+            //get subjects handled by the curr user
+            $sub = $this->subjects->where('teacher_id', $teachid)->findAll();
+
+            //get stud id
             $tid = $this->request->getVar('student_id');
+            //testing if user exists
             $re = $this->admissions->select('student_id')->where('student_id', $tid)->first();
 
             $data = [
@@ -194,7 +203,18 @@ class TeacherController extends BaseController
                 $session->setFlashdata('msg','Student doesn\'t exist.');
                 return redirect()->to('grade');
             }
-    
+            if(is_array($sub)) {
+                foreach($sub as $s) {
+                    if($this->request->getVar('subject') != $s['id']){
+                        $session->setFlashdata('msg','You don\'t handle this subject.');
+                        return redirect()->to('grade');
+                    }
+                }
+            } else {
+                $session->setFlashdata('msg','You don\'t handle this subject.');
+                return redirect()->to('grade');
+            }
+
             if ($id != null) {
                 $res = $this->grade->set($data)->where('id', $id)->update();
                 if($res) {

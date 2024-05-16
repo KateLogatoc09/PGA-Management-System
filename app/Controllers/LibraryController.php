@@ -448,7 +448,7 @@ class LibraryController extends BaseController
             ->orderBy('books.book_title')->join('student_learner','student_learner.account_id = borrowedbooks.account_id','inner')
             ->join('admissions','admissions.account_id = borrowedbooks.account_id','inner')->FindAll(),
             'borrowed' => $this->borrowedBook->select('borrowedbooks.id as id, first_name, middle_name, last_name, student_id, book_title, book_shelf, 
-            ISBN, borrowedbooks.book_qty as book_qty, date_borrowed, date_returned, date_to_be_return, fines, borrowedbooks.status as status, book_type')
+            ISBN, borrowedbooks.book_qty as book_qty, date_borrowed, date_returned, date_to_be_return, fines, borrowedbooks.status as status, book_type, book_id')
             ->join('books','books.id = borrowedbooks.book_id','inner')->join('student_learner','student_learner.account_id = borrowedbooks.account_id','inner')
             ->join('admissions','admissions.account_id = borrowedbooks.account_id','inner')->where('borrowedbooks.id', $id)->first(),
             'booky' => $this->book->orderBy('book_title')->findAll(),

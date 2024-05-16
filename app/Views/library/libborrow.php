@@ -219,7 +219,7 @@
                       <input type="datetime-local" class="form-control" id="dateReturn" name="dateReturn" placeholder="Select Date To be Return" value="<?php if (isset($borrowed['date_to_be_return'])) {echo $borrowed['date_to_be_return'];} ?>" required>
 
                       <label for="date_returned">Date Returned</label>
-                      <input type="datetime-local" class="form-control" id="date_returned" name="date_returned" placeholder="Select Date Returned" value="<?php if (isset($borrowed['date_returned'])) {echo $borrowed['date_returned'];} ?>" required>
+                      <input type="datetime-local" class="form-control" id="date_returned" name="date_returned" placeholder="Select Date Returned" value="<?php if (isset($borrowed['date_returned'])) {echo $borrowed['date_returned'];} ?>">
 
 
                       <label for="fines">Fines</label>
