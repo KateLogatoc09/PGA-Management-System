@@ -86,6 +86,7 @@ $routes->get('/graph', 'GradeController::index', ['filter' => 'student']);
 $routes->get('/student', 'StudentController::index', ['filter' => 'student']);
 $routes->post('/generate', 'StudentController::simple_qr', ['filter' => 'student']);
 $routes->get('/studentlibrary', 'StudentController::studentlibrary', ['filter' => 'student']);
+$routes->get('/studgrade', 'StudentController::studgrade', ['filter' => 'student']);
 $routes->get('/searchLibrary', 'StudentController::searchLibrary', ['filter' => 'student']);
 $routes->post('/studentborrowBook', 'StudentController::studentborrowBook', ['filter' => 'student']);
 
@@ -159,6 +160,7 @@ $routes->get('/searchShelf18', 'LibraryController::searchShelf18', ['filter' => 
 
 //PARENTS
 $routes->get('/parent', 'ParentController::parent', ['filter' => 'parents']);
+$routes->get('/childgrade', 'ParentController::childgrade', ['filter' => 'parents']);
 
 //REGISTRAR
 $routes->get('/registrar', 'RegistrarController::registrar', ['filter' => 'registrar']);

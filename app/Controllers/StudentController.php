@@ -13,10 +13,11 @@ use App\Models\SchoolAttendedModel;
 use App\Models\BorrowedBooksModel;
 use SimpleSoftwareIO\QrCode\Generator;
 use App\Models\AddBooksModel;
+use App\Models\GradeModel;
 
 class StudentController extends BaseController
 {
-    private $book, $borrowedBook, $enrollment, $learner, $family, $address, $admissions, $sibling, $school, $acc;
+    private $book, $borrowedBook, $enrollment, $learner, $family, $address, $admissions, $grade, $sibling, $school, $acc;
     public function __construct()
     {
         $this->learner = new LearnerModel();
@@ -28,6 +29,7 @@ class StudentController extends BaseController
         $this->acc = new AccountModel();
         $this->borrowedBook = new BorrowedBooksModel();
         $this->book = new AddBooksModel();
+        $this->grade = new GradeModel();
     }
 
     public function index()
@@ -35,6 +37,9 @@ class StudentController extends BaseController
         $session = session();
         $curruser = $this->acc->select('id')->where('username', $_SESSION['username'])->first();
         $enrolled = $this->admissions->select('status')->where('account_id', $curruser)->first();
+
+        $admi = $this->admissions->select('student_id')->where('account_id', $curruser)->first();
+        $sub = $this->grade->select('student_id')->where('student_grades.student_id', $admi)->first();
         
         $data = [
             'learn' => $this->learner->where('account_id', $curruser)->first(),
@@ -46,10 +51,34 @@ class StudentController extends BaseController
             'address' => $this->address->where('account_id', $curruser)->FindAll(),
             'sibling' => $this->sibling->where('account_id', $curruser)->FindAll(),
             'school' => $this->school->where('account_id', $curruser)->FindAll(),
+            'grade' => $this->grade->select('subject_name, type, fname, mname, lname, subject, grade, quarter')
+            ->join('admissions','student_grades.student_id = admissions.student_id','inner')
+            ->join('subjects','student_grades.subject = subjects.id','inner')->join('teachers','subjects.teacher_id = teachers.idnum','inner')
+            ->where('admissions.student_id', $sub)->FindAll(), 
             'status' => $enrolled,
         ];
 
         return view('student', $data);
+    }
+
+    public function studgrade()
+    {
+        $session = session();
+        $curruser = $this->acc->select('id')->where('username', $_SESSION['username'])->first();
+        $enrolled = $this->admissions->select('status')->where('account_id', $curruser)->first();
+
+        $admi = $this->admissions->select('student_id')->where('account_id', $curruser)->first();
+        $sub = $this->grade->select('student_id')->where('student_grades.student_id', $admi)->first();
+        
+        $data = [
+            'grade' => $this->grade->select('subject_name, type, fname, mname, lname, subject, grade, quarter')
+            ->join('admissions','student_grades.student_id = admissions.student_id','inner')
+            ->join('subjects','student_grades.subject = subjects.id','inner')->join('teachers','subjects.teacher_id = teachers.idnum','inner')
+            ->where('admissions.student_id', $sub)->FindAll(), 
+            'status' => $enrolled,
+        ];
+
+        return view('studgrade', $data);
     }
 
     public function simple_qr() {

@@ -15,7 +15,7 @@
       // Get a subset of records for the current page
       $sectionSubset = array_slice($student, $offset, $recordsPerPage);
 ?>
-<body>
+<body style="background-image:url('<?= base_url() ?>img/pgaBG.png');background-repeat:no-repeat;background-attachment:fixed;background-size:cover">
 <?php $session = session()?>
   <!-- Layout wrapper -->
   <div class="layout-wrapper layout-content-navbar d-flex align-items-center justify-content-center">

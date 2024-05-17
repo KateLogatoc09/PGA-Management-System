@@ -1,4 +1,4 @@
-<body>
+<body style="background-image:url('<?= base_url() ?>img/pgaBG.png');background-repeat:no-repeat;background-attachment:fixed;background-size:cover">
 <?php $session = session()?>
   <!-- Layout wrapper -->
   <div class="layout-wrapper layout-content-navbar d-flex align-items-center justify-content-center">
@@ -33,6 +33,7 @@
                               <option value="name">Section</option>
                               <option value="subject_name">Subject</option>
                               <option value="grade">Grade</option>
+                              <option value="quarter">Quarter</option>
                               <option value="idnum">Teacher Id</option>
                                     </select>
                           <button type="submit" class="btn btn-default">
@@ -54,6 +55,7 @@
                                         <th>Section</th>
                                         <th>Subject</th>
                                         <th>Grade</th>
+                                        <th>Quarter</th>
                                         <th>Teacher Id</th>
                                         <th>Action</th>
                                     </tr>
@@ -86,6 +88,7 @@
                                             <td><?= $g['name'] ?></td>
                                             <td><?= $g['subject_name'] ?></td>
                                             <td><?= $g['grade'] ?></td>
+                                            <td><?= $g['quarter'] ?></td>
                                             <td><?= $g['idnum'] ?></td>
                                             <td> <a href="/deleteGrade/<?= $g['id'] ?>" class="btn btn-danger btn-sm" id="d<?=$x?>">Delete</a>
                                             <a href="/editGrade/<?= $g['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
@@ -162,7 +165,11 @@
   <div class="form-group margin-left">
                         <label for="grade">Grade:</label>
                         <input type="number" class="form-control" name="grade" placeholder="Enter Grade" 
-                        value="<?php if (isset($gr['grade'])) {echo $gr['grade'];}?>" required>        
+                        value="<?php if (isset($gr['grade'])) {echo $gr['grade'];}?>" required>   
+                        
+                        <label for="quarter">Quarter:</label>
+                        <input type="number" class="form-control" name="quarter" placeholder="Enter Quarter" 
+                        value="<?php if (isset($gr['quarter'])) {echo $gr['quarter'];}?>" required>   
   </div>
 </div>
 </div>

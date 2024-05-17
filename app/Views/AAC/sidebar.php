@@ -64,18 +64,28 @@
                 <div data-i18n="Sections">Sections</div>
               </a>
               <ul class="menu-sub">
-              
+
               <li class="menu-item">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
-                    <div data-i18n="Analytics">Elementary Section/s</div>
+                    <div data-i18n="Analytics">Kinder Section</div>
                 </a>
                       <ul class="menu-sub">
-                   
-                        <li class="menu-item">
+
+                      <li class="menu-item">
                             <a href="/St_Joseph_Husband_of_Mary" class="menu-link">
                               <div data-i18n="Analytics">St. Joseph Husband of Mary</div>
                             </a>
                           </li>
+
+                      </ul>
+                  </a>
+                </li>
+              
+              <li class="menu-item">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <div data-i18n="Analytics">Elementary Sections</div>
+                </a>
+                      <ul class="menu-sub">
 
                           <li class="menu-item">
                             <a href="/St_Perpetua_and_Felicity" class="menu-link">
@@ -107,16 +117,7 @@
                             </a>
                           </li>
 
-                      </ul>
-                  </a>
-                </li>
-
-                <li class="menu-item">
-                <a href="javascript:void(0);" class="menu-link menu-toggle">
-                    <div data-i18n="Analytics">Grade 7 Section/s</div>
-                </a>
-                      <ul class="menu-sub">
-
+                          
                       <li class="menu-item">
                         <a href="/St_Catherine_of_Siena" class="menu-link">
                           <div data-i18n="Analytics">St. Catherine of Siena</div>
@@ -129,7 +130,7 @@
 
                 <li class="menu-item">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
-                    <div data-i18n="Analytics">Grade 8 Sections</div>
+                    <div data-i18n="Analytics">Grade 7 Sections</div>
                 </a>
                       <ul class="menu-sub">
 
@@ -165,7 +166,7 @@
 
                 <li class="menu-item">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
-                    <div data-i18n="Analytics">Grade 9 Sections</div>
+                    <div data-i18n="Analytics">Grade 8 Sections</div>
                 </a>
                       <ul class="menu-sub">
 
@@ -194,7 +195,7 @@
 
                 <li class="menu-item">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
-                    <div data-i18n="Analytics">Grade 10 Sections</div>
+                    <div data-i18n="Analytics">Grade 9 Sections</div>
                 </a>
                       <ul class="menu-sub">
 
@@ -223,7 +224,7 @@
 
                <li class="menu-item">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
-                    <div data-i18n="Analytics">Grade 11 Sections</div>
+                    <div data-i18n="Analytics">Grade 10 Sections</div>
                 </a>
                       <ul class="menu-sub">
 
@@ -251,7 +252,7 @@
 
                 <li class="menu-item">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
-                    <div data-i18n="Analytics">Grade 12 Sections</div>
+                    <div data-i18n="Analytics">Grade 11 Sections</div>
                 </a>
                       <ul class="menu-sub">
 
@@ -280,7 +281,7 @@
 
                 <li class="menu-item">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
-                    <div data-i18n="Analytics">Grade 13 Sections</div>
+                    <div data-i18n="Analytics">Grade 12 Sections</div>
                 </a>
                       <ul class="menu-sub">
 

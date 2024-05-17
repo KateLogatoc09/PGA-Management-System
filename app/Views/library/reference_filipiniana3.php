@@ -1,11 +1,11 @@
-<body>
+<body style="background-image:url('<?= base_url() ?>img/pgaBG.png');background-repeat:no-repeat;background-attachment:fixed;background-size:cover">
   <!-- Layout wrapper -->
   <div class="layout-wrapper layout-content-navbar d-flex align-items-center justify-content-center">
     <div class="layout-container">
       <!-- Layout container -->
       <div class="layout-page">
         <!-- Navbar -->
-v
+        <?= $this->include('library/nav') ?>
         <?= $this->include('library/sidebar') ?>
         <!-- / Navbar -->
 
@@ -15,7 +15,7 @@ v
 
           <div class="container-xxl flex-grow-1 container-p-y">
             <div class="row">
-              <h1 class="center blue">REFERENCE & FILIPINIANA</h1>              
+              <h1 class="center white">REFERENCE & FILIPINIANA</h1>              
               <div class="col-lg-18 mb-4 order-0">
                 <div class="card">
                   <div class="card-header">

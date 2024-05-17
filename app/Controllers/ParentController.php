@@ -29,6 +29,7 @@ class ParentController extends BaseController
        $this->acc = new AccountModel();
        $this->parent_child = new ParentChild();
    }
+
    public function parent()
    {
     $session = session();
@@ -51,12 +52,31 @@ class ParentController extends BaseController
            'address' => $this->address->where('address.account_id', $stud)->FindAll(),
            'sibling' => $this->sibling->where('sibling.account_id', $stud)->FindAll(),
            'school' => $this->school->where('school_attended.account_id', $stud)->FindAll(),
-           'grade' => $this->grade->select('subject_name, type, fname, mname, lname, subject, grade')
+           'grade' => $this->grade->select('subject_name, type, fname, mname, lname, subject, grade, quarter')
             ->join('admissions','student_grades.student_id = admissions.student_id','inner')
             ->join('subjects','student_grades.subject = subjects.id','inner')->join('teachers','subjects.teacher_id = teachers.idnum','inner')
             ->where('admissions.student_id', $sub)->FindAll(), 
        ];
 
        return view('parent', $data);
+   }
+
+   public function childgrade()
+   {
+    $session = session();
+    $curruser = $this->acc->select('id')->where('username', $_SESSION['username'])->first();
+    $aa = $this->app->select('id')->where('account_id', $curruser)->first();
+    $child = $this->parent_child->select('child_id')->where('parent_id', $aa)->first();
+    $admi = $this->admissions->select('student_id')->where('student_id', $child)->first();
+    $sub = $this->grade->select('student_id')->where('student_grades.student_id', $admi)->first();
+
+       $data = [
+           'grade' => $this->grade->select('subject_name, type, fname, mname, lname, subject, grade, quarter')
+            ->join('admissions','student_grades.student_id = admissions.student_id','inner')
+            ->join('subjects','student_grades.subject = subjects.id','inner')->join('teachers','subjects.teacher_id = teachers.idnum','inner')
+            ->where('admissions.student_id', $sub)->FindAll(), 
+       ];
+
+       return view('childgrade', $data);
    }
 }

@@ -1,5 +1,5 @@
 <?= $this->include('student/head') ?>
-<body>
+<body style="background-image:url('<?= base_url() ?>img/pgaBG.png');background-repeat:no-repeat;background-attachment:fixed;background-size:cover">
 <?php $session = session()?>
   <!-- Layout wrapper -->
   <div class="layout-wrapper layout-content-navbar d-flex align-items-center justify-content-center">
@@ -16,15 +16,13 @@
           <!-- Content -->
 
           <div class="container-xxl flex-grow-1 container-p-y">
-          <h1 class="card-title text-primary">Sibling Information</h1>
-          <p class="mb-10">
-                          Fill Up The Following Fields.
-                        </p>
+          <center><h1 class="white">Family Background</h1></center>
             <div class="row">
               
             <div class="col-lg-18 mb-4 order-0">
                 <div class="card">
                 <div class="card-body">
+                <h5 class="card-title text-primary">Fill out the following if you have siblings presently enrolled in PGA</h5>
                       </div>
                   <div class="d-flex">
                     <div class="col-sm-5">
@@ -61,7 +59,6 @@
                                         <input type="text" class="form-control" name="affiliation" placeholder="Enter Affiliation" id="affiliation">
                           
   </div>
-  
 </div>
 </div>
 
@@ -117,7 +114,6 @@ const create = function () {
   window['input' + x].className = "form-control";
   window['input' + x].setAttribute("name", "fullname" + y);
   window['input' + x].setAttribute("placeholder", "Enter Full Name");
-  window['input' + x].setAttribute("required", "");
   window['div' + y].appendChild(window['input' + x]); // put it into the DOM
 
   x++;
@@ -130,7 +126,6 @@ const create = function () {
   window['input' + x] = document.createElement("select");
   window['input' + x].className = "form-control";
   window['input' + x].setAttribute("name", "yr_lvl" + y);
-  window['input' + x].setAttribute("required", "");
   window['input' + x].innerHTML = opt;
   window['div' + y].appendChild(window['input' + x]); // put it into the DOM
 
@@ -146,7 +141,6 @@ const create = function () {
   window['input' + x].className = "form-control";
   window['input' + x].setAttribute("name", "affiliation" + y);
   window['input' + x].setAttribute("placeholder", "Enter Affiliation");
-  window['input' + x].setAttribute("required", "");
   window['div' + y].appendChild(window['input' + x]); // put it into the DOM
 
   x++;

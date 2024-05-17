@@ -997,7 +997,7 @@ class RegistrarController extends BaseController
     public function reggrade()
     {
             $data = [
-                'grade' => $this->grade->select('student_grades.id as id, student_grades.student_id, idnum, subject, grade, first_name, middle_name, last_name, name, subject_name')->join('teachers','student_grades.teacher_account = teachers.id','inner')
+                'grade' => $this->grade->select('student_grades.id as id, student_grades.student_id, idnum, subject, grade, first_name, middle_name, last_name, name, subject_name, quarter')->join('teachers','student_grades.teacher_account = teachers.id','inner')
                 ->join('admissions','student_grades.student_id = admissions.student_id','inner')->join('student_learner','student_learner.account_id = admissions.account_id','inner')
                 ->join('sections','sections.id = admissions.section','inner')->join('subjects','subjects.id = student_grades.subject','inner')->findAll(),
                 'learner' => $this->admissions->select('admissions.student_id as id, student_id, first_name, middle_name, last_name')->join('student_learner','student_learner.account_id = admissions.account_id','inner')
@@ -1086,7 +1086,7 @@ class RegistrarController extends BaseController
         }
 
             $data = [
-                'grade' => $this->grade->select('student_grades.id as id, student_grades.student_id, idnum, subject, grade, first_name, middle_name, last_name, name, subject_name')
+                'grade' => $this->grade->select('student_grades.id as id, student_grades.student_id, idnum, subject, grade, first_name, middle_name, last_name, name, subject_name, quarter')
                 ->join('teachers','student_grades.teacher_account = teachers.id','inner')->join('admissions','student_grades.student_id = admissions.student_id','inner')
                 ->join('student_learner','student_learner.account_id = admissions.account_id','inner')->join('sections','sections.id = admissions.section','inner')
                 ->join('subjects','subjects.id = student_grades.subject','inner')->like($categ, $this->request->getVar('search'))->FindAll(),

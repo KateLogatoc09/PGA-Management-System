@@ -15,7 +15,7 @@
       // Get a subset of records for the current page
       $sectionSubset = array_slice($student, $offset, $recordsPerPage);
 ?>
-<body>
+<body style="background-image:url('<?= base_url() ?>img/pgaBG.png');background-repeat:no-repeat;background-attachment:fixed;background-size:cover">
 <?php $session = session()?>
   <!-- Layout wrapper -->
   <div class="layout-wrapper layout-content-navbar d-flex align-items-center justify-content-center">
@@ -49,10 +49,6 @@
                                         <option value="first_name">First Name</option>
                                         <option value="middle_name">Middle Name</option>
                                         <option value="category">Category</option>
-                                        <option value="yr_lvl">Year Level</option>
-                                        <option value="name">Section</option>
-                                        <option value="program">Program</option>
-                                        <option value="Adviser">Adviser</option>
                                     </select>
                           <button type="submit" class="btn btn-default">
                           <i class="menu-icon tf-icons bx bx-search"></i>

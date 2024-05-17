@@ -1,4 +1,4 @@
-<body>
+<body style="background-image:url('<?= base_url() ?>img/pgaBG.png');background-repeat:no-repeat;background-attachment:fixed;background-size:cover">
 <?php $session = session()?>
   <!-- Layout wrapper -->
   <div class="layout-wrapper layout-content-navbar d-flex align-items-center justify-content-center">
@@ -15,8 +15,6 @@
           <!-- Content -->
 
           <div class="container-xxl flex-grow-1 container-p-y">
-          <h5 class="card-title text-primary">Welcome <?= $_SESSION['username']?>! 🎉</h5>
-  
             <div class="row">
               <div class="col-lg-18 mb-4 order-0">
                 <div class="card">

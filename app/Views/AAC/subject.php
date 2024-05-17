@@ -14,7 +14,7 @@ $offset = ($currentPage - 1) * $recordsPerPage;
 // Get a subset of records for the current page
 $subjectSubset = array_slice($subject, $offset, $recordsPerPage);
 ?>
-<body>
+<body style="background-image:url('<?= base_url() ?>img/pgaBG.png');background-repeat:no-repeat;background-attachment:fixed;background-size:cover">
 <?php $session = session()?>
   <!-- Layout wrapper -->
   <div class="layout-wrapper layout-content-navbar d-flex align-items-center justify-content-center">

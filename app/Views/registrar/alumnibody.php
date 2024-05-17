@@ -15,7 +15,7 @@ $offset = ($currentPage - 1) * $recordsPerPage;
 $alumniSubset = array_slice($alumni, $offset, $recordsPerPage);
 ?>
 
-<body>
+<body style="background-image:url('<?= base_url() ?>img/pgaBG.png');background-repeat:no-repeat;background-attachment:fixed;background-size:cover">
 <?php $session = session()?>
   <!-- Layout wrapper -->
   <div class="layout-wrapper layout-content-navbar d-flex align-items-center justify-content-center">
@@ -130,15 +130,17 @@ $alumniSubset = array_slice($alumni, $offset, $recordsPerPage);
 
                 <div class="col-lg-18 mb-4 order-0">
                 <div class="card">
-                <div class="card-body">
+                <div class="card-header">
                         <h5 class="card-title text-primary">Edit Alumni</h5>
                       </div>
+                      <div class="card-body">
                   <div class="d-flex">
                     <div class="col-sm-5">
                 <form action="/saveAlumni" method="post">
                     <!-- Add your form fields and content here -->
 
                     <div class="form-group margin-left">
+                    <br>
                     <input type="hidden" name="id" value="<?php if (isset($alum['id'])) {echo $alum['id'];}?>">
                         <label for="fullname">Fullname:</label>
                         <input type="text" class="form-control" name="fullname" placeholder="Enter Fullname" 
@@ -163,6 +165,7 @@ $alumniSubset = array_slice($alumni, $offset, $recordsPerPage);
 </div>
 <div class="col-sm-5 text-center text-sm-left">
   <div class="form-group margin-left">
+    <br>
                         <label for="address">Address:</label>
                         <input type="text" class="form-control" name="address" placeholder="Enter Address" 
                         value="<?php if (isset($alum['address'])) {echo $alum['address'];}?>" required>
@@ -186,7 +189,6 @@ $alumniSubset = array_slice($alumni, $offset, $recordsPerPage);
 </form>
 </div>
 </div>
-
             </div>
             <!-- / Content -->
 

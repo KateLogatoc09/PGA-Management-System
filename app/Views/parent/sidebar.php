@@ -30,8 +30,14 @@
               <ul class="menu-sub">
              
                 <li class="menu-item active">
-                  <a href="#" class="menu-link">
-                    <div data-i18n="Analytics">Home</div>
+                  <a href="/parent" class="menu-link">
+                    <div data-i18n="Analytics">Child's Profile</div>
+                  </a>
+                </li>
+
+                <li class="menu-item">
+                  <a href="/childgrade" class="menu-link">
+                    <div data-i18n="Analytics">Grades</div>
                   </a>
                 </li>
                 

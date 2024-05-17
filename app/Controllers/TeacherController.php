@@ -105,7 +105,7 @@ class TeacherController extends BaseController
         $teachid = $this->teacher->select('idnum')->where('account_id', $curruser)->first();
 
             $data = [
-                'grade' => $this->grade->select('student_grades.id as id, student_grades.student_id, idnum, subject, grade, first_name, middle_name, last_name, name, subject_name, teacher_id')
+                'grade' => $this->grade->select('student_grades.id as id, student_grades.student_id, idnum, subject, grade, first_name, middle_name, last_name, name, subject_name, teacher_id, quarter')
                 ->join('teachers','student_grades.teacher_account = teachers.id','inner')
                 ->join('admissions','student_grades.student_id = admissions.student_id','inner')->join('student_learner','student_learner.account_id = admissions.account_id','inner')
                 ->join('sections','sections.id = admissions.section','inner')->join('subjects','subjects.id = student_grades.subject','inner')->where('teacher_id', $teachid)->findAll(),
@@ -168,7 +168,7 @@ class TeacherController extends BaseController
              ->where('admissions.account_id', $expand)->first(),
             'fam' => $this->family->where('family.account_id', $expand)->FindAll(),
             'address' => $this->address->where('address.account_id', $expand)->FindAll(), 
-            'grade' => $this->grade->select('subject_name, type, fname, mname, lname, subject, grade')
+            'grade' => $this->grade->select('subject_name, type, fname, mname, lname, subject, grade, quarter')
             ->join('admissions','student_grades.student_id = admissions.student_id','inner')
             ->join('subjects','student_grades.subject = subjects.id','inner')->join('teachers','subjects.teacher_id = teachers.idnum','inner')
             ->where('admissions.student_id', $sub)->FindAll(), 
@@ -190,7 +190,7 @@ class TeacherController extends BaseController
         }
         
             $data = [
-                'grade' => $this->grade->select('student_grades.id as id, student_grades.student_id, idnum, subject, grade, first_name, middle_name, last_name, name, subject_name, teacher_id')
+                'grade' => $this->grade->select('student_grades.id as id, student_grades.student_id, idnum, subject, grade, first_name, middle_name, last_name, name, subject_name, teacher_id, quarter')
                 ->join('teachers','student_grades.teacher_account = teachers.id','inner')
                 ->join('admissions','student_grades.student_id = admissions.student_id','inner')->join('student_learner','student_learner.account_id = admissions.account_id','inner')
                 ->join('sections','sections.id = admissions.section','inner')->join('subjects','subjects.id = student_grades.subject','inner')->where('teacher_id', $teachid)
@@ -222,6 +222,7 @@ class TeacherController extends BaseController
                 ->join('accounts','accounts.id = teachers.account_id','inner')->where('username', $_SESSION['username'])->first(),
                 'subject' => $this->request->getVar('subject'),
                 'grade' => $this->request->getVar('grade'),
+                'quarter' => $this->request->getVar('quarter'),
             ];
 
             if($re) {
@@ -280,7 +281,7 @@ class TeacherController extends BaseController
             $teachid = $this->teacher->select('idnum')->where('account_id', $curruser)->first();
     
                 $data = [
-                    'grade' => $this->grade->select('student_grades.id as id, student_grades.student_id, idnum, subject, grade, first_name, middle_name, last_name, name, subject_name, teacher_id')
+                    'grade' => $this->grade->select('student_grades.id as id, student_grades.student_id, idnum, subject, grade, first_name, middle_name, last_name, name, subject_name, teacher_id, quarter')
                     ->join('teachers','student_grades.teacher_account = teachers.id','inner')
                     ->join('admissions','student_grades.student_id = admissions.student_id','inner')->join('student_learner','student_learner.account_id = admissions.account_id','inner')
                     ->join('sections','sections.id = admissions.section','inner')->join('subjects','subjects.id = student_grades.subject','inner')->where('teacher_id', $teachid)->findAll(),

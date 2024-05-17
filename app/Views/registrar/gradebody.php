@@ -8,7 +8,7 @@ $totalPages = ceil($totalRecords / $recordsPerPage);
 $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
 ?>
 
-<body>
+<body style="background-image:url('<?= base_url() ?>img/pgaBG.png');background-repeat:no-repeat;background-attachment:fixed;background-size:cover">
   <?php $session = session()?>
   <!-- Layout wrapper -->
   <div class="layout-wrapper layout-content-navbar d-flex align-items-center justify-content-center">
@@ -43,6 +43,7 @@ $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
                             <option value="name">Section</option>
                             <option value="subject_name">Subject</option>
                             <option value="grade">Grade</option>
+                            <option value="quarter">Quarter</option>
                             <option value="idnum">Teacher Id</option>
                           </select>
                           <button type="submit" class="btn btn-default">
@@ -63,6 +64,7 @@ $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
                             <th>Section</th>
                             <th>Subject</th>
                             <th>Grade</th>
+                            <th>Quarter</th>
                             <th>Teacher Id</th>
                         </tr>
                       </thead>
@@ -81,6 +83,7 @@ $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
                             <td><?= $g['name'] ?></td>
                             <td><?= $g['subject_name'] ?></td>
                             <td><?= $g['grade'] ?></td>
+                            <td><?= $g['quarter'] ?></td>
                             <td><?= $g['idnum'] ?></td>
                         </tr>
                         <?php endforeach ?>

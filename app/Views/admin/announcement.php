@@ -1,4 +1,4 @@
-<body>
+<body style="background-image:url('<?= base_url() ?>img/pgaBG.png');background-repeat:no-repeat;background-attachment:fixed;background-size:cover">
 <?php $session = session()?>
   <!-- Layout wrapper -->
   <div class="layout-wrapper layout-content-navbar d-flex align-items-center justify-content-center">
@@ -15,12 +15,12 @@
           <!-- Content -->
 
           <div class="container-xxl flex-grow-1 container-p-y">
-          <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Post An Announcement /</span> Updates, Reminders, Etc.</h4>
 
 <div class="row">
   <div class="col-md-12">
       <div class="card">
-          <h5 class="card-header">Announcement</h5>
+      <div class="card-header">
+      <h3 class="card-title"><span class="orange">Post An Announcement </span>/ Updates, Reminders, Etc.</h3>
           <hr class="my-0">
           <form action="addAnnouncement" method="POST" enctype="multipart/form-data">
               <div class="card-body d-flex row">

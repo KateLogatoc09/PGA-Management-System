@@ -31,13 +31,19 @@
              
                 <li class="menu-item active">
                   <a href="/student" class="menu-link">
-                    <div data-i18n="Analytics">Home</div>
+                    <div data-i18n="Analytics">Profile</div>
                   </a>
                 </li>
 
                 <li class="menu-item">
                   <a href="/learner" class="menu-link">
                     <div data-i18n="Analytics">Enrollment</div>
+                  </a>
+                </li>
+
+                <li class="menu-item">
+                  <a href="/studgrade" class="menu-link">
+                    <div data-i18n="Analytics">Grades</div>
                   </a>
                 </li>
                 

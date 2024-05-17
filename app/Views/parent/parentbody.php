@@ -1,4 +1,4 @@
-<body>
+<body style="background-image:url('<?= base_url() ?>img/pgaBG.png');background-repeat:no-repeat;background-attachment:fixed;background-size:cover">
 <?php $session = session()?>
   <!-- Layout wrapper -->
   <div class="layout-wrapper layout-content-navbar d-flex align-items-center justify-content-center">
@@ -16,7 +16,7 @@
 
           <div class="container-xxl flex-grow-1 container-p-y">
             <div class="row">
-            <h1 class="center blue">Child's Information</h1> 
+            <h1 class="center white">Child's Information</h1> 
               <div class="col-lg-18 mb-4 order-0">
                 <div class="card">
 
@@ -166,27 +166,23 @@
                     <!-- /.card -->
                 </div> <!-- /.dito -->
 
+                
                 <div class="col-lg-18 mb-4 order-0">
                 <div class="card">
                   <div class="d-flex align-items-end row">
                     <div class="col-sm-5">
                       <div class="card-body">
-                        <h5 class="card-title text-primary">Grades</h5>
+                        <h5 class="card-title text-primary">Sibling/s Enrolled in PGA</h5>
                         <br>
-                        <?php foreach ($grade as $g): ?>
-                        <h7 class="orange">Subject:</h7>
-                        <?= $g['subject_name'] ?>
+                        <?php foreach ($sibling as $s): ?>
+                        <h7 class="orange">Fullname:</h7>
+                        <?= $s['fullname'] ?>
                         <br>
-                        <h7 class="orange">Subject Type:</h7>
-                        <?= $g['type'] ?>
+                        <h7 class="orange">Year Level:</h7>
+                        <?= $s['yr_lvl'] ?>
                         <br>
-                        <h7 class="orange">Grade:</h7>
-                        <?= $g['grade'] ?>
-                        <br>
-                        <h7 class="orange">Subject Teacher:</h7>
-                        <?php if (isset($g['fname'])) {echo $g['fname'];}?>
-                        <?php if (isset($g['mname'])) {echo $g['mname'];}?>
-                        <?php if (isset($g['lname'])) {echo $g['lname'];}?>
+                        <h7 class="orange">Affiliation:</h7>
+                        <?= $s['affiliation'] ?>
                         <br>
                       </div>
 
@@ -200,8 +196,43 @@
                   </div>
                 </div>
               </div>
+
+              <div class="col-lg-18 mb-4 order-0">
+                <div class="card">
+                  <div class="d-flex align-items-end row">
+                    <div class="col-sm-5">
+                      <div class="card-body">
+                        <h5 class="card-title text-primary">Schools Attended</h5>
+                        <br>
+                        <?php foreach ($school as $s): ?>
+                          <h7 class="orange"><?= $s['grade'] ?>:</h7>
+                        <?= $s['school_name'] ?>
+                        <br>
+                        <h7 class="orange">Level:</h7>
+                        <?= $s['level'] ?>
+                        <br>
+                        <h7 class="orange">Period:</h7>
+                        <?= $s['period'] ?>
+                        <br>
+                      </div>
+
+                    </div>
+
+                    <div class="col-sm-5">
+                      <div class="card-body">
+                      <?php endforeach ?>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- /.card -->
+            </div> <!-- /.dito -->
+
             </div>
             <!-- / Content -->
+
 
             
             <div class="content-backdrop fade"></div>
