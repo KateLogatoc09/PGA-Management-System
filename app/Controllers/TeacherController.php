@@ -303,4 +303,30 @@ class TeacherController extends BaseController
             $session->setFlashdata('qr', $qrcode->size(120)->generate($id['idnum']));
             return redirect()->to('teacher');
         }
+
+        public function chart()
+        {
+            $session = session();
+            $curruser = $this->acc->select('id')->where('username', $_SESSION['username'])->first();
+            $teachid = $this->teacher->select('idnum')->where('account_id', $curruser)->first();
+
+            $allGrades = $this->grade->findAll();
+
+            // Filter out grades below 90
+            $filteredGrades = array_filter($allGrades, function($grade) {
+                return $grade['grade'] >= 90;
+            });
+    
+            // Sort the filtered grades in descending order
+            usort($filteredGrades, function($a, $b) {
+                return $b['grade'] - $a['grade'];
+            });
+    
+            // Get the top 10 grades
+            $topGrades = array_slice($filteredGrades, 0, 10);
+
+            $data['grades'] = $topGrades;
+
+            return view('chart', $data);
+        }
 }

@@ -62,6 +62,7 @@ $routes->get('/editteacher/(:any)', 'AdminController::edit/$1', ['filter' => 'ad
 //TEACHER
 $routes->get('/teacher', 'TeacherController::teacher', ['filter' => 'teacher']);
 $routes->get('/searchGrade', 'TeacherController::searchGrade', ['filter' => 'teacher']);
+$routes->get('/chart', 'TeacherController::chart', ['filter' => 'teacher']);
 $routes->post('/teacher_qr', 'TeacherController::simple_qr', ['filter' => 'teacher']);
 $routes->post('/teachersave', 'TeacherController::teachersave', ['filter' => 'teacher']);
 $routes->get('/teacherinfo', 'TeacherController::teacherinfo', ['filter' => 'teacher']);

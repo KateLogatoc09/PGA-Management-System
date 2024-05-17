@@ -86,3 +86,163 @@ in APPPATH\Views\student\studgrade.php on line 78.
 12 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
 13 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
 14 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-17 05:51:34 --> array_filter(): Argument #1 ($array) must be of type array, App\Models\GradeModel given
+in APPPATH\Controllers\TeacherController.php on line 315.
+ 1 APPPATH\Controllers\TeacherController.php(315): array_filter(Object(App\Models\GradeModel), Object(Closure))
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->chart()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-17 05:56:13 --> Undefined variable $grades
+in APPPATH\Views\teacher\chart.php on line 65.
+ 1 APPPATH\Views\teacher\chart.php(65): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $grades', 'C:\\laragon\\www\\PGA-Management-System\\app\\Views\\teacher\\chart.php', 65)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\teacher\\chart.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(467): CodeIgniter\View\View->render('teacher/chart', null, true)
+ 5 APPPATH\Views\chart.php(2): CodeIgniter\View\View->include('teacher/chart')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\chart.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('chart', [], true)
+ 9 APPPATH\Controllers\TeacherController.php(320): view('chart', [...])
+10 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->chart()
+11 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+12 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-17 06:24:18 --> Undefined variable $grade
+in APPPATH\Views\teacher\chart.php on line 56.
+ 1 APPPATH\Views\teacher\chart.php(56): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $grade', 'C:\\laragon\\www\\PGA-Management-System\\app\\Views\\teacher\\chart.php', 56)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\teacher\\chart.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(467): CodeIgniter\View\View->render('teacher/chart', null, true)
+ 5 APPPATH\Views\chart.php(2): CodeIgniter\View\View->include('teacher/chart')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\chart.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('chart', [], true)
+ 9 APPPATH\Controllers\TeacherController.php(332): view('chart', [...])
+10 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->chart()
+11 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+12 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-17 06:26:54 --> Array to string conversion
+in SYSTEMPATH\Database\Query.php on line 327.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\laragon\\www\\PGA-Management-System\\system\\Database\\Query.php', 327)
+ 2 SYSTEMPATH\Database\Query.php(327): implode(',', [...])
+ 3 SYSTEMPATH\Database\Query.php(308): CodeIgniter\Database\Query->matchNamedBinds('SELECT `student_grades`.`id` as `id`, `student_grades`.`student_id`, `idnum`, `subject`, `grade`, `first_name`, `middle_name`, `last_name`, `name`, `subject_name`, `teacher_id`, `quarter`
+FROM `student_grades`
+INNER JOIN `teachers` ON `student_grades`.`teacher_account` = `teachers`.`id`
+INNER JOIN `admissions` ON `student_grades`.`student_id` = `admissions`.`student_id`
+INNER JOIN `student_learner` ON `student_learner`.`account_id` = `admissions`.`account_id`
+INNER JOIN `sections` ON `sections`.`id` = `admissions`.`section`
+INNER JOIN `subjects` ON `subjects`.`id` = `student_grades`.`subject`
+WHERE `grade` = :grade:', [...])
+ 4 SYSTEMPATH\Database\Query.php(159): CodeIgniter\Database\Query->compileBinds()
+ 5 SYSTEMPATH\Database\BaseConnection.php(606): CodeIgniter\Database\Query->getQuery()
+ 6 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `student_grades`.`id` as `id`, `student_grades`.`student_id`, `idnum`, `subject`, `grade`, `first_name`, `middle_name`, `last_name`, `name`, `subject_name`, `teacher_id`, `quarter`
+FROM `student_grades`
+INNER JOIN `teachers` ON `student_grades`.`teacher_account` = `teachers`.`id`
+INNER JOIN `admissions` ON `student_grades`.`student_id` = `admissions`.`student_id`
+INNER JOIN `student_learner` ON `student_learner`.`account_id` = `admissions`.`account_id`
+INNER JOIN `sections` ON `sections`.`id` = `admissions`.`section`
+INNER JOIN `subjects` ON `subjects`.`id` = `student_grades`.`subject`
+WHERE `grade` = :grade:', [...], false)
+ 7 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 8 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 9 APPPATH\Controllers\TeacherController.php(332): CodeIgniter\BaseModel->findAll()
+10 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->chart()
+11 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+12 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-17 06:29:09 --> Array to string conversion
+in SYSTEMPATH\Database\Query.php on line 327.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\laragon\\www\\PGA-Management-System\\system\\Database\\Query.php', 327)
+ 2 SYSTEMPATH\Database\Query.php(327): implode(',', [...])
+ 3 SYSTEMPATH\Database\Query.php(308): CodeIgniter\Database\Query->matchNamedBinds('SELECT `student_grades`.`id` as `id`, `student_grades`.`student_id`, `idnum`, `subject`, `grade`, `first_name`, `middle_name`, `last_name`, `name`, `subject_name`, `teacher_id`, `quarter`
+FROM `student_grades`
+INNER JOIN `teachers` ON `student_grades`.`teacher_account` = `teachers`.`id`
+INNER JOIN `admissions` ON `student_grades`.`student_id` = `admissions`.`student_id`
+INNER JOIN `student_learner` ON `student_learner`.`account_id` = `admissions`.`account_id`
+INNER JOIN `sections` ON `sections`.`id` = `admissions`.`section`
+INNER JOIN `subjects` ON `subjects`.`id` = `student_grades`.`subject`
+WHERE `grade` = :grade:', [...])
+ 4 SYSTEMPATH\Database\Query.php(159): CodeIgniter\Database\Query->compileBinds()
+ 5 SYSTEMPATH\Database\BaseConnection.php(606): CodeIgniter\Database\Query->getQuery()
+ 6 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `student_grades`.`id` as `id`, `student_grades`.`student_id`, `idnum`, `subject`, `grade`, `first_name`, `middle_name`, `last_name`, `name`, `subject_name`, `teacher_id`, `quarter`
+FROM `student_grades`
+INNER JOIN `teachers` ON `student_grades`.`teacher_account` = `teachers`.`id`
+INNER JOIN `admissions` ON `student_grades`.`student_id` = `admissions`.`student_id`
+INNER JOIN `student_learner` ON `student_learner`.`account_id` = `admissions`.`account_id`
+INNER JOIN `sections` ON `sections`.`id` = `admissions`.`section`
+INNER JOIN `subjects` ON `subjects`.`id` = `student_grades`.`subject`
+WHERE `grade` = :grade:', [...], false)
+ 7 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 8 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 9 APPPATH\Controllers\TeacherController.php(332): CodeIgniter\BaseModel->findAll()
+10 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->chart()
+11 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+12 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-17 06:29:12 --> Array to string conversion
+in SYSTEMPATH\Database\Query.php on line 327.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\laragon\\www\\PGA-Management-System\\system\\Database\\Query.php', 327)
+ 2 SYSTEMPATH\Database\Query.php(327): implode(',', [...])
+ 3 SYSTEMPATH\Database\Query.php(308): CodeIgniter\Database\Query->matchNamedBinds('SELECT `student_grades`.`id` as `id`, `student_grades`.`student_id`, `idnum`, `subject`, `grade`, `first_name`, `middle_name`, `last_name`, `name`, `subject_name`, `teacher_id`, `quarter`
+FROM `student_grades`
+INNER JOIN `teachers` ON `student_grades`.`teacher_account` = `teachers`.`id`
+INNER JOIN `admissions` ON `student_grades`.`student_id` = `admissions`.`student_id`
+INNER JOIN `student_learner` ON `student_learner`.`account_id` = `admissions`.`account_id`
+INNER JOIN `sections` ON `sections`.`id` = `admissions`.`section`
+INNER JOIN `subjects` ON `subjects`.`id` = `student_grades`.`subject`
+WHERE `grade` = :grade:', [...])
+ 4 SYSTEMPATH\Database\Query.php(159): CodeIgniter\Database\Query->compileBinds()
+ 5 SYSTEMPATH\Database\BaseConnection.php(606): CodeIgniter\Database\Query->getQuery()
+ 6 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `student_grades`.`id` as `id`, `student_grades`.`student_id`, `idnum`, `subject`, `grade`, `first_name`, `middle_name`, `last_name`, `name`, `subject_name`, `teacher_id`, `quarter`
+FROM `student_grades`
+INNER JOIN `teachers` ON `student_grades`.`teacher_account` = `teachers`.`id`
+INNER JOIN `admissions` ON `student_grades`.`student_id` = `admissions`.`student_id`
+INNER JOIN `student_learner` ON `student_learner`.`account_id` = `admissions`.`account_id`
+INNER JOIN `sections` ON `sections`.`id` = `admissions`.`section`
+INNER JOIN `subjects` ON `subjects`.`id` = `student_grades`.`subject`
+WHERE `grade` = :grade:', [...], false)
+ 7 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 8 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 9 APPPATH\Controllers\TeacherController.php(332): CodeIgniter\BaseModel->findAll()
+10 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->chart()
+11 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+12 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-17 06:33:18 --> Array to string conversion
+in SYSTEMPATH\Database\Query.php on line 327.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\laragon\\www\\PGA-Management-System\\system\\Database\\Query.php', 327)
+ 2 SYSTEMPATH\Database\Query.php(327): implode(',', [...])
+ 3 SYSTEMPATH\Database\Query.php(308): CodeIgniter\Database\Query->matchNamedBinds('SELECT `student_grades`.`id` as `id`, `student_grades`.`student_id`, `idnum`, `subject`, `grade`, `first_name`, `middle_name`, `last_name`, `name`, `subject_name`, `teacher_id`, `quarter`
+FROM `student_grades`
+INNER JOIN `teachers` ON `student_grades`.`teacher_account` = `teachers`.`id`
+INNER JOIN `admissions` ON `student_grades`.`student_id` = `admissions`.`student_id`
+INNER JOIN `student_learner` ON `student_learner`.`account_id` = `admissions`.`account_id`
+INNER JOIN `sections` ON `sections`.`id` = `admissions`.`section`
+INNER JOIN `subjects` ON `subjects`.`id` = `student_grades`.`subject`
+WHERE `grade` = :grade:', [...])
+ 4 SYSTEMPATH\Database\Query.php(159): CodeIgniter\Database\Query->compileBinds()
+ 5 SYSTEMPATH\Database\BaseConnection.php(606): CodeIgniter\Database\Query->getQuery()
+ 6 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `student_grades`.`id` as `id`, `student_grades`.`student_id`, `idnum`, `subject`, `grade`, `first_name`, `middle_name`, `last_name`, `name`, `subject_name`, `teacher_id`, `quarter`
+FROM `student_grades`
+INNER JOIN `teachers` ON `student_grades`.`teacher_account` = `teachers`.`id`
+INNER JOIN `admissions` ON `student_grades`.`student_id` = `admissions`.`student_id`
+INNER JOIN `student_learner` ON `student_learner`.`account_id` = `admissions`.`account_id`
+INNER JOIN `sections` ON `sections`.`id` = `admissions`.`section`
+INNER JOIN `subjects` ON `subjects`.`id` = `student_grades`.`subject`
+WHERE `grade` = :grade:', [...], false)
+ 7 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 8 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 9 APPPATH\Controllers\TeacherController.php(329): CodeIgniter\BaseModel->findAll()
+10 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->chart()
+11 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+12 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')

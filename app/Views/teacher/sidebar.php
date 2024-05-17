@@ -49,6 +49,12 @@
                 </li>
 
                 <li class="menu-item">
+                  <a href="/chart" class="menu-link">
+                    <div data-i18n="Analytics">Charts</div>
+                  </a>
+                </li>
+
+                <li class="menu-item">
                   <a href="/feedback" class="menu-link">
                     <div data-i18n="Analytics">Feedback</div>
                   </a>
