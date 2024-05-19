@@ -106,7 +106,7 @@ $permitSubset = array_slice($permit, $offset, $recordsPerPage);
                                             <td><?= $permi['date'] ?></td>
                                             <td><?= $permi['status'] ?></td>
                                             <td> <a href="/deletePermit/<?= $permi['id'] ?>" class="btn btn-danger btn-sm" id="d<?=$x?>">Delete</a>
-                                            <a href="/editPermit/<?= $permi['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
+                                            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#permitModal" data-id="<?= $permi['id'] ?>">Edit</button></td>
                                            
                                            
                                           
@@ -147,50 +147,7 @@ $permitSubset = array_slice($permit, $offset, $recordsPerPage);
               <!-- /.card -->
             </div> <!-- /.dito -->
 
-
-                <div class="col-lg-18 mb-4 order-0">
-                <div class="card">
-                <div class="card-body">
-                        <h5 class="card-title text-primary">Edit Permit</h5>
-                      </div>
-                  <div class="d-flex">
-                    <div class="col-sm-5">
-                <form action="/saveRegpermit" method="post">
-                    <!-- Add your form fields and content here -->
-
-                    <div class="form-group margin-left">
-                    <input type="hidden" name="id" value="<?php if (isset($pe['id'])) {echo $pe['id'];}?>">
-                        <label for="quarter">Quarter:</label>
-                        <input type="number" class="form-control" name="quarter" placeholder="Enter Quarter" 
-                        value="<?php if (isset($pe['quarter'])) {echo $pe['quarter'];}?>">
-
-                        <label for="date">Date:</label>
-                        <input type="datetime-local" class="form-control" name="date" placeholder="Enter Date" 
-                        value="<?php if (isset($pe['date'])) {echo $pe['date'];}?>">
-
-                        </div>
-</div>
-<div class="col-sm-5 text-center text-sm-left">
-  <div class="form-group margin-left">
-
-                        <label for="status">Status:</label>
-                                        <select class="form-control" name="status" id="status">
-                                        <option value="">Status</option>
-                                            <option value="PENDING">Pending</option>
-                                            <option value="APPROVED">Approved</option>
-                                            <option value="REJECTED">Rejected</option>
-                                        </select>
-  </div>
-</div>
-</div>
-
-<!-- Move the "Save changes" button inside the form -->
-<div class="modal-footer">
-    <button type="submit" class="btn btn-primary">Save changes</button>
-</div>
-</form>
-</div>
-</div>
+            <?= $this->include('registrar/editpermit') ?>
 
             </div>
             <!-- / Content -->
@@ -260,6 +217,26 @@ $permitSubset = array_slice($permit, $offset, $recordsPerPage);
     
     <?php $y++; endforeach ?>
   </script>
+
+<script>
+$(document).ready(function() {
+    $('#permitModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget);
+        var id = button.data('id');
+        var modal = $(this);
+        $.ajax({
+            url: '/editPermit/' + id,
+            method: 'GET',
+            success: function(data) {
+                modal.find('.modal-body').html(data);
+            },
+            error: function() {
+                modal.find('.modal-body').html('<p>Error loading user data.</p>');
+            }
+        });
+    });
+});
+</script>
   <script src="assets/js/book.js"></script>
 </body>
 
