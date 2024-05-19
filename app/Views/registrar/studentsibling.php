@@ -140,23 +140,23 @@ $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
                                         value="<?php if (isset($sib['fullname'])) {echo $sib['fullname'];}?>">
                                  
                                         <label for="yr_lvl">Year Level:</label>
-                                        <select class="form-control" name="yr_lvl" id="yr_lvl"
-                                        value="<?php if (isset($sib['yr_lvl'])) {echo $sib['yr_lvl'];}?>">
-                                        <option value="">Select Year Level</option>
-                                            <option value="Kinder 1">Kinder 1</option>
-                                            <option value="Kinder 2">Kinder 2</option>
-                                            <option value="Grade 1">Grade 1</option>
-                                            <option value="Grade 2">Grade 2</option>
-                                            <option value="Grade 3">Grade 3</option>
-                                            <option value="Grade 4">Grade 4</option>
-                                            <option value="Grade 5">Grade 5</option>
-                                            <option value="Grade 6">Grade 6</option>
-                                            <option value="Grade 7">Grade 7</option>
-                                            <option value="Grade 8">Grade 8</option>
-                                            <option value="Grade 9">Grade 9</option>
-                                            <option value="Grade 10">Grade 10</option>
-                                            <option value="Grade 11">Grade 11</option>
-                                            <option value="Grade 12">Grade 12</option>
+                                        <select class="form-control" name="yr_lvl" id="yr_lvl">
+                                            <option value="" <?php if(isset($sib["yr_lvl"])) { if($sib["yr_lvl"] == "") { echo "selected"; }} ?>>Select Year Level</option>
+                                            <option value="Kinder 1" <?php if(isset($sib["yr_lvl"])) { if($sib["yr_lvl"] == "Kinder 1") { echo "selected"; }} ?>>Kinder 1</option>
+                                            <option value="Kinder 2" <?php if(isset($sib["yr_lvl"])) { if($sib["yr_lvl"] == "Kinder 2") { echo "selected"; }} ?>>Kinder 2</option>
+                                            <option value="Grade 1" <?php if(isset($sib["yr_lvl"])) { if($sib["yr_lvl"] == "Grade 1") { echo "selected"; }} ?>>Grade 1</option>
+                                            <option value="Grade 2" <?php if(isset($sib["yr_lvl"])) { if($sib["yr_lvl"] == "Grade 2") { echo "selected"; }} ?>>Grade 2</option>
+                                            <option value="Grade 3" <?php if(isset($sib["yr_lvl"])) { if($sib["yr_lvl"] == "Grade 3") { echo "selected"; }} ?>>Grade 3</option>
+                                            <option value="Grade 4" <?php if(isset($sib["yr_lvl"])) { if($sib["yr_lvl"] == "Grade 4") { echo "selected"; }} ?>>Grade 4</option>
+                                            <option value="Grade 5" <?php if(isset($sib["yr_lvl"])) { if($sib["yr_lvl"] == "Grade 5") { echo "selected"; }} ?>>Grade 5</option>
+                                            <option value="Grade 6" <?php if(isset($sib["yr_lvl"])) { if($sib["yr_lvl"] == "Grade 6") { echo "selected"; }} ?>>Grade 6</option>
+                                            <option value="Grade 7" <?php if(isset($sib["yr_lvl"])) { if($sib["yr_lvl"] == "Grade 7") { echo "selected"; }} ?>>Grade 7</option>
+                                            <option value="Grade 8" <?php if(isset($sib["yr_lvl"])) { if($sib["yr_lvl"] == "Grade 8") { echo "selected"; }} ?>>Grade 8</option>
+                                            <option value="Grade 9" <?php if(isset($sib["yr_lvl"])) { if($sib["yr_lvl"] == "Grade 9") { echo "selected"; }} ?>>Grade 9</option>
+                                            <option value="Grade 10" <?php if(isset($sib["yr_lvl"])) { if($sib["yr_lvl"] == "Grade 10") { echo "selected"; }} ?>>Grade 10</option>
+                                            <option value="Grade 11" <?php if(isset($sib["yr_lvl"])) { if($sib["yr_lvl"] == "Grade 11") { echo "selected"; }} ?>>Grade 11</option>
+                                            <option value="Grade 12" <?php if(isset($sib["yr_lvl"])) { if($sib["yr_lvl"] == "Grade 12") { echo "selected"; }} ?>>Grade 12</option>
+                                            
                                         </select>
 
                         </div>

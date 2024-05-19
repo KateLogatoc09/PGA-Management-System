@@ -140,11 +140,11 @@ $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
              
                                     <label for="grade">Grade/Year:</label>
                                         <select class="form-control" name="grade" id="grade">
-                                        <option value="">Select Grade</option>
-                                        <option value="Pre-School (Kinder)">Pre-School (Kinder)</option>
-                                        <option value="Grade School (G1-G3)">Grade School (G1-G3)</option>
-                                        <option value="Grade School (G4-G6)">Grade School (G4-G6)</option>
-                                        <option value="Junior High School (G7-G10)">Junior High School (G7-G10)</option>
+                                        <option value="" <?php if(isset($sch["grade"])) { if($sch["grade"] == "") { echo "selected"; }} ?>>Select Grade</option>  
+                                        <option value="Pre-School (Kinder)" <?php if(isset($sch["grade"])) { if($sch["grade"] == "Pre-School (Kinder)") { echo "selected"; }} ?>>Pre-School (Kinder)</option>  
+                                        <option value="Grade School (G1-G3)" <?php if(isset($sch["grade"])) { if($sch["grade"] == "Grade School (G1-G3)") { echo "selected"; }} ?>>Grade School (G1-G3)</option>  
+                                        <option value="Grade School (G4-G6)" <?php if(isset($sch["grade"])) { if($sch["grade"] == "Grade School (G4-G6)") { echo "selected"; }} ?>>Grade School (G4-G6)</option>  
+                                        <option value="Junior High School (G7-G10)" <?php if(isset($sch["grade"])) { if($sch["grade"] == "Junior High School (G7-G10)") { echo "selected"; }} ?>>Junior High School (G7-G10)</option>  
                                     </select>
 
                                     <label for="school_name">School Name:</label>

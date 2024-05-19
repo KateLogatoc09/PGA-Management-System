@@ -106,7 +106,7 @@ $permitSubset = array_slice($permit, $offset, $recordsPerPage);
                                             <td><?= $permi['date'] ?></td>
                                             <td><?= $permi['status'] ?></td>
                                             <td> <a href="/deletePermit/<?= $permi['id'] ?>" class="btn btn-danger btn-sm" id="d<?=$x?>">Delete</a>
-                                            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#permitModal" data-id="<?= $permi['id'] ?>">Edit</button></td>
+                                            <a href="/editPermit/<?= $permi['id'] ?>" class="btn btn-primary btn-sm" id="d<?=$x?>">Edit</a></td>
                                            
                                            
                                           
@@ -147,7 +147,50 @@ $permitSubset = array_slice($permit, $offset, $recordsPerPage);
               <!-- /.card -->
             </div> <!-- /.dito -->
 
-            <?= $this->include('registrar/editpermit') ?>
+            <div class="col-lg-18 mb-4 order-0">
+                <div class="card">
+                <div class="card-body">
+                        <h5 class="card-title text-primary">Edit Permit</h5>
+                      </div>
+                  <div class="d-flex">
+                    <div class="col-sm-5">
+                <form action="/saveRegpermit" method="post">
+                    <!-- Add your form fields and content here -->
+
+                    <div class="form-group margin-left">
+                    <input type="hidden" name="id" value="<?php if (isset($pe['id'])) {echo $pe['id'];}?>">
+                        <label for="quarter">Quarter:</label>
+                        <input type="number" class="form-control" name="quarter" placeholder="Enter Quarter" 
+                        value="<?php if (isset($pe['quarter'])) {echo $pe['quarter'];}?>">
+
+                        <label for="date">Date:</label>
+                        <input type="datetime-local" class="form-control" name="date" placeholder="Enter Date" 
+                        value="<?php if (isset($pe['date'])) {echo $pe['date'];}?>">
+
+                        </div>
+</div>
+<div class="col-sm-5 text-center text-sm-left">
+  <div class="form-group margin-left">
+
+                        <label for="status">Status:</label>
+                                        <select class="form-control" name="status" id="status">
+                                            <option value="" <?php if(isset($pe["status"])) { if($pe["status"] == "") { echo "selected"; }} ?>>Select Status</option>    
+                                        <option value="PENDING" <?php if(isset($pe["status"])) { if($pe["status"] == "PENDING") { echo "selected"; }} ?>>PENDING</option>    
+                                        <option value="ON PROCESS" <?php if(isset($pe["status"])) { if($pe["status"] == "ON PROCESS") { echo "selected"; }} ?>>ON PROCESS</option>  
+                                        <option value="APPROVED" <?php if(isset($pe["status"])) { if($pe["status"] == "APPROVED") { echo "selected"; }} ?>>APPROVED</option>     
+                                        <option value="REJECTED" <?php if(isset($pe["status"])) { if($pe["status"] == "REJECTED") { echo "selected"; }} ?>>REJECTED</option>  
+                                        </select>
+  </div>
+</div>
+</div>
+
+<!-- Move the "Save changes" button inside the form -->
+<div class="modal-footer">
+    <button type="submit" class="btn btn-primary">Save changes</button>
+</div>
+</form>
+</div>
+</div>
 
             </div>
             <!-- / Content -->

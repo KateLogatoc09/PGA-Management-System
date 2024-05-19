@@ -208,10 +208,11 @@ $appliSubset = array_slice($appli, $offset, $recordsPerPage);
 
                         <label for="status">Status:</label>
                                         <select class="form-control" name="status" id="status">
-                                        <option value="">Status</option>
-                                            <option value="PENDING">Pending</option>
-                                            <option value="APPROVED">Approved</option>
-                                            <option value="REJECTED">Rejected</option>
+                                        <option value="" <?php if(isset($ap["status"])) { if($ap["status"] == "") { echo "selected"; }} ?>>Select Status</option>
+                                        <option value="PENDING" <?php if(isset($ap["status"])) { if($ap["status"] == "PENDING") { echo "selected"; }} ?>>PENDING</option>
+                                        <option value="APPROVED" <?php if(isset($ap["status"])) { if($ap["status"] == "APPROVED") { echo "selected"; }} ?>>APPROVED</option>
+                                        <option value="REJECTED" <?php if(isset($ap["status"])) { if($ap["status"] == "REJECTED") { echo "selected"; }} ?>>REJECTED</option>
+                                           
                                         </select>
   </div>
 </div>

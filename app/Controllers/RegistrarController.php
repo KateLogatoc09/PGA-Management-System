@@ -1186,7 +1186,7 @@ class RegistrarController extends BaseController
             'pe' => $this->permit->where('id', $id)->first(),
        ];
 
-        return view('registrar/editpermit', $data); 
+        return view('reg_permit', $data); 
     }
 
     public function searchpermit()

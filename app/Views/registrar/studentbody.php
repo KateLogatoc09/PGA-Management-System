@@ -230,20 +230,20 @@
   <label for="gender">Gender:</label>
                                         <select class="form-control" name="gender" id="gender" 
                                         value="<?php if (isset($learn['gender'])) {echo $learn['gender'];}?>">
-                                        <option value="">Select Gender</option>
-                                        <option value="">Select Gender</option>
-                                            <option value="Male">Male</option>
-                                            <option value="Female">Female</option>
+                                        <option value="" <?php if(isset($learn["gender"])) { if($learn["gender"] == "") { echo "selected"; }} ?>>Select Gender</option>  
+                                        <option value="Male" <?php if(isset($learn["gender"])) { if($learn["gender"] == "Male") { echo "selected"; }} ?>>Male</option>  
+                                        <option value="Female" <?php if(isset($learn["gender"])) { if($learn["gender"] == "Female") { echo "selected"; }} ?>>Female</option>  
                                         </select>
                         
                                         <label for="marital_status">Marital Status:</label>
                                             <select class="form-control" name="marital_status" id="marital_status"
                                             value="<?php if (isset($learn['marital_status'])) {echo $learn['marital_status'];}?>">
-                                            <option value="">Select Marital Status</option>
-                                            <option value="Single">Single</option>
-                                            <option value="Married">Married</option>
-                                            <option value="Separated">Separated</option>
-                                            <option value="Widow">Widow</option>
+                                            <option value="" <?php if(isset($learn["marital_status"])) { if($learn["marital_status"] == "") { echo "selected"; }} ?>>Select Marital Status</option>  
+                                            <option value="Single" <?php if(isset($learn["marital_status"])) { if($learn["marital_status"] == "Single") { echo "selected"; }} ?>>Single</option>  
+                                            <option value="Married" <?php if(isset($learn["marital_status"])) { if($learn["marital_status"] == "Married") { echo "selected"; }} ?>>Married</option>  
+                                            <option value="Separated" <?php if(isset($learn["marital_status"])) { if($learn["marital_status"] == "Separated") { echo "selected"; }} ?>>Separated</option>  
+                                            <option value="Widow" <?php if(isset($learn["marital_status"])) { if($learn["marital_status"] == "Widow") { echo "selected"; }} ?>>Widow</option>  
+                                        
                                         </select>
   <label for="birthdate">Birthdate:</label>
                                         <input type="date" class="form-control" name="birthdate" placeholder="Enter Birthdate"

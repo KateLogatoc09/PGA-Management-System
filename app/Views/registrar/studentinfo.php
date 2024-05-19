@@ -151,10 +151,11 @@ $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
                     <label for="relation">Relationship To Student:</label>
                         <select class="form-control" name="relation" id="relation" 
                         value="<?php if (isset($fam['relation'])) {echo $fam['relation'];}?>">
-                        <option value="">Select Relationship</option>
-                        <option value="Mother">Mother</option>
-                        <option value="Father">Father</option>
-                        <option value="Guardian">Guardian</option>
+                        <option value="" <?php if(isset($fam["relation"])) { if($fam["relation"] == "") { echo "selected"; }} ?>>Select Relationship</option>
+                        <option value="Mother" <?php if(isset($fam["relation"])) { if($fam["relation"] == "Mother") { echo "selected"; }} ?>>Mother</option>  
+                        <option value="Father" <?php if(isset($fam["relation"])) { if($fam["relation"] == "Father") { echo "selected"; }} ?>>Father</option>
+                        <option value="Guardian" <?php if(isset($fam["relation"])) { if($fam["relation"] == "Guardian") { echo "selected"; }} ?>>Guardian</option>
+
                     </select>
 
                                     <label for="fullname">Full Name:</label>
