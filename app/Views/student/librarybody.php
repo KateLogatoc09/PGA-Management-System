@@ -64,10 +64,24 @@ $paginatedBooky = array_slice($booky, $offset, $recordsPerPage);
                   <div class="card-header">
                     <h3 class="card-title">Books Available</h3>
                     <div class="card-tools">
-                      <div class="input-group input-group-sm" style="width: 200px;">
+                      <div class="input-group input-group-sm" style="width: 400px;">
                       <form action="/searchLibrary" method="get">
                         <div class="input-group-append">
-                        <input type="text" name="search" class="form-control float-right" placeholder="Search">
+                        <input type="text" name="search" class="form-control float-right me-2" placeholder="Search">
+                        <select class="form-control" name="categ">
+                            <option value="book_title">Book Title</option>
+                            <option value="book_number">Book Number</option>
+                            <option value="book_author">Book Author</option>
+                            <option value="book_publisher">Book Publisher</option>
+                            <option value="place_printed">Place of Publication</option>
+                            <option value="book_category">Book Category</option>
+                            <option value="book_type">Book Type</option>
+                            <option value="book_pages">Book Pages</option>
+                            <option value="book_qty">Book Quantity</option>
+                            <option value="book_shelf">Shelf Number</option>
+                            <option value="ISBN">ISBN</option>
+                            <option value="datepublish">Date Published</option>
+                          </select>
                           <button type="submit" class="btn btn-default">
                           <i class="menu-icon tf-icons bx bx-search"></i>
                           </button>

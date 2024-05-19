@@ -1,0 +1,42 @@
+CRITICAL - 2024-05-19 02:05:20 --> Undefined variable $fullname
+in APPPATH\Controllers\StudentController.php on line 172.
+ 1 APPPATH\Controllers\StudentController.php(172): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $fullname', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\StudentController.php', 172)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\StudentController->savepermit()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\StudentController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-19 02:33:01 --> Invalid file: "reg_permit.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('reg_permit.php')
+ 2 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('reg_permit', [], true)
+ 3 APPPATH\Controllers\RegistrarController.php(1175): view('reg_permit', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\RegistrarController->reg_permit()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RegistrarController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-19 02:33:47 --> Undefined array key "photo_permit"
+in APPPATH\Views\registrar\permitbody.php on line 92.
+ 1 APPPATH\Views\registrar\permitbody.php(92): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "photo_permit"', 'C:\\laragon\\www\\PGA-Management-System\\app\\Views\\registrar\\permitbody.php', 92)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\registrar\\permitbody.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(467): CodeIgniter\View\View->render('registrar/permitbody', null, true)
+ 5 APPPATH\Views\reg_permit.php(2): CodeIgniter\View\View->include('registrar/permitbody')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\reg_permit.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('reg_permit', [], true)
+ 9 APPPATH\Controllers\RegistrarController.php(1175): view('reg_permit', [...])
+10 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\RegistrarController->reg_permit()
+11 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RegistrarController))
+12 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-19 02:47:18 --> Undefined variable $id
+in APPPATH\Controllers\RegistrarController.php on line 1216.
+ 1 APPPATH\Controllers\RegistrarController.php(1216): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $id', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\RegistrarController.php', 1216)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\RegistrarController->saveRegpermit()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RegistrarController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')

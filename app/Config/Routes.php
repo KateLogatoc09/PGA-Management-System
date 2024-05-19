@@ -87,9 +87,11 @@ $routes->get('/graph', 'GradeController::index', ['filter' => 'student']);
 $routes->get('/student', 'StudentController::index', ['filter' => 'student']);
 $routes->post('/generate', 'StudentController::simple_qr', ['filter' => 'student']);
 $routes->get('/studentlibrary', 'StudentController::studentlibrary', ['filter' => 'student']);
+$routes->get('/permit', 'StudentController::permit', ['filter' => 'student']);
 $routes->get('/studgrade', 'StudentController::studgrade', ['filter' => 'student']);
 $routes->get('/searchLibrary', 'StudentController::searchLibrary', ['filter' => 'student']);
 $routes->post('/studentborrowBook', 'StudentController::studentborrowBook', ['filter' => 'student']);
+$routes->post('/savepermit', 'StudentController::savepermit', ['filter' => 'student']);
 
 //STUDENT ENROLL
 $routes->get('/learner', 'EnrollmentController::learner', ['filter' => 'student']);
@@ -207,6 +209,11 @@ $routes->get('/application', 'RegistrarController::application', ['filter' => 'r
 $routes->get('/editApplication/(:any)', 'RegistrarController::editApplication/$1', ['filter' => 'registrar']);
 $routes->post('/saveApplication', 'RegistrarController::saveApplication', ['filter' => 'registrar']);
 $routes->get('/deleteApplication/(:any)', 'RegistrarController::deleteApplication/$1', ['filter' => 'registrar']);
+$routes->get('/reg_permit', 'RegistrarController::reg_permit', ['filter' => 'registrar']);
+$routes->get('/deletePermit/(:any)', 'RegistrarController::deletePermit/$1', ['filter' => 'registrar']);
+$routes->get('/editPermit/(:any)', 'RegistrarController::editPermit/$1', ['filter' => 'registrar']);
+$routes->post('/saveRegpermit', 'RegistrarController::saveRegpermit', ['filter' => 'registrar']);
+$routes->get('/searchpermit', 'RegistrarController::searchpermit', ['filter' => 'registrar']);
 
 //REGISTRAR MAIL
 $routes->get('/email', 'RegistrarController::mail', ['filter' => 'registrar']);

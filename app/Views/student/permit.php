@@ -1,6 +1,4 @@
 <body style="background-image:url('<?= base_url() ?>img/pgaBG.png');background-repeat:no-repeat;background-attachment:fixed;background-size:cover">
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v19.0" nonce="AFffryss"></script>
 <?php $session = session()?>
   <!-- Layout wrapper -->
   <div class="layout-wrapper layout-content-navbar d-flex align-items-center justify-content-center">
@@ -8,8 +6,8 @@
       <!-- Layout container -->
       <div class="layout-page">
         <!-- Navbar -->
-        <?= $this->include('general/nav') ?>
-        <?= $this->include('general/sidebar') ?>
+        <?= $this->include('student/nav') ?>
+        <?= $this->include('student/sidebar') ?>
         <!-- / Navbar -->
 
         <!-- Content wrapper -->
@@ -22,31 +20,25 @@
             <div class="col-lg-18 mb-4 order-0">
                 <div class="card">
                 <div class="card-body">
-                        <h5 class="card-title text-primary">Fill Out The Fields Needed for Verification</h5>
+                        <h5 class="card-title text-primary">Upload Photo of Exam Permit</h5>
                       </div>
                   <div class="d-flex">
                     <div class="col-sm-5">
-                <form action="apply_st" method="post" enctype="multipart/form-data">
+                <form action="/savepermit" method="post" enctype="multipart/form-data">
                     <!-- Add your form fields and content here -->
 
                     <div class="form-group margin-left">
-                    <input type="hidden" name="id" value="<?php if (isset($prof['id'])) {echo $prof['id'];}?>">
-                        <label for="fullname">Full Name:</label>
-                        <input type="text" class="form-control" name="fullname" placeholder="First Name Middle Name, Last Name" required>
-                                 
-                        <label for="valid_id">Upload Student Id:</label>
-                        <input type="file" class="form-control" name="valid_id" placeholder="Upload Student Id" required>
+
+                        <label for="permit_photo">Upload Photo of Permit:</label>
+                        <input type="file" class="form-control" name="permit_photo" placeholder="Upload Photo of Permit" required>
 
                         </div>
 </div>
 <div class="col-sm-5 text-center text-sm-left">
   <div class="form-group margin-left">
                        
-  <label for="card">Upload Form 137:</label>
-                        <input type="file" class="form-control" name="card" placeholder="Upload Form 137" required>
-
-                        <label for="birth_cert">Upload Birth Certificate:</label>
-                        <input type="file" class="form-control" name="birth_cert" placeholder="Upload Birth Certificate" required>
+  <label for="quarter">Input Exam Quarter:</label>
+                        <input type="number" class="form-control" name="quarter" placeholder="Input Exam Quarter" required>
 
   </div>
 </div>

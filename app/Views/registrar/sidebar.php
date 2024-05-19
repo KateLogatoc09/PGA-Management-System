@@ -78,6 +78,12 @@
                 </li>
 
                 <li class="menu-item">
+                  <a href="/reg_permit" class="menu-link">
+                    <div data-i18n="Analytics">Permits</div>
+                  </a>
+                </li>
+
+                <li class="menu-item">
                   <a href="/parentChild" class="menu-link">
                     <div data-i18n="Analytics">Parents</div>
                   </a>

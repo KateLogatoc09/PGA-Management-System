@@ -3,7 +3,7 @@
 $recordsPerPage = 5;
 
 // Calculate the total number of pages
-$totalPages = ceil(count($appli) / $recordsPerPage);
+$totalPages = ceil(count($permit) / $recordsPerPage);
 
 // Get the current page number from the query string, default to 1 if not set
 $currentPage = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
@@ -12,7 +12,7 @@ $currentPage = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
 $offset = ($currentPage - 1) * $recordsPerPage;
 
 // Get a subset of records for the current page
-$appliSubset = array_slice($appli, $offset, $recordsPerPage);
+$permitSubset = array_slice($permit, $offset, $recordsPerPage);
 ?>
 
 <body style="background-image:url('<?= base_url() ?>img/pgaBG.png');background-repeat:no-repeat;background-attachment:fixed;background-size:cover">
@@ -38,37 +38,43 @@ $appliSubset = array_slice($appli, $offset, $recordsPerPage);
               <div class="col-lg-18 mb-4 order-0">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Application List</h3>
+                            <h3 class="card-title">Permit List</h3>
                             <div class="card-tools">
-                      <div class="input-group input-group-sm" style="width: 400px;">
-                      <form action="/searchAppli" method="get">
-                        <div class="input-group-append">
-                        <input type="text" name="search" class="form-control float-right me-2" placeholder="Search">
-                        <select class="form-control" name="categ">
-                          <option value="fullname">Full Name</option>
-                          <option value="email">Email</option>
-                          <option value="type">Type</option>
-                        </select>
-                          <button type="submit" class="btn btn-default">
-                          <i class="menu-icon tf-icons bx bx-search"></i>
-                          </button>
+                                <div class="input-group input-group-sm" style="width: 400px;">
+                                <form action="/searchpermit" method="get">
+                                    <div class="input-group-append">
+                                    <input type="text" name="table_search" class="form-control float-right me-2" placeholder="Search">
+                                    <select class="form-control" name="categ">
+                                        <option value="student_id">Student ID</option>
+                                        <option value="first_name">First Name</option>
+                                        <option value="middle_name">Middle Name</option>
+                                        <option value="last_name">Last Name</option>
+                                        <option value="yr_lvl">Year Level</option>
+                                        <option value="name">Section</option>
+                                        <option value="quarter">Quarter</option>
+                                        <option value="permit.status">Status</option>
+                                    </select>
+                                    <button type="submit" class="btn btn-default">
+                                    <i class="menu-icon tf-icons bx bx-search"></i>
+                                    </button>
+                                    </div>
+                                  </form>
+                                </div>
+                            </div>
                         </div>
-                      </form>
-                      </div>
-                    </div>
-                  </div>
                         <!-- /.card-header -->
                         <div class="card-body table-responsive p-0">
                          <table class="table table-hover text-nowrap">
                     
                             <thead>
                                     <tr>
-                                        <th>Full Name</th>
-                                        <th>Id</th>
-                                        <th>Card</th>
-                                        <th>Birth Certificate</th>
-                                        <th>Email</th>
-                                        <th>Type</th>
+                                        <th>Student Id</th>
+                                        <th>Student's Full Name</th>
+                                        <th>Section</th>
+                                        <th>Year Level</th>
+                                        <th>Permit Photo</th>
+                                        <th>Quarter</th>
+                                        <th>Date</th>
                                         <th>Status</th>
                                         <th>Actions</th>
                                     </tr>
@@ -78,14 +84,17 @@ $appliSubset = array_slice($appli, $offset, $recordsPerPage);
                         // Paginate the results
                         $start = ($currentPage - 1) * $recordsPerPage;
                         $end = $start + $recordsPerPage;
-                        $appliSubset = array_slice($appli, $start, $recordsPerPage);
+                        $permitSubset = array_slice($permit, $start, $recordsPerPage);
                         $x = 1;
-                        foreach ($appliSubset as $applica):
+                        foreach ($permitSubset as $permi):
                         ?>
                                     <tr>
-                                            <td><?= $applica['fullname'] ?></td>
+                                            <td><?= $permi['student_id'] ?></td>
+                                            <td><?= $permi['first_name'] ?> <?= $permi['middle_name'] ?> <?= $permi['last_name'] ?></td>
+                                            <td><?= $permi['name'] ?></td>
+                                            <td><?= $permi['yr_lvl'] ?></td>
                                             <td><img
-                                            src="<?= base_url().$applica['valid_id'] ?>"
+                                            src="<?= base_url().$permi['permit_photo'] ?>"
                                             alt="user-avatar"
                                             class="d-block rounded"
                                             height="100"
@@ -93,29 +102,11 @@ $appliSubset = array_slice($appli, $offset, $recordsPerPage);
                                             id="id<?=$x?>"
                                             onclick="openFullscreenid<?=$x?>();"
                                             /></td>
-                                            <td><img
-                                            src="<?= base_url().$applica['card'] ?>"
-                                            alt="user-avatar"
-                                            class="d-block rounded"
-                                            height="100"
-                                            width="100"
-                                            id="c<?=$x?>"
-                                            onclick="openFullscreenc<?=$x?>();"
-                                            /></td>
-                                            <td><img
-                                            src="<?= base_url().$applica['birth_cert'] ?>"
-                                            alt="user-avatar"
-                                            class="d-block rounded"
-                                            height="100"
-                                            width="100"
-                                            id="b<?=$x?>"
-                                            onclick="openFullscreenb<?=$x?>();"
-                                            /></td>
-                                            <td><?= $applica['email'] ?></td>
-                                            <td><?= $applica['type'] ?></td>
-                                            <td><?= $applica['status'] ?></td>
-                                            <td> <a href="/deleteApplication/<?= $applica['id'] ?>" class="btn btn-danger btn-sm" id="d<?=$x?>">Delete</a>
-                                            <a href="/editApplication/<?= $applica['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
+                                            <td><?= $permi['quarter'] ?></td>
+                                            <td><?= $permi['date'] ?></td>
+                                            <td><?= $permi['status'] ?></td>
+                                            <td> <a href="/deletePermit/<?= $permi['id'] ?>" class="btn btn-danger btn-sm" id="d<?=$x?>">Delete</a>
+                                            <a href="/editPermit/<?= $permi['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
                                            
                                            
                                           
@@ -160,18 +151,22 @@ $appliSubset = array_slice($appli, $offset, $recordsPerPage);
                 <div class="col-lg-18 mb-4 order-0">
                 <div class="card">
                 <div class="card-body">
-                        <h5 class="card-title text-primary">Edit Application</h5>
+                        <h5 class="card-title text-primary">Edit Permit</h5>
                       </div>
                   <div class="d-flex">
                     <div class="col-sm-5">
-                <form action="/saveApplication" method="post">
+                <form action="/saveRegpermit" method="post">
                     <!-- Add your form fields and content here -->
 
                     <div class="form-group margin-left">
-                    <input type="hidden" name="id" value="<?php if (isset($ap['id'])) {echo $ap['id'];}?>">
-                        <label for="fullname">Fullname:</label>
-                        <input type="text" class="form-control" name="fullname" placeholder="Enter Fullname" 
-                        value="<?php if (isset($ap['fullname'])) {echo $ap['fullname'];}?>" readonly>
+                    <input type="hidden" name="id" value="<?php if (isset($pe['id'])) {echo $pe['id'];}?>">
+                        <label for="quarter">Quarter:</label>
+                        <input type="number" class="form-control" name="quarter" placeholder="Enter Quarter" 
+                        value="<?php if (isset($pe['quarter'])) {echo $pe['quarter'];}?>">
+
+                        <label for="date">Date:</label>
+                        <input type="datetime-local" class="form-control" name="date" placeholder="Enter Date" 
+                        value="<?php if (isset($pe['date'])) {echo $pe['date'];}?>">
 
                         </div>
 </div>
@@ -211,7 +206,7 @@ $appliSubset = array_slice($appli, $offset, $recordsPerPage);
   </div>
   <!-- / Layout wrapper -->
   <script>    
-    <?php $y = 1; foreach ($appliSubset as $applica): ?>
+    <?php $y = 1; foreach ($permitSubset as $permi): ?>
 
       function openFullscreenid<?=$y?>() {
         if (document.getElementById('id<?=$y?>').requestFullscreen) {

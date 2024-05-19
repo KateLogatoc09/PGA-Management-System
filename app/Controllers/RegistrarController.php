@@ -21,11 +21,12 @@ use App\Models\ApplicationModel;
 use App\Models\AccountModel;
 use App\Models\ParentChild;
 use App\Models\TeacherModel;
+use App\Models\PermitModel;
 
 class RegistrarController extends BaseController
 {
     private $acc, $learner, $family, $address, $admissions, $sibling, $school, $grade, $sections,
-     $subjects, $alumni, $app, $account, $teacher, $parent_child;
+     $subjects, $alumni, $app, $account, $teacher, $parent_child, $permit;
     public function __construct()
     {
         $this->learner = new LearnerModel();
@@ -43,6 +44,7 @@ class RegistrarController extends BaseController
         $this->teacher = new TeacherModel();
         $this->acc = new AccountModel();
         $this->parent_child = new ParentChild();
+        $this->permit = new PermitModel();
     }
 
     public function registrar()
@@ -1160,6 +1162,90 @@ class RegistrarController extends BaseController
             $session->setFlashdata('msg','Sent Successfully.');
             return redirect()->to('email');
         }
+    }
 
+    public function reg_permit()
+    {
+        $data = [
+            'permit' => $this->permit->select('permit.id as id, first_name, middle_name, last_name, student_id, permit_photo, quarter, date, permit.status, name, yr_lvl')
+            ->join('admissions','permit.account_id = admissions.account_id','inner')
+            ->join('student_learner','student_learner.account_id = admissions.account_id','inner')
+            ->join('sections','sections.id = admissions.section','inner')->findAll(),
+        ];
+        return view('reg_permit', $data);
+    }
+
+    
+    public function editPermit($id)
+    {
+        $data = [
+            'permit' => $this->permit->select('permit.id as id, first_name, middle_name, last_name, student_id, permit_photo, quarter, date, permit.status, name, yr_lvl')
+            ->join('admissions','permit.account_id = admissions.account_id','inner')
+            ->join('student_learner','student_learner.account_id = admissions.account_id','inner')
+            ->join('sections','sections.id = admissions.section','inner')->findAll(),
+            'pe' => $this->permit->where('id', $id)->first(),
+       ];
+
+        return view('reg_permit', $data); 
+    }
+
+    public function searchpermit()
+    {
+        if($this->request->getVar('categ') == 'Adviser') {
+            $categ = "CONCAT(fname,' ',mname,' ',lname)";
+        } else {
+            $categ = $this->request->getVar('categ');
+        }
+
+        $data = [
+            'permit' => $this->permit->select('permit.id as id, first_name, middle_name, last_name, student_id, permit_photo, quarter, date, permit.status, name, yr_lvl')
+            ->join('admissions','permit.account_id = admissions.account_id','inner')
+            ->join('student_learner','student_learner.account_id = admissions.account_id','inner')
+            ->join('sections','sections.id = admissions.section','inner')
+            ->like($categ, $this->request->getVar('table_search'))->orderBy('student_learner.last_name')->FindAll(),
+       ];
+        return view('reg_permit', $data);
+    }
+
+    public function deletePermit($id)
+    {
+        $session = session();
+        $res = $this->permit->delete($id);
+        if($res) {
+            $session->setFlashdata('msg','Deleted Successfully.');
+        } else {
+            $session->setFlashdata('msg','Something went wrong. Please try again later.');
+        }
+        return redirect()->to('reg_permit');
+    }
+
+    public function saveRegpermit() {
+        $session = session();
+        $id = $_POST['id'];
+
+            $data = [
+                'date' => $this->request->getVar('date'),
+                'quarter' => $this->request->getVar('quarter'),
+                'status' => $this->request->getVar('status'),
+            ];
+              
+            
+        if ($id != null) {
+            $res = $this->permit->set($data)->where('id', $id)->update();
+            if($res) {
+                $session->setFlashdata('msg','Updated Successfully.');
+            } else {
+                $session->setFlashdata('msg','Something went wrong. Please try again later.');
+            }
+        } else {
+            $res = $this->permit->save($data);
+            if($res) {
+                $session->setFlashdata('msg','Saved Successfully.');
+            } else {
+                $session->setFlashdata('msg','Something went wrong. Please try again later.');
+            }
+        }  
+
+        return redirect()->to('reg_permit');
     }
 }

@@ -14,10 +14,11 @@ use App\Models\BorrowedBooksModel;
 use SimpleSoftwareIO\QrCode\Generator;
 use App\Models\AddBooksModel;
 use App\Models\GradeModel;
+use App\Models\PermitModel;
 
 class StudentController extends BaseController
 {
-    private $book, $borrowedBook, $enrollment, $learner, $family, $address, $admissions, $grade, $sibling, $school, $acc;
+    private $book, $borrowedBook, $enrollment, $learner, $family, $address, $admissions, $grade, $sibling, $school, $acc, $permit;
     public function __construct()
     {
         $this->learner = new LearnerModel();
@@ -30,6 +31,7 @@ class StudentController extends BaseController
         $this->borrowedBook = new BorrowedBooksModel();
         $this->book = new AddBooksModel();
         $this->grade = new GradeModel();
+        $this->permit = new PermitModel();
     }
 
     public function index()
@@ -98,10 +100,15 @@ class StudentController extends BaseController
         return view('studentlibrary', $data);
     }
 
+    public function permit()
+    {
+        return view('permit');
+    }
+
     public function searchLibrary()
     {
         $data = [
-            'booky' => $this->book->like('book_title', $this->request->getVar('search'))->orLike('book_number', $this->request->getVar('search'))->where('status', 'AVAILABLE')->orderBy('book_title')->findAll(),
+            'booky' => $this->book->like($this->request->getVar('categ'), $this->request->getVar('search'))->orderBy('book_title')->findAll(),
         ];
         return view('studentlibrary', $data);
     }
@@ -148,6 +155,31 @@ public function studentborrowBook()  {
     $session->setFlashdata('msg','Book is not available.');
 }          
 return redirect()->to('studentlibrary');   
+}
+
+public function savepermit() {
+    $session = session();
+    $permit_photo = $this->request->getFile('permit_photo');
+    $quarter = $this->request->getVar('quarter');
+    $acc = $this->acc->select('id')->where('username', $_SESSION['username'])->first();
+
+        //permit
+        $test1 = $permit_photo->move(PUBLIC_PATH.'\\account\\'.$acc['id'].'\\');
+        $name1 = $permit_photo->getClientPath();
+        $path1 = '/account/'.$acc['id'].'/'.$name1;
+
+        $data = [
+            'permit_photo' => $path1,
+            'quarter' => $quarter,
+            'account_id' => $acc,
+        ];
+            $res = $this->permit->save($data);
+            if($res) {
+                $session->setFlashdata('msg','Saved Successfully.');             
+            } else {
+                $session->setFlashdata('msg','Something went wrong. Please try again later.');
+            }
+    return redirect()->to('permit');
 }
 
 }
