@@ -18014,3 +18014,6 @@ html:not(.layout-footer-fixed) .content-wrapper {
 .hidden {
   display: none !important;
 }
+#announce::-webkit-scrollbar {
+  display: none;
+}

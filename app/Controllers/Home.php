@@ -1,12 +1,20 @@
 <?php
 
 namespace App\Controllers;
-use App\Models\AccountModel;
+use App\Models\AnnouncementModel;
 class Home extends BaseController
 {
+    private $announce;
+    public function __construct()
+    {
+        $this->announce = new AnnouncementModel();
+    }
     public function index()
     {
-        return view('index');
+        $data = [
+            'announcement' => $this->announce->findAll(),
+        ];
+        return view('index', $data);
     }
     public function Test()
     {
