@@ -827,7 +827,7 @@ class RegistrarController extends BaseController
     {
         $data = [
             'stud_section' => $this->sections->findAll(),
-            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, category,yr_lvl,program, status,
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, category,yr_lvl,program, school_year, status,
             birth_cert, report_card, good_moral, admissions.photo, schedule, fname, mname, lname')->join('admissions','admissions.account_id = student_learner.account_id','inner')
             ->join('sections','sections.id = admissions.section','left')->join('teachers','sections.adviser = teachers.idnum','left')->orderBy('student_learner.last_name')->FindAll(),
        ];
@@ -844,7 +844,7 @@ class RegistrarController extends BaseController
 
         $data = [
             'stud_section' => $this->sections->findAll(),
-            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, category,yr_lvl,program, status,
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, category,yr_lvl,program, school_year, status,
             birth_cert, report_card, good_moral, admissions.photo, schedule, fname, mname, lname')->join('admissions','admissions.account_id = student_learner.account_id','inner')
             ->join('sections','sections.id = admissions.section','left')->join('teachers','sections.adviser = teachers.idnum','left')->like($categ, $this->request->getVar('table_search'))->orderBy('student_learner.last_name')->FindAll(),
        ];
@@ -856,7 +856,7 @@ class RegistrarController extends BaseController
     {
         $data = [
             'stud_section' => $this->sections->findAll(),
-            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, category,yr_lvl,program, admissions.status,
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, category,yr_lvl,program, school_year, admissions.status,
             birth_cert, report_card, good_moral, admissions.photo, schedule, fname, mname, lname, email, admissions.account_id')->join('admissions','admissions.account_id = student_learner.account_id','inner')
             ->join('accounts','accounts.id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')->join('teachers','sections.adviser = teachers.idnum','left')
             ->orderBy('student_learner.last_name')->FindAll(),
@@ -874,7 +874,7 @@ class RegistrarController extends BaseController
 
         $data = [
             'stud_section' => $this->sections->findAll(),
-            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, category,yr_lvl,program, admissions.status,
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, category,yr_lvl,program, school_year, admissions.status,
             birth_cert, report_card, good_moral, admissions.photo, schedule, fname, mname, lname, email, admissions.account_id')->join('admissions','admissions.account_id = student_learner.account_id','inner')
             ->join('accounts','accounts.id = student_learner.account_id','inner')->join('sections','sections.id = admissions.section','left')->join('teachers','sections.adviser = teachers.idnum','left')
             ->like($categ, $this->request->getVar('table_search'))->orderBy('student_learner.last_name')->FindAll(),
@@ -888,7 +888,7 @@ class RegistrarController extends BaseController
     
        $data = [
            'learn' => $this->learner->where('student_learner.account_id', $expand)->first(),
-           'ad' => $this->admissions->select('student_id, name, category,yr_lvl,program, status,
+           'ad' => $this->admissions->select('student_id, name, category,yr_lvl,program, school_year, status,
             birth_cert, report_card, good_moral, admissions.photo, schedule, fname, mname, lname')
             ->join('sections','sections.id = admissions.section','left')->join('teachers','sections.adviser = teachers.idnum','left')
             ->where('admissions.account_id', $expand)->first(),
@@ -915,6 +915,7 @@ class RegistrarController extends BaseController
             'yr_lvl' => $this->request->getVar('yr_lvl'),
             'section' => $this->request->getVar('section'),
             'program' => $this->request->getVar('program'),
+            'school_year' => $this->request->getVar('school_year'),
             'status' => $this->request->getVar('status'),
             'schedule' => $this->request->getVar('schedule'),
             'account_id' => $this->request->getVar('account_id'),
@@ -987,7 +988,7 @@ class RegistrarController extends BaseController
     {
         $data = [
             'stud_section' => $this->sections->findAll(),
-            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, category,yr_lvl,program, status,
+            'student' => $this->learner->select('admissions.id as id, first_name, middle_name, last_name, student_id, name, category,yr_lvl,program, school_year, status,
             birth_cert, report_card, good_moral, admissions.photo, schedule, fname, mname, lname')->join('admissions','admissions.account_id = student_learner.account_id','inner')
             ->join('sections','sections.id = admissions.section','left')->join('teachers','sections.adviser = teachers.idnum','left')->orderBy('student_learner.last_name')->FindAll(),
             'admissions' => $this->admissions->where('id', $id)->first(),

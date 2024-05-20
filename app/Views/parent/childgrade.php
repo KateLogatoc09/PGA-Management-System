@@ -32,6 +32,7 @@
                             <th>Subject Type</th>
                             <th>Grade</th>
                             <th>Quarter</th>
+                            <th>School Year</th>
                             <th>Subject Teacher</th>
                         </tr>
                       </thead>
@@ -58,6 +59,7 @@
                             <td><?= $g['type'] ?></td>
                             <td><?= $g['grade'] ?></td>
                             <td><?= $g['quarter'] ?></td>
+                            <td><?= $g['school_year'] ?></td>
                             <td><?= $g['fname']?> <?= $g['mname']?> <?= $g['lname']?></td>
                         </tr>
                         <?php endforeach ?>

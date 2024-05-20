@@ -135,10 +135,11 @@ $subjectSubset = array_slice($subject, $offset, $recordsPerPage);
 
                                         <label for="type">Type of Subject:</label>
                                         <select class="form-control" name="type" id="Type of Subject">
-                                        <option value="">Select Type</option>
-                                            <option value="Core Subject">Core Subject</option>
-                                            <option value="Applied Subject">Applied Subject</option>
-                                            <option value="Specialized Subject">Specialized Subject</option>
+                                        <option value="">Select Subject Type</option>
+                                          <option value="Core Subject" <?php if(isset($sub["type"])) { if($sub["type"] == "Core Subject") { echo "selected"; }} ?>>Core Subject</option>
+                                            <option value="Applied Subject" <?php if(isset($sub["type"])) { if($sub["type"] == "Applied Subject") { echo "selected"; }} ?>>Applied Subject</option>
+                                            <option value="Specialized Subject" <?php if(isset($sub["type"])) { if($sub["type"] == "Specialized Subject") { echo "selected"; }} ?>>Specialized Subject</option>
+                                           
                                         </select>
 
                                         </div>

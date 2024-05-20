@@ -80,6 +80,7 @@ $studentSubset = array_slice($student, $offset, $recordsPerPage);
                                         <th>Section</th>
                                         <th>Adviser</th>
                                         <th>Program</th>
+                                        <th>School Year</th>
                                         <th>Birth Certificate</th>
                                         <th>Report Card</th>
                                         <th>Good Moral</th>
@@ -109,6 +110,7 @@ $studentSubset = array_slice($student, $offset, $recordsPerPage);
                                             <td><?= $ad['name'] ?></td>
                                             <td><?= $ad['fname'] ?> <?= $ad['mname'] ?> <?= $ad['lname'] ?></td>
                                             <td><?= $ad['program'] ?></td>
+                                            <td><?= $ad['school_year'] ?></td>
                                             <td><img
                                             src="<?= base_url().$ad['birth_cert'] ?>"
                                             alt="user-avatar"
@@ -201,7 +203,7 @@ $studentSubset = array_slice($student, $offset, $recordsPerPage);
 
                                         <label for="category">Student Category:</label>
                                         <select class="form-control" name="category" id="category">
-                                        <option value="" <?php if(isset($admissions["category"])) { if($admissions["category"] == "") { echo "selected"; }} ?>>Select Student Category</option>
+                                        <option value="">Select Student Category</option>
                                         <option value="Continuing" <?php if(isset($admissions["category"])) { if($admissions["category"] == "Continuing") { echo "selected"; }} ?>>Continuing</option>
                                         <option value="Transferee" <?php if(isset($admissions["category"])) { if($admissions["category"] == "Transferee") { echo "selected"; }} ?>>Transferee</option>
                                         <option value="Returnee" <?php if(isset($admissions["category"])) { if($admissions["category"] == "Returnee") { echo "selected"; }} ?>>Returnee</option>
@@ -209,7 +211,7 @@ $studentSubset = array_slice($student, $offset, $recordsPerPage);
 
                                         <label for="yr_lvl">Year Level:</label>
                                         <select class="form-control" name="yr_lvl" id="yr_lvl">
-                                            <option value="" <?php if(isset($admissions["yr_lvl"])) { if($admissions["yr_lvl"] == "") { echo "selected"; }} ?>>Select Year Level</option>
+                                            <option value="">Select Year Level</option>
                                             <option value="Kinder 1" <?php if(isset($admissions["yr_lvl"])) { if($admissions["yr_lvl"] == "Kinder 1") { echo "selected"; }} ?>>Kinder 1</option>
                                             <option value="Kinder 2" <?php if(isset($admissions["yr_lvl"])) { if($admissions["yr_lvl"] == "Kinder 2") { echo "selected"; }} ?>>Kinder 2</option>
                                             <option value="Grade 1" <?php if(isset($admissions["yr_lvl"])) { if($admissions["yr_lvl"] == "Grade 1") { echo "selected"; }} ?>>Grade 1</option>
@@ -231,13 +233,13 @@ $studentSubset = array_slice($student, $offset, $recordsPerPage);
                                         <select name="section" id="section" class="form-control">
                                         <option value="">Select Section</option>
                                             <?php foreach ($stud_section as $se):?> 
-                                                <option value="<?= $se['id'] ?>"><?= $se['name'] ?></option>
+                                                <option value="<?= $se['id'] ?>" <?php if(isset($admissions["section"])) { if($admissions["section"] == $se['id']) { echo "selected"; }} ?>><?= $se['name'] ?></option> 
                                             <?php endforeach; ?>
                                         </select> 
 
                                         <label for="program">Strand/Program:</label>
                                         <select class="form-control" name="program" id="program">
-                                        <option value="" <?php if(isset($admissions["program"])) { if($admissions["program"] == "") { echo "selected"; }} ?>>Select Program</option>
+                                        <option value="">Select Program</option>
                                         <option value="None" <?php if(isset($admissions["program"])) { if($admissions["program"] == "None") { echo "selected"; }} ?>>None</option>    
                                         <option value="STEM" <?php if(isset($admissions["program"])) { if($admissions["program"] == "STEM") { echo "selected"; }} ?>>STEM</option>    
                                         <option value="ABM" <?php if(isset($admissions["program"])) { if($admissions["program"] == "ABM") { echo "selected"; }} ?>>ABM</option>    
@@ -245,18 +247,22 @@ $studentSubset = array_slice($student, $offset, $recordsPerPage);
 
                                         </select>
 
+                                        <label for="school_year">School Year:</label>
+                                        <input type="text" class="form-control" name="school_year" placeholder="Enter School Year" 
+                                        value="<?php if (isset($admissions['school_year'])) {echo $admissions['school_year'];}?>" required>  
+
                                         <label for="schedule">Schedule Date:</label>
                                         <input type="date" class="form-control" name="schedule" placeholder="Enter Schedule Date" 
                                         value="<?php if (isset($admissions['schedule'])) {echo $admissions['schedule'];}?>" required>  
 
                                         <label for="status">Status:</label>
                                         <select class="form-control" name="status" id="status">
-                                        <option value="" <?php if(isset($admissions["status"])) { if($admissions["status"] == "") { echo "selected"; }} ?>>Select Status</option>    
-                                        <option value="PENDING" <?php if(isset($admissions["status"])) { if($admissions["status"] == "PENDING") { echo "selected"; }} ?>>PENDING</option>    
-                                        <option value="ON PROCESS" <?php if(isset($admissions["status"])) { if($admissions["status"] == "ON PROCESS") { echo "selected"; }} ?>>ON PROCESS</option>    
-                                        <option value="ENROLLED" <?php if(isset($admissions["status"])) { if($admissions["status"] == "ENROLLED") { echo "selected"; }} ?>>ENROLLED</option>    
-                                        <option value="REJECTED" <?php if(isset($admissions["status"])) { if($admissions["status"] == "REJECTED") { echo "selected"; }} ?>>REJECTED</option>    
-                                        <option value="GRADUATED" <?php if(isset($admissions["status"])) { if($admissions["status"] == "GRADUATED") { echo "selected"; }} ?>>GRADUATED</option>    
+                                        <option value="">Select Status</option>    
+                                        <option value="PENDING" <?php if(isset($admissions["status"])) { if($admissions["status"] == "PENDING") { echo "selected"; }} ?>>Pending</option>    
+                                        <option value="ON PROCESS" <?php if(isset($admissions["status"])) { if($admissions["status"] == "ON PROCESS") { echo "selected"; }} ?>>On Process</option>    
+                                        <option value="ENROLLED" <?php if(isset($admissions["status"])) { if($admissions["status"] == "ENROLLED") { echo "selected"; }} ?>>Enrolled</option>    
+                                        <option value="REJECTED" <?php if(isset($admissions["status"])) { if($admissions["status"] == "REJECTED") { echo "selected"; }} ?>>Rejected</option>    
+                                        <option value="GRADUATED" <?php if(isset($admissions["status"])) { if($admissions["status"] == "GRADUATED") { echo "selected"; }} ?>>Graduated</option>    
 
                                         </select>
 

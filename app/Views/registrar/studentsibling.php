@@ -141,7 +141,7 @@ $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
                                  
                                         <label for="yr_lvl">Year Level:</label>
                                         <select class="form-control" name="yr_lvl" id="yr_lvl">
-                                            <option value="" <?php if(isset($sib["yr_lvl"])) { if($sib["yr_lvl"] == "") { echo "selected"; }} ?>>Select Year Level</option>
+                                            <option value="">Select Year Level</option>
                                             <option value="Kinder 1" <?php if(isset($sib["yr_lvl"])) { if($sib["yr_lvl"] == "Kinder 1") { echo "selected"; }} ?>>Kinder 1</option>
                                             <option value="Kinder 2" <?php if(isset($sib["yr_lvl"])) { if($sib["yr_lvl"] == "Kinder 2") { echo "selected"; }} ?>>Kinder 2</option>
                                             <option value="Grade 1" <?php if(isset($sib["yr_lvl"])) { if($sib["yr_lvl"] == "Grade 1") { echo "selected"; }} ?>>Grade 1</option>

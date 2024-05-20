@@ -149,17 +149,20 @@
                         <label for="role">Role:</label>
                                         <select class="form-control" name="role" id="role" value= "
                                         <?php if (isset($acc['role'])) {echo $acc['role'];}?>" required>>
-                                            <option value="">Select Role</option>
-                                            <!--<option value="ADMIN">Admin</option>-->
-                                            <option value="TEACHER">Teacher</option>
-                                            <option value="STUDENT">Student</option>
-                                            <option value="PARENT">Parent</option>
-                                            <option value="REGISTRAR">Registrar</option>
-                                            <option value="LIBRARIAN">Librarian</option>
+                                  
+                                            <option value="">Select Role</option> 
+                                            <option value="GENERAL" <?php if(isset($acc["role"])) { if($acc["role"] == "GENERAL") { echo "selected"; }} ?>>General</option> 
+                                            <option value="TEACHER" <?php if(isset($acc["role"])) { if($acc["role"] == "TEACHER") { echo "selected"; }} ?>>Teacher</option> 
+                                            <option value="STUDENT" <?php if(isset($acc["role"])) { if($acc["role"] == "STUDENT") { echo "selected"; }} ?>>Student</option> 
+                                            <option value="PARENT" <?php if(isset($acc["role"])) { if($acc["role"] == "PARENT") { echo "selected"; }} ?>>Parent</option> 
+                                            <option value="REGISTRAR" <?php if(isset($acc["role"])) { if($acc["role"] == "REGISTRAR") { echo "selected"; }} ?>>Registrar</option> 
+                                            <option value="LIBRARIAN" <?php if(isset($acc["role"])) { if($acc["role"] == "LIBRARIAN") { echo "selected"; }} ?>>Librarian</option> 
+                                            <option value="AAC" <?php if(isset($acc["role"])) { if($acc["role"] == "AAC") { echo "selected"; }} ?>>Academic Affairs Coordinator</option> 
+                                            <option value="GUARD" <?php if(isset($acc["role"])) { if($acc["role"] == "GUARD") { echo "selected"; }} ?>>Guard</option> 
+                                           <!--<option value="ADMIN">Admin</option>-->
                                             <!--<option value="DAC">Disciplinary Affairs Coordinator</option>
                                             <option value="IAC">Internal Affairs Coordinator</option>
                                             <option value="SAC">Student Affairs Coordinator</option>-->
-                                            <option value="AAC">Academic Affairs Coordinator</option>
                                         </select>
                         </div>
 </div>
@@ -168,13 +171,14 @@
   <label for="status">status:</label>
                                         <select class="form-control" name="status" id="status" value= "
                                         <?php if (isset($acc['status'])) {echo $acc['status'];}?>" required>>
-                                            <option value="ACTIVE">Active</option>
-                                            <option value="INACTIVE">Inactive</option>
-                                            <option value="PENDING">Pending</option>
-                                            <option value="UNVERIFIED">Unverified</option>
-                                            <option value="VERIFIED">Verified</option>
-                                            <option value="BANNED">Banned</option>
-                                            <option value="SUSPENDED">Suspended</option>
+                                            <option value="">Select Status</option> 
+                                            <option value="ACTIVE" <?php if(isset($acc["status"])) { if($acc["status"] == "ACTIVE") { echo "selected"; }} ?>>Active</option> 
+                                            <option value="INACTIVE" <?php if(isset($acc["status"])) { if($acc["status"] == "INACTIVE") { echo "selected"; }} ?>>Inactive</option> 
+                                            <option value="PENDING" <?php if(isset($acc["status"])) { if($acc["status"] == "PENDING") { echo "selected"; }} ?>>Pending</option> 
+                                            <option value="UNVERIFIED" <?php if(isset($acc["status"])) { if($acc["status"] == "UNVERIFIED") { echo "selected"; }} ?>>Unverified</option> 
+                                            <option value="VERIFIED" <?php if(isset($acc["status"])) { if($acc["status"] == "VERIFIED") { echo "selected"; }} ?>>Verified</option> 
+                                            <option value="BANNED" <?php if(isset($acc["status"])) { if($acc["status"] == "BANNED") { echo "selected"; }} ?>>Banned</option> 
+                                            <option value="SUSPENDED" <?php if(isset($acc["status"])) { if($acc["status"] == "SUSPENDED") { echo "selected"; }} ?>>Suspended</option> 
                                         </select>
 
                         <label for="suspension">Suspension:</label>

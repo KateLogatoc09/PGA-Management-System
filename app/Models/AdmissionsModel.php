@@ -13,7 +13,7 @@ class AdmissionsModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['student_id', 'section', 'category','yr_lvl','program', 'status',
+    protected $allowedFields    = ['student_id', 'section', 'category','yr_lvl','program', 'school_year', 'status',
     'birth_cert', 'report_card', 'good_moral', 'photo', 'schedule','account_id'];
 
     // Dates

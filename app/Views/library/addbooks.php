@@ -171,20 +171,22 @@ value="<?php if (isset($booke['place_printed'])) {echo $booke['place_printed'];}
                         <label for="book_category" class="form-label">Book Category</label>
                         <select class="form-select" id="book_category" name='book_category' aria-label="Select Book Category">
                         <option value="">Select Book Category</option>
-                          <option value="TEXTBOOKS">Textbooks</option>
-                          <option value="FICTION AND STORYBOOK">Fiction and Storybook</option>
-                          <option value="REFERENCE AND FILIPINIANA">Reference and Filipiniana</option>
-                          <option value="BOOKS WITH MULTIPLE COPIES">Books with Multiple Copies</option>
-                          <option value="TEACHER'S REFERENCES">Teacher's References</option>
-                          <option value="OTHER TEXTBOOKS">Other Textbooks</option>
+                        <option value="TEXTBOOKS" <?php if(isset($booke["book_category"])) { if($booke["book_category"] == "TEXTBOOKS") { echo "selected"; }} ?>>Textbooks</option>
+                        <option value="FICTION AND STORYBOOK" <?php if(isset($booke["book_category"])) { if($booke["book_category"] == "FICTION AND STORYBOOK") { echo "selected"; }} ?>>Fiction And Storybook</option>
+                        <option value="REFERENCE AND FILIPINIANA" <?php if(isset($booke["book_category"])) { if($booke["book_category"] == "REFERENCE AND FILIPINIANA") { echo "selected"; }} ?>>Reference And Filipiniana</option>
+                        <option value="BOOKS WITH MULTIPLE COPIES" <?php if(isset($booke["book_category"])) { if($booke["book_category"] == "BOOKS WITH MULTIPLE COPIES") { echo "selected"; }} ?>>Books With Multiple Copies</option>
+                        <option value="TEACHER'S REFERENCES" <?php if(isset($booke["book_category"])) { if($booke["book_category"] == "TEACHER'S REFERENCES") { echo "selected"; }} ?>>Teacher's Reference</option>
+                        <option value="OTHER TEXTBOOKS" <?php if(isset($booke["book_category"])) { if($booke["book_category"] == "OTHER TEXTBOOKS") { echo "selected"; }} ?>>Other Textbooks</option>
+                        
                         </select>
 
                         <label for="book_type">Book Type</label>
                         <select class="form-select" id="book_type" name='book_type' aria-label="Select Book Type">
                         <option value="">Select Book Type</option>
-                          <option value="NEW ARRIVAL BOOK">New Arrival Book</option>
-                          <option value="RESERVE BOOK">Reserve Book</option>
-                          <option value="NORMAL">Normal</option>
+                        <option value="NEW ARRIVAL BOOK" <?php if(isset($booke["book_type"])) { if($booke["book_type"] == "NEW ARRIVAL BOOK") { echo "selected"; }} ?>>New Arrival Book</option>
+                        <option value="RESERVED BOOK" <?php if(isset($booke["book_type"])) { if($booke["book_type"] == "RESERVED BOOK") { echo "selected"; }} ?>>Reserved Book</option>
+                        <option value="NORMAL" <?php if(isset($booke["book_type"])) { if($booke["book_type"] == "NORMAL") { echo "selected"; }} ?>>Normal</option>
+                        
                         </select>
                         </div>
 </div>
@@ -214,8 +216,9 @@ value="<?php if (isset($booke['place_printed'])) {echo $booke['place_printed'];}
                         <label for="exampleFormControlSelect1" class="form-label">Status</label>
                         <select class="form-select" id="exampleFormControlSelect1" name='status' aria-label="Default select example">
                         <option value="">Select Status</option>
-                          <option value="AVAILABLE">AVAILABLE</option>
-                          <option value="UNAVAILABLE">UNAVAILABLE</option>
+                          <option value="AVAILABLE" <?php if(isset($booke["status"])) { if($booke["status"] == "AVAILABLE") { echo "selected"; }} ?>>Available</option>
+                          <option value="UNAVAILABLE" <?php if(isset($booke["status"])) { if($booke["status"] == "UNAVAILABLE") { echo "selected"; }} ?>>Unavailable</option>
+                        
                         </select>
                         
                         

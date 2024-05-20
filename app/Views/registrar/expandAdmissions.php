@@ -38,10 +38,7 @@
                         <br>
                         <h7 class="orange">Nickname:</h7>
                         <?php if (isset($learn['nickname'])) {echo $learn['nickname'];}?>
-                        <br>
-                        <h7 class="orange">Age:</h7>
-                        <?php if (isset($learn['age'])) {echo $learn['age'];}?>
-                        <br>
+                        <br>   
                         <h7 class="orange">Year Level:</h7>
                         <?php if (isset($ad['yr_lvl'])) {echo $ad['yr_lvl'];}?>
                         <br>
@@ -56,12 +53,17 @@
                         <h7 class="orange">Program:</h7>
                         <?php if (isset($ad['program'])) {echo $ad['program'];}?>
                         <br>
-                      
+                        <h7 class="orange">School Year:</h7>
+                        <?php if (isset($ad['school_year'])) {echo $ad['school_year'];}?>
+                        <br>
                       </div>
                     </div>
 
                     <div class="col-sm-5">
                       <div class="card-body">
+                      <h7 class="orange">Age:</h7>
+                        <?php if (isset($learn['age'])) {echo $learn['age'];}?>
+                        <br>
                       <h7 class="orange">Gender:</h7>
                         <?php if (isset($learn['gender'])) {echo $learn['gender'];}?>
                         <br>

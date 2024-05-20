@@ -73,6 +73,7 @@
                                         <th>Year Level</th>
                                         <th>Section</th>
                                         <th>Program</th>
+                                        <th>School Year</th>
                                         <th>Adviser</th>
                                     </tr>
                                 </thead>
@@ -87,7 +88,8 @@
                                             <td><?= $ad['category'] ?></td>
                                             <td><?= $ad['yr_lvl'] ?></td>
                                             <td><?= $ad['name'] ?></td>
-                                            <td><?= $ad['program'] ?></td>   
+                                            <td><?= $ad['program'] ?></td> 
+                                            <td><?= $ad['school_year'] ?></td>   
                                             <td><?= $ad['fname'] ?> <?= $ad['mname'] ?> <?= $ad['lname'] ?></td>
                                      </tr>
                                 <?php endforeach ?>

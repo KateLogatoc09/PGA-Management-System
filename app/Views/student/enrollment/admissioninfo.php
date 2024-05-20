@@ -67,7 +67,16 @@
                                             <option value="HUMMS">HUMMS</option>
                                         </select>
 
-                                        <label for="birth" class="hidden" id="birthlabel">Birth Certificate:</label>
+                                        <label for="school_year">School Year:</label>
+                                        <input type="text" class="form-control" name="school_year" placeholder="Ex: 2023-2024" >
+
+                                        </div>
+</div>
+<div class="col-sm-5 text-center text-sm-left">
+  <div class="form-group margin-left">
+
+  
+  <label for="birth" class="hidden" id="birthlabel">Birth Certificate:</label>
                                         <input
                                         type="file"
                                         class="form-control hidden"
@@ -75,11 +84,6 @@
                                         accept="image/png, image/jpeg"
                                         name="birth"
                                         />
-
-                                        </div>
-</div>
-<div class="col-sm-5 text-center text-sm-left">
-  <div class="form-group margin-left">
 
                                         <label for="report" class="hidden" id="reportlabel">Report Card:</label>
                                         <input

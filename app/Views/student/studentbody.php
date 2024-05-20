@@ -39,11 +39,6 @@
                         <button type="submit" class="btn btn-primary">Generate</button>
                         </form>
                         <br>
-                        <h7 class="orange">Full Name:</h7>
-                        <?php if (isset($learn['first_name'])) {echo $learn['first_name'];}?>
-                        <?php if (isset($learn['middle_name'])) {echo $learn['middle_name'];}?>
-                        <?php if (isset($learn['last_name'])) {echo $learn['last_name'];}?>
-                        <br>
                         <h7 class="orange">Nickname:</h7>
                         <?php if (isset($learn['nickname'])) {echo $learn['nickname'];}?>
                         <br>
@@ -64,7 +59,9 @@
                         <h7 class="orange">Program:</h7>
                         <?php if (isset($ad['program'])) {echo $ad['program'];}?>
                         <br>
-                      
+                        <h7 class="orange">School Year:</h7>
+                        <?php if (isset($ad['school_year'])) {echo $ad['school_year'];}?>
+                        <br>
                       </div>
                     </div>
 

@@ -174,11 +174,11 @@ $permitSubset = array_slice($permit, $offset, $recordsPerPage);
 
                         <label for="status">Status:</label>
                                         <select class="form-control" name="status" id="status">
-                                            <option value="" <?php if(isset($pe["status"])) { if($pe["status"] == "") { echo "selected"; }} ?>>Select Status</option>    
-                                        <option value="PENDING" <?php if(isset($pe["status"])) { if($pe["status"] == "PENDING") { echo "selected"; }} ?>>PENDING</option>    
-                                        <option value="ON PROCESS" <?php if(isset($pe["status"])) { if($pe["status"] == "ON PROCESS") { echo "selected"; }} ?>>ON PROCESS</option>  
-                                        <option value="APPROVED" <?php if(isset($pe["status"])) { if($pe["status"] == "APPROVED") { echo "selected"; }} ?>>APPROVED</option>     
-                                        <option value="REJECTED" <?php if(isset($pe["status"])) { if($pe["status"] == "REJECTED") { echo "selected"; }} ?>>REJECTED</option>  
+                                            <option value="">Select Status</option>    
+                                        <option value="PENDING" <?php if(isset($pe["status"])) { if($pe["status"] == "PENDING") { echo "selected"; }} ?>>Pending</option>    
+                                        <option value="ON PROCESS" <?php if(isset($pe["status"])) { if($pe["status"] == "ON PROCESS") { echo "selected"; }} ?>>On Process</option>  
+                                        <option value="APPROVED" <?php if(isset($pe["status"])) { if($pe["status"] == "APPROVED") { echo "selected"; }} ?>>Approved</option>     
+                                        <option value="REJECTED" <?php if(isset($pe["status"])) { if($pe["status"] == "REJECTED") { echo "selected"; }} ?>>Rejected</option>  
                                         </select>
   </div>
 </div>

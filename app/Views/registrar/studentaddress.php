@@ -143,7 +143,7 @@ $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
                         
                     <label for="type">Type of Address:</label>
                     <select class="form-control" name="type" id="type">
-                    <option value="" <?php if(isset($add["type"])) { if($add["type"] == "") { echo "selected"; }} ?>>Select Address Type</option>
+                    <option value="">Select Address Type</option>
                     <option value="Permanent" <?php if(isset($add["type"])) { if($add["type"] == "Permanent") { echo "selected"; }} ?>>Permanent</option>
                     <option value="Mailing" <?php if(isset($add["type"])) { if($add["type"] == "Mailing") { echo "selected"; }} ?>>Mailing</option>
                         

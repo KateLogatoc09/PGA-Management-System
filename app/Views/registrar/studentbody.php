@@ -230,7 +230,7 @@
   <label for="gender">Gender:</label>
                                         <select class="form-control" name="gender" id="gender" 
                                         value="<?php if (isset($learn['gender'])) {echo $learn['gender'];}?>">
-                                        <option value="" <?php if(isset($learn["gender"])) { if($learn["gender"] == "") { echo "selected"; }} ?>>Select Gender</option>  
+                                        <option value="">Select Gender</option>  
                                         <option value="Male" <?php if(isset($learn["gender"])) { if($learn["gender"] == "Male") { echo "selected"; }} ?>>Male</option>  
                                         <option value="Female" <?php if(isset($learn["gender"])) { if($learn["gender"] == "Female") { echo "selected"; }} ?>>Female</option>  
                                         </select>
@@ -238,7 +238,7 @@
                                         <label for="marital_status">Marital Status:</label>
                                             <select class="form-control" name="marital_status" id="marital_status"
                                             value="<?php if (isset($learn['marital_status'])) {echo $learn['marital_status'];}?>">
-                                            <option value="" <?php if(isset($learn["marital_status"])) { if($learn["marital_status"] == "") { echo "selected"; }} ?>>Select Marital Status</option>  
+                                            <option value="">Select Marital Status</option>  
                                             <option value="Single" <?php if(isset($learn["marital_status"])) { if($learn["marital_status"] == "Single") { echo "selected"; }} ?>>Single</option>  
                                             <option value="Married" <?php if(isset($learn["marital_status"])) { if($learn["marital_status"] == "Married") { echo "selected"; }} ?>>Married</option>  
                                             <option value="Separated" <?php if(isset($learn["marital_status"])) { if($learn["marital_status"] == "Separated") { echo "selected"; }} ?>>Separated</option>  

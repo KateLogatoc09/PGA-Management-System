@@ -166,11 +166,11 @@
 <div class="col-sm-5 text-center text-sm-left">
   <div class="form-group margin-left">
                         <label for="gender">Gender:</label>
-                                        <select class="form-control" name="gender" id="gender" 
+                        <select class="form-control" name="gender" id="gender" 
                                         value="<?php if (isset($prof['gender'])) {echo $prof['gender'];}?>">
-                                        <option>Select Gender</option>
-                                            <option value="Male">Male</option>
-                                            <option value="Female">Female</option>
+                                        <option value="">Select Gender</option>  
+                                        <option value="Male" <?php if(isset($prof["gender"])) { if($prof["gender"] == "Male") { echo "selected"; }} ?>>Male</option>  
+                                        <option value="Female" <?php if(isset($prof["gender"])) { if($prof["gender"] == "Female") { echo "selected"; }} ?>>Female</option>  
                                         </select>
                                  
                         <label for="dob">Date of Birth:</label>

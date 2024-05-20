@@ -172,9 +172,10 @@
                       <label for="status">Status</label>
                       <select class="form-control" name="status" id="status" value="<?php if (isset($borrowed['status'])) {echo $borrowed['status'];} ?>" required>
                         <option value="">Select Status</option>
-                        <option value="PENDING">PENDING</option>
-                        <option value="ON BORROW">ON BORROW</option>
-                        <option value="RETURNED">RETURNED</option>
+                        <option value="PENDING" <?php if(isset($borrowed["status"])) { if($borrowed["status"] == "PENDING") { echo "selected"; }} ?>>Pending</option>
+                        <option value="ON BORROW" <?php if(isset($borrowed["status"])) { if($borrowed["status"] == "ON BORROW") { echo "selected"; }} ?>>On Borrow</option>
+                        <option value="RETURNED" <?php if(isset($borrowed["status"])) { if($borrowed["status"] == "RETURNED") { echo "selected"; }} ?>>Returned</option>
+                       
                       </select>
 
                     </div>

@@ -56,6 +56,7 @@
                                         <th>Subject</th>
                                         <th>Grade</th>
                                         <th>Quarter</th>
+                                        <th>School Year</th>
                                         <th>Teacher Id</th>
                                         <th>Action</th>
                                     </tr>
@@ -89,6 +90,7 @@
                                             <td><?= $g['subject_name'] ?></td>
                                             <td><?= $g['grade'] ?></td>
                                             <td><?= $g['quarter'] ?></td>
+                                            <td><?= $g['school_year'] ?></td>
                                             <td><?= $g['idnum'] ?></td>
                                             <td> <a href="/deleteGrade/<?= $g['id'] ?>" class="btn btn-danger btn-sm" id="d<?=$x?>">Delete</a>
                                             <a href="/editGrade/<?= $g['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
@@ -154,11 +156,10 @@
                                         <label for="subject">Subject:</label>
                                         <select name="subject" id="subject" class="form-control">
                                         <option value="">Select Subject</option>
-                                            <?php $uniqueCategories = array(); 
-                                                foreach ($subject as $se) {$subject = $se['subject_name'];
-                                                if (!in_array($subject, $uniqueCategories)) {$uniqueCategories[] = $subject; 
-                                                echo '<option value="' . $se['id'] . '">' . $subject . '</option>';}}?> 
-                                        </select>  
+                                            <?php foreach ($subject as $se):?> 
+                                                <option value="<?= $se['id'] ?>" <?php if(isset($gr["subject"])) { if($gr["subject"] == $se['id']) { echo "selected"; }} ?>><?= $se['subject_name'] ?></option> 
+                                            <?php endforeach; ?>
+                                        </select> 
 </div>
 </div>
 <div class="col-sm-5 text-center text-sm-left">
