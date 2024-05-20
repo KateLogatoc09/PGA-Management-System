@@ -17,7 +17,7 @@
           <!-- Content -->
 
           <div class="container-xxl flex-grow-1 container-p-y">
-          <h5 class="card-title text-primary">General Portal</h5>
+          <h5 class="card-title text-white">General Portal</h5>
           <?php if($_SESSION['role'] == 'GENERAL'): ?>
           <div class="row mb-3">
             <!-- Student -->
@@ -369,11 +369,7 @@
           <?php endif; ?>
 
           <div class="row mb-3">
-          <div class="fb-page col-md-4" data-href="https://www.facebook.com/pgacare1967" data-tabs="timeline" data-width="" data-height="" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false">
-            <blockquote cite="https://www.facebook.com/pgacare1967" class="fb-xfbml-parse-ignore">
-              <a href="https://www.facebook.com/pgacare1967">Pga Cares</a>
-            </blockquote>
-          </div>
+          <div class="fb-page col-md-4" data-href="https://www.facebook.com/pgacare1967" data-tabs="timeline" data-width="" data-height="590px" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/pgacare1967" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/pgacare1967">Pga Cares</a></blockquote></div>
           <div class="col-md-8 order-0">
                 <div class="card">
                   <div class="d-flex align-items-end row">
@@ -381,7 +377,7 @@
                     <div class="card-body sticky-top">
                         <h2 class="card-title text-primary">Announcement</h2>
                         </div>
-                      <div class="card-body overflow-scroll h-px-500">
+                      <div id="announce" class="card-body overflow-scroll h-px-500">
                         <?php foreach($announcement as $an): ?>
                           <h5><strong><?= $an['subject']?></strong></h5>
                           <hr>

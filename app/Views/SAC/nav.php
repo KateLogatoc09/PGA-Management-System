@@ -39,14 +39,14 @@
                     </li>
 
                     <li>
-                      <a class="dropdown-item active" href="/general">
+                      <a class="dropdown-item" href="/general">
                         <i class="bx bx-user me-2"></i>
                         <span class="align-middle">Home</span>
                       </a>
                     </li>
                     
                     <li>
-                      <a class="dropdown-item active" href="/">
+                      <a class="dropdown-item" href="/">
                         <i class="bx bx-notification me-2"></i>
                         <span class="align-middle">Notifications</span>
                       </a>

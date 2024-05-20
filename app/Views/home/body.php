@@ -106,11 +106,36 @@
                             <h1 id="currentDateTime" class="m-0 text-white" style="font-size: 2.5rem;"></h1>
                         </div>
                         <div class="card-body rounded-bottom bg-light p-5">
-                            <form>
-                                <div class="form-group">
-                                    <input type="text" class="form-control border-0 p-4" style="font-size: 1.5rem;" placeholder="Announcement" required="required" />
-                                </div>
-                            </form>
+                        <?php
+                                // Define the number of records per page
+                                $recordsPerPage = 1;
+
+                                // Calculate the total number of pages
+                                $totalPages = ceil(count($announcement) / $recordsPerPage);
+
+                                // Get the current page number from the query string, default to 1 if not set
+                                $currentPage = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
+
+                                // Calculate the offset for the subset of records to be displayed on the current page
+                                $offset = ($currentPage - 1) * $recordsPerPage;
+
+                                // Get a subset of records for the current page
+                                $announcementSubset = array_slice($announcement, $offset, $recordsPerPage);
+                                ?>
+
+                        <?php foreach($announcementSubset as $an): ?>
+                          <h5><strong><?= $an['subject']?></strong></h5>
+                          <hr>
+                          <small><?= $an['date']; ?></small>
+                          <center>
+                          <img
+                          src="<?= $an['attachment'] ?>"
+                          height="100%"
+                          width="100%"
+                          />
+                          </center>
+                          <p><?= $an['content']?></p>
+                          <?php endforeach; ?>
                         </div>
                     </div>
                 </div>
@@ -119,19 +144,31 @@
         <!-- Field Announcement End -->
         
         <!-- Pagination -->
-        <nav aria-label="Announcement Pagination">
-            <ul class="pagination justify-content-center mt-4">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
-                </li>
-            </ul>
-        </nav>
+                  <div class="card-footer">
+                    <nav aria-label="Page navigation example">
+                      <ul class="pagination justify-content-center">
+                        <?php if ($currentPage > 1) : ?>
+                          <li class="page-item">
+                            <a class="page-link" href="?page=<?= $currentPage - 1 ?>" aria-label="Previous">
+                              <span aria-hidden="true">&laquo;</span>
+                            </a>
+                          </li>
+                        <?php endif; ?>
+                        <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
+                          <li class="page-item <?= $i == $currentPage ? 'active' : '' ?>">
+                            <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
+                          </li>
+                        <?php endfor; ?>
+                        <?php if ($currentPage < $totalPages) : ?>
+                          <li class="page-item">
+                            <a class="page-link" href="?page=<?= $currentPage + 1 ?>" aria-label="Next">
+                              <span aria-hidden="true">&raquo;</span>
+                            </a>
+                          </li>
+                        <?php endif; ?>
+                      </ul>
+                    </nav>
+                  </div>
         <!-- End Pagination -->
         
     </div>

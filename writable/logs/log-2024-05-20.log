@@ -1,0 +1,16 @@
+CRITICAL - 2024-05-20 00:45:59 --> Undefined variable $announcement
+in APPPATH\Views\home\body.php on line 109.
+ 1 APPPATH\Views\home\body.php(109): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $announcement', 'C:\\laragon\\www\\PGA-Management-System\\app\\Views\\home\\body.php', 109)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\home\\body.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(467): CodeIgniter\View\View->render('home/body', null, true)
+ 5 APPPATH\Views\index.php(3): CodeIgniter\View\View->include('home/body')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\index.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('index', [], true)
+ 9 APPPATH\Controllers\Home.php(17): view('index')
+10 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\Home->index()
+11 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+12 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
