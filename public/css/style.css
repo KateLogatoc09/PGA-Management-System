@@ -10022,3 +10022,6 @@ a.btn.btn-primary.btn-lg.mx-2 {
   height: 25%;
   margin: 5px;
 }
+#announce::-webkit-scrollbar {
+  display: none;
+}

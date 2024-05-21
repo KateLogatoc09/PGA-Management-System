@@ -105,7 +105,7 @@
                         <div class="card-header bg-primary text-center p-4">
                             <h1 id="currentDateTime" class="m-0 text-white" style="font-size: 2.5rem;"></h1>
                         </div>
-                        <div class="card-body rounded-bottom bg-light p-5">
+                        <div id="announce" class="card-body rounded-bottom bg-light p-5 overflow-scroll h-px-500">
                         <?php
                                 // Define the number of records per page
                                 $recordsPerPage = 1;

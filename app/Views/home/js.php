@@ -1,5 +1,4 @@
     <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     <script src="<?= base_url() ?>lib/easing/easing.min.js"></script>
     <script src="<?= base_url() ?>lib/owlcarousel/owl.carousel.min.js"></script>
@@ -16,6 +15,24 @@
 
 <!-- Custom JS -->
 <script>
+        document.getElementById("logout3").addEventListener("click", function (event) {
+        event.preventDefault()
+        //sweetalert2 code
+        Swal.fire({
+            title: 'PGA',
+            text: "Are you sure?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes'
+        }).then((result) => {
+            if (result.isConfirmed) {
+            window.location = $(this).attr('href');
+            }
+        })
+        });
+
 
 $(document).ready(function(){
             <?php if (isset($_SESSION['msg'])): ?>
