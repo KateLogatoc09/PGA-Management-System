@@ -1,4 +1,6 @@
 <?php
+$config    = new \Config\Encryption(); 
+$encrypter = \Config\Services::encrypter($config);
 // Pagination Configuration
 $totalRecords = count($family);
 $recordsPerPage = 5;
@@ -94,8 +96,8 @@ $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
                           <td><?= $fa['email'] ?></td>
                           <td><?= $fa['occupation'] ?></td>
                           <td>
-                            <a href="/regDeletefamily/<?= $fa['id'] ?>" class="btn btn-danger btn-sm" id="d<?=$x?>">Delete</a>
-                            <a href="/regEditfamily/<?= $fa['id'] ?>" class="btn btn-primary btn-sm">Edit</a>
+                            <a href="/regDeletefamily/<?php echo bin2hex($encrypter->encrypt($fa['id'])); ?>" class="btn btn-danger btn-sm" id="d<?=$x?>">Delete</a>
+                            <a href="/regEditfamily/<?php echo bin2hex($encrypter->encrypt($fa['id'])); ?>" class="btn btn-primary btn-sm">Edit</a>
                           </td>
                         </tr>
                         <?php $x++; endforeach ?>

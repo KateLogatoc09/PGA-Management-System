@@ -1,4 +1,6 @@
 <?php
+$config    = new \Config\Encryption(); 
+$encrypter = \Config\Services::encrypter($config);
 // Define the number of records per page
 $recordsPerPage = 5;
 
@@ -105,8 +107,8 @@ $permitSubset = array_slice($permit, $offset, $recordsPerPage);
                                             <td><?= $permi['quarter'] ?></td>
                                             <td><?= $permi['date'] ?></td>
                                             <td><?= $permi['status'] ?></td>
-                                            <td> <a href="/deletePermit/<?= $permi['id'] ?>" class="btn btn-danger btn-sm" id="d<?=$x?>">Delete</a>
-                                            <a href="/editPermit/<?= $permi['id'] ?>" class="btn btn-primary btn-sm" id="d<?=$x?>">Edit</a></td>
+                                            <td> <a href="/deletePermit/<?php echo bin2hex($encrypter->encrypt($permi['id'])); ?>" class="btn btn-danger btn-sm" id="d<?=$x?>">Delete</a>
+                                            <a href="/editPermit/<?php echo bin2hex($encrypter->encrypt($permi['id'])); ?>" class="btn btn-primary btn-sm" id="d<?=$x?>">Edit</a></td>
                                            
                                            
                                           

@@ -1,5 +1,8 @@
 <?php
 // Define the number of records per page
+$config    = new \Config\Encryption(); 
+$encrypter = \Config\Services::encrypter($config);
+
 $recordsPerPage = 5;
 
 // Calculate the total number of pages
@@ -15,7 +18,7 @@ $offset = ($currentPage - 1) * $recordsPerPage;
 $appliSubset = array_slice($appli, $offset, $recordsPerPage);
 ?>
 
-<body style="background-image:url('<?= base_url() ?>img/pgaBG.png');background-repeat:no-repeat;background-attachment:fixed;background-size:cover">
+<body>
 <?php $session = session()?>
   <!-- Layout wrapper -->
   <div class="layout-wrapper layout-content-navbar d-flex align-items-center justify-content-center">
@@ -23,75 +26,7 @@ $appliSubset = array_slice($appli, $offset, $recordsPerPage);
       <!-- Layout container -->
       <div class="layout-page">
         <!-- Navbar -->
-        <nav
-            class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
-            id="layout-navbar"
-          >
-            <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
-              <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
-                <i class="bx bx-menu bx-sm"></i>
-              </a>
-            </div>
-
-            <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-            <h5 class="mt-3">Welcome<?php if(isset($_SESSION['username'])): ?>, <?= $_SESSION['username']; endif; ?>!</h5>
-              <ul class="navbar-nav flex-row align-items-center ms-auto">
-                <!-- User -->
-                <li class="nav-item navbar-dropdown dropdown-user dropdown">
-                  <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-                    <div class="avatar avatar-online">
-                      <img src="<?php if(isset($_SESSION['img'])): ?><?= site_url().'/'.$_SESSION['img']; ?><?php else: ?>../assets/img/avatars/1.png<?php endif; ?>" alt class="w-px-40 h-auto rounded-circle" />
-                    </div>
-                  </a>
-                  <ul class="dropdown-menu dropdown-menu-end">
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        <div class="d-flex">
-                          <div class="flex-shrink-0 me-3">
-                            <div class="avatar avatar-online">
-                              <img src="<?php if(isset($_SESSION['img'])): ?><?= site_url().'/'.$_SESSION['img']; ?><?php else: ?>../assets/img/avatars/1.png<?php endif; ?>" alt class="w-px-40 h-auto rounded-circle" />
-                            </div>
-                          </div>
-                          <div class="flex-grow-1">
-                            <span class="fw-semibold d-block"><?php if(isset($_SESSION['username'])): ?><?= $_SESSION['username']; endif; ?></span>
-                            <small class="text-muted">User</small>
-                          </div>
-                        </div>
-                      </a>
-                    </li>
-                    <li>
-                      <div class="dropdown-divider"></div>
-                    </li>
-
-                    <li>
-                      <a class="dropdown-item active" href="/general">
-                        <i class="bx bx-user me-2"></i>
-                        <span class="align-middle">Home</span>
-                      </a>
-                    </li>
-                    
-                    <li>
-                      <a class="dropdown-item active" href="/">
-                        <i class="bx bx-notification me-2"></i>
-                        <span class="align-middle">Notifications</span>
-                      </a>
-                    </li>
-
-                    <li>
-                      <div class="dropdown-divider"></div>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="logout">
-                        <i class="bx bx-power-off me-2"></i>
-                        <span class="align-middle">Log Out</span>
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                <!--/ User -->
-              </ul>
-            </div>
-          </nav>
+        <?= $this->include('registrar/nav') ?>
         <?= $this->include('registrar/sidebar') ?>
         <!-- / Navbar -->
 
@@ -142,7 +77,14 @@ $appliSubset = array_slice($appli, $offset, $recordsPerPage);
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <?php foreach ($appliSubset as $applica): ?>
+                                <?php
+                        // Paginate the results
+                        $start = ($currentPage - 1) * $recordsPerPage;
+                        $end = $start + $recordsPerPage;
+                        $appliSubset = array_slice($appli, $start, $recordsPerPage);
+                        $x = 1;
+                        foreach ($appliSubset as $applica):
+                        ?>
                                     <tr>
                                             <td><?= $applica['fullname'] ?></td>
                                             <td><img
@@ -151,6 +93,8 @@ $appliSubset = array_slice($appli, $offset, $recordsPerPage);
                                             class="d-block rounded"
                                             height="100"
                                             width="100"
+                                            id="id<?=$x?>"
+                                            onclick="openFullscreenid<?=$x?>();"
                                             /></td>
                                             <td><img
                                             src="<?= base_url().$applica['card'] ?>"
@@ -158,6 +102,8 @@ $appliSubset = array_slice($appli, $offset, $recordsPerPage);
                                             class="d-block rounded"
                                             height="100"
                                             width="100"
+                                            id="c<?=$x?>"
+                                            onclick="openFullscreenc<?=$x?>();"
                                             /></td>
                                             <td><img
                                             src="<?= base_url().$applica['birth_cert'] ?>"
@@ -165,25 +111,54 @@ $appliSubset = array_slice($appli, $offset, $recordsPerPage);
                                             class="d-block rounded"
                                             height="100"
                                             width="100"
+                                            id="b<?=$x?>"
+                                            onclick="openFullscreenb<?=$x?>();"
                                             /></td>
                                             <td><?= $applica['email'] ?></td>
                                             <td><?= $applica['type'] ?></td>
                                             <td><?= $applica['status'] ?></td>
-                                            <td> <a href="/deleteApplication/<?= $applica['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
-                                            <a href="/editApplication/<?= $applica['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
+                                            <td> <a href="/deleteApplication/<?php echo bin2hex($encrypter->encrypt($applica['id'])); ?>" class="btn btn-danger btn-sm" id="d<?=$x?>">Delete</a>
+                                            <a href="/editApplication/<?php echo bin2hex($encrypter->encrypt($applica['id'])); ?>" class="btn btn-primary btn-sm">Edit</a></td>
                                            
                                            
                                           
                                      </tr>
-                                <?php endforeach ?>
+                                <?php $x++; endforeach ?>
                                 </tbody>
                             </table>
                         </div>
-                        <!-- /.card-body -->
-                    </div>
-                    </div>
-                    <!-- /.card -->
-                </div> <!-- /.dito -->
+                   <!-- /.card-body -->
+                  <!-- Pagination Links -->
+                  <div class="card-footer">
+                    <nav aria-label="Page navigation example">
+                      <ul class="pagination justify-content-center">
+                        <?php if ($currentPage > 1) : ?>
+                          <li class="page-item">
+                            <a class="page-link" href="?page=<?= $currentPage - 1 ?>" aria-label="Previous">
+                              <span aria-hidden="true">&laquo;</span>
+                            </a>
+                          </li>
+                        <?php endif; ?>
+                        <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
+                          <li class="page-item <?= $i == $currentPage ? 'active' : '' ?>">
+                            <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
+                          </li>
+                        <?php endfor; ?>
+                        <?php if ($currentPage < $totalPages) : ?>
+                          <li class="page-item">
+                            <a class="page-link" href="?page=<?= $currentPage + 1 ?>" aria-label="Next">
+                              <span aria-hidden="true">&raquo;</span>
+                            </a>
+                          </li>
+                        <?php endif; ?>
+                      </ul>
+                    </nav>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card -->
+            </div> <!-- /.dito -->
+
 
                 <div class="col-lg-18 mb-4 order-0">
                 <div class="card">
@@ -208,11 +183,10 @@ $appliSubset = array_slice($appli, $offset, $recordsPerPage);
 
                         <label for="status">Status:</label>
                                         <select class="form-control" name="status" id="status">
-                                        <option value="">Select Status</option>
+                                        <option value="">Status</option>
                                         <option value="PENDING" <?php if(isset($ap["status"])) { if($ap["status"] == "PENDING") { echo "selected"; }} ?>>Pending</option>
                                         <option value="APPROVED" <?php if(isset($ap["status"])) { if($ap["status"] == "APPROVED") { echo "selected"; }} ?>>Approved</option>
                                         <option value="REJECTED" <?php if(isset($ap["status"])) { if($ap["status"] == "REJECTED") { echo "selected"; }} ?>>Rejected</option>
-                                           
                                         </select>
   </div>
 </div>
@@ -239,7 +213,61 @@ $appliSubset = array_slice($appli, $offset, $recordsPerPage);
     </div>
   </div>
   <!-- / Layout wrapper -->
+  <script>    
+    <?php $y = 1; foreach ($appliSubset as $applica): ?>
 
+      function openFullscreenid<?=$y?>() {
+        if (document.getElementById('id<?=$y?>').requestFullscreen) {
+          document.getElementById('id<?=$y?>').requestFullscreen();
+        } else if (document.getElementById('id<?=$y?>').webkitRequestFullscreen) { /* Safari */
+          document.getElementById('id<?=$y?>').webkitRequestFullscreen();
+        } else if (document.getElementById('id<?=$y?>').msRequestFullscreen) { /* IE11 */
+          document.getElementById('id<?=$y?>').msRequestFullscreen();
+        }
+      }
+
+      function openFullscreenb<?=$y?>() {
+        if (document.getElementById('b<?=$y?>').requestFullscreen) {
+          document.getElementById('b<?=$y?>').requestFullscreen();
+        } else if (document.getElementById('b<?=$y?>').webkitRequestFullscreen) { /* Safari */
+          document.getElementById('b<?=$y?>').webkitRequestFullscreen();
+        } else if (document.getElementById('b<?=$y?>').msRequestFullscreen) { /* IE11 */
+          document.getElementById('b<?=$y?>').msRequestFullscreen();
+        }
+      }
+
+      function openFullscreenc<?=$y?>() {
+        if (document.getElementById('c<?=$y?>').requestFullscreen) {
+          document.getElementById('c<?=$y?>').requestFullscreen();
+        } else if (document.getElementById('c<?=$y?>').webkitRequestFullscreen) { /* Safari */
+          document.getElementById('c<?=$y?>').webkitRequestFullscreen();
+        } else if (document.getElementById('c<?=$y?>').msRequestFullscreen) { /* IE11 */
+          document.getElementById('c<?=$y?>').msRequestFullscreen();
+        }
+      }
+
+      document.getElementById("d<?=$y?>").addEventListener("click", function (event) {
+    event.preventDefault()
+      //sweetalert2 code
+      Swal.fire({
+          title: 'PGA',
+          text: "Are you sure? You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location = $(this).attr('href');
+        } else if (result.isDenied) {
+          Swal.fire('Changes are not saved', '', 'info');
+        }
+      })
+    });
+    
+    <?php $y++; endforeach ?>
+  </script>
   <script src="assets/js/book.js"></script>
 </body>
 

@@ -1,5 +1,7 @@
 <body style="background-image:url('<?= base_url() ?>img/pgaBG.png');background-repeat:no-repeat;background-attachment:fixed;background-size:cover">
-<?php $session = session()?>
+<?php $session = session();
+$config    = new \Config\Encryption(); 
+$encrypter = \Config\Services::encrypter($config);?>
   <!-- Layout wrapper -->
   <div class="layout-wrapper layout-content-navbar d-flex align-items-center justify-content-center">
   <div class="layout-container">
@@ -115,8 +117,8 @@
                                             <td><?= $le['religion'] ?></td>
                                             <td><?= $le['yr_lvl'] ?></td>
                                             <td><?= $le['name'] ?></td>
-                                            <td> <a href="/regDeleteLearner/<?= $le['id'] ?>" class="btn btn-danger btn-sm" id="d<?=$x?>">Delete</a>
-                                            <a href="/regEditLearner/<?= $le['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
+                                            <td> <a href="/regDeleteLearner/<?php echo bin2hex($encrypter->encrypt($le['id'])); ?>" class="btn btn-danger btn-sm" id="d<?=$x?>">Delete</a>
+                                            <a href="/regEditLearner/<?php echo bin2hex($encrypter->encrypt($le['id'])); ?>" class="btn btn-primary btn-sm">Edit</a></td>
                                      </tr>
                                 <?php $x++; endforeach ?>
                                 </tbody>

@@ -1,4 +1,6 @@
 <?php
+$config    = new \Config\Encryption(); 
+$encrypter = \Config\Services::encrypter($config);
 // Define the number of records per page
 $recordsPerPage = 5;
 
@@ -77,8 +79,8 @@ $subjectSubset = array_slice($subject, $offset, $recordsPerPage);
                                             <td><?= $ad['type'] ?></td>
                                             <td><?= $ad['yr_lvl'] ?></td>
                                             <td><?= $ad['lname'] ?>, <?= $ad['fname'] ?> <?= $ad['mname'] ?></td>
-                                            <td> <a href="/deleteSubject/<?= $ad['id'] ?>" class="btn btn-danger btn-sm" id="d<?=$x?>">Delete</a>
-                                            <a href="/editSubject/<?= $ad['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
+                                            <td> <a href="/deleteSubject/<?php echo bin2hex($encrypter->encrypt($ad['id'])); ?>" class="btn btn-danger btn-sm" id="d<?=$x?>">Delete</a>
+                                            <a href="/editSubject/<?php echo bin2hex($encrypter->encrypt($ad['id'])); ?>" class="btn btn-primary btn-sm">Edit</a></td>
                                      </tr>
                                 <?php $x++; endforeach ?>
                                 </tbody>

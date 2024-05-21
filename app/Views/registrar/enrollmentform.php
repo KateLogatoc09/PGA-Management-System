@@ -1,4 +1,6 @@
 <?php
+$config    = new \Config\Encryption(); 
+$encrypter = \Config\Services::encrypter($config);
 // Define the number of records per page
 $recordsPerPage = 5;
 
@@ -94,9 +96,9 @@ $studentSubset = array_slice($student, $offset, $recordsPerPage);
                                 <tbody>
                                 <?php $x = 1; foreach ($studentSubset as $ad): ?>
                                     <tr>
-                                    <td> <a href="/expandAdmissions/<?= $ad['account_id'] ?>" class="btn btn-info btn-sm">Expand</a>
-                                            <a href="/regEditadmissions/<?= $ad['id'] ?>" class="btn btn-primary btn-sm">Edit</a>
-                                            <a href="/regDeleteadmissions/<?= $ad['id'] ?>" class="btn btn-danger btn-sm" id="d<?=$x?>">Delete</a></td>
+                                    <td> <a href="/expandAdmissions/<?php echo bin2hex($encrypter->encrypt($ad['account_id'])); ?>" class="btn btn-info btn-sm">Expand</a>
+                                            <a href="/regEditadmissions/<?php echo bin2hex($encrypter->encrypt($ad['id'])); ?>" class="btn btn-primary btn-sm">Edit</a>
+                                            <a href="/regDeleteadmissions/<?php echo bin2hex($encrypter->encrypt($ad['id'])); ?>" class="btn btn-danger btn-sm" id="d<?=$x?>">Delete</a></td>
                                             <td><img
                                             src="<?= base_url().$ad['photo'] ?>"
                                             alt="user-avatar"

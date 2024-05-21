@@ -1,4 +1,6 @@
 <?php
+$config    = new \Config\Encryption(); 
+$encrypter = \Config\Services::encrypter($config);
 // Pagination Configuration
 $totalRecords = count($sibling);
 $recordsPerPage = 5;
@@ -81,8 +83,8 @@ $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
                           <td><?= $si['affiliation'] ?></td>
                           <td><?= $si['account_id'] ?></td>
                           <td>
-                            <a href="/regDeletesibling/<?= $si['id'] ?>" class="btn btn-danger btn-sm" id="d<?=$x?>">Delete</a>
-                            <a href="/regEditsibling/<?= $si['id'] ?>" class="btn btn-primary btn-sm">Edit</a>
+                            <a href="/regDeletesibling/<?php echo bin2hex($encrypter->encrypt($si['id'])); ?>" class="btn btn-danger btn-sm" id="d<?=$x?>">Delete</a>
+                            <a href="/regEditsibling/<?php echo bin2hex($encrypter->encrypt($si['id'])); ?>" class="btn btn-primary btn-sm">Edit</a>
                           </td>
                         </tr>
                         <?php $x++; endforeach ?>

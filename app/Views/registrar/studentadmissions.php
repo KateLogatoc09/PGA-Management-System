@@ -1,4 +1,6 @@
 <?php
+$config    = new \Config\Encryption(); 
+$encrypter = \Config\Services::encrypter($config);
 // Define the number of records per page
 $recordsPerPage = 5;
 
@@ -140,8 +142,8 @@ $studentSubset = array_slice($student, $offset, $recordsPerPage);
                                             /></td>
                                             <td><?= $ad['schedule'] ?></td>
                                             <td><?= $ad['status'] ?></td>
-                                            <td> <a href="/regDeleteadmissions/<?= $ad['id'] ?>" class="btn btn-danger btn-sm" id="d<?=$x?>">Delete</a>
-                                            <a href="/regEditadmissions/<?= $ad['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
+                                            <td> <a href="/regDeleteadmissions/<?php echo bin2hex($encrypter->encrypt($ad['id'])); ?>" class="btn btn-danger btn-sm" id="d<?=$x?>">Delete</a>
+                                            <a href="/regEditadmissions/<?php echo bin2hex($encrypter->encrypt($ad['id'])); ?>" class="btn btn-primary btn-sm">Edit</a></td>
                                      </tr>
                                 <?php $x++; endforeach ?>
                                 </tbody>

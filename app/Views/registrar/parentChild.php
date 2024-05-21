@@ -1,5 +1,7 @@
 <body style="background-image:url('<?= base_url() ?>img/pgaBG.png');background-repeat:no-repeat;background-attachment:fixed;background-size:cover">
-<?php $session = session()?>
+<?php $session = session();
+$config    = new \Config\Encryption(); 
+$encrypter = \Config\Services::encrypter($config);?>
   <!-- Layout wrapper -->
   <div class="layout-wrapper layout-content-navbar d-flex align-items-center justify-content-center">
   <div class="layout-container">
@@ -79,8 +81,8 @@
                                             <td><?= $t['fullname'] ?></td>
                                             <td><?= $t['child_id'] ?></td>
                                             <td><?= $t['first_name'] ?> <?= $t['middle_name'] ?> <?= $t['last_name'] ?></td>
-                                            <td> <a href="/deleteParentacc/<?= $t['id'] ?>" class="btn btn-danger btn-sm" id="d<?=$x?>">Delete</a>
-                                            <a href="/editParentacc/<?= $t['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
+                                            <td> <a href="/deleteParentacc/<?php echo bin2hex($encrypter->encrypt($t['id'])); ?>" class="btn btn-danger btn-sm" id="d<?=$x?>">Delete</a>
+                                            <a href="/editParentacc/<?php echo bin2hex($encrypter->encrypt($t['id'])); ?>" class="btn btn-primary btn-sm">Edit</a></td>
                                     </tr>
                                 <?php $x++; endforeach ?>
                                 <!-- End Pagination Logic -->
