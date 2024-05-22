@@ -55,7 +55,7 @@ $(document).ready(function(){
             <?php if (isset($_SESSION['validator'])): ?>
                 Swal.fire({
                     title: "PGA",
-                    text: "<?= $_SESSION['validator'] ?>",
+                    text: "<?php if(is_array($_SESSION['validator'])): ?><?=implode($_SESSION['validator']) ?><?php else: ?><?= $_SESSION['validator']; endif; ?>",
                     icon: "info",
                     showClass: {
                         popup: `
