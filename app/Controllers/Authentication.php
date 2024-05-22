@@ -494,9 +494,9 @@ class Authentication extends BaseController
     public function checking() {
         $session = session();
         $code = $this->request->getVar('code');
-        $check = $this->acc->where('email', $_SESSION['verifier'])->first();
         if(sha1($code) == $_SESSION['code']) {
             if(isset($_SESSION['verifier'])) {
+                $check = $this->acc->where('email', $_SESSION['verifier'])->first();
                 if($check['status'] == 'BANNED' || $check['status'] == 'SUSPENDED') {
                     $session->setFlashdata('msg','Account might have been suspended or permanently banned.');
                     return redirect()->to('contact');
