@@ -29,20 +29,20 @@
               </a>
               <ul class="menu-sub">
              
-                <li class="menu-item active">
-                  <a href="/parent" class="menu-link">
+                <li class="menu-item <?= set_active('parent'); ?>">
+                  <a href="<?= base_url('parent') ?>" class="menu-link">
                     <div data-i18n="Analytics">Child's Profile</div>
                   </a>
                 </li>
 
-                <li class="menu-item">
-                  <a href="/childgrade" class="menu-link">
+                <li class="menu-item <?= set_active('childgrade'); ?>">
+                  <a href="<?= base_url('childgrade') ?>" class="menu-link">
                     <div data-i18n="Analytics">Grades</div>
                   </a>
                 </li>
                 
-                <li class="menu-item">
-                  <a href="/feedback" class="menu-link">
+                <li class="menu-item <?= set_active('feedback'); ?>">
+                  <a href="<?= base_url('feedback') ?>" class="menu-link">
                     <div data-i18n="Analytics">Feedback</div>
                   </a>
                 </li>

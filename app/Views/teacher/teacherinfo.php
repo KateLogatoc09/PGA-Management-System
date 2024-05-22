@@ -1,4 +1,4 @@
-<body>
+<body style="background-image:url('<?= base_url() ?>img/pgaBG.png');background-repeat:no-repeat;background-attachment:fixed;background-size:cover">
 <?php $session = session()?>
   <!-- Layout wrapper -->
   <div class="layout-wrapper layout-content-navbar d-flex align-items-center justify-content-center">
@@ -56,9 +56,9 @@
                         <label for="gender">Gender:</label>
                                         <select class="form-control" name="gender" id="gender" 
                                         value="<?php if (isset($prof['gender'])) {echo $prof['gender'];}?>">
-                                        <option value="">Select Gender</option>
-                                            <option value="Male">Male</option>
-                                            <option value="Female">Female</option>
+                                        <option value="">Select Gender</option>  
+                                        <option value="Male" <?php if(isset($prof["gender"])) { if($prof["gender"] == "Male") { echo "selected"; }} ?>>Male</option>  
+                                        <option value="Female" <?php if(isset($prof["gender"])) { if($prof["gender"] == "Female") { echo "selected"; }} ?>>Female</option>  
                                         </select>
                                  
                         <label for="dob">Date of Birth:</label>

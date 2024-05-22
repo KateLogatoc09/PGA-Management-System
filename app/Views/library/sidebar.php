@@ -29,20 +29,20 @@
               </a>
               <ul class="menu-sub">
 
-                <li class="menu-item">
-                  <a href="/librarian" class="menu-link">
+                <li class="menu-item <?= set_active('librarian'); ?>">
+                  <a href="<?= base_url('librarian') ?>" class="menu-link">
                     <div data-i18n="Analytics">Home</div>
                   </a>
                 </li>
 
-                <li class="menu-item">
-                  <a href="/books" class="menu-link">
+                <li class="menu-item <?= set_active('books'); ?>">
+                  <a href="<?= base_url('books') ?>" class="menu-link">
                     <div data-i18n="Analytics">Books</div>
                   </a>
                 </li>
 
-                <li class="menu-item">
-                  <a href="/borrowers" class="menu-link">
+                <li class="menu-item <?= set_active('borrowers'); ?>">
+                  <a href="<?= base_url('borrowers') ?>" class="menu-link">
                     <div data-i18n="Analytics">Borrowers</div>
                   </a>
                 </li>
@@ -57,14 +57,14 @@
               </a>
               <ul class="menu-sub">
              
-                <li class="menu-item">
-                  <a href="/textbooks" class="menu-link">
+                <li class="menu-item <?= set_active('textbooks'); ?>">
+                  <a href="<?= base_url('textbooks') ?>" class="menu-link">
                     <div data-i18n="Analytics">Textbooks</div>
                   </a>
                 </li>
                 
-                <li class="menu-item">
-                  <a href="/fiction_storybook" class="menu-link">
+                <li class="menu-item <?= set_active('fiction_storybook'); ?>">
+                  <a href="<?= base_url('fiction_storybook') ?>" class="menu-link">
                     <div data-i18n="Analytics">Fiction & Storybooks</div>
                   </a>
                 </li>
@@ -74,20 +74,20 @@
                     <div data-i18n="Analytics">Reference & Filipiniana</div>
                 </a>
                       <ul class="menu-sub">
-                        <li class="menu-item">
-                          <a href="/reference_filipiniana" class="menu-link">
+                        <li class="menu-item <?= set_active('reference_filipiniana'); ?>">
+                          <a href="<?= base_url('reference_filipiniana') ?>" class="menu-link">
                             <div data-i18n="Analytics">Shelf 4 & 10</div>
                           </a>
                         </li>
                    
-                        <li class="menu-item">
-                          <a href="/reference_filipiniana2" class="menu-link">
+                        <li class="menu-item <?= set_active('reference_filipiniana2'); ?>">
+                        <a href="<?= base_url('reference_filipiniana2') ?>" class="menu-link">
                             <div data-i18n="Analytics">Shelf 11 & 12</div>
                           </a>
                         </li>
 
-                        <li class="menu-item">
-                          <a href="/reference_filipiniana3" class="menu-link">
+                        <li class="menu-item <?= set_active('reference_filipiniana3'); ?>">
+                        <a href="<?= base_url('reference_filipiniana3') ?>" class="menu-link">
                             <div data-i18n="Analytics">Shelf 13 & 14</div>
                           </a>
                         </li>
@@ -101,14 +101,14 @@
                     <div data-i18n="Analytics">Books with Multiple Copies</div>
                 </a>
                       <ul class="menu-sub">
-                        <li class="menu-item">
-                          <a href="/multiple_copies" class="menu-link">
+                        <li class="menu-item <?= set_active('multiple_copies'); ?>">
+                        <a href="<?= base_url('multiple_copies') ?>" class="menu-link">
                             <div data-i18n="Analytics">Shelf 5 & 7</div>
                           </a>
                         </li>
                    
-                        <li class="menu-item">
-                          <a href="/multiple_copies2" class="menu-link">
+                        <li class="menu-item <?= set_active('multiple_copies2'); ?>">
+                        <a href="<?= base_url('multiple_copies2') ?>" class="menu-link">
                             <div data-i18n="Analytics">Shelf 8 & 9</div>
                           </a>
                         </li>
@@ -117,14 +117,14 @@
                   </a>
                 </li>
 
-                <li class="menu-item">
-                  <a href="/teacher_references" class="menu-link">
+                <li class="menu-item <?= set_active('teacher_references'); ?>">
+                <a href="<?= base_url('teacher_references') ?>" class="menu-link">
                     <div data-i18n="Analytics">Teacher's References</div>
                   </a>
                 </li>
 
-                <li class="menu-item">
-                  <a href="/other_textbooks" class="menu-link">
+                <li class="menu-item <?= set_active('other_textbooks'); ?>">
+                <a href="<?= base_url('other_textbooks') ?>" class="menu-link">
                     <div data-i18n="Analytics">Other Textbooks</div>
                   </a>
                 </li>

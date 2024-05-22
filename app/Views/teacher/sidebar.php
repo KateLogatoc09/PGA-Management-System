@@ -30,32 +30,32 @@
               </a>
               <ul class="menu-sub">
              
-                <li class="menu-item active">
-                  <a href="teacher" class="menu-link">
-                    <div data-i18n="Analytics">Home</div>
+                <li class="menu-item <?= set_active('teacher'); ?>">
+                  <a href="<?= base_url('teacher') ?>" class="menu-link">
+                    <div data-i18n="Analytics">Teacher Profile</div>
                   </a>
                 </li>
 
-                <li class="menu-item">
-                  <a href="/advisoryClass" class="menu-link">
+                <li class="menu-item <?= set_active('advisoryClass'); ?>">
+                  <a href="<?= base_url('advisoryClass') ?>" class="menu-link">
                     <div data-i18n="Analytics">Advisory Class</div>
                   </a>
                 </li>
 
-                <li class="menu-item">
-                  <a href="/grade" class="menu-link">
+                <li class="menu-item <?= set_active('grade'); ?>">
+                  <a href="<?= base_url('grade') ?>" class="menu-link">
                     <div data-i18n="Analytics">Encode Grades</div>
                   </a>
                 </li>
 
-                <li class="menu-item">
-                  <a href="/chart" class="menu-link">
+                <li class="menu-item <?= set_active('chart'); ?>">
+                  <a href="<?= base_url('chart') ?>" class="menu-link">
                     <div data-i18n="Analytics">Charts</div>
                   </a>
                 </li>
 
-                <li class="menu-item">
-                  <a href="/feedback" class="menu-link">
+                <li class="menu-item <?= set_active('feedback'); ?>">
+                  <a href="<?= base_url('feedback') ?>" class="menu-link">
                     <div data-i18n="Analytics">Feedback</div>
                   </a>
                 </li>

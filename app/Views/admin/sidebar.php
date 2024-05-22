@@ -29,27 +29,27 @@
               </a>
               <ul class="menu-sub">
              
-                <li class="menu-item active">
-                  <a href="/admins" class="menu-link">
+                <li class="menu-item <?= set_active('admins'); ?>">
+                  <a href="<?= base_url('admins') ?>" class="menu-link">
                     <div data-i18n="Analytics">Accounts</div>
                   </a>
                 </li>
 
-                <li class="menu-item">
-                  <a href="/addTeacher" class="menu-link">
+                <li class="menu-item <?= set_active('addTeacher'); ?>">
+                  <a href="<?= base_url('addTeacher') ?>" class="menu-link">
                     <div data-i18n="Analytics">Teacher</div>
                   </a>
                 </li>
 
                 
-                <li class="menu-item">
-                  <a href="/announce" class="menu-link">
+                <li class="menu-item <?= set_active('announce'); ?>">
+                  <a href="<?= base_url('announce') ?>" class="menu-link">
                     <div data-i18n="Analytics">Announcement</div>
                   </a>
                 </li>
 
-                <li class="menu-item">
-                  <a href="/feedbackview" class="menu-link">
+                <li class="menu-item <?= set_active('feedbackview'); ?>">
+                  <a href="<?= base_url('feedbackview') ?>" class="menu-link">
                     <div data-i18n="Analytics">Feedbacks</div>
                   </a>
                 </li>

@@ -29,14 +29,14 @@
               </a>
               <ul class="menu-sub">
              
-                <li class="menu-item active">
-                  <a href="/general" class="menu-link">
+                <li class="menu-item <?= set_active('general'); ?>">
+                  <a href="<?= base_url('general') ?>" class="menu-link">
                     <div data-i18n="Analytics">Home</div>
                   </a>
                 </li>
 
-                <li class="menu-item">
-                  <a href="/feedback" class="menu-link">
+                <li class="menu-item <?= set_active('feedback'); ?>">
+                  <a href="<?= base_url('feedback') ?>" class="menu-link">
                     <div data-i18n="Analytics">Feedback</div>
                   </a>
                 </li>

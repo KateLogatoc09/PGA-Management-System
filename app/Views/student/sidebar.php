@@ -29,38 +29,38 @@
               </a>
               <ul class="menu-sub">
              
-                <li class="menu-item active">
-                  <a href="/student" class="menu-link">
+                <li class="menu-item <?= set_active('student'); ?>">
+                  <a href="<?= base_url('student') ?>" class="menu-link">
                     <div data-i18n="Analytics">Profile</div>
                   </a>
                 </li>
 
-                <li class="menu-item">
-                  <a href="/learner" class="menu-link">
+                <li class="menu-item <?= set_active('learner'); ?>">
+                  <a href="<?= base_url('learner') ?>" class="menu-link">
                     <div data-i18n="Analytics">Enrollment</div>
                   </a>
                 </li>
 
-                <li class="menu-item">
-                  <a href="/studgrade" class="menu-link">
+                <li class="menu-item <?= set_active('studgrade'); ?>">
+                  <a href="<?= base_url('studgrade') ?>" class="menu-link">
                     <div data-i18n="Analytics">Grades</div>
                   </a>
                 </li>
                 
-                <li class="menu-item">
-                  <a href="/studentlibrary" class="menu-link">
+                <li class="menu-item <?= set_active('studentlibrary'); ?>">
+                  <a href="<?= base_url('studentlibrary') ?>" class="menu-link">
                     <div data-i18n="Analytics">Library</div>
                   </a>
                 </li>
 
-                <li class="menu-item">
-                  <a href="/permit" class="menu-link">
+                <li class="menu-item <?= set_active('permit'); ?>">
+                  <a href="<?= base_url('permit') ?>" class="menu-link">
                     <div data-i18n="Analytics">Permit</div>
                   </a>
                 </li>
 
-                <li class="menu-item">
-                  <a href="/feedback" class="menu-link">
+                <li class="menu-item <?= set_active('feedback'); ?>">
+                  <a href="<?= base_url('feedback') ?>" class="menu-link">
                     <div data-i18n="Analytics">Feedback</div>
                   </a>
                 </li>
