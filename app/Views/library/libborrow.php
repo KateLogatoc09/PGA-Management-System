@@ -89,6 +89,7 @@
                             <td>
                               <a href="/deleteBorrow/<?= $book['id'] ?>" class="btn btn-danger btn-sm" id="d<?=$x?>">Delete</a>
                               <a href="/editBorrow/<?= $book['id'] ?>" class="btn btn-primary btn-sm">Edit</a>
+                              <a href="/sendNotif/<?= $book['id'] ?>" class="btn btn-info btn-sm">Send Notif</a>
                             </td>
                           </tr>
                         <?php $x++; endforeach ?>

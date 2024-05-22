@@ -483,4 +483,12 @@ class LibraryController extends BaseController
         ];
         return view('books', $data);
     }
+
+    public function sendNotif($id)
+    {
+        $data = [
+        ];
+
+        return view('borrowers', $data);
+    }
 }

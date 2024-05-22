@@ -160,6 +160,7 @@ $routes->get('/searchShelf16', 'LibraryController::searchShelf16', ['filter' => 
 $routes->get('/other_textbooks', 'LibraryController::other_textbooks', ['filter' => 'librarian']);
 $routes->get('/searchShelf17', 'LibraryController::searchShelf17', ['filter' => 'librarian']);
 $routes->get('/searchShelf18', 'LibraryController::searchShelf18', ['filter' => 'librarian']);
+$routes->get('/sendNotif/(:any)', 'LibraryController::sendNotif/$1', ['filter' => 'librarian']);
 
 //PARENTS
 $routes->get('/parent', 'ParentController::parent', ['filter' => 'parents']);

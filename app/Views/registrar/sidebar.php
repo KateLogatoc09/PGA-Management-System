@@ -29,68 +29,68 @@
               </a>
               <ul class="menu-sub">
 
-              <li class="menu-item active">
-                  <a href="/registrar" class="menu-link">
+              <li class="menu-item <?= set_active('registrar'); ?>">
+                  <a href="<?= base_url('registrar') ?>" class="menu-link">
                     <div data-i18n="Analytics">Home</div>
                   </a>
                 </li>
 
-                <li class="menu-item">
-                  <a href="/enrollmentform" class="menu-link">
+                <li class="menu-item <?= set_active('enrollmentform'); ?>">
+                  <a href="<?= base_url('enrollmentform') ?>" class="menu-link">
                     <div data-i18n="Analytics">Enrollment Forms</div>
                   </a>
                 </li>
               
-              <li class="menu-item">
-                  <a href="/application" class="menu-link">
+              <li class="menu-item <?= set_active('application'); ?>">
+                  <a href="<?= base_url('application') ?>" class="menu-link">
                     <div data-i18n="Analytics">Account Applications</div>
                   </a>
                 </li>
               
-              <li class="menu-item">
-                  <a href="/alumni" class="menu-link">
+              <li class="menu-item <?= set_active('alumni'); ?>">
+                  <a href="<?= base_url('alumni') ?>" class="menu-link">
                     <div data-i18n="Analytics">Alumni</div>
                   </a>
                 </li>
 
-                <li class="menu-item">
-                  <a href="/email" class="menu-link">
+                <li class="menu-item <?= set_active('email'); ?>">
+                  <a href="<?= base_url('email') ?>" class="menu-link">
                     <div data-i18n="Analytics">Mail</div>
                   </a>
                 </li>
   
-                <li class="menu-item">
-                  <a href="/sections" class="menu-link">
+                <li class="menu-item <?= set_active('sections'); ?>">
+                  <a href="<?= base_url('sections') ?>" class="menu-link">
                     <div data-i18n="Analytics">Sections</div>
                   </a>
                 </li>
 
-                <li class="menu-item">
-                  <a href="/subjects" class="menu-link">
+                <li class="menu-item <?= set_active('subjects'); ?>">
+                  <a href="<?= base_url('subjects') ?>" class="menu-link">
                     <div data-i18n="Analytics">Subjects</div>
                   </a>
                 </li>
 
-                <li class="menu-item">
-                  <a href="/reggrade" class="menu-link">
+                <li class="menu-item <?= set_active('reggrade'); ?>">
+                  <a href="<?= base_url('reggrade') ?>" class="menu-link">
                     <div data-i18n="Analytics">Grades</div>
                   </a>
                 </li>
 
-                <li class="menu-item">
-                  <a href="/reg_permit" class="menu-link">
+                <li class="menu-item <?= set_active('reg_permit'); ?>">
+                  <a href="<?= base_url('reg_permit') ?>" class="menu-link">
                     <div data-i18n="Analytics">Permits</div>
                   </a>
                 </li>
 
-                <li class="menu-item">
-                  <a href="/parentChild" class="menu-link">
+                <li class="menu-item <?= set_active('parentChild'); ?>">
+                  <a href="<?= base_url('parentChild') ?>" class="menu-link">
                     <div data-i18n="Analytics">Parents</div>
                   </a>
                 </li>
 
-                <li class="menu-item">
-                  <a href="/feedback" class="menu-link">
+                <li class="menu-item <?= set_active('feedback'); ?>">
+                  <a href="<?= base_url('feedback') ?>" class="menu-link">
                     <div data-i18n="Analytics">Feedback</div>
                   </a>
                 </li>
