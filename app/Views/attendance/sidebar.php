@@ -23,25 +23,20 @@
           <ul class="menu-inner py-1">
             <!-- Dashboards -->
             <li class="menu-item active">
-              <a href="javascript:void(0);" class="menu-link">
-                <div data-i18n="Dashboards">Dashboard</div>
-              </a>
-            </li>
-            <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-street-view"></i>
                 <div data-i18n="Attendance">Attendance</div>
               </a>
               <ul class="menu-sub">
   
-                <li class="menu-item">
-                  <a href="/attendance_in" class="menu-link">
+                <li class="menu-item <?= set_active('attendance_in'); ?>">
+                  <a href="<?= base_url('attendance_in') ?>" class="menu-link">
                     <div data-i18n="Analytics">Attendance in</div>
                   </a>
                 </li>
 
-                <li class="menu-item">
-                  <a href="/attendance_out" class="menu-link">
+                <li class="menu-item <?= set_active('attendance_out'); ?>">
+                  <a href="<?= base_url('attendance_out') ?>" class="menu-link">
                     <div data-i18n="Analytics">Attendance Out</div>
                   </a>
                 </li>
