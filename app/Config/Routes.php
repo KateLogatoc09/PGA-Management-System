@@ -262,6 +262,12 @@ $routes->get('/aacsubjects', 'AACController::aacsubjects', ['filter' => 'AAC']);
 $routes->post('/aacsaveSubject', 'AACController::aacsaveSubject', ['filter' => 'AAC']);
 $routes->get('/aacdeleteSubject/(:any)', 'AACController::aacdeleteSubject/$1', ['filter' => 'AAC']);
 $routes->get('/aaceditSubject/(:any)', 'AACController::aaceditSubject/$1', ['filter' => 'AAC']);
+$routes->get('/schedule', 'AACController::schedule', ['filter' => 'AAC']);
+$routes->get('/scheduleList', 'AACController::scheduleList', ['filter' => 'AAC']);
+$routes->post('/saveSchedule', 'AACController::saveSchedule', ['filter' => 'AAC']);
+$routes->get('/editSchedule/(:any)', 'AACController::editSchedule/$1', ['filter' => 'AAC']);
+$routes->get('/deleteSchedule/(:any)', 'AACController::deleteSchedule/$1', ['filter' => 'AAC']);
+$routes->get('/editSchedule/(:any)', 'AACController::editSchedule/$1', ['filter' => 'AAC']);
 
 //AAC sections
 $routes->get('/St_Joseph_Husband_of_Mary', 'AACController::St_Joseph_Husband_of_Mary', ['filter' => 'AAC']);

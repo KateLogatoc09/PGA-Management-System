@@ -5,23 +5,103 @@ use App\Models\Subjects;
 use App\Models\Sections;
 use App\Models\TeacherModel;
 use App\Models\LearnerModel;
+use App\Models\ScheduleModel;
 
 use App\Controllers\BaseController;
 
 class AACController extends BaseController
 {
-    private $section, $subjects, $learner, $teacher;
+    private $section, $subjects, $learner, $teacher, $schedule;
     public function __construct()
     {
         $this->sections = new Sections();
         $this->subjects = new Subjects();
         $this->teacher = new TeacherModel();
         $this->learner = new LearnerModel();
+        $this->schedule = new ScheduleModel();
     }
 
     public function AAC(){
             return view ('AAC');
         }
+    
+        
+    public function schedule(){
+        $data = [
+            'schedule' => $this->schedule->select('schedule.id as id, day, start_time, end_time, name, subject')
+            ->join('sections','schedule.section_id = sections.id','inner')->findAll(),
+            'subject' => $this->subjects->findAll(),
+            'section' => $this->sections->findAll(),
+        ];
+
+        return view ('schedule', $data);
+    }
+
+       
+    public function scheduleList(){
+        $data = [
+            'stud_section' => $this->sections->select('sections.id as id, name, grade_level_id, adviser, fname, mname, lname')
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->findAll(),
+            'teacher' => $this->teacher->orderBy('lname')->findAll(),
+        ];
+
+        return view ('scheduleList', $data);
+    }
+
+    public function deleteSchedule($id)
+        {
+            $session = session();
+            $res = $this->schedule->delete($id);
+            if($res) {
+                $session->setFlashdata('msg','Deleted Successfully.');
+            } else {
+                $session->setFlashdata('msg','Something went wrong. Please try again later.');
+            }
+            return redirect()->to('schedule');
+        }
+    
+        
+        public function editSchedule($id)
+        {
+            $data = [
+                'schedule' => $this->schedule->select('schedule.id as id, day, start_time, end_time, name, subject')
+                ->join('sections','schedule.section_id = sections.id','inner')->findAll(),
+                'subject' => $this->subjects->findAll(),
+                'section' => $this->sections->findAll(),
+                'sched' => $this->schedule->where('id', $id)->first(),
+            ];
+    
+            return view('schedule', $data);
+        }
+
+    public function saveSchedule()  {
+        $session = session();
+        $id = $_POST['id'];
+        $data = [
+            'day' => $this->request->getPost('day'),
+            'subject' => $this->request->getPost('subject'),
+            'start_time' => $this->request->getPost('start_time'),
+            'end_time' => $this->request->getPost('end_time'),
+            'section_id' => $this->request->getPost('section_id'),
+        ];
+
+        if ($id != null) {
+            $res = $this->schedule->set($data)->where('id', $id)->update();
+            if($res) {
+                $session->setFlashdata('msg','Updated Successfully.');
+            } else {
+                $session->setFlashdata('msg','Something went wrong. Please try again later.');
+            }
+        } else {
+            $res = $this->schedule->save($data);
+            if($res) {
+                $session->setFlashdata('msg','Saved Successfully.');
+            } else {
+                $session->setFlashdata('msg','Something went wrong. Please try again later.');
+            }
+        }   
+        return redirect()->to('schedule');
+    }
 
         public function aacsections()
         {

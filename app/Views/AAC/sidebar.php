@@ -47,6 +47,12 @@
                   </a>
                 </li>
 
+                <li class="menu-item <?= set_active('schedule'); ?>">
+                  <a href="<?= base_url('schedule') ?>" class="menu-link">
+                    <div data-i18n="Analytics">Schedules</div>
+                  </a>
+                </li>
+
                 <li class="menu-item <?= set_active('feedback'); ?>">
                   <a href="<?= base_url('feedback') ?>" class="menu-link">
                     <div data-i18n="Analytics">Feedback</div>
