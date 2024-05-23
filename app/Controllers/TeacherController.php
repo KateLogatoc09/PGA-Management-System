@@ -215,7 +215,7 @@ class TeacherController extends BaseController
             //get stud id
             $tid = $this->request->getVar('student_id');
             //testing if user exists
-            $re = $this->admissions->select('student_id')->where('student_id', $tid)->first();
+            $re = $this->admissions->select('id, school_year')->where('student_id', $tid)->first();
 
             $data = [
                 'teacher_account' => $this->teacher->select('teachers.id')
@@ -231,31 +231,57 @@ class TeacherController extends BaseController
                 $session->setFlashdata('msg','Student doesn\'t exist.');
                 return redirect()->to('grade');
             }
+
             if(is_array($sub)) {
+                $counter = 0;
                 foreach($sub as $s) {
-                    if($this->request->getVar('subject') != $s['id']){
+                    if($this->request->getVar('subject') == $s['id']){
+                        break;
+                    } else if($counter == count( $sub ) - 1) {
                         $session->setFlashdata('msg','You don\'t handle this subject.');
                         return redirect()->to('grade');
                     }
+
+                    $counter = $counter + 1;
                 }
             } else {
                 $session->setFlashdata('msg','You don\'t handle this subject.');
                 return redirect()->to('grade');
             }
-
-            if ($id != null) {
-                $res = $this->grade->set($data)->where('id', $id)->update();
-                if($res) {
-                    $session->setFlashdata('msg','Updated Successfully.');
+            
+            if ($id != "") {
+                //test for duplicate quarter
+                $dupli2 = $dupli = $this->grade->select('student_grades.id as id, student_grades.student_id, idnum, school_year, subject, grade, first_name, middle_name, last_name, name, subject_name, teacher_id, quarter')
+                ->join('teachers','student_grades.teacher_account = teachers.id','inner')
+                ->join('admissions','student_grades.student_id = admissions.student_id','inner')->join('student_learner','student_learner.account_id = admissions.account_id','inner')
+                ->join('sections','sections.id = admissions.section','inner')->join('subjects','subjects.id = student_grades.subject','inner')->where('teacher_id', $teachid)->where('quarter', $this->request->getVar('quarter'))->where('subject', $this->request->getVar('subject'))->where('school_year', $re['school_year'])->where('student_grades.id !=',$id)->FindAll();
+                if($dupli2) {
+                    $session->setFlashdata('msg','Duplicate Records.');
                 } else {
-                    $session->setFlashdata('msg','Something went wrong. Please try again later.');
+                    $res = $this->grade->set($data)->where('id', $id)->update();
+                    if($res) {
+                        $session->setFlashdata('msg','Updated Successfully.');
+                    } else {
+                        $session->setFlashdata('msg','Something went wrong. Please try again later.');
+                    }
                 }
             } else {
-                $res = $this->grade->save($data);
-                if($res) {
-                    $session->setFlashdata('msg','Saved Successfully.');
+                //test for duplicate quarter grade for sub in same AY
+                $dupli = $this->grade->select('student_grades.id as id, student_grades.student_id, idnum, school_year, subject, grade, first_name, middle_name, last_name, name, subject_name, teacher_id, quarter')
+                ->join('teachers','student_grades.teacher_account = teachers.id','inner')
+                ->join('admissions','student_grades.student_id = admissions.student_id','inner')->join('student_learner','student_learner.account_id = admissions.account_id','inner')
+                ->join('sections','sections.id = admissions.section','inner')->join('subjects','subjects.id = student_grades.subject','inner')->where('teacher_id', $teachid)->where('quarter', $this->request->getVar('quarter'))->where('subject', $this->request->getVar('subject'))->where('school_year', $re['school_year'])->where('student_grades.student_id', $tid)->FindAll();
+
+                if($dupli) {
+                    $session->setFlashdata('msg','Duplicate Records.');
                 } else {
-                    $session->setFlashdata('msg','Something went wrong. Please try again later.');
+                    $data['admission_id'] = $re['id'];
+                    $res = $this->grade->save($data);
+                    if($res) {
+                        $session->setFlashdata('msg','Saved Successfully.');
+                    } else {
+                        $session->setFlashdata('msg','Something went wrong. Please try again later.');
+                    } 
                 }
             }   
             return redirect()->to('grade');
@@ -307,26 +333,24 @@ class TeacherController extends BaseController
         public function chart()
         {
             $session = session();
+            //get curr user id
             $curruser = $this->acc->select('id')->where('username', $_SESSION['username'])->first();
+            //get idnum of curr user id
             $teachid = $this->teacher->select('idnum')->where('account_id', $curruser)->first();
+            //get subjects handled by the curr user
+            $sub = $this->subjects->where('teacher_id', $teachid)->findAll();
 
-            $allGrades = $this->grade->findAll();
+            foreach($sub as $s) {
 
-            // Filter out grades below 90
-            $filteredGrades = array_filter($allGrades, function($grade) {
-                return $grade['grade'] >= 90;
-            });
-    
-            // Sort the filtered grades in descending order
-            usort($filteredGrades, function($a, $b) {
-                return $b['grade'] - $a['grade'];
-            });
-    
-            // Get the top 10 grades
-            $topGrades = array_slice($filteredGrades, 0, 10);
+            $allGrades['sub'.$s['id']] = $this->grade->select('student_grades.id as id, student_grades.student_id, idnum, school_year, subject, AVG(grade) as GWA, CONCAT(first_name,\' \', last_name) as student, name, subject_name, teacher_id, quarter')
+            ->join('teachers','student_grades.teacher_account = teachers.id','inner')
+            ->join('admissions','student_grades.student_id = admissions.student_id','inner')->join('student_learner','student_learner.account_id = admissions.account_id','inner')
+            ->join('sections','sections.id = admissions.section','inner')->join('subjects','subjects.id = student_grades.subject','inner')->where('teacher_id', $teachid)->where('subject', $s['id'])->where('school_year','2023-2024')->groupBy('student_grades.student_id')->orderBy('GWA','DESC')->limit(10)->findAll();
 
-            $data['grades'] = $topGrades;
+            }
+            
+            $allGrades['sub'] = $sub;
 
-            return view('chart', $data);
+            return view('chart', $allGrades);
         }
 }

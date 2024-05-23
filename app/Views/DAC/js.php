@@ -28,7 +28,7 @@
 
 <!-- Custom JS -->
 <script>
-    <?php for($x = 1;$x <= 3;$x++): ?>
+    <?php for($x = 1;$x <= 2;$x++): ?>
         document.getElementById("logout<?= $x?>").addEventListener("click", function (event) {
         event.preventDefault()
         //sweetalert2 code

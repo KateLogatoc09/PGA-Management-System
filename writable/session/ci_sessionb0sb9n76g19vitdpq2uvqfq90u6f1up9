@@ -1,0 +1,12 @@
+__ci_last_regenerate|i:1716425913;_ci_previous_url|s:27:"http://localhost:8080/grade";username|s:7:"teacher";role|s:7:"TEACHER";token|s:60:"p2xjVQsqfzsqXddkVJFIhsEDgvsKIQ97c4XzicGSQqlMjRdwFvtpf22xXHCi";isLoggedin|b:1;msg|s:794:"Duplicate Records.SELECT `student_grades`.`id` as `id`, `student_grades`.`student_id`, `idnum`, `school_year`, `subject`, `grade`, `first_name`, `middle_name`, `last_name`, `name`, `subject_name`, `teacher_id`, `quarter`
+FROM `student_grades`
+INNER JOIN `teachers` ON `student_grades`.`teacher_account` = `teachers`.`id`
+INNER JOIN `admissions` ON `student_grades`.`student_id` = `admissions`.`student_id`
+INNER JOIN `student_learner` ON `student_learner`.`account_id` = `admissions`.`account_id`
+INNER JOIN `sections` ON `sections`.`id` = `admissions`.`section`
+INNER JOIN `subjects` ON `subjects`.`id` = `student_grades`.`subject`
+WHERE `teacher_id` = ('MCC2021-0000')
+AND `quarter` = '3'
+AND `subject` = '10'
+AND `school_year` = '2023-2024'
+AND `student_grades`.`student_id` = 'MCC2021-8888'";__ci_vars|a:1:{s:3:"msg";s:3:"old";}

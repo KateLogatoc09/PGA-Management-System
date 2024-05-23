@@ -1,0 +1,4 @@
+[23-May-2024 01:05:33 UTC] PHP Fatal error:  Uncaught Error: Class "App\Controllers\BaseController" not found in C:\laragon\www\PGA-Management-System\app\Controllers\TeacherController.php:18
+Stack trace:
+#0 {main}
+  thrown in C:\laragon\www\PGA-Management-System\app\Controllers\TeacherController.php on line 18

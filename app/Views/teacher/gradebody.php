@@ -145,7 +145,7 @@
                     <div class="form-group margin-left">
                     <input type="hidden" name="id" value="<?php if (isset($gr['id'])) {echo $gr['id'];}?>">
                         <label for="student_id">Student Id:</label>
-                        <input type="text" class="form-control" name="student_id" placeholder="Enter Student Id" 
+                        <input type="text" class="form-control" name="student_id" id="student_id" placeholder="Enter Student Id" 
                         value="<?php if (isset($gr['student_id'])) {echo $gr['student_id'];}?>" list="list" required>
                         <datalist type="hidden" id="list">
                                             <?php foreach ($learner as $le):?> 
@@ -165,11 +165,11 @@
 <div class="col-sm-5 text-center text-sm-left">
   <div class="form-group margin-left">
                         <label for="grade">Grade:</label>
-                        <input type="number" class="form-control" name="grade" placeholder="Enter Grade" 
+                        <input type="number" class="form-control" name="grade" id="grade" placeholder="Enter Grade" 
                         value="<?php if (isset($gr['grade'])) {echo $gr['grade'];}?>" required>   
                         
                         <label for="quarter">Quarter:</label>
-                        <input type="number" class="form-control" name="quarter" placeholder="Enter Quarter" 
+                        <input type="number" class="form-control" name="quarter" id="quarter" placeholder="Enter Quarter" 
                         value="<?php if (isset($gr['quarter'])) {echo $gr['quarter'];}?>" required>   
   </div>
 </div>

@@ -13,7 +13,7 @@
         <!-- Content wrapper -->
         <div class="content-wrapper">
           <!-- Content -->
-
+          <?php foreach($sub as $all): ?>
           <div class="container-xxl flex-grow-1 container-p-y">
             <div class="row">
               <div class="col-lg-18 mb-4 order-0">
@@ -21,13 +21,14 @@
                   <div class="d-flex align-items-end row">
                     <div class="col-sm-7">
                       <div class="card-body">
-                        <h5 class="card-title text-primary">Top Students in Class</h5>
-                        <canvas id="gradesChart"></canvas>
+                        <h5 class="card-title text-primary">Top Students in <?=$all['subject_name'] ?></h5>
+                        <canvas id="gradesChart<?=$all['id']?>"></canvas>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+              <?php endforeach; ?>
                 
               
                     </div>
@@ -50,23 +51,24 @@
   </div>
   <!-- / Layout wrapper -->
   <script>
+      <?php foreach($sub as $all): ?>
         document.addEventListener("DOMContentLoaded", function() {
-            const ctx = document.getElementById('gradesChart').getContext('2d');
-            const grades = <?= json_encode(array_column($grades, 'grade')) ?>;
-            const names = <?= json_encode(array_column($grades, 'student_id')) ?>;
+            const ctx<?=$all['id']?> = document.getElementById('gradesChart<?=$all['id']?>').getContext('2d');
+            const grades<?=$all['id']?> = [<?php foreach(${'sub'.$all['id']} as $grades):?><?= $grades['GWA']?>,<?php endforeach;?>];
+            const names<?=$all['id']?> = [<?php foreach(${'sub'.$all['id']} as $name):?>"<?= $name['student']?>",<?php endforeach;?>];
 
             // Create gradient fill for wave effect
-            const gradient = ctx.createLinearGradient(0, 0, 0, 400);
-            gradient.addColorStop(0, 'rgba(75, 192, 192, 0.4)');
-            gradient.addColorStop(0.5, 'rgba(75, 192, 192, 0.2)');
-            gradient.addColorStop(1, 'rgba(75, 192, 192, 0)');
+            const gradient<?=$all['id']?> = ctx<?=$all['id']?>.createLinearGradient(0, 0, 0, 400);
+            gradient<?=$all['id']?>.addColorStop(0, 'rgba(75, 192, 192, 0.4)');
+            gradient<?=$all['id']?>.addColorStop(0.5, 'rgba(75, 192, 192, 0.2)');
+            gradient<?=$all['id']?>.addColorStop(1, 'rgba(75, 192, 192, 0)');
 
-            const data = {
-                labels: names,
+            const data<?=$all['id']?> = {
+                labels: names<?=$all['id']?>,
                 datasets: [{
                     label: 'GWA',
-                    data: grades,
-                    backgroundColor: gradient,
+                    data: grades<?=$all['id']?>,
+                    backgroundColor: gradient<?=$all['id']?>,
                     borderColor: 'rgba(75, 192, 192, 1)',
                     borderWidth: 1,
                     tension: 0.4, // Creates the wave effect
@@ -74,9 +76,9 @@
                 }]
             };
 
-            const config = {
+            const config<?=$all['id']?> = {
                 type: 'bar', // Line chart for spline area effect
-                data: data,
+                data: data<?=$all['id']?>,
                 options: {
                     scales: {
                         y: {
@@ -86,8 +88,9 @@
                 }
             };
 
-            const gradesChart = new Chart(ctx, config);
+            const gradesChart<?=$all['id']?> = new Chart(ctx<?=$all['id']?>, config<?=$all['id']?>);
         });
+      <?php endforeach; ?>
     </script>
 </body>
 </html>
