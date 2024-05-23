@@ -345,7 +345,8 @@ class TeacherController extends BaseController
             $allGrades['sub'.$s['id']] = $this->grade->select('student_grades.student_id, idnum, school_year, subject, AVG(grade) as GWA, CONCAT(first_name,\' \', last_name) as student, name, subject_name, teacher_id, quarter')
             ->join('teachers','student_grades.teacher_account = teachers.id','inner')
             ->join('admissions','student_grades.student_id = admissions.student_id','inner')->join('student_learner','student_learner.account_id = admissions.account_id','inner')
-            ->join('sections','sections.id = admissions.section','inner')->join('subjects','subjects.id = student_grades.subject','inner')->where('teacher_id', $teachid)->where('subject', $s['id'])->where('school_year','2023-2024')->groupBy('student_grades.student_id')->orderBy('GWA','DESC')->limit(10)->findAll();
+            ->join('sections','sections.id = admissions.section','inner')->join('subjects','subjects.id = student_grades.subject','inner')->where('teacher_id', $teachid)->where('subject', $s['id'])->where('school_year','2023-2024')
+            ->groupBy('student_grades.student_id, student_grades.quarter, teachers.idnum, student_learner.last_name, student_learner.first_name')->orderBy('GWA','DESC')->limit(10)->findAll();
 
             }
             

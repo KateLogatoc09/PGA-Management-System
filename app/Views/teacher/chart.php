@@ -56,6 +56,7 @@
             const ctx<?=$all['id']?> = document.getElementById('gradesChart<?=$all['id']?>').getContext('2d');
             const grades<?=$all['id']?> = [<?php foreach(${'sub'.$all['id']} as $grades):?><?= $grades['GWA']?>,<?php endforeach;?>];
             const names<?=$all['id']?> = [<?php foreach(${'sub'.$all['id']} as $name):?>"<?= $name['student']?>",<?php endforeach;?>];
+            const subject<?=$all['id']?> = [<?php foreach(${'sub'.$all['id']} as $subject):?>"Grade in <?= $subject['subject_name']?>",<?php endforeach;?>];
 
             // Create gradient fill for wave effect
             const gradient<?=$all['id']?> = ctx<?=$all['id']?>.createLinearGradient(0, 0, 0, 400);
@@ -66,7 +67,7 @@
             const data<?=$all['id']?> = {
                 labels: names<?=$all['id']?>,
                 datasets: [{
-                    label: 'GWA',
+                    label: subject<?=$all['id']?>,
                     data: grades<?=$all['id']?>,
                     backgroundColor: gradient<?=$all['id']?>,
                     borderColor: 'rgba(75, 192, 192, 1)',
