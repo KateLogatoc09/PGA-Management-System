@@ -90,7 +90,9 @@
                         <br>
                       </div>
                     </div>
+                    
                   </div>
+                  <a href="/editlearner/<?= $learn['id'] ?>" class="btn btn-primary">Edit</a>
                 </div>
               </div>
 
@@ -112,7 +114,7 @@
                         <?= $a['tel_num'] ?>
                         <br>
                       </div>
-
+                      <center><a href="/editaddress/<?= $a['id'] ?>" class="btn btn-primary">Edit</a></center>
                     </div>
 
                     <div class="col-sm-5">
@@ -153,8 +155,9 @@
                         <h7 class="orange">Occupation:</h7>
                         <?= $f['occupation'] ?>
                         <br>
-                      </div>
 
+                      </div>
+                      <center><a href="/editfamily/<?= $f['id'] ?>" class="btn btn-primary">Edit</a></center>
                     </div>
 
                     <div class="col-sm-5">
@@ -189,7 +192,7 @@
                         <?= $s['affiliation'] ?>
                         <br>
                       </div>
-
+                      <center><a href="/editsibling/<?= $s['id'] ?>" class="btn btn-primary">Edit</a></center>
                     </div>
 
                     <div class="col-sm-5">
@@ -219,7 +222,7 @@
                         <?= $s['period'] ?>
                         <br>
                       </div>
-
+                      <center><a href="/editschool/<?= $s['id'] ?>" class="btn btn-primary">Edit</a></center>
                     </div>
 
                     <div class="col-sm-5">

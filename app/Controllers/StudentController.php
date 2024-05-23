@@ -175,4 +175,268 @@ public function savepermit() {
     return redirect()->to('permit');
 }
 
+public function editlearner($id)
+{
+    $data = [
+        'learn' => $this->learner->where('id', $id)->first(),
+    ];
+
+    return view('editlearner', $data);
+} 
+
+public function saveEditLearner()  {
+    $session = session();
+    $id = $_POST['id'];
+    $photo = $this->request->getFile('photo');
+    $check = $this->learner->select('photo')->where('account_id',$id)->first();
+    
+    if($photo != null) {
+
+        if($id != null) {
+            $test = $photo->move(PUBLIC_PATH.'\\account\\'.$id.'\\');
+            $name = $photo->getClientPath();
+            $path = '/account/'.$id.'/'.$name;
+        } else {
+            $test = $photo->move(PUBLIC_PATH.'\\account\\'.$this->request->getVar('account_id').'\\');
+            $name = $photo->getClientPath();
+            $path = '/account/'.$this->request->getVar('account_id').'/'.$name;
+        }
+
+        $data = [
+            'id' => $this->request->getVar('id'),
+            'first_name' => $this->request->getVar('first_name'),
+            'middle_name' => $this->request->getVar('middle_name'),
+            'last_name' => $this->request->getVar('last_name'),
+            'nickname' => $this->request->getVar('nickname'),
+            'age' => $this->request->getVar('age'),
+            'gender' => $this->request->getVar('gender'),
+            'marital_status' => $this->request->getVar('marital_status'),
+            'birthdate' => $this->request->getVar('birthdate'),
+            'birthplace' => $this->request->getVar('birthplace'),
+            'mobile_num' => $this->request->getVar('mobile_num'),
+            'nationality' => $this->request->getVar('nationality'),
+            'religion' => $this->request->getVar('religion'),
+            'photo' => $path,
+            'account_id' => $this->request->getVar('account_id'),
+        ];
+
+        if ($id != null) {
+            if($check) {
+            unlink(PUBLIC_PATH.Implode($check));
+            }
+            $res = $this->learner->set($data)->where('id', $id)->update();
+            if($res) {
+                $session->setFlashdata('msg','Updated Successfully.');
+            } else {
+                $session->setFlashdata('msg','Something went wrong. Please try again later.');
+            }
+            
+        } else {
+            $res = $this->learner->save($data);
+            if($res) {
+                $session->setFlashdata('msg','Saved Successfully.');
+            } else {
+                $session->setFlashdata('msg','Something went wrong. Please try again later.');
+            }
+        }  
+    } else  {
+        $data = [
+            'id' => $this->request->getVar('id'),
+            'first_name' => $this->request->getVar('first_name'),
+            'middle_name' => $this->request->getVar('middle_name'),
+            'last_name' => $this->request->getVar('last_name'),
+            'nickname' => $this->request->getVar('nickname'),
+            'age' => $this->request->getVar('age'),
+            'gender' => $this->request->getVar('gender'),
+            'marital_status' => $this->request->getVar('marital_status'),
+            'birthdate' => $this->request->getVar('birthdate'),
+            'birthplace' => $this->request->getVar('birthplace'),
+            'mobile_num' => $this->request->getVar('mobile_num'),
+            'nationality' => $this->request->getVar('nationality'),
+            'religion' => $this->request->getVar('religion'),
+            'account_id' => $this->account->select('id')->where('username', $_SESSION['username'])->first(),
+        ];
+
+        if ($id != null) {
+            $res = $this->learner->set($data)->where('id', $id)->update();
+            if($res) {
+                $session->setFlashdata('msg','Updated Successfully.');
+            } else {
+                $session->setFlashdata('msg','Something went wrong. Please try again later.');
+            }
+            
+        } else {
+            $res = $this->learner->save($data);
+            if($res) {
+                $session->setFlashdata('msg','Saved Successfully.');
+            } else {
+                $session->setFlashdata('msg','Something went wrong. Please try again later.');
+            }
+        } 
+    }
+    return redirect()->to('student');
+}
+
+public function editaddress($id)
+{
+    $data = [
+         'add' => $this->address->where('id', $id)->first(),
+    ];
+
+    return view('editaddress', $data);
+}
+
+public function saveEditAddress()  {
+    $session = session();
+    $id = $_POST['id'];
+    $data = [
+        'id' => $this->request->getVar('id'),
+        'type' => $this->request->getVar('type'),
+        'region' => $this->request->getVar('region'),
+        'province' => $this->request->getVar('province'),
+        'municipality' => $this->request->getVar('municipality'),
+        'barangay' => $this->request->getVar('barangay'),
+        'postal_code' => $this->request->getVar('postal_code'),
+        'tel_num' => $this->request->getVar('tel_num'),
+        'account_id' => $this->request->getVar('account_id'),
+    ];
+
+    if ($id != null) {
+        $res = $this->address->set($data)->where('id', $id)->update();
+        if($res) {
+            $session->setFlashdata('msg','Updated Successfully.');
+        } else {
+            $session->setFlashdata('msg','Something went wrong. Please try again later.');
+        }
+    } else {
+        $res = $this->address->save($data);
+        if($res) {
+            $session->setFlashdata('msg','Saved Successfully.');
+        } else {
+            $session->setFlashdata('msg','Something went wrong. Please try again later.');
+        }
+    }  
+    return redirect()->to('student');
+}
+
+public function editfamily($id)
+{
+    $data = [
+       'fam' => $this->family->where('id', $id)->first(),
+    ];
+
+    return view('editfamily', $data);
+}
+
+public function saveEditFamily()  {
+    $session = session();
+    $id = $_POST['id'];
+    $data = [
+        'id' => $this->request->getVar('id'),
+        'relation' => $this->request->getVar('relation'), 
+        'fullname' => $this->request->getVar('fullname'), 
+        'res_add' => $this->request->getVar('res_add'),
+        'off_add' => $this->request->getVar('off_add'), 
+        'mob_num' => $this->request->getVar('mob_num'), 
+        'off_num' => $this->request->getVar('off_num'), 
+        'email' => $this->request->getVar('email'), 
+        'occupation' => $this->request->getVar('occupation'),
+        'account_id' => $this->request->getVar('account_id'),
+    ];
+
+    if ($id != null) {
+        $res = $this->family->set($data)->where('id', $id)->update();
+        if($res) {
+            $session->setFlashdata('msg','Updated Successfully.');
+        } else {
+            $session->setFlashdata('msg','Something went wrong. Please try again later.');
+        }
+    } else {
+        $res = $this->family->save($data);
+        if($res) {
+            $session->setFlashdata('msg','Saved Successfully.');
+        } else {
+            $session->setFlashdata('msg','Something went wrong. Please try again later.');
+        }
+    }  
+    return redirect()->to('student');
+}
+
+public function editsibling($id)
+{
+    $data = [
+        'sib' => $this->sibling->where('id', $id)->first(),
+    ];
+
+    return view('editsibling', $data);
+}
+
+public function saveEditSibling()  {
+    $session = session();
+    $id = $_POST['id'];
+    $data = [
+        'id' => $this->request->getVar('id'),
+        'fullname' => $this->request->getVar('fullname'),
+        'yr_lvl' => $this->request->getVar('yr_lvl'),
+        'affiliation' => $this->request->getVar('affiliation'),
+        'account_id' => $this->request->getVar('account_id'),
+    ];
+
+    if ($id != null) {
+        $res = $this->sibling->set($data)->where('id', $id)->update();
+        if($res) {
+            $session->setFlashdata('msg','Updated Successfully.');
+        } else {
+            $session->setFlashdata('msg','Something went wrong. Please try again later.');
+        }
+    } else {
+        $res = $this->sibling->save($data);
+        if($res) {
+            $session->setFlashdata('msg','Saved Successfully.');
+        } else {
+            $session->setFlashdata('msg','Something went wrong. Please try again later.');
+        }
+    }  
+    return redirect()->to('student');
+}
+
+public function editschool($id)
+{
+    $data = [
+        'sch' => $this->school->where('id', $id)->first(),
+    ];
+
+    return view('editschool', $data);
+}
+
+public function saveEditSchool()  {
+    $session = session();
+    $id = $_POST['id'];
+    $data = [
+        'id' => $this->request->getVar('id'),
+        'grade' => $this->request->getVar('grade'),
+        'school_name' => $this->request->getVar('school_name'),
+        'level' => $this->request->getVar('level'),
+        'period' => $this->request->getVar('period'),
+        'account_id' => $this->request->getVar('account_id'),
+    ];
+
+    if ($id != null) {
+        $res = $this->school->set($data)->where('id', $id)->update();
+        if($res) {
+            $session->setFlashdata('msg','Updated Successfully.');
+        } else {
+            $session->setFlashdata('msg','Something went wrong. Please try again later.');
+        }
+    } else {
+        $res = $this->school->save($data);
+        if($res) {
+            $session->setFlashdata('msg','Saved Successfully.');
+        } else {
+            $session->setFlashdata('msg','Something went wrong. Please try again later.');
+        }
+    }  
+    return redirect()->to('student');
+}
+
 }

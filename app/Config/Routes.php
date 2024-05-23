@@ -92,6 +92,16 @@ $routes->get('/studgrade', 'StudentController::studgrade', ['filter' => 'student
 $routes->get('/searchLibrary', 'StudentController::searchLibrary', ['filter' => 'student']);
 $routes->post('/studentborrowBook', 'StudentController::studentborrowBook', ['filter' => 'student']);
 $routes->post('/savepermit', 'StudentController::savepermit', ['filter' => 'student']);
+$routes->get('/editlearner/(:any)', 'StudentController::editlearner/$1', ['filter' => 'student']);
+$routes->post('/saveEditLearner', 'StudentController::saveEditLearner', ['filter' => 'student']);
+$routes->get('/editaddress/(:any)', 'StudentController::editaddress/$1', ['filter' => 'student']);
+$routes->post('/saveEditAddress', 'StudentController::saveEditAddress', ['filter' => 'student']);
+$routes->get('/editfamily/(:any)', 'StudentController::editfamily/$1', ['filter' => 'student']);
+$routes->post('/saveEditFamily', 'StudentController::saveEditFamily', ['filter' => 'student']);
+$routes->get('/editschool/(:any)', 'StudentController::editschool/$1', ['filter' => 'student']);
+$routes->post('/saveEditSchool', 'StudentController::saveEditSchool', ['filter' => 'student']);
+$routes->get('/editsibling/(:any)', 'StudentController::editsibling/$1', ['filter' => 'student']);
+$routes->post('/saveEditSibling', 'StudentController::saveEditSibling', ['filter' => 'student']);
 
 //STUDENT ENROLL
 $routes->get('/learner', 'EnrollmentController::learner', ['filter' => 'student']);
