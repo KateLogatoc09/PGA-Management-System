@@ -17,7 +17,7 @@
           <!-- Content -->
 
           <div class="container-xxl flex-grow-1 container-p-y">
-          <h5 class="card-title text-white">General Portal</h5>
+          <h1 class="center white">GENERAL PORTAL</h1>   
           <?php if($_SESSION['role'] == 'GENERAL'): ?>
           <div class="row mb-3">
             <!-- Student -->
