@@ -1,5 +1,6 @@
-<!-- Pagination Logic -->
 <?php
+$config    = new \Config\Encryption(); 
+$encrypter = \Config\Services::encrypter($config);
 // Define the number of records per page
       $recordsPerPage = 5;
 
@@ -80,7 +81,7 @@
                                 <tbody>
                                 <?php foreach ($sectionSubset as $ad): ?>
                                     <tr>
-                                            <td> <a href="/expandStudent/<?= $ad['account_id'] ?>" class="btn btn-info btn-sm">Expand</a></td>
+                                            <td> <a href="/expandStudent/<?php echo bin2hex($encrypter->encrypt($ad['account_id'])); ?>" class="btn btn-info btn-sm">Expand</a></td>
                                             <td><?= $ad['student_id'] ?></td>
                                             <td><?= $ad['last_name'] ?>,</td>
                                             <td><?= $ad['first_name'] ?></td>

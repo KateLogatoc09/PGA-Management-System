@@ -17,7 +17,7 @@ use SimpleSoftwareIO\QrCode\Generator;
 
 class TeacherController extends BaseController
 {
-    private $grade, $subjects, $acc, $teacher, $admissions, $learner, $sections, $family, $address;
+    private $grade, $subjects, $acc, $teacher, $admissions, $learner, $sections, $family, $address, $config, $encrypter;
     public function __construct()
     {
         $this->grade = new GradeModel();
@@ -29,6 +29,8 @@ class TeacherController extends BaseController
         $this->teacher = new TeacherModel();
         $this->admissions = new AdmissionsModel();
         $this->learner = new LearnerModel();
+        $this->config    = new \Config\Encryption();  
+        $this->encrypter = \Config\Services::encrypter($this->config);
     }
 
     
@@ -157,7 +159,7 @@ class TeacherController extends BaseController
 
     public function expandStudent($id)
     {
-     $expand = $this->acc->select('id')->where('id', $id)->first();
+     $expand = $this->acc->select('id')->where('id', $this->encrypter->decrypt(hex2bin($id)))->first();
      $admi = $this->admissions->select('student_id')->where('account_id', $expand)->first();
      $sub = $this->grade->select('student_id')->where('student_grades.student_id', $admi)->first();
      
@@ -290,7 +292,7 @@ class TeacherController extends BaseController
         public function deleteGrade($id)
         {
             $session = session();
-            $res = $this->grade->delete($id);
+            $res = $this->grade->delete($this->encrypter->decrypt(hex2bin($id)));
             if($res) {
                 $session->setFlashdata('msg','Deleted Successfully.');
             } else {
@@ -314,7 +316,7 @@ class TeacherController extends BaseController
                     'learner' => $this->admissions->select('admissions.student_id as id, student_id, first_name, middle_name, last_name')->join('student_learner','student_learner.account_id = admissions.account_id','inner')
                     ->join('sections','sections.id = admissions.section','inner')->orderBy('student_learner.last_name')->FindAll(),
                     'subject' => $this->subjects->findAll(),
-                'gr' => $this->grade->where('id', $id)->first(),
+                'gr' => $this->grade->where('id', $this->encrypter->decrypt(hex2bin($id)))->first(),
             ];
     
             return view('grade', $data);

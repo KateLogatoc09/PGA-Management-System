@@ -1,3 +1,7 @@
+<?php
+$config    = new \Config\Encryption(); 
+$encrypter = \Config\Services::encrypter($config);
+?>
 <body style="background-image:url('<?= base_url() ?>img/pgaBG.png');background-repeat:no-repeat;background-attachment:fixed;background-size:cover">
 <?php $session = session()?>
   <!-- Layout wrapper -->
@@ -90,8 +94,8 @@
                                             <td><?= $teach['address'] ?></td>
                                             <td><?= $teach['phone'] ?></td>
                                             <td><?= $teach['account_id'] ?></td>
-                                            <td> <a href="/deleteteacher/<?= $teach['id'] ?>" class="btn btn-danger btn-sm" id="d<?=$x?>">Delete</a>
-                                            <a href="/editteacher/<?= $teach['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
+                                            <td> <a href="/deleteteacher/<?php echo bin2hex($encrypter->encrypt($teach['id'])); ?>" class="btn btn-danger btn-sm" id="d<?=$x?>">Delete</a>
+                                            <a href="/editteacher/<?php echo bin2hex($encrypter->encrypt($teach['id'])); ?>" class="btn btn-primary btn-sm">Edit</a></td>
                                     </tr>
                                 <?php $x++; endforeach ?>
                                 </tbody>

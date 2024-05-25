@@ -1,3 +1,21 @@
+<?php
+$config    = new \Config\Encryption(); 
+$encrypter = \Config\Services::encrypter($config);
+// Define the number of records per page
+$recordsPerPage = 5;
+
+// Calculate the total number of pages
+$totalPages = ceil(count($booky) / $recordsPerPage);
+
+// Get the current page number from the query string, default to 1 if not set
+$currentPage = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
+
+// Calculate the offset for the subset of records to be displayed on the current page
+$offset = ($currentPage - 1) * $recordsPerPage;
+
+// Get a subset of records for the current page
+$subset = array_slice($booky, $offset, $recordsPerPage);
+?>
 <body style="background-image:url('<?= base_url() ?>img/pgaBG.png');background-repeat:no-repeat;background-attachment:fixed;background-size:cover">
   <!-- Layout wrapper -->
   <div class="layout-wrapper layout-content-navbar d-flex align-items-center justify-content-center">
@@ -69,16 +87,7 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <!-- Pagination Logic -->
-                        <?php
-                        $recordsPerPage = 5;
-                        $totalPages = ceil(count($booky) / $recordsPerPage);
-                        $currentPage = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
-                        $offset = ($currentPage - 1) * $recordsPerPage;
-                        $subset = array_slice($booky, $offset, $recordsPerPage);
-                        $x = 1;
-                        foreach ($subset as $book) :
-                        ?>
+                      <?php $x = 1;  foreach ($subset as $book): ?>
                           <tr>
                             <td><?= $book['book_title'] ?></td>
                             <td><?= $book['book_number'] ?></td>
@@ -94,8 +103,8 @@
                             <td><?= $book['datepublish'] ?></td>
                             <td><?= $book['status'] ?></td>
                             <td>
-                              <a href="/deleteBook/<?= $book['id'] ?>" class="btn btn-danger btn-sm" id="d<?=$x?>">Delete</a>
-                              <a href="/editBook/<?= $book['id'] ?>" class="btn btn-primary btn-sm">Edit</a>
+                              <a href="/deleteBook/<?php echo bin2hex($encrypter->encrypt($book['id'])); ?>" class="btn btn-danger btn-sm" id="d<?=$x?>">Delete</a>
+                              <a href="/editBook/<?php echo bin2hex($encrypter->encrypt($book['id'])); ?>" class="btn btn-primary btn-sm">Edit</a>
                             </td>
                           </tr>
                         <?php $x++; endforeach ?>

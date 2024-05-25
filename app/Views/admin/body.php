@@ -1,3 +1,7 @@
+<?php
+$config    = new \Config\Encryption(); 
+$encrypter = \Config\Services::encrypter($config);
+?>
 <body style="background-image:url('<?= base_url() ?>img/pgaBG.png');background-repeat:no-repeat;background-attachment:fixed;background-size:cover">
 <?php $session = session()?>
   <!-- Layout wrapper -->
@@ -83,8 +87,8 @@
                                         <td><?= $accy['suspension'] ?></td>
                                         <td><?= $accy['activity'] ?></td>
                                         <td>
-                                            <a href="/deleteAccount/<?= $accy['id'] ?>" class="btn btn-danger btn-sm" id="d<?=$x?>">Delete</a>
-                                            <a href="/editAccount/<?= $accy['id'] ?>" class="btn btn-primary btn-sm">Edit</a>
+                                            <a href="/deleteAccount/<?php echo bin2hex($encrypter->encrypt($accy['id'])); ?>" class="btn btn-danger btn-sm" id="d<?=$x?>">Delete</a>
+                                            <a href="/editAccount/<?php echo bin2hex($encrypter->encrypt($accy['id'])); ?>" class="btn btn-primary btn-sm">Edit</a>
                                         </td>
                                     </tr>
                                 <?php $x++; endforeach ?>
@@ -159,7 +163,7 @@
                                             <option value="LIBRARIAN" <?php if(isset($acc["role"])) { if($acc["role"] == "LIBRARIAN") { echo "selected"; }} ?>>Librarian</option> 
                                             <option value="AAC" <?php if(isset($acc["role"])) { if($acc["role"] == "AAC") { echo "selected"; }} ?>>Academic Affairs Coordinator</option> 
                                             <option value="GUARD" <?php if(isset($acc["role"])) { if($acc["role"] == "GUARD") { echo "selected"; }} ?>>Guard</option> 
-                                           <!--<option value="ADMIN">Admin</option>-->
+
                                             <!--<option value="DAC">Disciplinary Affairs Coordinator</option>
                                             <option value="IAC">Internal Affairs Coordinator</option>
                                             <option value="SAC">Student Affairs Coordinator</option>-->

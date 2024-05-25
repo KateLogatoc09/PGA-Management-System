@@ -1,4 +1,6 @@
 <?php
+$config    = new \Config\Encryption(); 
+$encrypter = \Config\Services::encrypter($config);
 // Define the number of records per page
 $recordsPerPage = 5;
 
@@ -73,8 +75,8 @@ $sectionSubset = array_slice($stud_section, $offset, $recordsPerPage);
                                             <td><?= $ad['name'] ?></td>
                                             <td><?= $ad['grade_level_id'] ?></td>
                                             <td><?= $ad['lname'] ?>, <?= $ad['fname'] ?> <?= $ad['mname'] ?></td>
-                                            <td> <a href="/aacdeleteSection/<?= $ad['id'] ?>" class="btn btn-danger btn-sm" id="d<?=$x?>">Delete</a>
-                                            <a href="/aaceditSection/<?= $ad['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
+                                            <td> <a href="/aacdeleteSection/<?php echo bin2hex($encrypter->encrypt($ad['id'])); ?>" class="btn btn-danger btn-sm" id="d<?=$x?>">Delete</a>
+                                            <a href="/aaceditSection/<?php echo bin2hex($encrypter->encrypt($ad['id'])); ?>" class="btn btn-primary btn-sm">Edit</a></td>
                                      </tr>
                                 <?php $x++; endforeach ?>
                                 </tbody>

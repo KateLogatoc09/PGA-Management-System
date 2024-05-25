@@ -11,7 +11,7 @@ use App\Controllers\BaseController;
 
 class AACController extends BaseController
 {
-    private $section, $subjects, $learner, $teacher, $schedule;
+    private $section, $subjects, $learner, $teacher, $schedule, $config, $encrypter;
     public function __construct()
     {
         $this->sections = new Sections();
@@ -19,6 +19,8 @@ class AACController extends BaseController
         $this->teacher = new TeacherModel();
         $this->learner = new LearnerModel();
         $this->schedule = new ScheduleModel();
+        $this->config    = new \Config\Encryption();  
+        $this->encrypter = \Config\Services::encrypter($this->config);
     }
 
     public function AAC(){
@@ -169,7 +171,7 @@ class AACController extends BaseController
         public function aacdeleteSection($id)
         {
             $session = session();
-            $res = $this->sections->delete($id);
+            $res = $this->sections->delete($this->encrypter->decrypt(hex2bin($id)));
             if($res) {
                 $session->setFlashdata('msg','Deleted Successfully.');
             } else {
@@ -185,7 +187,7 @@ class AACController extends BaseController
                 'stud_section' => $this->sections->select('sections.id as id, name, grade_level_id, adviser, fname, mname, lname')
                 ->join('teachers','sections.adviser = teachers.idnum','inner')->findAll(),
                 'teacher' => $this->teacher->orderBy('lname')->findAll(),
-                'sec' => $this->sections->where('id', $id)->first(),
+                'sec' => $this->sections->where('id', $this->encrypter->decrypt(hex2bin($id)))->first(),
             ];
     
             return view('aacsections', $data);
@@ -260,7 +262,7 @@ class AACController extends BaseController
         public function aacdeleteSubject($id)
         {
             $session = session();
-            $res = $this->subjects->delete($id);
+            $res = $this->subjects->delete($this->encrypter->decrypt(hex2bin($id)));
             if($res) {
                 $session->setFlashdata('msg','Deleted Successfully.');
             } else {
@@ -276,7 +278,7 @@ class AACController extends BaseController
                 'subject' => $this->subjects->select('subjects.id as id, subject_name, type, teacher_id, yr_lvl, fname, mname, lname')
                 ->join('teachers','subjects.teacher_id = teachers.idnum','inner')->orderBy('subject_name')->findAll(),
                 'teacher' => $this->teacher->orderBy('lname')->findAll(),
-                'sub' => $this->subjects->where('id', $id)->first(),
+                'sub' => $this->subjects->where('id', $this->encrypter->decrypt(hex2bin($id)))->first(),
             ];
     
             return view('aacsubjects', $data);

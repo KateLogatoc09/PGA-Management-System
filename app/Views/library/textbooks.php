@@ -1,3 +1,7 @@
+<?php
+$config    = new \Config\Encryption(); 
+$encrypter = \Config\Services::encrypter($config);
+?>
 <body style="background-image:url('<?= base_url() ?>img/pgaBG.png');background-repeat:no-repeat;background-attachment:fixed;background-size:cover">
   <!-- Layout wrapper -->
   <div class="layout-wrapper layout-content-navbar d-flex align-items-center justify-content-center">
@@ -94,8 +98,8 @@
                             <td><?= $book['datepublish'] ?></td>
                             <td><?= $book['status'] ?></td>
                             <td>
-                              <a href="/deleteBook/<?= $book['id'] ?>" class="btn btn-danger btn-sm" id="d1<?=$x?>">Delete</a>
-                              <a href="/editBook/<?= $book['id'] ?>" class="btn btn-primary btn-sm">Edit</a>
+                              <a href="/deleteBook/<?php echo bin2hex($encrypter->encrypt($book['id'])); ?>" class="btn btn-danger btn-sm" id="d1<?=$x?>">Delete</a>
+                              <a href="/editBook/<?php echo bin2hex($encrypter->encrypt($book['id'])); ?>" class="btn btn-primary btn-sm">Edit</a>
                             </td>
                           </tr>
                         <?php $x++; endforeach ?>
@@ -213,8 +217,8 @@
                             <td><?= $book['datepublish'] ?></td>
                             <td><?= $book['status'] ?></td>
                             <td>
-                              <a href="/deleteBook/<?= $book['id'] ?>" class="btn btn-danger btn-sm" id="d<?=$a?>">Delete</a>
-                              <a href="/editBook/<?= $book['id'] ?>" class="btn btn-primary btn-sm">Edit</a>
+                              <a href="/deleteBook/<?php echo bin2hex($encrypter->encrypt($book['id'])); ?>" class="btn btn-danger btn-sm" id="d<?=$a?>">Delete</a>
+                              <a href="/editBook/<?php echo bin2hex($encrypter->encrypt($book['id'])); ?>" class="btn btn-primary btn-sm">Edit</a>
                             </td>
                           </tr>
                         <?php $a++; endforeach ?>

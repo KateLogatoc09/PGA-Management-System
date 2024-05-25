@@ -18,7 +18,8 @@ use App\Models\PermitModel;
 
 class StudentController extends BaseController
 {
-    private $book, $borrowedBook, $enrollment, $learner, $family, $address, $admissions, $grade, $sibling, $school, $acc, $permit;
+    private $book, $borrowedBook, $enrollment, $learner, $family, $address, $admissions, $grade, $sibling, 
+    $school, $acc, $permit, $config, $encrypter;
     public function __construct()
     {
         $this->learner = new LearnerModel();
@@ -32,6 +33,8 @@ class StudentController extends BaseController
         $this->book = new AddBooksModel();
         $this->grade = new GradeModel();
         $this->permit = new PermitModel();
+        $this->config    = new \Config\Encryption();  
+        $this->encrypter = \Config\Services::encrypter($this->config);
     }
 
     public function index()
@@ -178,7 +181,7 @@ public function savepermit() {
 public function editlearner($id)
 {
     $data = [
-        'learn' => $this->learner->where('id', $id)->first(),
+        'learn' => $this->learner->where('id', $this->encrypter->decrypt(hex2bin($id)))->first(),
     ];
 
     return view('editlearner', $data);
@@ -280,7 +283,7 @@ public function saveEditLearner()  {
 public function editaddress($id)
 {
     $data = [
-         'add' => $this->address->where('id', $id)->first(),
+         'add' => $this->address->where('id', $this->encrypter->decrypt(hex2bin($id)))->first(),
     ];
 
     return view('editaddress', $data);
@@ -322,7 +325,7 @@ public function saveEditAddress()  {
 public function editfamily($id)
 {
     $data = [
-       'fam' => $this->family->where('id', $id)->first(),
+       'fam' => $this->family->where('id', $this->encrypter->decrypt(hex2bin($id)))->first(),
     ];
 
     return view('editfamily', $data);
@@ -365,7 +368,7 @@ public function saveEditFamily()  {
 public function editsibling($id)
 {
     $data = [
-        'sib' => $this->sibling->where('id', $id)->first(),
+        'sib' => $this->sibling->where('id', $this->encrypter->decrypt(hex2bin($id)))->first(),
     ];
 
     return view('editsibling', $data);
@@ -403,7 +406,7 @@ public function saveEditSibling()  {
 public function editschool($id)
 {
     $data = [
-        'sch' => $this->school->where('id', $id)->first(),
+        'sch' => $this->school->where('id', $this->encrypter->decrypt(hex2bin($id)))->first(),
     ];
 
     return view('editschool', $data);

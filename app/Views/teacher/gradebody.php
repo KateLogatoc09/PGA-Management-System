@@ -1,3 +1,21 @@
+<?php
+$config    = new \Config\Encryption(); 
+$encrypter = \Config\Services::encrypter($config);
+// Define the number of records per page
+$recordsPerPage = 5;
+
+// Calculate the total number of pages
+$totalPages = ceil(count($grade) / $recordsPerPage);
+
+// Get the current page number from the query string, default to 1 if not set
+$currentPage = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
+
+// Calculate the offset for the subset of records to be displayed on the current page
+$offset = ($currentPage - 1) * $recordsPerPage;
+
+// Get a subset of records for the current page
+$subset = array_slice($grade, $offset, $recordsPerPage);
+?>
 <body style="background-image:url('<?= base_url() ?>img/pgaBG.png');background-repeat:no-repeat;background-attachment:fixed;background-size:cover">
 <?php $session = session()?>
   <!-- Layout wrapper -->
@@ -63,26 +81,7 @@
                                 </thead>
                                 <tbody>
                                 <!-- Pagination Logic -->
-                                <?php
-                                // Define the number of records per page
-                                $recordsPerPage = 5;
-
-                                // Calculate the total number of pages
-                                $totalPages = ceil(count($grade) / $recordsPerPage);
-
-                                // Get the current page number from the query string, default to 1 if not set
-                                $currentPage = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
-
-                                // Calculate the offset for the subset of records to be displayed on the current page
-                                $offset = ($currentPage - 1) * $recordsPerPage;
-
-                                // Get a subset of records to display based on the current page and records per page
-                                $subset = array_slice($grade, $offset, $recordsPerPage);
-
-                                // Loop through the subset of records to display
-                                $x = 1;
-                                foreach ($subset as $g) :
-                                ?>
+                                <?php $x = 1;  foreach ($subset as $g): ?>
                                     <tr>
                                             <td><?= $g['student_id'] ?></td>
                                             <td><?= $g['last_name'] ?>, <?= $g['first_name'] ?> <?= $g['middle_name'] ?></td>
@@ -92,8 +91,8 @@
                                             <td><?= $g['quarter'] ?></td>
                                             <td><?= $g['school_year'] ?></td>
                                             <td><?= $g['idnum'] ?></td>
-                                            <td> <a href="/deleteGrade/<?= $g['id'] ?>" class="btn btn-danger btn-sm" id="d<?=$x?>">Delete</a>
-                                            <a href="/editGrade/<?= $g['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
+                                            <td> <a href="/deleteGrade/<?php echo bin2hex($encrypter->encrypt($g['id'])); ?>" class="btn btn-danger btn-sm" id="d<?=$x?>">Delete</a>
+                                            <a href="/editGrade/<?php echo bin2hex($encrypter->encrypt($g['id'])); ?>" class="btn btn-primary btn-sm">Edit</a></td>
                                     </tr>
                                 <?php $x++; endforeach ?>
                                 <!-- End Pagination Logic -->

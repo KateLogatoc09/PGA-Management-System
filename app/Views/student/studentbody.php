@@ -1,3 +1,7 @@
+<?php
+$config    = new \Config\Encryption(); 
+$encrypter = \Config\Services::encrypter($config);
+?>
 <body style="background-image:url('<?= base_url() ?>img/pgaBG.png');background-repeat:no-repeat;background-attachment:fixed;background-size:cover">
 <?php $session = session()?>
   <!-- Layout wrapper -->
@@ -92,7 +96,7 @@
                     </div>
                     
                   </div>
-                  <a href="/editlearner/<?= $learn['id'] ?>" class="btn btn-primary">Edit</a>
+                  <a href="/editlearner/<?php echo bin2hex($encrypter->encrypt($learn['id'])); ?>" class="btn btn-primary">Edit</a>
                 </div>
               </div>
 
@@ -114,7 +118,7 @@
                         <?= $a['tel_num'] ?>
                         <br>
                       </div>
-                      <center><a href="/editaddress/<?= $a['id'] ?>" class="btn btn-primary">Edit</a></center>
+                      <center><a href="/editaddress/<?php echo bin2hex($encrypter->encrypt($a['id'])); ?>" class="btn btn-primary">Edit</a></center>
                     </div>
 
                     <div class="col-sm-5">
@@ -157,7 +161,7 @@
                         <br>
 
                       </div>
-                      <center><a href="/editfamily/<?= $f['id'] ?>" class="btn btn-primary">Edit</a></center>
+                      <center><a href="/editfamily/<?php echo bin2hex($encrypter->encrypt($f['id'])); ?>" class="btn btn-primary">Edit</a></center>
                     </div>
 
                     <div class="col-sm-5">
@@ -192,7 +196,7 @@
                         <?= $s['affiliation'] ?>
                         <br>
                       </div>
-                      <center><a href="/editsibling/<?= $s['id'] ?>" class="btn btn-primary">Edit</a></center>
+                      <center><a href="/editsibling/<?php echo bin2hex($encrypter->encrypt($s['id'])); ?>" class="btn btn-primary">Edit</a></center>
                     </div>
 
                     <div class="col-sm-5">
@@ -222,7 +226,7 @@
                         <?= $s['period'] ?>
                         <br>
                       </div>
-                      <center><a href="/editschool/<?= $s['id'] ?>" class="btn btn-primary">Edit</a></center>
+                      <center><a href="/editschool/<?php echo bin2hex($encrypter->encrypt($s['id'])); ?>" class="btn btn-primary">Edit</a></center>
                     </div>
 
                     <div class="col-sm-5">

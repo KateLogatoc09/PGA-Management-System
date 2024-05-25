@@ -11,19 +11,21 @@ use App\Models\FeedbackModel;
 class AdminController extends BaseController
 {
     
-    private $teacher, $account, $feedback, $announce;
+    private $teacher, $account, $feedback, $announce, $config, $encrypter;
     public function __construct()
     {
         $this->teacher = new TeacherModel();
         $this->account = new AccountModel();
         $this->feedback = new FeedbackModel();
         $this->announce = new AnnouncementModel();
+        $this->config    = new \Config\Encryption();  
+        $this->encrypter = \Config\Services::encrypter($this->config);
     }
 
     public function index()
     {
             $data = [
-                'account' => $this->account->orderBy('username')->findAll(),
+                'account' => $this->account->where('role !=', 'ADMIN')->orderBy('username')->findAll(),
                 ];
             return view ('admin', $data);
     }
@@ -39,8 +41,9 @@ class AdminController extends BaseController
 
     public function searchAccount()
     {
+        $categ = $this->request->getVar('categ');
             $data = [
-                'account' => $this->account->like($this->request->getVar('categ'), $this->request->getVar('search'))->orLike('email', $this->request->getVar('search'))->orderBy('username')->findAll(),
+                'account' => $this->account->where('role !=', 'ADMIN')->like($categ, $this->request->getVar('search'))->orderBy('username')->findAll(),
                 ];
             return view ('admin', $data);
     }
@@ -109,7 +112,7 @@ class AdminController extends BaseController
     public function delete($id)
     {
         $session = session();
-        $res = $this->teacher->delete($id);
+        $res = $this->teacher->delete($this->encrypter->decrypt(hex2bin($id)));
         if($res) {
             $session->setFlashdata('msg','Deleted Successfully.');
         } else {
@@ -122,7 +125,7 @@ class AdminController extends BaseController
     {
         $data = [
             'teacher' => $this->teacher->findAll(),
-            'prof' => $this->teacher->where('id', $id)->first(),
+            'prof' => $this->teacher->where('id', $this->encrypter->decrypt(hex2bin($id)))->first(),
         ];
 
         return view('adminteach', $data);
@@ -161,7 +164,7 @@ class AdminController extends BaseController
     public function deleteAccount($id)
     {
         $session = session();
-        $res = $this->account->delete($id);
+        $res = $this->account->delete($this->encrypter->decrypt(hex2bin($id)));
         if($res) {
             $session->setFlashdata('msg','Deleted Successfully.');
         } else {
@@ -173,8 +176,8 @@ class AdminController extends BaseController
     public function editAccount($id)
     {
         $data = [
-            'account' => $this->account->findAll(),
-            'acc' => $this->account->where('id', $id)->first(),
+            'account' => $this->account->where('role !=', 'ADMIN')->findAll(),
+            'acc' => $this->account->where('id', $this->encrypter->decrypt(hex2bin($id)))->first(),
         ];
 
         return view('admin', $data);

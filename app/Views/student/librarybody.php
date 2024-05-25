@@ -103,6 +103,7 @@ $paginatedBooky = array_slice($booky, $offset, $recordsPerPage);
                           <th>Book Category</th>
                           <th>Book Type</th>
                           <th>Book Pages</th>
+                          <th>Book Quantity</th>
                           <th>Shelf Number</th>
                           <th>ISBN</th>
                           <th>Date Published</th>
@@ -121,6 +122,7 @@ $paginatedBooky = array_slice($booky, $offset, $recordsPerPage);
                           <td><?= $book['book_category'] ?></td>
                           <td><?= $book['book_type'] ?></td>
                           <td><?= $book['book_pages'] ?></td>
+                          <td><?= $book['book_qty'] ?></td>
                           <td><?= $book['book_shelf'] ?></td>
                           <td><?= $book['ISBN'] ?></td>
                           <td><?= $book['datepublish'] ?></td>
