@@ -83,9 +83,6 @@
                                         <input type="text" class="form-control" name="nickname" placeholder="Enter Nickname"
                                         value="<?php if (isset($learn['nickname'])) {echo $learn['nickname'];}?>">
                             
-                                    <label for="age">Age:</label>
-                                        <input type="number" class="form-control" name="age" placeholder="Enter Age"
-                                        value="<?php if (isset($learn['age'])) {echo $learn['age'];}?>">
                         </div>
 </div>
 <div class="col-sm-5 text-center text-sm-left">
