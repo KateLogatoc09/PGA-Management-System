@@ -71,6 +71,7 @@ $routes->post('/saveGrade', 'TeacherController::saveGrade', ['filter' => 'teache
 $routes->get('/deleteGrade/(:any)', 'TeacherController::deleteGrade/$1', ['filter' => 'teacher']);
 $routes->get('/editGrade/(:any)', 'TeacherController::editGrade/$1', ['filter' => 'teacher']);
 $routes->get('/expandStudent/(:any)', 'TeacherController::expandStudent/$1', ['filter' => 'teacher']);
+$routes->post('/generateGrade', 'TeacherController::generateGrade', ['filter' => 'teacher']);
 $routes->post('/teacher_qr', 'TeacherController::teacher_qr', ['filter' => 'teacher']);
 $routes->get('/advisoryClass', 'TeacherController::advisoryClass', ['filter' => 'teacher']);
 $routes->get('/searchAdvisory', 'TeacherController::searchAdvisory', ['filter' => 'teacher']);

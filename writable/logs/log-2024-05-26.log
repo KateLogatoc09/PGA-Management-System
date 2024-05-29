@@ -1,0 +1,615 @@
+CRITICAL - 2024-05-26 18:40:53 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\LibraryController.php on line 460.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\LibraryController.php', 460)
+ 2 APPPATH\Controllers\LibraryController.php(460): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->editBorrow('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 20:11:35 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\LibraryController.php on line 461.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\LibraryController.php', 461)
+ 2 APPPATH\Controllers\LibraryController.php(461): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->editBorrow('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 20:11:56 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\LibraryController.php on line 461.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\LibraryController.php', 461)
+ 2 APPPATH\Controllers\LibraryController.php(461): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->editBorrow('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 20:12:09 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\LibraryController.php on line 461.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\LibraryController.php', 461)
+ 2 APPPATH\Controllers\LibraryController.php(461): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->editBorrow('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 20:14:14 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\LibraryController.php on line 461.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\LibraryController.php', 461)
+ 2 APPPATH\Controllers\LibraryController.php(461): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->editBorrow('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 20:14:48 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\LibraryController.php on line 461.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\LibraryController.php', 461)
+ 2 APPPATH\Controllers\LibraryController.php(461): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->editBorrow('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 20:15:19 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\LibraryController.php on line 461.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\LibraryController.php', 461)
+ 2 APPPATH\Controllers\LibraryController.php(461): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->editBorrow('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 20:15:27 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\LibraryController.php on line 461.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\LibraryController.php', 461)
+ 2 APPPATH\Controllers\LibraryController.php(461): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->editBorrow('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 20:16:56 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\LibraryController.php on line 461.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\LibraryController.php', 461)
+ 2 APPPATH\Controllers\LibraryController.php(461): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->editBorrow('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 20:17:12 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\LibraryController.php on line 461.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\LibraryController.php', 461)
+ 2 APPPATH\Controllers\LibraryController.php(461): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->editBorrow('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 20:17:33 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\LibraryController.php on line 461.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\LibraryController.php', 461)
+ 2 APPPATH\Controllers\LibraryController.php(461): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->editBorrow('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 20:18:06 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\LibraryController.php on line 461.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\LibraryController.php', 461)
+ 2 APPPATH\Controllers\LibraryController.php(461): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->editBorrow('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 20:19:30 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\LibraryController.php on line 461.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\LibraryController.php', 461)
+ 2 APPPATH\Controllers\LibraryController.php(461): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->editBorrow('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 20:20:16 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\LibraryController.php on line 461.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\LibraryController.php', 461)
+ 2 APPPATH\Controllers\LibraryController.php(461): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->editBorrow('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 20:20:41 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\LibraryController.php on line 461.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\LibraryController.php', 461)
+ 2 APPPATH\Controllers\LibraryController.php(461): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->editBorrow('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 20:20:57 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\LibraryController.php on line 461.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\LibraryController.php', 461)
+ 2 APPPATH\Controllers\LibraryController.php(461): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->editBorrow('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 20:21:19 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\LibraryController.php on line 461.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\LibraryController.php', 461)
+ 2 APPPATH\Controllers\LibraryController.php(461): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->editBorrow('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 20:21:35 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\LibraryController.php on line 461.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\LibraryController.php', 461)
+ 2 APPPATH\Controllers\LibraryController.php(461): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->editBorrow('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 20:21:48 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\LibraryController.php on line 461.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\LibraryController.php', 461)
+ 2 APPPATH\Controllers\LibraryController.php(461): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->editBorrow('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 20:22:09 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\LibraryController.php on line 461.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\LibraryController.php', 461)
+ 2 APPPATH\Controllers\LibraryController.php(461): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->editBorrow('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 20:22:27 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\LibraryController.php on line 461.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\LibraryController.php', 461)
+ 2 APPPATH\Controllers\LibraryController.php(461): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->editBorrow('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 20:33:51 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\LibraryController.php on line 460.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\LibraryController.php', 460)
+ 2 APPPATH\Controllers\LibraryController.php(460): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->editBorrow('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 20:44:42 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\LibraryController.php on line 460.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\LibraryController.php', 460)
+ 2 APPPATH\Controllers\LibraryController.php(460): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->editBorrow('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 20:46:46 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\LibraryController.php on line 460.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\LibraryController.php', 460)
+ 2 APPPATH\Controllers\LibraryController.php(460): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->editBorrow('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 20:47:25 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\LibraryController.php on line 460.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\LibraryController.php', 460)
+ 2 APPPATH\Controllers\LibraryController.php(460): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->editBorrow('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 20:47:43 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\LibraryController.php on line 460.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\LibraryController.php', 460)
+ 2 APPPATH\Controllers\LibraryController.php(460): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->editBorrow('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+ERROR - 2024-05-26 20:51:02 --> mysqli_sql_exception: Unknown column '3as' in 'field list' in C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `borrowe...', 0)
+#1 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `borrowe...')
+#2 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `borrowe...')
+#3 C:\laragon\www\PGA-Management-System\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `borrowe...', Array, false)
+#4 C:\laragon\www\PGA-Management-System\system\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\PGA-Management-System\system\BaseModel.php(662): CodeIgniter\Model->doFirst()
+#6 C:\laragon\www\PGA-Management-System\app\Controllers\LibraryController.php(460): CodeIgniter\BaseModel->first()
+#7 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(919): App\Controllers\LibraryController->editBorrow('ec5ded3b63e0292...')
+#8 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+#9 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\PGA-Management-System\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\PGA-Management-System\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-05-26 20:51:02 --> Unknown column '3as' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `borrowedbooks`.`id` as `id`, `first_name`, `middle_name`, `last_name`, `student_id`, `book_title`, `book_shelf`, `ISBN`, `borrowedbooks`.`book_qty` as `book_qty`, `date_borrowed`, `date_returned`, `date_to_be_return`, `payment_status`, TIMESTAMPDIFF(HOUR, `date_to_be_return`, date_returned) * 6 as HOURFINE, TIMESTAMPDIFF(DAY, `date_to_be_return`, date_returned) * 3as DAYFINE, `borrowedbooks`.`status` as `status`, `book_type`, `book_id`
+FROM `borrowedbooks`
+INNER JOIN `books` ON `books`.`id` = `borrowedbooks`.`book_id`
+INNER JOIN `student_learner` ON `student_learner`.`account_id` = `borrowedbooks`.`account_id`
+INNER JOIN `admissions` ON `admissions`.`account_id` = `borrowedbooks`.`account_id`
+WHERE `borrowedbooks`.`id` = :borrowedbooks.id:
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(662): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\LibraryController.php(460): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->editBorrow('ec5ded3b63e0292af21798ecc968c46bb0dc5a388b758693d296c2518e1dda05b476b0997f9edcb25b1f4f73a7cc9f2a467dff8b0aca4bbedc7e253e70d4aacb60e037fe4ba39b17a182825572bc92b85c1b')
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 20:51:18 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\LibraryController.php on line 460.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\LibraryController.php', 460)
+ 2 APPPATH\Controllers\LibraryController.php(460): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->editBorrow('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 21:01:19 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\LibraryController.php on line 460.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\LibraryController.php', 460)
+ 2 APPPATH\Controllers\LibraryController.php(460): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->editBorrow('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 21:05:44 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\LibraryController.php on line 461.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\LibraryController.php', 461)
+ 2 APPPATH\Controllers\LibraryController.php(461): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->editBorrow('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 21:25:17 --> Undefined variable $borrowed
+in APPPATH\Views\library\libborrow.php on line 181.
+ 1 APPPATH\Views\library\libborrow.php(181): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $borrowed', 'C:\\laragon\\www\\PGA-Management-System\\app\\Views\\library\\libborrow.php', 181)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\library\\libborrow.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(467): CodeIgniter\View\View->render('library/libborrow', null, true)
+ 5 APPPATH\Views\borrowers.php(2): CodeIgniter\View\View->include('library/libborrow')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\borrowers.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('borrowers', [], true)
+ 9 APPPATH\Controllers\LibraryController.php(117): view('borrowers', [...])
+10 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->borrowers()
+11 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+12 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 21:28:47 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\LibraryController.php on line 461.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\LibraryController.php', 461)
+ 2 APPPATH\Controllers\LibraryController.php(461): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->editBorrow('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 21:29:36 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\LibraryController.php on line 461.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\LibraryController.php', 461)
+ 2 APPPATH\Controllers\LibraryController.php(461): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->editBorrow('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 21:31:13 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\LibraryController.php on line 461.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\LibraryController.php', 461)
+ 2 APPPATH\Controllers\LibraryController.php(461): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LibraryController->editBorrow('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LibraryController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 22:16:49 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\TeacherController.php on line 152.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\TeacherController.php', 152)
+ 2 APPPATH\Controllers\TeacherController.php(152): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->expandStudent('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 22:34:32 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\TeacherController.php on line 154.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\TeacherController.php', 154)
+ 2 APPPATH\Controllers\TeacherController.php(154): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->expandStudent('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 22:36:06 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\TeacherController.php on line 154.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\TeacherController.php', 154)
+ 2 APPPATH\Controllers\TeacherController.php(154): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->expandStudent('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 22:36:17 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\TeacherController.php on line 154.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\TeacherController.php', 154)
+ 2 APPPATH\Controllers\TeacherController.php(154): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->expandStudent('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 22:36:34 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\TeacherController.php on line 154.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\TeacherController.php', 154)
+ 2 APPPATH\Controllers\TeacherController.php(154): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->expandStudent('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 22:36:53 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\TeacherController.php on line 154.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\TeacherController.php', 154)
+ 2 APPPATH\Controllers\TeacherController.php(154): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->expandStudent('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 22:39:29 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\TeacherController.php on line 154.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\TeacherController.php', 154)
+ 2 APPPATH\Controllers\TeacherController.php(154): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->expandStudent('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 22:53:08 --> require(vendor/autoload.php): Failed to open stream: No such file or directory
+in APPPATH\Controllers\TeacherController.php on line 20.
+ 1 APPPATH\Controllers\TeacherController.php(20): CodeIgniter\Debug\Exceptions->errorHandler(2, 'require(vendor/autoload.php): Failed to open stream: No such file or directory', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\TeacherController.php', 20)
+ 2 APPPATH\Controllers\TeacherController.php(20): require()
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(306): include_once('C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\TeacherController.php')
+ 4 SYSTEMPATH\Autoloader\Autoloader.php(285): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\TeacherController.php')
+ 5 SYSTEMPATH\Autoloader\Autoloader.php(263): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\TeacherController')
+ 6 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\TeacherController')
+ 7 SYSTEMPATH\CodeIgniter.php(877): class_exists('\\App\\Controllers\\TeacherController', true)
+ 8 SYSTEMPATH\CodeIgniter.php(481): CodeIgniter\CodeIgniter->startController()
+ 9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 22:53:31 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\TeacherController.php on line 155.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\TeacherController.php', 155)
+ 2 APPPATH\Controllers\TeacherController.php(155): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->expandStudent('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 22:53:36 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\TeacherController.php on line 155.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\TeacherController.php', 155)
+ 2 APPPATH\Controllers\TeacherController.php(155): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->expandStudent('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 23:13:37 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\TeacherController.php on line 155.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\TeacherController.php', 155)
+ 2 APPPATH\Controllers\TeacherController.php(155): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->expandStudent('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 23:13:40 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\TeacherController.php on line 155.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\TeacherController.php', 155)
+ 2 APPPATH\Controllers\TeacherController.php(155): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->expandStudent('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 23:16:11 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\TeacherController.php on line 155.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\TeacherController.php', 155)
+ 2 APPPATH\Controllers\TeacherController.php(155): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->expandStudent('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 23:20:11 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\TeacherController.php on line 154.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\TeacherController.php', 154)
+ 2 APPPATH\Controllers\TeacherController.php(154): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->expandStudent('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 23:24:14 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\TeacherController.php on line 154.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\TeacherController.php', 154)
+ 2 APPPATH\Controllers\TeacherController.php(154): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->expandStudent('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 23:24:18 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\TeacherController.php on line 154.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\TeacherController.php', 154)
+ 2 APPPATH\Controllers\TeacherController.php(154): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->expandStudent('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 23:24:31 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\TeacherController.php on line 154.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\TeacherController.php', 154)
+ 2 APPPATH\Controllers\TeacherController.php(154): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->expandStudent('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 23:38:29 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\TeacherController.php on line 156.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\TeacherController.php', 156)
+ 2 APPPATH\Controllers\TeacherController.php(156): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->expandStudent('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 23:38:36 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\TeacherController.php on line 156.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\TeacherController.php', 156)
+ 2 APPPATH\Controllers\TeacherController.php(156): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->expandStudent('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 23:42:59 --> fopen(C:\laragon\www\PGA-Management-System\publicSPS/hello world.xlsx): Failed to open stream: No such file or directory
+in VENDORPATH\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php on line 117.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'fopen(C:\\laragon\\www\\PGA-Management-System\\publicSPS/hello world.xlsx): Failed to open stream: No such file or directory', 'C:\\laragon\\www\\PGA-Management-System\\vendor\\phpoffice\\phpspreadsheet\\src\\PhpSpreadsheet\\Writer\\BaseWriter.php', 117)
+ 2 VENDORPATH\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php(117): fopen('C:\\laragon\\www\\PGA-Management-System\\publicSPS/hello world.xlsx', 'wb')
+ 3 VENDORPATH\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\Xlsx.php(496): PhpOffice\PhpSpreadsheet\Writer\BaseWriter->openFileHandle('C:\\laragon\\www\\PGA-Management-System\\publicSPS/hello world.xlsx')
+ 4 APPPATH\Controllers\TeacherController.php(358): PhpOffice\PhpSpreadsheet\Writer\Xlsx->save('C:\\laragon\\www\\PGA-Management-System\\publicSPS/hello world.xlsx')
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->generateGrade()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 23:43:19 --> fopen(SPS/hello world.xlsx): Failed to open stream: No such file or directory
+in VENDORPATH\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php on line 117.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'fopen(SPS/hello world.xlsx): Failed to open stream: No such file or directory', 'C:\\laragon\\www\\PGA-Management-System\\vendor\\phpoffice\\phpspreadsheet\\src\\PhpSpreadsheet\\Writer\\BaseWriter.php', 117)
+ 2 VENDORPATH\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php(117): fopen('SPS/hello world.xlsx', 'wb')
+ 3 VENDORPATH\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\Xlsx.php(496): PhpOffice\PhpSpreadsheet\Writer\BaseWriter->openFileHandle('SPS/hello world.xlsx')
+ 4 APPPATH\Controllers\TeacherController.php(358): PhpOffice\PhpSpreadsheet\Writer\Xlsx->save('SPS/hello world.xlsx')
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->generateGrade()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 23:43:20 --> fopen(SPS/hello world.xlsx): Failed to open stream: No such file or directory
+in VENDORPATH\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php on line 117.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'fopen(SPS/hello world.xlsx): Failed to open stream: No such file or directory', 'C:\\laragon\\www\\PGA-Management-System\\vendor\\phpoffice\\phpspreadsheet\\src\\PhpSpreadsheet\\Writer\\BaseWriter.php', 117)
+ 2 VENDORPATH\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php(117): fopen('SPS/hello world.xlsx', 'wb')
+ 3 VENDORPATH\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\Xlsx.php(496): PhpOffice\PhpSpreadsheet\Writer\BaseWriter->openFileHandle('SPS/hello world.xlsx')
+ 4 APPPATH\Controllers\TeacherController.php(358): PhpOffice\PhpSpreadsheet\Writer\Xlsx->save('SPS/hello world.xlsx')
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->generateGrade()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 23:43:23 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\TeacherController.php on line 155.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\TeacherController.php', 155)
+ 2 APPPATH\Controllers\TeacherController.php(155): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->expandStudent('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 23:43:25 --> fopen(SPS/hello world.xlsx): Failed to open stream: No such file or directory
+in VENDORPATH\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php on line 117.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'fopen(SPS/hello world.xlsx): Failed to open stream: No such file or directory', 'C:\\laragon\\www\\PGA-Management-System\\vendor\\phpoffice\\phpspreadsheet\\src\\PhpSpreadsheet\\Writer\\BaseWriter.php', 117)
+ 2 VENDORPATH\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php(117): fopen('SPS/hello world.xlsx', 'wb')
+ 3 VENDORPATH\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\Xlsx.php(496): PhpOffice\PhpSpreadsheet\Writer\BaseWriter->openFileHandle('SPS/hello world.xlsx')
+ 4 APPPATH\Controllers\TeacherController.php(358): PhpOffice\PhpSpreadsheet\Writer\Xlsx->save('SPS/hello world.xlsx')
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->generateGrade()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 23:43:40 --> fopen(SPS\hello world.xlsx): Failed to open stream: No such file or directory
+in VENDORPATH\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php on line 117.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'fopen(SPS\\hello world.xlsx): Failed to open stream: No such file or directory', 'C:\\laragon\\www\\PGA-Management-System\\vendor\\phpoffice\\phpspreadsheet\\src\\PhpSpreadsheet\\Writer\\BaseWriter.php', 117)
+ 2 VENDORPATH\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php(117): fopen('SPS\\hello world.xlsx', 'wb')
+ 3 VENDORPATH\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\Xlsx.php(496): PhpOffice\PhpSpreadsheet\Writer\BaseWriter->openFileHandle('SPS\\hello world.xlsx')
+ 4 APPPATH\Controllers\TeacherController.php(358): PhpOffice\PhpSpreadsheet\Writer\Xlsx->save('SPS\\hello world.xlsx')
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->generateGrade()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 23:43:41 --> fopen(SPS\hello world.xlsx): Failed to open stream: No such file or directory
+in VENDORPATH\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php on line 117.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'fopen(SPS\\hello world.xlsx): Failed to open stream: No such file or directory', 'C:\\laragon\\www\\PGA-Management-System\\vendor\\phpoffice\\phpspreadsheet\\src\\PhpSpreadsheet\\Writer\\BaseWriter.php', 117)
+ 2 VENDORPATH\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php(117): fopen('SPS\\hello world.xlsx', 'wb')
+ 3 VENDORPATH\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\Xlsx.php(496): PhpOffice\PhpSpreadsheet\Writer\BaseWriter->openFileHandle('SPS\\hello world.xlsx')
+ 4 APPPATH\Controllers\TeacherController.php(358): PhpOffice\PhpSpreadsheet\Writer\Xlsx->save('SPS\\hello world.xlsx')
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->generateGrade()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 23:43:43 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\TeacherController.php on line 155.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\TeacherController.php', 155)
+ 2 APPPATH\Controllers\TeacherController.php(155): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->expandStudent('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 23:43:45 --> fopen(SPS\hello world.xlsx): Failed to open stream: No such file or directory
+in VENDORPATH\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php on line 117.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'fopen(SPS\\hello world.xlsx): Failed to open stream: No such file or directory', 'C:\\laragon\\www\\PGA-Management-System\\vendor\\phpoffice\\phpspreadsheet\\src\\PhpSpreadsheet\\Writer\\BaseWriter.php', 117)
+ 2 VENDORPATH\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php(117): fopen('SPS\\hello world.xlsx', 'wb')
+ 3 VENDORPATH\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\Xlsx.php(496): PhpOffice\PhpSpreadsheet\Writer\BaseWriter->openFileHandle('SPS\\hello world.xlsx')
+ 4 APPPATH\Controllers\TeacherController.php(358): PhpOffice\PhpSpreadsheet\Writer\Xlsx->save('SPS\\hello world.xlsx')
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->generateGrade()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-05-26 23:44:00 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\TeacherController.php on line 155.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\TeacherController.php', 155)
+ 2 APPPATH\Controllers\TeacherController.php(155): hex2bin('assets')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\TeacherController->expandStudent('assets', 'js', 'book.js')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TeacherController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')

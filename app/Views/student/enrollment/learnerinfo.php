@@ -88,10 +88,7 @@
                                     <label for="nickname">Nickname:</label>
                                         <input type="text" class="form-control" name="nickname" placeholder="Enter Nickname" required>
 
-                                                                
-                                    <label for="age">Age:</label>
-                                        <input type="number" class="form-control" name="age" placeholder="Enter Age" required>
-                        
+                                                        
 </div>
 </div>
 <div class="col-sm-5 text-center text-sm-left">
@@ -114,7 +111,7 @@
                                         </select>
                             
                                     <label for="birthdate">Birthdate:</label>
-                                        <input type="date" class="form-control" name="birthdate" placeholder="Enter Birthdate" required>
+                                        <input type="date" class="form-control" name="birthdate" placeholder="Enter Birthdate" max="<?= date("Y-m-d", strtotime("-5 year")) ?>" required>
                         
 
                             
@@ -163,8 +160,20 @@
     </div>
   </div>
   <!-- / Layout wrapper -->
+  <script>
+  </script>
 </body>
+<script>
+    const prev = document.getElementById('uploadedAvatar');
+    const imginput = document.getElementById('upload');
 
+    imginput.addEventListener('change', function(){
+    const [file] = imginput.files
+    if (file) {
+        prev.src = URL.createObjectURL(file)
+    }
+    });
+</script>
 </html>
 
 <?= $this->include('student/js') ?>

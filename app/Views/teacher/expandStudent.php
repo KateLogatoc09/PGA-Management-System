@@ -247,6 +247,12 @@ $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
                   </div>
                 </div>
               </div>
+              <form action="/generateGrade" method="POST">
+              <input type="hidden" class="form-control" name="student_id" value="<?= $ad['student_id'] ?>" required>
+              <input type="text" class="form-control" name="school_year" placeholder="Enter School Year" value="" required>
+              <input type="text" class="form-control" name="lrn" placeholder="Enter Student's LRN" value="" required>
+              <button type="submit" class="btn btn-primary">Generate Grade</button>
+              </form>
               <center><a href="/advisoryClass" class="btn btn-primary">Back</a><center>
               <!-- /.card -->
             </div> <!-- /.dito -->

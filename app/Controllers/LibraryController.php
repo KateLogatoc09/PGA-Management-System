@@ -30,6 +30,7 @@ class LibraryController extends BaseController
             'date_borrowed' => $this->request->getVar('dateBorrowed'),
             'date_to_be_return' => $this->request->getVar('dateReturn'),
             'date_returned' => $this->request->getVar('date_returned'),
+            'payment_status' => $this->request->getVar('payment_status'),
             'fines' => $this->request->getVar('fines'),
             'status' => $this->request->getVar('status'),
             'book_id' => $this->request->getVar('book_id'),
@@ -107,7 +108,7 @@ class LibraryController extends BaseController
     {
         $data = [
             'borrow' => $this->book->select('borrowedbooks.id as id, first_name, middle_name, last_name, student_id, book_title, 
-            book_shelf, ISBN, borrowedbooks.book_qty as book_qty, date_borrowed, date_returned, date_to_be_return, fines, 
+            book_shelf, ISBN, borrowedbooks.book_qty as book_qty, date_borrowed, date_returned, date_to_be_return, payment_status, fines, 
             borrowedbooks.status as status, book_type')->join('borrowedbooks','borrowedbooks.book_id = books.id','inner')
             ->orderBy('books.book_title')->join('student_learner','student_learner.account_id = borrowedbooks.account_id','inner')
             ->join('admissions','admissions.account_id = borrowedbooks.account_id','inner')->FindAll(),
@@ -125,7 +126,7 @@ class LibraryController extends BaseController
         }
         $data = [
             'borrow' => $this->book->select('borrowedbooks.id as id, first_name, middle_name, last_name, student_id, book_title, 
-            book_shelf, ISBN, borrowedbooks.book_qty as book_qty, date_borrowed, date_returned, date_to_be_return, fines, 
+            book_shelf, ISBN, borrowedbooks.book_qty as book_qty, date_borrowed, date_returned, date_to_be_return, payment_status, fines, 
             borrowedbooks.status as status, book_type')->join('borrowedbooks','borrowedbooks.book_id = books.id','inner')
             ->orderBy('books.book_title')->join('student_learner','student_learner.account_id = borrowedbooks.account_id','inner')
             ->join('admissions','admissions.account_id = borrowedbooks.account_id','inner')->like($categ, $this->request->getVar('search'))->FindAll(),
@@ -450,12 +451,12 @@ class LibraryController extends BaseController
     {
         $data = [
             'borrow' => $this->book->select('borrowedbooks.id as id, first_name, middle_name, last_name, student_id, book_title, book_shelf, 
-            ISBN, borrowedbooks.book_qty as book_qty, date_borrowed, date_returned, date_to_be_return, fines, borrowedbooks.status as status, book_type')
+            ISBN, borrowedbooks.book_qty as book_qty, date_borrowed, date_returned, date_to_be_return, payment_status, fines, borrowedbooks.status as status, book_type')
             ->join('borrowedbooks','borrowedbooks.book_id = books.id','inner')
             ->orderBy('books.book_title')->join('student_learner','student_learner.account_id = borrowedbooks.account_id','inner')
             ->join('admissions','admissions.account_id = borrowedbooks.account_id','inner')->FindAll(),
             'borrowed' => $this->borrowedBook->select('borrowedbooks.id as id, first_name, middle_name, last_name, student_id, book_title, book_shelf, 
-            ISBN, borrowedbooks.book_qty as book_qty, date_borrowed, date_returned, date_to_be_return, fines, borrowedbooks.status as status, book_type, book_id')
+            ISBN, borrowedbooks.book_qty as book_qty, date_borrowed, date_returned, date_to_be_return, payment_status, TIMESTAMPDIFF(HOUR, date_to_be_return, date_returned) * 6 as HOURFINE, TIMESTAMPDIFF(HOUR, date_to_be_return, CURDATE()) * 6 as CHOURFINE, TIMESTAMPDIFF(DAY, date_to_be_return, date_returned) * 3 as DAYFINE, TIMESTAMPDIFF(DAY, date_to_be_return, CURDATE()) * 3 as CDAYFINE, borrowedbooks.status as status, book_type, book_id')
             ->join('books','books.id = borrowedbooks.book_id','inner')->join('student_learner','student_learner.account_id = borrowedbooks.account_id','inner')
             ->join('admissions','admissions.account_id = borrowedbooks.account_id','inner')->where('borrowedbooks.id', $this->encrypter->decrypt(hex2bin($id)))->first(),
             'booky' => $this->book->orderBy('book_title')->findAll(),
@@ -486,11 +487,4 @@ class LibraryController extends BaseController
         return view('books', $data);
     }
 
-    public function sendNotif($id)
-    {
-        $data = [
-        ];
-
-        return view('borrowers', $data);
-    }
 }

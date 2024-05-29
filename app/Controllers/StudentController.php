@@ -84,7 +84,7 @@ class StudentController extends BaseController
         $id = $this->admissions->select('student_id')->where('account_id', $curruser)->first();
         $qrcode = new Generator;
         $session = session();
-        $session->setFlashdata('qr', $qrcode->size(120)->generate($id['student_id']));
+        $session->setFlashdata('qr', $qrcode->size(120)->generate(bin2hex($this->encrypter->encrypt($id['student_id']))));
         return redirect()->to('student');
     }
     

@@ -11,23 +11,34 @@ use App\Controllers\BaseController;
 
 class Attendance extends BaseController
 {
-    private $acc, $att;
+    private $acc, $att, $config, $encrypter;
 
     public function __construct() {
+        $this->config    = new \Config\Encryption();  
+        $this->encrypter = \Config\Services::encrypter($this->config);
         $this->acc = new \App\Models\AccountModel();
         $this->att  = new \App\Models\AttendanceModel();
     }
 
     public function time_in() {
         date_default_timezone_set('Asia/Singapore');
+        $session = session();
 
-        $data = [
-            'idnum' => $this->request->getVar('sid'),
-            'type' => 'IN',
-            'time' => date("Y-m-d H:i:s"),
-        ];
+        if (ctype_xdigit($this->request->getVar('sid')) && strlen($this->request->getVar('sid')) % 2 == 0) {
+            if(preg_match('/^MCC[0-9]{4}\-[0-9]{4}/',$this->encrypter->decrypt(hex2bin($this->request->getVar('sid'))))) {
+            $data = [
+                'idnumb' => $this->encrypter->decrypt(hex2bin($this->request->getVar('sid'))),
+                'type' => 'IN',
+                'time' => date("Y-m-d H:i:s"),
+            ];
 
-        $this->att->save($data);
+            $this->att->save($data);
+            } else {
+                $session->setFlashdata('msg','Invalid ID.');
+            }
+        } else {
+            $session->setFlashdata('msg','Invalid ID.');
+        }
         return redirect()->to('attendance_in');
         
     }
@@ -35,13 +46,24 @@ class Attendance extends BaseController
     public function time_out() {
         date_default_timezone_set('Asia/Singapore');
 
-        $data = [
-            'idnum' => $this->request->getVar('sid'),
-            'type' => 'OUT',
-            'time' => date("Y-m-d H:i:s"),
-        ];
+        $session = session();
 
-        $this->att->save($data);
+        
+        if (ctype_xdigit($this->request->getVar('sid')) && strlen($this->request->getVar('sid')) % 2 == 0) {
+            if(preg_match('/^MCC[0-9]{4}\-[0-9]{4}/',$this->encrypter->decrypt(hex2bin($this->request->getVar('sid'))))) {
+            $data = [
+                'idnumb' => $this->encrypter->decrypt(hex2bin($this->request->getVar('sid'))),
+                'type' => 'OUT',
+                'time' => date("Y-m-d H:i:s"),
+            ];
+
+            $this->att->save($data);
+            } else {
+                $session->setFlashdata('msg','Invalid ID.');
+            }
+        } else {
+            $session->setFlashdata('msg','Invalid ID.');
+        }
         return redirect()->to('attendance_out');
         
     }

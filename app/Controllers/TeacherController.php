@@ -14,6 +14,9 @@ use App\Models\FamilyModel;
 
 use App\Models\Sections;
 use SimpleSoftwareIO\QrCode\Generator;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
 
 class TeacherController extends BaseController
 {
@@ -31,16 +34,6 @@ class TeacherController extends BaseController
         $this->learner = new LearnerModel();
         $this->config    = new \Config\Encryption();  
         $this->encrypter = \Config\Services::encrypter($this->config);
-    }
-
-    
-    public function teacher_qr() {
-        $curruser = $this->acc->select('id')->where('username', $_SESSION['username'])->first();
-        $id = $this->teacher->select('idnum')->where('account_id', $curruser)->first();
-        $qrcode = new Generator;
-        $session = session();
-        $session->setFlashdata('qr', $qrcode->size(120)->generate($id['idnum']));
-        return redirect()->to('teacher');
     }
 
     public function teacher()
@@ -328,7 +321,7 @@ class TeacherController extends BaseController
             $id = $this->teacher->select('idnum')->where('account_id', $curruser)->first();
             $qrcode = new Generator;
             $session = session();
-            $session->setFlashdata('qr', $qrcode->size(120)->generate($id['idnum']));
+            $session->setFlashdata('qr', $qrcode->size(120)->generate(bin2hex($this->encrypter->encrypt($id['idnum']))));
             return redirect()->to('teacher');
         }
 
@@ -355,5 +348,15 @@ class TeacherController extends BaseController
             $allGrades['sub'] = $sub;
 
             return view('chart', $allGrades);
+        }
+
+        public function generateGrade() {
+            $spreadsheet = new Spreadsheet();
+            $sheet = $spreadsheet->getActiveSheet();
+            $sheet->setCellValue('A1', 'Hello World !');
+            $writer = new Xlsx($spreadsheet);
+            $writer->save('hello world.xlsx');
+
+            return redirect()->back();
         }
 }

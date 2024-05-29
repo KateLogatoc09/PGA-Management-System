@@ -94,16 +94,6 @@ $(document).ready(function(){
                 });
             <?php endif; ?>
             })
-//previmg 
-const prev = document.getElementById('uploadedAvatar');
-    const imginput = document.getElementById('upload');
-
-    imginput.addEventListener('change', function(){
-    const [file] = imginput.files
-    if (file) {
-        prev.src = URL.createObjectURL(file)
-    }
-    });
     
 </script>
     

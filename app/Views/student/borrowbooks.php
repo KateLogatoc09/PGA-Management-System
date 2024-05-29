@@ -1,3 +1,4 @@
+<?php date_default_timezone_set('Asia/Singapore'); ?>
 <!-- Modal HTML -->
 <div class="modal fade" id="borrowBooksModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -28,10 +29,10 @@
                         <input type="number" class="form-control" id="book_qty" name="book_qty" placeholder="Enter No. of Books to be borrowed" required>
 
                         <label for="dateBorrowed">Date Borrowed</label>
-                        <input type="datetime-local" class="form-control" id="dateBorrowed" name="dateBorrowed" placeholder="Select Date Borrowed">
+                        <input type="datetime-local" class="form-control" id="dateBorrowed" name="dateBorrowed" placeholder="Select Date Borrowed" min="<?= date('Y-m-d')."T00:00"?>">
 
                         <label for="dateReturn">Date Return</label>
-                        <input type="datetime-local" class="form-control" id="dateReturn" name="dateReturn" placeholder="Select Date Return">
+                        <input type="datetime-local" class="form-control" id="dateReturn" name="dateReturn" placeholder="Select Date Return" disabled>
                     </div>
 
                     <!-- Move the "Save changes" button inside the form -->
@@ -102,5 +103,17 @@
         } else if (status === 'error') {
             $('#errorModal').modal('show');
         }
+    });
+
+    let dateBorrowed = document.getElementById('dateBorrowed');
+    let dateReturn = document.getElementById('dateReturn');
+    
+
+    dateBorrowed.addEventListener('change', function(){
+        dateReturn.disabled = false;
+        const d = new Date(dateBorrowed.value);
+        const dateTimeLocalValue = (new Date(d.getTime() - d.getTimezoneOffset() * 1320000).toISOString()).slice(0, -8);
+        dateReturn.setAttribute("min", dateBorrowed.value);
+        dateReturn.setAttribute("max", dateTimeLocalValue);
     });
 </script>

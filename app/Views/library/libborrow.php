@@ -76,6 +76,7 @@ $subset = array_slice($borrow, $offset, $recordsPerPage);
                           <th>Date Borrowed</th>
                           <th>Date To Be Returned</th>
                           <th>Date Returned</th>
+                          <th>Payment Status</th>
                           <th>Fines</th>
                           <th>Status</th>
                           <th>Actions</th>
@@ -93,12 +94,12 @@ $subset = array_slice($borrow, $offset, $recordsPerPage);
                             <td><?= $book['date_borrowed'] ?></td>
                             <td><?= $book['date_to_be_return'] ?></td>
                             <td><?= $book['date_returned'] ?></td>
+                            <td><?= $book['payment_status'] ?></td>
                             <td><?= $book['fines'] ?></td>
                             <td><?= $book['status'] ?></td>
                             <td>
                               <a href="/deleteBorrow/<?php echo bin2hex($encrypter->encrypt($book['id'])); ?>" class="btn btn-danger btn-sm" id="d<?=$x?>">Delete</a>
                               <a href="/editBorrow/<?php echo bin2hex($encrypter->encrypt($book['id'])); ?>" class="btn btn-primary btn-sm">Edit</a>
-                              <a href="/sendNotif/<?php echo bin2hex($encrypter->encrypt($book['id'])); ?>" class="btn btn-info btn-sm">Send Notif</a>
                             </td>
                           </tr>
                         <?php $x++; endforeach ?>
@@ -174,10 +175,22 @@ $subset = array_slice($borrow, $offset, $recordsPerPage);
                       <label for="date_returned">Date Returned</label>
                       <input type="datetime-local" class="form-control" id="date_returned" name="date_returned" placeholder="Select Date Returned" value="<?php if (isset($borrowed['date_returned'])) {echo $borrowed['date_returned'];} ?>">
 
-
                       <label for="fines">Fines</label>
-                        <input type="number" class="form-control" id="fines" name="fines" placeholder="Enter Amount of Fines" value="<?php if (isset($borrowed['fines'])) {echo $borrowed['fines'];} ?>" required>
-
+                      <div class="input-group">
+                        <span class="input-group-text col-sm-2">PHP</span>
+                        <?php if(isset($borrowed['date_returned'])): ?>
+                        <input type="number" class="form-control col-sm-4" id="fines" name="fines" placeholder="Enter Amount of Fines" value="<?php if (isset($borrowed['book_type'])) { if($borrowed['book_type'] == "NEW ARRIVAL BOOK" || $borrowed['book_type'] == "RESERVED BOOK") { if($borrowed['HOURFINE'] > 0) { echo $borrowed['HOURFINE']; } else {echo 0;}} else {if($borrowed['DAYFINE'] > 0) { echo $borrowed['DAYFINE'];} else {echo 0;}}  }?>" disabled>
+                        <?php elseif($borrowed['status'] == "ON BORROW"): ?>
+                        <input type="number" class="form-control col-sm-4" id="fines" name="fines" placeholder="Enter Amount of Fines" value="<?php if (isset($borrowed['book_type'])) { if($borrowed['book_type'] == "NEW ARRIVAL BOOK" || $borrowed['book_type'] == "RESERVED BOOK") { if($borrowed['CHOURFINE'] > 0) { echo $borrowed['CHOURFINE']; } else {echo 0;}} else {if($borrowed['CDAYFINE'] > 0) { echo $borrowed['CDAYFINE'];} else {echo 0;}}  }?>" disabled>
+                        <?php endif;?>
+                        <select class="form-control" name="payment_status" id="payment_status" required>
+                        <option>Select Status</option>
+                        <option value="PENDING" <?php if(isset($borrowed["payment_status"])) { if($borrowed["payment_status"] == "PENDING") { echo "selected"; }} ?>>Pending</option>
+                        <option value="PAID" <?php if(isset($borrowed["payment_status"])) { if($borrowed["payment_status"] == "ON BORROW") { echo "selected"; }} ?>>On Borrow</option>
+                        <option value="NA" <?php if(isset($borrowed["payment_status"])) { if($borrowed["payment_status"] == "RETURNED") { echo "selected"; }} ?>>Returned</option>
+                      
+                      </select>
+                      </div>
 
                       <label for="status">Status</label>
                       <select class="form-control" name="status" id="status" value="<?php if (isset($borrowed['status'])) {echo $borrowed['status'];} ?>" required>
