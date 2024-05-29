@@ -89,6 +89,7 @@ class EnrollmentController extends BaseController
                 'nationality' => $this->request->getVar('nationality'),
                 'religion' => $this->request->getVar('religion'),
                 'photo' => $path,
+                'curdate' => date('Y-m-d H:i:s'),
                 'account_id' => $this->acc->select('id')->where('username', $_SESSION['username'])->first(),
             ];
 
@@ -125,6 +126,7 @@ class EnrollmentController extends BaseController
                 'mobile_num' => $this->request->getVar('mobile_num'),
                 'nationality' => $this->request->getVar('nationality'),
                 'religion' => $this->request->getVar('religion'),
+                'curdate' => date('Y-m-d H:i:s'),
                 'account_id' => $this->acc->select('id')->where('username', $_SESSION['username'])->first(),
             ];
 

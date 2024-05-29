@@ -1,3 +1,4 @@
+<?php date_default_timezone_set('Asia/Singapore'); ?>
 <body style="background-image:url('<?= base_url() ?>img/pgaBG.png');background-repeat:no-repeat;background-attachment:fixed;background-size:cover">
 <?php $session = session()?>
   <!-- Layout wrapper -->

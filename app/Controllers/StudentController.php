@@ -219,6 +219,7 @@ public function saveEditLearner()  {
             'nationality' => $this->request->getVar('nationality'),
             'religion' => $this->request->getVar('religion'),
             'photo' => $path,
+            'curdate' => date('Y-m-d H:i:s'),
             'account_id' => $this->request->getVar('account_id'),
         ];
 
@@ -255,6 +256,7 @@ public function saveEditLearner()  {
             'mobile_num' => $this->request->getVar('mobile_num'),
             'nationality' => $this->request->getVar('nationality'),
             'religion' => $this->request->getVar('religion'),
+            'curdate' => date('Y-m-d H:i:s'),
             'account_id' => $this->account->select('id')->where('username', $_SESSION['username'])->first(),
         ];
 
