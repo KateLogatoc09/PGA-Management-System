@@ -193,7 +193,7 @@ public function saveEditLearner()  {
     $photo = $this->request->getFile('photo');
     $check = $this->learner->select('photo')->where('account_id',$id)->first();
     
-    if($photo != null) {
+    if($photo != "") {
 
         if($id != null) {
             $test = $photo->move(PUBLIC_PATH.'\\account\\'.$id.'\\');
@@ -257,7 +257,7 @@ public function saveEditLearner()  {
             'nationality' => $this->request->getVar('nationality'),
             'religion' => $this->request->getVar('religion'),
             'curdate' => date('Y-m-d H:i:s'),
-            'account_id' => $this->account->select('id')->where('username', $_SESSION['username'])->first(),
+            'account_id' => $this->acc->select('id')->where('username', $_SESSION['username'])->first(),
         ];
 
         if ($id != null) {

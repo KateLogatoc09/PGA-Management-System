@@ -28,12 +28,12 @@ class AACController extends BaseController
         }
     
         
-    public function schedule(){
+    public function schedule($id){
         $data = [
             'schedule' => $this->schedule->select('schedule.id as id, day, start_time, end_time, name, subject')
-            ->join('sections','schedule.section_id = sections.id','inner')->findAll(),
+            ->join('sections','schedule.section_id = sections.id','inner')->where('section_id', $id)->findAll(),
             'subject' => $this->subjects->findAll(),
-            'section' => $this->sections->findAll(),
+            'section' => $this->sections->where('id', $id)->first(),
         ];
 
         return view ('schedule', $data);
@@ -43,11 +43,28 @@ class AACController extends BaseController
     public function scheduleList(){
         $data = [
             'stud_section' => $this->sections->select('sections.id as id, name, grade_level_id, adviser, fname, mname, lname')
-            ->join('teachers','sections.adviser = teachers.idnum','inner')->findAll(),
+            ->join('teachers','sections.adviser = teachers.idnum','inner')->orderBy('id')->findAll(),
             'teacher' => $this->teacher->orderBy('lname')->findAll(),
         ];
 
         return view ('scheduleList', $data);
+    }
+
+       
+    public function searchsectionlist()
+    {
+        if($this->request->getVar('categ') == 'Adviser') {
+            $categ = "CONCAT(fname,' ',mname,' ',lname)";
+        } else {
+            $categ = $this->request->getVar('categ');
+        }
+
+        $data = [
+            'stud_section' => $this->sections->select('sections.id as id, name, grade_level_id, adviser, fname, mname, lname')
+                ->join('teachers','sections.adviser = teachers.idnum','inner')->like($categ, $this->request->getVar('search'))->findAll(),
+            'teacher' => $this->teacher->orderBy('lname')->findAll(),
+        ];
+            return view ('scheduleList', $data);
     }
 
     public function deleteSchedule($id)
@@ -63,13 +80,13 @@ class AACController extends BaseController
         }
     
         
-        public function editSchedule($id)
+        public function editSchedule($id,$sec)
         {
             $data = [
                 'schedule' => $this->schedule->select('schedule.id as id, day, start_time, end_time, name, subject')
-                ->join('sections','schedule.section_id = sections.id','inner')->findAll(),
+                ->join('sections','schedule.section_id = sections.id','inner')->where('section_id', $sec)->findAll(),
                 'subject' => $this->subjects->findAll(),
-                'section' => $this->sections->findAll(),
+                'section' => $this->sections->where('id', $sec)->first(),
                 'sched' => $this->schedule->where('id', $id)->first(),
             ];
     
@@ -80,11 +97,11 @@ class AACController extends BaseController
         $session = session();
         $id = $_POST['id'];
         $data = [
-            'day' => $this->request->getPost('day'),
-            'subject' => $this->request->getPost('subject'),
-            'start_time' => $this->request->getPost('start_time'),
-            'end_time' => $this->request->getPost('end_time'),
-            'section_id' => $this->request->getPost('section_id'),
+            'day' => $this->request->getVar('day'),
+            'subject' => $this->request->getVar('subject'),
+            'start_time' => $this->request->getVar('start_time'),
+            'end_time' => $this->request->getVar('end_time'),
+            'section_id' => $this->request->getVar('section_id'),
         ];
 
         if ($id != null) {

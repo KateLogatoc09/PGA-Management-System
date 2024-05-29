@@ -14,6 +14,7 @@ $offset = ($currentPage - 1) * $recordsPerPage;
 // Get a subset of records for the current page
 $scheduleSubset = array_slice($schedule, $offset, $recordsPerPage);
 ?>
+<?= $this->include('AAC/head') ?>
 <body style="background-image:url('<?= base_url() ?>img/pgaBG.png');background-repeat:no-repeat;background-attachment:fixed;background-size:cover">
 <?php $session = session()?>
   <!-- Layout wrapper -->
@@ -73,7 +74,7 @@ $scheduleSubset = array_slice($schedule, $offset, $recordsPerPage);
                                             <td><?= $ad['end_time'] ?></td>
                                             <td><?= $ad['name'] ?></td>
                                             <td> <a href="/deleteSchedule/<?= $ad['id'] ?>" class="btn btn-danger btn-sm" id="d<?=$x?>">Delete</a>
-                                            <a href="/editSchedule/<?= $ad['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
+                                            <a href="/editSchedule/<?= $ad['id'] ?>/<?= $section['id'] ?>" class="btn btn-primary btn-sm">Edit</a></td>
                                      </tr>
                                 <?php $x++; endforeach ?>
                                 </tbody>
@@ -118,7 +119,7 @@ $scheduleSubset = array_slice($schedule, $offset, $recordsPerPage);
                       </div>
                   <div class="d-flex">
                     <div class="col-sm-5">
-                <form action="/saveSchedule" method="post">
+                <form action="/saveSchedule" method="post"  id='form'>
                     <!-- Add your form fields and content here -->
 
                     <div class="form-group margin-left">
@@ -148,7 +149,7 @@ $scheduleSubset = array_slice($schedule, $offset, $recordsPerPage);
                                         </select> 
 
                                         <label for="start_time">Period Start:</label>
-                                        <input type="time" class="form-control" name="start_time" placeholder="Period Start"
+                                        <input type="time" class="form-control" name="start_time" id="start_time" placeholder="Period Start"
                                         value="<?php if (isset($sched['start_time'])) {echo $sched['start_time'];}?>">
 
 
@@ -157,17 +158,13 @@ $scheduleSubset = array_slice($schedule, $offset, $recordsPerPage);
 <div class="col-sm-5 text-center text-sm-left">
   <div class="form-group margin-left">
                                         <label for="end_time">Period End:</label>
-                                        <input type="time" class="form-control" name="end_time" placeholder="Period End"
+                                        <input type="time" class="form-control" name="end_time" id="end_time" placeholder="Period End"
                                         value="<?php if (isset($sched['end_time'])) {echo $sched['end_time'];}?>">
-                                   
 
-                                      <label for="section_id">Section:</label>
-                                        <select name="section_id" id="section_id" class="form-control">
-                                        <option value="">Select Section</option>
-                                            <?php foreach ($section as $sec):?> 
-                                                <option value="<?= $sec['id'] ?>" <?php if(isset($sched["section_id"])) { if($sched["section_id"] == $sec['id']) { echo "selected"; }} ?>><?= $sec['name'] ?></option> 
-                                            <?php endforeach; ?>
-                                        </select> 
+                                        <label for="section_id">Section:</label>
+                                        <input type="text" class="form-control" name="section_id" placeholder="Section"
+                                        value="<?php if (isset($section['id'])) {echo $section['name'];}?>" readonly>
+
                       
   </div>
 </div>
@@ -178,6 +175,8 @@ $scheduleSubset = array_slice($schedule, $offset, $recordsPerPage);
     <button type="submit" class="btn btn-primary">Save changes</button>
 </div>
 </form>
+<button class="btn btn-primary" id="add">Add Another</button>
+<button class="btn btn-danger hidden" id="remove">Remove</button>
 </div>
 </div>
 
@@ -194,6 +193,96 @@ $scheduleSubset = array_slice($schedule, $offset, $recordsPerPage);
     </div>
   </div>
   <!-- / Layout wrapper -->
+
+  <script>
+const add = document.getElementById('add');
+const remove = document.getElementById('remove');
+const form = document.getElementById('form');
+var x = 0;
+var y = 1;
+const opt = '<option value="Select Day">Select Day</option><option value="Monday">Monday</option><option value="Tuesday">Tuesday</option><option value="Wednesday">Wednesday</option><option value="Thursday">Thursday</option><option value="Friday">Friday</option><option value="Saturday">Saturday</option>';
+
+let subjectoptions = "";
+var selsubject = document.getElementById('subject');
+
+$(document).ready(function () {
+    for (let key in subject) {
+    let value = subject[key]['subject_name'];
+    subjectoptions += '<option value="'+key+'">'+value+'</option>';
+    }
+    selsubject.innerHTML = '<option>Choose a Subject</option>'+subjectoptions;
+});
+
+
+const create = function () {
+  window['div' + y] = document.createElement("div");
+  window['div' + y].className = "form-group margin-left";
+  window['div' + y].setAttribute("id", "div" + y); // set the CSS class
+  form.appendChild(window['div' + y]); // put it into the DOM
+
+  window['label' + x] = document.createElement("label");
+  window['label' + x].innerHTML = "Day:";
+  window['label' + x].setAttribute("for", "day" + y);
+  window['div' + y].appendChild(window['label' + x]); // put it into the DOM
+
+  window['input' + x] = document.createElement("select");
+  window['input' + x].className = "form-control";
+  window['input' + x].setAttribute("name", "day" + y);
+  window['input' + x].innerHTML = opt;
+  window['div' + y].appendChild(window['input' + x]); // put it into the DOM
+
+  x++;
+
+  window['label' + x] = document.createElement("label");
+  window['label' + x].innerHTML = "Period Start:";
+  window['label' + x].setAttribute("for", "start_time" + y);
+  window['div' + y].appendChild(window['label' + x]); // put it into the DOM
+
+  window['input' + x] = document.createElement("input");
+  window['input' + x].type = "time";
+  window['input' + x].className = "form-control";
+  window['input' + x].setAttribute("name", "start_time" + y);
+  window['input' + x].setAttribute("placeholder", "Select Period");
+  window['div' + y].appendChild(window['input' + x]); // put it into the DOM
+
+  x++
+
+  window['label' + x] = document.createElement("label");
+  window['label' + x].innerHTML = "Period End:";
+  window['label' + x].setAttribute("for", "end_time" + y);
+  window['div' + y].appendChild(window['label' + x]); // put it into the DOM
+
+  window['input' + x] = document.createElement("input");
+  window['input' + x].type = "time";
+  window['input' + x].className = "form-control";
+  window['input' + x].setAttribute("name", "end_time" + y);
+  window['input' + x].setAttribute("placeholder", "Select Period End");
+  window['div' + y].appendChild(window['input' + x]); // put it into the DOM
+
+  x++;
+  y++;
+
+  remove.classList.remove("hidden");
+}
+
+const rem = function () {
+  if(y > 1) {
+    y--;
+    if(y === 1) {
+    form.removeChild(window['div' + y]);
+    remove.classList.add("hidden");
+    } else { 
+    form.removeChild(window['div' + y]);
+    }
+  }
+}
+
+
+add.addEventListener('click', create);
+remove.addEventListener('click', rem);
+
+</script>
+
   <script>
   <?php $y = 1; foreach ($scheduleSubset as $ad): ?>
   document.getElementById("d<?=$y?>").addEventListener("click", function (event) {
@@ -217,6 +306,7 @@ $scheduleSubset = array_slice($schedule, $offset, $recordsPerPage);
     });
 <?php $y++; endforeach; ?>
   </script>
+
   <script src="assets/js/book.js"></script>
 </body>
 

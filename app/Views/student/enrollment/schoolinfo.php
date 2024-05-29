@@ -62,7 +62,7 @@
 </div>
 </form>
 <button class="btn btn-primary" id="add">Add Another</button>
-<button class="btn btn-primary hidden" id="remove">Remove</button>
+<button class="btn btn-danger hidden" id="remove">Remove</button>
 </div>
 </div>
 

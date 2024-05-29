@@ -40,7 +40,7 @@ $sectionSubset = array_slice($stud_section, $offset, $recordsPerPage);
                             <h3 class="card-title">Section List</h3>
                             <div class="card-tools">
                       <div class="input-group input-group-sm" style="width: 400px;">
-                      <form action="/searchAacsection" method="get">
+                      <form action="/searchsectionlist" method="get">
                         <div class="input-group-append">
                         <input type="text" name="search" class="form-control float-right me-2" placeholder="Search">
                         <select class="form-control" name="categ">
