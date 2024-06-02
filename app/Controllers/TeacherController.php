@@ -351,11 +351,302 @@ class TeacherController extends BaseController
         }
 
         public function generateGrade() {
-            $spreadsheet = new Spreadsheet();
-            $sheet = $spreadsheet->getActiveSheet();
-            $sheet->setCellValue('A1', 'Hello World !');
-            $writer = new Xlsx($spreadsheet);
-            $writer->save('hello world.xlsx');
+            $session = session();
+            $studinfo = $this->admissions->select('school_year, CONCAT(last_name,", ",first_name," ",middle_name) as student, age, yr_lvl, name, gender, admissions.student_id')
+            ->join('student_learner','admissions.account_id = student_learner.account_id', 'inner')
+            ->join('sections','admissions.section = sections.id', 'inner')
+            ->where('admissions.student_id',$this->request->getVar('student_id'))
+            ->where('school_year', $this->request->getVar('school_year'))->first();
+
+            $studgrade = $this->grade->select('subject_name, grade, quarter')
+            ->join('admissions','student_grades.admission_id = admissions.id', 'inner')
+            ->join('student_learner','admissions.account_id = student_learner.account_id', 'inner')
+            ->join('sections','admissions.section = sections.id', 'inner')
+            ->join('subjects','student_grades.subject = subjects.id','inner')
+            ->where('student_grades.student_id',$this->request->getVar('student_id'))
+            ->where('school_year', $this->request->getVar('school_year'))->findAll();
+
+            if($studinfo['yr_lvl'] == "Grade 11" || $studinfo['yr_lvl'] == "Grade 12") {
+                //Reading the Spreadsheet
+                $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
+                $spreadsheet = $reader->load("SHS-CARD.xlsx");
+                //GetActiveSheet
+                $sheet = $spreadsheet->getSheetByName('CARD');
+                //Set Values
+                $sheet->setCellValue('B10','School Year '.str_replace("-"," - ",$studinfo['school_year']));
+                $sheet->setCellValue('C12',$studinfo['student']);
+                $sheet->setCellValue('M12',$studinfo['age']);
+                if(str_contains($studinfo['yr_lvl'], "Grade")) {
+                    $sheet->setCellValue('C13',str_replace("Grade ","",$studinfo['yr_lvl']));
+                } else {
+                    $sheet->setCellValue('C13',str_replace("Kinder ","",$studinfo['yr_lvl']));
+                }
+                $sheet->setCellValue('G13',$studinfo['name']);
+                $sheet->setCellValue('M13',$studinfo['gender']);
+                $sheet->setCellValue('G14',$this->request->getVar('lrn'));
+                //Grades
+                foreach($studgrade as $gd) {
+                    if(str_contains($gd['subject_name'], "Filipino") && $gd['quarter'] == 1) {
+                        $sheet->setCellValue('G18',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "Filipino") && $gd['quarter'] == 2) {
+                        $sheet->setCellValue('H18',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "Filipino") && $gd['quarter'] == 3) {
+                        $sheet->setCellValue('I18',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "Filipino") && $gd['quarter'] == 4) {
+                        $sheet->setCellValue('J18',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "English") && $gd['quarter'] == 1) {
+                        $sheet->setCellValue('G19',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "English") && $gd['quarter'] == 2) {
+                        $sheet->setCellValue('H19',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "English") && $gd['quarter'] == 3) {
+                        $sheet->setCellValue('I19',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "English") && $gd['quarter'] == 4) {
+                        $sheet->setCellValue('J19',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "Mathematics") && $gd['quarter'] == 1) {
+                        $sheet->setCellValue('G20',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "Mathematics") && $gd['quarter'] == 2) {
+                        $sheet->setCellValue('H20',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "Mathematics") && $gd['quarter'] == 3) {
+                        $sheet->setCellValue('I20',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "Mathematics") && $gd['quarter'] == 4) {
+                        $sheet->setCellValue('J20',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "Science") && $gd['quarter'] == 1) {
+                        $sheet->setCellValue('G21',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "Science") && $gd['quarter'] == 2) {
+                        $sheet->setCellValue('H21',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "Science") && $gd['quarter'] == 3) {
+                        $sheet->setCellValue('I21',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "Science") && $gd['quarter'] == 4) {
+                        $sheet->setCellValue('J21',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "AP") && $gd['quarter'] == 1) {
+                        $sheet->setCellValue('G22',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "AP") && $gd['quarter'] == 2) {
+                        $sheet->setCellValue('H22',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "AP") && $gd['quarter'] == 3) {
+                        $sheet->setCellValue('I22',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "AP") && $gd['quarter'] == 4) {
+                        $sheet->setCellValue('J22',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "TLE") && $gd['quarter'] == 1) {
+                        $sheet->setCellValue('G23',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "TLE") && $gd['quarter'] == 2) {
+                        $sheet->setCellValue('H23',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "TLE") && $gd['quarter'] == 3) {
+                        $sheet->setCellValue('I23',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "TLE") && $gd['quarter'] == 4) {
+                        $sheet->setCellValue('J23',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "MAPEH") && $gd['quarter'] == 1) {
+                        $sheet->setCellValue('G24',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "MAPEH") && $gd['quarter'] == 2) {
+                        $sheet->setCellValue('H24',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "MAPEH") && $gd['quarter'] == 3) {
+                        $sheet->setCellValue('I24',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "MAPEH") && $gd['quarter'] == 4) {
+                        $sheet->setCellValue('J24',$gd['grade']);
+                    } else if($gd['subject_name'] == "Music" && $gd['quarter'] == 1) {
+                        $sheet->setCellValue('G25',$gd['grade']);
+                    } else if($gd['subject_name'] == "Music" && $gd['quarter'] == 2) {
+                        $sheet->setCellValue('H25',$gd['grade']);
+                    } else if($gd['subject_name'] == "Music" && $gd['quarter'] == 3) {
+                        $sheet->setCellValue('I25',$gd['grade']);
+                    } else if($gd['subject_name'] == "Music" && $gd['quarter'] == 4) {
+                        $sheet->setCellValue('J25',$gd['grade']);
+                    } else if($gd['subject_name'] == "Arts" && $gd['quarter'] == 1) {
+                        $sheet->setCellValue('G26',$gd['grade']);
+                    } else if($gd['subject_name'] == "Arts" && $gd['quarter'] == 2) {
+                        $sheet->setCellValue('H26',$gd['grade']);
+                    } else if($gd['subject_name'] == "Arts" && $gd['quarter'] == 3) {
+                        $sheet->setCellValue('I26',$gd['grade']);
+                    } else if($gd['subject_name'] == "Arts" && $gd['quarter'] == 4) {
+                        $sheet->setCellValue('J26',$gd['grade']);
+                    } else if($gd['subject_name'] == "Physical Education" && $gd['quarter'] == 1) {
+                        $sheet->setCellValue('G27',$gd['grade']);
+                    } else if($gd['subject_name'] == "Physical Education" && $gd['quarter'] == 2) {
+                        $sheet->setCellValue('H27',$gd['grade']);
+                    } else if($gd['subject_name'] == "Physical Education" && $gd['quarter'] == 3) {
+                        $sheet->setCellValue('I27',$gd['grade']);
+                    } else if($gd['subject_name'] == "Physical Education" && $gd['quarter'] == 4) {
+                        $sheet->setCellValue('J27',$gd['grade']);
+                    } else if($gd['subject_name'] == "Health" && $gd['quarter'] == 1) {
+                        $sheet->setCellValue('G28',$gd['grade']);
+                    } else if($gd['subject_name'] == "Health" && $gd['quarter'] == 2) {
+                        $sheet->setCellValue('H28',$gd['grade']);
+                    } else if($gd['subject_name'] == "Health" && $gd['quarter'] == 3) {
+                        $sheet->setCellValue('I28',$gd['grade']);
+                    } else if($gd['subject_name'] == "Health" && $gd['quarter'] == 4) {
+                        $sheet->setCellValue('J28',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "ESP w/ CL") && $gd['quarter'] == 1) {
+                        $sheet->setCellValue('G29',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "ESP w/ CL") && $gd['quarter'] == 2) {
+                        $sheet->setCellValue('H29',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "ESP w/ CL") && $gd['quarter'] == 3) {
+                        $sheet->setCellValue('I29',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "ESP w/ CL") && $gd['quarter'] == 4) {
+                        $sheet->setCellValue('J29',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "ICT") && $gd['quarter'] == 1) {
+                        $sheet->setCellValue('G30',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "ICT") && $gd['quarter'] == 2) {
+                        $sheet->setCellValue('H30',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "ICT") && $gd['quarter'] == 3) {
+                        $sheet->setCellValue('I30',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "ICT") && $gd['quarter'] == 4) {
+                        $sheet->setCellValue('J30',$gd['grade']);
+                    } else if($gd['subject_name'] == "Conduct" && $gd['quarter'] == 1) {
+                        $sheet->setCellValue('G31',$gd['grade']);
+                    } else if($gd['subject_name'] == "Conduct" && $gd['quarter'] == 2) {
+                        $sheet->setCellValue('H31',$gd['grade']);
+                    } else if($gd['subject_name'] == "Conduct" && $gd['quarter'] == 3) {
+                        $sheet->setCellValue('I31',$gd['grade']);
+                    } else if($gd['subject_name'] == "Conduct" && $gd['quarter'] == 4) {
+                        $sheet->setCellValue('J31',$gd['grade']);
+                    }
+                }
+                //Writing to File
+                $writer = new \PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);
+                $writer->save($this->request->getVar('student_id').'.xlsx');
+
+                $session->setFlashdata('msg','Generated Grade Successfully');
+            
+            } else {
+                //Reading the Spreadsheet
+                $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
+                $spreadsheet = $reader->load("CARD-JH.xlsx");
+                //GetActiveSheet
+                $sheet = $spreadsheet->getSheetByName('CARD');
+                //Set Values
+                $sheet->setCellValue('B10','School Year '.str_replace("-"," - ",$studinfo['school_year']));
+                $sheet->setCellValue('C12',$studinfo['student']);
+                $sheet->setCellValue('M12',$studinfo['age']);
+                if(str_contains($studinfo['yr_lvl'], "Grade")) {
+                    $sheet->setCellValue('C13',str_replace("Grade ","",$studinfo['yr_lvl']));
+                } else {
+                    $sheet->setCellValue('C13',str_replace("Kinder ","",$studinfo['yr_lvl']));
+                }
+                $sheet->setCellValue('G13',$studinfo['name']);
+                $sheet->setCellValue('M13',$studinfo['gender']);
+                $sheet->setCellValue('G14',$this->request->getVar('lrn'));
+                //Grades
+                foreach($studgrade as $gd) {
+                    if(str_contains($gd['subject_name'], "Filipino") && $gd['quarter'] == 1) {
+                        $sheet->setCellValue('G18',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "Filipino") && $gd['quarter'] == 2) {
+                        $sheet->setCellValue('H18',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "Filipino") && $gd['quarter'] == 3) {
+                        $sheet->setCellValue('I18',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "Filipino") && $gd['quarter'] == 4) {
+                        $sheet->setCellValue('J18',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "English") && $gd['quarter'] == 1) {
+                        $sheet->setCellValue('G19',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "English") && $gd['quarter'] == 2) {
+                        $sheet->setCellValue('H19',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "English") && $gd['quarter'] == 3) {
+                        $sheet->setCellValue('I19',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "English") && $gd['quarter'] == 4) {
+                        $sheet->setCellValue('J19',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "Math") && $gd['quarter'] == 1) {
+                        $sheet->setCellValue('G20',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "Math") && $gd['quarter'] == 2) {
+                        $sheet->setCellValue('H20',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "Math") && $gd['quarter'] == 3) {
+                        $sheet->setCellValue('I20',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "Math") && $gd['quarter'] == 4) {
+                        $sheet->setCellValue('J20',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "Science") && $gd['quarter'] == 1) {
+                        $sheet->setCellValue('G21',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "Science") && $gd['quarter'] == 2) {
+                        $sheet->setCellValue('H21',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "Science") && $gd['quarter'] == 3) {
+                        $sheet->setCellValue('I21',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "Science") && $gd['quarter'] == 4) {
+                        $sheet->setCellValue('J21',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "AP") && $gd['quarter'] == 1) {
+                        $sheet->setCellValue('G22',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "AP") && $gd['quarter'] == 2) {
+                        $sheet->setCellValue('H22',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "AP") && $gd['quarter'] == 3) {
+                        $sheet->setCellValue('I22',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "AP") && $gd['quarter'] == 4) {
+                        $sheet->setCellValue('J22',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "TLE") && $gd['quarter'] == 1) {
+                        $sheet->setCellValue('G23',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "TLE") && $gd['quarter'] == 2) {
+                        $sheet->setCellValue('H23',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "TLE") && $gd['quarter'] == 3) {
+                        $sheet->setCellValue('I23',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "TLE") && $gd['quarter'] == 4) {
+                        $sheet->setCellValue('J23',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "MAPEH") && $gd['quarter'] == 1) {
+                        $sheet->setCellValue('G24',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "MAPEH") && $gd['quarter'] == 2) {
+                        $sheet->setCellValue('H24',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "MAPEH") && $gd['quarter'] == 3) {
+                        $sheet->setCellValue('I24',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "MAPEH") && $gd['quarter'] == 4) {
+                        $sheet->setCellValue('J24',$gd['grade']);
+                    } else if($gd['subject_name'] == "Music" && $gd['quarter'] == 1) {
+                        $sheet->setCellValue('G25',$gd['grade']);
+                    } else if($gd['subject_name'] == "Music" && $gd['quarter'] == 2) {
+                        $sheet->setCellValue('H25',$gd['grade']);
+                    } else if($gd['subject_name'] == "Music" && $gd['quarter'] == 3) {
+                        $sheet->setCellValue('I25',$gd['grade']);
+                    } else if($gd['subject_name'] == "Music" && $gd['quarter'] == 4) {
+                        $sheet->setCellValue('J25',$gd['grade']);
+                    } else if($gd['subject_name'] == "Arts" && $gd['quarter'] == 1) {
+                        $sheet->setCellValue('G26',$gd['grade']);
+                    } else if($gd['subject_name'] == "Arts" && $gd['quarter'] == 2) {
+                        $sheet->setCellValue('H26',$gd['grade']);
+                    } else if($gd['subject_name'] == "Arts" && $gd['quarter'] == 3) {
+                        $sheet->setCellValue('I26',$gd['grade']);
+                    } else if($gd['subject_name'] == "Arts" && $gd['quarter'] == 4) {
+                        $sheet->setCellValue('J26',$gd['grade']);
+                    } else if($gd['subject_name'] == "Physical Education" && $gd['quarter'] == 1) {
+                        $sheet->setCellValue('G27',$gd['grade']);
+                    } else if($gd['subject_name'] == "Physical Education" && $gd['quarter'] == 2) {
+                        $sheet->setCellValue('H27',$gd['grade']);
+                    } else if($gd['subject_name'] == "Physical Education" && $gd['quarter'] == 3) {
+                        $sheet->setCellValue('I27',$gd['grade']);
+                    } else if($gd['subject_name'] == "Physical Education" && $gd['quarter'] == 4) {
+                        $sheet->setCellValue('J27',$gd['grade']);
+                    } else if($gd['subject_name'] == "Health" && $gd['quarter'] == 1) {
+                        $sheet->setCellValue('G28',$gd['grade']);
+                    } else if($gd['subject_name'] == "Health" && $gd['quarter'] == 2) {
+                        $sheet->setCellValue('H28',$gd['grade']);
+                    } else if($gd['subject_name'] == "Health" && $gd['quarter'] == 3) {
+                        $sheet->setCellValue('I28',$gd['grade']);
+                    } else if($gd['subject_name'] == "Health" && $gd['quarter'] == 4) {
+                        $sheet->setCellValue('J28',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "ESP w/ CL") && $gd['quarter'] == 1) {
+                        $sheet->setCellValue('G29',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "ESP w/ CL") && $gd['quarter'] == 2) {
+                        $sheet->setCellValue('H29',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "ESP w/ CL") && $gd['quarter'] == 3) {
+                        $sheet->setCellValue('I29',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "ESP w/ CL") && $gd['quarter'] == 4) {
+                        $sheet->setCellValue('J29',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "ICT") && $gd['quarter'] == 1) {
+                        $sheet->setCellValue('G30',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "ICT") && $gd['quarter'] == 2) {
+                        $sheet->setCellValue('H30',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "ICT") && $gd['quarter'] == 3) {
+                        $sheet->setCellValue('I30',$gd['grade']);
+                    } else if(str_contains($gd['subject_name'], "ICT") && $gd['quarter'] == 4) {
+                        $sheet->setCellValue('J30',$gd['grade']);
+                    } else if($gd['subject_name'] == "Conduct" && $gd['quarter'] == 1) {
+                        $sheet->setCellValue('G31',$gd['grade']);
+                    } else if($gd['subject_name'] == "Conduct" && $gd['quarter'] == 2) {
+                        $sheet->setCellValue('H31',$gd['grade']);
+                    } else if($gd['subject_name'] == "Conduct" && $gd['quarter'] == 3) {
+                        $sheet->setCellValue('I31',$gd['grade']);
+                    } else if($gd['subject_name'] == "Conduct" && $gd['quarter'] == 4) {
+                        $sheet->setCellValue('J31',$gd['grade']);
+                    }
+                }
+                //Writing to File
+                $writer = new \PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);
+                $writer->save($this->request->getVar('student_id').'.xlsx');
+
+                $session->setFlashdata('msg','Generated Grade Successfully');
+            }
+
 
             return redirect()->back();
         }

@@ -201,9 +201,11 @@ const form = document.getElementById('form');
 var x = 0;
 var y = 1;
 const opt = '<option value="Select Day">Select Day</option><option value="Monday">Monday</option><option value="Tuesday">Tuesday</option><option value="Wednesday">Wednesday</option><option value="Thursday">Thursday</option><option value="Friday">Friday</option><option value="Saturday">Saturday</option>';
+const subfopt ='<option value="">Select Subject/Activity</option><option value="Home Room With Class Adviser" <?php if(isset($sched["subject"])) { if($sched["subject"] == "Home Room With Class Adviser") { echo "selected"; }} ?>>Home Room With Class Adviser</option><option value="Lunch Break" <?php if(isset($sched["subject"])) { if($sched["subject"] == "Lunch Break") { echo "selected"; }} ?>>Lunch Break</option><option value="Health Break" <?php if(isset($sched["subject"])) { if($sched["subject"] == "Health Break") { echo "selected"; }} ?>>Health Break</option>';
 
-let subjectoptions = "";
+let subjectoptions = "<?php foreach($subject as $se): ?><option value='<?= $se['subject_name'] ?>' <?php if(isset($sched["subject"])) { if($sched["subject"] == $se['subject_name']) { echo "selected"; }} ?>><?= $se['subject_name'] ?></option><?php endforeach;?>" ;
 var selsubject = document.getElementById('subject');
+console.log(subjectoptions);
 
 $(document).ready(function () {
     for (let key in subject) {
@@ -234,6 +236,19 @@ const create = function () {
   x++;
 
   window['label' + x] = document.createElement("label");
+  window['label' + x].innerHTML = "Subject/Activity:";
+  window['label' + x].setAttribute("for", "subject" + y);
+  window['div' + y].appendChild(window['label' + x]); // put it into the DOM
+
+  window['input' + x] = document.createElement("select");
+  window['input' + x].className = "form-control";
+  window['input' + x].setAttribute("name", "subject" + y);
+  window['input' + x].innerHTML = subfopt+subjectoptions;
+  window['div' + y].appendChild(window['input' + x]);
+
+  x++;
+
+  window['label' + x] = document.createElement("label");
   window['label' + x].innerHTML = "Period Start:";
   window['label' + x].setAttribute("for", "start_time" + y);
   window['div' + y].appendChild(window['label' + x]); // put it into the DOM
@@ -257,6 +272,21 @@ const create = function () {
   window['input' + x].className = "form-control";
   window['input' + x].setAttribute("name", "end_time" + y);
   window['input' + x].setAttribute("placeholder", "Select Period End");
+  window['div' + y].appendChild(window['input' + x]); // put it into the DOM
+
+  x++;
+
+  window['label' + x] = document.createElement("label");
+  window['label' + x].innerHTML = "Section:";
+  window['label' + x].setAttribute("for", "section" + y);
+  window['div' + y].appendChild(window['label' + x]); // put it into the DOM
+
+  window['input' + x] = document.createElement("input");
+  window['input' + x].type = "text";
+  window['input' + x].className = "form-control";
+  window['input' + x].setAttribute("name", "section" + y);
+  window['input' + x].setAttribute("value", "<?php if (isset($section['id'])) {echo $section['name'];}?>");
+  window['input' + x].setAttribute("readonly", true);
   window['div' + y].appendChild(window['input' + x]); // put it into the DOM
 
   x++;
@@ -307,7 +337,6 @@ remove.addEventListener('click', rem);
 <?php $y++; endforeach; ?>
   </script>
 
-  <script src="assets/js/book.js"></script>
 </body>
 
 </html>
