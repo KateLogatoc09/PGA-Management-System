@@ -55,6 +55,7 @@ $studentSubset = array_slice($student, $offset, $recordsPerPage);
                                         <option value="name">Section</option>
                                         <option value="Adviser">Adviser</option>
                                         <option value="program">Program</option>
+                                        <option value="specialization">Specialization</option>
                                         <option value="schedule">Schedule Date</option>
                                         <option value="status">Status</option>
                                     </select>
@@ -82,6 +83,7 @@ $studentSubset = array_slice($student, $offset, $recordsPerPage);
                                         <th>Section</th>
                                         <th>Adviser</th>
                                         <th>Program</th>
+                                        <th>Specialization</th>
                                         <th>School Year</th>
                                         <th>Birth Certificate</th>
                                         <th>Report Card</th>
@@ -112,6 +114,7 @@ $studentSubset = array_slice($student, $offset, $recordsPerPage);
                                             <td><?= $ad['name'] ?></td>
                                             <td><?= $ad['fname'] ?> <?= $ad['mname'] ?> <?= $ad['lname'] ?></td>
                                             <td><?= $ad['program'] ?></td>
+                                            <td><?= $ad['specialization'] ?></td>
                                             <td><?= $ad['school_year'] ?></td>
                                             <td><img
                                             src="<?= base_url().$ad['birth_cert'] ?>"
@@ -248,6 +251,11 @@ $studentSubset = array_slice($student, $offset, $recordsPerPage);
                                         <option value="HUMMS" <?php if(isset($admissions["program"])) { if($admissions["program"] == "HUMMS") { echo "selected"; }} ?>>HUMMS</option>    
 
                                         </select>
+
+                                        <label for="specialization">Specialization:</label>
+                                        <input type="text" class="form-control" name="specialization" placeholder="Enter Specialization" 
+                                        value="<?php if (isset($admissions['specialization'])) {echo $admissions['specialization'];}?>" required>  
+
 
                                         <label for="school_year">School Year:</label>
                                         <input type="text" class="form-control" name="school_year" placeholder="Enter School Year" 

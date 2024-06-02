@@ -158,7 +158,7 @@ class TeacherController extends BaseController
      
         $data = [
             'learn' => $this->learner->where('student_learner.account_id', $expand)->first(),
-            'ad' => $this->admissions->select('student_id, name, category,yr_lvl,program, school_year, status, admissions.photo, schedule, fname, mname, lname')
+            'ad' => $this->admissions->select('student_id, name, category,yr_lvl,program, specialization, school_year, status, admissions.photo, schedule, fname, mname, lname')
              ->join('sections','sections.id = admissions.section','left')->join('teachers','sections.adviser = teachers.idnum','left')
              ->where('admissions.account_id', $expand)->first(),
             'fam' => $this->family->where('family.account_id', $expand)->FindAll(),

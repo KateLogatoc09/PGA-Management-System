@@ -35,14 +35,16 @@
                                         value="<?php if (isset($admissions['id'])) {echo $admissions['id'];}?>">
                         
                                         <label for="category">Student Category:</label>
-                                        <select class="form-control" name="category" id="category">
+                                        <select class="form-control" name="category" id="category" required>
+                                            <option value="">Select Category</option>
                                             <option value="Continuing">Continuing</option>
                                             <option value="Transferee">Transferee</option>
                                             <option value="Returnee">Returnee</option>
                                         </select>
 
                                         <label for="yr_lvl">Year Level:</label>
-                                        <select class="form-control" name="yr_lvl" id="yr_lvl">
+                                        <select class="form-control" name="yr_lvl" id="yr_lvl" required>
+                                            <option value="">Select Year Level</option>
                                             <option value="Kinder 1">Kinder 1</option>
                                             <option value="Kinder 2">Kinder 2</option>
                                             <option value="Grade 1">Grade 1</option>
@@ -60,15 +62,19 @@
                                         </select>
 
                                         <label for="program">Strand/Program:</label>
-                                        <select class="form-control" name="program" id="program">
+                                        <select class="form-control" name="program" id="program" required>
+                                        <option value="">Select Strand</option>
                                             <option value="None">None</option>
                                             <option value="STEM">STEM</option>
                                             <option value="ABM">ABM</option>
                                             <option value="HUMMS">HUMMS</option>
                                         </select>
 
+                                        <label for="specialization">Specialization:</label>
+                                        <input type="text" class="form-control" name="specialization" placeholder="Type N/A if not applicable" required>
+
                                         <label for="school_year">School Year:</label>
-                                        <input type="text" class="form-control" name="school_year" placeholder="Ex: 2023-2024" >
+                                        <input type="text" class="form-control" name="school_year" placeholder="Ex: 2023-2024" required>
 
                                         </div>
 </div>

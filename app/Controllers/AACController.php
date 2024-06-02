@@ -28,12 +28,12 @@ class AACController extends BaseController
         }
     
         
-    public function schedule($id){
+    public function schedule($sec){
         $data = [
             'schedule' => $this->schedule->select('schedule.id as id, day, start_time, end_time, name, subject')
-            ->join('sections','schedule.section_id = sections.id','inner')->where('section_id', $id)->findAll(),
+            ->join('sections','schedule.section_id = sections.id','inner')->where('section_id', $sec)->findAll(),
             'subject' => $this->subjects->findAll(),
-            'section' => $this->sections->where('id', $id)->first(),
+            'section' => $this->sections->select('id, name')->where('id', $sec)->first(),
         ];
 
         return view ('schedule', $data);
@@ -92,10 +92,12 @@ class AACController extends BaseController
     
             return view('schedule', $data);
         }
-
+    
     public function saveSchedule()  {
         $session = session();
         $id = $_POST['id'];
+        $num = (count($_POST) - 1) / 3;
+
         $data = [
             'day' => $this->request->getVar('day'),
             'subject' => $this->request->getVar('subject'),
@@ -104,21 +106,37 @@ class AACController extends BaseController
             'section_id' => $this->request->getVar('section_id'),
         ];
 
+
         if ($id != null) {
             $res = $this->schedule->set($data)->where('id', $id)->update();
             if($res) {
                 $session->setFlashdata('msg','Updated Successfully.');
+                return redirect()->to('school');
             } else {
                 $session->setFlashdata('msg','Something went wrong. Please try again later.');
             }
         } else {
+            if($num > 1) {
+                for($x = 1;$x < $num;$x++) {
+                    $data1 = [
+                        'day' => $this->request->getVar('day'),
+                        'subject' => $this->request->getVar('subject'),
+                        'start_time' => $this->request->getVar('start_time'),
+                        'end_time' => $this->request->getVar('end_time'),
+                        'section_id' => $this->request->getVar('section_id'),
+                    ]; 
+    
+                    $this->schedule->save($data1);
+                }
+            }
+
             $res = $this->schedule->save($data);
             if($res) {
                 $session->setFlashdata('msg','Saved Successfully.');
             } else {
                 $session->setFlashdata('msg','Something went wrong. Please try again later.');
             }
-        }   
+        }
         return redirect()->to('schedule');
     }
 

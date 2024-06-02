@@ -31,11 +31,6 @@
                         <h7 class="orange">Student ID:</h7>
                         <?php if (isset($ad['student_id'])) {echo $ad['student_id'];}?>
                         <br>
-                        <h7 class="orange">Full Name:</h7>
-                        <?php if (isset($learn['first_name'])) {echo $learn['first_name'];}?>
-                        <?php if (isset($learn['middle_name'])) {echo $learn['middle_name'];}?>
-                        <?php if (isset($learn['last_name'])) {echo $learn['last_name'];}?>
-                        <br>
                         <h7 class="orange">Nickname:</h7>
                         <?php if (isset($learn['nickname'])) {echo $learn['nickname'];}?>
                         <br> 
@@ -52,6 +47,9 @@
                         <br>
                         <h7 class="orange">Program:</h7>
                         <?php if (isset($ad['program'])) {echo $ad['program'];}?>
+                        <br>
+                        <h7 class="orange">Specialization:</h7>
+                        <?php if (isset($ad['specialization'])) {echo $ad['specialization'];}?>
                         <br>
                         <h7 class="orange">School Year:</h7>
                         <?php if (isset($ad['school_year'])) {echo $ad['school_year'];}?>

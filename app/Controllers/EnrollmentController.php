@@ -226,6 +226,7 @@ class EnrollmentController extends BaseController
                 'category' => $this->request->getVar('category'),
                 'yr_lvl' => $this->request->getVar('yr_lvl'),
                 'program' => $this->request->getVar('program'),
+                'specialization' => $this->request->getVar('specialization'),
                 'school_year' => $this->request->getVar('school_year'),
                 'birth_cert' => $path1,
                 'report_card' => $path2,
@@ -261,6 +262,7 @@ class EnrollmentController extends BaseController
                 'category' => $this->request->getVar('category'),
                 'yr_lvl' => $this->request->getVar('yr_lvl'),
                 'program' => $this->request->getVar('program'),
+                'specialization' => $this->request->getVar('specialization'),
                 'school_year' => $this->request->getVar('school_year'),
                 'account_id' => $acc,
             ];

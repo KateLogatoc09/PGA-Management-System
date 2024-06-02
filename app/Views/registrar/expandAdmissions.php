@@ -53,6 +53,9 @@
                         <h7 class="orange">Program:</h7>
                         <?php if (isset($ad['program'])) {echo $ad['program'];}?>
                         <br>
+                        <h7 class="orange">Specialization:</h7>
+                        <?php if (isset($ad['specialization'])) {echo $ad['specialization'];}?>
+                        <br>
                         <h7 class="orange">School Year:</h7>
                         <?php if (isset($ad['school_year'])) {echo $ad['school_year'];}?>
                         <br>

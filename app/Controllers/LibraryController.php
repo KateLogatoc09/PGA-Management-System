@@ -99,11 +99,6 @@ class LibraryController extends BaseController
         return redirect()->to('books');
     }
 
-    public function librarian()
-    {
-        return view('librarian');
-    }
-
     public function borrowers()
     {
         $data = [
@@ -487,4 +482,19 @@ class LibraryController extends BaseController
         return view('books', $data);
     }
 
+        public function librarian()
+        {
+            $book = $this->book->findAll();
+
+            foreach($book as $s) {
+
+            $allbook['book'.$s['id']] = $this->borrowedBook->select('book_title')
+            ->join('books','borrowedbooks.book_id = books.id','inner')
+            ->groupBy('borrowedbooks.id, books.book_title')->countAll()->orderBy('book_title','DESC')->limit(10)->findAll();
+            }
+            
+            $top['book'] = $book;
+
+            return view('librarian', $top);
+        }
 }

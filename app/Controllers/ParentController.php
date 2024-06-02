@@ -40,7 +40,7 @@ class ParentController extends BaseController
     $stud = $this->admissions->select('account_id')->where('student_id', $child)->first();
        $data = [
            'learn' => $this->learner->where('student_learner.account_id', $stud)->first(),
-           'ad' => $this->admissions->select('student_id, name, category,yr_lvl,program, school_year, status,
+           'ad' => $this->admissions->select('student_id, name, category,yr_lvl,program, specialization, school_year, status,
             birth_cert, report_card, good_moral, admissions.photo, schedule, fname, mname, lname')
             ->join('sections','sections.id = admissions.section','left')->join('teachers','sections.adviser = teachers.idnum','left')
             ->where('admissions.account_id', $stud)->first(),

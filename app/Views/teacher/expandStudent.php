@@ -31,11 +31,6 @@
                         <h7 class="orange">Student ID:</h7>
                         <?php if (isset($ad['student_id'])) {echo $ad['student_id'];}?>
                         <br>
-                        <h7 class="orange">Full Name:</h7>
-                        <?php if (isset($learn['first_name'])) {echo $learn['first_name'];}?>
-                        <?php if (isset($learn['middle_name'])) {echo $learn['middle_name'];}?>
-                        <?php if (isset($learn['last_name'])) {echo $learn['last_name'];}?>
-                        <br>
                         <h7 class="orange">Nickname:</h7>
                         <?php if (isset($learn['nickname'])) {echo $learn['nickname'];}?>
                         <br>
@@ -52,6 +47,9 @@
                         <br>
                         <h7 class="orange">Program:</h7>
                         <?php if (isset($ad['program'])) {echo $ad['program'];}?>
+                        <br>
+                        <h7 class="orange">Specialization:</h7>
+                        <?php if (isset($ad['specialization'])) {echo $ad['specialization'];}?>
                         <br>
                         <h7 class="orange">School Year:</h7>
                         <?php if (isset($ad['school_year'])) {echo $ad['school_year'];}?>
@@ -247,16 +245,40 @@ $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
                   </div>
                 </div>
               </div>
-              <form action="/generateGrade" method="POST">
-              <input type="hidden" class="form-control" name="student_id" value="<?= $ad['student_id'] ?>" required>
+
+              <div class="row">
+              <div class="col-md-12">
+      <div class="card">
+      <div class="card-header">
+      <h3 class="card-title"><span class="orange">Generate Report Card</h3>
+          <hr class="my-0">
+          <form action="/generateGrade" method="POST">
+              <div class="card-body d-flex row">
+                  <div class="col-sm-12 col-md-12 d-sm-block d-md-block ps-2">
+                      <div class="row">
+                      
+                          <div class="mb-2 col-md-12">
+                          <input type="hidden" class="form-control" name="student_id" value="<?= $ad['student_id'] ?>" required>
               <input type="text" class="form-control" name="school_year" placeholder="Enter School Year" value="" required>
+                        </div>
+                        <div class="mb-2 col-md-12">
               <input type="text" class="form-control" name="lrn" placeholder="Enter Student's LRN" value="" required>
-              <button type="submit" class="btn btn-primary">Generate Grade</button>
+                          </div>
+
+
+                          <div class="mt-2">
+                          <button type="submit" class="btn btn-primary">Generate Grade</button>
+                          </div>
+                        </div>
+              </div>
               </form>
-              <center><a href="/advisoryClass" class="btn btn-primary">Back</a><center>
+      </div>
+  </div>
+
               <!-- /.card -->
             </div> <!-- /.dito -->
-
+            <br>
+            <center><a href="/advisoryClass" class="btn btn-primary">Back</a><center>
             </div>
             <!-- / Content -->
 
