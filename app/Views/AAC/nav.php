@@ -46,7 +46,7 @@
                     </li>
                     
                     <li>
-                      <a class="dropdown-item" href="/">
+                      <a class="dropdown-item" href="/notification">
                         <i class="bx bx-notification me-2"></i>
                         <span class="align-middle">Notifications</span>
                       </a>

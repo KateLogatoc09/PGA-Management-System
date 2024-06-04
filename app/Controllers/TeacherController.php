@@ -16,6 +16,7 @@ use App\Models\Sections;
 use SimpleSoftwareIO\QrCode\Generator;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use Mpdf\Mpdf;
 
 
 class TeacherController extends BaseController
@@ -348,6 +349,68 @@ class TeacherController extends BaseController
             $allGrades['sub'] = $sub;
 
             return view('chart', $allGrades);
+        }
+
+        public function generateReport() {
+            $session = session();
+            //get curr user id
+            $curruser = $this->acc->select('id')->where('username', $_SESSION['username'])->first();
+            //get idnum of curr user id
+            $teachid = $this->teacher->select('idnum')->where('account_id', $curruser)->first();
+            //get subjects handled by the curr user
+            $sub = $this->subjects->where('teacher_id', $teachid)->findAll();
+
+            foreach($sub as $s) {
+
+            $allGrades['sub'.$s['id']] = $this->grade->select('student_grades.student_id, idnum, school_year, subject, AVG(grade) as GWA, CONCAT(first_name,\' \', last_name) as student, name, subject_name, teacher_id, quarter')
+            ->join('teachers','student_grades.teacher_account = teachers.id','inner')
+            ->join('admissions','student_grades.student_id = admissions.student_id','inner')->join('student_learner','student_learner.account_id = admissions.account_id','inner')
+            ->join('sections','sections.id = admissions.section','inner')->join('subjects','subjects.id = student_grades.subject','inner')->where('teacher_id', $teachid)->where('subject', $s['id'])->where('school_year','2023-2024')
+            ->groupBy('student_grades.student_id, student_grades.quarter, teachers.idnum, student_learner.last_name, student_learner.first_name')->orderBy('GWA','DESC')->limit(10)->findAll();
+
+            }
+
+            $student = $this->learner->select('school_year, CONCAT(last_name,", ",first_name," ",middle_name) as student, age, admissions.yr_lvl, name, gender, admissions.student_id as studid')
+            ->join('admissions','admissions.account_id = student_learner.account_id', 'inner')
+            ->join('sections','admissions.section = sections.id', 'inner')
+            ->join('student_grades','student_grades.student_id = admissions.student_id', 'inner')
+            ->join('subjects','subjects.id = student_grades.subject', 'inner')
+            ->where('teacher_id', $teachid)->findAll();
+
+            $allGrades['sub'] = $sub;
+
+            $pdf = new \Mpdf\Mpdf();
+            
+            $html = "<div style='text-align:center'><img src='img/pga.jpg' style='float: left;margin-right:40' width='120' height='120'><h1 style='line-height: 50px; '>Puerto Galera Academy Inc. Students' Report</h1></div><hr style='padding:0;margin:3'>";
+            $html .= "<div style='text-align:center'><small>Puerto Galera, Oriental Mindoro, Philippines</small></div><hr style='padding:0;margin:3'><div>";
+            foreach($allGrades['sub'] as $all) {
+            $html .= "<img src='".$this->request->getVar("report".$all['id'])."' style='margin: 20px' width='300' height='200'?>";
+            }
+ 
+            $html .= '<h3>List of Students</h3>';
+            $html .= "</div><table style='border:1px black' width='100%'><tr>
+            <td style='background-color:gray;color:white'>No.</td>
+            <td style='background-color:gray;color:white'>Student's Name</td>
+            <td style='background-color:gray;color:white'>Student's ID</td>
+            <td style='background-color:gray;color:white'>Gender</td>
+            <td style='background-color:gray;color:white'>Year Level</td>
+            <td style='background-color:gray;color:white'>Section</td></tr>";
+
+            foreach($student as $stud) {
+                $x = 1;
+                $html .= "<tr><td>".$x."</td>";
+                $html .= "<td>".$stud['student']."</td>";
+                $html .= "<td>".$stud['studid']."</td>";
+                $html .= "<td>".$stud['gender']."</td>";
+                $html .= "<td>".$stud['yr_lvl']."</td>";
+                $html .= "<td>".$stud['name']."</td></tr>";
+                $x++;
+            }
+            $html .= "</table>";
+            $pdf->WriteHTML($html);
+            $pdf->Output('Report.pdf');
+
+            return redirect()->to('chart');
         }
 
         public function generateGrade() {

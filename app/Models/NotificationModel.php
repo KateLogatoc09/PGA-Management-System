@@ -13,7 +13,7 @@ class NotificationModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['title', 'content', 'date'];
+    protected $allowedFields    = ['title', 'content', 'date', 'status', 'account_id'];
 
     // Dates
     protected $useTimestamps = false;

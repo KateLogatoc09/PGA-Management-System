@@ -10,7 +10,7 @@ use App\Models\AccountModel;
 
 class GeneralController extends BaseController
 {
-    private $notification, $app, $acc, $feedback, $announce;
+    private $notification, $app, $acc, $feedback, $announce, $config, $encrypter;
     public function __construct()
     {
         $this->notification = new NotificationModel();
@@ -18,6 +18,8 @@ class GeneralController extends BaseController
         $this->app = new ApplicationModel();
         $this->acc = new AccountModel();
         $this->feedback = new FeedbackModel();
+        $this->config    = new \Config\Encryption();  
+        $this->encrypter = \Config\Services::encrypter($this->config);
     }
 
     public function general(){
@@ -63,11 +65,22 @@ class GeneralController extends BaseController
     
 
     public function notification(){
+        $acc = $this->acc->select('id')->where('username', $_SESSION['username'])->first();
         $data = [
-            'notif' => $this->notification->findAll(),
+            'notif' => $this->notification->where('account_id',$acc)->findAll(),
         ];
 
             return view ('notification', $data);
+        }
+    
+    public function view_notification($id){
+
+        $this->notification->set('status', 'READ')->where('id',$this->encrypter->decrypt(hex2bin($id)))->update();
+        $data = [
+            'notif' => $this->notification->where('id',$this->encrypter->decrypt(hex2bin($id)))->first(),
+        ];
+    
+            return view ('view_notification', $data);
         }
 
     public function applyStudent(){

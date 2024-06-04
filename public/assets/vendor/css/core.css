@@ -18003,7 +18003,7 @@ html:not(.layout-footer-fixed) .content-wrapper {
 
 /* CSS BY PGA DEVELOPERS */
 .text-mn {
-  color: midnightblue;
+  color: midnightblue !important;
 }
 .btn-form{
   color: gray;

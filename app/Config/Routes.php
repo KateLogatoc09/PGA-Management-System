@@ -29,9 +29,11 @@ $routes->get('/applyStudent', 'GeneralController::applyStudent', ['filter' => 'i
 $routes->get('/applyParent', 'GeneralController::applyParent', ['filter' => 'isloggedin']);
 $routes->get('/applyConfirm', 'GeneralController::applyConfirm', ['filter' => 'isloggedin']);
 $routes->get('/notification', 'GeneralController::notification', ['filter' => 'isloggedin']);
+$routes->get('/notification/(:any)', 'GeneralController::view_notification/$1', ['filter' => 'isloggedin']);
 $routes->post('/apply_st', 'GeneralController::apply_st', ['filter' => 'isloggedin']);
 $routes->post('/sendfeedback', 'GeneralController::sendfeedback', ['filter' => 'isloggedin']);
 $routes->post('/apply_pr', 'GeneralController::apply_pr', ['filter' => 'isloggedin']);
+
 
 //ATTENDANCE
 $routes->post('/time_in', 'Attendance::time_in', ['filter' => 'guard']);
@@ -72,6 +74,7 @@ $routes->get('/deleteGrade/(:any)', 'TeacherController::deleteGrade/$1', ['filte
 $routes->get('/editGrade/(:any)', 'TeacherController::editGrade/$1', ['filter' => 'teacher']);
 $routes->get('/expandStudent/(:any)', 'TeacherController::expandStudent/$1', ['filter' => 'teacher']);
 $routes->post('/generateGrade', 'TeacherController::generateGrade', ['filter' => 'teacher']);
+$routes->post('/generateReport', 'TeacherController::generateReport', ['filter' => 'teacher']);
 $routes->post('/teacher_qr', 'TeacherController::teacher_qr', ['filter' => 'teacher']);
 $routes->get('/advisoryClass', 'TeacherController::advisoryClass', ['filter' => 'teacher']);
 $routes->get('/searchAdvisory', 'TeacherController::searchAdvisory', ['filter' => 'teacher']);

@@ -23,7 +23,8 @@ $encrypter = \Config\Services::encrypter($config);?>
               <div class="col-lg-18 mb-4 order-0">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Notification List</h3>
+                            <h3 class="card-title"><?= $notif['title'] ?></h3>
+                            <small><?= $notif['date'] ?></small>
                             <div class="card-tools">
                                 <div class="input-group input-group-sm" style="width: 150px;">
                                     <div class="input-group-append">
@@ -35,26 +36,8 @@ $encrypter = \Config\Services::encrypter($config);?>
                             </div>
                         </div>
                         <!-- /.card-header -->
-                        <div class="card-body table-responsive p-0">
-                         <table class="table table-hover text-nowrap">
-                    
-                            <thead>
-                                    <tr>
-                                        <th>Title</th>
-                                        <th>Date Posted</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                <?php foreach ($notif as $n): ?>
-                                    <tr>
-                                            <td><a href="/notification/<?php echo bin2hex($encrypter->encrypt($n['id'])); ?>" class="<?php if($n['status'] == 'UNREAD'): ?>text-mn fw-bold<?php else: ?>text-gray<?php endif;?>"><?= $n['title'] ?></a></td>
-                                            <td><?= $n['date'] ?></td>
-                                            <td><?= $n['status'] ?></td>
-                                     </tr>
-                                <?php endforeach ?>
-                                </tbody>
-                            </table>
+                        <div class="card-body table-responsive p-4">
+                        <?= $notif['content'] ?></h3>
                         </div>
                         <!-- /.card-body -->
                     </div>

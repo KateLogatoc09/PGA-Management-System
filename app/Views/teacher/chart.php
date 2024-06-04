@@ -12,10 +12,10 @@
 
         <!-- Content wrapper -->
         <div class="content-wrapper">
+        <div class="container-xxl flex-grow-1 container-p-y">
+            <div class="row">
           <!-- Content -->
           <?php foreach($sub as $all): ?>
-          <div class="container-xxl flex-grow-1 container-p-y">
-            <div class="row">
               <div class="col-lg-18 mb-4 order-0">
                 <div class="card">
                   <div class="d-flex align-items-end row">
@@ -28,14 +28,21 @@
                   </div>
                 </div>
               </div>
+              <img id="image<?= $all['id'] ?>">
               <?php endforeach; ?>
-                
+         
+              <form action="generateReport" method="POST">
+            <?php foreach($sub as $all): ?>
+              <input type="hidden" id="report<?= $all['id']?>" name="report<?= $all['id']?>">
+            <?php endforeach;?>
+              <button class="btn btn-primary" type="submit">Generate Report</button>
+            </form>
               
                     </div>
                     <!-- /.card -->
                 </div> <!-- /.dito -->
 
-
+            
 
             </div>
             <!-- / Content -->
@@ -84,14 +91,25 @@
                     scales: {
                         y: {
                             beginAtZero: true
-                        }
+                        },
+                    },
+                    animation: {
+                        onComplete: function() {
+                          const canvas<?= $all['id'] ?> = document.getElementById('gradesChart<?=$all['id']?>');
+                          const imgdata<?= $all['id'] ?> = canvas<?= $all['id'] ?>.toDataURL();
+                          const img<?=$all['id'] ?> = document.getElementById('report<?= $all['id']; ?>');
+                          img<?=$all['id'] ?>.setAttribute("value", imgdata<?= $all['id'] ?>);
+                      }
                     }
                 }
             };
 
             const gradesChart<?=$all['id']?> = new Chart(ctx<?=$all['id']?>, config<?=$all['id']?>);
         });
+
       <?php endforeach; ?>
+
+
     </script>
 </body>
 </html>

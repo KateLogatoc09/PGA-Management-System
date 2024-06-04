@@ -35,6 +35,12 @@
                   </a>
                 </li>
 
+                <li class="menu-item <?= set_active('notification'); ?>">
+                  <a href="<?= base_url('notification') ?>" class="menu-link">
+                    <div data-i18n="Analytics">Notifications</div>
+                  </a>
+                </li>
+
                 <li class="menu-item <?= set_active('feedback'); ?>">
                   <a href="<?= base_url('feedback') ?>" class="menu-link">
                     <div data-i18n="Analytics">Feedback</div>
