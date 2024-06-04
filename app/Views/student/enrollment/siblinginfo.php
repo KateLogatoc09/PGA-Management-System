@@ -99,10 +99,13 @@ var y = 1;
 const opt = '<option value="Kinder 1">Kinder 1</option><option value="Kinder 2">Kinder 2</option><option value="Grade 1">Grade 1</option><option value="Grade 2">Grade 2</option><option value="Grade 3">Grade 3</option><option value="Grade 4">Grade 4</option><option value="Grade 5">Grade 5</option><option value="Grade 6">Grade 6</option><option value="Grade 7">Grade 7</option><option value="Grade 8">Grade 8</option><option value="Grade 9">Grade 9</option><option value="Grade 10">Grade 10</option><option value="Grade 11">Grade 11</option><option value="Grade 12">Grade 12</option>';
 
 const create = function () {
+  window['hr' + y] = document.createElement("hr");
+  window['hr' + y].setAttribute("style","border:1px solid black");
   window['div' + y] = document.createElement("div");
   window['div' + y].className = "form-group margin-left";
   window['div' + y].setAttribute("id", "div" + y); // set the CSS class
-  form.appendChild(window['div' + y]); // put it into the DOM
+  form.appendChild(window['div' + y]);
+  window['div' + y].appendChild(window['hr' + y]); // put it into the DOM
 
   window['label' + x] = document.createElement("label");
   window['label' + x].innerHTML = "Full Name:";

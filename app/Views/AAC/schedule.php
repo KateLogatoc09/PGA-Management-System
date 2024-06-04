@@ -117,17 +117,17 @@ $scheduleSubset = array_slice($schedule, $offset, $recordsPerPage);
                 <div class="card-body">
                         <h5 class="card-title text-primary">Edit Schedule</h5>
                       </div>
-                  <div class="d-flex">
-                    <div class="col-sm-5">
                 <form action="/saveSchedule" method="post"  id='form'>
+                  <div id="outer" class="row">
+                    <div class="col-sm-5">
                     <!-- Add your form fields and content here -->
 
                     <div class="form-group margin-left">
-                    <input type="hidden" class="form-control" name="id"
+                      <input type="hidden" class="form-control" name="id"
                                         value="<?php if (isset($sched['id'])) {echo $sched['id'];}?>">
 
                                         <label for="day">Day:</label>
-                                        <select class="form-control" name="day" id="day">
+                                        <select class="form-control" name="day1" id="day">
                                         <option value="">Select Day</option>
                                           <option value="Monday" <?php if(isset($sched["day"])) { if($sched["day"] == "Monday") { echo "selected"; }} ?>>Monday</option>
                                             <option value="Tuesday" <?php if(isset($sched["day"])) { if($sched["day"] == "Tuesday") { echo "selected"; }} ?>>Tuesday</option>
@@ -138,7 +138,7 @@ $scheduleSubset = array_slice($schedule, $offset, $recordsPerPage);
                                         </select>
 
                                         <label for="subject">Subject/Activity:</label>
-                                        <select name="subject" id="subject" class="form-control">
+                                        <select name="subject1" id="subject" class="form-control">
                                         <option value="">Select Subject/Activity</option>
                                         <option value="Home Room With Class Adviser" <?php if(isset($sched["subject"])) { if($sched["subject"] == "Home Room With Class Adviser") { echo "selected"; }} ?>>Home Room With Class Adviser</option>
                                         <option value="Lunch Break" <?php if(isset($sched["subject"])) { if($sched["subject"] == "Lunch Break") { echo "selected"; }} ?>>Lunch Break</option>
@@ -149,20 +149,20 @@ $scheduleSubset = array_slice($schedule, $offset, $recordsPerPage);
                                         </select> 
 
                                         <label for="start_time">Period Start:</label>
-                                        <input type="time" class="form-control" name="start_time" id="start_time" placeholder="Period Start"
+                                        <input type="time" class="form-control" name="start_time1" id="start_time" placeholder="Period Start"
                                         value="<?php if (isset($sched['start_time'])) {echo $sched['start_time'];}?>">
 
 
                                         </div>
-</div>
+                    </div>
 <div class="col-sm-5 text-center text-sm-left">
   <div class="form-group margin-left">
                                         <label for="end_time">Period End:</label>
-                                        <input type="time" class="form-control" name="end_time" id="end_time" placeholder="Period End"
+                                        <input type="time" class="form-control" name="end_time1" id="end_time" placeholder="Period End"
                                         value="<?php if (isset($sched['end_time'])) {echo $sched['end_time'];}?>">
 
                                         <label for="section_id">Section:</label>
-                                        <input type="text" class="form-control" name="section_id" placeholder="Section"
+                                        <input type="text" class="form-control" name="section_id1" placeholder="Section"
                                         value="<?php if (isset($section['id'])) {echo $section['name'];}?>" readonly>
 
                       
@@ -197,39 +197,41 @@ $scheduleSubset = array_slice($schedule, $offset, $recordsPerPage);
   <script>
 const add = document.getElementById('add');
 const remove = document.getElementById('remove');
-const form = document.getElementById('form');
+const outer = document.getElementById('outer');
 var x = 0;
 var y = 1;
+var z = 2;
 const opt = '<option value="Select Day">Select Day</option><option value="Monday">Monday</option><option value="Tuesday">Tuesday</option><option value="Wednesday">Wednesday</option><option value="Thursday">Thursday</option><option value="Friday">Friday</option><option value="Saturday">Saturday</option>';
 const subfopt ='<option value="">Select Subject/Activity</option><option value="Home Room With Class Adviser" <?php if(isset($sched["subject"])) { if($sched["subject"] == "Home Room With Class Adviser") { echo "selected"; }} ?>>Home Room With Class Adviser</option><option value="Lunch Break" <?php if(isset($sched["subject"])) { if($sched["subject"] == "Lunch Break") { echo "selected"; }} ?>>Lunch Break</option><option value="Health Break" <?php if(isset($sched["subject"])) { if($sched["subject"] == "Health Break") { echo "selected"; }} ?>>Health Break</option>';
 
 let subjectoptions = "<?php foreach($subject as $se): ?><option value='<?= $se['subject_name'] ?>' <?php if(isset($sched["subject"])) { if($sched["subject"] == $se['subject_name']) { echo "selected"; }} ?>><?= $se['subject_name'] ?></option><?php endforeach;?>" ;
 var selsubject = document.getElementById('subject');
-console.log(subjectoptions);
-
-$(document).ready(function () {
-    for (let key in subject) {
-    let value = subject[key]['subject_name'];
-    subjectoptions += '<option value="'+key+'">'+value+'</option>';
-    }
-    selsubject.innerHTML = '<option>Choose a Subject</option>'+subjectoptions;
-});
-
 
 const create = function () {
+  window['hr' + y] = document.createElement("hr");
+  window['hr' + y].setAttribute("style", "width: 92%;margin-left:30px");
+  outer.appendChild(window['hr' + y]);
+
+  window['div' + y] = document.createElement("div");
+  window['div' + y].className = "col-sm-5";
+  window['div' + y].setAttribute("id", "div" + y); // set the CSS class
+  outer.appendChild(window['div' + y]); // put it into the DOM
+
+  y++;
+
   window['div' + y] = document.createElement("div");
   window['div' + y].className = "form-group margin-left";
   window['div' + y].setAttribute("id", "div" + y); // set the CSS class
-  form.appendChild(window['div' + y]); // put it into the DOM
+  window['div' + (y - 1)].appendChild(window['div' + y]);
 
   window['label' + x] = document.createElement("label");
   window['label' + x].innerHTML = "Day:";
-  window['label' + x].setAttribute("for", "day" + y);
+  window['label' + x].setAttribute("for", "day" + z);
   window['div' + y].appendChild(window['label' + x]); // put it into the DOM
 
   window['input' + x] = document.createElement("select");
   window['input' + x].className = "form-control";
-  window['input' + x].setAttribute("name", "day" + y);
+  window['input' + x].setAttribute("name", "day" + z);
   window['input' + x].innerHTML = opt;
   window['div' + y].appendChild(window['input' + x]); // put it into the DOM
 
@@ -237,12 +239,12 @@ const create = function () {
 
   window['label' + x] = document.createElement("label");
   window['label' + x].innerHTML = "Subject/Activity:";
-  window['label' + x].setAttribute("for", "subject" + y);
+  window['label' + x].setAttribute("for", "subject" + z);
   window['div' + y].appendChild(window['label' + x]); // put it into the DOM
 
   window['input' + x] = document.createElement("select");
   window['input' + x].className = "form-control";
-  window['input' + x].setAttribute("name", "subject" + y);
+  window['input' + x].setAttribute("name", "subject" + z);
   window['input' + x].innerHTML = subfopt+subjectoptions;
   window['div' + y].appendChild(window['input' + x]);
 
@@ -250,27 +252,40 @@ const create = function () {
 
   window['label' + x] = document.createElement("label");
   window['label' + x].innerHTML = "Period Start:";
-  window['label' + x].setAttribute("for", "start_time" + y);
+  window['label' + x].setAttribute("for", "start_time" + z);
   window['div' + y].appendChild(window['label' + x]); // put it into the DOM
 
   window['input' + x] = document.createElement("input");
   window['input' + x].type = "time";
   window['input' + x].className = "form-control";
-  window['input' + x].setAttribute("name", "start_time" + y);
+  window['input' + x].setAttribute("name", "start_time" + z);
   window['input' + x].setAttribute("placeholder", "Select Period");
   window['div' + y].appendChild(window['input' + x]); // put it into the DOM
 
-  x++
+  x++;
+  y++;
+
+  window['div' + y] = document.createElement("div");
+  window['div' + y].className = "col-sm-5 text-center text-sm-left";
+  window['div' + y].setAttribute("id", "div" + y); // set the CSS class
+  outer.appendChild(window['div' + y]); // put it into the DOM
+
+  y++;
+
+  window['div' + y] = document.createElement("div");
+  window['div' + y].className = "form-group margin-left";
+  window['div' + y].setAttribute("id", "div" + y); // set the CSS class
+  window['div' + (y - 1)].appendChild(window['div' + y]); // put it into the DOM
 
   window['label' + x] = document.createElement("label");
   window['label' + x].innerHTML = "Period End:";
-  window['label' + x].setAttribute("for", "end_time" + y);
+  window['label' + x].setAttribute("for", "end_time" + z);
   window['div' + y].appendChild(window['label' + x]); // put it into the DOM
 
   window['input' + x] = document.createElement("input");
   window['input' + x].type = "time";
   window['input' + x].className = "form-control";
-  window['input' + x].setAttribute("name", "end_time" + y);
+  window['input' + x].setAttribute("name", "end_time" + z);
   window['input' + x].setAttribute("placeholder", "Select Period End");
   window['div' + y].appendChild(window['input' + x]); // put it into the DOM
 
@@ -278,19 +293,20 @@ const create = function () {
 
   window['label' + x] = document.createElement("label");
   window['label' + x].innerHTML = "Section:";
-  window['label' + x].setAttribute("for", "section" + y);
+  window['label' + x].setAttribute("for", "section" + z);
   window['div' + y].appendChild(window['label' + x]); // put it into the DOM
 
   window['input' + x] = document.createElement("input");
   window['input' + x].type = "text";
   window['input' + x].className = "form-control";
-  window['input' + x].setAttribute("name", "section" + y);
+  window['input' + x].setAttribute("name", "section" + z);
   window['input' + x].setAttribute("value", "<?php if (isset($section['id'])) {echo $section['name'];}?>");
   window['input' + x].setAttribute("readonly", true);
   window['div' + y].appendChild(window['input' + x]); // put it into the DOM
 
   x++;
   y++;
+  z++;
 
   remove.classList.remove("hidden");
 }
@@ -299,10 +315,19 @@ const rem = function () {
   if(y > 1) {
     y--;
     if(y === 1) {
-    form.removeChild(window['div' + y]);
-    remove.classList.add("hidden");
+      window['div' + (y - 1)].removeChild(window['div' + y]);
+      outer.removeChild(window['div' + (y - 1)]);
+      window['div' + (y - 3)].removeChild(window['div' + (y - 2)]);
+      outer.removeChild(window['div' + (y - 3)]);
+      outer.removeChild(window['hr' + (y - 3)]);
+      remove.classList.add("hidden");
     } else { 
-    form.removeChild(window['div' + y]);
+      console.log(y);
+      window['div' + (y - 1)].removeChild(window['div' + y]);
+      outer.removeChild(window['div' + (y - 1)]);
+      window['div' + (y - 3)].removeChild(window['div' + (y - 2)]);
+      outer.removeChild(window['div' + (y - 3)]);
+      outer.removeChild(window['hr' + (y - 3)]);
     }
   }
 }

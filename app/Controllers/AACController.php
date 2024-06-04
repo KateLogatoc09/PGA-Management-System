@@ -76,7 +76,7 @@ class AACController extends BaseController
             } else {
                 $session->setFlashdata('msg','Something went wrong. Please try again later.');
             }
-            return redirect()->to('schedule');
+            return redirect()->back();
         }
     
         
@@ -96,14 +96,26 @@ class AACController extends BaseController
     public function saveSchedule()  {
         $session = session();
         $id = $_POST['id'];
-        $num = (count($_POST) - 1) / 3;
+        $idnum = $this->subjects->select('teachers.id')
+        ->join('teachers', 'teachers.idnum = subjects.teacher_id')
+        ->where('subject_name', $this->request->getVar('subject1'))->first();
+        $secid = $this->sections->select('id')->where('name', $this->request->getVar('section_id1'))->first();
+
+        if($idnum) {
+            $teachid = $idnum;
+        } else {
+            $teachid = null;
+        }
+
+        $num = (count($_POST) - 1) / 5;
 
         $data = [
-            'day' => $this->request->getVar('day'),
-            'subject' => $this->request->getVar('subject'),
-            'start_time' => $this->request->getVar('start_time'),
-            'end_time' => $this->request->getVar('end_time'),
-            'section_id' => $this->request->getVar('section_id'),
+            'day' => $this->request->getVar('day1'),
+            'subject' => $this->request->getVar('subject1'),
+            'start_time' => $this->request->getVar('start_time1'),
+            'end_time' => $this->request->getVar('end_time1'),
+            'section_id' => $secid,
+            'teacher_id' => $teachid,
         ];
 
 
@@ -117,27 +129,26 @@ class AACController extends BaseController
             }
         } else {
             if($num > 1) {
-                for($x = 1;$x < $num;$x++) {
+                for($x = 1;$x <= $num;$x++) {
                     $data1 = [
-                        'day' => $this->request->getVar('day'),
-                        'subject' => $this->request->getVar('subject'),
-                        'start_time' => $this->request->getVar('start_time'),
-                        'end_time' => $this->request->getVar('end_time'),
-                        'section_id' => $this->request->getVar('section_id'),
+                        'day' => $this->request->getVar('day'.$x),
+                        'subject' => $this->request->getVar('subject'.$x),
+                        'start_time' => $this->request->getVar('start_time'.$x),
+                        'end_time' => $this->request->getVar('end_time'.$x),
+                        'section_id' => $secid,
+                        'teacher_id' => $teachid,
                     ]; 
     
-                    $this->schedule->save($data1);
+                    if($this->schedule->save($data1)) {
+                        $session->setFlashdata('msg','Saved Successfully.');
+                    } else {
+                        $session->setFlashdata('msg','Something went wrong. Please try again later.');
+                    }
                 }
             }
 
-            $res = $this->schedule->save($data);
-            if($res) {
-                $session->setFlashdata('msg','Saved Successfully.');
-            } else {
-                $session->setFlashdata('msg','Something went wrong. Please try again later.');
-            }
         }
-        return redirect()->to('schedule');
+        return redirect()->back();
     }
 
         public function aacsections()
