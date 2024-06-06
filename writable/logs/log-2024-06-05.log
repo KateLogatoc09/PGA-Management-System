@@ -1,0 +1,366 @@
+ERROR - 2024-06-05 06:59:45 --> mysqli_sql_exception: Column 'teacher_id' cannot be null in C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `sc...', 0)
+#1 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sc...')
+#2 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sc...')
+#3 C:\laragon\www\PGA-Management-System\system\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sc...', Array, false)
+#4 C:\laragon\www\PGA-Management-System\system\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\PGA-Management-System\system\BaseModel.php(788): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\PGA-Management-System\system\Model.php(715): CodeIgniter\BaseModel->insert(Array, false)
+#7 C:\laragon\www\PGA-Management-System\system\BaseModel.php(698): CodeIgniter\Model->insert(Array, false)
+#8 C:\laragon\www\PGA-Management-System\app\Controllers\AACController.php(142): CodeIgniter\BaseModel->save(Array)
+#9 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(919): App\Controllers\AACController->saveSchedule()
+#10 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AACController))
+#11 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\laragon\www\PGA-Management-System\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#13 C:\laragon\www\PGA-Management-System\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#14 {main}
+CRITICAL - 2024-06-05 06:59:45 --> Column 'teacher_id' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `schedule` (`day`, `subject`, `start_time`, `end_time`, `section_id`, `teacher_id`) VALUES (:day:, :subject:, :start_time:, :end_time:, :section_id:, :teacher_id:)', [...], false)
+ 2 SYSTEMPATH\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(788): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(715): CodeIgniter\BaseModel->insert([...], false)
+ 5 SYSTEMPATH\BaseModel.php(698): CodeIgniter\Model->insert([...], false)
+ 6 APPPATH\Controllers\AACController.php(142): CodeIgniter\BaseModel->save([...])
+ 7 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AACController->saveSchedule()
+ 8 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AACController))
+ 9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-06-05 08:28:35 --> Trying to access array offset on value of type null
+in APPPATH\Views\AAC\schedule.php on line 43.
+ 1 APPPATH\Views\AAC\schedule.php(43): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\laragon\\www\\PGA-Management-System\\app\\Views\\AAC\\schedule.php', 43)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\AAC\\schedule.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(467): CodeIgniter\View\View->render('AAC/schedule', null, true)
+ 5 APPPATH\Views\schedule.php(2): CodeIgniter\View\View->include('AAC/schedule')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\schedule.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('schedule', [], true)
+ 9 APPPATH\Controllers\AACController.php(39): view('schedule', [...])
+10 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AACController->schedule('searchSchedule', '1')
+11 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AACController))
+12 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-06-05 08:31:17 --> Undefined variable $sec
+in APPPATH\Controllers\AACController.php on line 158.
+ 1 APPPATH\Controllers\AACController.php(158): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $sec', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\AACController.php', 158)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AACController->searchSchedule('St. Joseph Husband of Mary')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AACController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-06-05 08:32:22 --> Undefined variable $categ
+in APPPATH\Controllers\AACController.php on line 158.
+ 1 APPPATH\Controllers\AACController.php(158): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $categ', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\AACController.php', 158)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AACController->searchSchedule('St. Joseph Husband of Mary')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AACController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-06-05 08:33:36 --> Undefined variable $categ
+in APPPATH\Controllers\AACController.php on line 158.
+ 1 APPPATH\Controllers\AACController.php(158): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $categ', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\AACController.php', 158)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AACController->searchSchedule('St. Joseph Husband of Mary')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AACController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-06-05 08:51:50 --> Undefined variable $teacherSubset
+in APPPATH\Views\AAC\scheduleList.php on line 163.
+ 1 APPPATH\Views\AAC\scheduleList.php(163): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $teacherSubset', 'C:\\laragon\\www\\PGA-Management-System\\app\\Views\\AAC\\scheduleList.php', 163)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\AAC\\scheduleList.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(467): CodeIgniter\View\View->render('AAC/scheduleList', null, true)
+ 5 APPPATH\Views\scheduleList.php(2): CodeIgniter\View\View->include('AAC/scheduleList')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\scheduleList.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('scheduleList', [], true)
+ 9 APPPATH\Controllers\AACController.php(50): view('scheduleList', [...])
+10 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AACController->scheduleList()
+11 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AACController))
+12 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-06-05 08:52:14 --> Undefined array key "id"
+in APPPATH\Views\AAC\scheduleList.php on line 165.
+ 1 APPPATH\Views\AAC\scheduleList.php(165): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', 'C:\\laragon\\www\\PGA-Management-System\\app\\Views\\AAC\\scheduleList.php', 165)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\AAC\\scheduleList.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(467): CodeIgniter\View\View->render('AAC/scheduleList', null, true)
+ 5 APPPATH\Views\scheduleList.php(2): CodeIgniter\View\View->include('AAC/scheduleList')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\scheduleList.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('scheduleList', [], true)
+ 9 APPPATH\Controllers\AACController.php(50): view('scheduleList', [...])
+10 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AACController->scheduleList()
+11 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AACController))
+12 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+ERROR - 2024-06-05 09:00:30 --> mysqli_sql_exception: Unknown column 'teacher' in 'where clause' in C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `id`, `i...', 0)
+#1 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `id`, `i...')
+#2 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `id`, `i...')
+#3 C:\laragon\www\PGA-Management-System\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `id`, `i...', Array, false)
+#4 C:\laragon\www\PGA-Management-System\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\PGA-Management-System\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\PGA-Management-System\app\Controllers\AACController.php(81): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(919): App\Controllers\AACController->searchteacherlist()
+#8 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AACController))
+#9 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\PGA-Management-System\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\PGA-Management-System\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-06-05 09:00:30 --> Unknown column 'teacher' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `id`, `idnum`, `fname`, `mname`, `lname`
+FROM `teachers`
+WHERE `teacher` LIKE :teacher: ESCAPE \'!\'
+ORDER BY `lname`', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AACController.php(81): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AACController->searchteacherlist()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AACController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+ERROR - 2024-06-05 09:21:41 --> mysqli_sql_exception: Unknown column 'name' in 'field list' in C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `id`, `n...', 0)
+#1 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `id`, `n...')
+#2 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `id`, `n...')
+#3 C:\laragon\www\PGA-Management-System\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `id`, `n...', Array, false)
+#4 C:\laragon\www\PGA-Management-System\system\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\PGA-Management-System\system\BaseModel.php(662): CodeIgniter\Model->doFirst()
+#6 C:\laragon\www\PGA-Management-System\app\Controllers\AACController.php(118): CodeIgniter\BaseModel->first()
+#7 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(919): App\Controllers\AACController->teacherschedule('27')
+#8 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AACController))
+#9 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\PGA-Management-System\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\PGA-Management-System\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-06-05 09:21:41 --> Unknown column 'name' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `id`, `name`
+FROM `teachers`
+WHERE `id` = :id:
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(662): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\AACController.php(118): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AACController->teacherschedule('27')
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AACController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-06-05 09:22:30 --> Undefined array key "name"
+in APPPATH\Views\AAC\teacherschedule.php on line 180.
+ 1 APPPATH\Views\AAC\teacherschedule.php(180): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "name"', 'C:\\laragon\\www\\PGA-Management-System\\app\\Views\\AAC\\teacherschedule.php', 180)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\AAC\\teacherschedule.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(467): CodeIgniter\View\View->render('AAC/teacherschedule', null, true)
+ 5 APPPATH\Views\teacherschedule.php(2): CodeIgniter\View\View->include('AAC/teacherschedule')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\teacherschedule.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('teacherschedule', [], true)
+ 9 APPPATH\Controllers\AACController.php(121): view('teacherschedule', [...])
+10 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AACController->teacherschedule('27')
+11 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AACController))
+12 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-06-05 09:29:31 --> Undefined array key "id"
+in APPPATH\Views\AAC\teacherschedule.php on line 83.
+ 1 APPPATH\Views\AAC\teacherschedule.php(83): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', 'C:\\laragon\\www\\PGA-Management-System\\app\\Views\\AAC\\teacherschedule.php', 83)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\AAC\\teacherschedule.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(467): CodeIgniter\View\View->render('AAC/teacherschedule', null, true)
+ 5 APPPATH\Views\teacherschedule.php(2): CodeIgniter\View\View->include('AAC/teacherschedule')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\teacherschedule.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('teacherschedule', [], true)
+ 9 APPPATH\Controllers\AACController.php(121): view('teacherschedule', [...])
+10 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AACController->teacherschedule('26')
+11 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AACController))
+12 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+ERROR - 2024-06-05 09:30:44 --> mysqli_sql_exception: Column 'id' in field list is ambiguous in C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `schedul...', 0)
+#1 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `schedul...')
+#2 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `schedul...')
+#3 C:\laragon\www\PGA-Management-System\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `schedul...', Array, false)
+#4 C:\laragon\www\PGA-Management-System\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\PGA-Management-System\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\PGA-Management-System\app\Controllers\AACController.php(115): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(919): App\Controllers\AACController->teacherschedule('26')
+#8 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AACController))
+#9 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\PGA-Management-System\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\PGA-Management-System\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-06-05 09:30:44 --> Column 'id' in field list is ambiguous
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `schedule`.`id` as `id`, `id`, `day`, `start_time`, `end_time`, `name`, `subject`
+FROM `schedule`
+INNER JOIN `sections` ON `schedule`.`section_id` = `sections`.`id`
+INNER JOIN `teachers` ON `schedule`.`teacher_id` = `teachers`.`id`
+WHERE `teacher_id` = :teacher_id:', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AACController.php(115): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AACController->teacherschedule('26')
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AACController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-06-05 09:30:59 --> Undefined array key "id"
+in APPPATH\Views\AAC\teacherschedule.php on line 83.
+ 1 APPPATH\Views\AAC\teacherschedule.php(83): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', 'C:\\laragon\\www\\PGA-Management-System\\app\\Views\\AAC\\teacherschedule.php', 83)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\AAC\\teacherschedule.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(467): CodeIgniter\View\View->render('AAC/teacherschedule', null, true)
+ 5 APPPATH\Views\teacherschedule.php(2): CodeIgniter\View\View->include('AAC/teacherschedule')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\teacherschedule.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('teacherschedule', [], true)
+ 9 APPPATH\Controllers\AACController.php(121): view('teacherschedule', [...])
+10 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AACController->teacherschedule('26')
+11 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AACController))
+12 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-06-05 09:31:34 --> Undefined array key "id"
+in APPPATH\Views\AAC\teacherschedule.php on line 83.
+ 1 APPPATH\Views\AAC\teacherschedule.php(83): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', 'C:\\laragon\\www\\PGA-Management-System\\app\\Views\\AAC\\teacherschedule.php', 83)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\AAC\\teacherschedule.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(467): CodeIgniter\View\View->render('AAC/teacherschedule', null, true)
+ 5 APPPATH\Views\teacherschedule.php(2): CodeIgniter\View\View->include('AAC/teacherschedule')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\teacherschedule.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('teacherschedule', [], true)
+ 9 APPPATH\Controllers\AACController.php(121): view('teacherschedule', [...])
+10 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AACController->teacherschedule('26')
+11 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AACController))
+12 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-06-05 09:42:25 --> Undefined array key "lname"
+in APPPATH\Views\AAC\teacherschedule.php on line 82.
+ 1 APPPATH\Views\AAC\teacherschedule.php(82): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "lname"', 'C:\\laragon\\www\\PGA-Management-System\\app\\Views\\AAC\\teacherschedule.php', 82)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\AAC\\teacherschedule.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(467): CodeIgniter\View\View->render('AAC/teacherschedule', null, true)
+ 5 APPPATH\Views\teacherschedule.php(2): CodeIgniter\View\View->include('AAC/teacherschedule')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\teacherschedule.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('teacherschedule', [], true)
+ 9 APPPATH\Controllers\AACController.php(121): view('teacherschedule', [...])
+10 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AACController->teacherschedule('26')
+11 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AACController))
+12 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-06-05 10:14:26 --> Undefined variable $encrypter
+in APPPATH\Views\AAC\scheduleList.php on line 87.
+ 1 APPPATH\Views\AAC\scheduleList.php(87): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $encrypter', 'C:\\laragon\\www\\PGA-Management-System\\app\\Views\\AAC\\scheduleList.php', 87)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\AAC\\scheduleList.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(467): CodeIgniter\View\View->render('AAC/scheduleList', null, true)
+ 5 APPPATH\Views\scheduleList.php(2): CodeIgniter\View\View->include('AAC/scheduleList')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\scheduleList.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('scheduleList', [], true)
+ 9 APPPATH\Controllers\AACController.php(50): view('scheduleList', [...])
+10 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AACController->scheduleList()
+11 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AACController))
+12 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-06-05 10:25:06 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\AACController.php on line 214.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\AACController.php', 214)
+ 2 APPPATH\Controllers\AACController.php(214): hex2bin('St. Joseph Husband of Mary')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AACController->searchSchedule('St. Joseph Husband of Mary')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AACController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-06-05 10:28:00 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\AACController.php on line 214.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\AACController.php', 214)
+ 2 APPPATH\Controllers\AACController.php(214): hex2bin('St. Joseph Husband of Mary')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AACController->searchSchedule('St. Joseph Husband of Mary')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AACController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-06-05 10:28:41 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\AACController.php on line 216.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\AACController.php', 216)
+ 2 APPPATH\Controllers\AACController.php(216): hex2bin('St. Joseph Husband of Mary')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AACController->searchSchedule('St. Joseph Husband of Mary')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AACController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-06-05 10:30:30 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\AACController.php on line 214.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\AACController.php', 214)
+ 2 APPPATH\Controllers\AACController.php(214): hex2bin('St. Joseph Husband of Mary')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AACController->searchSchedule('St. Joseph Husband of Mary')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AACController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-06-05 10:31:43 --> Decrypting: authentication failed.
+in SYSTEMPATH\Encryption\Handlers\OpenSSLHandler.php on line 137.
+ 1 SYSTEMPATH\Encryption\Handlers\OpenSSLHandler.php(137): CodeIgniter\Encryption\Exceptions\EncryptionException::forAuthenticationFailed()
+ 2 APPPATH\Controllers\AACController.php(141): CodeIgniter\Encryption\Handlers\OpenSSLHandler->decrypt('')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AACController->editTeacherSchedule('16', '26')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AACController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-06-05 11:46:59 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\AACController.php on line 214.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\AACController.php', 214)
+ 2 APPPATH\Controllers\AACController.php(214): hex2bin('St. Joseph Husband of Mary')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AACController->searchSchedule('St. Joseph Husband of Mary')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AACController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-06-05 11:48:40 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\AACController.php on line 214.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\AACController.php', 214)
+ 2 APPPATH\Controllers\AACController.php(214): hex2bin('St. Joseph Husband of Mary')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AACController->searchSchedule('St. Joseph Husband of Mary')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AACController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-06-05 11:52:54 --> hex2bin(): Input string must be hexadecimal string
+in APPPATH\Controllers\AACController.php on line 214.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'hex2bin(): Input string must be hexadecimal string', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\AACController.php', 214)
+ 2 APPPATH\Controllers\AACController.php(214): hex2bin('St. Joseph Husband of Mary')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AACController->searchSchedule('St. Joseph Husband of Mary')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AACController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-06-05 12:14:35 --> Undefined variable $categ
+in APPPATH\Controllers\AACController.php on line 155.
+ 1 APPPATH\Controllers\AACController.php(155): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $categ', 'C:\\laragon\\www\\PGA-Management-System\\app\\Controllers\\AACController.php', 155)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AACController->searchTeacherSchedule('6a5137630f2725a79168bfb64f99c2443f1067a3332b6a7d2699b571a2bb527ac95818a389359544a389ead76d821f7b712fc9c17412f2658976e23d3af6fde46974f39b26490a43b35672774a91b827fb')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AACController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')

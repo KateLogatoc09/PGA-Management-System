@@ -31,9 +31,9 @@ class AACController extends BaseController
     public function schedule($sec){
         $data = [
             'schedule' => $this->schedule->select('schedule.id as id, day, start_time, end_time, name, subject')
-            ->join('sections','schedule.section_id = sections.id','inner')->where('section_id', $sec)->findAll(),
+            ->join('sections','schedule.section_id = sections.id','inner')->where('section_id', $this->encrypter->decrypt(hex2bin($sec)))->findAll(),
             'subject' => $this->subjects->findAll(),
-            'section' => $this->sections->select('id, name')->where('id', $sec)->first(),
+            'section' => $this->sections->select('id, name')->where('id', $this->encrypter->decrypt(hex2bin($sec)))->first(),
         ];
 
         return view ('schedule', $data);
@@ -44,7 +44,7 @@ class AACController extends BaseController
         $data = [
             'stud_section' => $this->sections->select('sections.id as id, name, grade_level_id, adviser, fname, mname, lname')
             ->join('teachers','sections.adviser = teachers.idnum','inner')->orderBy('id')->findAll(),
-            'teacher' => $this->teacher->orderBy('lname')->findAll(),
+            'teacher' => $this->teacher->select('id, idnum, fname, mname, lname')->orderBy('lname')->findAll(),
         ];
 
         return view ('scheduleList', $data);
@@ -62,7 +62,23 @@ class AACController extends BaseController
         $data = [
             'stud_section' => $this->sections->select('sections.id as id, name, grade_level_id, adviser, fname, mname, lname')
                 ->join('teachers','sections.adviser = teachers.idnum','inner')->like($categ, $this->request->getVar('search'))->findAll(),
-            'teacher' => $this->teacher->orderBy('lname')->findAll(),
+            'teacher' => $this->teacher->select('id, idnum, fname, mname, lname')->orderBy('lname')->findAll(),
+        ];
+            return view ('scheduleList', $data);
+    }
+
+    public function searchteacherlist()
+    {
+        if($this->request->getVar('categ') == 'teacher') {
+            $categ = "CONCAT(fname,' ',mname,' ',lname)";
+        } else {
+            $categ = $this->request->getVar('categ');
+        }
+
+        $data = [
+            'stud_section' => $this->sections->select('sections.id as id, name, grade_level_id, adviser, fname, mname, lname')
+                ->join('teachers','sections.adviser = teachers.idnum','inner')->findAll(),
+            'teacher' => $this->teacher->select('id, idnum, fname, mname, lname')->like($categ, $this->request->getVar('search'))->orderBy('lname')->findAll(),
         ];
             return view ('scheduleList', $data);
     }
@@ -70,7 +86,7 @@ class AACController extends BaseController
     public function deleteSchedule($id)
         {
             $session = session();
-            $res = $this->schedule->delete($id);
+            $res = $this->schedule->delete($this->encrypter->decrypt(hex2bin($id)));
             if($res) {
                 $session->setFlashdata('msg','Deleted Successfully.');
             } else {
@@ -84,15 +100,69 @@ class AACController extends BaseController
         {
             $data = [
                 'schedule' => $this->schedule->select('schedule.id as id, day, start_time, end_time, name, subject')
-                ->join('sections','schedule.section_id = sections.id','inner')->where('section_id', $sec)->findAll(),
+                ->join('sections','schedule.section_id = sections.id','inner')->where('section_id', $this->encrypter->decrypt(hex2bin($sec)))->findAll(),
                 'subject' => $this->subjects->findAll(),
-                'section' => $this->sections->where('id', $sec)->first(),
-                'sched' => $this->schedule->where('id', $id)->first(),
+                'section' => $this->sections->where('id', $this->encrypter->decrypt(hex2bin($sec)))->first(),
+                'sched' => $this->schedule->where('id', $this->encrypter->decrypt(hex2bin($id)))->first(),
             ];
     
             return view('schedule', $data);
         }
     
+        public function teacherschedule($teach){
+            $data = [
+                'schedule' => $this->schedule->select('schedule.id as id, day, start_time, end_time, name, subject, lname, fname, mname')
+                ->join('sections','schedule.section_id = sections.id','inner')->join('teachers','schedule.teacher_id = teachers.id','inner')->where('teacher_id', $this->encrypter->decrypt(hex2bin($teach)))->findAll(),
+                'subject' => $this->subjects->findAll(),
+                'section' => $this->sections->findAll(),
+                'teacher' => $this->teacher->select('id, idnum, fname, mname, lname')->where('id', $this->encrypter->decrypt(hex2bin($teach)))->first(),
+            ];
+    
+            return view ('teacherschedule', $data);
+        }
+
+        public function deleteTeacherSchedule($id)
+        {
+            $session = session();
+            $res = $this->schedule->delete($this->encrypter->decrypt(hex2bin($id)));
+            if($res) {
+                $session->setFlashdata('msg','Deleted Successfully.');
+            } else {
+                $session->setFlashdata('msg','Something went wrong. Please try again later.');
+            }
+            return redirect()->back();
+        }
+    
+        
+        public function editTeacherSchedule($id,$teach)
+        {
+            $data = [
+                'schedule' => $this->schedule->select('schedule.id as id, day, start_time, end_time, name, subject, lname, fname, mname')
+                ->join('sections','schedule.section_id = sections.id','inner')->join('teachers','schedule.teacher_id = teachers.id','inner')->where('teacher_id', $this->encrypter->decrypt(hex2bin($teach)))->findAll(),
+                'subject' => $this->subjects->findAll(),
+                'section' => $this->sections->findAll(),
+                'teacher' => $this->teacher->select('id, idnum, fname, mname, lname')->where('id', $this->encrypter->decrypt(hex2bin($teach)))->first(),
+                'sched' => $this->schedule->where('id', $this->encrypter->decrypt(hex2bin($id)))->first(),
+            ];
+    
+            return view('teacherschedule', $data);
+        }
+         
+        public function searchTeacherSchedule($teach)
+        {
+            $data = [
+                'schedule' => $this->schedule->select('schedule.id as id, day, start_time, end_time, name, subject, lname, fname, mname')
+                ->join('sections','schedule.section_id = sections.id','inner')->join('teachers','schedule.teacher_id = teachers.id','inner')->where('teacher_id', $this->encrypter->decrypt(hex2bin($teach)))
+                ->like($this->request->getVar('categ'), $this->request->getVar('search'))->findAll(),
+                'subject' => $this->subjects->findAll(),
+                'section' => $this->sections->findAll(),
+                'teacher' => $this->teacher->select('id, idnum, fname, mname, lname')->where('id', $this->encrypter->decrypt(hex2bin($teach)))->first(),
+            ];
+    
+            return view('teacherschedule', $data);
+        }
+    
+
     public function saveSchedule()  {
         $session = session();
         $id = $_POST['id'];
@@ -151,6 +221,18 @@ class AACController extends BaseController
         return redirect()->back();
     }
 
+    public function searchSchedule($sec)
+    {
+        $data = [
+            'schedule' => $this->schedule->select('schedule.id as id, day, start_time, end_time, name, subject')
+            ->join('sections','schedule.section_id = sections.id','inner')->where('section_id', $this->encrypter->decrypt(hex2bin($sec)))->like($this->request->getVar('categ'), $this->request->getVar('search'))->findAll(),
+            'subject' => $this->subjects->findAll(),
+            'section' => $this->sections->select('id, name')->where('id', $this->encrypter->decrypt(hex2bin($sec)))->first(),
+       ];
+
+        return view('schedule', $data);
+    }
+    
         public function aacsections()
         {
             $data = [

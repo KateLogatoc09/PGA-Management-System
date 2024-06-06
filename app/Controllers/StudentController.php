@@ -15,11 +15,12 @@ use SimpleSoftwareIO\QrCode\Generator;
 use App\Models\AddBooksModel;
 use App\Models\GradeModel;
 use App\Models\PermitModel;
+use App\Models\ScheduleModel;
 
 class StudentController extends BaseController
 {
     private $book, $borrowedBook, $enrollment, $learner, $family, $address, $admissions, $grade, $sibling, 
-    $school, $acc, $permit, $config, $encrypter;
+    $school, $acc, $permit, $config, $encrypter, $schedule;
     public function __construct()
     {
         $this->learner = new LearnerModel();
@@ -32,7 +33,8 @@ class StudentController extends BaseController
         $this->borrowedBook = new BorrowedBooksModel();
         $this->book = new AddBooksModel();
         $this->grade = new GradeModel();
-        $this->permit = new PermitModel();
+        $this->permit = new PermitModel();      
+        $this->schedule = new ScheduleModel();
         $this->config    = new \Config\Encryption();  
         $this->encrypter = \Config\Services::encrypter($this->config);
     }
@@ -442,4 +444,24 @@ public function saveEditSchool()  {
     return redirect()->to('student');
 }
 
+public function studentschedule(){
+    $curruser = $this->acc->select('id')->where('username', $_SESSION['username'])->first();
+    $sec = $this->admissions->select('section')->where('account_id', $curruser)->first();
+
+    $data = [
+        'Monday' => $this->schedule->select('schedule.id as id, day, start_time, end_time, name, subject, fname, mname, lname')
+        ->join('sections','schedule.section_id = sections.id','inner')->join('teachers','sections.adviser = teachers.idnum','inner')
+        ->where('section_id', $sec)->like('day', 'Monday')->orderBy('start_time')->findAll(),
+        
+        'Tuesday' => $this->schedule->select('schedule.id as id, day, start_time, end_time, name, subject, fname, mname, lname')
+        ->join('sections','schedule.section_id = sections.id','inner')->join('teachers','sections.adviser = teachers.idnum','inner')
+        ->where('section_id', $sec)->like('day', 'Tuesday')->orderBy('start_time')->findAll(),
+       
+        'Wednesday' => $this->schedule->select('schedule.id as id, day, start_time, end_time, name, subject, fname, mname, lname')
+        ->join('sections','schedule.section_id = sections.id','inner')->join('teachers','sections.adviser = teachers.idnum','inner')
+        ->where('section_id', $sec)->like('day', 'Wednesday')->orderBy('start_time')->findAll(),
+    ];
+
+    return view ('studentschedule', $data);
+}
 }

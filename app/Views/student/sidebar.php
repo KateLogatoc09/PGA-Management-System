@@ -41,6 +41,13 @@
                   </a>
                 </li>
 
+                
+                <li class="menu-item <?= set_active('studentschedule'); ?>">
+                  <a href="<?= base_url('studentschedule') ?>" class="menu-link">
+                    <div data-i18n="Analytics">Schedule</div>
+                  </a>
+                </li>
+
                 <li class="menu-item <?= set_active('studgrade'); ?>">
                   <a href="<?= base_url('studgrade') ?>" class="menu-link">
                     <div data-i18n="Analytics">Grades</div>

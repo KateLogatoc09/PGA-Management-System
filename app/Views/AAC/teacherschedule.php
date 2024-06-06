@@ -39,10 +39,10 @@ $scheduleSubset = array_slice($schedule, $offset, $recordsPerPage);
  <div class="col-lg-18 mb-4 order-0">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Schedule of <?php if (isset($section['id'])) {echo $section['name'];}?></h3>
+                            <h3 class="card-title">Schedule of <?php if (isset($teacher['fname'])) {echo $teacher['fname'];}?> <?php if (isset($teacher['mname'])) {echo $teacher['mname'];}?> <?php if (isset($teacher['lname'])) {echo $teacher['lname'];}?></h3>
                             <div class="card-tools">
                       <div class="input-group input-group-sm" style="width: 400px;">
-                      <form action="/searchSchedule/<?php echo bin2hex($encrypter->encrypt(isset($section['id']))); ?>" method="get">
+                      <form action="/searchTeacherSchedule/<?php echo bin2hex($encrypter->encrypt(isset($teacher['id']))); ?>" method="get">
                         <div class="input-group-append">
                         <input type="text" name="search" class="form-control float-right me-2" placeholder="Search">
                         <select class="form-control" name="categ">
@@ -50,6 +50,7 @@ $scheduleSubset = array_slice($schedule, $offset, $recordsPerPage);
                               <option value="subject">Subject</option>
                               <option value="start_time">Period Start</option>
                               <option value="end_time">Period End</option>
+                              <option value="name">Section</option>
                           </select>
                           <button type="submit" class="btn btn-default">
                           <i class="menu-icon tf-icons bx bx-search"></i>
@@ -69,6 +70,8 @@ $scheduleSubset = array_slice($schedule, $offset, $recordsPerPage);
                                         <th>Subject</th>
                                         <th>Start Time</th> 
                                         <th>End Time</th>
+                                        <th>Section</th>
+                                        <th>Teacher</th>
                                         <th>Action</th> 
                                     </tr>
                                 </thead>
@@ -79,8 +82,10 @@ $scheduleSubset = array_slice($schedule, $offset, $recordsPerPage);
                                             <td><?= $ad['subject'] ?></td>
                                             <td><?= $ad['start_time'] ?></td>
                                             <td><?= $ad['end_time'] ?></td>
-                                            <td> <a href="/deleteSchedule/<?php echo bin2hex($encrypter->encrypt($ad['id'])); ?>" class="btn btn-danger btn-sm" id="d<?=$x?>">Delete</a>
-                                            <a href="/editSchedule/<?php echo bin2hex($encrypter->encrypt($ad['id'])); ?>/<?php echo bin2hex($encrypter->encrypt($section['id'])); ?>" class="btn btn-primary btn-sm">Edit</a></td>
+                                            <td><?= $ad['name'] ?></td>
+                                            <td><?= $ad['lname'] ?>, <?= $ad['fname'] ?> <?= $ad['mname'] ?></td>
+                                            <td> <a href="/deleteTeacherSchedule/<?php echo bin2hex($encrypter->encrypt($ad['id'])); ?>" class="btn btn-danger btn-sm" id="d<?=$x?>">Delete</a>
+                                            <a href="/editTeacherSchedule/<?php echo bin2hex($encrypter->encrypt($ad['id'])); ?>/<?php echo bin2hex($encrypter->encrypt($teacher['id'])); ?>" class="btn btn-primary btn-sm">Edit</a></td>
                                      </tr>
                                 <?php $x++; endforeach ?>
                                 </tbody>
@@ -168,8 +173,16 @@ $scheduleSubset = array_slice($schedule, $offset, $recordsPerPage);
                                         value="<?php if (isset($sched['end_time'])) {echo $sched['end_time'];}?>">
 
                                         <label for="section_id">Section:</label>
-                                        <input type="text" class="form-control" name="section_id1" placeholder="Section"
-                                        value="<?php if (isset($section['id'])) {echo $section['name'];}?>" readonly>
+                                        <select name="section_id" id="section_id" class="form-control">
+                                        <option value="">Select Section</option>
+                                            <?php foreach ($section as $se):?> 
+                                                <option value="None" <?php if(isset($sched["section_id"])) { if($sched["section_id"] == $se['id']) { echo "selected"; }} ?>><?= $se['name'] ?></option> 
+                                            <?php endforeach; ?>
+                                        </select> 
+                                        
+                                        <label for="teacher_id">Teacher:</label>
+                                        <input type="text" class="form-control" name="teacher_id1" placeholder="teacher"
+                                        value="<?php if (isset($teacher['id'])) {echo $teacher['idnum'];}?>" readonly>
 
                       
   </div>
@@ -212,6 +225,11 @@ const subfopt ='<option value="">Select Subject/Activity</option><option value="
 
 let subjectoptions = "<?php foreach($subject as $se): ?><option value='<?= $se['subject_name'] ?>' <?php if(isset($sched["subject"])) { if($sched["subject"] == $se['subject_name']) { echo "selected"; }} ?>><?= $se['subject_name'] ?></option><?php endforeach;?>" ;
 var selsubject = document.getElementById('subject');
+
+const secopt ='<option value="">Select Section</option>';
+
+let sectionoptions = "<?php foreach($section as $sec): ?><option value='<?= $sec['name'] ?>' <?php if(isset($sched["section_id"])) { if($sched["section_id"] == $sec['name']) { echo "selected"; }} ?>><?= $sec['name'] ?></option><?php endforeach;?>" ;
+var selsection = document.getElementById('name');
 
 const create = function () {
   window['hr' + y] = document.createElement("hr");
@@ -302,11 +320,24 @@ const create = function () {
   window['label' + x].setAttribute("for", "section" + z);
   window['div' + y].appendChild(window['label' + x]); // put it into the DOM
 
+  window['input' + x] = document.createElement("select");
+  window['input' + x].className = "form-control";
+  window['input' + x].setAttribute("name", "section" + z);
+  window['input' + x].innerHTML = sectionoptions;
+  window['div' + y].appendChild(window['input' + x]);
+
+  x++;
+
+  window['label' + x] = document.createElement("label");
+  window['label' + x].innerHTML = "Teacher:";
+  window['label' + x].setAttribute("for", "teacher" + z);
+  window['div' + y].appendChild(window['label' + x]); // put it into the DOM
+
   window['input' + x] = document.createElement("input");
   window['input' + x].type = "text";
   window['input' + x].className = "form-control";
-  window['input' + x].setAttribute("name", "section" + z);
-  window['input' + x].setAttribute("value", "<?php if (isset($section['id'])) {echo $section['name'];}?>");
+  window['input' + x].setAttribute("name", "teacher" + z);
+  window['input' + x].setAttribute("value", "<?php if (isset($teacher['id'])) {echo $teacher['idnum'];}?>");
   window['input' + x].setAttribute("readonly", true);
   window['div' + y].appendChild(window['input' + x]); // put it into the DOM
 

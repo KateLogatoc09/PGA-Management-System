@@ -55,6 +55,11 @@
                                             <option value="Grade 12">Grade 12</option>
                                         </select>
 
+                                        </div>
+                    </div>
+<div class="col-sm-5 text-center text-sm-left">
+  <div class="form-group margin-left">
+
                                         <label for="affiliation">Affiliation:</label>
                                         <input type="text" class="form-control" name="affiliation" placeholder="Enter Affiliation" id="affiliation">
                           

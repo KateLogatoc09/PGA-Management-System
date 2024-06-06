@@ -44,6 +44,11 @@
                                     <label for="school_name">School Name:</label>
                                         <input type="text" class="form-control" name="school_name" placeholder="Enter Name of School">
 
+                                        </div>
+                    </div>
+<div class="col-sm-5 text-center text-sm-left">
+  <div class="form-group margin-left">
+
                                     <label for="level">Level:</label>
                                         <input type="text" class="form-control" name="level" placeholder="Enter Level">
                                

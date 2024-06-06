@@ -1,0 +1,112 @@
+ERROR - 2024-06-06 06:47:24 --> mysqli_sql_exception: Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'pga.schedule.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by in C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `schedul...', 0)
+#1 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `schedul...')
+#2 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `schedul...')
+#3 C:\laragon\www\PGA-Management-System\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `schedul...', Array, false)
+#4 C:\laragon\www\PGA-Management-System\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\PGA-Management-System\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\PGA-Management-System\app\Controllers\StudentController.php(454): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(919): App\Controllers\StudentController->studentschedule()
+#8 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\StudentController))
+#9 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\PGA-Management-System\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\PGA-Management-System\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-06-06 06:47:24 --> Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'pga.schedule.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `schedule`.`id` as `id`, `day`, `start_time`, `end_time`, `name`, `subject`, `fname`, `mname`, `lname`
+FROM `schedule`
+INNER JOIN `sections` ON `schedule`.`section_id` = `sections`.`id`
+INNER JOIN `teachers` ON `sections`.`adviser` = `teachers`.`idnum`
+WHERE `section_id` = :section_id:
+GROUP BY `day`', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\StudentController.php(454): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\StudentController->studentschedule()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\StudentController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-06-06 06:48:18 --> Undefined variable $encrypter
+in APPPATH\Views\student\studentschedule.php on line 69.
+ 1 APPPATH\Views\student\studentschedule.php(69): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $encrypter', 'C:\\laragon\\www\\PGA-Management-System\\app\\Views\\student\\studentschedule.php', 69)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\student\\studentschedule.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(467): CodeIgniter\View\View->render('student/studentschedule', null, true)
+ 5 APPPATH\Views\studentschedule.php(2): CodeIgniter\View\View->include('student/studentschedule')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\studentschedule.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('studentschedule', [], true)
+ 9 APPPATH\Controllers\StudentController.php(457): view('studentschedule', [...])
+10 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\StudentController->studentschedule()
+11 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\StudentController))
+12 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-06-06 07:09:24 --> Undefined variable $scheduleSubset
+in APPPATH\Views\student\studentschedule.php on line 36.
+ 1 APPPATH\Views\student\studentschedule.php(36): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $scheduleSubset', 'C:\\laragon\\www\\PGA-Management-System\\app\\Views\\student\\studentschedule.php', 36)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\student\\studentschedule.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(467): CodeIgniter\View\View->render('student/studentschedule', null, true)
+ 5 APPPATH\Views\studentschedule.php(2): CodeIgniter\View\View->include('student/studentschedule')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\studentschedule.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('studentschedule', [], true)
+ 9 APPPATH\Controllers\StudentController.php(457): view('studentschedule', [...])
+10 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\StudentController->studentschedule()
+11 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\StudentController))
+12 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+CRITICAL - 2024-06-06 07:13:23 --> Undefined variable $schedule
+in APPPATH\Views\student\studentschedule.php on line 36.
+ 1 APPPATH\Views\student\studentschedule.php(36): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $schedule', 'C:\\laragon\\www\\PGA-Management-System\\app\\Views\\student\\studentschedule.php', 36)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\student\\studentschedule.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(467): CodeIgniter\View\View->render('student/studentschedule', null, true)
+ 5 APPPATH\Views\studentschedule.php(2): CodeIgniter\View\View->include('student/studentschedule')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\PGA-Management-System\\app\\Views\\studentschedule.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('studentschedule', [], true)
+ 9 APPPATH\Controllers\StudentController.php(461): view('studentschedule', [...])
+10 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\StudentController->studentschedule()
+11 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\StudentController))
+12 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')
+ERROR - 2024-06-06 08:16:54 --> mysqli_sql_exception: Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'pga.schedule.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by in C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\PGA-Management-System\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `schedul...', 0)
+#1 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `schedul...')
+#2 C:\laragon\www\PGA-Management-System\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `schedul...')
+#3 C:\laragon\www\PGA-Management-System\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `schedul...', Array, false)
+#4 C:\laragon\www\PGA-Management-System\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\PGA-Management-System\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\PGA-Management-System\app\Controllers\StudentController.php(454): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(919): App\Controllers\StudentController->studentschedule()
+#8 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\StudentController))
+#9 C:\laragon\www\PGA-Management-System\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\PGA-Management-System\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\PGA-Management-System\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-06-06 08:16:54 --> Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'pga.schedule.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `schedule`.`id` as `id`, `day`, `start_time`, `end_time`, `name`, `subject`, `fname`, `mname`, `lname`
+FROM `schedule`
+INNER JOIN `sections` ON `schedule`.`section_id` = `sections`.`id`
+INNER JOIN `teachers` ON `sections`.`adviser` = `teachers`.`idnum`
+WHERE `section_id` = :section_id:
+AND  `day` LIKE :day: ESCAPE \'!\'
+GROUP BY `schedule`.`start_time`, `schedule`.`end_time`
+ORDER BY `start_time`', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\StudentController.php(454): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\StudentController->studentschedule()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\StudentController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\PGA-Management-System\\public\\index.php')

@@ -91,6 +91,7 @@ $routes->get('/graph', 'GradeController::index', ['filter' => 'student']);
 $routes->get('/student', 'StudentController::index', ['filter' => 'student']);
 $routes->post('/generate', 'StudentController::simple_qr', ['filter' => 'student']);
 $routes->get('/studentlibrary', 'StudentController::studentlibrary', ['filter' => 'student']);
+$routes->get('/studentschedule', 'StudentController::studentschedule', ['filter' => 'student']);
 $routes->get('/permit', 'StudentController::permit', ['filter' => 'student']);
 $routes->get('/studgrade', 'StudentController::studgrade', ['filter' => 'student']);
 $routes->get('/searchLibrary', 'StudentController::searchLibrary', ['filter' => 'student']);
@@ -277,11 +278,14 @@ $routes->post('/aacsaveSubject', 'AACController::aacsaveSubject', ['filter' => '
 $routes->get('/aacdeleteSubject/(:any)', 'AACController::aacdeleteSubject/$1', ['filter' => 'AAC']);
 $routes->get('/aaceditSubject/(:any)', 'AACController::aaceditSubject/$1', ['filter' => 'AAC']);
 $routes->get('/schedule/(:any)', 'AACController::schedule/$1', ['filter' => 'AAC']);
+$routes->get('/teacherschedule/(:any)', 'AACController::teacherschedule/$1', ['filter' => 'AAC']);
 $routes->get('/scheduleList', 'AACController::scheduleList', ['filter' => 'AAC']);
 $routes->post('/saveSchedule', 'AACController::saveSchedule', ['filter' => 'AAC']);
 $routes->get('/editSchedule/(:any)/(:any)', 'AACController::editSchedule/$1/$2', ['filter' => 'AAC']);
 $routes->get('/deleteSchedule/(:any)', 'AACController::deleteSchedule/$1', ['filter' => 'AAC']);
 $routes->get('/editSchedule/(:any)', 'AACController::editSchedule/$1', ['filter' => 'AAC']);
+$routes->get('/deleteTeacherSchedule/(:any)', 'AACController::deleteTeacherSchedule/$1', ['filter' => 'AAC']);
+$routes->get('/editTeacherSchedule/(:any)', 'AACController::editTeacherSchedule/$1', ['filter' => 'AAC']);
 
 //AAC sections
 $routes->get('/St_Joseph_Husband_of_Mary', 'AACController::St_Joseph_Husband_of_Mary', ['filter' => 'AAC']);
@@ -311,7 +315,10 @@ $routes->get('/St_Agatha_Sicily', 'AACController::St_Agatha_Sicily', ['filter' =
 $routes->get('/St_Scholastica', 'AACController::St_Scholastica', ['filter' => 'AAC']);
 
 //SEARCH FILTER:
+$routes->get('/searchSchedule/(:any)', 'AACController::searchSchedule/$1', ['filter' => 'AAC']);
+$routes->get('/searchTeacherSchedule/(:any)', 'AACController::searchTeacherSchedule/$1', ['filter' => 'AAC']);
 $routes->get('/searchsectionlist', 'AACController::searchsectionlist', ['filter' => 'AAC']);
+$routes->get('/searchteacherlist', 'AACController::searchteacherlist', ['filter' => 'AAC']);
 $routes->get('/searchAgatha', 'AACController::searchAgatha', ['filter' => 'AAC']);
 $routes->get('/searchAlbert', 'AACController::searchAlbert', ['filter' => 'AAC']);
 $routes->get('/searchArnold', 'AACController::searchArnold', ['filter' => 'AAC']);
